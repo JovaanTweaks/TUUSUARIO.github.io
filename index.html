@@ -1449,11 +1449,132 @@ input[type=text],input[type=search],input[type=url],input[type=email],input[type
 .ent-lg-portal{animation-name:encirc!important;animation-duration:1.2s!important}
 .ent-lg-warp{animation-name:enwarp!important;animation-duration:1s!important}@keyframes enwarp{0%{opacity:0;transform:scale(1.6);filter:blur(10px)}60%{opacity:1}100%{transform:none;filter:none}}
 .entcv{position:absolute;inset:0;z-index:5;pointer-events:none}
+
+/* ============ V10: página más ancha, encabezado nuevo, monedas rosas, insignias nítidas */
+.wrap{max-width:1480px}
+@media (min-width:1800px){.wrap{max-width:1640px}body{font-size:16px}}
+@media (min-width:1300px){.grid{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}}
+.top{background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 94%,transparent),color-mix(in srgb,var(--bg) 82%,transparent));box-shadow:0 10px 30px -20px rgba(0,0,0,.9)}
+.top .wrap{height:72px}
+.logo{align-items:center;gap:10px;font-size:25px}
+.logo .lmark{display:grid!important;place-items:center;width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,#ffd1ea,#ff8fc8 45%,#c08bff);color:#2a0f24;box-shadow:0 6px 20px -6px rgba(255,143,200,.7);flex:none;font-style:normal}
+.logo .lmark svg{width:18px;height:18px}
+.logo b{background:linear-gradient(100deg,#fff,#ffd1ea 40%,#ff8fc8 70%,#c3a8ff)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;padding:0!important;box-shadow:none!important;letter-spacing:-.03em;font-weight:900}
+.logo span:not(.lmark){font-family:var(--body);font-stretch:normal;font-size:12px!important;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding-left:10px;border-left:1px solid var(--line)}
+@media (min-width:1450px){nav a{font-size:15px!important;padding:9px 13px!important;font-weight:700}}
+@media (max-width:1449px){.logo span:not(.lmark){display:none!important}}
+nav a.on,nav a[aria-current]{color:var(--fg)}
+.coinchip{border-color:rgba(255,143,200,.5)!important;background:linear-gradient(135deg,rgba(255,143,200,.18),rgba(192,139,255,.1))!important;color:#ffd1ea!important}
+.coinchip:hover{background:linear-gradient(135deg,rgba(255,143,200,.28),rgba(192,139,255,.16))!important}
+.walletbig{border-color:rgba(255,143,200,.5)!important;background:linear-gradient(135deg,rgba(255,143,200,.18),rgba(192,139,255,.06))!important}.walletbig b{color:#ffd1ea!important}
+.pricelist b,.sitem .buy{color:#ffd1ea!important}.sitem .buy{background:rgba(255,143,200,.1)!important;border-color:rgba(255,143,200,.45)!important}
+.cointoast{color:#ffd1ea}
+/* insignias: siempre nítidas, no heredan efectos del nombre */
+.uptag{font-family:var(--body)!important;font-weight:800!important;font-size:11.5px!important;letter-spacing:.02em!important;font-style:normal!important;text-transform:none!important;-webkit-text-stroke:0!important;text-shadow:none!important;filter:none!important;color:#1a1020!important;-webkit-text-fill-color:#1a1020!important;line-height:1.35!important;padding:3px 10px!important;border:1px solid rgba(255,255,255,.35);box-shadow:0 2px 10px -4px rgba(0,0,0,.6);-webkit-font-smoothing:antialiased;animation-name:none}
+.uptag.lgt{animation:lgtag 3s ease-in-out infinite alternate!important}
+.uptag.lg-galaxia{color:#fff!important;-webkit-text-fill-color:#fff!important}
+.pid h1 .uptag,.pid h1 .nicon{-webkit-background-clip:border-box!important;background-clip:border-box!important}
+.pid h1 .nicon{-webkit-text-fill-color:currentColor!important;-webkit-text-stroke:0!important}
+.pid h1 .letters,.pid h1 .uptag,.pid h1 .nicon{vertical-align:middle}
+/* cuánto te falta */
+.remain{display:flex;align-items:center;gap:14px;margin-top:14px;padding:12px 16px;border-radius:16px;border:1px solid var(--line);background:linear-gradient(135deg,rgba(255,143,200,.08),rgba(143,188,255,.06)),var(--surface);font-size:14px}
+.remain>div:last-child{display:grid;gap:2px}.remain b{font-size:15px}
+.remain.done{color:#a8f0c6}
+.rmring{--p:0;flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(closest-side,var(--surface) 76%,transparent 78%),conic-gradient(var(--accent) calc(var(--p)*1%),var(--line) 0)}
+.rmring b{font-size:12.5px!important}
+/* actor */
+.actorhead{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.aimg.big{width:132px;height:132px;font-size:40px;border-width:3px}
+/* episodios top */
+.topform{margin-top:6px;padding:12px 14px;border-radius:16px;border:1px solid rgba(255,143,200,.35);background:linear-gradient(135deg,rgba(255,143,200,.08),transparent)}
+.tfhead{display:flex;align-items:center;gap:8px;margin-bottom:10px;color:#ffd1ea}.tfhead a{margin-left:auto;font-size:13px;color:var(--accent);font-weight:700}
+.tfrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tfrow label{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13px;color:var(--dim)}
+.tfrow input[type=number]{width:84px;text-align:center;font-weight:900;font-size:16px}
+.tfrow input[type=text]{flex:1;min-width:180px}
+.toplist{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.toplist li{display:grid;grid-template-columns:42px 120px minmax(0,1fr) auto auto;gap:14px;align-items:center;padding:10px 14px 10px 10px;border-radius:16px;background:var(--raise);border:1px solid var(--line)}
+.toplist li.top0{border-color:rgba(255,215,106,.6);background:linear-gradient(90deg,rgba(255,215,106,.12),transparent 60%),var(--raise)}
+.toplist li.top1{border-color:rgba(220,228,240,.5)}.toplist li.top2{border-color:rgba(214,140,90,.5)}
+.tpos{font-family:var(--display);font-size:30px;font-weight:900;text-align:center;color:var(--dim)}
+.top0 .tpos{color:#ffd76a}.top1 .tpos{color:#dfe5ef}.top2 .tpos{color:#e0a070}
+.tth{display:block;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:var(--line)}.tth img{width:100%;height:100%;object-fit:cover}
+.ttx{display:grid;gap:2px;min-width:0}.ttx b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ttx span{font-size:13px;color:var(--dim)}.ttx em{font-size:13px;color:#ffd1ea}
+.tscore{text-align:right}.tscore b{font-family:var(--display);font-size:28px;font-weight:900;background:linear-gradient(135deg,#ffd1ea,#ff8fc8);-webkit-background-clip:text;background-clip:text;color:transparent}.tscore small{color:var(--dim);font-weight:700}
+@media (max-width:640px){.toplist li{grid-template-columns:32px 84px minmax(0,1fr) auto}.toplist li .linkbtn{grid-column:1/-1}}
+/* canción favorita */
+.songbox{position:relative;display:flex;gap:14px;align-items:center;border-radius:16px}
+.songbox iframe{flex:1;min-width:0;border:0;border-radius:14px;height:152px;position:relative;z-index:1}
+.vinyl{flex:none;width:132px;height:132px;border-radius:50%;background:radial-gradient(circle,var(--paccent,#ff8fc8) 0 16%,#111 17% 19%,transparent 20%),repeating-radial-gradient(circle,#161616 0 2px,#222 2px 4px);box-shadow:0 8px 24px -8px rgba(0,0,0,.8);animation:lgspin 3s linear infinite}
+.sg-brillo{padding:3px;background:linear-gradient(120deg,var(--paccent,#ff8fc8),#8fbcff,#c08bff,var(--paccent,#ff8fc8));background-size:300% 100%;animation:na-move 4s linear infinite}
+.sg-aura{box-shadow:0 0 0 2px var(--paccent,#ff8fc8),0 0 34px -4px var(--paccent,#ff8fc8);animation:lfpulse 2.6s ease-in-out infinite}
+.sg-holo{padding:3px;background:linear-gradient(115deg,#ff9ad5,#9ad5ff,#b4ffda,#fff4a8,#ff9ad5);background-size:400% 400%;animation:lgholo 4s ease-in-out infinite alternate}
+.eqbars{flex:none;display:flex;align-items:flex-end;gap:4px;height:120px;padding:0 6px}.eqbars i{width:7px;border-radius:4px;background:linear-gradient(0deg,var(--paccent,#ff8fc8),#c08bff);animation:eq 1s ease-in-out infinite alternate;animation-delay:var(--d)}
+@keyframes eq{from{height:12%}to{height:100%}}
+.sg-lg-galaxia{padding:10px;background:radial-gradient(circle,#fff 0 .8px,transparent 1.5px) 0 0/23px 23px,radial-gradient(ellipse at 30% 40%,rgba(122,43,255,.6),transparent 60%),radial-gradient(ellipse at 80% 60%,rgba(255,92,180,.45),transparent 60%),#0a0620;animation:thgal 40s linear infinite}
+.sg-lg-hadas{padding:10px;background:radial-gradient(circle,rgba(95,242,208,.95) 0 1.3px,transparent 3.5px) 10px 20px/80px 80px,radial-gradient(circle,rgba(255,143,200,.95) 0 1.3px,transparent 3.5px) 40px 60px/100px 100px,#08141a;animation:lghad 8s linear infinite}
+.sg-lg-hadas .eqbars i{background:linear-gradient(0deg,#5ff2d0,#ff8fc8)}
+@media (max-width:640px){.vinyl,.eqbars{display:none}}
+/* logos de redes */
+.silogo{display:inline-block;width:15px;height:15px;flex:none;background:var(--sc);-webkit-mask:var(--si) center/contain no-repeat;mask:var(--si) center/contain no-repeat;vertical-align:-2px}
+.social{display:inline-flex;align-items:center;gap:7px}
+/* efecto del mouse */
+.mousecv{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:60}
+.pcover[data-mouse="tilt"],.pcover[data-mouse="lg-holocarta"]{transition:transform .25s ease-out;will-change:transform}
+.pcover[data-mouse="lg-holocarta"]::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;border-radius:inherit;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.22),transparent 40%),linear-gradient(115deg,rgba(255,154,213,.14),rgba(154,213,255,.14),rgba(180,255,218,.14),rgba(255,244,168,.14));mix-blend-mode:screen;opacity:0;transition:opacity .3s}
+.pcover[data-mouse="lg-holocarta"].tilting::after{opacity:1}
+.pcover[data-mouse="luz"]::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;border-radius:inherit;background:radial-gradient(260px circle at var(--mx,-999px) var(--my,-999px),color-mix(in srgb,var(--paccent,#ff8fc8) 28%,transparent),transparent 70%)}
+.pcover[data-mouse]{position:relative}
+/* compañero que reacciona */
+.compa{pointer-events:auto!important;cursor:pointer}
+.compa.hop{animation:chop .6s ease!important}@keyframes chop{30%{transform:translateY(-18px) scale(1.1)}60%{transform:translateY(0) scale(.95)}}
+/* letras en ola */
+.letters{display:inline-block}.letters i{display:inline-block;font-style:inherit}
+.na-olaletras .letters i{animation:lwave 1.6s ease-in-out infinite;animation-delay:calc(var(--i)*.08s)}
+@keyframes lwave{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-7px)}}
+.na-saltaletras .letters i{animation:ljump 2.4s ease infinite;animation-delay:calc(var(--i)*.12s)}
+@keyframes ljump{0%,30%,100%{transform:none}10%{transform:translateY(-10px) rotate(-6deg)}20%{transform:translateY(0) scaleY(.9)}}
+.na-lg-letras .letters i{animation:lwave 1.4s ease-in-out infinite,lhue 3s linear infinite;animation-delay:calc(var(--i)*.08s),calc(var(--i)*-.2s);color:#ff8fc8!important;-webkit-text-fill-color:#ff8fc8!important;text-shadow:0 0 10px currentColor}
+@keyframes lhue{0%{color:#ff8fc8;-webkit-text-fill-color:#ff8fc8}25%{color:#ffd76a;-webkit-text-fill-color:#ffd76a}50%{color:#5ff2d0;-webkit-text-fill-color:#5ff2d0}75%{color:#8fbcff;-webkit-text-fill-color:#8fbcff}100%{color:#ff8fc8;-webkit-text-fill-color:#ff8fc8}}
+/* tienda del día */
+.dailybox{margin:18px 0 6px;padding:18px;border-radius:22px;border:1px solid rgba(255,143,200,.45);background:radial-gradient(circle at 0 0,rgba(255,143,200,.18),transparent 55%),radial-gradient(circle at 100% 100%,rgba(143,188,255,.14),transparent 55%),var(--surface)}
+.dhead{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:14px}.dhead h2{margin:0}
+.dtimer{padding:6px 12px;border-radius:999px;background:rgba(255,143,200,.14);color:#ffd1ea;font-weight:800;font-size:13px}
+.ditems{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:640px){.ditems{grid-template-columns:1fr 1fr}}
+.oferta.mini{position:static;display:inline-block;margin-left:6px}
+/* inicio con columna al costado */
+#app.homegrid{display:grid;grid-template-columns:minmax(0,1fr) 320px;column-gap:28px;align-items:start}
+#app.homegrid>*{grid-column:1}
+#app.homegrid>.slider{grid-column:1/-1}
+#app.homegrid>.homeside{grid-column:2;grid-row:1/span 40;align-self:stretch}
+#app.homegrid>.slider~.homeside{grid-row:2/span 40}
+.hsin{position:sticky;top:96px;display:grid;gap:14px}
+.hscoins{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:18px;border:1px solid rgba(255,143,200,.45);background:linear-gradient(135deg,rgba(255,143,200,.16),rgba(192,139,255,.06))}
+.hscoins b{display:block;font-family:var(--display);font-size:24px;line-height:1;color:#ffd1ea}.hscoins span{font-size:12.5px;color:var(--dim);font-weight:700}
+.hsbox{display:grid;gap:8px;padding:14px;border-radius:18px;border:1px solid var(--line);background:var(--surface)}
+.hst{font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.hsitem,.hsshow{display:flex;align-items:center;gap:10px;padding:6px;border-radius:12px;min-width:0}.hsitem:hover,.hsshow:hover{background:var(--raise)}
+.hsitem>:first-child{flex:none;width:44px;height:44px;display:grid;place-items:center;overflow:hidden;border-radius:10px;background:#1b1824;position:relative}
+.hsitem .dprev.big,.hsitem .cprev.big{width:38px;height:38px}.hsitem .tname{font-size:13px}.hsitem .tbg{position:absolute;inset:0}
+.hsshow img,.hsshow .noimg{flex:none;width:40px;height:56px;border-radius:8px;object-fit:cover;font-size:12px}
+.hsitem div,.hsshow div{display:grid;min-width:0}.hsitem b,.hsshow b{font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hsitem span,.hsshow span{font-size:12px;color:var(--dim);display:flex;align-items:center;gap:4px}
+.hscta b{color:#ffd1ea}.hscta span{font-size:12.5px;color:var(--dim)}
+
+.slider .sdots{position:absolute!important;left:34px;bottom:24px;z-index:4}
+@media (max-width:760px){.slider .sdots{left:20px;bottom:18px}}
+.top .search,.top form{min-width:180px}
+
+/* cartel de estrenos con imagen horizontal */
+.slider .sbg{background-size:cover;background-position:center 25%;transition:opacity .4s}
+.slider .slide.postermode .sbg{filter:blur(22px) brightness(.55) saturate(1.2)!important;transform:scale(1.2)}
+.slider .slide.postermode .sposter{display:block!important;position:absolute;right:8%;top:50%;translate:0 -50%;width:clamp(150px,16vw,240px);z-index:2}
+@media (max-width:760px){.slider .slide.postermode .sposter{display:none!important}}
 </style>
 </head>
 <body>
 <header class="top"><div class="wrap">
-  <a class="logo" href="#/" aria-label="JVNN Series and Movies, inicio"><b>JVNN</b><span>Series &amp; Movies</span></a>
+  <a class="logo" href="#/" aria-label="JVNN Series and Movies, inicio"><i class="lmark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 5.5v13l10.5-6.5z" fill="currentColor"/></svg></i><b>JVNN</b><span>Series &amp; Movies</span></a>
   <form class="search" id="sform" role="search">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
     <input id="q" class="sq" type="search" placeholder="Buscar series…" autocomplete="off" aria-label="Buscar series">
@@ -1479,7 +1600,7 @@ input[type=text],input[type=search],input[type=url],input[type=email],input[type
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 9.0</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 10.0</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -1941,7 +2062,7 @@ async function route(keepScroll) {
   const id = ++renderId, R = parseRoute(), app = $('#app');
   const y = window.scrollY;
   document.querySelectorAll('[data-r]').forEach(a => a.classList.toggle('on', a.dataset.r === R.name || (R.name === 'stats' && a.dataset.r === 'perfil' && a.closest('.bnav'))));
-  const views = { '': vHome, 'buscar': vSearch, 'serie': vShow, 'ep': vEpisode, 'mis-series': vMine, 'calendario': vCalendar, 'descubrir': vDiscover, 'peliculas': vMovies, 'stats': vStats, 'perfil': vProfile, 'entrar': vLogin, 'nueva-clave': vNewPass, 'gente': vPeople, 'u': vUser, 'categoria': vCategory, 'peli': vMovie, 'pro': vPro, 'monedas': vCoins, 'tienda': vShop, 'listas': vLists, 'lista': vList };
+  const views = { '': vHome, 'buscar': vSearch, 'serie': vShow, 'ep': vEpisode, 'mis-series': vMine, 'calendario': vCalendar, 'descubrir': vDiscover, 'peliculas': vMovies, 'stats': vStats, 'perfil': vProfile, 'entrar': vLogin, 'nueva-clave': vNewPass, 'gente': vPeople, 'u': vUser, 'categoria': vCategory, 'peli': vMovie, 'pro': vPro, 'monedas': vCoins, 'tienda': vShopDaily, 'actor': vActor, 'top-episodios': vTopEps, 'listas': vLists, 'lista': vList };
   const v = views[R.name] || vHome;
   const draw = html => { if (id === renderId) { app.innerHTML = html; fillAds(); } return id === renderId; };
   try { await v(R.args, draw, () => id === renderId); }
@@ -2051,7 +2172,7 @@ async function vShow(args, draw, alive) {
     <div class="sinfo"><div class="eyebrow">${h([c.net, c.country].filter(Boolean).join(' · ') || 'Serie')}</div><h1>${h(c.name)}</h1>
       <div class="facts">${h([years, STATUS[c.status] || c.status, plural(seasons.length, 'temporada', 'temporadas'), plural(c.eps.length, 'capítulo', 'capítulos'), c.runtime ? c.runtime + ' min' : ''].filter(Boolean).join(' · '))}</div>
       <div class="chips">${isAnime({ genres: c.genres, lang: c.lang, type: c.type }) ? '<a class="chip" href="#/categoria/anime">Anime</a>' : ''}${c.genres.filter(g => g !== 'Anime').map(g => getCat(g) ? `<a class="chip" href="#/categoria/${encodeURIComponent(g)}">${h(gname(g))}</a>` : `<span class="chip">${h(gname(g))}</span>`).join('')}</div>
-      <div class="ratings" id="rbox">${ratingsHTML({ imdbId: c.imdb, tvm: c.rating })}</div>
+      <div class="ratings" id="rbox">${ratingsHTML({ imdbId: c.imdb, tvm: c.rating })}</div>${remainHTML(c)}
       <div class="actions">${listSel}<button class="btn" data-act="fav" aria-pressed="${r && r.fav ? 'true' : 'false'}">${r && r.fav ? '♥ Favorita' : '♡ Favorita'}</button>${airedEps.length ? `<button class="btn" data-act="markall">${seen === airedEps.length ? 'Desmarcar toda la serie' : 'Marcar toda la serie'}</button>` : ''}${seen ? `<button class="btn rwbtn" data-act="rwshow">↻ Revisté la serie${rwShowTimes(r) ? ` · ${rwShowTimes(r)} ${rwShowTimes(r) === 1 ? "vez" : "veces"}` : ''}</button>` : ''}${r ? '<button class="btn ghost danger" data-act="untrack">Quitar</button>' : ''}</div>
       ${airedEps.length ? `<div class="prog"><div class="pbar"><i style="width:${seen / airedEps.length * 100}%"></i></div><div class="small dim">${seen} de ${airedEps.length} capítulos vistos · ${mins ? shortTime(mins) + ' vistos · ' : ''}${left ? 'te faltan ' + shortTime(left) : 'estás al día'}</div></div>` : ''}
     </div></div></section>
@@ -2060,7 +2181,7 @@ async function vShow(args, draw, alive) {
     <div class="shead"><h2>Temporada ${cur}</h2><div class="small dim">${sSeen}/${sAired.length} vistos ${sAired.length ? `<button class="btn sm" data-act="markseason" style="margin-left:8px">${sSeen === sAired.length ? 'Desmarcar temporada' : 'Marcar temporada completa'}</button>` : ''}${sSeen ? `<button class="btn sm rwbtn" data-act="rwseason" style="margin-left:6px">↻ Revisté la temporada</button>` : ''}</div></div>
     <ul class="eps">${eps || '<li class="ep"><span></span><div class="t dim">Todavía no hay capítulos cargados.</div></li>'}</ul>
     <div id="simbox"></div><div id="revbox"></div>
-    ${c.cast.length ? `<section class="sec"><h2 style="margin-bottom:14px">Reparto</h2><div class="cast">${c.cast.map(p => `<a class="person" href="https://www.imdb.com/find/?q=${encodeURIComponent(p.name)}&s=nm" target="_blank" rel="noopener" title="Ver ${h(p.name)} en IMDb"><div class="av">${p.img ? `<img src="${h(p.img)}" alt="" loading="lazy">` : ''}</div><div><b>${h(p.name)}</b><span>${h(p.char)}</span><em>IMDb ↗</em></div></a>`).join('')}</div></section>` : ''}
+    ${c.cast.length ? `<section class="sec"><h2 style="margin-bottom:14px">Reparto</h2><div class="cast">${c.cast.map(p => `<a class="person" href="#/actor/${encodeURIComponent(p.name)}" title="Ver todo lo de ${h(p.name)}"><div class="av">${p.img ? `<img src="${h(p.img)}" alt="" loading="lazy">` : ''}</div><div><b>${h(p.name)}</b><span>${h(p.char)}</span><em>Ver sus series →</em></div></a>`).join('')}</div></section>` : ''}
   </div><aside>
     <div class="panel"><h3>Tu puntaje</h3><div class="score">${Array.from({ length: 10 }, (_, i) => `<button data-act="score" data-v="${i + 1}" class="${r && r.score > i ? 'on' : ''}" aria-label="${i + 1} de 10">${i + 1}</button>`).join('')}</div>
       <h3 style="margin-top:16px">Tu nota</h3><textarea id="shownote" placeholder="¿Qué te pareció? Solo la ves vos.">${h(r ? r.note : '')}</textarea></div>
@@ -2091,6 +2212,7 @@ async function vEpisode(args, draw, alive) {
     <div class="facts">${h([e.air ? fmtDate(e.air, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : 'Sin fecha', e.rt + ' min'].join(' · '))}${e.r ? ` · <b>★ ${e.r}</b>` : ''}</div>
     ${aired(e) ? `<div><button class="btn ${w ? '' : 'pri'}" data-act="ep" data-ep="${e.id}" aria-pressed="${w ? 'true' : 'false'}">${w ? '✓ Visto el ' + fmtDate(w.t, { day: 'numeric', month: 'short' }) + ' · desmarcar' : 'Marcar como visto'}</button></div>${w ? `<div class="rwbox"><div><b>${rwCount(r, e.id)}</b><span>${rwCount(r, e.id) === 1 ? 'vez revisto' : 'veces revisto'}</span></div><button class="btn sm" data-act="rwep" data-ep="${e.id}" data-v="-1" ${rwCount(r, e.id) ? '' : 'disabled'} aria-label="Restar un revisto">−</button><button class="btn sm pri" data-act="rwep" data-ep="${e.id}" data-v="1">↻ Lo volví a ver</button></div>` : ''}` : `<div class="chip" style="align-self:flex-start">Se estrena ${fmtDate(e.air)}</div>`}
     ${summaryHTML('ep', e.id, e.sum)}
+    ${topEpFormHTML(c, e)}
   </div></div>
   <div class="two"><div class="panel"><h3>¿Cómo te pegó?</h3><div class="reacts">${REACTS.map(([k, l]) => `<button data-act="react" data-v="${k}" class="r-${k} ${n.react === k ? 'on' : ''}">${icon(k, 17)} ${h(l)}</button>`).join('')}</div>
     <h3 style="margin-top:18px">Tu puntaje del capítulo</h3><div class="score">${Array.from({ length: 10 }, (_, j) => `<button data-act="epscore" data-v="${j + 1}" class="${n.score > j ? 'on' : ''}">${j + 1}</button>`).join('')}</div></div>
@@ -4030,7 +4152,7 @@ function profileBodyHTML(st, row, ctx, statsHTML) {
 const pfxAttr7 = st => st && st.pfx && st.pfx !== 'none' && PFX[st.pfx] ? `data-pfx="${h(st.pfx)}"` : '';
 function profileClasses(st) { return [profileClasses5(st), extraClasses(st)].filter(Boolean).join(' '); }
 function accentStyle(st) { return accentStyle5(st); }
-function sanitizeStyle(st, row) {
+function sanitizeStyle7(st, row) {
   const src = Object.assign({}, STYLE_DEF, st || {}), full = isProRow(row);
   const out = sanitizeStyle5(src, { plan: 'combo', items: [] });
   for (const f of Object.keys(STYLE_OPTS)) {
@@ -4144,7 +4266,7 @@ function customizeHTML() {
   } else if (tab === 'compa') {
     body = compaEditHTML(view);
   } else if (tab === 'efectos') {
-    body = g('Efecto animado en tu perfil', `<div class="banners">${STYLE_OPTS.pfx.map(o => tile('pfx', o, view.pfx, 'background:radial-gradient(circle at 30% 30%,#2a2440,#0b0b14)')).join('')}</div>`, 'se ve en tu perfil en movimiento') + g('Entrada del perfil', `<div class="banners">${STYLE_OPTS.entrada.map(o => tile('entrada', o, view.entrada, 'background:linear-gradient(135deg,#2a2440,#141020)')).join('')}</div>`, 'la animación cuando alguien abre tu perfil');
+    body = g('Efecto animado en tu perfil', `<div class="banners">${STYLE_OPTS.pfx.map(o => tile('pfx', o, view.pfx, 'background:radial-gradient(circle at 30% 30%,#2a2440,#0b0b14)')).join('')}</div>`, 'se ve en tu perfil en movimiento') + g('Entrada del perfil', `<div class="banners">${STYLE_OPTS.entrada.map(o => tile('entrada', o, view.entrada, 'background:linear-gradient(135deg,#2a2440,#141020)')).join('')}</div>`, 'la animación cuando alguien abre tu perfil') + g('Efecto del mouse', sw('mouse'), 'cuando alguien mueve el mouse sobre tu perfil');
   } else if (tab === 'diseno') {
     const row = myProRow(), ok = hasLayout(row), L = ok ? layoutOf(st, row) : { ...LAYOUT_DEF };
     const ch = (k, v, n) => `<button class="opt ${L[k] === v ? 'on' : ''}" data-act="lay" data-k="${k}" data-v="${v}" ${ok ? '' : 'disabled'}>${n}</button>`;
@@ -4164,7 +4286,9 @@ function customizeHTML() {
     const got = badgeList(myBadgeStats()).filter(x => x.on), maxShow = PRO.me ? 6 : 3;
     body = g(`Tus redes <span class="dim">(${filled}/${lim === 99 ? '∞' : lim})</span>`, `<div class="socgrid">${Object.entries(SOCIALS5).map(([k, [n]]) => { const has = !!cleanHandle(so[k]), dis = !has && filled >= lim; return `<label class="soc ${dis ? 'locked' : ''}"><span>${n}</span><input type="text" data-soc="${k}" maxlength="300" value="${h(so[k] || '')}" placeholder="${dis ? 'Redes ilimitadas: Pro' : k === 'sp' ? 'pegá el link de tu perfil' : 'usuario o link'}" ${dis ? 'disabled' : ''}></label>`; }).join('')}</div><p class="small dim" style="margin:8px 0 0">Podés poner el usuario o pegar el link de tu perfil. En Spotify pegá el link: Spotify &gt; tu perfil &gt; ⋯ &gt; Compartir &gt; Copiar enlace.</p>`)
       + g(`Logros en vitrina (hasta ${maxShow})`, got.length ? `<div class="opts">${got.map(x => `<button class="opt badgeopt ${(st.showcase || []).includes(x.b[0]) ? 'on' : ''}" data-act="pshow5" data-v="${x.b[0]}">${medalSVG(x.b, true, 22)} ${h(x.b[1])}</button>`).join('')}</div>` : '<p class="small dim" style="margin:0">Cuando desbloquees logros, los podés mostrar acá.</p>')
-      + linkEditHTML(st);
+      + linkEditHTML(st)
+      + g('Canción favorita <span class="dim">· pegá el link de una canción de Spotify</span>', `<input type="url" id="psong" maxlength="300" placeholder="https://open.spotify.com/track/…" value="${h(st.song || '')}">${songEmbed(st.song) ? '<p class="small dim" style="margin:6px 0 0">Se ve en tu perfil con el reproductor de Spotify.</p>' : '<p class="small dim" style="margin:6px 0 0">En Spotify: tocá ⋯ en la canción → Compartir → Copiar enlace.</p>'}`)
+      + g('Estilo de la canción', sw('songstyle'));
   }
   const prevKeys = Object.keys(PREVIEW);
   const total = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.length, 0);
@@ -4612,7 +4736,7 @@ function nameIconHTML(st) {
 
 // ---------- decoraciones legendarias: hadas que mueven las alas, estrellas que giran
 STYLE_OPTS.deco.push(...Object.keys(HP).map(c => Object.assign(C('lg-hada-' + c, `Hada mágica animada ${HPN[c]}`, 'lgfairy|' + c), { lg: 1 })), Object.assign(C('lg-estrellas', 'Estrellas que giran', 'lgstars|oro'), { lg: 1 }), Object.assign(C('lg-halo', 'Halo divino', 'lghalo|oro'), { lg: 1 }));
-function decoHTML(st) {
+function decoHTML9(st) {
   const o = optOf('deco', st && st.deco); if (!o || !o.v) return '';
   const [s, c] = o.v.split('|');
   if (s === 'lgfairy') { const P = HP[c] || HP.rosa; return `<svg class="adeco anim" viewBox="0 0 160 160" aria-hidden="true">${OUTSIDE}<g class="ffloat"><g clip-path="url(#dk-out)">${fairySVG(58, 0, 1.3, P, false, 'back')}</g>${fairySVG(58, 0, 1.3, P, false, 'front')}</g><g class="tw">${sparkles8([[20, 30, 5], [30, 6, 3]], '#fff')}</g><g class="tw t2">${sparkles8([[104, 2, 4], [118, 22, 2.5], [10, 60, 3]], P.glow)}</g>${[[90, 26, 1.6], [98, 36, 1.2], [104, 48, 1], [108, 60, .8]].map(([x, y, r], i) => `<circle class="dust d${i}" cx="${x}" cy="${y}" r="${r}" fill="${P.glow}"/>`).join('')}</svg>`; }
@@ -4728,7 +4852,7 @@ function extraClasses9(st) {
 }
 
 // ---------- precios legendarios
-function priceOf(f, k) { if (isLegend(f, k)) return LG_PRICE[f] || 2500; return Math.max(80, basePrice(f, k) - saleOf(f, k)); }
+function priceOf9(f, k) { if (isLegend(f, k)) return LG_PRICE[f] || 2500; return Math.max(80, basePrice(f, k) - saleOf(f, k)); }
 
 // ---------- tienda: pestaña Legendarios primero
 SHOP_CATS.unshift(['legend', 'Legendarios']);
@@ -4896,6 +5020,276 @@ function entBurst(card, k) {
 new MutationObserver(() => runEntrances()).observe(document.getElementById('app'), { childList: true, subtree: true });
 const _shopThumb9 = shopThumb;
 PRO_COUNT = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.filter(o => !o.f).length, 0) + 4;
+
+
+// ============================================================ V10: CUÁNTO TE FALTA, ACTORES, EPISODIOS TOP, TIENDA DEL DÍA, CANCIÓN, LOGOS, MOUSE, MONEDAS ROSAS, PÁGINA MÁS ANCHA
+// ---------- monedas rosas
+function coinSVG(sz = 16) { return `<svg class="coin" width="${sz}" height="${sz}" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="cg8" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd1ea"/><stop offset=".55" stop-color="#ff8fc8"/><stop offset="1" stop-color="#e0559a"/></linearGradient></defs><circle cx="12" cy="12" r="10.5" fill="#c43d82"/><circle cx="12" cy="12" r="9" fill="url(#cg8)"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#b02a6e" stroke-width="1.1" opacity=".6"/><path d="M13.6 7.2v6.4a2.6 2.6 0 0 1-5.2.3" fill="none" stroke="#7a1446" stroke-width="2.2" stroke-linecap="round"/><path d="M6.5 6.5a7 7 0 0 1 4-2" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity=".8" fill="none"/></svg>`; }
+
+// ---------- CUÁNTO TE FALTA
+const fmtHM = m => { m = Math.round(m); const d = Math.floor(m / 1440), hh = Math.floor(m % 1440 / 60), mm = m % 60; return d ? `${d} d ${hh} h` : hh ? `${hh} h${mm ? ' ' + mm + ' min' : ''}` : `${mm} min`; };
+function myPace() {
+  const now = Date.now(); let m30 = 0, m90 = 0;
+  for (const r of Object.values(S.shows)) for (const w of Object.values(r.eps || {})) { if (!w || !w.t) continue; const age = now - w.t; if (age < 30 * 864e5) m30 += w.m || 30; if (age < 90 * 864e5) m90 += w.m || 30; }
+  for (const r of Object.values(S.movies || {})) for (const t of r.seen || []) { const age = now - t; if (age < 30 * 864e5) m30 += r.runtime || 110; if (age < 90 * 864e5) m90 += r.runtime || 110; }
+  return m30 ? m30 / 30 : m90 ? m90 / 90 : 0;
+}
+function remainHTML(c) {
+  const r = S.shows[c.id]; if (!r || !c.eps) return '';
+  const left = c.eps.filter(e => aired(e) && !r.eps[e.id]); if (!left.length) return Object.keys(r.eps).length ? `<div class="remain done">${icon('check', 18)}<div><b>¡Estás al día!</b><span>Viste todos los capítulos que salieron.</span></div></div>` : '';
+  const min = left.reduce((a, e) => a + (e.rt || c.runtime || 30), 0), pace = myPace();
+  const days = pace ? Math.ceil(min / pace) : 0, end = days ? new Date(Date.now() + days * 864e5) : null;
+  const pct = Math.round((c.eps.filter(e => aired(e)).length - left.length) / Math.max(1, c.eps.filter(e => aired(e)).length) * 100);
+  return `<div class="remain"><div class="rmring" style="--p:${pct}"><b>${pct}%</b></div><div><b>Te faltan ${fmtHM(min)}</b> <span class="dim">(${plural(left.length, 'capítulo', 'capítulos')})</span><span>${end ? `A tu ritmo (${fmtHM(pace)} por día) la terminás el <b>${fmtDate(end.toISOString(), { day: 'numeric', month: 'long' })}</b>${days > 365 ? ' del año que viene… o más' : ''}.` : 'Marcá algunos capítulos y te calculo cuándo la terminás.'}</span></div></div>`;
+}
+
+// ---------- BUSCAR POR ACTOR
+async function vActor(args, draw, alive) {
+  const name = decodeURIComponent(args.join('/') || '');
+  draw(`<div class="skel" style="height:200px"></div><div class="grid sec">${Array.from({ length: 12 }, () => '<div class="skel" style="aspect-ratio:2/3"></div>').join('')}</div>`);
+  let p = null, credits = [];
+  try {
+    const res = (await raw('/search/people?q=' + enc(name))) || [];
+    p = (res.find(x => x.person && x.person.name.toLowerCase() === name.toLowerCase()) || res[0] || {}).person;
+    if (p) credits = (await raw(`/people/${p.id}/castcredits?embed=show`)) || [];
+  } catch (e) { if (alive()) draw(errBox(e)); return; }
+  if (!alive()) return;
+  if (!p) return draw(empty('No encontramos a esa persona', 'Probá buscándola de nuevo.'));
+  const seenIds = new Set(); const shows = [];
+  for (const cr of credits) { const s = cr._embedded && cr._embedded.show; if (s && !seenIds.has(s.id)) { seenIds.add(s.id); shows.push(lite(s)); } }
+  shows.sort((a, b) => (b.premiered || '').localeCompare(a.premiered || ''));
+  const mine = shows.filter(s => S.shows[s.id]), st = S.profile.style, isFav = (st.actors || []).some(a => a.id === p.id);
+  const age = p.birthday ? Math.floor((Date.now() - Date.parse(p.birthday)) / 31557600000) : 0;
+  draw(`<section class="actorhead"><div class="aimg big">${p.image ? `<img src="${h(p.image.medium)}" alt="">` : h(initials(p.name))}</div><div><div class="eyebrow">Actor / actriz</div><h1>${h(p.name)}</h1>
+    <p class="dim">${h([p.birthday ? `${age} años` : '', p.country && p.country.name, p.deathday ? 'Falleció en ' + p.deathday.slice(0, 4) : ''].filter(Boolean).join(' · '))}</p>
+    <div class="stiles" style="margin-top:12px">${statTile('series y programas', shows.length, '#8fbcff', 'tv')}${statTile('ya las tenés en tu lista', mine.length, '#f3c6cf', 'check')}</div>
+    <div class="actions" style="margin-top:12px"><button class="btn ${isFav ? '' : 'pri'}" data-act="actfav" data-id="${p.id}" data-n="${h(p.name)}" data-img="${h(p.image ? p.image.medium : '')}">${isFav ? 'Está en tus actores favoritos' : '+ Agregar a mis actores favoritos'}</button><a class="btn" href="https://www.imdb.com/find/?q=${enc(p.name)}&s=nm" target="_blank" rel="noopener">Ver en IMDb ↗</a></div></div></section>
+    ${mine.length ? `<section class="sec"><div class="sechead"><h2>Las que ya viste o tenés anotadas</h2></div><div class="grid">${mine.map(s => poster(s)).join('')}</div></section>` : ''}
+    <section class="sec"><div class="sechead"><h2>${mine.length ? 'Te faltan estas' : 'Todas sus series'}</h2></div>${shows.filter(s => !S.shows[s.id]).length ? `<div class="grid">${shows.filter(s => !S.shows[s.id]).map(s => poster(s)).join('')}</div>` : '<p class="dim">¡Ya tenés todas!</p>'}</section>
+    <p class="small dim">Las películas por actor todavía no están: la base de películas no permite buscar así.</p>`);
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-act="actfav"]'); if (!b) return;
+  const st = S.profile.style; st.actors = st.actors || []; const id = +b.dataset.id;
+  if (st.actors.some(a => a.id === id)) st.actors = st.actors.filter(a => a.id !== id);
+  else { if (st.actors.length >= (PRO.me ? 24 : 6)) return toast(PRO.me ? 'Máximo 24 actores.' : 'Gratis podés poner 6 actores. Con JVNN Pro, 24.'); st.actors.push({ id, name: b.dataset.n, img: b.dataset.img }); toast(b.dataset.n + ' agregado a tus favoritos.'); }
+  save(); refresh();
+});
+
+// ---------- SALA DE EPISODIOS TOP (del 1 al 10, con nota tipo 9.7)
+const topEps = () => (S.profile.style.topEps = Array.isArray(S.profile.style.topEps) ? S.profile.style.topEps : []);
+const sortTop = l => l.slice().sort((a, b) => b.score - a.score);
+function topEpFormHTML(c, e) {
+  const cur = topEps().find(x => x.eid === e.id);
+  return `<form class="topform" id="topform" data-sid="${c.id}" data-eid="${e.id}" data-name="${h(e.name)}" data-show="${h(c.name)}" data-code="T${e.s} · E${e.n}" data-img="${h(e.img || c.img || '')}">
+    <div class="tfhead">${icon('heart', 16)}<b>${cur ? 'Está en tu sala de episodios top' : 'Agregar a mis episodios top'}</b><a href="#/top-episodios">Ver mi top →</a></div>
+    <div class="tfrow"><label>Tu nota <input type="number" name="score" min="1" max="10" step="0.1" value="${cur ? cur.score : ''}" placeholder="9.7" required></label><input type="text" name="why" maxlength="160" value="${h(cur ? cur.why : '')}" placeholder="¿Por qué? (opcional)"><button class="btn sm pri" type="submit">${cur ? 'Guardar' : 'Agregar'}</button>${cur ? `<button class="btn sm ghost" type="button" data-act="topdel" data-eid="${e.id}">Sacar</button>` : ''}</div></form>`;
+}
+document.addEventListener('submit', e => {
+  const f = e.target; if (f.id !== 'topform') return; e.preventDefault(); e.stopImmediatePropagation();
+  let sc = Math.round(parseFloat(String(f.score.value).replace(',', '.')) * 10) / 10; if (!(sc >= 1 && sc <= 10)) return toast('La nota va del 1 al 10 (podés usar decimales, ej: 9.7).');
+  const d = f.dataset, l = topEps(), ex = l.find(x => x.eid === +d.eid);
+  if (!ex && l.length >= 10) return toast('Tu top tiene 10 lugares. Sacá uno para agregar este.');
+  const item = { sid: +d.sid, eid: +d.eid, name: d.name, show: d.show, code: d.code, img: d.img, score: sc, why: f.why.value.trim().slice(0, 160) };
+  if (ex) Object.assign(ex, item); else l.push(item);
+  S.profile.style.topEps = sortTop(l); save(); toast(ex ? 'Guardado.' : `Agregado a tu top con un ${String(sc).replace('.', ',')}.`); refresh();
+}, true);
+document.addEventListener('click', e => { const b = e.target.closest('[data-act="topdel"]'); if (!b) return; S.profile.style.topEps = topEps().filter(x => x.eid !== +b.dataset.eid); save(); refresh(); });
+function topEpsListHTML(list, editable) {
+  if (!list || !list.length) return '';
+  return `<ol class="toplist">${sortTop(list).slice(0, 10).map((x, i) => `<li class="${i < 3 ? 'top' + i : ''}"><span class="tpos">${i + 1}</span><a class="tth" href="#/ep/${x.sid}/${x.eid}">${x.img ? `<img src="${h(x.img)}" alt="" loading="lazy">` : ''}</a><div class="ttx"><a href="#/ep/${x.sid}/${x.eid}"><b>${h(x.name)}</b></a><span>${h(x.show)} · ${h(x.code || '')}</span>${x.why ? `<em>“${h(x.why)}”</em>` : ''}</div><div class="tscore"><b>${String(x.score.toFixed(1)).replace('.', ',')}</b><small>/10</small></div>${editable ? `<button class="linkbtn" data-act="topdel" data-eid="${x.eid}">Sacar</button>` : ''}</li>`).join('')}</ol>`;
+}
+async function vTopEps(_, draw) {
+  const l = topEps();
+  draw(`<section class="pagehead"><div class="eyebrow">Tu sala</div><h1>Mis episodios top</h1><p class="dim">Tus 10 capítulos favoritos de todas las series, ordenados por tu nota. Para agregar uno, entrá a cualquier capítulo y ponele nota (por ejemplo 9,7).</p></section>
+    ${l.length ? `<section class="panel sec">${topEpsListHTML(l, true)}</section>` : `<div class="empty sec"><h3>Tu sala está vacía</h3><div>Entrá a un capítulo que te haya volado la cabeza y agregalo con su nota.</div><a class="btn pri" href="#/mis-series">Ir a mis series</a></div>`}`);
+}
+
+// ---------- CANCIÓN FAVORITA (reproductor oficial de Spotify)
+const SONG_RE = /^https:\/\/open\.spotify\.com\/(?:intl-[a-z-]+\/)?(track|album|playlist|episode)\/([A-Za-z0-9]{10,40})/;
+const songEmbed = url => { const m = String(url || '').match(SONG_RE); return m ? `https://open.spotify.com/embed/${m[1]}/${m[2]}?utm_source=generator&theme=0` : ''; };
+STYLE_OPTS.songstyle = [C('none', 'Normal', '', 1), C('vinilo', 'Vinilo que gira', 'vinilo'), C('brillo', 'Borde con brillo', 'brillo'), C('eq', 'Ecualizador', 'eq'), C('aura', 'Aura de color', 'aura'), C('holo', 'Holográfico', 'holo'), LG('lg-galaxia', 'Galaxia que suena'), LG('lg-hadas', 'Hadas bailando')];
+STYLE_DEF.songstyle = 'none'; CAT_NAMES.songstyle = 'Estilo de la canción'; COIN_PRICE.songstyle = 300;
+function songHTML(st) {
+  const src = songEmbed(st && st.song); if (!src) return '';
+  const ss = st.songstyle && st.songstyle !== 'none' ? st.songstyle : '';
+  return `<section class="pblock"><h3>Canción favorita</h3><div class="songbox ${ss ? 'sg-' + ss : ''}">${ss === 'vinilo' ? '<div class="vinyl"><i></i></div>' : ''}${ss === 'eq' || ss === 'lg-hadas' ? `<div class="eqbars">${Array.from({ length: 9 }, (_, i) => `<i style="--d:${(i * .13) % .9}s"></i>`).join('')}</div>` : ''}<iframe src="${h(src)}" height="152" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Canción favorita"></iframe></div></section>`;
+}
+
+// ---------- logos de las redes (librería Simple Icons)
+const SI = { ig: ['instagram', '#E4405F'], tt: ['tiktok', '#ffffff'], x: ['x', '#ffffff'], yt: ['youtube', '#FF0000'], tw: ['twitch', '#9146FF'], lb: ['letterboxd', '#ff8000'], sp: ['spotify', '#1ED760'], st: ['steam', '#c7d5e0'], rd: ['reddit', '#FF4500'], dc: ['discord', '#5865F2'] };
+const siIcon = k => SI[k] ? `<i class="silogo" style="--si:url('https://cdn.jsdelivr.net/npm/simple-icons@13.0.0/icons/${SI[k][0]}.svg');--sc:${SI[k][1]}"></i>` : '';
+function extrasHTML(st) {
+  let s = extrasHTML5(st);
+  s = s.replace(/<(a|span) class="social s-(\w+)"([^>]*)><b>[^<]*<\/b>/g, (m, tag, k, rest) => `<${tag} class="social s-${k}"${rest}>${siIcon(k)}`);
+  const l = st && st.link;
+  if (l && /^https?:\/\//i.test(l.url)) { let host = ''; try { host = new URL(l.url).hostname.replace(/^www\./, ''); } catch (e) { return s; } s += `<a class="plink" href="${h(l.url)}" target="_blank" rel="noopener nofollow ugc">${icon('link', 15)}<span>${h(l.label || host)}</span></a>`; }
+  return s;
+}
+
+// ---------- bloques del perfil (suma canción y episodios top)
+Object.assign(BLOCKS, { song: 'Canción favorita', topeps: 'Episodios top' });
+LAYOUT_DEF.order.push('song', 'topeps');
+function profileBlocksHTML(st, ctx) {
+  const L = layoutOf(st, ctx.row), out = [];
+  for (const b of L.order) {
+    if (L.hide.includes(b)) continue;
+    if (b === 'featured') out.push(featuredHTML(st, ctx.shows) ? `<section class="pblock pb-feat">${featuredHTML(st, ctx.shows)}</section>` : '');
+    if (b === 'favrow') out.push(favRowHTML(ctx.favs, st));
+    if (b === 'actors') out.push(actorsHTML(st));
+    if (b === 'song') out.push(songHTML(st));
+    if (b === 'topeps' && st.topEps && st.topEps.length) out.push(`<section class="pblock"><h3>Episodios top</h3>${topEpsListHTML(st.topEps)}</section>`);
+  }
+  const joined = out.join('');
+  return joined ? `<div class="pblocks">${joined}</div>` : '';
+}
+function sanitizeStyle(st, row) {
+  const out = sanitizeStyle7(st, row), src = st || {};
+  out.song = songEmbed(src.song) ? String(src.song).slice(0, 200) : '';
+  out.topEps = (Array.isArray(src.topEps) ? src.topEps : []).filter(x => x && x.eid && isFinite(x.score)).slice(0, 10).map(x => ({ sid: +x.sid, eid: +x.eid, name: String(x.name || '').slice(0, 120), show: String(x.show || '').slice(0, 120), code: String(x.code || '').slice(0, 20), img: /^https:\/\/static\.tvmaze\.com\//.test(x.img || '') ? x.img : '', score: Math.min(10, Math.max(1, Math.round(+x.score * 10) / 10)), why: String(x.why || '').slice(0, 160) }));
+  return out;
+}
+
+// ---------- CATEGORÍA NUEVA: efecto del mouse sobre tu perfil
+STYLE_OPTS.mouse = [C('none', 'Nada', '', 1), C('estrellas', 'Estela de estrellas', 'estrellas'), C('corazones', 'Estela de corazones', 'corazones'), C('hadas', 'Polvo de hadas', 'hadas'), C('burbujas', 'Burbujas', 'burbujas'), C('chispas', 'Chispas', 'chispas'), C('arcoiris', 'Arcoíris', 'arcoiris'), C('nieve', 'Copitos', 'nieve'), C('petalos', 'Pétalos', 'petalos'), C('tilt', 'Tarjeta 3D que se inclina', 'tilt'), C('luz', 'Luz que sigue al mouse', 'luz'), LG('lg-cometa', 'Cometa de luz'), LG('lg-holocarta', 'Carta holográfica 3D')];
+STYLE_DEF.mouse = 'none'; CAT_NAMES.mouse = 'Efecto del mouse'; COIN_PRICE.mouse = 400; LG_PRICE.mouse = 2500; LG_PRICE.songstyle = 2500;
+for (const k of ['songstyle', 'mouse']) if (S.profile.style[k] == null) S.profile.style[k] = 'none';
+SHOP_CATS.splice(4, 0, ['mouse', 'Mouse'], ['songstyle', 'Canción']);
+function pfxAttr(st) { const a = pfxAttr9(st), e = st && st.entrada && st.entrada !== 'none' && optOf('entrada', st.entrada) ? ` data-ent="${h(st.entrada)}"` : '', m = st && st.mouse && st.mouse !== 'none' && optOf('mouse', st.mouse) ? ` data-mouse="${h(st.mouse)}"` : ''; return a + e + m; }
+let mcv = null, mctx = null, mparts = [], mrun = false;
+function mouseLayer() { if (mcv) return; mcv = document.createElement('canvas'); mcv.className = 'mousecv'; document.body.appendChild(mcv); mctx = mcv.getContext('2d'); const rs = () => { const d = Math.min(2, devicePixelRatio || 1); mcv.width = innerWidth * d; mcv.height = innerHeight * d; mctx.setTransform(d, 0, 0, d, 0, 0); }; rs(); addEventListener('resize', rs); }
+const MCOL = { estrellas: ['#ffffff', '#ffd76a'], corazones: ['#ff5c8a', '#ff8fc8'], hadas: FAIRYC, burbujas: ['#bfe3ff', '#ffffff'], chispas: ['#7fd6ff', '#ffffff', '#ffd76a'], arcoiris: ['#ff7aa8', '#ffd36b', '#a8f0c6', '#7fe0ff', '#c3a8ff'], nieve: ['#ffffff'], petalos: ['#ffb3cf', '#ffd1e8'], 'lg-cometa': ['#ffffff', '#ffd76a', '#ff8fc8', '#8fd6ff'] };
+function mloop() {
+  if (!mparts.length) { mrun = false; mctx.clearRect(0, 0, innerWidth, innerHeight); return; }
+  mctx.clearRect(0, 0, innerWidth, innerHeight);
+  for (const p of mparts) {
+    p.x += p.vx; p.y += p.vy; p.vy += p.g; p.l -= p.dl; p.a += .1; if (p.l <= 0) continue;
+    mctx.save(); mctx.globalAlpha = Math.max(0, p.l); mctx.fillStyle = p.c; mctx.strokeStyle = p.c; mctx.shadowColor = p.c; mctx.shadowBlur = p.k === 'lg-cometa' ? 14 : 6; mctx.translate(p.x, p.y); mctx.rotate(p.a);
+    const r = p.r * (p.k === 'lg-cometa' ? p.l : 1);
+    if (p.k === 'corazones') { mctx.beginPath(); mctx.moveTo(0, r * .9); mctx.bezierCurveTo(-r * 1.4, -r * .2, -r * .5, -r * 1.2, 0, -r * .3); mctx.bezierCurveTo(r * .5, -r * 1.2, r * 1.4, -r * .2, 0, r * .9); mctx.fill(); }
+    else if (p.k === 'burbujas') { mctx.lineWidth = 1.2; mctx.beginPath(); mctx.arc(0, 0, r, 0, 6.28); mctx.stroke(); }
+    else if (p.k === 'petalos') { mctx.beginPath(); mctx.ellipse(0, 0, r, r * .55, 0, 0, 6.28); mctx.fill(); }
+    else if (p.k === 'nieve' || p.k === 'arcoiris' || p.k === 'lg-cometa') { mctx.beginPath(); mctx.arc(0, 0, r, 0, 6.28); mctx.fill(); }
+    else { mctx.beginPath(); for (let i = 0; i < 8; i++) { const rr = i % 2 ? r * .35 : r * 1.4, an = i * Math.PI / 4; mctx.lineTo(Math.cos(an) * rr, Math.sin(an) * rr); } mctx.closePath(); mctx.fill(); }
+    mctx.restore();
+  }
+  mparts = mparts.filter(p => p.l > 0); requestAnimationFrame(mloop);
+}
+document.addEventListener('pointermove', e => {
+  const card = e.target.closest && e.target.closest('.pcover[data-mouse]'); if (!card) { document.querySelectorAll('.pcover.tilting').forEach(c => { c.classList.remove('tilting'); c.style.transform = ''; }); return; }
+  const k = card.dataset.mouse, rc = card.getBoundingClientRect();
+  if (k === 'tilt' || k === 'lg-holocarta') { const x = (e.clientX - rc.left) / rc.width - .5, y = (e.clientY - rc.top) / rc.height - .5; card.classList.add('tilting'); card.style.transform = `perspective(1100px) rotateY(${x * 7}deg) rotateX(${-y * 7}deg)`; card.style.setProperty('--mx', (x + .5) * 100 + '%'); card.style.setProperty('--my', (y + .5) * 100 + '%'); return; }
+  if (k === 'luz') { card.style.setProperty('--mx', (e.clientX - rc.left) + 'px'); card.style.setProperty('--my', (e.clientY - rc.top) + 'px'); return; }
+  mouseLayer(); const cols = MCOL[k] || MCOL.estrellas, n = k === 'lg-cometa' ? 4 : 1;
+  for (let i = 0; i < n; i++) mparts.push({ k, x: e.clientX + (Math.random() - .5) * 6, y: e.clientY + (Math.random() - .5) * 6, vx: (Math.random() - .5) * (k === 'lg-cometa' ? .6 : 1.2), vy: k === 'burbujas' ? -.8 : (Math.random() - .5) * 1.2 + (k === 'nieve' || k === 'petalos' ? .6 : 0), g: k === 'chispas' ? .06 : 0, r: k === 'lg-cometa' ? 6 : 2 + Math.random() * 3, c: cols[Math.floor(Math.random() * cols.length)], l: 1, dl: k === 'lg-cometa' ? .035 : .022, a: Math.random() * 6 });
+  if (mparts.length > 400) mparts.splice(0, mparts.length - 400);
+  if (!mrun) { mrun = true; requestAnimationFrame(mloop); }
+}, { passive: true });
+
+// ---------- el compañero reacciona si lo tocás + confeti al marcar capítulos
+function burstAt(x, y, cols, n = 26, kind = 'heart') {
+  mouseLayer(); for (let i = 0; i < n; i++) { const a = Math.random() * 6.28, sp = 2 + Math.random() * 4; mparts.push({ k: kind === 'heart' ? 'corazones' : 'confeti', x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 2, g: .12, r: kind === 'heart' ? 4 + Math.random() * 3 : 3 + Math.random() * 2, c: cols[i % cols.length], l: 1, dl: .016, a: Math.random() * 6 }); }
+  if (!mrun) { mrun = true; requestAnimationFrame(mloop); }
+}
+document.addEventListener('click', e => {
+  const cp = e.target.closest('.compa'); if (cp) { cp.classList.remove('hop'); void cp.offsetWidth; cp.classList.add('hop'); burstAt(e.clientX, e.clientY, ['#ff5c8a', '#ff8fc8', '#ffd1ea'], 14); return; }
+  const ep = e.target.closest('[data-act="ep"],[data-act="nextep"],[data-act="mseen"],[data-act="mquick"]'); if (ep && !ep.classList.contains('on') && ep.getAttribute('aria-pressed') !== 'true') burstAt(e.clientX, e.clientY, ['#ff8fc8', '#ffd76a', '#8fd6ff', '#a8f0c6', '#c08bff'], 30, 'confeti');
+});
+
+// ---------- letras en ola (una por una)
+STYLE_OPTS.nameanim.splice(STYLE_OPTS.nameanim.findIndex(o => isLegend('nameanim', o.k)), 0, C('olaletras', 'Letras en ola', 'olaletras'), C('saltaletras', 'Letras que saltan', 'saltaletras'));
+STYLE_OPTS.nameanim.push(LG('lg-letras', 'Letras arcoíris en ola'));
+function splitNames() {
+  document.querySelectorAll('.pcover.na-olaletras .pid h1:not([data-split]),.pcover.na-saltaletras .pid h1:not([data-split]),.pcover.na-lg-letras .pid h1:not([data-split])').forEach(h1 => {
+    h1.dataset.split = '1'; const tn = [...h1.childNodes].find(n => n.nodeType === 3 && n.textContent.trim()); if (!tn) return;
+    const span = document.createElement('span'); span.className = 'letters';
+    span.innerHTML = [...tn.textContent].map((ch, i) => `<i style="--i:${i}">${ch === ' ' ? '&nbsp;' : h(ch)}</i>`).join(''); tn.replaceWith(span);
+  });
+}
+new MutationObserver(() => splitNames()).observe(document.getElementById('app'), { childList: true, subtree: true });
+
+// ---------- hadas dando vueltas alrededor de tu foto
+STYLE_OPTS.deco.push(...[['turquesa', 'rosa', 'dorada'], ['violeta', 'celeste', 'lila']].map((tr, i) => Object.assign(C('lg-ronda' + i, i ? 'Ronda de hadas lila' : 'Ronda de hadas', 'lgronda|' + tr.join('+')), { lg: 1 })));
+function decoHTML(st) {
+  const o = optOf('deco', st && st.deco);
+  if (o && o.v && o.v.startsWith('lgronda|')) {
+    const pals = o.v.split('|')[1].split('+').map(c => HP[c] || HP.rosa);
+    return `<svg class="adeco anim" viewBox="0 0 160 160" aria-hidden="true">${pals.map((P, i) => `<g><animateTransform attributeName="transform" type="rotate" from="${i * 120} 80 80" to="${i * 120 + 360} 80 80" dur="9s" repeatCount="indefinite"/><g transform="translate(80 2)"><g><animateTransform attributeName="transform" type="rotate" from="${-i * 120}" to="${-i * 120 - 360}" dur="9s" repeatCount="indefinite"/>${fairySVG(0, 0, .62, P)}</g></g></g>`).join('')}<g class="tw">${sparkles8([[14, 40, 3], [146, 120, 3], [140, 26, 2.4]], '#fff')}</g></svg>`;
+  }
+  return decoHTML9(st);
+}
+
+// ---------- TIENDA DEL DÍA: 3 cosas al 50% (las elige el servidor, igual para todos)
+let DAILY = { day: '', items: [] };
+const todayAR = () => new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10);
+async function loadDaily() {
+  if (DAILY.day === todayAR() && DAILY.items.length) return DAILY.items;
+  const cands = Object.entries(STYLE_OPTS).flatMap(([f, l]) => f === 'site' ? [] : l.filter(o => !o.f && !isLegend(f, o.k) && !FOUNDER_ONLY(f, o.k)).map(o => f + ':' + o.k));
+  let items = null;
+  if (typeof sbOK === 'function' && sbOK()) items = await sbTry(() => rest('rpc/get_daily_deals', { method: 'POST', body: { cands }, auth: isLogged() }), null);
+  if (!Array.isArray(items) || !items.length) { const seed = itemHash(todayAR()); items = [0, 1, 2].map(i => cands[(seed * (i + 7) + i * 977) % cands.length]); }
+  DAILY = { day: todayAR(), items: items.slice(0, 3) }; return DAILY.items;
+}
+const isDaily = (f, k) => DAILY.day === todayAR() && DAILY.items.includes(f + ':' + k);
+function priceOf(f, k) { const p = priceOf9(f, k); return !isLegend(f, k) && isDaily(f, k) ? Math.round(basePrice(f, k) / 2) : p; }
+function dailyHTML() {
+  if (!DAILY.items.length) return '';
+  const end = new Date(todayAR() + 'T03:00:00Z').getTime() + 864e5, left = Math.max(0, end - Date.now());
+  return `<section class="dailybox"><div class="dhead"><div><div class="eyebrow">Tienda del día</div><h2>3 cosas a mitad de precio</h2></div><span class="dtimer" data-end="${end}">Cambia en ${Math.floor(left / 3600e3)} h ${Math.floor(left % 3600e3 / 60e3)} min</span></div>
+    <div class="ditems">${DAILY.items.map(x => { const i = x.indexOf(':'), f = x.slice(0, i), k = x.slice(i + 1), o = optOf(f, k); if (!o) return ''; const mine = unlocked(f, o);
+      return `<div class="sitem daily ${mine ? 'mine' : ''}"><span class="oferta">-50%</span><button class="sthumb" data-act="shoptry" data-f="${f}" data-v="${h(k)}">${shopThumb(f, o)}</button><b>${h(o.n)}</b><small class="dim">${h(CAT_NAMES[f] || f)}</small>${mine ? `<button class="btn sm" data-act="shopuse" data-f="${f}" data-v="${h(k)}">Poner</button>` : `<button class="btn sm buy" data-act="buyc" data-f="${f}" data-v="${h(k)}">${coinSVG(14)} <s>${basePrice(f, k)}</s>${priceOf(f, k)}</button>`}</div>`; }).join('')}</div></section>`;
+}
+async function vShopDaily(args, draw, alive) {
+  await loadDaily();
+  return vShop(args, html => draw(html.replace('<div class="tabs shoptabs">', dailyHTML() + '<div class="tabs shoptabs">')), alive);
+}
+setInterval(() => document.querySelectorAll('.dtimer[data-end]').forEach(el => { const left = Math.max(0, +el.dataset.end - Date.now()); el.textContent = `Cambia en ${Math.floor(left / 3600e3)} h ${Math.floor(left % 3600e3 / 60e3)} min`; }), 30e3);
+
+// ---------- INICIO: aprovechar los costados en pantallas grandes
+function homeSideHTML() {
+  const watching = Object.values(S.shows).filter(r => r.list === 'watching').slice(0, 5);
+  return `<aside class="homeside"><div class="hsin">
+    <a class="hscoins" href="#/tienda">${coinSVG(26)}<div><b>${WALLET.coins.toLocaleString('es-AR')}</b><span>${isLogged() ? 'monedas · ir a la tienda' : 'entrá y juntá monedas'}</span></div></a>
+    ${DAILY.items.length ? `<div class="hsbox"><div class="hst">Tienda del día <span class="oferta mini">-50%</span></div>${DAILY.items.map(x => { const i = x.indexOf(':'), f = x.slice(0, i), k = x.slice(i + 1), o = optOf(f, k); return o ? `<a class="hsitem" href="#/tienda">${shopThumb(f, o)}<div><b>${h(o.n)}</b><span>${coinSVG(12)} ${priceOf(f, k)}</span></div></a>` : ''; }).join('')}</div>` : ''}
+    ${watching.length ? `<div class="hsbox"><div class="hst">Viendo ahora</div>${watching.map(r => `<a class="hsshow" href="#/serie/${r.id}">${img(r.img, r.name)}<div><b>${h(r.name)}</b><span>${plural(Object.keys(r.eps || {}).length, 'capítulo visto', 'capítulos vistos')}</span></div></a>`).join('')}</div>` : ''}
+    ${(S.profile.style.topEps || []).length ? `<div class="hsbox"><div class="hst">Tu episodio n.º 1</div>${(() => { const x = sortTop(S.profile.style.topEps)[0]; return `<a class="hsshow" href="#/ep/${x.sid}/${x.eid}">${x.img ? `<img src="${h(x.img)}" alt="">` : ''}<div><b>${h(x.name)}</b><span>${h(x.show)} · ${String(x.score.toFixed(1)).replace('.', ',')}</span></div></a>`; })()}</div>` : `<a class="hsbox hscta" href="#/top-episodios"><b>Armá tu sala de episodios top</b><span>Ponele nota a tus capítulos favoritos.</span></a>`}
+  </div></aside>`;
+}
+function placeHomeSide() {
+  const app = document.getElementById('app'), isHome = parseRoute().name === '' && innerWidth >= 1500;
+  app.classList.toggle('homegrid', isHome);
+  const cur = app.querySelector(':scope > .homeside');
+  if (!isHome) { if (cur) cur.remove(); return; }
+  if (!cur) app.insertAdjacentHTML('beforeend', homeSideHTML());
+}
+new MutationObserver(() => placeHomeSide()).observe(document.getElementById('app'), { childList: true });
+addEventListener('resize', () => placeHomeSide());
+loadDaily().then(() => { const s = document.querySelector('#app > .homeside'); if (s) { s.remove(); placeHomeSide(); } }).catch(() => { });
+
+PRO_COUNT = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.filter(o => !o.f).length, 0) + 4;
+
+document.addEventListener('input', e => { if (e.target.id !== 'psong') return; S.profile.style.song = e.target.value.trim(); clearTimeout(window._sgT); window._sgT = setTimeout(() => { save(); if (songEmbed(S.profile.style.song) || !S.profile.style.song) refresh(); }, 700); });
+
+// ---------- cartel de estrenos: imagen de fondo horizontal de verdad (no el póster estirado)
+function heroBg(id) {
+  return cached('bg:' + id, 7 * 864e5, async () => {
+    const l = (await raw(`/shows/${id}/images`)) || [];
+    const b = l.find(x => x.type === 'background' && x.main) || l.find(x => x.type === 'background') || l.find(x => x.type === 'banner');
+    return b && b.resolutions ? ((b.resolutions.original || b.resolutions.medium || {}).url || '') : '';
+  });
+}
+function fixHeroImages() {
+  const sl = document.getElementById('slider'); if (!sl || sl.dataset.bgfix) return; sl.dataset.bgfix = '1';
+  sl.querySelectorAll('.slide').forEach(async sd => {
+    const a = sd.querySelector('a.sposter'), bg = sd.querySelector('.sbg'), id = a && +String(a.getAttribute('href')).split('/').pop();
+    if (!id || !bg) return;
+    let u = ''; try { u = await heroBg(id); } catch (e) { }
+    if (!bg.isConnected) return;
+    if (u) { const im = new Image(); im.onload = () => { bg.style.backgroundImage = `url('${u}')`; bg.classList.add('wide'); }; im.src = u; }
+    else sd.classList.add('postermode');
+  });
+}
+new MutationObserver(() => fixHeroImages()).observe(document.getElementById('app'), { childList: true, subtree: true });
 
 
 // ============================================================ ONLINE (Supabase)
