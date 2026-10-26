@@ -1570,6 +1570,174 @@ nav a.on,nav a[aria-current]{color:var(--fg)}
 .slider .slide.postermode .sbg{filter:blur(22px) brightness(.55) saturate(1.2)!important;transform:scale(1.2)}
 .slider .slide.postermode .sposter{display:block!important;position:absolute;right:8%;top:50%;translate:0 -50%;width:clamp(150px,16vw,240px);z-index:2}
 @media (max-width:760px){.slider .slide.postermode .sposter{display:none!important}}
+
+/* ============ V11: aura, bordes animados, fondo del nombre, título animado, stickers, mascotas, tormenta */
+.pcover.v5,.pcover.v5.fr-rot,.pcover.v5.lf.fr-rot{animation:var(--an-au,none),var(--an-fr,none)}
+.pcover.fr-rot{--an-fr:frrot 4s linear infinite}.pcover.lf.fr-rot{--an-fr:frrot 3s linear infinite}
+.au-pulso{--an-au:aupulso 2.6s ease-in-out infinite}@keyframes aupulso{0%,100%{box-shadow:0 0 16px 1px var(--auc)}50%{box-shadow:0 0 38px 9px var(--auc)}}
+.au-latido{--an-au:aulat 1.6s ease-in-out infinite}@keyframes aulat{0%,40%,100%{box-shadow:0 0 14px 1px var(--auc)}15%{box-shadow:0 0 34px 8px var(--auc)}28%{box-shadow:0 0 22px 3px var(--auc)}}
+.au-llama{--an-au:aullama 1.1s steps(4) infinite}@keyframes aullama{0%{box-shadow:0 -6px 22px -2px var(--auc),0 -18px 34px -12px var(--auc)}33%{box-shadow:0 -10px 28px 0 var(--auc),0 -26px 40px -14px var(--auc)}66%{box-shadow:0 -4px 18px -2px var(--auc),0 -14px 30px -10px var(--auc)}100%{box-shadow:0 -8px 26px 0 var(--auc),0 -22px 38px -12px var(--auc)}}
+.au-electrico{--an-au:auelec 1.8s steps(1) infinite}@keyframes auelec{0%,100%{box-shadow:0 0 10px 1px var(--auc)}10%{box-shadow:0 0 30px 6px var(--auc),0 0 4px 1px #fff}14%{box-shadow:0 0 6px 0 var(--auc)}40%{box-shadow:0 0 18px 2px var(--auc)}42%{box-shadow:0 0 40px 10px var(--auc),0 0 6px 2px #fff}46%{box-shadow:0 0 12px 1px var(--auc)}}
+.au-giro{--an-au:augiro 3s linear infinite}@keyframes augiro{0%{box-shadow:12px 0 30px 0 var(--auc)}25%{box-shadow:0 12px 30px 0 var(--auc)}50%{box-shadow:-12px 0 30px 0 var(--auc)}75%{box-shadow:0 -12px 30px 0 var(--auc)}100%{box-shadow:12px 0 30px 0 var(--auc)}}
+.au-respira{--an-au:aupulso 5s ease-in-out infinite}
+.au-lg-tormenta{--an-au:autor 3s steps(1) infinite}@keyframes autor{0%,100%{box-shadow:0 0 18px 2px #3d8bff,0 0 40px 6px rgba(61,139,255,.4)}20%{box-shadow:0 0 50px 14px #bfe3ff,0 0 8px 3px #fff}22%{box-shadow:0 0 14px 2px #3d8bff}60%{box-shadow:0 0 22px 4px #6aa8ff}62%{box-shadow:0 0 60px 18px #fff,0 0 30px 8px #8fd6ff}65%{box-shadow:0 0 16px 2px #3d8bff}}
+.au-lg-fuego{--an-au:aufue .9s steps(3) infinite}@keyframes aufue{0%{box-shadow:0 -8px 26px 0 #ff6a00,0 -24px 40px -10px #ffd24a,0 0 14px 2px #ff3d00}50%{box-shadow:0 -12px 34px 2px #ff8a00,0 -32px 48px -12px #ffe066,0 0 18px 3px #ff3d00}100%{box-shadow:0 -6px 22px 0 #ff5a00,0 -20px 36px -10px #ffb03d,0 0 12px 2px #ff3d00}}
+.au-lg-arcoiris{--an-au:auarc 4s linear infinite}@keyframes auarc{0%{box-shadow:0 0 30px 6px #ff7aa8}20%{box-shadow:0 0 30px 6px #ffd36b}40%{box-shadow:0 0 30px 6px #a8f0c6}60%{box-shadow:0 0 30px 6px #7fe0ff}80%{box-shadow:0 0 30px 6px #c3a8ff}100%{box-shadow:0 0 30px 6px #ff7aa8}}
+.au-lg-hadas{--an-au:auhad 4s linear infinite}@keyframes auhad{0%{box-shadow:14px 0 30px 0 #5ff2d0,-14px 0 30px 0 #ff8fc8}25%{box-shadow:0 14px 30px 0 #c08bff,0 -14px 30px 0 #ffd76a}50%{box-shadow:-14px 0 30px 0 #5ff2d0,14px 0 30px 0 #ff8fc8}75%{box-shadow:0 -14px 30px 0 #c08bff,0 14px 30px 0 #ffd76a}100%{box-shadow:14px 0 30px 0 #5ff2d0,-14px 0 30px 0 #ff8fc8}}
+.au-lg-vacio{--an-au:auvac 5s ease-in-out infinite}@keyframes auvac{0%,100%{box-shadow:0 0 30px 8px rgba(10,0,20,.95),0 0 60px 10px rgba(90,40,160,.45)}50%{box-shadow:0 0 50px 16px rgba(10,0,20,.95),0 0 90px 20px rgba(120,60,200,.5)}}
+.au-lg-galaxia{--an-au:augal 6s linear infinite}@keyframes augal{0%{box-shadow:16px 0 36px 2px #7a2bff,-16px 0 36px 2px #3d8bff}50%{box-shadow:-16px 0 36px 2px #ff6bd6,16px 0 36px 2px #7a2bff}100%{box-shadow:16px 0 36px 2px #7a2bff,-16px 0 36px 2px #3d8bff}}
+.athumb{display:block;width:70px;height:46px;border-radius:12px!important;background:#1b1824!important;border:1px solid rgba(255,255,255,.12)!important}
+@property --cfa{syntax:'<angle>';inherits:false;initial-value:0deg}
+.pcover.cfx,.pcover[data-stk],.pcover[data-pet]{position:relative}
+.cfx::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:2.5px;pointer-events:none;z-index:6;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);filter:drop-shadow(0 0 5px var(--cfc,#fff))}
+.cfx-luz::after{background:conic-gradient(from var(--cfa),transparent 0 72%,var(--cfc) 86%,#fff 89%,transparent 93%);animation:cfspin 3s linear infinite}
+.cfx-doble::after{background:conic-gradient(from var(--cfa),transparent 0 30%,var(--cfc) 42%,#fff 45%,transparent 48%,transparent 0 80%,var(--cfc) 92%,#fff 95%,transparent 98%);animation:cfspin 4s linear infinite}
+.cfx-cometa::after{background:conic-gradient(from var(--cfa),transparent 0 55%,color-mix(in srgb,var(--cfc) 25%,transparent) 70%,var(--cfc) 90%,#fff 92%,transparent 93%);animation:cfspin 2.2s linear infinite}
+.cfx-punteado::after{background:repeating-conic-gradient(from var(--cfa),var(--cfc) 0 3deg,transparent 3deg 9deg);animation:cfspin 12s linear infinite}
+.cfx-pulso::after{background:var(--cfc);animation:cfpulse 2s ease-in-out infinite}@keyframes cfpulse{50%{opacity:.25}}
+.cfx-chispas::after{background:var(--cfc);animation:cfspark 1.4s steps(1) infinite}@keyframes cfspark{0%,100%{opacity:.35}10%{opacity:1}14%{opacity:.4}50%{opacity:.8}53%{opacity:.3}}
+.cfx-arcoiris::after{background:conic-gradient(from var(--cfa),#ff7aa8,#ffd36b,#a8f0c6,#7fe0ff,#c3a8ff,#ff7aa8);animation:cfspin 4s linear infinite;filter:drop-shadow(0 0 6px rgba(255,255,255,.4))}
+.cfx-lg-rayos::after{padding:3px;background:conic-gradient(from var(--cfa),#3d8bff,#ffffff 8%,#3d8bff 16%,#0a1a4a 30%,#8fd6ff 46%,#fff 50%,#3d8bff 58%,#0a1a4a 75%,#bfe3ff 92%,#3d8bff);animation:cfspin 1.2s steps(6) infinite,cfspark .9s steps(1) infinite;filter:drop-shadow(0 0 8px #8fd6ff) drop-shadow(0 0 2px #fff)}
+.cfx-lg-fuego::after{padding:3px;background:linear-gradient(0deg,#ff3d00,#ff8a00,#ffd24a,#ff8a00,#ff3d00) 0 0/100% 300%;animation:cffire 1.2s linear infinite;filter:drop-shadow(0 0 8px #ff6a00)}@keyframes cffire{to{background-position:0 -300%}}
+.cfx-lg-hadas::after{padding:3px;background:conic-gradient(from var(--cfa),#5ff2d0,transparent 10%,transparent 22%,#ff8fc8 25%,transparent 35%,transparent 47%,#c08bff 50%,transparent 60%,transparent 72%,#ffd76a 75%,transparent 85%,transparent 97%,#5ff2d0);animation:cfspin 5s linear infinite;filter:drop-shadow(0 0 6px #fff)}
+.cfx-lg-tormenta::after{padding:3px;background:#6aa8ff;animation:cftor 3s steps(1) infinite;filter:drop-shadow(0 0 10px #3d8bff)}@keyframes cftor{0%,100%{opacity:.5;background:#3d8bff}20%{opacity:1;background:#fff}23%{opacity:.4}60%{opacity:.7}62%{opacity:1;background:#bfe3ff}66%{opacity:.5;background:#3d8bff}}
+@keyframes cfspin{to{--cfa:360deg}}
+.cfthumb{display:block;width:76px;height:50px;border-radius:12px!important;background:#1b1824!important;border:0!important}
+.nb .pid{position:relative;isolation:isolate}
+.nb .pid::before{content:"";position:absolute;inset:-14px auto -10px -22px;width:min(560px,calc(100% + 44px));z-index:-1;border-radius:20px;pointer-events:none;-webkit-mask:radial-gradient(ellipse 70% 65% at 35% 40%,#000 35%,transparent 80%);mask:radial-gradient(ellipse 70% 65% at 35% 40%,#000 35%,transparent 80%)}
+.nb-humo .pid::before{background:radial-gradient(circle at 20% 40%,var(--nbc),transparent 40%),radial-gradient(circle at 60% 60%,var(--nbc),transparent 45%),radial-gradient(circle at 85% 30%,var(--nbc),transparent 35%);background-size:200% 200%;filter:blur(14px);opacity:.55;animation:thblob 9s ease-in-out infinite alternate}
+.nb-ondas .pid::before{background:repeating-radial-gradient(circle at 20% 50%,color-mix(in srgb,var(--nbc) 45%,transparent) 0 2px,transparent 2px 18px);animation:nbwave 3s linear infinite}@keyframes nbwave{to{background-position:18px 0}}
+.nb-particulas .pid::before{background:radial-gradient(circle,var(--nbc) 0 1.4px,transparent 2.6px) 0 0/26px 26px,radial-gradient(circle,#fff 0 1px,transparent 2px) 13px 9px/38px 38px;animation:nbrise 6s linear infinite;opacity:.8}@keyframes nbrise{to{background-position:0 -104px,13px -105px}}
+.nb-destellos .pid::before{background:radial-gradient(circle,#fff 0 1.4px,transparent 2.4px) 0 0/34px 30px,radial-gradient(circle,var(--nbc) 0 1.8px,transparent 3px) 17px 15px/46px 40px;animation:twk 1.2s ease-in-out infinite alternate}
+.nb-rayos .pid::before{background:repeating-linear-gradient(115deg,transparent 0 30px,var(--nbc) 30px 31.5px,transparent 31.5px 70px);animation:nbray 2s steps(1) infinite;filter:drop-shadow(0 0 4px var(--nbc))}@keyframes nbray{0%,100%{opacity:.15}12%{opacity:.9}15%{opacity:.2}55%{opacity:.7}58%{opacity:.1}}
+.nb-lluvia .pid::before{background:repeating-linear-gradient(100deg,transparent 0 12px,color-mix(in srgb,var(--nbc) 55%,transparent) 12px 13px);background-size:200% 200%;animation:brain .6s linear infinite}
+.nb-glow .pid::before{background:radial-gradient(ellipse at 30% 45%,var(--nbc),transparent 65%);opacity:.45;animation:nbglow 3s ease-in-out infinite}@keyframes nbglow{50%{opacity:.75}}
+.nb-lg-tormenta .pid::before{background:repeating-linear-gradient(100deg,transparent 0 11px,rgba(190,220,255,.35) 11px 12px),radial-gradient(ellipse at 40% 40%,#1a2a4a,#05070d);background-size:200% 200%,100%;animation:brain .5s linear infinite,nbflash 4s steps(1) infinite}@keyframes nbflash{0%,100%{filter:none}30%{filter:brightness(3)}32%{filter:none}34%{filter:brightness(2.2)}36%{filter:none}}
+.nb-lg-galaxia .pid::before{background:radial-gradient(circle,#fff 0 .9px,transparent 1.6px) 0 0/21px 21px,radial-gradient(ellipse at 30% 40%,rgba(122,43,255,.75),transparent 60%),radial-gradient(ellipse at 70% 60%,rgba(255,92,180,.5),transparent 60%);animation:thgal2 40s linear infinite}
+.nb-lg-aurora .pid::before{background:radial-gradient(ellipse at 25% 40%,rgba(95,242,208,.65),transparent 60%),radial-gradient(ellipse at 70% 50%,rgba(192,139,255,.65),transparent 60%);background-size:200% 200%;filter:blur(8px);animation:thblob 8s ease-in-out infinite alternate,thhue 16s linear infinite}
+.nbthumb{display:grid;place-items:center;width:100%;height:100%}.nbthumb .pid{padding:10px 18px}.nbthumb b{font-family:var(--display);font-size:20px}
+.ta-brillo .ptitle>span:not(.probadge){background:linear-gradient(100deg,currentColor 40%,#fff 50%,currentColor 60%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:na-shine 2.6s linear infinite}
+.ta-escribe .ptitle>span:not(.probadge){display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom;border-right:2px solid var(--paccent,var(--accent));animation:tatype 3.5s steps(24) infinite}@keyframes tatype{0%{max-width:0}60%,100%{max-width:30ch}}
+.ta-color .ptitle>span:not(.probadge){animation:nalc 3s ease-in-out infinite}
+.ta-ola .ptitle>span:not(.probadge){display:inline-block;animation:naola 2.4s ease-in-out infinite}
+.ta-glitch .ptitle>span:not(.probadge){animation:na-glitch 3s steps(1) infinite}
+.ta-pulso .ptitle>span:not(.probadge){display:inline-block;animation:na-beat 1.6s ease-in-out infinite}
+.ta-sube .ptitle>span:not(.probadge){display:inline-block;animation:na-float 2.4s ease-in-out infinite}
+.ta-arcoiris .ptitle>span:not(.probadge){background:linear-gradient(90deg,#ff7aa8,#ffd36b,#a8f0c6,#7fe0ff,#c3a8ff,#ff7aa8);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:na-move 4s linear infinite}
+.ta-resplandor .ptitle>span:not(.probadge){animation:taglow 2.4s ease-in-out infinite}@keyframes taglow{50%{text-shadow:0 0 12px var(--paccent,var(--accent))}}
+.ta-parpadeo .ptitle>span:not(.probadge){animation:napp 2s ease-in-out infinite}
+.ta-oro .ptitle>span:not(.probadge){background:linear-gradient(100deg,#b8860b,#ffd76a 30%,#fff8d6 40%,#ffd76a 50%,#b8860b);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:na-shine 3s linear infinite}
+.ta-rosa .ptitle>span:not(.probadge){background:linear-gradient(100deg,#ff5c8a,#ffd1ea 40%,#ff5c8a);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:na-shine 3s linear infinite}
+.ta-hielo .ptitle>span:not(.probadge){background:linear-gradient(100deg,#8fd6ff,#fff 40%,#8fd6ff);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:na-shine 2.6s linear infinite;filter:drop-shadow(0 0 4px rgba(143,214,255,.6))}
+.ta-sombra .ptitle>span:not(.probadge){animation:naorb 3s linear infinite}
+.ta-lg-fuego .ptitle>span:not(.probadge){background:repeating-linear-gradient(0deg,#ff2a00 0,#ff7a00 6px,#ffd24a 12px,#ff7a00 18px,#ff2a00 24px);background-size:100% 24px;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:tafire .7s linear infinite;filter:drop-shadow(0 -1px 4px rgba(255,90,0,.8))}@keyframes tafire{to{background-position:0 -24px}}
+.ta-lg-holo .ptitle>span:not(.probadge){background:linear-gradient(115deg,#ff9ad5,#9ad5ff,#b4ffda,#fff4a8,#ff9ad5);background-size:400% 400%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:lgholo 3s ease-in-out infinite alternate}
+.ta-lg-rayo .ptitle>span:not(.probadge){color:#e8f6ff;animation:lgelec 2s steps(1) infinite}
+.tathumb{display:grid;place-items:center;width:100%;height:100%}.tathumb .ptitle{font-weight:800;font-size:15px;color:var(--fg)}
+.stklayer{position:absolute;inset:0;z-index:7;pointer-events:none}
+.stk{position:absolute;width:64px;transform:translate(-50%,-50%) rotate(var(--r,0deg)) scale(var(--s,1));filter:drop-shadow(0 3px 5px rgba(0,0,0,.45));pointer-events:none}
+.stk svg{width:100%;height:auto;display:block}
+.pcover.pmini .stk{width:40px}
+.c7prev .stk{pointer-events:auto;cursor:grab;touch-action:none}.c7prev .stk.dragging{cursor:grabbing;filter:drop-shadow(0 8px 14px rgba(0,0,0,.6))}
+.lgstk svg,.stkholo{animation:lgstk 3s ease-in-out infinite}@keyframes lgstk{0%,100%{filter:hue-rotate(0) brightness(1)}50%{filter:hue-rotate(60deg) brightness(1.2)}}
+.stkmini{display:block;width:48px}.stkmini svg{width:100%;height:auto}.stkmini.big{width:84px}
+.stkgrid .sw{padding:6px}
+.stkplaced{display:grid;gap:8px}.stkrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:8px 10px;border-radius:12px;background:var(--raise);border:1px solid var(--line)}.stkrow label{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--dim);font-weight:700}.stkrow input{width:110px;accent-color:var(--accent)}
+.petw{position:absolute;left:0;bottom:6px;width:58px;height:58px;z-index:8;cursor:pointer;pointer-events:auto;filter:drop-shadow(0 6px 6px rgba(0,0,0,.45))}
+.pcover.pmini .petw{width:40px;height:40px;bottom:2px}
+.petb{width:100%;height:100%;transform:scaleX(var(--dir,1));transition:transform .2s}
+.petb svg{width:100%;height:100%;overflow:visible}
+.petw.walk .petb svg{animation:petbob .32s ease-in-out infinite alternate}@keyframes petbob{from{transform:translateY(0) rotate(-3deg)}to{transform:translateY(-4px) rotate(3deg)}}
+.petw.idle .petb svg{animation:petidle 2.4s ease-in-out infinite}@keyframes petidle{50%{transform:scaleY(.95) translateY(1px)}}
+.petw.sleep .petb svg{transform:scaleY(.86) translateY(4px);transform-origin:50% 100%;filter:brightness(.85)}
+.petw.jump .petb svg{animation:petjump .7s cubic-bezier(.3,1.6,.5,1)}@keyframes petjump{30%{transform:translateY(-26px) scale(1.05)}60%{transform:translateY(0) scale(1.1,.9)}100%{transform:none}}
+.zzz{position:absolute;right:-6px;top:-8px;font:800 12px/1 var(--display);color:#bfe3ff;opacity:0;pointer-events:none}
+.zzz b,.zzz i{font:inherit;position:absolute;opacity:0}
+.petw.sleep .zzz,.petw.sleep .zzz b,.petw.sleep .zzz i{animation:zzz 2.4s ease-in infinite}.petw.sleep .zzz b{left:7px;top:-8px;animation-delay:.6s}.petw.sleep .zzz i{left:14px;top:-16px;animation-delay:1.2s}
+@keyframes zzz{0%{opacity:0;transform:translateY(4px) scale(.7)}30%{opacity:1}100%{opacity:0;transform:translateY(-10px) scale(1.2)}}
+.lgpet{filter:drop-shadow(0 0 10px rgba(255,215,106,.7)) drop-shadow(0 6px 6px rgba(0,0,0,.4))}
+.lgpet.lg-slime .petb svg path{animation:thhue 4s linear infinite}
+.compa .rain path,.adeco .rain path,.petw .rain path,.cprev .rain path{animation:rdrop .7s linear infinite}@keyframes rdrop{from{transform:translateY(-4px);opacity:0}30%{opacity:1}to{transform:translateY(8px);opacity:0}}
+.compa .bolt,.adeco .bolt,.petw .bolt,.cprev .bolt{animation:bolt 2.6s steps(1) infinite}@keyframes bolt{0%,30%,36%,100%{opacity:0}31%,35%{opacity:1}33%{opacity:.2}}
+.petw .flick,.cprev .flick{transform-box:fill-box;transform-origin:50% 100%;animation:flick .22s steps(2) infinite alternate}
+.th-lg-tormenta::before{background:repeating-linear-gradient(100deg,transparent 0 14px,rgba(190,220,255,.22) 14px 15px),linear-gradient(180deg,#141a2a,#05070d);background-size:200% 200%,100%;animation:brain .45s linear infinite,thflash 7s steps(1) infinite}
+@keyframes thflash{0%,100%{filter:none}40%{filter:brightness(2.6)}41%{filter:none}43%{filter:brightness(1.8)}44%{filter:none}80%{filter:brightness(2)}81%{filter:none}}
+.th-lg-lluvia::before{background:radial-gradient(ellipse 2px 3px,rgba(220,240,255,.55) 90%,transparent) 0 0/23px 31px,radial-gradient(ellipse 3px 4px,rgba(220,240,255,.45) 90%,transparent) 11px 17px/37px 43px,repeating-linear-gradient(95deg,transparent 0 30px,rgba(200,225,255,.08) 30px 32px),linear-gradient(180deg,#1a2a3a,#0a121a);animation:thglass 9s linear infinite}
+@keyframes thglass{to{background-position:0 93px,11px 146px,0 0,0 0}}
+.pcover.na-relampago .pid h1{animation:narel 3.4s steps(1) infinite}@keyframes narel{0%,100%{text-shadow:none}30%{text-shadow:0 0 12px #bfe3ff,0 0 2px #fff;filter:brightness(1.6)}32%{text-shadow:none;filter:none}34%{text-shadow:0 0 18px #8fd6ff}36%{text-shadow:none}}
+.pcover.na-gotas .pid h1{background:linear-gradient(180deg,currentColor 0 60%,#8fd6ff 60%);-webkit-background-clip:text;background-clip:text;color:var(--pname,var(--fg));-webkit-text-fill-color:transparent;background-size:100% 200%;animation:lgwater 3s ease-in-out infinite alternate}
+.pcover.na-lg-tormenta .pid h1,.na-wrap.na-lg-tormenta h1{background:linear-gradient(180deg,#e8f2ff,#8fa8d6 60%,#4a5a8a)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important;animation:nastorm 3.4s steps(1) infinite!important}
+@keyframes nastorm{0%,100%{filter:drop-shadow(0 0 6px rgba(80,120,200,.6))}30%{filter:drop-shadow(0 0 22px #fff) brightness(2)}32%{filter:drop-shadow(0 0 6px rgba(80,120,200,.6))}34%{filter:drop-shadow(0 0 16px #bfe3ff) brightness(1.6)}36%{filter:drop-shadow(0 0 6px rgba(80,120,200,.6))}}
+.pcover.na-lg-plasma .pid h1,.na-wrap.na-lg-plasma h1{background:radial-gradient(circle at 20% 50%,#ff6bd6,transparent 40%),radial-gradient(circle at 80% 50%,#6aa8ff,transparent 40%),radial-gradient(circle at 50% 50%,#c08bff,transparent 60%),#3a1a6a!important;background-size:200% 200%!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important;animation:thblob 3s ease-in-out infinite alternate,lgplasma 1.6s steps(3) infinite!important}
+@keyframes lgplasma{0%{filter:drop-shadow(0 0 6px #ff6bd6)}50%{filter:drop-shadow(0 0 10px #6aa8ff)}100%{filter:drop-shadow(0 0 6px #c08bff)}}
+.entflash{animation:entflash .9s steps(1)!important}@keyframes entflash{0%{filter:brightness(3)}15%{filter:none}25%{filter:brightness(2)}35%,100%{filter:none}}
+
+/* ============ V12: coleccionables */
+.econav{display:flex;align-items:center;gap:4px;flex-wrap:wrap;padding:5px;margin:4px 0 18px;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
+.econav a{padding:9px 16px;border-radius:11px;font-weight:800;color:var(--dim);font-size:14.5px}.econav a:hover{color:var(--fg);background:rgba(255,255,255,.04)}
+.econav a.on{color:var(--fg);background:var(--raise);box-shadow:inset 0 0 0 1px var(--line)}
+.ecocoins{margin-left:auto;display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:rgba(255,143,200,.1);border:1px solid rgba(255,143,200,.35);font-weight:800}
+.boxgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.boxcard{padding:22px;border-radius:24px;border:1px solid var(--line);background:radial-gradient(circle at 50% 0,rgba(255,143,200,.16),transparent 60%),var(--surface);text-align:center}
+.bx-especial{background:radial-gradient(circle at 50% 0,rgba(255,178,31,.2),transparent 60%),radial-gradient(circle at 50% 100%,rgba(163,91,255,.18),transparent 60%),var(--surface);border-color:rgba(255,178,31,.45)}
+.boxcard h2{margin:10px 0 12px}
+.boxart{height:150px;display:grid;place-items:center;perspective:600px}
+.boxcube{position:relative;width:96px;height:96px;transform-style:preserve-3d;animation:cube 6s ease-in-out infinite}
+.boxcube i{position:absolute;inset:0;border-radius:16px;background:linear-gradient(135deg,#ff8fc8,#c08bff);box-shadow:0 0 30px rgba(255,143,200,.5);border:2px solid rgba(255,255,255,.4)}
+.boxcube i:nth-child(2){transform:translateZ(-20px) scale(.9);opacity:.6}.boxcube i:nth-child(3){inset:38% 0;border-radius:4px;background:#fff;opacity:.85;box-shadow:none}
+.bx-especial .boxcube i{background:linear-gradient(135deg,#ffd76a,#ff8a3d,#a35bff);box-shadow:0 0 40px rgba(255,178,31,.6)}
+@keyframes cube{0%,100%{transform:rotateY(-18deg) rotateX(10deg) translateY(0)}50%{transform:rotateY(18deg) rotateX(-6deg) translateY(-8px)}}
+.odds{list-style:none;padding:0;margin:0 0 16px;display:grid;gap:5px}.odds li{display:flex;justify-content:space-between;padding:7px 12px;border-radius:10px;background:var(--raise);border-left:4px solid var(--rc);font-size:14px}.odds b{font-variant-numeric:tabular-nums}
+.btn.big{height:50px;padding:0 26px;font-size:16px}
+.boxov{position:fixed;inset:0;z-index:100;background:rgba(5,4,10,.86);backdrop-filter:blur(8px);display:grid;place-items:center;padding:16px;animation:enfade .3s}
+.boxmodal{width:min(980px,100%);display:grid;gap:18px;justify-items:center}
+.rlwrap{position:relative;width:100%;overflow:hidden;border-radius:18px;border:1px solid var(--line);background:#0c0b12;padding:16px 0;-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.rlpin{position:absolute;left:50%;top:0;bottom:0;width:3px;margin-left:-1.5px;background:#ffd76a;z-index:2;box-shadow:0 0 14px #ffd76a}
+.rlstrip{display:flex;gap:10px;padding-left:10px;will-change:transform}
+.rlitem{flex:none;width:130px;height:150px;border-radius:14px;background:linear-gradient(180deg,color-mix(in srgb,var(--rc) 22%,#14121c),#14121c);border-bottom:4px solid var(--rc);display:grid;grid-template-rows:1fr auto;place-items:center;padding:8px;overflow:hidden}
+.rlitem small{font-size:11px;font-weight:700;color:var(--dim);text-align:center;line-height:1.2;max-height:2.4em;overflow:hidden}
+.rlitem.win{box-shadow:0 0 0 3px var(--rc),0 0 40px var(--rc)}
+.reveal{text-align:center;animation:enreb .7s}
+.rvtitle{font:900 clamp(22px,3vw,34px)/1.1 var(--display);color:var(--rc);margin-bottom:12px;text-shadow:0 0 24px var(--rc)}
+.boxov.r-exotica .rvtitle{background:linear-gradient(90deg,#ff7aa8,#ffd36b,#a8f0c6,#7fe0ff,#c3a8ff);-webkit-background-clip:text;background-clip:text;color:transparent;animation:na-move 3s linear infinite;background-size:300% 100%}
+.boxov.r-unica{background:radial-gradient(circle,rgba(40,30,10,.95),rgba(0,0,0,.97))}
+.igrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}.igrid.small{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.icard{position:relative;display:flex;flex-direction:column;gap:5px;padding:12px;border-radius:18px;background:linear-gradient(180deg,color-mix(in srgb,var(--rc) 14%,var(--surface)),var(--surface) 60%);border:1px solid color-mix(in srgb,var(--rc) 45%,var(--line));text-align:center;max-width:240px;margin:0 auto;width:100%}
+.icard .irar{align-self:center;padding:2px 10px;border-radius:999px;background:var(--rc);color:#120a18;font:900 10.5px/1.6 var(--body);letter-spacing:.08em;text-transform:uppercase}
+.ithumbw{height:110px;display:grid;place-items:center;border-radius:12px;background:radial-gradient(circle at 50% 40%,color-mix(in srgb,var(--rc) 20%,#1a1824),#0e0d14);overflow:hidden;position:relative}
+.ithumb{display:grid;place-items:center;width:100%;height:100%}
+.iname{font-size:14px;line-height:1.2}.imeta{display:flex;justify-content:center;gap:10px;font-weight:800;font-size:12.5px;color:var(--rc)}.iwear{font-size:11.5px}
+.iact{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:4px}
+.icard.r-mitica{box-shadow:0 0 22px -6px var(--rc)}
+.icard.r-exotica{border:2px solid transparent;background:linear-gradient(var(--surface),var(--surface)) padding-box,linear-gradient(135deg,#ff7aa8,#ffd36b,#a8f0c6,#7fe0ff,#c3a8ff,#ff7aa8) border-box;background-size:auto,300% 300%;animation:lgborder 4s linear infinite}
+.icard.r-exotica .irar{background:linear-gradient(90deg,#ff7aa8,#ffd36b,#a8f0c6,#7fe0ff,#c3a8ff)}
+.icard.r-unica{background:radial-gradient(circle at 50% 0,rgba(255,215,106,.18),transparent 60%),#07060a;border:2px solid #ffd76a;box-shadow:0 0 30px -6px rgba(255,215,106,.7)}
+.icard.r-unica .irar{background:#000;color:#ffd76a;border:1px solid #ffd76a}
+.icard.rarepat::after{content:"PATRÓN RARO";position:absolute;top:8px;right:8px;font:900 9px/1 var(--body);padding:3px 6px;border-radius:6px;background:#fff;color:#120a18}
+.mkgrid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;align-items:start}@media (max-width:980px){.mkgrid{grid-template-columns:1fr}}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.toolbar input[type=search]{flex:1;min-width:200px}
+.trade{margin-top:14px}.trade.accepted{border-color:rgba(90,209,138,.5)}.trade.rejected,.trade.cancelled,.trade.failed{opacity:.6}
+.thead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.tcols{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:start}.tarrow{font-size:26px;color:var(--dim);align-self:center}
+.tside{display:flex;flex-wrap:wrap;gap:8px}
+.tmini{width:96px;padding:6px;border-radius:12px;background:var(--raise);border:1px solid color-mix(in srgb,var(--rc,#888) 50%,var(--line));text-align:center}.tmini .ithumb{height:60px;transform:scale(.7)}.tmini small{display:block;font-size:10.5px;line-height:1.2;color:var(--dim)}
+.tmini.coins{display:grid;place-items:center;gap:4px}
+.tnew{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media (max-width:860px){.tnew{grid-template-columns:1fr}}
+.pickit{display:block;cursor:pointer;position:relative}.pickit input{position:absolute;opacity:0}.pickit.on .icard{outline:3px solid var(--accent);outline-offset:2px}
+.droptoast{position:fixed;left:50%;top:84px;transform:translateX(-50%);z-index:120;padding:12px 20px;border-radius:16px;background:rgba(14,12,20,.92);border:1px solid rgba(255,215,106,.5);box-shadow:0 10px 40px rgba(0,0,0,.6),0 0 30px -10px #ffd76a;font-size:14.5px;animation:enbaja .5s;transition:opacity .8s,transform .8s;max-width:calc(100vw - 32px)}
+.droptoast.out{opacity:0;transform:translate(-50%,-20px)}
+.prisma,.adeco.prisma{animation:thhue 4s linear infinite}.prisma.slow{animation-duration:9s}
+.adeco.cristal{filter:drop-shadow(0 0 10px #e8f8ff) brightness(1.08)}
+.adeco.primordial{filter:drop-shadow(0 0 16px #ffd76a)}.adeco.primordial .fw{animation-duration:.6s}
+.au-cx-vacio{--an-au:auvac2 6s ease-in-out infinite}@keyframes auvac2{0%,100%{box-shadow:0 0 34px 10px rgba(5,0,15,.95),0 0 70px 16px rgba(122,43,255,.55),0 0 2px 1px #c3a8ff}50%{box-shadow:0 0 50px 18px rgba(5,0,15,.95),0 0 110px 26px rgba(255,107,214,.45),0 0 3px 1px #fff}}
+.au-cx-prisma{--an-au:auarc 2.4s linear infinite}
+.pcover.na-cx-plasma .pid h1{background:radial-gradient(circle at 20% 50%,#ff6bd6,transparent 40%),radial-gradient(circle at 80% 50%,#6aa8ff,transparent 40%),#3a1a6a!important;background-size:200% 200%!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;animation:thblob 2.4s ease-in-out infinite alternate,thhue 6s linear infinite,lgplasma 1.2s steps(3) infinite!important}
+.pcover.na-cx-prisma .pid h1{background:linear-gradient(90deg,#ff7aa8,#ffd36b,#a8f0c6,#7fe0ff,#c3a8ff,#ff7aa8)!important;background-size:300% 100%!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;animation:na-move 2s linear infinite,lgsplit 2s steps(1) infinite!important;filter:drop-shadow(0 0 10px rgba(255,255,255,.5))}
+.pcover.na-cx-eterno .pid h1{background:linear-gradient(100deg,#1a1408,#ffd76a 30%,#fff8d6 38%,#1a1408 52%,#ffd76a 70%,#1a1408)!important;background-size:300% 100%!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;animation:na-shine 4s linear infinite!important;filter:drop-shadow(0 0 2px #ffd76a) drop-shadow(0 0 16px rgba(255,215,106,.6))}
+.cfx-cx-rayosazules::after{padding:3.5px;background:conic-gradient(from var(--cfa),#0a1a4a,#3d8bff 10%,#fff 12%,#3d8bff 14%,#0a1a4a 30%,#6aa8ff 55%,#fff 57%,#6aa8ff 59%,#0a1a4a 75%,#8fd6ff 90%,#fff 92%,#0a1a4a);animation:cfspin .9s steps(8) infinite;filter:drop-shadow(0 0 10px #3d8bff) drop-shadow(0 0 3px #fff)}
+.nb-cx-nebulosa .pid::before{background:radial-gradient(circle,#fff 0 .9px,transparent 1.6px) 0 0/19px 19px,radial-gradient(ellipse at 25% 40%,rgba(255,107,214,.8),transparent 55%),radial-gradient(ellipse at 70% 55%,rgba(122,43,255,.8),transparent 55%),radial-gradient(ellipse at 50% 30%,rgba(95,242,208,.5),transparent 50%);background-size:auto,200% 200%,200% 200%,200% 200%;animation:thblob 10s ease-in-out infinite alternate,thhue 20s linear infinite}
+.th-cx-galaxiarosa::before{background:radial-gradient(circle,#fff 0 .8px,transparent 1.5px) 0 0/27px 27px,radial-gradient(circle,#ffd1ea 0 1.1px,transparent 2px) 9px 13px/43px 43px,radial-gradient(ellipse 60% 50% at 70% 30%,rgba(255,92,180,.65),transparent 70%),radial-gradient(ellipse 50% 40% at 20% 80%,rgba(255,179,207,.45),transparent 70%),linear-gradient(160deg,#3a0a2a,#0a0514);animation:thgal2 60s linear infinite,thtw 3s ease-in-out infinite alternate}
+.th-cx-galaxiaunica::before{background:radial-gradient(circle,#fff 0 .9px,transparent 1.6px) 0 0/23px 23px,radial-gradient(circle,#ffe9a3 0 1.2px,transparent 2.2px) 11px 7px/41px 41px,conic-gradient(from var(--tha) at 65% 40%,rgba(255,215,106,.35),rgba(122,43,255,.45),rgba(95,242,208,.35),rgba(255,107,214,.4),rgba(255,215,106,.35)),#05030c;animation:thspin 20s linear infinite,thtw 2s ease-in-out infinite alternate}
 </style>
 </head>
 <body>
@@ -1600,7 +1768,7 @@ nav a.on,nav a[aria-current]{color:var(--fg)}
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 10.0</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 11.0</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -2062,7 +2230,7 @@ async function route(keepScroll) {
   const id = ++renderId, R = parseRoute(), app = $('#app');
   const y = window.scrollY;
   document.querySelectorAll('[data-r]').forEach(a => a.classList.toggle('on', a.dataset.r === R.name || (R.name === 'stats' && a.dataset.r === 'perfil' && a.closest('.bnav'))));
-  const views = { '': vHome, 'buscar': vSearch, 'serie': vShow, 'ep': vEpisode, 'mis-series': vMine, 'calendario': vCalendar, 'descubrir': vDiscover, 'peliculas': vMovies, 'stats': vStats, 'perfil': vProfile, 'entrar': vLogin, 'nueva-clave': vNewPass, 'gente': vPeople, 'u': vUser, 'categoria': vCategory, 'peli': vMovie, 'pro': vPro, 'monedas': vCoins, 'tienda': vShopDaily, 'actor': vActor, 'top-episodios': vTopEps, 'listas': vLists, 'lista': vList };
+  const views = { '': vHome, 'buscar': vSearch, 'serie': vShow, 'ep': vEpisode, 'mis-series': vMine, 'calendario': vCalendar, 'descubrir': vDiscover, 'peliculas': vMovies, 'stats': vStats, 'perfil': vProfile, 'entrar': vLogin, 'nueva-clave': vNewPass, 'gente': vPeople, 'u': vUser, 'categoria': vCategory, 'peli': vMovie, 'pro': vPro, 'monedas': vCoins, 'tienda': vShopDaily, 'cajas': vBoxes, 'inventario': vInventory, 'mercado': vMarket, 'intercambios': vTrades, 'actor': vActor, 'top-episodios': vTopEps, 'listas': vLists, 'lista': vList };
   const v = views[R.name] || vHome;
   const draw = html => { if (id === renderId) { app.innerHTML = html; fillAds(); } return id === renderId; };
   try { await v(R.args, draw, () => id === renderId); }
@@ -3954,7 +4122,7 @@ const COIN_PRICE = { name: 200, font: 250, fx: 200, frame: 400, shape: 300, bann
 const priceOf7 = (f, k) => ['name:custom', 'accent:custom', 'banner:img'].includes(f + ':' + k) ? 800 : (COIN_PRICE[f] || 300);
 const coinSVG7 = (sz = 16) => `<svg class="coin" width="${sz}" height="${sz}" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#ffd76a"/><circle cx="12" cy="12" r="7.2" fill="none" stroke="#b8860b" stroke-width="1.6"/><path d="M9.5 8.5h4a2 2 0 0 1 0 4h-3m0-4v7m0-3h3.5a2 2 0 0 1 0 4h-4" fill="none" stroke="#8a6a1a" stroke-width="1.6" stroke-linecap="round"/></svg>`;
 function setWallet(w) { if (!w) return; WALLET.coins = w.coins || 0; WALLET.items = w.items || []; WALLET.ok = true; renderCoins(); }
-async function loadWallet() {
+async function loadWallet7() {
   WALLET.ok = false; WALLET.coins = 0; WALLET.items = [];
   if (!isLogged()) { renderCoins(); return; }
   const rows = await sbTry(() => rest(`wallets?select=coins,items&user_id=eq.${ME.id}`), null);
@@ -4000,14 +4168,14 @@ function weekNum() { const d = new Date(); const y = new Date(d.getFullYear(), 0
 let ROT = null;
 function rotation() {
   if (ROT && ROT.w === weekNum()) return ROT.set;
-  const all = []; for (const [f, l] of Object.entries(STYLE_OPTS)) if (f !== 'site') for (const o of l) if (!o.f && !['img'].includes(o.k) && !FOUNDER_ONLY(f, o.k) && !isLegend(f, o.k)) all.push(f + ':' + o.k);
+  const all = []; for (const [f, l] of Object.entries(STYLE_OPTS)) if (f !== 'site') for (const o of l) if (!o.f && !['img'].includes(o.k) && !FOUNDER_ONLY(f, o.k) && !isLegend(f, o.k) && !isCX(f, o.k)) all.push(f + ':' + o.k);
   let seed = weekNum(); const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
   const set = new Set(); while (set.size < 5 && all.length) set.add(all[Math.floor(rnd() * all.length)]);
   ROT = { w: weekNum(), set }; return set;
 }
 const rotFree = (f, k) => rotation().has(f + ':' + k);
 const ownsItem = (row, f, k) => !!(row && (row.items || []).includes(f + ':' + k));
-const unlockedFor = (row, f, o) => !!(o && (isLegend(f, o.k) ? (hasLegendRow(row) || ownsItem(row, f, o.k)) : FOUNDER_ONLY(f, o.k) ? !!(row && (row.items || []).includes('founder')) : (o.f || isProRow(row) || ownsItem(row, f, o.k) || rotFree(f, o.k) || inMedio(row, f, o))));
+const unlockedFor = (row, f, o) => !!(o && (isCX(f, o.k) ? ownsItem(row, f, o.k) : isLegend(f, o.k) ? (hasLegendRow(row) || ownsItem(row, f, o.k)) : FOUNDER_ONLY(f, o.k) ? !!(row && (row.items || []).includes('founder')) : (o.f || isProRow(row) || ownsItem(row, f, o.k) || rotFree(f, o.k) || inMedio(row, f, o))));
 const unlocked = (f, o) => unlockedFor(myProRow(), f, o);
 const hasLayout = row => !!(row && (row.plan === 'layout' || (row.items || []).includes('layout')));
 function mergeRow(prem, wal) { return { plan: prem ? prem.plan : '', items: [...((prem && prem.items) || []), ...((wal && wal.items) || []), ...(prem && prem.plan === 'layout' ? ['layout'] : [])] }; }
@@ -4220,7 +4388,7 @@ function myStyleView() {
   const row = Object.keys(PREVIEW).length ? { plan: 'combo', items: [...myProRow().items, 'legend'] } : myProRow();
   const s = sanitizeStyle(raw, row); s._pro = PRO.me; return s;
 }
-function myProRow() { return { plan: PRO.plan, items: [...PRO.items, ...WALLET.items, ...(PRO.me ? ['combo'] : []), ...(PRO.plan === 'layout' ? ['layout'] : []), ...(isLogged() && isFounderId(ME.id) ? ['combo', 'redes', 'layout', 'founder'] : [])] }; }
+function myProRow7() { return { plan: PRO.plan, items: [...PRO.items, ...WALLET.items, ...(PRO.me ? ['combo'] : []), ...(PRO.plan === 'layout' ? ['layout'] : []), ...(isLogged() && isFounderId(ME.id) ? ['combo', 'redes', 'layout', 'founder'] : [])] }; }
 function previewCard() {
   const v = myStyleView(), p = S.profile, favs = favList();
   return `<div class="pcover pmini ${profileClasses(v)}" ${accentStyle(v)} ${v.pfx && v.pfx !== 'none' ? `data-pfx="${h(v.pfx)}"` : ''}>${bannerHTML(v, favs)}
@@ -4246,7 +4414,7 @@ function customizeHTML() {
       + g('Efecto', `<div class="swgrid wide">${STYLE_OPTS.fx.map(o => opt('fx', o, view.fx, `<span class="fxs fx-${o.k}" ${/^ts\d/.test(o.k) ? `style="text-shadow:${o.v}"` : ''}>${h(o.n)}</span>`)).join('')}</div>`)
       + g('Ícono al lado del nombre', `<div class="swgrid">${STYLE_OPTS.nicon.map(o => { const [gg, col] = (o.v || '|').split('|'); return opt('nicon', o, view.nicon, o.v ? `<svg width="20" height="20" viewBox="0 0 24 24" style="color:${col};fill:currentColor">${NGLYPH[gg]}</svg>` : 'Ninguno'); }).join('')}</div>`, '40 íconos')
       + g('Insignia especial', `<div class="swgrid wide">${STYLE_OPTS.tag.filter(o => o.k !== 'fundador' || myProRow().items.includes('founder')).map(o => { return opt('tag', o, view.tag, o.v ? tagChip(o) : 'Ninguna'); }).join('')}</div>`)
-      + g('Título abajo de tu nombre', sw('title'));
+      + g('Título abajo de tu nombre', sw('title')) + g('Animación del título', sw('titleanim'));
   } else if (tab === 'foto') {
     body = g('Decoración de tu foto', `<div class="swgrid decos">${STYLE_OPTS.deco.map(o => opt('deco', o, view.deco, o.v ? `<span class="dprev"><i></i>${decoHTML({ deco: o.k })}</span><small>${h(o.n)}</small>` : '<small>Sin decoración</small>')).join('')}</div>`, '40 decoraciones')
       + g('Marco de tu foto', `<div class="swgrid">${STYLE_OPTS.frame.map(o => opt('frame', o, view.frame, `<span class="frs ${o.v === 'double' ? 'fr-double' : o.v === 'dashed' ? 'fr-dashed' : o.v === 'spin' ? 'fr-spin' : o.v === 'pulse' ? 'fr-pulse' : o.v === 'transparent' ? 'fr-none' : 'fr-grad'}" style="--pframe:${['double', 'dashed', 'spin', 'pulse', 'transparent'].includes(o.v) ? 'var(--paccent,var(--accent))' : o.v}"><i></i></span><small>${h(o.n)}</small>`)).join('')}</div>`)
@@ -4263,10 +4431,14 @@ function customizeHTML() {
       + g('Estilo de la tarjeta', sw('card')) + g('Fondo de la tarjeta', `<div class="banners">${STYLE_OPTS.theme.map(o => tile('theme', o, view.theme, `background:${o.v || 'var(--surface)'};border:1px solid var(--line)`)).join('')}</div>`)
       + g('Estilo de los números', sw('statstyle')) + g('Marco de tus favoritas', sw('favframe'))
       + `<div class="two" style="margin-top:12px"><div><label class="lb" for="pfeat">Serie destacada</label><select class="btn" id="pfeat" style="width:100%"><option value="">Ninguna</option>${myShows().sort((a, b) => a.name.localeCompare(b.name)).map(r => `<option value="${r.id}" ${st.featured === r.id ? 'selected' : ''}>${h(r.name)}</option>`).join('')}</select></div><div><label class="lb" for="pstat">Estado</label><input type="text" id="pstat" maxlength="70" value="${h(st.status || '')}" placeholder="Ej: viendo Bleach por tercera vez"></div></div>`;
+  } else if (tab === 'mascota') {
+    body = petEditHTML(view);
+  } else if (tab === 'stickers') {
+    body = stickerEditHTML(st);
   } else if (tab === 'compa') {
     body = compaEditHTML(view);
   } else if (tab === 'efectos') {
-    body = g('Efecto animado en tu perfil', `<div class="banners">${STYLE_OPTS.pfx.map(o => tile('pfx', o, view.pfx, 'background:radial-gradient(circle at 30% 30%,#2a2440,#0b0b14)')).join('')}</div>`, 'se ve en tu perfil en movimiento') + g('Entrada del perfil', `<div class="banners">${STYLE_OPTS.entrada.map(o => tile('entrada', o, view.entrada, 'background:linear-gradient(135deg,#2a2440,#141020)')).join('')}</div>`, 'la animación cuando alguien abre tu perfil') + g('Efecto del mouse', sw('mouse'), 'cuando alguien mueve el mouse sobre tu perfil');
+    body = g('Efecto animado en tu perfil', `<div class="banners">${STYLE_OPTS.pfx.map(o => tile('pfx', o, view.pfx, 'background:radial-gradient(circle at 30% 30%,#2a2440,#0b0b14)')).join('')}</div>`, 'se ve en tu perfil en movimiento') + g('Aura alrededor de tu tarjeta', sw('aura'), 'brillo animado en todo el borde de afuera') + g('Borde animado de la tarjeta', sw('cardframe')) + g('Fondo detrás de tu nombre', sw('namebg')) + g('Entrada del perfil', `<div class="banners">${STYLE_OPTS.entrada.map(o => tile('entrada', o, view.entrada, 'background:linear-gradient(135deg,#2a2440,#141020)')).join('')}</div>`, 'la animación cuando alguien abre tu perfil') + g('Efecto del mouse', sw('mouse'), 'cuando alguien mueve el mouse sobre tu perfil');
   } else if (tab === 'diseno') {
     const row = myProRow(), ok = hasLayout(row), L = ok ? layoutOf(st, row) : { ...LAYOUT_DEF };
     const ch = (k, v, n) => `<button class="opt ${L[k] === v ? 'on' : ''}" data-act="lay" data-k="${k}" data-v="${v}" ${ok ? '' : 'disabled'}>${n}</button>`;
@@ -4553,7 +4725,7 @@ STYLE_DEF.compa = 'none'; if (S.profile.style.compa == null) S.profile.style.com
 CAT_NAMES.compa = 'Compañero'; COIN_PRICE.compa = 700;
 const compaSVG = v => { const [k, a] = String(v || '').split('|'); return CRIT[k] ? `<svg viewBox="0 0 64 64" aria-hidden="true">${CRIT[k][1](ACCMAP[a] || ACCMAP.rosa, a)}</svg>` : ''; };
 function compaHTML(st) { const o = optOf('compa', st && st.compa); return o && o.v ? `<div class="compa">${compaSVG(o.v)}</div>` : ''; }
-function bannerHTML(style, favs) { const out = bannerHTMLv7(style, favs), c = compaHTML(style); return c ? out.slice(0, -6) + c + '</div>' : out; }
+function bannerHTML8(style, favs) { const out = bannerHTMLv7(style, favs), c = compaHTML(style); return c ? out.slice(0, -6) + c + '</div>' : out; }
 
 // ---------- todo lo nuevo en el perfil: clases y variables
 function extraClasses8(st) {
@@ -4581,13 +4753,13 @@ function extraVars8(st) {
   const sh = o('shape'); if (sh && String(sh.v).startsWith('clip:')) v.push('--pclip:' + sh.v.slice(5));
   return v.join(';');
 }
-function accentStyle(st) { const base = accentStyle5(st), x = extraVars8(st); return x ? base.slice(0, -1) + ';' + h(x) + '"' : base; }
+function accentStyle8(st) { const base = accentStyle5(st), x = extraVars8(st); return x ? base.slice(0, -1) + ';' + h(x) + '"' : base; }
 
 // ---------- COMBO MEDIO: desbloquea un poco más de la mitad
 PAY.medio = 2.99;
 function inMedio(row, f, o) {
   if (!row || !(row.plan === 'medio' || (row.items || []).includes('medio'))) return false;
-  if (FOUNDER_ONLY(f, o.k) || isLegend(f, o.k)) return false;
+  if (FOUNDER_ONLY(f, o.k) || isLegend(f, o.k) || isCX(f, o.k)) return false;
   const paid = (STYLE_OPTS[f] || []).filter(x => !x.f), i = paid.indexOf(o);
   return i >= 0 && i < Math.ceil(paid.length * 0.55);
 }
@@ -4612,7 +4784,7 @@ function compaEditHTML(view) {
 
 // ---------- TIENDA con vista previa de cada cosa
 const SHOP_CATS = [['deco', 'Decoraciones'], ['compa', 'Compañeros'], ['pfx', 'Efectos'], ['nameanim', 'Animación del nombre'], ['name', 'Color del nombre'], ['font', 'Letras'], ['nicon', 'Íconos'], ['tag', 'Insignias'], ['banner', 'Banners'], ['frame', 'Marcos'], ['shape', 'Formas'], ['card', 'Tarjetas'], ['theme', 'Fondos'], ['statstyle', 'Números'], ['favframe', 'Favoritas'], ['fx', 'Efectos de letra'], ['pattern', 'Texturas'], ['bfx', 'Movimientos'], ['accent', 'Color del perfil'], ['title', 'Títulos']];
-function shopThumb(f, o) {
+function shopThumb8(f, o) {
   switch (f) {
     case 'deco': return `<span class="dprev big"><i></i>${decoHTML({ deco: o.k })}</span>`;
     case 'compa': return `<span class="cprev big">${compaSVG(o.v)}</span>`;
@@ -4676,10 +4848,11 @@ async function vRanking(nav, draw, alive) {
   const ids = list.map(p => p.id);
   const [prem, wal] = ids.length ? await Promise.all([sbTry(() => rest(`premium?select=user_id,plan,items&user_id=${inList(ids)}`, { auth: false }), []), sbTry(() => rest(`wallets?select=user_id,items&user_id=${inList(ids)}`, { auth: false }), [])]) : [[], []];
   if (!alive()) return;
-  const pm = Object.fromEntries((prem || []).map(r => [r.user_id, r])), wm = Object.fromEntries((wal || []).map(r => [r.user_id, r]));
+  const pm = Object.fromEntries((prem || []).map(r => [r.user_id, r])), wm = Object.fromEntries((wal || []).map(r => [r.user_id, r])), im = {};
+  for (const r of (ids.length ? await sbTry(() => rest(`items?select=owner,cid&owner=${inList(ids)}&limit=5000`, { auth: false }), []) : []) || []) (im[r.owner] = im[r.owner] || []).push(r);
   for (const p of list) {
     const st = {}; for (const f of RK_FIELDS) if (p['s_' + f] != null) st[f] = p['s_' + f];
-    const row = isFounderId(p.id) ? { plan: 'combo', items: ['combo', 'redes', 'layout', 'founder'] } : mergeRow(pm[p.id], wm[p.id]);
+    const row = withColl(isFounderId(p.id) ? { plan: 'combo', items: ['combo', 'redes', 'layout', 'founder'] } : mergeRow(pm[p.id], wm[p.id]), im[p.id] || []);
     p.ds = sanitizeStyle(st, row);
     const bo = optOf('banner', p.ds.banner); p.bg = bo && bo.v && !['fav', 'img'].includes(bo.v) ? bo.v : '';
   }
@@ -4726,7 +4899,7 @@ STYLE_OPTS.bfx.push(LG('lg-portal', 'Portal mágico'), LG('lg-tormenta', 'Tormen
 // ---------- insignias legendarias (brillan y se mueven)
 STYLE_OPTS.tag.push(Object.assign(C('lg-leyenda', 'Leyenda', '#ffd76a|#ff5c8a'), { lg: 1 }), Object.assign(C('lg-holo', 'Holo', '#ff9ad5|#9ad5ff'), { lg: 1 }), Object.assign(C('lg-galaxia', 'Galáctico', '#7a2bff|#3d8bff'), { lg: 1 }), Object.assign(C('lg-fuego', 'En llamas', '#ff3d00|#ffd76a'), { lg: 1 }), Object.assign(C('lg-hada', 'Mágico', '#5ff2d0|#ff8fc8'), { lg: 1 }));
 function tagChip(o) { if (!o || !o.v) return ''; const [a, b] = o.v.split('|'); return `<span class="uptag${isLegend('tag', o.k) ? ' lgt ' + o.k : ''}" style="background:linear-gradient(135deg,${a},${b})">${h(o.n)}</span>`; }
-function nameIconHTML(st) {
+function nameIconHTML9(st) {
   const o = optOf('nicon', st && st.nicon), t = optOf('tag', st && st.tag);
   let out = '';
   if (o && o.v) { const [g, col] = o.v.split('|'); out += `<svg class="nicon" width="26" height="26" viewBox="0 0 24 24" style="color:${col};fill:currentColor" aria-hidden="true">${NGLYPH[g]}</svg>`; }
@@ -4763,7 +4936,7 @@ const LGFX = {
 STYLE_OPTS.pfx.push(...Object.entries(LGFX).map(([k, n]) => Object.assign(C(k, n, k), { lg: 1 })));
 function pfxAttr9(st) { return st && st.pfx && st.pfx !== 'none' && (PFX[st.pfx] || LGFX[st.pfx]) ? `data-pfx="${h(st.pfx)}"` : ''; }
 function startLegendary() {
-  document.querySelectorAll('.pcover[data-pfx^="lg-"]:not([data-lgon])').forEach(card => {
+  document.querySelectorAll('.pcover[data-pfx^="lg-"]:not([data-lgon]),.pcover[data-pfx^="cx-"]:not([data-lgon])').forEach(card => {
     const kind = card.dataset.pfx; if (!LGFX[kind]) return; card.dataset.lgon = '1';
     const cv = document.createElement('canvas'); cv.className = 'pfxcv'; card.appendChild(cv);
     const ctx = cv.getContext('2d'); let W = 0, H = 0; const dpr = Math.min(2, window.devicePixelRatio || 1);
@@ -4860,7 +5033,7 @@ const legendList = () => Object.entries(STYLE_OPTS).flatMap(([f, l]) => l.filter
 const lgCard = (cat, o) => cat === 'theme' ? `<span class="tbg thl th-${h(o.k)}" style="background:${o.v}"></span>` : cat === 'entrada' ? `<span class="tname small">${h(o.n)}</span>` : cat === 'pfx' ? `<span class="tpfx" data-pfxk="${h(o.k)}"></span>` : cat === 'nameanim' ? `<span class="tname na-wrap ${'na-' + o.k}"><span class="pid"><h1>Nombre</h1></span></span>` : cat === 'bfx' ? `<span class="tbg pbanner custom bfx-${h(o.k)}" style="background:linear-gradient(120deg,#2a1d55,#0a0a2f)"></span>` : cat === 'frame' ? `<span class="lfwrap ${o.k.replace('lg-', 'lf-')} fr-rot" style="--pframe:${o.v}"><span class="avwrap"><span class="avatar"></span></span></span>` : cat === 'tag' ? tagChip(o) : shopThumb(cat, o);
 async function vShop(args, draw) {
   const cat = SHOP_CATS.some(c => c[0] === args[0]) ? args[0] : 'legend';
-  const items = cat === 'legend' ? legendList() : STYLE_OPTS[cat].filter(o => !o.f && !FOUNDER_ONLY(cat, o.k)).map(o => [cat, o]);
+  const items = cat === 'legend' ? legendList() : STYLE_OPTS[cat].filter(o => !o.f && !FOUNDER_ONLY(cat, o.k) && !isCX(cat, o.k)).map(o => [cat, o]);
   const card = ([f, o]) => {
     const mine = unlocked(f, o), lg = isLegend(f, o.k), rot = rotFree(f, o.k), on = PREVIEW[f] === o.k || (!PREVIEW[f] && S.profile.style[f] === o.k);
     return `<div class="sitem ${on ? 'on' : ''} ${mine ? 'mine' : ''} ${lg ? 'legend' : ''}">${lg ? '<span class="lgbadge">LEGENDARIO</span>' : saleOf(f, o.k) && !mine ? '<span class="oferta">OFERTA</span>' : ''}<button class="sthumb" data-act="shoptry" data-f="${f}" data-v="${h(o.k)}" title="Probar">${lg ? lgCard(f, o) : shopThumb(f, o)}</button><b>${h(o.n)}</b>${lg ? `<small class="dim">${h(CAT_NAMES[f] || f)}</small>` : ''}
@@ -4985,7 +5158,7 @@ STYLE_DEF.entrada = 'none'; if (S.profile.style.entrada == null) S.profile.style
 CAT_NAMES.entrada = 'Entrada del perfil'; COIN_PRICE.entrada = 300;
 SHOP_CATS.splice(3, 0, ['entrada', 'Entradas']);
 function pfxAttr(st) { const a = pfxAttr9(st), e = st && st.entrada && st.entrada !== 'none' && optOf('entrada', st.entrada) ? ` data-ent="${h(st.entrada)}"` : ''; return a + e; }
-function extraClasses(st) { const base = extraClasses9(st); st = st || {}; return isLegend('theme', st.theme) ? base + ' thl th-' + st.theme : base; }
+function extraClasses10(st) { const base = extraClasses9(st); st = st || {}; return isLegend('theme', st.theme) ? base + ' thl th-' + st.theme : base; }
 window.__entSeen = {};
 function runEntrances() {
   document.querySelectorAll('.pcover[data-ent]:not([data-entdone])').forEach(c => {
@@ -5119,7 +5292,7 @@ function songHTML(st) {
 // ---------- logos de las redes (librería Simple Icons)
 const SI = { ig: ['instagram', '#E4405F'], tt: ['tiktok', '#ffffff'], x: ['x', '#ffffff'], yt: ['youtube', '#FF0000'], tw: ['twitch', '#9146FF'], lb: ['letterboxd', '#ff8000'], sp: ['spotify', '#1ED760'], st: ['steam', '#c7d5e0'], rd: ['reddit', '#FF4500'], dc: ['discord', '#5865F2'] };
 const siIcon = k => SI[k] ? `<i class="silogo" style="--si:url('https://cdn.jsdelivr.net/npm/simple-icons@13.0.0/icons/${SI[k][0]}.svg');--sc:${SI[k][1]}"></i>` : '';
-function extrasHTML(st) {
+function extrasHTML10(st) {
   let s = extrasHTML5(st);
   s = s.replace(/<(a|span) class="social s-(\w+)"([^>]*)><b>[^<]*<\/b>/g, (m, tag, k, rest) => `<${tag} class="social s-${k}"${rest}>${siIcon(k)}`);
   const l = st && st.link;
@@ -5130,7 +5303,7 @@ function extrasHTML(st) {
 // ---------- bloques del perfil (suma canción y episodios top)
 Object.assign(BLOCKS, { song: 'Canción favorita', topeps: 'Episodios top' });
 LAYOUT_DEF.order.push('song', 'topeps');
-function profileBlocksHTML(st, ctx) {
+function profileBlocksHTML10(st, ctx) {
   const L = layoutOf(st, ctx.row), out = [];
   for (const b of L.order) {
     if (L.hide.includes(b)) continue;
@@ -5143,7 +5316,7 @@ function profileBlocksHTML(st, ctx) {
   const joined = out.join('');
   return joined ? `<div class="pblocks">${joined}</div>` : '';
 }
-function sanitizeStyle(st, row) {
+function sanitizeStyle10(st, row) {
   const out = sanitizeStyle7(st, row), src = st || {};
   out.song = songEmbed(src.song) ? String(src.song).slice(0, 200) : '';
   out.topEps = (Array.isArray(src.topEps) ? src.topEps : []).filter(x => x && x.eid && isFinite(x.score)).slice(0, 10).map(x => ({ sid: +x.sid, eid: +x.eid, name: String(x.name || '').slice(0, 120), show: String(x.show || '').slice(0, 120), code: String(x.code || '').slice(0, 20), img: /^https:\/\/static\.tvmaze\.com\//.test(x.img || '') ? x.img : '', score: Math.min(10, Math.max(1, Math.round(+x.score * 10) / 10)), why: String(x.why || '').slice(0, 160) }));
@@ -5155,7 +5328,7 @@ STYLE_OPTS.mouse = [C('none', 'Nada', '', 1), C('estrellas', 'Estela de estrella
 STYLE_DEF.mouse = 'none'; CAT_NAMES.mouse = 'Efecto del mouse'; COIN_PRICE.mouse = 400; LG_PRICE.mouse = 2500; LG_PRICE.songstyle = 2500;
 for (const k of ['songstyle', 'mouse']) if (S.profile.style[k] == null) S.profile.style[k] = 'none';
 SHOP_CATS.splice(4, 0, ['mouse', 'Mouse'], ['songstyle', 'Canción']);
-function pfxAttr(st) { const a = pfxAttr9(st), e = st && st.entrada && st.entrada !== 'none' && optOf('entrada', st.entrada) ? ` data-ent="${h(st.entrada)}"` : '', m = st && st.mouse && st.mouse !== 'none' && optOf('mouse', st.mouse) ? ` data-mouse="${h(st.mouse)}"` : ''; return a + e + m; }
+function pfxAttr10(st) { const a = pfxAttr9(st), e = st && st.entrada && st.entrada !== 'none' && optOf('entrada', st.entrada) ? ` data-ent="${h(st.entrada)}"` : '', m = st && st.mouse && st.mouse !== 'none' && optOf('mouse', st.mouse) ? ` data-mouse="${h(st.mouse)}"` : ''; return a + e + m; }
 let mcv = null, mctx = null, mparts = [], mrun = false;
 function mouseLayer() { if (mcv) return; mcv = document.createElement('canvas'); mcv.className = 'mousecv'; document.body.appendChild(mcv); mctx = mcv.getContext('2d'); const rs = () => { const d = Math.min(2, devicePixelRatio || 1); mcv.width = innerWidth * d; mcv.height = innerHeight * d; mctx.setTransform(d, 0, 0, d, 0, 0); }; rs(); addEventListener('resize', rs); }
 const MCOL = { estrellas: ['#ffffff', '#ffd76a'], corazones: ['#ff5c8a', '#ff8fc8'], hadas: FAIRYC, burbujas: ['#bfe3ff', '#ffffff'], chispas: ['#7fd6ff', '#ffffff', '#ffd76a'], arcoiris: ['#ff7aa8', '#ffd36b', '#a8f0c6', '#7fe0ff', '#c3a8ff'], nieve: ['#ffffff'], petalos: ['#ffb3cf', '#ffd1e8'], 'lg-cometa': ['#ffffff', '#ffd76a', '#ff8fc8', '#8fd6ff'] };
@@ -5210,7 +5383,7 @@ new MutationObserver(() => splitNames()).observe(document.getElementById('app'),
 
 // ---------- hadas dando vueltas alrededor de tu foto
 STYLE_OPTS.deco.push(...[['turquesa', 'rosa', 'dorada'], ['violeta', 'celeste', 'lila']].map((tr, i) => Object.assign(C('lg-ronda' + i, i ? 'Ronda de hadas lila' : 'Ronda de hadas', 'lgronda|' + tr.join('+')), { lg: 1 })));
-function decoHTML(st) {
+function decoHTML10(st) {
   const o = optOf('deco', st && st.deco);
   if (o && o.v && o.v.startsWith('lgronda|')) {
     const pals = o.v.split('|')[1].split('+').map(c => HP[c] || HP.rosa);
@@ -5224,14 +5397,14 @@ let DAILY = { day: '', items: [] };
 const todayAR = () => new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10);
 async function loadDaily() {
   if (DAILY.day === todayAR() && DAILY.items.length) return DAILY.items;
-  const cands = Object.entries(STYLE_OPTS).flatMap(([f, l]) => f === 'site' ? [] : l.filter(o => !o.f && !isLegend(f, o.k) && !FOUNDER_ONLY(f, o.k)).map(o => f + ':' + o.k));
+  const cands = Object.entries(STYLE_OPTS).flatMap(([f, l]) => f === 'site' ? [] : l.filter(o => !o.f && !isLegend(f, o.k) && !FOUNDER_ONLY(f, o.k) && !isCX(f, o.k)).map(o => f + ':' + o.k));
   let items = null;
   if (typeof sbOK === 'function' && sbOK()) items = await sbTry(() => rest('rpc/get_daily_deals', { method: 'POST', body: { cands }, auth: isLogged() }), null);
   if (!Array.isArray(items) || !items.length) { const seed = itemHash(todayAR()); items = [0, 1, 2].map(i => cands[(seed * (i + 7) + i * 977) % cands.length]); }
   DAILY = { day: todayAR(), items: items.slice(0, 3) }; return DAILY.items;
 }
 const isDaily = (f, k) => DAILY.day === todayAR() && DAILY.items.includes(f + ':' + k);
-function priceOf(f, k) { const p = priceOf9(f, k); return !isLegend(f, k) && isDaily(f, k) ? Math.round(basePrice(f, k) / 2) : p; }
+function priceOf10(f, k) { const p = priceOf9(f, k); return !isLegend(f, k) && isDaily(f, k) ? Math.round(basePrice(f, k) / 2) : p; }
 function dailyHTML() {
   if (!DAILY.items.length) return '';
   const end = new Date(todayAR() + 'T03:00:00Z').getTime() + 864e5, left = Math.max(0, end - Date.now());
@@ -5290,6 +5463,451 @@ function fixHeroImages() {
   });
 }
 new MutationObserver(() => fixHeroImages()).observe(document.getElementById('app'), { childList: true, subtree: true });
+
+
+// ============================================================ V11: AURA, MASCOTAS QUE CAMINAN, BORDES ANIMADOS, FONDO DEL NOMBRE, STICKERS, TÍTULO ANIMADO, TORMENTA Y RAYOS
+const C7 = [['rosa', 'rosa', '#ff8fc8'], ['azul', 'azul', '#6aa8ff'], ['violeta', 'violeta', '#a87aff'], ['oro', 'dorado', '#ffd76a'], ['menta', 'menta', '#5ad1a8'], ['rojo', 'rojo', '#ff4a5a'], ['blanco', 'blanco', '#ffffff'], ['turquesa', 'turquesa', '#3fd6d0']];
+const lgo = (k, n, v) => Object.assign(C(k, n, v || k), { lg: 1 });
+const twoPart = v => String(v || '').split('|');
+
+// ---------- AURA (brillo animado alrededor de toda tu tarjeta)
+const AURAS = [['pulso', 'Pulso'], ['latido', 'Latido'], ['llama', 'Llama'], ['electrico', 'Eléctrica'], ['giro', 'Giratoria'], ['respira', 'Respira']];
+STYLE_OPTS.aura = [C('none', 'Sin aura', '', 1), ...AURAS.flatMap(([s, n]) => C7.slice(0, 7).map(([ck, cn, c]) => swatch(C(`${s}-${ck}`, `${n} ${cn}`, `${s}|${c}`), c))), lgo('lg-tormenta', 'Tormenta eléctrica'), lgo('lg-fuego', 'Fuego infernal'), lgo('lg-arcoiris', 'Arcoíris vivo'), lgo('lg-hadas', 'Aura de hadas'), lgo('lg-vacio', 'Sombra del vacío'), lgo('lg-galaxia', 'Aura galáctica')];
+// ---------- BORDE DE TARJETA ANIMADO
+const CFS = [['luz', 'Luz que da la vuelta'], ['doble', 'Dos luces'], ['punteado', 'Puntos que giran'], ['pulso', 'Borde que late'], ['chispas', 'Chispas'], ['cometa', 'Cometa']];
+STYLE_OPTS.cardframe = [C('none', 'Sin borde animado', '', 1), C('arcoiris', 'Arcoíris girando', 'arcoiris|#ffffff'), ...CFS.flatMap(([s, n]) => C7.map(([ck, cn, c]) => swatch(C(`${s}-${ck}`, `${n} ${cn}`, `${s}|${c}`), c))), lgo('lg-rayos', 'Rayos eléctricos'), lgo('lg-fuego', 'Borde de fuego'), lgo('lg-hadas', 'Hadas dando la vuelta'), lgo('lg-tormenta', 'Tormenta en el borde')];
+// ---------- FONDO DEL NOMBRE
+const NBS = [['humo', 'Humo'], ['ondas', 'Ondas'], ['particulas', 'Partículas'], ['destellos', 'Destellos'], ['rayos', 'Rayos'], ['lluvia', 'Lluvia'], ['glow', 'Resplandor']];
+STYLE_OPTS.namebg = [C('none', 'Nada', '', 1), ...NBS.flatMap(([s, n]) => C7.slice(0, 5).map(([ck, cn, c]) => swatch(C(`${s}-${ck}`, `${n} ${cn}`, `${s}|${c}`), c))), lgo('lg-tormenta', 'Tormenta detrás del nombre'), lgo('lg-galaxia', 'Galaxia detrás del nombre'), lgo('lg-aurora', 'Aurora detrás del nombre')];
+// ---------- TÍTULO ANIMADO (el texto abajo de tu nombre)
+STYLE_OPTS.titleanim = [C('none', 'Quieto', '', 1), ...[['brillo', 'Brillo que pasa'], ['escribe', 'Se escribe solo'], ['color', 'Cambia de color'], ['ola', 'Ola'], ['glitch', 'Glitch'], ['pulso', 'Late'], ['sube', 'Sube y baja'], ['arcoiris', 'Arcoíris'], ['resplandor', 'Resplandor'], ['parpadeo', 'Parpadeo'], ['oro', 'Dorado brillante'], ['rosa', 'Rosa brillante'], ['hielo', 'Hielo'], ['sombra', 'Sombra que gira']].map(([k, n]) => C(k, n, k)), lgo('lg-fuego', 'Título en llamas'), lgo('lg-holo', 'Título holográfico'), lgo('lg-rayo', 'Título eléctrico')];
+// ---------- STICKERS (los pegás donde quieras en tu tarjeta)
+const STK_ICONS = [['estrella', '#ffd76a'], ['corazon', '#ff5c8a'], ['rayo', '#ffe14a'], ['fuego', '#ff8a3d'], ['corona', '#ffd76a'], ['diamante', '#8fd6ff'], ['pochoclo', '#ff6b6b'], ['claqueta', '#c3a8ff'], ['tele', '#8fbcff'], ['control', '#a8f0c6'], ['musica', '#ff8fc8'], ['fantasma', '#ffffff'], ['calavera', '#e6e6ea'], ['luna', '#fff3c4'], ['sol', '#ffb03d'], ['flor', '#ffb3cf'], ['gato', '#c9ccd6'], ['cohete', '#ff8fb8'], ['mate', '#7fd6a0'], ['trofeo', '#ffd76a'], ['brillo', '#ffffff'], ['nube', '#bfe3ff'], ['planeta', '#c08bff'], ['varita', '#ff8fc8'], ['mariposa', '#5ff2d0']];
+const STK_WORDS = ['WOW', 'OTAKU', '100%', 'GOAT', 'TOP 1', 'XD', 'UwU', 'LOL', 'BINGE', 'NO SPOILERS', 'PLOT TWIST', 'LLORÉ', 'TEMPORADÓN', 'CRACK', 'LEYENDA', '<3', 'OMG', 'JAJA', 'ÉPICO', 'MARATÓN', 'VIP', 'HYPE', '10/10', 'SIN DORMIR', 'ANIME', 'K-DRAMA', 'SERIÉFILO', 'CINÉFILO', 'ARG', 'MOOD', 'FINAL ÉPICO', 'RE VICIO', 'NOCHE DE SERIES', 'SPOILER ALERT', 'BASADO'];
+STYLE_OPTS.sticker = [...STK_ICONS.map(([g, c]) => C('i-' + g, 'Sticker ' + (NGN[g] || g).toLowerCase(), 'i|' + g + '|' + c)), ...STK_WORDS.map((w, i) => { const p = BPAL[i % BPAL.length]; return C('w-' + i, `"${w}"`, `w|${w}|${p[0]}|${p[1]}`); }), ...['LEGEND', 'HOLO', 'JVNN', 'MYTHIC', '★ TOP ★'].map((w, i) => lgo('lg-h' + i, `"${w}" holográfico`, `h|${w}`))];
+const stkSVG = o => {
+  const [t, a, b, c] = twoPart(o && o.v);
+  if (t === 'i') return `<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="#fff"/><circle cx="20" cy="20" r="15.5" fill="${mix8(b, '#1a1420', .55)}"/><g transform="translate(8 8)" style="color:${b};fill:currentColor">${NGLYPH[a] || ''}</g></svg>`;
+  const w = a || '', len = Math.max(3, [...w].length), W = 16 + len * 9.4;
+  if (t === 'w') return `<svg viewBox="0 0 ${W} 30" aria-hidden="true"><rect x="1.5" y="1.5" width="${W - 3}" height="27" rx="9" fill="#fff"/><rect x="4" y="4" width="${W - 8}" height="22" rx="7" fill="${b}"/><rect x="4" y="4" width="${W - 8}" height="22" rx="7" fill="url(#stkg)" opacity=".0"/><text x="${W / 2}" y="20" text-anchor="middle" font-family="Bricolage Grotesque,Archivo,sans-serif" font-weight="900" font-size="14" fill="${mix8(c || '#000', '#000000', .45)}">${h(w)}</text></svg>`;
+  return `<svg class="stkholo" viewBox="0 0 ${W} 30" aria-hidden="true"><defs><linearGradient id="hg${w.length}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9ad5"/><stop offset=".33" stop-color="#9ad5ff"/><stop offset=".66" stop-color="#b4ffda"/><stop offset="1" stop-color="#fff4a8"/></linearGradient></defs><rect x="1.5" y="1.5" width="${W - 3}" height="27" rx="9" fill="#fff"/><rect x="4" y="4" width="${W - 8}" height="22" rx="7" fill="url(#hg${w.length})"/><text x="${W / 2}" y="20" text-anchor="middle" font-family="Bricolage Grotesque,Archivo,sans-serif" font-weight="900" font-size="14" fill="#2a1840">${h(w)}</text></svg>`;
+};
+
+// ---------- MASCOTAS QUE CAMINAN (y compañeros nuevos)
+Object.assign(CRIT, {
+  astronauta: ['Astronauta', a => `<rect x="18" y="38" width="28" height="22" rx="10" fill="#f4f4f8"/><rect x="22" y="44" width="20" height="5" rx="2" fill="${a}"/><rect x="12" y="40" width="8" height="14" rx="3" fill="#d6d9e2"/><circle cx="32" cy="24" r="17" fill="#f4f4f8"/><ellipse cx="32" cy="25" rx="12" ry="10" fill="#1b1f3a"/><ellipse cx="27" cy="21" rx="3.5" ry="2" fill="#fff" opacity=".6"/><circle cx="28" cy="25" r="1.6" fill="#8fd6ff"/><circle cx="36" cy="25" r="1.6" fill="#8fd6ff"/><path d="M32 7V2" stroke="#d6d9e2" stroke-width="2"/><circle cx="32" cy="2" r="2.4" fill="${a}"/>`],
+  robot: ['Robot', a => `<rect x="18" y="38" width="28" height="22" rx="6" fill="#aab2c4"/><circle cx="32" cy="49" r="4" fill="${a}"/><rect x="14" y="10" width="36" height="28" rx="9" fill="#c9d0de"/><rect x="18" y="15" width="28" height="18" rx="6" fill="#1b2030"/><rect x="23" y="21" width="5" height="6" rx="2" fill="${a}"/><rect x="36" y="21" width="5" height="6" rx="2" fill="${a}"/><path d="M32 10V4" stroke="#aab2c4" stroke-width="2.4"/><circle cx="32" cy="4" r="3" fill="${a}"/>`],
+  slime: ['Slime', a => `<path d="M10 58C8 40 18 22 32 22S56 40 54 58Z" fill="${a}" opacity=".85"/><path d="M10 58C8 40 18 22 32 22S56 40 54 58Z" fill="none" stroke="${mix8(a, '#000000', .25)}" stroke-width="1.6"/><ellipse cx="22" cy="34" rx="5" ry="3" fill="#fff" opacity=".55" transform="rotate(-30 22 34)"/>${eyes8(42, 7)}<path d="M28 49Q32 52 36 49" stroke="#2a1830" stroke-width="1.4" fill="none" stroke-linecap="round"/>`],
+  ninja: ['Ninja', a => `<path d="M14 62C12 44 20 37 32 37S52 44 50 62Z" fill="#23232e"/><circle cx="32" cy="24" r="17" fill="#23232e"/><rect x="15" y="19" width="34" height="11" rx="5" fill="#f2d2b6"/><path d="M47 22 60 17M47 25 59 28" stroke="${a}" stroke-width="3" stroke-linecap="round"/><rect x="14" y="16" width="36" height="4" rx="2" fill="${a}"/><path d="M22 24h7M35 24h7" stroke="#1b1b22" stroke-width="2.6" stroke-linecap="round"/>`],
+  mago: ['Mago', a => `<path d="M12 62 22 34H42L52 62Z" fill="${a}"/><circle cx="32" cy="30" r="12" fill="#f2d2b6"/><path d="M20 34C22 48 42 48 44 34C40 40 24 40 20 34Z" fill="#f4f4f4"/><path d="M14 22H50L32 0Z" fill="${mix8(a, '#000000', .2)}"/><circle cx="28" cy="12" r="1.6" fill="#ffd76a"/><circle cx="35" cy="17" r="1.2" fill="#ffd76a"/><circle cx="27" cy="29" r="1.8" fill="#1b1b22"/><circle cx="37" cy="29" r="1.8" fill="#1b1b22"/>`],
+  vampiro: ['Vampirito', a => `<path d="M8 62C10 46 18 38 32 38S54 46 56 62Z" fill="#1b1b22"/><path d="M14 40 24 50 32 40 40 50 50 40Z" fill="${a}"/><circle cx="32" cy="25" r="16" fill="#eef0f8"/><path d="M16 22C16 10 48 10 48 22L32 16Z" fill="#1b1b22"/>${eyes8(25)}<path d="M28 31h8" stroke="#b0406a" stroke-width="1.4" stroke-linecap="round"/><path d="M29 31l1 3 1-3M33 31l1 3 1-3" fill="#fff"/>`],
+  calabaza: ['Calabacita', a => `<ellipse cx="32" cy="40" rx="22" ry="19" fill="#ff8a2a"/><path d="M22 23C17 32 17 50 22 58M42 23C47 32 47 50 42 58M32 21V59" stroke="#d6641a" stroke-width="2" fill="none"/><path d="M30 22C30 16 32 12 36 10" stroke="#3a8a3a" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M24 36l4-4 4 4zM36 36l4-4 4 4z" fill="#3a1a0a"/><path d="M25 45Q32 51 39 45" stroke="#3a1a0a" stroke-width="2.4" fill="none" stroke-linecap="round"/>${bow8(a, 40, 16)}`],
+  alien: ['Alien', a => `<path d="M16 62C14 48 22 42 32 42S50 48 48 62Z" fill="#7fd68a"/><ellipse cx="32" cy="26" rx="18" ry="16" fill="#8fe69a"/><path d="M22 12 16 2M42 12 48 2" stroke="#7fd68a" stroke-width="2.4"/><circle cx="16" cy="2" r="3" fill="${a}"/><circle cx="48" cy="2" r="3" fill="${a}"/><ellipse cx="24" cy="27" rx="5.5" ry="7" fill="#1b1b22" transform="rotate(-15 24 27)"/><ellipse cx="40" cy="27" rx="5.5" ry="7" fill="#1b1b22" transform="rotate(15 40 27)"/><circle cx="25.5" cy="24" r="1.6" fill="#fff"/><circle cx="41.5" cy="24" r="1.6" fill="#fff"/>`],
+  lgnube: ['Nube de tormenta', a => `<g class="bolt"><path d="M30 44 24 56H31L27 64 40 50H32L36 44Z" fill="#ffe14a"/></g><g class="rain"><path d="M18 44l-3 8M26 46l-3 8M42 46l-3 8M48 44l-3 8" stroke="#8fd6ff" stroke-width="2" stroke-linecap="round"/></g><path d="M12 40a10 10 0 0 1 3-19 14 14 0 0 1 26-4 11 11 0 0 1 13 15 8 8 0 0 1-2 8z" fill="#5a6278"/><path d="M12 40a10 10 0 0 1 3-19 14 14 0 0 1 26-4" fill="none" stroke="#8a93ab" stroke-width="2"/>${eyes8(30, 7)}`],
+  lgespiritu: ['Espíritu eléctrico', a => `<g class="flick"><path d="M14 62V30a18 18 0 0 1 36 0V62l-6-5-6 5-6-5-6 5-6-5z" fill="#3d8bff" opacity=".85"/><path d="M14 30a18 18 0 0 1 36 0" fill="none" stroke="#bfe3ff" stroke-width="2"/></g><g class="bolt"><path d="M8 36 14 30 11 40 18 34M56 36 50 30 53 40 46 34" stroke="#ffe14a" stroke-width="2.2" fill="none" stroke-linecap="round"/></g><ellipse cx="25" cy="30" rx="3.2" ry="4.2" fill="#fff"/><ellipse cx="39" cy="30" rx="3.2" ry="4.2" fill="#fff"/><circle cx="25" cy="31" r="1.8" fill="#0a1a4a"/><circle cx="39" cy="31" r="1.8" fill="#0a1a4a"/>`],
+});
+const NEWC11 = ['astronauta', 'robot', 'slime', 'ninja', 'mago', 'vampiro', 'calabaza', 'alien'];
+{ const i0 = STYLE_OPTS.compa.findIndex(o => isLegend('compa', o.k)); STYLE_OPTS.compa.splice(i0, 0, ...NEWC11.flatMap(k => ACC.map(([ak, an]) => C(`${k}-${ak}`, `${CRIT[k][0]} ${an}`, `${k}|${ak}`)))); }
+STYLE_OPTS.compa.push(lgo('lg-nube', 'Nube de tormenta', 'lgnube|azul'), lgo('lg-espiritu', 'Espíritu eléctrico', 'lgespiritu|azul'));
+const PETS = ['gato', 'perro', 'conejo', 'fantasma', 'zorro', 'panda', 'pato', 'buho', 'dragon', 'hada', 'pinguino', 'rana', 'oso', 'unicornio', 'axolote', 'hamster', ...NEWC11];
+STYLE_OPTS.pet = [C('none', 'Sin mascota', '', 1), ...PETS.map((k, i) => C(k, CRIT[k][0] + ' que camina', `${k}|${ACC[i % ACC.length][0]}`)), lgo('lg-fenix', 'Fénix que camina', 'lgfenix|oro'), lgo('lg-dragon', 'Dragón legendario que camina', 'lgdragon|violeta'), lgo('lg-hada', 'Hada mágica que camina', 'lghada|rosa'), lgo('lg-nube', 'Nube de tormenta que te sigue', 'lgnube|azul'), lgo('lg-espiritu', 'Espíritu eléctrico', 'lgespiritu|azul'), lgo('lg-slime', 'Slime arcoíris', 'slime|rosa')];
+
+// ---------- TORMENTA, RAYOS Y LLUVIA en categorías que ya existían
+Object.assign(PFX, { llovizna: { s: 'drop', c: ['#bfe3ff'], n: 50, r: [6, 10], vy: [3, 4.5], vx: -.4 }, lluviafuerte: { s: 'drop', c: ['#bfe3ff', '#8fbcff'], n: 140, r: [12, 20], vy: [8, 11], vx: -1.4 } });
+Object.assign(PFXN, { llovizna: 'Llovizna', lluviafuerte: 'Lluvia fuerte' });
+{ const i0 = STYLE_OPTS.pfx.findIndex(o => isLegend('pfx', o.k)); STYLE_OPTS.pfx.splice(i0, 0, C('llovizna', 'Llovizna', 'llovizna'), C('lluviafuerte', 'Lluvia fuerte', 'lluviafuerte')); }
+const bolt = (ctx, x, y, len, ang, w, col, depth = 0) => { let cx = x, cy = y; const seg = 8 + Math.random() * 6; ctx.strokeStyle = col; ctx.lineWidth = w; ctx.shadowColor = '#8fd6ff'; ctx.shadowBlur = 16; ctx.beginPath(); ctx.moveTo(cx, cy); for (let i = 0; i < seg; i++) { cx += Math.cos(ang) * len / seg + (Math.random() - .5) * 18; cy += Math.sin(ang) * len / seg + (Math.random() - .5) * 6; ctx.lineTo(cx, cy); if (depth < 2 && Math.random() < .18) { ctx.stroke(); bolt(ctx, cx, cy, len * .4, ang + (Math.random() - .5) * 1.2, w * .55, col, depth + 1); ctx.strokeStyle = col; ctx.lineWidth = w; ctx.beginPath(); ctx.moveTo(cx, cy); } } ctx.stroke(); };
+Object.assign(LGDRAW, {
+  'lg-tormenta': { n: 'Tormenta eléctrica', init(S, W, H, R) { S.parts = Array.from({ length: Math.round(W * H / 2500) }, () => ({ x: R(0, W), y: R(0, H), l: R(10, 22), v: R(9, 14) })); S.flash = 0; S.bolt = null; },
+    draw(ctx, S, W, H, t, { R }) { ctx.clearRect(0, 0, W, H);
+      ctx.strokeStyle = 'rgba(190,220,255,.45)'; ctx.lineWidth = 1.2; ctx.beginPath(); for (const p of S.parts) { p.y += p.v; p.x -= p.v * .18; if (p.y > H + 20) { p.y = -20; p.x = R(0, W + 40); } ctx.moveTo(p.x, p.y); ctx.lineTo(p.x + p.l * .18, p.y - p.l); } ctx.stroke();
+      if (!S.bolt && Math.random() < .012) { S.bolt = { x: R(W * .1, W * .9), seed: Math.random(), life: 14 }; S.flash = 1; }
+      if (S.flash > 0) { ctx.fillStyle = `rgba(220,235,255,${S.flash * .35})`; ctx.fillRect(0, 0, W, H); S.flash -= .12; }
+      if (S.bolt) { if (S.bolt.life % 4 < 3) { ctx.save(); bolt(ctx, S.bolt.x, -10, H * .95, Math.PI / 2 + (S.bolt.seed - .5) * .4, 2.6, '#ffffff'); ctx.restore(); } if (--S.bolt.life <= 0) S.bolt = null; } } },
+  'lg-rayos': { n: 'Rayos', init(S) { S.items = []; },
+    draw(ctx, S, W, H, t, { R, fade }) { fade(.25); if (Math.random() < .05) S.items.push({ x: R(0, W), y: R(0, H * .4), a: Math.PI / 2 + R(-.8, .8), l: R(H * .4, H), life: 10, c: Math.random() < .5 ? '#ffffff' : '#9fd8ff' });
+      for (const b of S.items) { if (b.life % 3) { ctx.save(); bolt(ctx, b.x, b.y, b.l, b.a, 2, b.c); ctx.restore(); } b.life--; } S.items = S.items.filter(b => b.life > 0); } },
+  'lg-vidrio': { n: 'Lluvia en el vidrio', init(S, W, H, R) { S.parts = Array.from({ length: Math.round(W * H / 6000) }, () => ({ x: R(0, W), y: R(0, H), r: R(2, 6), v: 0, stuck: R(0, 200) })); },
+    draw(ctx, S, W, H, t, { R }) { ctx.clearRect(0, 0, W, H);
+      for (const d of S.parts) { if (d.stuck > 0) d.stuck--; else { d.v = Math.min(d.v + .05, 2.5 + d.r * .2); d.y += d.v; if (Math.random() < .02) d.stuck = R(10, 60), d.v = 0; } if (d.y > H + 10) { d.y = R(-40, H * .3); d.x = R(0, W); d.stuck = R(0, 120); }
+        if (d.v > .5) { ctx.globalAlpha = .18; ctx.fillStyle = '#cfe8ff'; ctx.fillRect(d.x - d.r * .3, d.y - 40, d.r * .6, 40); }
+        ctx.globalAlpha = .55; const g = ctx.createRadialGradient(d.x - d.r * .3, d.y - d.r * .3, 0, d.x, d.y, d.r); g.addColorStop(0, 'rgba(255,255,255,.9)'); g.addColorStop(1, 'rgba(160,200,240,.25)'); ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(d.x, d.y, d.r * .85, d.r, 0, 0, 6.28); ctx.fill(); } } },
+});
+for (const k of ['lg-tormenta', 'lg-rayos', 'lg-vidrio']) { LGFX[k] = LGDRAW[k].n; STYLE_OPTS.pfx.push(lgo(k, LGDRAW[k].n)); }
+STYLE_OPTS.theme.push(lgo('lg-tormenta', 'Noche de tormenta', 'linear-gradient(180deg,#141a2a,#05070d)'), lgo('lg-lluvia', 'Ventana con lluvia', 'linear-gradient(180deg,#1a2a3a,#0a121a)'));
+STYLE_OPTS.nameanim.push(lgo('lg-tormenta', 'Nombre de tormenta'), lgo('lg-plasma', 'Plasma eléctrico'));
+{ const i0 = STYLE_OPTS.nameanim.findIndex(o => isLegend('nameanim', o.k)); STYLE_OPTS.nameanim.splice(i0, 0, C('relampago', 'Relámpago', 'relampago'), C('gotas', 'Gotas que caen', 'gotas')); }
+STYLE_OPTS.deco.push(lgo('lg-nuberayo', 'Nube con rayos', 'lgnuberayo|azul'), lgo('lg-coronarayo', 'Corona de rayos', 'lgcoronarayo|oro'));
+STYLE_OPTS.entrada.push(C('confeti', 'Lluvia de confeti', 'confeti'), C('corazones', 'Lluvia de corazones', 'corazones'), lgo('lg-tormenta', 'Llega con un rayo'));
+// más hadas (6 colores nuevos)
+Object.assign(HP, { noche: { hair: '#3a3a9a', skin: '#e0e4ff', wing: '#b8c4ff', dress: '#2a2a7a', glow: '#7a8aff' }, sakura: { hair: '#f28ab8', skin: '#fff0f6', wing: '#ffd6e8', dress: '#e05a8a', glow: '#ffb3cf' }, oceano: { hair: '#1f8ab0', skin: '#dff6ff', wing: '#bff0ff', dress: '#0f5a8a', glow: '#4ad6ff' }, sol: { hair: '#ff9a2a', skin: '#fff3dc', wing: '#ffe6a8', dress: '#e06a1a', glow: '#ffc24a' }, bosque: { hair: '#2a8a4a', skin: '#e6ffe8', wing: '#c8f5c8', dress: '#1a6a3a', glow: '#7fe08a' }, hielo: { hair: '#9ad8ff', skin: '#f2fbff', wing: '#e8f8ff', dress: '#5ab0e0', glow: '#c8f0ff' } });
+Object.assign(HPN, { noche: 'de la noche', sakura: 'sakura', oceano: 'del océano', sol: 'del sol', bosque: 'del bosque', hielo: 'de hielo' });
+const NEWHP = ['noche', 'sakura', 'oceano', 'sol', 'bosque', 'hielo'];
+{ const i0 = STYLE_OPTS.deco.findIndex(o => isLegend('deco', o.k)); STYLE_OPTS.deco.splice(i0, 0, ...['hada', 'hombro', 'vuela'].flatMap(s => NEWHP.map(c => C(`${s}-${c}`, `${s === 'hada' ? 'Hada en la cabeza' : s === 'hombro' ? 'Hada en el hombro' : 'Hada volando'} ${HPN[c]}`, s + '|' + c)))); }
+STYLE_OPTS.deco.push(...NEWHP.map(c => lgo('lg-hada-' + c, `Hada mágica animada ${HPN[c]}`, 'lgfairy|' + c)));
+
+Object.assign(STYLE_DEF, { aura: 'none', cardframe: 'none', namebg: 'none', titleanim: 'none', pet: 'none' });
+for (const k of ['aura', 'cardframe', 'namebg', 'titleanim', 'pet']) if (S.profile.style[k] == null) S.profile.style[k] = 'none';
+if (!Array.isArray(S.profile.style.stickers)) S.profile.style.stickers = [];
+Object.assign(CAT_NAMES, { aura: 'Aura', cardframe: 'Borde de tarjeta', namebg: 'Fondo del nombre', titleanim: 'Título animado', pet: 'Mascota', sticker: 'Sticker' });
+Object.assign(COIN_PRICE, { aura: 400, cardframe: 400, namebg: 350, titleanim: 300, pet: 700, sticker: 150 });
+Object.assign(LG_PRICE, { aura: 2500, cardframe: 2500, namebg: 2500, titleanim: 2000, pet: 3000, sticker: 1500 });
+SHOP_CATS.splice(2, 0, ['aura', 'Auras'], ['pet', 'Mascotas'], ['cardframe', 'Bordes'], ['namebg', 'Fondo del nombre'], ['sticker', 'Stickers'], ['titleanim', 'Título']);
+CTABS7.splice(CTABS7.findIndex(t => t[0] === 'compa') + 1, 0, ['mascota', 'Mascota'], ['stickers', 'Stickers']);
+
+// ---------- dibujo de decoraciones de tormenta
+function decoHTML11(st) {
+  const o = optOf('deco', st && st.deco);
+  if (o && o.v === 'lgnuberayo|azul') return `<svg class="adeco anim storm" viewBox="0 0 160 160" aria-hidden="true"><g class="rain">${Array.from({ length: 9 }, (_, i) => `<path d="M${46 + i * 8} ${30 + (i % 3) * 4}l-3 10" stroke="#8fd6ff" stroke-width="2" stroke-linecap="round" style="animation-delay:${(i * .13).toFixed(2)}s"/>`).join('')}</g><g class="bolt"><path d="M84 26 76 44H84L78 58 94 38H86L90 26Z" fill="#ffe14a" stroke="#fff" stroke-width="1"/></g><path d="M40 30a13 13 0 0 1 4-24 18 18 0 0 1 34-6 14 14 0 0 1 18 2 13 13 0 0 1 22 10 10 10 0 0 1-4 18z" fill="#5a6278" transform="translate(0 -6)"/><path d="M40 24a13 13 0 0 1 4-24" fill="none" stroke="#8a93ab" stroke-width="2"/></svg>`;
+  if (o && o.v === 'lgcoronarayo|oro') return `<svg class="adeco anim storm" viewBox="0 0 160 160" aria-hidden="true"><g class="bolt">${[[52, 12], [80, 2], [108, 12]].map(([x, y]) => `<path d="M${x} ${y} ${x - 6} ${y + 14}H${x}L${x - 4} ${y + 26} ${x + 8} ${y + 10}H${x + 2}L${x + 6} ${y}Z" fill="#ffe14a" stroke="#fff" stroke-width=".8"/>`).join('')}</g><path d="M44 40Q80 22 116 40L112 46Q80 30 48 46Z" fill="#ffd76a" stroke="#b8860b" stroke-width="2"/><g class="tw">${sparkles8([[36, 30, 4], [124, 30, 4]], '#bfe3ff')}</g></svg>`;
+  return decoHTML10(st);
+}
+
+// ---------- clases y variables del perfil
+function extraClasses(st) {
+  st = st || {}; const out = [extraClasses10(st)];
+  const ao = optOf('aura', st.aura); if (ao && ao.v) out.push('au au-' + (isLegend('aura', ao.k) || isCX('aura', ao.k) ? ao.k : twoPart(ao.v)[0]));
+  const co = optOf('cardframe', st.cardframe); if (co && co.v) out.push('cfx cfx-' + (isLegend('cardframe', co.k) || isCX('cardframe', co.k) ? co.k : twoPart(co.v)[0]));
+  const no = optOf('namebg', st.namebg); if (no && no.v) out.push('nb nb-' + (isLegend('namebg', no.k) ? no.k : twoPart(no.v)[0]));
+  if (st.titleanim && st.titleanim !== 'none' && optOf('titleanim', st.titleanim)) out.push('ta-' + st.titleanim);
+  if (isCX('theme', st.theme) && optOf('theme', st.theme)) out.push('thl th-' + st.theme);
+  return out.filter(Boolean).join(' ');
+}
+function accentStyle(st) {
+  st = st || {}; const base = accentStyle8(st), v = [];
+  for (const [f, varn] of [['aura', '--auc'], ['cardframe', '--cfc'], ['namebg', '--nbc']]) { const o = optOf(f, st[f]); if (o && o.v && !isLegend(f, o.k) && !isCX(f, o.k)) v.push(varn + ':' + twoPart(o.v)[1]); }
+  return v.length ? base.slice(0, -1) + ';' + h(v.join(';')) + '"' : base;
+}
+function pfxAttr(st) {
+  let a = pfxAttr10(st); st = st || {};
+  const po = optOf('pet', st.pet); if (po && po.v) a += ` data-pet="${h(po.v)}${isLegend('pet', po.k) ? '|lg|' + h(po.k) : ''}"`;
+  const sk = (st.stickers || []).filter(x => optOf('sticker', x.k)); if (sk.length) a += ` data-stk="${h(JSON.stringify(sk))}"`;
+  return a;
+}
+function sanitizeStyle(st, row) {
+  const out = sanitizeStyle10(st, row), src = st || {}, full = isProRow(row), max = full ? 12 : 6;
+  out.stickers = (Array.isArray(src.stickers) ? src.stickers : []).filter(x => x && unlockedFor(row, 'sticker', optOf('sticker', x.k))).slice(0, max).map(x => ({ k: String(x.k), x: Math.min(97, Math.max(3, +x.x || 50)), y: Math.min(95, Math.max(5, +x.y || 50)), r: Math.min(45, Math.max(-45, +x.r || 0)), s: Math.min(2, Math.max(.5, +x.s || 1)) }));
+  return out;
+}
+
+// ---------- stickers y mascotas: se dibujan solos sobre la tarjeta
+function renderCardExtras() {
+  document.querySelectorAll('.pcover[data-stk]:not([data-stkon])').forEach(card => {
+    card.dataset.stkon = '1'; let list = []; try { list = JSON.parse(card.dataset.stk); } catch (e) { return; }
+    const layer = document.createElement('div'); layer.className = 'stklayer';
+    layer.innerHTML = list.map((x, i) => `<div class="stk ${isLegend('sticker', x.k) || isCX('sticker', x.k) ? 'lgstk' : ''}" data-i="${i}" style="left:${x.x}%;top:${x.y}%;--r:${x.r}deg;--s:${x.s}">${stkSVG(optOf('sticker', x.k))}</div>`).join('');
+    card.appendChild(layer);
+  });
+  document.querySelectorAll('.pcover[data-pet]:not([data-peton])').forEach(card => {
+    card.dataset.peton = '1'; const [k, a, lg, lk] = twoPart(card.dataset.pet); if (!CRIT[k]) return;
+    const el = document.createElement('div'); el.className = 'petw walk' + (lg ? ' lgpet ' + lk : ''); el.innerHTML = `<div class="petb"><svg viewBox="0 0 64 64" aria-hidden="true">${CRIT[k][1](ACCMAP[a] || ACCMAP.rosa, a)}</svg></div><span class="zzz">z<b>z</b><i>z</i></span>`;
+    card.appendChild(el); petRun(card, el);
+  });
+}
+function petRun(card, el) {
+  const P = { x: 20 + Math.random() * 100, dir: 1, st: 'walk', until: performance.now() + 3000 + Math.random() * 3000, sp: .5 + Math.random() * .3 };
+  el.addEventListener('click', ev => { ev.stopPropagation(); P.st = 'jump'; P.until = performance.now() + 700; el.className = el.className.replace(/\b(walk|idle|sleep|jump)\b/g, '').trim() + ' jump'; burstAt(ev.clientX, ev.clientY, ['#ff5c8a', '#ff8fc8', '#ffd1ea'], 12); });
+  const tick = now => {
+    if (!el.isConnected) return;
+    const W = card.clientWidth, maxX = Math.max(40, W - 80);
+    if (now > P.until) { const r = Math.random(); P.st = P.st === 'sleep' ? 'walk' : r < .55 ? 'walk' : r < .8 ? 'idle' : 'sleep'; P.until = now + (P.st === 'sleep' ? 5000 : P.st === 'idle' ? 2200 : 3500 + Math.random() * 4000); if (P.st === 'walk' && Math.random() < .4) P.dir *= -1; el.className = el.className.replace(/\b(walk|idle|sleep|jump)\b/g, '').trim() + ' ' + P.st; }
+    if (P.st === 'walk') { P.x += P.dir * P.sp; if (P.x > maxX) { P.x = maxX; P.dir = -1; } if (P.x < 10) { P.x = 10; P.dir = 1; } }
+    el.style.transform = `translateX(${P.x}px)`; el.style.setProperty('--dir', P.dir);
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+new MutationObserver(() => renderCardExtras()).observe(document.getElementById('app'), { childList: true, subtree: true });
+
+// ---------- editor: mascota y stickers
+function petEditHTML(view) {
+  return `<div class="cgroup"><div class="lb">Tu mascota <span class="dim">· camina por tu tarjeta, se sienta, se duerme y salta si la tocás</span></div><div class="swgrid decos">${STYLE_OPTS.pet.map(o => opt('pet', o, view.pet, o.v ? `<span class="cprev">${(() => { const [k, a] = twoPart(o.v); return CRIT[k] ? `<svg viewBox="0 0 64 64">${CRIT[k][1](ACCMAP[a] || ACCMAP.rosa, a)}</svg>` : ''; })()}</span><small>${h(o.n)}</small>` : '<small>Ninguna</small>')).join('')}</div></div>`;
+}
+function stickerEditHTML(st) {
+  const placed = st.stickers || [], max = PRO.me ? 12 : 6;
+  return `<p class="dim" style="margin:8px 0 0">Tocá un sticker para pegarlo. Después arrastralo en la vista previa adonde quieras. Podés pegar ${max}${PRO.me ? '' : ' (con Pro, 12)'}.</p>
+    ${placed.length ? `<div class="cgroup"><div class="lb">Tus stickers pegados (${placed.length}/${max})</div><div class="stkplaced">${placed.map((x, i) => { const o = optOf('sticker', x.k); return o ? `<div class="stkrow"><span class="stkmini">${stkSVG(o)}</span><label>Tamaño<input type="range" min="50" max="200" value="${Math.round(x.s * 100)}" data-stks="${i}"></label><label>Giro<input type="range" min="-45" max="45" value="${x.r}" data-stkr="${i}"></label><button class="linkbtn" data-act="stkdel" data-i="${i}">Sacar</button></div>` : ''; }).join('')}</div></div>` : ''}
+    <div class="cgroup"><div class="lb">Stickers</div><div class="swgrid stkgrid">${STYLE_OPTS.sticker.map(o => { const lk = !unlocked('sticker', o); return `<button class="sw ${lk ? 'locked' : ''} ${isLegend('sticker', o.k) ? 'lg' : ''}" data-act="${lk ? 'buyc' : 'stkadd'}" data-f="sticker" data-v="${h(o.k)}" title="${h(o.n)}${lk ? ' · ' + priceOf('sticker', o.k) + ' monedas' : ''}"><span class="stkmini">${stkSVG(o)}</span>${lk ? lockSVG : ''}</button>`; }).join('')}</div></div>`;
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-act="stkadd"],[data-act="stkdel"]'); if (!b) return;
+  const st = S.profile.style; st.stickers = st.stickers || []; const max = PRO.me ? 12 : 6;
+  if (b.dataset.act === 'stkadd') { if (st.stickers.length >= max) return toast(`Ya pegaste ${max} stickers.`); st.stickers.push({ k: b.dataset.v, x: 20 + Math.random() * 60, y: 20 + Math.random() * 50, r: Math.round((Math.random() - .5) * 24), s: 1 }); }
+  else st.stickers.splice(+b.dataset.i, 1);
+  save(); refresh();
+});
+document.addEventListener('input', e => {
+  const t = e.target, st = S.profile.style; if (!t.dataset) return;
+  const i = t.dataset.stks ?? t.dataset.stkr; if (i == null || !st.stickers || !st.stickers[+i]) return;
+  if (t.dataset.stks != null) st.stickers[+i].s = +t.value / 100; else st.stickers[+i].r = +t.value;
+  document.querySelectorAll(`.c7prev .stk[data-i="${i}"]`).forEach(el => { el.style.setProperty('--s', st.stickers[+i].s); el.style.setProperty('--r', st.stickers[+i].r + 'deg'); });
+  clearTimeout(window._stkT); window._stkT = setTimeout(save, 400);
+});
+// arrastrar stickers en la vista previa
+let stkDrag = null;
+document.addEventListener('pointerdown', e => { const el = e.target.closest('.c7prev .stk'); if (!el) return; e.preventDefault(); stkDrag = { el, i: +el.dataset.i, card: el.closest('.pcover') }; el.setPointerCapture && el.setPointerCapture(e.pointerId); el.classList.add('dragging'); });
+document.addEventListener('pointermove', e => { if (!stkDrag) return; const rc = stkDrag.card.getBoundingClientRect(); const x = Math.min(97, Math.max(3, (e.clientX - rc.left) / rc.width * 100)), y = Math.min(95, Math.max(5, (e.clientY - rc.top) / rc.height * 100)); stkDrag.el.style.left = x + '%'; stkDrag.el.style.top = y + '%'; stkDrag.x = x; stkDrag.y = y; });
+document.addEventListener('pointerup', () => { if (!stkDrag) return; const st = S.profile.style, s = st.stickers && st.stickers[stkDrag.i]; if (s && stkDrag.x != null) { s.x = Math.round(stkDrag.x * 10) / 10; s.y = Math.round(stkDrag.y * 10) / 10; save(); } stkDrag.el.classList.remove('dragging'); stkDrag = null; });
+
+// ---------- entradas nuevas (confeti, corazones, rayo)
+const _runEnt = runEntrances;
+function entExtra(card, k) {
+  if (k === 'confeti' || k === 'corazones') { const rc = card.getBoundingClientRect(); for (let i = 0; i < 6; i++) setTimeout(() => burstAt(rc.left + rc.width * (.15 + i * .14), rc.top + 20, k === 'corazones' ? ['#ff5c8a', '#ff8fc8', '#ffd1ea'] : ['#ff8fc8', '#ffd76a', '#8fd6ff', '#a8f0c6', '#c08bff'], 18, k === 'corazones' ? 'heart' : 'confeti'), i * 90); }
+  if (k === 'lg-tormenta') { card.classList.add('entflash'); setTimeout(() => card.classList.remove('entflash'), 900); }
+}
+new MutationObserver(() => document.querySelectorAll('.pcover.ent-run:not([data-entx])').forEach(c => { c.dataset.entx = '1'; entExtra(c, c.dataset.ent); })).observe(document.getElementById('app'), { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+
+// ---------- tienda: miniaturas de las categorías nuevas
+function shopThumb(f, o) {
+  const [s, c] = twoPart(o.v), L = isLegend(f, o.k);
+  if (f === 'aura') return `<span class="pcover v5 athumb au au-${L ? o.k : s}" style="--auc:${c || '#fff'}"></span>`;
+  if (f === 'cardframe') return `<span class="pcover v5 cfthumb cfx cfx-${L ? o.k : s}" style="--cfc:${c || '#fff'}"></span>`;
+  if (f === 'namebg') return `<span class="nbthumb nb nb-${L ? o.k : s}" style="--nbc:${c || '#fff'}"><span class="pid"><b>Nombre</b></span></span>`;
+  if (f === 'titleanim') return `<span class="tathumb ta-${h(o.k)}"><span class="ptitle"><span>Fan de las series</span></span></span>`;
+  if (f === 'sticker') return `<span class="stkmini big">${stkSVG(o)}</span>`;
+  if (f === 'pet') { const [k, a] = twoPart(o.v); return CRIT[k] ? `<span class="cprev big petthumb"><svg viewBox="0 0 64 64">${CRIT[k][1](ACCMAP[a] || ACCMAP.rosa, a)}</svg></span>` : ''; }
+  return shopThumb8(f, o);
+}
+function bannerHTML(style, favs) { return bannerHTML8(style, favs); }
+function profileBlocksHTML(st, ctx) { return profileBlocksHTML10(st, ctx); }
+function priceOf(f, k) { return priceOf10(f, k); }
+function extrasHTML(st) { return extrasHTML10(st); }
+function nameIconHTML(st) { return nameIconHTML9(st); }
+PRO_COUNT = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.filter(o => !o.f).length, 0) + 4;
+
+
+// ============================================================ V12: OBJETOS COLECCIONABLES (rarezas hasta 1 de 1), CAJAS, INVENTARIO, INTERCAMBIOS Y MERCADO
+function isCX(f, k) { return /^cx-/.test(String(k || '')); }
+function withColl(row, rows) { row = row || { plan: '', items: [] }; rows = rows || []; return { ...row, items: [...(row.items || []), ...rows.map(r => r.cid)], coll: rows }; }
+const RAR = {
+  comun: { n: 'Común', c: '#b8bcc8', o: 0 }, rara: { n: 'Rara', c: '#4b8bff', o: 1 }, epica: { n: 'Épica', c: '#a35bff', o: 2 }, legendaria: { n: 'Legendaria', c: '#ffb21f', o: 3 },
+  mitica: { n: 'Mítica', c: '#ff4fa8', o: 4 }, exotica: { n: 'Exótica', c: '#5ff2d0', o: 5 }, unica: { n: '1 de 1', c: '#ffffff', o: 6 },
+};
+const RORD = ['comun', 'rara', 'epica', 'legendaria', 'mitica', 'exotica', 'unica'];
+
+// ---------- objetos exclusivos de las cajas (no están en la tienda)
+Object.assign(HP, { cristal: { hair: '#bfe8ff', skin: '#f4fbff', wing: '#ffffff', dress: '#8fd6ff', glow: '#e8f8ff' }, prisma: { hair: '#ff8fc8', skin: '#fff4fb', wing: '#ffffff', dress: '#c08bff', glow: '#ffffff' }, primordial: { hair: '#ffd76a', skin: '#fff8e6', wing: '#fff3c4', dress: '#d6a01a', glow: '#ffe9a3' } });
+Object.assign(HPN, { cristal: 'de cristal', prisma: 'prisma', primordial: 'primordial' });
+CRIT.cxfenixhielo = ['Fénix de hielo', a => CRIT.lgfenix[1](a).replace(/#ffe066/g, '#e8f8ff').replace(/#ff8a3d/g, '#8fd6ff').replace(/#ff3d00/g, '#3d8bff').replace(/#ffb03d/g, '#bfe3ff').replace(/id="phx"/, 'id="phxi"').replace(/url\(#phx\)/g, 'url(#phxi)')];
+CRIT.cxdragontormenta = ['Dragón de tormenta', a => CRIT.lgdragon[1](a).replace(/#7a3ad6/g, '#2a3a6a').replace(/#9a5aff/g, '#3d5a9a').replace(/#c3a8ff/g, '#8fd6ff').replace(/#e6d6ff/g, '#bfe3ff') + `<g class="bolt"><path d="M50 4 46 12H50L47 20 55 10H51L53 4Z" fill="#ffe14a"/><path d="M12 6 9 13H12L10 19 16 11H13L14 6Z" fill="#ffe14a"/></g>`];
+CRIT.cxdragonprisma = ['Dragón prisma', a => `<g class="prisma">${CRIT.lgdragon[1](a)}</g>`];
+CRIT.cxdragoncelestial = ['Dragón celestial', a => `<g class="prisma slow">${CRIT.lgdragon[1](a).replace(/#7a3ad6/g, '#d6a01a').replace(/#9a5aff/g, '#ffd76a').replace(/#c3a8ff/g, '#fff3c4').replace(/#e6d6ff/g, '#fff8e6')}</g><g class="tw">${sparkles8([[6, 8, 3], [58, 6, 3], [60, 40, 2.4], [4, 44, 2.4]], '#fff')}</g>`];
+const CX = [
+  ['deco', 'cx-hadacristal', 'Hada de cristal', 'mitica', 'lgfairy|cristal'], ['compa', 'cx-fenixhielo', 'Fénix de hielo', 'mitica', 'cxfenixhielo|azul'], ['pfx', 'cx-tormentaviva', 'Tormenta viva', 'mitica', 'cx-tormentaviva'],
+  ['aura', 'cx-vacio', 'Aura del vacío estelar', 'mitica', 'cx-vacio'], ['nameanim', 'cx-plasma', 'Nombre de plasma', 'mitica', 'cx-plasma'], ['cardframe', 'cx-rayosazules', 'Borde de rayos azules', 'mitica', 'cx-rayosazules'],
+  ['pet', 'cx-dragontormenta', 'Dragón de tormenta', 'mitica', 'cxdragontormenta|azul'], ['theme', 'cx-galaxiarosa', 'Galaxia rosa', 'mitica', 'linear-gradient(160deg,#3a0a2a,#0a0514)'], ['sticker', 'cx-holojvnn', '"JVNN" mítico', 'mitica', 'h|JVNN ★'], ['namebg', 'cx-nebulosa', 'Nebulosa detrás del nombre', 'mitica', 'cx-nebulosa'],
+  ['deco', 'cx-hadaprisma', 'Hada prisma', 'exotica', 'lgfairy|prisma'], ['nameanim', 'cx-prisma', 'Nombre prisma', 'exotica', 'cx-prisma'], ['aura', 'cx-prisma', 'Aura prisma', 'exotica', 'cx-prisma'], ['pfx', 'cx-tormentaprisma', 'Tormenta prisma', 'exotica', 'cx-tormentaprisma'], ['compa', 'cx-dragonprisma', 'Dragón prisma', 'exotica', 'cxdragonprisma|violeta'],
+  ['deco', 'cx-ojotormenta', 'El Ojo de la Tormenta', 'unica', 'cxojo|azul'], ['deco', 'cx-hadaprimordial', 'Hada Primordial', 'unica', 'lgfairy|primordial'], ['nameanim', 'cx-eterno', 'Nombre Eterno', 'unica', 'cx-eterno'], ['pet', 'cx-dragoncelestial', 'Dragón Celestial', 'unica', 'cxdragoncelestial|oro'], ['theme', 'cx-galaxiaunica', 'Galaxia Única', 'unica', 'linear-gradient(160deg,#1a0a3a,#000)'], ['sticker', 'cx-corazonjvnn', 'Corazón de JVNN', 'unica', 'h|♥ JVNN ♥'],
+];
+const CX_MAX = { mitica: 100, exotica: 25, unica: 1 };
+for (const [f, k, n, r, v] of CX) STYLE_OPTS[f].push(Object.assign(C(k, n, v), { cx: r }));
+Object.assign(LGDRAW, {
+  'cx-tormentaviva': { n: 'Tormenta viva', init: LGDRAW['lg-tormenta'].init, draw(ctx, S, W, H, t, hp) { LGDRAW['lg-tormenta'].draw(ctx, S, W, H, t, hp); if (S.bolt && S.bolt.life % 4 < 3) { ctx.save(); ctx.globalCompositeOperation = 'lighter'; bolt(ctx, S.bolt.x + 30, -10, H * .8, Math.PI / 2 + .3, 1.6, '#e0a8ff'); ctx.restore(); } } },
+  'cx-tormentaprisma': { n: 'Tormenta prisma', init(S) { S.items = []; }, draw(ctx, S, W, H, t, { R, fade }) { fade(.2); if (Math.random() < .07) S.items.push({ x: R(0, W), y: R(0, H * .3), a: Math.PI / 2 + R(-.7, .7), l: R(H * .5, H), life: 10, c: `hsl(${(t * 3) % 360},100%,75%)` }); for (const b of S.items) { if (b.life % 3) { ctx.save(); bolt(ctx, b.x, b.y, b.l, b.a, 2.2, b.c); ctx.restore(); } b.life--; } S.items = S.items.filter(b => b.life > 0); } },
+});
+LGFX['cx-tormentaviva'] = 'Tormenta viva'; LGFX['cx-tormentaprisma'] = 'Tormenta prisma';
+function decoHTML(st) {
+  const o = optOf('deco', st && st.deco);
+  if (o && o.v === 'cxojo|azul') return `<svg class="adeco anim" viewBox="0 0 160 160" aria-hidden="true"><defs><radialGradient id="ojo"><stop offset=".55" stop-color="#3d8bff" stop-opacity="0"/><stop offset=".8" stop-color="#8fd6ff" stop-opacity=".55"/><stop offset="1" stop-color="#0a1a4a" stop-opacity="0"/></radialGradient></defs><circle cx="80" cy="80" r="80" fill="url(#ojo)"/><g class="spin">${Array.from({ length: 6 }, (_, i) => `<path d="M80 80m0-76a76 76 0 0 1 60 30" fill="none" stroke="${i % 2 ? '#bfe3ff' : '#3d8bff'}" stroke-width="${i % 2 ? 2 : 4}" stroke-linecap="round" transform="rotate(${i * 60} 80 80)" opacity=".85"/>`).join('')}</g><g class="spin rev">${Array.from({ length: 4 }, (_, i) => `<path d="M80 80m0-70a70 70 0 0 1 40 14" fill="none" stroke="#fff" stroke-width="1.4" transform="rotate(${i * 90 + 30} 80 80)" opacity=".7"/>`).join('')}</g><g class="bolt"><path d="M150 40 138 62H148L136 84 158 56H148L156 40Z" fill="#ffe14a"/><path d="M14 100 6 118H14L6 136 22 112H14L20 100Z" fill="#ffe14a"/></g></svg>`;
+  const svg = decoHTML11(st);
+  if (o && o.v === 'lgfairy|prisma') return svg.replace('class="adeco anim"', 'class="adeco anim prisma"');
+  if (o && o.v === 'lgfairy|primordial') return svg.replace('class="adeco anim"', 'class="adeco anim primordial"').replace('</svg>', `<circle cx="80" cy="80" r="76" fill="none" stroke="#ffd76a" stroke-width="2.5" stroke-dasharray="3 7" class="spin"/></svg>`);
+  if (o && o.v === 'lgfairy|cristal') return svg.replace('class="adeco anim"', 'class="adeco anim cristal"');
+  return svg;
+}
+
+// ---------- rareza de cada cosa (igual que en el servidor)
+function rarityOf(f, o) {
+  if (o.cx) return o.cx;
+  if (isLegend(f, o.k)) return 'legendaria';
+  const p = basePrice(f, o.k); return p >= 550 ? 'epica' : p >= 300 ? 'rara' : 'comun';
+}
+function collectCatalog() {
+  const rows = [];
+  for (const [f, l] of Object.entries(STYLE_OPTS)) { if (f === 'site') continue; for (const o of l) { if (o.f || FOUNDER_ONLY(f, o.k)) continue; const r = rarityOf(f, o); rows.push([f + ':' + o.k, f, o.k, o.n, r, CX_MAX[r] || null, r === 'comun' ? ['normal'] : ['normal', 'especial']]); } }
+  return rows;
+}
+const CAT_IDX = {}; for (const r of collectCatalog()) CAT_IDX[r[0]] = { id: r[0], f: r[1], k: r[2], n: r[3], r: r[4], max: r[5] };
+const catOf = cid => CAT_IDX[cid] || { id: cid, f: String(cid).split(':')[0], k: String(cid).split(':').slice(1).join(':'), n: cid, r: 'comun' };
+const BOXES = { normal: { n: 'Caja JVNN', p: 150, w: { comun: 55, rara: 30, epica: 11.4, legendaria: 3, mitica: .5, exotica: .09, unica: .01 } }, especial: { n: 'Caja Especial', p: 400, w: { rara: 50, epica: 32, legendaria: 13.5, mitica: 3.6, exotica: .8, unica: .1 } } };
+const WEAR = w => w < .07 ? 'Recién salida' : w < .15 ? 'Casi nueva' : w < .38 ? 'Bastante usada' : w < .45 ? 'Gastada' : 'Muy gastada';
+const RAREPAT = new Set([1, 7, 69, 77, 100, 333, 420, 500, 666, 777, 999, 1000]);
+
+// ---------- inventario propio
+const INV = { list: [], ok: false };
+async function loadInv() { if (!isLogged()) { INV.list = []; INV.ok = false; return; } const rows = await sbTry(() => rest(`items?select=id,cid,serial,pattern,wear,created_at&owner=eq.${ME.id}&order=created_at.desc&limit=2000`), null); if (rows) { INV.list = rows; INV.ok = true; } }
+async function loadWallet() { await loadWallet7(); await loadInv(); }
+function myProRow() { const r = myProRow7(); return { ...r, items: r.items.concat(INV.list.map(x => x.cid)), coll: INV.list }; }
+
+// ---------- tarjeta de un objeto
+function itemThumb(cid, pattern) { const c = catOf(cid), o = optOf(c.f, c.k); if (!o) return ''; const shift = pattern ? (pattern % 31) - 15 : 0; return `<span class="ithumb" style="${c.r !== 'comun' && pattern ? `filter:hue-rotate(${shift}deg)` : ''}">${isLegend(c.f, o.k) || isCX(c.f, o.k) ? lgCard(c.f, o) : shopThumb(c.f, o)}</span>`; }
+function collCard(it, actions = '', extra = '') {
+  const c = catOf(it.cid), R = RAR[c.r] || RAR.comun, rp = RAREPAT.has(it.pattern);
+  return `<div class="icard r-${c.r} ${rp ? 'rarepat' : ''}" style="--rc:${R.c}"><div class="irar">${R.n}</div><div class="ithumbw">${itemThumb(it.cid, it.pattern)}</div><b class="iname">${h(c.n)}</b><small class="dim">${h(CAT_NAMES[c.f] || c.f)}</small>
+    <div class="imeta"><span title="Número de serie">#${it.serial}${c.max ? ' de ' + c.max : ''}</span><span title="Código de patrón">P${it.pattern}${rp ? ' ★' : ''}</span></div><div class="iwear dim">${WEAR(+it.wear)}</div>${extra}${actions ? `<div class="iact">${actions}</div>` : ''}</div>`;
+}
+
+// ---------- barra de la economía (tienda, cajas, inventario, mercado, intercambios)
+function ecoNav(cur) { return `<nav class="econav">${[['tienda', 'Tienda'], ['cajas', 'Cajas'], ['inventario', 'Inventario'], ['mercado', 'Mercado'], ['intercambios', 'Intercambios']].map(([k, n]) => `<a class="${k === cur ? 'on' : ''}" href="#/${k}">${n}</a>`).join('')}<span class="ecocoins">${coinSVG(18)} <b>${WALLET.coins.toLocaleString('es-AR')}</b></span></nav>`; }
+const needLogin = draw => draw(`${ecoNav('')}<div class="invite sec"><div><h2>Necesitás una cuenta</h2><p class="dim">Las cajas, el inventario y el mercado se guardan en el servidor para que nadie pueda hacer trampa.</p></div><a class="btn pri" href="#/entrar/crear">Crear cuenta gratis</a></div>`);
+
+// ---------- CAJAS
+async function vBoxes(_, draw) {
+  const odds = b => RORD.filter(r => b.w[r]).map(r => `<li style="--rc:${RAR[r].c}"><span>${RAR[r].n}</span><b>${String(b.w[r]).replace('.', ',')}%</b></li>`).join('');
+  draw(`${ecoNav('cajas')}<section class="pagehead"><div class="eyebrow">Cajas</div><h1>Abrí cajas y conseguí objetos únicos</h1><p class="dim">Cada objeto que sale tiene su número de serie y su código de patrón. Algunos son tan raros que existe uno solo en toda la página.</p></section>
+    <div class="boxgrid">${Object.entries(BOXES).map(([k, b]) => `<div class="boxcard bx-${k}"><div class="boxart"><div class="boxcube"><i></i><i></i><i></i></div></div><h2>${b.n}</h2><ul class="odds">${odds(b)}</ul><button class="btn pri big" data-act="openbox" data-b="${k}">${coinSVG(18)} Abrir por ${b.p}</button></div>`).join('')}</div>
+    <p class="small dim sec">Las probabilidades son reales y las calcula el servidor. Las cajas se abren solo con monedas que ganás usando la página: no se compran con plata y lo que sacás no se puede cambiar por plata.</p>`);
+}
+let opening = false;
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-act="openbox"]'); if (!b || opening) return;
+  if (!isLogged()) { location.hash = '#/entrar/crear'; return; }
+  const box = BOXES[b.dataset.b]; if (WALLET.coins < box.p) return toast(`Te faltan ${box.p - WALLET.coins} monedas para esta caja.`);
+  opening = true; b.disabled = true;
+  let res = null;
+  try { res = await rest('rpc/open_box', { method: 'POST', body: { box_id: b.dataset.b } }); }
+  catch (x) { opening = false; b.disabled = false; return toast(/function|404/i.test(x.message) && !/monedas/.test(x.message) ? 'Falta activar las cajas en Supabase (supabase_v11.sql).' : x.message); }
+  if (typeof res === 'string') try { res = JSON.parse(res); } catch (x) { }
+  WALLET.coins = res.coins ?? WALLET.coins; renderCoins();
+  INV.list.unshift(res.item);
+  spinReveal(b.dataset.b, res.item, () => { opening = false; });
+});
+function spinReveal(boxId, item, done) {
+  const box = BOXES[boxId], pool = Object.values(CAT_IDX).filter(c => box.w[c.r]);
+  const pickR = () => { let x = Math.random() * 100, acc = 0; for (const r of [...RORD].reverse()) { acc += box.w[r] || 0; if (x < acc) return r; } return 'rara'; };
+  const strip = Array.from({ length: 52 }, () => { const r = pickR(), l = pool.filter(c => c.r === r); return l[Math.floor(Math.random() * l.length)] || pool[0]; });
+  const WIN = 46; strip[WIN] = catOf(item.cid);
+  const ov = document.createElement('div'); ov.className = 'boxov';
+  ov.innerHTML = `<div class="boxmodal"><div class="rlwrap"><div class="rlpin"></div><div class="rlstrip">${strip.map(c => `<div class="rlitem" style="--rc:${(RAR[c.r] || RAR.comun).c}">${itemThumb(c.id)}<small>${h(c.n)}</small></div>`).join('')}</div></div><div class="reveal" hidden></div></div>`;
+  document.body.appendChild(ov);
+  const st = ov.querySelector('.rlstrip'), wrap = ov.querySelector('.rlwrap');
+  requestAnimationFrame(() => { const iw = st.children[0].getBoundingClientRect().width + 10, off = WIN * iw - wrap.clientWidth / 2 + iw / 2 + (Math.random() - .5) * iw * .6; st.style.transition = 'transform 6.2s cubic-bezier(.08,.82,.17,1)'; st.style.transform = `translateX(${-off}px)`; });
+  setTimeout(() => {
+    const c = catOf(item.cid), R = RAR[c.r], big = R.o >= 4, rv = ov.querySelector('.reveal');
+    st.children[WIN].classList.add('win');
+    rv.hidden = false; rv.innerHTML = `<div class="rvtitle" style="--rc:${R.c}">${big ? '¡INCREÍBLE! ' : ''}Te salió algo ${R.n.toLowerCase()}</div>${collCard(item)}<div class="actions" style="justify-content:center;margin-top:14px"><button class="btn pri" data-act="equipitem" data-cid="${h(item.cid)}">Ponérmelo</button><a class="btn" href="#/inventario" data-act="closebox">Ver inventario</a><button class="btn ghost" data-act="closebox">Seguir abriendo</button></div>`;
+    ov.classList.add('done', 'r-' + c.r);
+    if (R.o >= 3) { const rc = rv.getBoundingClientRect(); for (let i = 0; i < (big ? 8 : 3); i++) setTimeout(() => burstAt(rc.left + rc.width * Math.random(), rc.top + 40, c.r === 'exotica' || c.r === 'unica' ? ['#ff7aa8', '#ffd36b', '#a8f0c6', '#7fe0ff', '#c3a8ff', '#ffffff'] : [R.c, '#ffffff', '#ffd76a'], 30, 'confeti'), i * 140); }
+    done();
+  }, 6500);
+}
+document.addEventListener('click', e => {
+  if (e.target.closest('[data-act="closebox"]')) { document.querySelectorAll('.boxov').forEach(x => x.remove()); if (parseRoute().name !== 'inventario') refresh(); return; }
+  const q = e.target.closest('[data-act="equipitem"]'); if (!q) return;
+  const c = catOf(q.dataset.cid); if (c.f === 'sticker') { const s = S.profile.style; s.stickers = s.stickers || []; s.stickers.push({ k: c.k, x: 50, y: 40, r: 0, s: 1 }); } else S.profile.style[c.f] = c.k;
+  delete PREVIEW[c.f]; save(); toast('¡Listo, ya lo tenés puesto!'); document.querySelectorAll('.boxov').forEach(x => x.remove()); refresh();
+});
+
+// ---------- INVENTARIO
+async function vInventory(_, draw, alive) {
+  if (!isLogged()) return needLogin(draw);
+  draw(`${ecoNav('inventario')}<div class="sec">${Array.from({ length: 8 }, () => '<div class="skel" style="height:220px;display:inline-block;width:180px;margin:6px"></div>').join('')}</div>`);
+  await loadInv(); if (!alive()) return;
+  const listed = await sbTry(() => rest(`market?select=id,item_id,price&seller=eq.${ME.id}&status=eq.active`), []) || [];
+  const lm = Object.fromEntries(listed.map(l => [l.item_id, l]));
+  const fr = UI.invR || 'todas', list = INV.list.filter(it => fr === 'todas' || catOf(it.cid).r === fr).sort((a, b) => RAR[catOf(b.cid).r].o - RAR[catOf(a.cid).r].o || a.serial - b.serial);
+  const counts = {}; for (const it of INV.list) counts[catOf(it.cid).r] = (counts[catOf(it.cid).r] || 0) + 1;
+  draw(`${ecoNav('inventario')}<section class="pagehead"><div class="eyebrow">Inventario</div><h1>Tus objetos</h1><p class="dim">${plural(INV.list.length, 'objeto', 'objetos')}. Lo que tenés acá ya está desbloqueado para tu perfil.</p></section>
+    <div class="tabs">${[['todas', 'Todas']].concat(RORD.map(r => [r, RAR[r].n])).map(([k, n]) => `<button class="tab ${k === fr ? 'on' : ''}" data-act="invr" data-v="${k}">${n}${k === 'todas' ? '' : `<span>${counts[k] || 0}</span>`}</button>`).join('')}</div>
+    ${list.length ? `<div class="igrid">${list.map(it => { const l = lm[it.id], c = catOf(it.cid), on = c.f === 'sticker' ? false : S.profile.style[c.f] === c.k; return collCard(it, l ? `<span class="chip">En venta · ${coinSVG(12)} ${l.price}</span><button class="btn sm ghost" data-act="mkcancel" data-id="${l.id}">Sacar de venta</button>` : `<button class="btn sm ${on ? '' : 'pri'}" data-act="equipitem" data-cid="${h(it.cid)}">${on ? 'Puesto' : 'Poner'}</button><button class="btn sm" data-act="mklist" data-id="${it.id}">Vender</button>`); }).join('')}</div>`
+      : `<div class="empty sec"><h3>Todavía no tenés objetos</h3><div>Abrí una caja para empezar tu colección.</div><a class="btn pri" href="#/cajas">Ir a las cajas</a></div>`}`);
+}
+document.addEventListener('click', async e => {
+  const t = e.target.closest('[data-act="invr"]'); if (t) { UI.invR = t.dataset.v; refresh(); return; }
+  const l = e.target.closest('[data-act="mklist"]');
+  if (l) { const v = prompt('¿A cuántas monedas lo querés vender? (la página se queda con el 5%)'); const p = parseInt(String(v || '').replace(/\D/g, '')); if (!p) return; try { await rest('rpc/market_list', { method: 'POST', body: { p_item: +l.dataset.id, p_price: p } }); toast('Publicado en el mercado.'); refresh(); } catch (x) { toast(x.message); } return; }
+  const c = e.target.closest('[data-act="mkcancel"]');
+  if (c) { try { await rest('rpc/market_cancel', { method: 'POST', body: { p_id: +c.dataset.id } }); toast('Lo sacaste de venta.'); refresh(); } catch (x) { toast(x.message); } return; }
+  const bb = e.target.closest('[data-act="mkbuy"]');
+  if (bb) { if (!isLogged()) { location.hash = '#/entrar/crear'; return; } const ok = await ask('¿Comprar este objeto?', `Cuesta ${bb.dataset.p} monedas y tenés ${WALLET.coins}.`, [['yes', 'Comprar', 'pri']]); if (!ok) return; try { const w = await rest('rpc/market_buy', { method: 'POST', body: { p_id: +bb.dataset.id } }); if (w && w.coins != null) setWallet(Array.isArray(w) ? w[0] : w); await loadWallet(); toast('¡Es tuyo! Ya está en tu inventario.'); refresh(); } catch (x) { toast(x.message); } }
+});
+
+// ---------- MERCADO
+async function vMarket(_, draw, alive) {
+  draw(`${ecoNav('mercado')}<div class="sec skel" style="height:300px"></div>`);
+  const rows = await sbTry(() => rest('market?select=id,price,created_at,seller,item:items(id,cid,serial,pattern,wear)&status=eq.active&order=created_at.desc&limit=300', { auth: false }), []) || [];
+  const sellers = await profilesByIds([...new Set(rows.map(r => r.seller))]);
+  const top = await sbTry(() => rest('collector_scores?select=owner,n,score&order=score.desc&limit=10', { auth: false }), []) || [];
+  const topP = await profilesByIds(top.map(t => t.owner));
+  if (!alive()) return;
+  const fr = UI.mkR || 'todas', so = UI.mkSort || 'new', q = (UI.mkQ || '').toLowerCase();
+  let list = rows.filter(r => r.item && (fr === 'todas' || catOf(r.item.cid).r === fr) && (!q || catOf(r.item.cid).n.toLowerCase().includes(q)));
+  if (so === 'cheap') list.sort((a, b) => a.price - b.price); if (so === 'exp') list.sort((a, b) => b.price - a.price); if (so === 'serial') list.sort((a, b) => a.item.serial - b.item.serial); if (so === 'rare') list.sort((a, b) => RAR[catOf(b.item.cid).r].o - RAR[catOf(a.item.cid).r].o);
+  draw(`${ecoNav('mercado')}<section class="pagehead"><div class="eyebrow">Mercado</div><h1>Comprá y vendé objetos</h1><p class="dim">Todo con monedas. Al vendedor le llega el 95%; el 5% se va para que las monedas no pierdan valor.</p></section>
+    <div class="toolbar"><input type="search" id="mkq" placeholder="Buscar objeto…" value="${h(UI.mkQ || '')}"><select class="btn sm" id="mksort">${[['new', 'Más nuevos'], ['cheap', 'Más baratos'], ['exp', 'Más caros'], ['serial', 'Número de serie más bajo'], ['rare', 'Más raros']].map(([k, n]) => `<option value="${k}" ${k === so ? 'selected' : ''}>${n}</option>`).join('')}</select></div>
+    <div class="tabs">${[['todas', 'Todas']].concat(RORD.map(r => [r, RAR[r].n])).map(([k, n]) => `<button class="tab ${k === fr ? 'on' : ''}" data-act="mkr" data-v="${k}">${n}</button>`).join('')}</div>
+    <div class="mkgrid"><div>${list.length ? `<div class="igrid">${list.map(r => collCard(r.item, isLogged() && r.seller === ME.id ? `<button class="btn sm ghost" data-act="mkcancel" data-id="${r.id}">Sacar de venta</button>` : `<button class="btn sm pri" data-act="mkbuy" data-id="${r.id}" data-p="${r.price}">${coinSVG(14)} ${r.price.toLocaleString('es-AR')}</button>`, `<div class="small dim">Vende ${sellers[r.seller] ? '@' + h(sellers[r.seller].username) : 'alguien'}</div>`)).join('')}</div>` : '<div class="empty"><h3>No hay nada a la venta</h3><div>Cuando alguien publique algo, aparece acá.</div></div>'}</div>
+    <aside class="panel"><h3 style="margin-top:0">Top coleccionistas</h3>${top.length ? `<ol class="rklist">${top.map((t, i) => { const p = topP[t.owner]; return p ? `<li><span class="rkn">${i + 1}</span><a href="#/u/${h(p.username)}">${avatar(p, 32)}</a><a class="rkname" href="#/u/${h(p.username)}"><b>${h(p.name || p.username)}</b><span>${plural(+t.n, 'objeto', 'objetos')}</span></a><em>${(+t.score).toLocaleString('es-AR')} pts</em></li>` : ''; }).join('')}</ol>` : '<p class="small dim">Todavía nadie tiene objetos.</p>'}</aside></div>`);
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-act="mkr"]'); if (b) { UI.mkR = b.dataset.v; refresh(); } });
+document.addEventListener('change', e => { if (e.target.id === 'mksort') { UI.mkSort = e.target.value; refresh(); } });
+document.addEventListener('input', e => { if (e.target.id === 'mkq') { UI.mkQ = e.target.value; clearTimeout(window._mkT); window._mkT = setTimeout(refresh, 400); } });
+
+// ---------- INTERCAMBIOS
+async function vTrades(args, draw, alive) {
+  if (!isLogged()) return needLogin(draw);
+  if (args[0] === 'con' && args[1]) return vTradeNew(args[1], draw, alive);
+  draw(`${ecoNav('intercambios')}<div class="sec skel" style="height:240px"></div>`);
+  const rows = await sbTry(() => rest(`trades?select=*&or=(from_user.eq.${ME.id},to_user.eq.${ME.id})&order=created_at.desc&limit=60`), []) || [];
+  const ids = [...new Set(rows.flatMap(t => [...t.give_items, ...t.get_items]))];
+  const its = ids.length ? await sbTry(() => rest(`items?select=id,cid,serial,pattern,wear&id=${inList(ids)}`, { auth: false }), []) || [] : [];
+  const im = Object.fromEntries(its.map(i => [i.id, i])), people = await profilesByIds([...new Set(rows.flatMap(t => [t.from_user, t.to_user]))]);
+  if (!alive()) return;
+  const side = (arr, coins) => `<div class="tside">${arr.map(id => im[id] ? `<div class="tmini" style="--rc:${RAR[catOf(im[id].cid).r].c}">${itemThumb(im[id].cid, im[id].pattern)}<small>${h(catOf(im[id].cid).n)} #${im[id].serial}</small></div>` : '').join('')}${coins ? `<div class="tmini coins">${coinSVG(26)}<small>${coins.toLocaleString('es-AR')} monedas</small></div>` : ''}${!arr.length && !coins ? '<span class="dim small">Nada</span>' : ''}</div>`;
+  const st = { pending: 'Esperando respuesta', accepted: 'Aceptado', rejected: 'Rechazado', cancelled: 'Cancelado', failed: 'No se pudo hacer (algo ya no estaba)' };
+  draw(`${ecoNav('intercambios')}<section class="pagehead"><div class="eyebrow">Intercambios</div><h1>Tus intercambios</h1><p class="dim">Para proponer uno, entrá al perfil de alguien y tocá "Proponer intercambio".</p></section>
+    ${rows.length ? rows.map(t => { const mine = t.from_user === ME.id, other = people[mine ? t.to_user : t.from_user]; return `<div class="trade panel ${t.status}"><div class="thead"><b>${mine ? 'Le propusiste a' : 'Te propone'} @${h(other ? other.username : '?')}</b><span class="chip">${st[t.status]}</span></div>
+      <div class="tcols"><div><div class="lb">${mine ? 'Vos das' : 'Te da'}</div>${side(t.give_items, t.give_coins)}</div><div class="tarrow">⇄</div><div><div class="lb">${mine ? 'Vos recibís' : 'Te pide'}</div>${side(t.get_items, t.get_coins)}</div></div>
+      ${t.status === 'pending' ? `<div class="actions">${mine ? `<button class="btn sm ghost" data-act="trcancel" data-id="${t.id}">Cancelar</button>` : `<button class="btn sm pri" data-act="trok" data-id="${t.id}">Aceptar</button><button class="btn sm ghost" data-act="trno" data-id="${t.id}">Rechazar</button>`}</div>` : ''}</div>`; }).join('') : '<div class="empty sec"><h3>No tenés intercambios</h3><div>Buscá a alguien en Gente y proponele uno.</div><a class="btn" href="#/gente">Ir a Gente</a></div>'}`);
+}
+let TRD = { give: new Set(), get: new Set() };
+async function vTradeNew(username, draw, alive) {
+  const p = (await rest(`profiles?select=id,username,name,photo&username=eq.${encodeURIComponent(username)}`, { auth: false }).catch(() => []))[0];
+  if (!p) return draw(empty('No encontramos a esa persona', ''));
+  await loadInv();
+  const theirs = await sbTry(() => rest(`items?select=id,cid,serial,pattern,wear&owner=eq.${p.id}&limit=2000`, { auth: false }), []) || [];
+  if (!alive()) return;
+  if (TRD.who !== p.id) TRD = { who: p.id, give: new Set(), get: new Set() };
+  const pick = (arr, set, side) => arr.length ? `<div class="igrid small">${arr.map(it => `<label class="pickit ${set.has(it.id) ? 'on' : ''}"><input type="checkbox" data-trside="${side}" value="${it.id}" ${set.has(it.id) ? 'checked' : ''}>${collCard(it)}</label>`).join('')}</div>` : '<p class="dim small">No tiene objetos.</p>';
+  draw(`${ecoNav('intercambios')}<section class="pagehead"><div class="eyebrow">Nuevo intercambio</div><h1>Intercambio con @${h(p.username)}</h1><p class="dim">Elegí qué das y qué pedís. Podés sumar monedas de cada lado. Se hace todo junto o no se hace.</p></section>
+    <div class="tnew"><section class="panel"><h3>Vos das</h3><label class="lb">Monedas <input type="number" id="trgc" min="0" value="${TRD.gc || 0}"></label>${pick(INV.list, TRD.give, 'give')}</section>
+    <section class="panel"><h3>Le pedís</h3><label class="lb">Monedas <input type="number" id="trgg" min="0" value="${TRD.gg || 0}"></label>${pick(theirs, TRD.get, 'get')}</section></div>
+    <div class="actions sec"><button class="btn pri" data-act="trsend" data-to="${p.id}">Enviar propuesta</button><a class="btn ghost" href="#/u/${h(p.username)}">Cancelar</a></div>`);
+}
+document.addEventListener('change', e => { const t = e.target; if (t.dataset && t.dataset.trside) { const s = TRD[t.dataset.trside]; t.checked ? s.add(+t.value) : s.delete(+t.value); t.closest('.pickit').classList.toggle('on', t.checked); } if (t.id === 'trgc') TRD.gc = +t.value || 0; if (t.id === 'trgg') TRD.gg = +t.value || 0; });
+document.addEventListener('click', async e => {
+  const s = e.target.closest('[data-act="trsend"]');
+  if (s) { if (!TRD.give.size && !TRD.get.size && !TRD.gc && !TRD.gg) return toast('Elegí algo para intercambiar.'); try { await rest('rpc/trade_offer', { method: 'POST', body: { p_to: s.dataset.to, p_give: [...TRD.give], p_give_coins: TRD.gc || 0, p_get: [...TRD.get], p_get_coins: TRD.gg || 0 } }); TRD = { give: new Set(), get: new Set() }; toast('¡Propuesta enviada!'); location.hash = '#/intercambios'; } catch (x) { toast(x.message); } return; }
+  const r = e.target.closest('[data-act="trok"],[data-act="trno"],[data-act="trcancel"]'); if (!r) return;
+  try { const fn = r.dataset.act === 'trcancel' ? 'trade_cancel' : 'trade_respond'; const out = await rest('rpc/' + fn, { method: 'POST', body: fn === 'trade_cancel' ? { p_id: +r.dataset.id } : { p_id: +r.dataset.id, p_accept: r.dataset.act === 'trok' } }); toast(out === 'failed' ? 'No se pudo: alguno de los objetos o monedas ya no está.' : r.dataset.act === 'trok' ? '¡Intercambio hecho!' : 'Listo.'); await loadWallet(); refresh(); } catch (x) { toast(x.message); }
+});
+
+// ---------- vitrina de la colección en el perfil
+Object.assign(BLOCKS, { coleccion: 'Colección' }); LAYOUT_DEF.order.push('coleccion');
+function profileBlocksHTML(st, ctx) {
+  const base = profileBlocksHTML10(st, ctx), L = layoutOf(st, ctx.row), coll = (ctx.row && ctx.row.coll) || [];
+  if (L.hide.includes('coleccion') || !coll.length) return base;
+  const best = coll.slice().sort((a, b) => RAR[catOf(b.cid).r].o - RAR[catOf(a.cid).r].o || a.serial - b.serial).slice(0, 6);
+  const block = `<section class="pblock"><h3>Colección <span class="dim">· ${plural(coll.length, 'objeto', 'objetos')}</span></h3><div class="igrid small">${best.map(it => collCard(it)).join('')}</div></section>`;
+  return base ? base.replace(/<\/div>$/, block + '</div>') : `<div class="pblocks">${block}</div>`;
+}
+
+// ---------- avisos de drops raros para toda la página
+let lastDrop = null;
+async function pollDrops() {
+  if (typeof sbOK !== 'function' || !sbOK()) return;
+  const rows = await sbTry(() => rest('drops?select=*&order=id.desc&limit=5', { auth: false }), null); if (!rows || !rows.length) return;
+  if (lastDrop == null) { lastDrop = rows[0].id; return; }
+  for (const d of rows.filter(d => d.id > lastDrop).reverse()) { const R = RAR[d.rarity] || RAR.mitica; dropToast(`<b>@${h(d.username || 'alguien')}</b> sacó ${R.n === '1 de 1' ? 'el 1 de 1' : 'algo ' + R.n.toLowerCase()}: <b style="color:${R.c}">${h(catOf(d.cid).n)} #${d.serial}</b>`); }
+  lastDrop = rows[0].id;
+}
+function dropToast(html) { const el = document.createElement('div'); el.className = 'droptoast'; el.innerHTML = html; document.body.appendChild(el); setTimeout(() => el.classList.add('out'), 6000); setTimeout(() => el.remove(), 7000); }
+setInterval(pollDrops, 60e3); setTimeout(pollDrops, 4000);
+
+// ---------- botón "Proponer intercambio" en perfiles ajenos
+document.addEventListener('click', e => { const b = e.target.closest('[data-act="tradewith"]'); if (b) location.hash = '#/intercambios/con/' + encodeURIComponent(b.dataset.u); });
+new MutationObserver(() => { const a = document.querySelector('#app .pcover:not(.pmini) .pmain .actions'); if (!a || a.dataset.tr || parseRoute().name !== 'u' || !isLogged()) return; a.dataset.tr = '1'; const u = (parseRoute().args || [])[0] || ''; if (!u || u === ME.username) return; a.insertAdjacentHTML('beforeend', `<button class="btn" data-act="tradewith" data-u="${h(u)}">Proponer intercambio</button>`); }).observe(document.getElementById('app'), { childList: true, subtree: true });
+PRO_COUNT = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.filter(o => !o.f).length, 0) + 4;
 
 
 // ============================================================ ONLINE (Supabase)
@@ -5547,9 +6165,9 @@ async function vUser(args, draw, alive) {
   const p = rows && rows[0];
   if (!p) return draw(empty('Ese perfil no existe', `No hay nadie con el usuario @${uname}.`, '<a class="btn" href="#/gente">Buscar gente</a>'));
   const isMe = ME && ME.id === p.id;
-  const [followers, following, premRows, walRows] = await Promise.all([restCount('follows', `following=eq.${p.id}`), restCount('follows', `follower=eq.${p.id}`), sbTry(() => rest(`premium?select=plan,items&user_id=eq.${p.id}`, { auth: false }), []), sbTry(() => rest(`wallets?select=items&user_id=eq.${p.id}`, { auth: false }), [])]);
+  const [followers, following, premRows, walRows, itemRows] = await Promise.all([restCount('follows', `following=eq.${p.id}`), restCount('follows', `follower=eq.${p.id}`), sbTry(() => rest(`premium?select=plan,items&user_id=eq.${p.id}`, { auth: false }), []), sbTry(() => rest(`wallets?select=items&user_id=eq.${p.id}`, { auth: false }), []), sbTry(() => rest(`items?select=id,cid,serial,pattern,wear&owner=eq.${p.id}&limit=2000`, { auth: false }), [])]);
   if (!alive()) return;
-  const d = p.data || {}, uRow = isFounderId(p.id) ? { plan: 'combo', items: ['combo', 'redes', 'layout', 'founder'] } : mergeRow(premRows && premRows[0], walRows && walRows[0]), ds = sanitizeStyle(d.style, uRow), shows = Object.values(d.shows || {}), st = p.stats || {};
+  const d = p.data || {}, uRow = withColl(isFounderId(p.id) ? { plan: 'combo', items: ['combo', 'redes', 'layout', 'founder'] } : mergeRow(premRows && premRows[0], walRows && walRows[0]), itemRows || []), ds = sanitizeStyle(d.style, uRow), shows = Object.values(d.shows || {}), st = p.stats || {};
   const favs = (d.top || []).map(id => d.shows && d.shows[id]).filter(r => r && r.fav);
   for (const r of shows) if (r.fav && !favs.includes(r)) favs.push(r);
   const seen = shows.filter(r => Object.keys(r.eps || {}).length || r.list === 'done').sort((a, b) => (a.added || 0) - (b.added || 0));
