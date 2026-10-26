@@ -1940,6 +1940,8 @@ footer{border-top:1px solid var(--line)!important;background:linear-gradient(180
 .h17fall{animation:h17fall 4s ease-in-out infinite}@keyframes h17fall{0%{transform:translateY(-3px);opacity:.3}50%{opacity:1}100%{transform:translateY(5px);opacity:.3}}
 .h17rise{animation:h17rise 3.4s ease-in-out infinite}@keyframes h17rise{0%{transform:translateY(4px);opacity:.2}50%{opacity:1}100%{transform:translateY(-6px);opacity:0}}
 .h17dash{animation:h17dash 6s linear infinite}@keyframes h17dash{to{stroke-dashoffset:-60}}
+.boxov{overflow-y:auto;place-items:start center}.boxov .boxmodal{margin:auto 0}
+.boxov .reveal>.actions{position:sticky;bottom:-16px;z-index:5;padding:12px 10px 16px;margin-bottom:-16px;background:linear-gradient(transparent,rgba(5,4,10,.95) 30%);flex-wrap:wrap}
 .icard.v17{gap:7px;max-width:260px;padding:12px 12px 10px}
 .icard.v17::after{display:none}
 .icard.v17 .ihead{display:flex;justify-content:space-between;align-items:center}
@@ -2024,7 +2026,7 @@ footer{border-top:1px solid var(--line)!important;background:linear-gradient(180
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 16.2</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 16.3</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -6386,7 +6388,7 @@ document.addEventListener('click', async e => {
   const items = (res.items || []).map(r => r.item); WALLET.coins = res.coins ?? WALLET.coins; renderCoins(); INV.list.unshift(...items);
   const best = items.slice().sort((a, c) => RAR[catOf(c.cid).r].o - RAR[catOf(a.cid).r].o)[0];
   spinReveal(b.dataset.b, best, () => {
-    opening = false;
+    opening = false; document.querySelectorAll('[data-act="openboxn"]').forEach(x => x.disabled = false);
     if (items.length > 1) { const rv = document.querySelector('.boxov .reveal'); if (rv) rv.insertAdjacentHTML('beforeend', `<div class="multi"><div class="lb">Todo lo que salió (${items.length})</div><div class="igrid small">${items.map(it => collCard(it)).join('')}</div></div>`); }
   });
 });
@@ -6580,7 +6582,7 @@ function spinReveal(boxId, item, done) {
     }, 7300);
   }, 1500);
 }
-document.addEventListener('click', e => { const b = e.target.closest('[data-act="openagain"]'); if (!b) return; document.querySelectorAll('.boxov').forEach(x => x.remove()); const btn = document.querySelector(`[data-act="openboxn"][data-b="${b.dataset.b}"][data-n="1"]`); if (btn) btn.click(); else { location.hash = '#/cajas'; } });
+document.addEventListener('click', e => { const b = e.target.closest('[data-act="openagain"]'); if (!b) return; document.querySelectorAll('.boxov').forEach(x => x.remove()); opening = false; const btn = document.querySelector(`[data-act="openboxn"][data-b="${b.dataset.b}"][data-n="1"]`); if (btn) { btn.disabled = false; btn.click(); } else { location.hash = '#/cajas'; } });
 
 // ---------- MISIONES (las controla el servidor, no se pueden trucar)
 const MISSIONS = [
