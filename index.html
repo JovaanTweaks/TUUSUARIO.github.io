@@ -1936,6 +1936,10 @@ footer{border-top:1px solid var(--line)!important;background:linear-gradient(180
 .c3look{animation:c3look 4s ease-in-out infinite}@keyframes c3look{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}60%{transform:translateX(4px)}}
 .c3zz{animation:c3zz 3s ease-in-out infinite}@keyframes c3zz{0%{opacity:0;transform:translateY(4px)}40%{opacity:1}100%{opacity:0;transform:translateY(-6px)}}
 .c3scan{animation:c3scan 2.4s linear infinite}@keyframes c3scan{from{transform:translateY(0)}to{transform:translateY(28px)}}
+.h17sway{transform-box:view-box;transform-origin:0 24px;animation:h17sway 3.2s ease-in-out infinite}@keyframes h17sway{0%,100%{transform:rotate(0)}50%{transform:rotate(6deg)}}
+.h17fall{animation:h17fall 4s ease-in-out infinite}@keyframes h17fall{0%{transform:translateY(-3px);opacity:.3}50%{opacity:1}100%{transform:translateY(5px);opacity:.3}}
+.h17rise{animation:h17rise 3.4s ease-in-out infinite}@keyframes h17rise{0%{transform:translateY(4px);opacity:.2}50%{opacity:1}100%{transform:translateY(-6px);opacity:0}}
+.h17dash{animation:h17dash 6s linear infinite}@keyframes h17dash{to{stroke-dashoffset:-60}}
 .icard.v17{gap:7px;max-width:260px;padding:12px 12px 10px}
 .icard.v17::after{display:none}
 .icard.v17 .ihead{display:flex;justify-content:space-between;align-items:center}
@@ -1958,6 +1962,38 @@ footer{border-top:1px solid var(--line)!important;background:linear-gradient(180
 .icard.v17.r-unica .icode{background:#ffd76a}
 .reveal .icard.v17{max-width:300px}
 .rvfair{margin:10px auto 0;max-width:420px}
+.gem-azul{filter:grayscale(1) sepia(1) hue-rotate(180deg) saturate(5) brightness(1.05) drop-shadow(0 0 8px #3a8aff)}
+.gem-oro{filter:grayscale(1) sepia(1) saturate(4) brightness(1.15) drop-shadow(0 0 8px #ffc83a)}
+.gem-arco{animation:thhue 3s linear infinite}
+.gem-casi{filter:sepia(.5) hue-rotate(170deg) saturate(2.2)}
+.icard.v19.isgem{border:2px solid var(--gc);box-shadow:0 0 26px -4px var(--gc)}
+.igem{align-self:center;font:900 12px/1 var(--body);letter-spacing:.06em;padding:6px 10px;border-radius:8px;background:var(--gc);color:#0a0612;box-shadow:0 0 14px var(--gc);animation:halo 2.4s ease-in-out infinite}.igem small{font-weight:700;opacity:.75;margin-left:4px;letter-spacing:0}
+.ichips{display:grid;grid-template-columns:1fr 1fr;gap:6px;text-align:left}
+.ichips>span{display:flex;flex-direction:column;gap:2px;padding:6px 8px;border-radius:10px;background:var(--raise);border:1px solid var(--line);min-width:0}
+.ichips small{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);font-weight:800}.ichips b{font-size:12.5px;line-height:1.2}
+.ichips .iwbar{display:block}
+.pg{font:800 10.5px/1.2 var(--body);font-style:normal;color:var(--gc,var(--text))}.pg.sp{color:#ffd76a}.pg.nm{color:var(--dim);font-weight:600}
+.icode2{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:4px 4px 0;border-top:1px dashed var(--line)}
+.icode2 code{font:700 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--dim);letter-spacing:.05em}
+.ihelp{width:22px;height:22px;border-radius:50%;border:1px solid var(--line);background:var(--raise);color:var(--text);font:900 12px/1 var(--body);cursor:pointer;flex:none}.ihelp:hover{border-color:var(--accent);color:var(--accent)}
+.rvgem{display:inline-block;margin:0 auto 10px;padding:8px 16px;border-radius:12px;background:var(--gc);color:#0a0612;font:900 clamp(18px,2.4vw,26px)/1.1 var(--display);box-shadow:0 0 40px var(--gc);animation:halo 1.6s ease-in-out infinite}.rvgem small{display:block;font:700 12px/1.3 var(--body)}
+.vhov{position:fixed;inset:0;z-index:10050;background:rgba(5,3,10,.78);backdrop-filter:blur(6px);display:grid;place-items:center;padding:16px;overflow:auto}
+.vhbox{position:relative;width:min(560px,100%);max-height:calc(100vh - 32px);overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px 22px 18px}
+.vhbox h2{margin:0 0 4px}.vhbox h3{margin:16px 0 6px;font-size:15px}
+.vhx{position:absolute;top:12px;right:12px;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:var(--raise);color:var(--text);cursor:pointer}
+.vhrow{display:grid;grid-template-columns:52px 1fr auto;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)}
+.vhrow .vhi{font-size:15px;white-space:nowrap;text-align:center;font-weight:900}.vhrow b{display:block;font-size:13.5px}.vhrow small{color:var(--dim);font-size:12px}.vhrow em{font:900 15px/1 var(--display);font-style:normal;color:#ffe08a}
+.vhrar{display:flex;flex-wrap:wrap;gap:6px}.vhrar span{display:flex;flex-direction:column;padding:6px 9px;border-radius:10px;border:1px solid color-mix(in srgb,var(--rc) 55%,var(--line));color:var(--rc);font:800 11.5px/1.2 var(--body)}.vhrar b{display:inline-flex;gap:3px;align-items:center;color:var(--text);font-size:12px}
+.vhex{margin:14px 0 8px;padding:10px 12px;border-radius:12px;background:rgba(58,138,255,.12);border:1px solid rgba(58,138,255,.4);font-size:13.5px}.vhex b{display:inline-flex;gap:3px;align-items:center}
+.gem-rubi{filter:grayscale(1) brightness(.75) sepia(1) hue-rotate(-50deg) saturate(12) drop-shadow(0 0 8px #ff2a4a)}
+.gem-verde{filter:grayscale(1) sepia(1) hue-rotate(95deg) saturate(4) drop-shadow(0 0 8px #2ad67a)}
+.gem-negra{filter:grayscale(1) brightness(.45) contrast(1.6) drop-shadow(0 0 3px #a050ff) drop-shadow(0 0 10px #a050ff)}
+.gem-diamante{filter:grayscale(1) brightness(1.5) contrast(1.1) drop-shadow(0 0 6px #fff) drop-shadow(0 0 12px #9ff5ff)}
+.gem-galaxia{animation:gemgal 4s linear infinite}@keyframes gemgal{0%{filter:grayscale(1) sepia(1) hue-rotate(200deg) saturate(5) drop-shadow(0 0 8px #8a6aff)}50%{filter:grayscale(1) sepia(1) hue-rotate(260deg) saturate(5) drop-shadow(0 0 10px #ff6ac8)}100%{filter:grayscale(1) sepia(1) hue-rotate(200deg) saturate(5) drop-shadow(0 0 8px #8a6aff)}}
+.gem-fh{animation:gemfh 2.4s ease-in-out infinite}@keyframes gemfh{0%,100%{filter:grayscale(1) brightness(.75) sepia(1) hue-rotate(-50deg) saturate(12) drop-shadow(0 0 8px #ff4a1a)}50%{filter:grayscale(1) sepia(1) hue-rotate(170deg) saturate(5) drop-shadow(0 0 8px #3ab8ff)}}
+.gem-espejo{filter:invert(1) hue-rotate(180deg) drop-shadow(0 0 6px #bfeaff)}
+.vhodds{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:6px;background:var(--raise);color:var(--dim);font:700 10.5px/1.5 var(--body)}
+.vhrar small{color:var(--dim);font-weight:700;font-size:10px}
 </style>
 </head>
 <body>
@@ -6072,7 +6108,7 @@ async function vTrades(args, draw, alive) {
   const its = ids.length ? await sbTry(() => rest(`items?select=id,cid,serial,pattern,wear&id=${inList(ids)}`, { auth: false }), []) || [] : [];
   const im = Object.fromEntries(its.map(i => [i.id, i])), people = await profilesByIds([...new Set(rows.flatMap(t => [t.from_user, t.to_user]))]);
   if (!alive()) return;
-  const side = (arr, coins) => `<div class="tside">${arr.map(id => im[id] ? `<div class="tmini" style="--rc:${RAR[catOf(im[id].cid).r].c}">${itemThumb(im[id].cid, im[id].pattern)}<small>${h(catOf(im[id].cid).n)} #${im[id].serial}</small></div>` : '').join('')}${coins ? `<div class="tmini coins">${coinSVG(26)}<small>${coins.toLocaleString('es-AR')} monedas</small></div>` : ''}${!arr.length && !coins ? '<span class="dim small">Nada</span>' : ''}</div>`;
+  const side = (arr, coins) => `<div class="tside">${arr.map(id => im[id] ? `<div class="tmini" style="--rc:${RAR[catOf(im[id].cid).r].c}">${itemThumb(im[id].cid, im[id].pattern, im[id].wear, im[id].serial)}<small>${h(catOf(im[id].cid).n)} #${im[id].serial}</small></div>` : '').join('')}${coins ? `<div class="tmini coins">${coinSVG(26)}<small>${coins.toLocaleString('es-AR')} monedas</small></div>` : ''}${!arr.length && !coins ? '<span class="dim small">Nada</span>' : ''}</div>`;
   const st = { pending: 'Esperando respuesta', accepted: 'Aceptado', rejected: 'Rechazado', cancelled: 'Cancelado', failed: 'No se pudo hacer (algo ya no estaba)' };
   draw(`${ecoNav('intercambios')}<section class="pagehead"><div class="eyebrow">Intercambios</div><h1>Tus intercambios</h1><p class="dim">Para proponer uno, entrá al perfil de alguien y tocá "Proponer intercambio".</p></section>
     ${rows.length ? rows.map(t => { const mine = t.from_user === ME.id, other = people[mine ? t.to_user : t.from_user]; return `<div class="trade panel ${t.status}"><div class="thead"><b>${mine ? 'Le propusiste a' : 'Te propone'} @${h(other ? other.username : '?')}</b><span class="chip">${st[t.status]}</span></div>
@@ -6466,9 +6502,9 @@ const PET3 = {
     <g class="spin" style="transform-origin:32px 32px"><circle cx="58" cy="14" r="3" fill="${L3(P.a, .3)}"/></g></g>`],
 };
 for (const [k, [n, fn]] of Object.entries(PET3)) CRIT['p3' + k] = [n, (a, ak) => { const pal = P3[k][ak === 'oro' ? 'oro' : 'base']; const svg = fn(pal, k + (ak || 'base')); return ak === 'prisma' ? `<g class="prisma">${svg}</g>` : svg; }];
-{ const i0 = STYLE_OPTS.pet.length; STYLE_OPTS.pet.push(...Object.entries(PET3).map(([k, [n]]) => lgo('lg-p3-' + k, n + ' 3D', `p3${k}|base`))); }
+{ const i0 = STYLE_OPTS.pet.length; STYLE_OPTS.pet.push(...Object.entries(PET3).map(([k, [n]]) => lgo('lg-p3-' + k, n, `p3${k}|base`))); }
 const CX3 = [];
-for (const [k, [n]] of Object.entries(PET3)) CX3.push(['pet', 'cx-p3o-' + k, n + ' dorado 3D', 'mitica', `p3${k}|oro`], ['pet', 'cx-p3x-' + k, n + ' prisma 3D', 'exotica', `p3${k}|prisma`]);
+for (const [k, [n]] of Object.entries(PET3)) CX3.push(['pet', 'cx-p3o-' + k, n + ' dorado', 'mitica', `p3${k}|oro`], ['pet', 'cx-p3x-' + k, n + ' prisma', 'exotica', `p3${k}|prisma`]);
 for (const [f, k, n, r, v] of CX3) { STYLE_OPTS[f].push(Object.assign(C(k, n, v), { cx: r })); }
 Object.assign(LG_TOP, { 'pet:lg-p3-pantera': 40000, 'pet:lg-p3-kitsune': 30000, 'pet:lg-p3-golem': 30000 });
 
@@ -6538,7 +6574,7 @@ function spinReveal(boxId, item, done) {
     setTimeout(() => {
       const rv = ov.querySelector('.reveal'), big = R0.o >= 4;
       st.children[WIN].classList.add('win'); ov.classList.add('done', 'r-' + c0.r);
-      rv.hidden = false; rv.innerHTML = `<div class="burstrays" style="--rc:${R0.c}"></div><div class="rvtitle" style="--rc:${R0.c}">${c0.r === 'unica' ? '¡¡1 DE 1!! Existe uno solo y es tuyo' : big ? '¡INCREÍBLE! Te salió algo ' + R0.n.toLowerCase() : R0.o === 3 ? '¡Legendario!' : 'Te salió algo ' + R0.n.toLowerCase()}</div>${collCard(item)}<p class="small dim rvfair">🎲 Lo sorteó el servidor 100% al azar: el número de serie, el patrón y el desgaste. Nadie puede elegir qué te sale.</p><div class="actions" style="justify-content:center;margin-top:14px"><button class="btn pri" data-act="equipitem" data-cid="${h(item.cid)}">Ponérmelo</button><button class="btn" data-act="openagain" data-b="${boxId}">Abrir otra</button><a class="btn ghost" href="#/inventario" data-act="closebox">Ver inventario</a><button class="btn ghost" data-act="closebox">Cerrar</button></div>`;
+      rv.hidden = false; rv.innerHTML = `<div class="burstrays" style="--rc:${R0.c}"></div>${(() => { const gm = gemOf(item); return gm ? `<div class="rvgem" style="--gc:${GEMT[gm].c}">${GEMT[gm].i} ¡${GEMT[gm].n.toUpperCase()}! <small>Sale 1 en ${fmtc(GEMT[gm].odds)}</small></div>` : ''; })()}<div class="rvtitle" style="--rc:${R0.c}">${c0.r === 'unica' ? '¡¡1 DE 1!! Existe uno solo y es tuyo' : big ? '¡INCREÍBLE! Te salió algo ' + R0.n.toLowerCase() : R0.o === 3 ? '¡Legendario!' : 'Te salió algo ' + R0.n.toLowerCase()}</div>${collCard(item)}<p class="small dim rvfair">🎲 Lo sorteó el servidor 100% al azar: el número de serie, el patrón y el desgaste. Nadie puede elegir qué te sale. <a href="#" data-act="valhelp">¿Cuánto vale?</a></p><div class="actions" style="justify-content:center;margin-top:14px"><button class="btn pri" data-act="equipitem" data-cid="${h(item.cid)}">Ponérmelo</button><button class="btn" data-act="openagain" data-b="${boxId}">Abrir otra</button><a class="btn ghost" href="#/inventario" data-act="closebox">Ver inventario</a><button class="btn ghost" data-act="closebox">Cerrar</button></div>`;
       if (R0.o >= 3) { const rc = rv.getBoundingClientRect(); for (let i = 0; i < (big ? 10 : 4); i++) setTimeout(() => burstAt(rc.left + rc.width * Math.random(), rc.top + 60 * Math.random(), c0.r === 'exotica' || c0.r === 'unica' ? ['#ff7aa8', '#ffd36b', '#a8f0c6', '#7fe0ff', '#c3a8ff', '#ffffff'] : [R0.c, '#ffffff', '#ffd76a'], 34, 'confeti'), i * 120); }
       done();
     }, 7300);
@@ -6639,149 +6675,159 @@ function renderCoins() {
 }
 
 
-// ============================================================ V17: COMPAÑEROS 3D (cosas raras, no animales) + CARTA PRO DE CADA OBJETO (código, valor estimado, mercado)
-// ---------- paletas: base (legendario de la tienda), oro (mítico de caja), prisma (exótico de caja), u (1 de 1)
-const GOLD17 = { b: '#e8b830', a: '#ffe08a', g: '#fff3c4', e: '#3a2200' };
-const C3P = {
-  orbe: { b: '#7a5aff', a: '#c8963a', g: '#d6c8ff', e: '#2a1a4a', u: { b: '#0a0612', a: '#ffd24a', g: '#ff3d9a', e: '#ffd24a' } },
-  cristal: { b: '#3ad6c8', a: '#9ff5ff', g: '#bffff4', e: '#0a2a2a' },
-  linterna: { b: '#ff6a4a', a: '#2a1a1a', g: '#ffe08a', e: '#2a0a00' },
-  agujero: { b: '#000000', a: '#7a3aff', g: '#ffb03d', e: '#ffffff', u: { b: '#000000', a: '#ff2a6a', g: '#ffffff', e: '#ffffff' } },
-  grimorio: { b: '#5a2a8a', a: '#a87aff', g: '#7fe8ff', e: '#1a0a2a' },
-  reloj: { b: '#ff8ac8', a: '#c8963a', g: '#bfe3ff', e: '#2a1a1a' },
-  dado: { b: '#f4f2fa', a: '#e0405a', g: '#ffd76a', e: '#2a1a3a', u: { b: '#24222c', a: '#ffd24a', g: '#ffd24a', e: '#ffd24a' } },
-  cohete: { b: '#f0f2f8', a: '#ff4a6a', g: '#7fd6ff', e: '#0a1a2a' },
-  ovni: { b: '#9aa4c0', a: '#ff4a8a', g: '#7fffb0', e: '#1a3a2a' },
-  claqueta: { b: '#2a2a34', a: '#f4f4f8', g: '#ff6a9a', e: '#5ab8ff', u: { b: '#e8b830', a: '#1a1a22', g: '#ffffff', e: '#1a1a22' } },
-  pochoclo: { b: '#ffffff', a: '#e0303a', g: '#fff2c4', e: '#2a1408' },
-  ojo: { b: '#3a1a5a', a: '#3ad68a', g: '#c3a8ff', e: '#d6fff0' },
-  corazon: { b: '#ff3d7a', a: '#ff8fb8', g: '#ffd1ea', e: '#2a0a14', u: { b: '#ff1a4a', a: '#ffffff', g: '#ffffff', e: '#2a0a14' } },
-  calavera: { b: '#e8e6f2', a: '#ff3d9a', g: '#3dffb4', e: '#0a0612' },
-  espada: { b: '#bfe3ff', a: '#c8963a', g: '#7fd6ff', e: '#0a1a2a' },
-  hongo: { b: '#e0303a', a: '#ffffff', g: '#7fffb0', e: '#2a1408' },
-  luna: { b: '#ffe9a8', a: '#5a6aff', g: '#bfe3ff', e: '#5a3a1a' },
-  cubo: { b: '#5ab8ff', a: '#c3a8ff', g: '#5ff2ff', e: '#0a1a2a' },
-  tarot: { b: '#2a1a4a', a: '#ffd24a', g: '#ffd76a', e: '#2a1a4a' },
-  mascara: { b: '#d62a3a', a: '#ffd24a', g: '#ffe14a', e: '#1a0a10' },
-  tele: { b: '#c8946a', a: '#ff6a4a', g: '#7fe8d0', e: '#0a2a20' },
+// ============================================================ V17: COMPAÑERAS MÁGICAS (al nivel de las hadas) + CARTA PRO DE CADA OBJETO
+// ---------- motor de personajes: mismo estilo que las hadas, con alas, peinados, coronas, colas y objetos distintos
+const gearP = (cx, cy, r, n) => { let d = ''; for (let i = 0; i < n * 2; i++) { const a = i * Math.PI / n, rr = i % 2 ? r : r * 1.25, w = Math.PI / (n * 2) * .55; d += (i ? 'L' : 'M') + (cx + rr * Math.cos(a - w)).toFixed(1) + ' ' + (cy + rr * Math.sin(a - w)).toFixed(1) + 'L' + (cx + rr * Math.cos(a + w)).toFixed(1) + ' ' + (cy + rr * Math.sin(a + w)).toFixed(1); } return d + 'Z'; };
+const mir = (svg, cls = 'fw') => `<g class="${cls}">${svg}</g><g transform="scale(-1 1)"><g class="${cls}">${svg}</g></g>`;
+const hdefs = (u, P) => `<defs>
+  <radialGradient id="${u}a"><stop offset="0" stop-color="${P.glow}" stop-opacity=".75"/><stop offset=".45" stop-color="${P.glow}" stop-opacity=".22"/><stop offset="1" stop-color="${P.glow}" stop-opacity="0"/></radialGradient>
+  <linearGradient id="${u}w" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".5" stop-color="${P.wing}" stop-opacity=".78"/><stop offset="1" stop-color="${P.glow}" stop-opacity=".4"/></linearGradient>
+  <linearGradient id="${u}k" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${mix8(P.wing, '#ffffff', .18)}"/><stop offset="1" stop-color="${mix8(P.wing, '#000000', .5)}"/></linearGradient>
+  <linearGradient id="${u}s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="${P.skin}"/><stop offset="1" stop-color="${mix8(P.skin, P.glow, .35)}"/></linearGradient>
+  <linearGradient id="${u}h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${mix8(P.hair, '#ffffff', .35)}"/><stop offset=".5" stop-color="${P.hair}"/><stop offset="1" stop-color="${mix8(P.hair, '#000000', .25)}"/></linearGradient>
+  <linearGradient id="${u}d" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${mix8(P.dress, '#ffffff', .28)}"/><stop offset="1" stop-color="${mix8(P.dress, '#000000', .18)}"/></linearGradient>
+  <linearGradient id="${u}g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${mix8(P.acc, '#ffffff', .55)}"/><stop offset=".5" stop-color="${P.acc}"/><stop offset="1" stop-color="${mix8(P.acc, '#000000', .3)}"/></linearGradient>
+  <linearGradient id="${u}f" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="${mix8(P.wing, '#ff2a00', .5)}"/><stop offset=".55" stop-color="${P.wing}"/><stop offset="1" stop-color="#fff6c0"/></linearGradient>
+  <linearGradient id="${u}m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${P.dress}"/><stop offset=".6" stop-color="${P.glow}" stop-opacity=".55"/><stop offset="1" stop-color="${P.glow}" stop-opacity="0"/></linearGradient></defs>`;
+const WINGS = {
+  fairy: (u, P) => `<path d="M3 5C12-16 36-26 39-9C41 2 22 9 3 8Z" fill="url(#${u}w)" stroke="#fff" stroke-opacity=".85" stroke-width=".55"/><path d="M3 9C15 10 28 20 22 28C16 33 6 21 3 12Z" fill="url(#${u}w)" stroke="#fff" stroke-opacity=".85" stroke-width=".55"/><path d="M4 6C14-4 24-10 34-12M5 7C16 2 26-1 36-3M4 10C11 14 17 20 20 26" stroke="#fff" stroke-opacity=".6" stroke-width=".35" fill="none"/>`,
+  feather: (u, P) => `<path d="M3 3C8-8 20-20 38-22C36-17 40-15 36-11C40-9 37-5 33-3C36 0 32 3 28 3C30 7 25 8 21 7C22 11 16 11 12 9C9 11 5 9 3 7Z" fill="url(#${u}w)" stroke="${mix8(P.wing, '#000000', .2)}" stroke-opacity=".45" stroke-width=".5"/><path d="M6 4C14-4 24-12 36-18M6 5C16 0 26-6 34-8M6 6C14 4 22 2 28 1M5 7C10 7 15 7 20 6" stroke="${mix8(P.wing, '#000000', .25)}" stroke-opacity=".4" stroke-width=".45" fill="none"/><path d="M8 2C16-6 26-14 36-18" stroke="#fff" stroke-width="1" opacity=".7" fill="none"/>`,
+  bat: (u, P) => `<path d="M3 2C9-6 20-14 35-14C33-10 34-6 31-3C31 1 27 3 23 1C23 5 19 7 15 4C13 8 8 8 3 6Z" fill="url(#${u}k)" stroke="${mix8(P.wing, '#000000', .55)}" stroke-width=".6"/><path d="M3 3 35-14M5 3 31-3M5 4 23 1M5 5 15 4" stroke="${mix8(P.wing, '#000000', .55)}" stroke-width=".7" fill="none"/><path d="M6 2C14-4 22-9 32-12" stroke="${P.glow}" stroke-opacity=".5" stroke-width=".5" fill="none"/>`,
+  dragon: (u, P) => `<path d="M3 1C8-10 22-20 38-20L36-16C38-12 36-8 33-6C34-2 30 1 26 0C27 4 23 7 18 5C17 9 10 10 3 6Z" fill="url(#${u}k)" stroke="${P.glow}" stroke-opacity=".7" stroke-width=".6"/><path d="M3 2 38-20M5 3 33-6M5 4 26 0M5 5 18 5" stroke="${mix8(P.wing, '#000000', .5)}" stroke-width=".9" fill="none"/><path d="M38-20 42-24 39-18Z" fill="${P.acc}"/>`,
+  crystal: (u, P) => `<path d="M3 4 16-16 22-6 36-18 30 0 40 6 22 7 24 20 8 10Z" fill="url(#${u}w)" stroke="#fff" stroke-width=".7" stroke-linejoin="round"/><path d="M3 4 22-6 30 0 22 7 3 4M16-16 22-6M36-18 30 0M40 6 22 7M24 20 22 7" stroke="#fff" stroke-opacity=".75" stroke-width=".45" fill="none"/>`,
+  flame: (u, P) => `<path d="M3 6C7-4 14-8 18-20C20-12 24-12 28-24C30-12 36-10 40-18C40-6 36 0 38 6C34 6 34 12 26 12C24 17 14 16 8 12Z" fill="url(#${u}f)" opacity=".94"/><path d="M6 7C10 0 16-2 20-10C22-4 26-4 30-12C30-4 32 0 30 6C26 8 20 10 10 9Z" fill="#fff6c0" opacity=".5"/>`,
+  leaf: (u, P) => `<path d="M3 4C10-10 26-20 40-18C36-6 22 4 3 7Z" fill="url(#${u}w)" stroke="${mix8(P.wing, '#000000', .3)}" stroke-width=".6"/><path d="M3 9C14 9 26 14 26 26C14 26 6 18 3 11Z" fill="url(#${u}w)" stroke="${mix8(P.wing, '#000000', .3)}" stroke-width=".6"/><path d="M4 6 38-17M12 2 13-6M20-2 22-10M28-8 30-14M4 10 25 25M12 13 10 18M18 18 16 22" stroke="${mix8(P.wing, '#000000', .35)}" stroke-width=".45" fill="none"/>`,
+  moth: (u, P) => `<path d="M3 3C6-16 32-26 41-10C44 0 26 8 3 7Z" fill="url(#${u}w)" stroke="#fff" stroke-opacity=".8" stroke-width=".5"/><path d="M3 9C16 7 32 14 28 28C22 36 8 24 3 12Z" fill="url(#${u}w)" stroke="#fff" stroke-opacity=".8" stroke-width=".5"/><circle cx="26" cy="-6" r="5" fill="${P.acc}" opacity=".85"/><circle cx="26" cy="-6" r="2.4" fill="${mix8(P.wing, '#000000', .55)}"/><circle cx="18" cy="18" r="3" fill="${P.acc}" opacity=".7"/><path d="M5 5C14 0 24-4 34-8M5 10C12 14 18 20 22 26" stroke="#fff" stroke-opacity=".5" stroke-width=".4" fill="none"/>`,
+  gear: (u, P) => `<path d="M3 4C12-8 28-18 40-14C36-4 22 4 3 7Z" fill="url(#${u}w)" stroke="${P.acc}" stroke-width=".8"/><path d="M3 9C14 10 24 16 22 26C14 26 6 18 3 11Z" fill="url(#${u}w)" stroke="${P.acc}" stroke-width=".8"/><path d="M6 5 38-13M6 9 21 24" stroke="${P.acc}" stroke-width=".6"/><g class="c3spin"><path d="${gearP(24, -7, 5, 8)}" fill="url(#${u}g)"/><circle cx="24" cy="-7" r="2" fill="${mix8(P.acc, '#000000', .5)}"/></g><g class="c3spin slow"><path d="${gearP(14, 15, 3.4, 6)}" fill="url(#${u}g)"/></g>`,
+  shadow: (u, P) => `<path d="M3 3C12-8 26-18 41-17L35-12 40-8 32-5 36 0 28 1 31 6 22 5 23 11 14 8 12 13 3 7Z" fill="url(#${u}k)" opacity=".95"/><path d="M5 4 39-16M6 5 33-4M6 6 26 4" stroke="${P.glow}" stroke-opacity=".6" stroke-width=".5" fill="none"/>`,
 };
-const C3U = { orbe: 'Orbe del Destino', agujero: 'Singularidad', dado: 'Dado del Destino', claqueta: 'Claqueta Estelar', corazon: 'Corazón Eterno' };
-const glowG = (id, a, b) => `<radialGradient id="${id}"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="${a}"/><stop offset="1" stop-color="${b}" stop-opacity="0"/></radialGradient>`;
-const COMPA3 = {
-  orbe: ['Orbe arcano', (P, u) => `<defs>${rg3('ob' + u, P.b, .35, .3)}${lg3('os' + u, L3(P.a, .3), D3(P.a, .45))}${glowG('oi' + u, P.g, P.g)}</defs>
-    <path d="M18 61 22 50H42L46 61Z" fill="url(#os${u})"/><ellipse cx="32" cy="50" rx="12" ry="3" fill="${D3(P.a, .3)}"/>
-    <g class="ffloat"><circle cx="32" cy="28" r="19" fill="url(#ob${u})" opacity=".94"/><circle cx="32" cy="28" r="11" fill="url(#oi${u})" class="halo"/>
-    <g class="c3spin"><path d="M20 28C24 18 40 18 44 28M44 28C40 38 24 38 20 28" stroke="#fff" stroke-opacity=".55" stroke-width="1.4" fill="none"/></g>${shine3(24, 19, 6, 2.6)}</g>`],
-  cristal: ['Cristal flotante', (P, u) => `<defs>${lg3('cl' + u, L3(P.b, .55), P.b)}${lg3('cd' + u, P.b, D3(P.b, .5))}</defs>
-    <ellipse cx="32" cy="60" rx="12" ry="2.5" fill="${P.g}" opacity=".4" class="halo"/>
-    <g class="ffloat"><path d="M32 4 46 22 32 54 18 22Z" fill="url(#cd${u})"/><path d="M32 4 18 22 32 54Z" fill="url(#cl${u})"/><path d="M32 4 26 22H38Z" fill="#fff" opacity=".45"/><path d="M18 22H46" stroke="#fff" stroke-opacity=".5" stroke-width=".8"/>
-    <path d="M10 30 14 24 18 30 14 38Z" fill="url(#cl${u})" class="tw"/><path d="M50 12 53 8 56 12 53 17Z" fill="url(#cl${u})" class="tw t2"/>${shine3(27, 16, 2.4, 6, 10, .7)}</g>`],
-  linterna: ['Linterna espiritual', (P, u) => `<defs>${rg3('lb' + u, P.b, .4, .35)}${glowG('lf' + u, P.g, P.a)}${EYESH}</defs>
-    <path d="M32 1V8" stroke="${D3(P.a, .2)}" stroke-width="2"/>
-    <g class="ffloat"><rect x="24" y="8" width="16" height="5" rx="2" fill="${D3(P.a, .1)}"/><ellipse cx="32" cy="32" rx="18" ry="20" fill="url(#lb${u})"/><path d="M16 26H48M15 34H49M17 42H47" stroke="${D3(P.b, .35)}" stroke-width="1" opacity=".5"/><circle cx="32" cy="33" r="11" fill="url(#lf${u})" class="halo"/>
-    ${eye3(26, 30, 2.8, P.e)}${eye3(38, 30, 2.8, P.e)}<path d="M29 37Q32 40 35 37" stroke="${P.e}" stroke-width="1.4" fill="none" stroke-linecap="round"/><rect x="24" y="51" width="16" height="5" rx="2" fill="${D3(P.a, .1)}"/><path d="M32 56V62" stroke="${P.g}" stroke-width="2" stroke-linecap="round" class="tw"/>${shine3(23, 22, 4, 2)}</g>`],
-  agujero: ['Agujero negro', (P, u) => `<defs><radialGradient id="ah${u}"><stop offset="0" stop-color="#000"/><stop offset=".5" stop-color="#000"/><stop offset=".72" stop-color="${P.g}"/><stop offset="1" stop-color="${P.a}" stop-opacity="0"/></radialGradient>${lg3('ad' + u, P.g, P.a)}</defs>
-    <circle cx="32" cy="32" r="24" fill="url(#ah${u})" class="halo"/>
-    <g transform="rotate(-18 32 32)"><g class="c3spin"><ellipse cx="32" cy="32" rx="29" ry="9" fill="none" stroke="url(#ad${u})" stroke-width="3.6" stroke-dasharray="30 8 14 6"/></g></g>
-    <circle cx="32" cy="32" r="10" fill="#000"/><circle cx="32" cy="32" r="10.5" fill="none" stroke="${P.g}" stroke-width="1" opacity=".8"/>
-    <g transform="rotate(-18 32 32)"><path d="M3 32A29 9 0 0 0 61 32" fill="none" stroke="url(#ad${u})" stroke-width="3.6"/></g>
-    <g class="tw">${sparkles8([[6, 8, 2.4], [58, 54, 2], [54, 10, 1.6]], P.e)}</g>`],
-  grimorio: ['Grimorio vivo', (P, u) => `<defs>${lg3('gb' + u, P.b, D3(P.b, .4))}${lg3('gp' + u, '#fffaf0', '#e8dcc8')}</defs>
-    <g class="ffloat"><path d="M6 24 32 30 58 24 58 52 32 58 6 52Z" fill="url(#gb${u})"/><path d="M9 22C18 18 26 20 32 26V54C26 48 18 46 9 50Z" fill="url(#gp${u})"/><path d="M55 22C46 18 38 20 32 26V54C38 48 46 46 55 50Z" fill="url(#gp${u})"/>
-    <g class="tw"><path d="M13 28H27M13 33H26M13 38H27M37 28H51M38 33H51M37 38H50" stroke="${P.a}" stroke-width="1.6" stroke-linecap="round"/></g>
-    <g class="tw t2"><path d="M32 22 30 12 34 16 36 6" stroke="${P.g}" stroke-width="1.8" fill="none" stroke-linecap="round"/></g>${sparkles8([[20, 10, 2.4], [46, 8, 2.8]], P.g)}</g>`],
-  reloj: ['Reloj de arena cósmico', (P, u) => `<defs>${lg3('rf' + u, L3(P.a, .3), D3(P.a, .4))}${lg3('rs' + u, P.g, P.b)}</defs>
-    <g class="ffloat"><path d="M18 10H46C46 22 36 26 34 32C36 38 46 42 46 54H18C18 42 28 38 30 32C28 26 18 22 18 10Z" fill="#fff" fill-opacity=".16" stroke="#fff" stroke-opacity=".6" stroke-width="1.2"/>
-    <path d="M22 16H42C40 22 34 25 32 30C30 25 24 22 22 16Z" fill="url(#rs${u})"/><path d="M20 52H44C42 44 36 42 32 40C28 42 22 44 20 52Z" fill="url(#rs${u})"/><path d="M32 30V44" stroke="${P.g}" stroke-width="1.4" class="tw"/>
-    <rect x="13" y="4" width="38" height="6" rx="3" fill="url(#rf${u})"/><rect x="13" y="54" width="38" height="6" rx="3" fill="url(#rf${u})"/><path d="M16 10V54M48 10V54" stroke="url(#rf${u})" stroke-width="2.4"/>
-    ${sparkles8([[26, 48, 1.4], [37, 46, 1.2], [30, 20, 1.2]], '#fff')}${shine3(22, 20, 1.4, 6, 0, .5)}</g>`],
-  dado: ['Dado de la suerte', (P, u) => `<defs>${lg3('dt' + u, L3(P.b, .5), L3(P.b, .15))}${lg3('dl' + u, P.b, D3(P.b, .2))}${lg3('dr' + u, D3(P.b, .2), D3(P.b, .5))}</defs>
-    <g class="ffloat"><path d="M32 6 56 18 32 30 8 18Z" fill="url(#dt${u})"/><path d="M8 18 32 30V58L8 46Z" fill="url(#dl${u})"/><path d="M56 18 32 30V58L56 46Z" fill="url(#dr${u})"/>
-    <ellipse cx="32" cy="18" rx="4.2" ry="2.3" fill="${P.a}"/>
-    <ellipse cx="14" cy="27" rx="2" ry="2.4" fill="${P.e}"/><ellipse cx="20" cy="36" rx="2" ry="2.4" fill="${P.e}"/><ellipse cx="26" cy="45" rx="2" ry="2.4" fill="${P.e}"/>
-    <ellipse cx="38" cy="38" rx="2" ry="2.4" fill="${P.e}"/><ellipse cx="50" cy="28" rx="2" ry="2.4" fill="${P.e}"/><ellipse cx="38" cy="50" rx="2" ry="2.4" fill="${P.e}"/><ellipse cx="50" cy="40" rx="2" ry="2.4" fill="${P.e}"/>
-    <path d="M32 6 8 18 32 30" stroke="#fff" stroke-opacity=".6" stroke-width="1" fill="none"/><g class="tw">${sparkles8([[58, 6, 2.6], [6, 58, 1.8]], P.g)}</g></g>`],
-  cohete: ['Cohete', (P, u) => `<defs>${lg3('kb' + u, L3(P.b, .4), D3(P.b, .3))}${lg3('kf' + u, '#fff3c4', '#ff6a1a')}</defs>
-    <g class="ffloat"><g class="flick"><path d="M26 50C26 58 30 62 32 64C34 62 38 58 38 50Z" fill="url(#kf${u})"/></g>
-    <path d="M22 38 11 52 23 50ZM42 38 53 52 41 50Z" fill="${P.a}"/>
-    <path d="M32 2C44 12 44 34 40 50H24C20 34 20 12 32 2Z" fill="url(#kb${u})"/><path d="M32 2C38 7 41 14 42 20H22C23 14 26 7 32 2Z" fill="${P.a}"/>
-    <circle cx="32" cy="30" r="6.4" fill="${D3(P.g, .5)}" stroke="${L3(P.b, .5)}" stroke-width="2"/><circle cx="32" cy="30" r="3.8" fill="${P.g}" opacity=".85"/>${shine3(30, 28, 1.6, .8, -30, .9)}
-    <path d="M29 50V46M35 50V46" stroke="${D3(P.b, .4)}" stroke-width="1.6"/>${shine3(26, 26, 1.4, 8, 0, .45)}</g>`],
-  ovni: ['Platillo volador', (P, u) => `<defs>${lg3('ub' + u, L3(P.b, .45), D3(P.b, .45))}<radialGradient id="ud${u}" cx=".4" cy=".3"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="${P.g}" stop-opacity=".55"/></radialGradient>${EYESH}</defs>
-    <path d="M22 36 12 64H52L42 36Z" fill="${P.g}" opacity=".2" class="halo"/>
-    <g class="ffloat"><path d="M18 26C18 11 46 11 46 26Z" fill="url(#ud${u})"/>${eye3(28, 21, 2.8, P.e)}${eye3(36, 21, 2.8, P.e)}
-    <ellipse cx="32" cy="30" rx="28" ry="9" fill="url(#ub${u})"/><ellipse cx="32" cy="27.5" rx="20" ry="3.6" fill="${L3(P.b, .55)}" opacity=".6"/>
-    <circle cx="12" cy="31" r="2" fill="${P.a}" class="tw"/><circle cx="22" cy="35" r="2" fill="${P.g}" class="tw t2"/><circle cx="32" cy="36.5" r="2" fill="${P.a}" class="tw"/><circle cx="42" cy="35" r="2" fill="${P.g}" class="tw t2"/><circle cx="52" cy="31" r="2" fill="${P.a}" class="tw"/></g>`],
-  claqueta: ['Claqueta de cine', (P, u) => `<defs>${lg3('qb' + u, L3(P.b, .25), D3(P.b, .5))}${EYESH}</defs>
-    <g class="ffloat"><g class="c3clap"><path d="M8 15 52 5 54 13 10 23Z" fill="${D3(P.b, .15)}"/><path d="M15 14 21 21M25 12 31 19M35 10 41 17M45 8 51 15" stroke="${P.a}" stroke-width="4"/></g>
-    <rect x="8" y="23" width="48" height="36" rx="4" fill="url(#qb${u})"/><path d="M8 31H56" stroke="${P.a}" stroke-width="3"/>
-    ${eye3(24, 41, 3.8, P.e)}${eye3(40, 41, 3.8, P.e)}<path d="M27 50Q32 54 37 50" stroke="${P.g}" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="17" cy="48" r="2.4" fill="${P.g}" opacity=".45"/><circle cx="47" cy="48" r="2.4" fill="${P.g}" opacity=".45"/></g>`],
-  pochoclo: ['Balde de pochoclos', (P, u) => `<defs>${lg3('pk' + u, '#ffffff', '#e4dcea')}${rg3('pp' + u, P.g, .35, .3)}${EYESH}</defs>
-    <g class="ffloat"><circle cx="20" cy="19" r="8" fill="url(#pp${u})"/><circle cx="32" cy="13" r="9" fill="url(#pp${u})"/><circle cx="44" cy="19" r="8" fill="url(#pp${u})"/><circle cx="26" cy="23" r="7" fill="url(#pp${u})"/><circle cx="38" cy="23" r="7" fill="url(#pp${u})"/>
-    <g class="c3pop"><circle cx="52" cy="8" r="4" fill="url(#pp${u})"/></g>
-    <path d="M12 26H52L46 62H18Z" fill="url(#pk${u})"/><path d="M19 26 22 62H28L26 26ZM33 26V62H39L41 26Z" fill="${P.a}"/><rect x="10" y="24" width="44" height="5" rx="2" fill="${D3(P.a, .12)}"/>
-    <rect x="18" y="35" width="28" height="15" rx="7" fill="#fff" opacity=".94"/>${eye3(26, 42, 2.8, P.e)}${eye3(38, 42, 2.8, P.e)}<path d="M30 46.5Q32 48.5 34 46.5" stroke="${P.e}" stroke-width="1.4" fill="none"/></g>`],
-  ojo: ['Ojo místico', (P, u) => `<defs><radialGradient id="ji${u}"><stop offset="0" stop-color="${P.e}"/><stop offset=".55" stop-color="${P.a}"/><stop offset="1" stop-color="${D3(P.a, .6)}"/></radialGradient>${rg3('jw' + u, '#ffffff', .4, .3)}</defs>
-    <g class="c3spin slow"><path d="M32 0V7M32 57V64M0 32H7M57 32H64M9 9 14 14M50 50 55 55M55 9 50 14M9 55 14 50" stroke="${P.g}" stroke-width="2.4" stroke-linecap="round" opacity=".75"/></g>
-    <g class="ffloat"><path d="M6 32C14 18 50 18 58 32C50 46 14 46 6 32Z" fill="url(#jw${u})" stroke="${P.b}" stroke-width="2.4"/><g class="c3look"><circle cx="32" cy="32" r="11" fill="url(#ji${u})"/><circle cx="32" cy="32" r="5" fill="#0a0612"/>${shine3(28, 28, 2.6, 1.6, -30, .9)}</g>
-    <path d="M10 26 6 20M18 21 16 14M26 18.5 25 11M38 18.5 39 11M46 21 48 14M54 26 58 20" stroke="${P.b}" stroke-width="2" stroke-linecap="round"/></g>`],
-  corazon: ['Corazón de cristal', (P, u) => `<defs>${lg3('hl' + u, L3(P.b, .5), P.b)}${lg3('hd' + u, P.b, D3(P.b, .55))}</defs>
-    <g class="ffloat"><g class="c3beat"><path d="M32 58 6 30C0 20 6 8 18 8C25 8 30 13 32 18Z" fill="url(#hl${u})"/><path d="M32 58 58 30C64 20 58 8 46 8C39 8 34 13 32 18Z" fill="url(#hd${u})"/>
-    <path d="M32 18 20 26 32 58M32 18 44 26 32 58M6 30H58M20 26H44" stroke="#fff" stroke-opacity=".38" stroke-width="1" fill="none"/>${shine3(16, 16, 5, 2.4, -35, .7)}</g></g><g class="tw">${sparkles8([[57, 6, 2.6], [6, 52, 2], [60, 46, 1.6]], P.g)}</g>`],
-  calavera: ['Calavera neón', (P, u) => `<defs>${rg3('sk' + u, P.b, .35, .25)}${glowG('se' + u, P.g, P.g)}</defs>
-    <g class="ffloat"><path d="M10 28C10 12 20 4 32 4S54 12 54 28C54 36 50 40 46 42V50H18V42C14 40 10 36 10 28Z" fill="url(#sk${u})"/><path d="M22 50V58H42V50Z" fill="url(#sk${u})"/><path d="M27 50V57M32 50V57M37 50V57" stroke="${D3(P.b, .5)}" stroke-width="1.4"/>
-    <ellipse cx="22" cy="29" rx="7" ry="8" fill="#0a0612"/><ellipse cx="42" cy="29" rx="7" ry="8" fill="#0a0612"/><circle cx="22" cy="30" r="6.5" fill="url(#se${u})" class="halo"/><circle cx="42" cy="30" r="6.5" fill="url(#se${u})" class="halo"/>
-    <path d="M32 38 29 44H35Z" fill="#0a0612"/>${shine3(20, 12, 6, 2.4)}<g class="tw"><path d="M51 14 55 10M47 8 49 4" stroke="${P.a}" stroke-width="1.8" stroke-linecap="round"/></g></g>`],
-  espada: ['Espada encantada', (P, u) => `<defs>${lg3('eb' + u, '#ffffff', D3(P.b, .35))}${lg3('eh' + u, L3(P.a, .3), D3(P.a, .45))}</defs>
-    <ellipse cx="32" cy="30" rx="7" ry="28" fill="${P.g}" opacity=".25" class="halo"/>
-    <g class="ffloat"><path d="M32 2 37 10V42H27V10Z" fill="url(#eb${u})"/><path d="M32 2V42H27V10Z" fill="#fff" opacity=".45"/><path d="M32 9V40" stroke="${P.g}" stroke-width="1.2" class="tw"/>
-    <path d="M16 42H48C48 46 44 48 40 47H24C20 48 16 46 16 42Z" fill="url(#eh${u})"/><rect x="29" y="47" width="6" height="11" rx="2" fill="${D3(P.a, .35)}"/><circle cx="32" cy="60" r="3.4" fill="url(#eh${u})"/><circle cx="32" cy="44.5" r="2.4" fill="${P.g}" class="halo"/></g>
-    <g class="tw">${sparkles8([[45, 12, 2.4], [18, 24, 2]], '#fff')}</g>`],
-  hongo: ['Hongo mágico', (P, u) => `<defs>${rg3('mc' + u, P.b, .35, .25)}${lg3('ms' + u, '#fff8ee', '#e6d4bc')}${EYESH}</defs>
-    <ellipse cx="32" cy="60" rx="16" ry="3" fill="${P.g}" opacity=".4" class="halo"/>
-    <path d="M22 34C20 48 22 56 24 60H40C42 56 44 48 42 34Z" fill="url(#ms${u})"/>${eye3(28, 45, 2.6, P.e)}${eye3(36, 45, 2.6, P.e)}<path d="M30 51Q32 53 34 51" stroke="${P.e}" stroke-width="1.3" fill="none"/>
-    <path d="M4 34C4 14 18 6 32 6S60 14 60 34C52 38 12 38 4 34Z" fill="url(#mc${u})"/>
-    <circle cx="18" cy="22" r="4.5" fill="${P.a}" opacity=".95"/><circle cx="34" cy="14" r="3.6" fill="${P.a}"/><circle cx="46" cy="25" r="5" fill="${P.a}"/><circle cx="28" cy="28" r="2.6" fill="${P.a}"/>${shine3(16, 14, 5, 2)}
-    <g class="tw">${sparkles8([[58, 8, 2.4], [6, 10, 2]], P.g)}</g>`],
-  luna: ['Luna dormilona', (P, u) => `<defs>${rg3('nl' + u, P.b, .3, .3)}${lg3('nh' + u, P.a, D3(P.a, .4))}</defs>
-    <g class="ffloat"><path d="M40 6C26 8 16 20 16 34S28 60 44 58C30 54 24 44 24 32S30 10 40 6Z" fill="url(#nl${u})"/>
-    <path d="M18.5 31Q21 33.5 23.5 31" stroke="${P.e}" stroke-width="1.6" fill="none" stroke-linecap="round"/><circle cx="20" cy="38" r="2.4" fill="#ff9ab8" opacity=".6"/><path d="M20 44Q22 46 24 44" stroke="${P.e}" stroke-width="1.4" fill="none"/>
-    <path d="M37 8C44 1 56 4 58 14C54 10 48 10 42 14Z" fill="url(#nh${u})"/><circle cx="58" cy="15" r="3.2" fill="#fff"/></g>
-    <g class="c3zz"><text x="42" y="36" font-size="9" font-weight="900" fill="${P.g}">z</text><text x="49" y="28" font-size="7" font-weight="900" fill="${P.g}">z</text></g>${sparkles8([[8, 10, 2.4], [54, 52, 2]], '#fff')}`],
-  cubo: ['Cubo holográfico', (P, u) => `<defs>${lg3('xb' + u, P.g, P.a)}</defs>
-    <g class="ffloat"><g class="c3spin"><path d="M32 6 54 18V44L32 56 10 44V18Z" fill="${P.b}" fill-opacity=".25" stroke="url(#xb${u})" stroke-width="2.2" stroke-linejoin="round"/><path d="M10 18 32 30 54 18M32 30V56" stroke="url(#xb${u})" stroke-width="2.2" fill="none"/></g>
-    <circle cx="32" cy="31" r="6" fill="${P.g}" class="halo"/></g><path d="M14 60H50" stroke="${P.g}" stroke-width="3" stroke-linecap="round" opacity=".35" class="tw"/>`],
-  tarot: ['Carta del destino', (P, u) => `<defs>${lg3('tc' + u, L3(P.b, .2), D3(P.b, .45))}${lg3('tg' + u, L3(P.a, .4), D3(P.a, .3))}</defs>
-    <g class="ffloat"><g transform="rotate(-8 32 32)"><rect x="14" y="4" width="36" height="56" rx="5" fill="url(#tc${u})" stroke="url(#tg${u})" stroke-width="2"/><rect x="18" y="8" width="28" height="48" rx="3" fill="none" stroke="url(#tg${u})" stroke-width=".8"/>
-    <g class="c3spin slow"><path d="M32 18V14M32 46V50M18 32H22M42 32H46M22 22 25 25M42 22 39 25M22 42 25 39M42 42 39 39" stroke="url(#tg${u})" stroke-width="1.6" stroke-linecap="round"/></g>
-    <circle cx="32" cy="32" r="9" fill="url(#tg${u})"/><path d="M25 32C28 27 36 27 39 32C36 37 28 37 25 32Z" fill="#fff"/><circle cx="32" cy="32" r="2.6" fill="${P.e}"/></g></g>
-    <g class="tw">${sparkles8([[56, 8, 2.4], [6, 54, 2]], P.g)}</g>`],
-  mascara: ['Máscara oni', (P, u) => `<defs>${rg3('mk' + u, P.b, .35, .25)}${lg3('mh' + u, '#fff8e6', '#c8b896')}</defs>
-    <g class="ffloat"><path d="M15 18 8 2 23 12ZM49 18 56 2 41 12Z" fill="url(#mh${u})"/>
-    <path d="M10 28C10 12 54 12 54 28V40C54 54 44 60 32 60S10 54 10 40Z" fill="url(#mk${u})"/>
-    <path d="M16 26 28 30M48 26 36 30" stroke="${P.e}" stroke-width="3" stroke-linecap="round"/><path d="M18 33C20 29 26 31 27 35C24 37 20 37 18 33ZM46 33C44 29 38 31 37 35C40 37 44 37 46 33Z" fill="${P.g}" class="halo"/>
-    <path d="M18 44C24 52 40 52 46 44C40 48 24 48 18 44Z" fill="${P.e}"/><path d="M22 46 24 50.5 26 47ZM42 46 40 50.5 38 47Z" fill="#fff"/>
-    <path d="M14 22C18 18 24 16 28 16" stroke="${P.a}" stroke-width="2" stroke-linecap="round" fill="none"/>${shine3(20, 18, 5, 2)}</g>`],
-  tele: ['Tele retro', (P, u) => `<defs>${lg3('vb' + u, L3(P.b, .3), D3(P.b, .45))}<radialGradient id="vs${u}" cx=".4" cy=".35"><stop offset="0" stop-color="${L3(P.g, .4)}"/><stop offset="1" stop-color="${D3(P.g, .55)}"/></radialGradient><clipPath id="vc${u}"><rect x="11" y="19" width="34" height="30" rx="7"/></clipPath></defs>
-    <g class="ffloat"><path d="M24 14 16 3M40 14 50 5" stroke="${D3(P.b, .4)}" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="3" r="2.2" fill="${P.a}" class="tw"/><circle cx="50" cy="5" r="2.2" fill="${P.a}" class="tw t2"/>
-    <rect x="6" y="14" width="52" height="40" rx="9" fill="url(#vb${u})"/><rect x="11" y="19" width="34" height="30" rx="7" fill="url(#vs${u})"/>
-    <g clip-path="url(#vc${u})"><g class="c3scan"><rect x="11" y="19" width="34" height="3" fill="#fff" opacity=".22"/></g></g>
-    <circle cx="22" cy="32" r="2.5" fill="${P.e}"/><circle cx="34" cy="32" r="2.5" fill="${P.e}"/><path d="M24 39Q28 42 32 39" stroke="${P.e}" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-    <circle cx="51" cy="25" r="3" fill="${P.a}"/><circle cx="51" cy="34" r="3" fill="${D3(P.a, .3)}"/><path d="M48 42H54M48 45H54" stroke="${D3(P.b, .4)}" stroke-width="1.2"/>
-    <path d="M14 54 12 60M50 54 52 60" stroke="${D3(P.b, .4)}" stroke-width="3" stroke-linecap="round"/>${shine3(16, 22, 4, 1.6)}</g>`],
+const HAIRB = {
+  long: u => `<path d="M-11-3C-17 6-12 13-16 21C-20 29-14 37-7 35C-4 38 4 38 7 35C14 37 20 29 16 21C12 13 17 6 11-3Z" fill="url(#${u}h)"/>`,
+  wavy: u => `<path d="M-12-3C-19 6-12 14-18 22C-22 30-16 36-12 34C-14 40-6 42-4 38C-1 42 3 42 5 38C8 42 15 40 13 34C18 36 22 30 18 22C12 14 19 6 12-3Z" fill="url(#${u}h)"/>`,
+  twin: u => `<path d="M-9-5C-18 0-21 12-17 24C-15 31-10 30-11 24C-13 14-10 6-6 1Z" fill="url(#${u}h)"/><path d="M9-5C18 0 21 12 17 24C15 31 10 30 11 24C13 14 10 6 6 1Z" fill="url(#${u}h)"/>`,
+  short: u => `<path d="M-11-3C-13 4-12 9-9 12H9C12 9 13 4 11-3Z" fill="url(#${u}h)"/>`,
 };
-for (const [k, [n, fn]] of Object.entries(COMPA3)) CRIT['c3' + k] = [n, (a, ak) => {
-  const pal = ak === 'oro' ? Object.assign({}, C3P[k], GOLD17, k === 'dado' ? { e: '#5a3a00' } : {}) : ak === 'u' && C3P[k].u ? C3P[k].u : C3P[k];
-  const svg = fn(pal, 'c3' + k + (ak || 'base'));
-  return ak === 'prisma' ? `<g class="prisma">${svg}</g>` : ak === 'u' ? `<g class="prisma slow">${svg}</g><g class="tw">${sparkles8([[4, 4, 3], [60, 4, 2.6], [60, 60, 2.6], [4, 60, 2.2]], '#fff')}</g>` : svg;
+const LOWER = {
+  dress: u => `<path d="M-7.5 10C-5 8.6 5 8.6 7.5 10L9.5 26C3 28-3 28-9.5 26Z" fill="url(#${u}d)"/><path d="M-9.5 26C-3 28 3 28 9.5 26" stroke="#fff" stroke-opacity=".55" stroke-width=".8" fill="none"/>`,
+  gown: (u, P) => `<path d="M-7.5 10C-5 8.6 5 8.6 7.5 10L10 18C14 26 16 32 15 36C5 39-5 39-15 36C-16 32-14 26-10 18Z" fill="url(#${u}d)"/><path d="M-15 36C-5 39 5 39 15 36M-10 18C-4 20 4 20 10 18" stroke="url(#${u}g)" stroke-width="1" fill="none"/><path d="M-4 22C-6 28-7 32-8 37M4 22C6 28 7 32 8 37" stroke="#fff" stroke-opacity=".25" stroke-width=".6" fill="none"/>`,
+  tail: (u, P) => `<path d="M-7.5 17C-9 26-6 32-2 37C1 41 2 44 0 47L4 46C6 43 6 39 4 35C8 30 9 24 7.5 17Z" fill="url(#${u}d)"/><path d="M0 46C-6 46-10 50-12 54C-6 53-2 51 1 48C3 52 8 55 13 55C11 50 7 46 2 45Z" fill="url(#${u}w)" stroke="#fff" stroke-opacity=".7" stroke-width=".5"/><path d="M-5 22Q-3 24-1 22Q1 24 3 22Q5 24 6 22M-5 27Q-3 29-1 27Q1 29 3 27Q5 29 6 27M-3 32Q-1 34 1 32Q3 34 4 32" stroke="#fff" stroke-opacity=".45" stroke-width=".5" fill="none"/><path d="M-7 10C-4 8.6 4 8.6 7 10L7.6 18C3 20-3 20-7.6 18Z" fill="url(#${u}g)"/>`,
+  smoke: u => `<path d="M-7.5 10C-5 8.6 5 8.6 7.5 10L8.5 20C10 27 4 30 6 35C8 40 3 44-2 42C2 41 3 37 0 34C-6 30-10 25-8.5 18Z" fill="url(#${u}m)"/><path d="M-7.5 10C-5 8.6 5 8.6 7.5 10L8 16C3 18-3 18-8 16Z" fill="url(#${u}d)"/><path d="M-8.4 16C-3 18 3 18 8.4 16" stroke="url(#${u}g)" stroke-width="1.2" fill="none"/>`,
+  armor: u => `<path d="M-7.5 10C-5 8.6 5 8.6 7.5 10L10 27C3 29-3 29-10 27Z" fill="url(#${u}d)"/><path d="M-7 10C-4 8.6 4 8.6 7 10L7.6 17C3 19-3 19-7.6 17Z" fill="url(#${u}g)"/><path d="M-10 27 -8 21 -5 28 -2 21 0 28 2 21 5 28 8 21 10 27" fill="url(#${u}g)" opacity=".8"/>`,
+  kimono: (u, P) => `<path d="M-7.5 10C-5 8.6 5 8.6 7.5 10L11 28C3 30-3 30-11 28Z" fill="url(#${u}d)"/><path d="M-8.4 16H8.4L8.9 20H-8.9Z" fill="url(#${u}g)"/><path d="M-4 9.6 0 15 4 9.6" stroke="#fff" stroke-width="1.2" fill="none"/><circle cx="-5" cy="24" r="1.4" fill="#fff" opacity=".6"/><circle cx="5" cy="25" r="1.1" fill="#fff" opacity=".6"/>`,
+};
+const BACKX = {
+  devtail: (u, P) => `<g class="h17sway"><path d="M6 24C16 30 22 26 24 18C25 14 28 12 30 14" stroke="${mix8(P.dress, '#000000', .25)}" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M30 15C27 11 31 8 33 11C35 8 39 11 36 14L32 18Z" fill="url(#${u}d)"/></g>`,
+  foxtails: (u, P) => { const t = `<path d="M2 24C10 31 24 31 28 19C30 12 27 6 22 4C25 11 22 18 15 20C10 22 6 22 2 21Z" fill="url(#${u}f)"/><path d="M22 4C27 6 30 12 28 19C26 15 25 9 22 4Z" fill="#fff" opacity=".9"/>`; return `<g class="h17sway"><g transform="scale(1.25)">${t}<g transform="rotate(-24 2 23)">${t}</g><g transform="scale(-1 1)">${t}</g><g transform="scale(-1 1) rotate(-24 2 23)">${t}</g></g></g>`; },
+  dragtail: u => `<g class="h17sway"><path d="M4 26C14 34 26 32 30 22L35 24 31 16 26 20C24 26 16 28 6 22Z" fill="url(#${u}k)"/></g>`,
+  sunrays: u => `<g class="c3spin slow">${Array.from({ length: 12 }, (_, i) => { const a = i * Math.PI / 6, c = Math.cos(a), s = Math.sin(a); return `<path d="M${(c * 14).toFixed(1)} ${(s * 14 - 2).toFixed(1)}L${(c * 23).toFixed(1)} ${(s * 23 - 2).toFixed(1)}" stroke="url(#${u}g)" stroke-width="${i % 2 ? 1.2 : 2.2}" stroke-linecap="round"/>`; }).join('')}</g>`,
+};
+const HEADX = {
+  halo: u => `<g class="ffloat"><ellipse cx="0" cy="-19" rx="9" ry="2.6" fill="none" stroke="url(#${u}g)" stroke-width="2.2"/><ellipse cx="0" cy="-19" rx="9" ry="2.6" fill="none" stroke="#fff" stroke-width=".6" opacity=".8"/></g>`,
+  horns: (u, P) => `<path d="M-6-11C-9-14-9-19-6-23C-6-18-4-15-2.6-12.4Z M6-11C9-14 9-19 6-23C6-18 4-15 2.6-12.4Z" fill="${mix8(P.dress, '#000000', .2)}" stroke="${P.glow}" stroke-width=".5"/>`,
+  horns2: u => `<path d="M-6-11C-11-13-14-18-13-23C-11-18-8-16-4-13Z M6-11C11-13 14-18 13-23C11-18 8-16 4-13Z" fill="url(#${u}g)"/>`,
+  crown: (u, P) => `<path d="M-7-10.5-8.5-19-4.5-14.5 0-21 4.5-14.5 8.5-19 7-10.5C2-12-2-12-7-10.5Z" fill="url(#${u}g)" stroke="${mix8(P.acc, '#000000', .4)}" stroke-width=".4"/><circle cx="0" cy="-14" r="1.5" fill="${P.glow}"/><circle cx="-5" cy="-12.6" r=".9" fill="${P.glow}"/><circle cx="5" cy="-12.6" r=".9" fill="${P.glow}"/>`,
+  witch: (u, P) => `<ellipse cx="0" cy="-9.6" rx="15" ry="3.4" fill="url(#${u}d)"/><path d="M-8-10.5C-6-17-2-23 3-27C5-29 10-28 13-24C9-25 7-24 6-21L8-10.5Z" fill="url(#${u}d)"/><path d="M-7.6-13H7.9" stroke="url(#${u}g)" stroke-width="1.8"/>${sparkles8([[2, -19, 2.4]], P.acc)}`,
+  shell: (u, P) => `<path d="M-9-9C-13-12-12-18-7-19C-3-19-2-14-4-9Z" fill="url(#${u}g)" stroke="#fff" stroke-width=".4"/><path d="M-8.5-9.5-10-15M-7-9.5-7.2-18M-5.4-9.6-4.6-16.6" stroke="#fff" stroke-opacity=".7" stroke-width=".4"/><circle cx="-2" cy="-11.6" r="1.1" fill="#fff"/><circle cx="1" cy="-12.6" r="1" fill="#fff"/><circle cx="4" cy="-12.2" r=".9" fill="#fff"/>`,
+  icetiara: u => `<path d="M-7-10-6-16-4-12.4-2-20 0-13 2-20 4-12.4 6-16 7-10C2-11.6-2-11.6-7-10Z" fill="url(#${u}w)" stroke="#fff" stroke-width=".6" stroke-linejoin="round"/>`,
+  flowers: (u, P) => [[-8.6, -7.4], [-5.4, -11.6], [0, -13.2], [5.4, -11.6], [8.6, -7.4]].map(([x, y], i) => `<g transform="translate(${x} ${y})">${[0, 72, 144, 216, 288].map(a => `<ellipse cx="0" cy="-1.5" rx="1.1" ry="1.6" fill="${i % 2 ? '#ffffff' : P.acc}" transform="rotate(${a})"/>`).join('')}<circle r=".8" fill="#ffd24a"/></g>`).join(''),
+  moon: u => `<g class="ffloat"><path d="M3-26A6 6 0 1 0 3-15A4.6 4.6 0 1 1 3-26Z" fill="url(#${u}g)"/></g>`,
+  wingedhelm: (u, P) => `<path d="M-9.8-1C-10.4-10-4-14.4 0-14.4S10.4-10 9.8-1C7-6 3-8.2 0-8.2S-7-6-9.8-1Z" fill="url(#${u}g)"/><path d="M0-14.4V-8.2" stroke="#fff" stroke-width=".7" opacity=".7"/>${mir(`<path d="M9-6C14-11 19-11 21-9C18-8 16-6 15-4C17-4 18-3 19-1C15 0 12-2 9.6-3Z" fill="#fff" stroke="${P.glow}" stroke-width=".4"/>`, 'h17none')}`,
+  foxears: (u, P) => `<path d="M-8-8-11.5-20-3-12Z M8-8 11.5-20 3-12Z" fill="url(#${u}h)"/><path d="M-8-10-9.8-17-5-12.4Z M8-10 9.8-17 5-12.4Z" fill="#ffb3c8"/>`,
+  flamecrown: u => `<g class="flick"><path d="M-7-10C-8-15-5-17-5-21C-3-18-2-16 0-23C2-16 3-18 5-21C5-17 8-15 7-10C2-11.6-2-11.6-7-10Z" fill="url(#${u}f)"/></g>`,
+  goggles: (u, P) => `<path d="M-9.6-6C-4-8.4 4-8.4 9.6-6" stroke="${mix8(P.acc, '#000000', .4)}" stroke-width="1.6" fill="none"/><circle cx="-4" cy="-8.2" r="3" fill="${P.glow}" stroke="url(#${u}g)" stroke-width="1.4"/><circle cx="4" cy="-8.2" r="3" fill="${P.glow}" stroke="url(#${u}g)" stroke-width="1.4"/><circle cx="-5" cy="-9.2" r=".9" fill="#fff"/><circle cx="3" cy="-9.2" r=".9" fill="#fff"/>`,
+  topknot: (u, P) => `<path d="M-2-13C-4-19 0-24 5-22C2-20 2-17 2.4-13Z" fill="url(#${u}h)"/><path d="M-2.6-14H2.8" stroke="url(#${u}g)" stroke-width="1.6"/><circle cx="-9.4" cy="5" r="1.3" fill="url(#${u}g)"/><circle cx="9.4" cy="5" r="1.3" fill="url(#${u}g)"/>`,
+  sun: u => `<circle cx="0" cy="-12.6" r="2.8" fill="url(#${u}g)" stroke="#fff" stroke-width=".5"/>`,
+};
+const HELD = {
+  orb: u => `<circle cx="0" cy="14.5" r="6" fill="url(#${u}a)"/><circle cx="0" cy="14" r="3.6" fill="url(#${u}w)" class="halo"/>`,
+  starstaff: (u, P) => `<path d="M12 34 15-5" stroke="${mix8(P.acc, '#000000', .35)}" stroke-width="1.5" stroke-linecap="round"/><g class="tw">${sparkles8([[15.3, -9, 5]], P.acc)}</g><circle cx="15.3" cy="-9" r="1.2" fill="#fff"/>`,
+  sunstaff: (u, P) => `<path d="M12 34 15-5" stroke="${mix8(P.acc, '#000000', .35)}" stroke-width="1.5" stroke-linecap="round"/><circle cx="15.3" cy="-9" r="6" fill="url(#${u}a)"/><circle cx="15.3" cy="-9" r="3.2" fill="url(#${u}g)"/>`,
+  trident: (u, P) => `<path d="M12.4 36 14.4-4" stroke="url(#${u}g)" stroke-width="1.4" stroke-linecap="round"/><path d="M10.4-3.6H18.4M10.4-3.6C10-8 11-10 11.4-12M14.4-4V-14M18.4-3.6C18.6-8 17.6-10 17.2-12" stroke="url(#${u}g)" stroke-width="1.3" fill="none" stroke-linecap="round"/>`,
+  spear: (u, P) => `<path d="M12.4 36 14.6-6" stroke="${mix8(P.acc, '#000000', .45)}" stroke-width="1.4" stroke-linecap="round"/><path d="M14.9-15 12.6-6H16.8Z" fill="url(#${u}g)" stroke="#fff" stroke-width=".4"/>`,
+  lamp: (u, P) => `<path d="M-6 12.6C-6 16.4 6 16.4 6 12.6Z" fill="url(#${u}g)"/><path d="M6 13C9 12.6 10 10.6 12 10.4" stroke="url(#${u}g)" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M-2.4 12.6C-2.4 10.8 2.4 10.8 2.4 12.6Z" fill="url(#${u}g)"/><g class="tw"><path d="M12 9C13 6 11 4 13 1C14 3 15 5 14 8" stroke="${P.glow}" stroke-width="1" fill="none" opacity=".8"/></g>`,
+};
+const PARTX = {
+  feathers: P => `<g class="h17fall">${[[8, 14], [54, 22], [12, 48]].map(([x, y]) => `<path d="M${x} ${y}C${x + 3} ${y - 3} ${x + 6} ${y - 3} ${x + 7} ${y - 1}C${x + 4} ${y} ${x + 2} ${y + 1} ${x} ${y}Z" fill="#fff" opacity=".85"/>`).join('')}</g>`,
+  embers: P => `<g class="tw">${[[8, 40, 1.4], [56, 46, 1.2], [52, 12, 1], [10, 12, 1.1], [58, 30, .9]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${P.glow}"/>`).join('')}</g>`,
+  bubbles: P => `<g class="h17rise">${[[8, 50, 2.2], [56, 44, 1.6], [52, 20, 1.2], [6, 26, 1.4]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="none" stroke="#fff" stroke-width=".6" opacity=".8"/>`).join('')}</g>`,
+  stars: P => `<g class="tw">${sparkles8([[6, 10, 2.6], [58, 8, 2.2], [56, 50, 2], [8, 48, 1.8]], P.acc)}</g>`,
+  snow: P => `<g class="h17fall">${[[8, 12], [56, 18], [50, 50], [10, 44]].map(([x, y]) => `<path d="M${x - 2.2} ${y}H${x + 2.2}M${x} ${y - 2.2}V${y + 2.2}M${x - 1.6} ${y - 1.6}L${x + 1.6} ${y + 1.6}M${x + 1.6} ${y - 1.6}L${x - 1.6} ${y + 1.6}" stroke="#fff" stroke-width=".7" stroke-linecap="round"/>`).join('')}</g>`,
+  leaves: P => `<g class="h17fall">${[[8, 16, 20], [55, 20, -30], [12, 50, 60]].map(([x, y, r]) => `<path d="M${x} ${y}C${x + 2} ${y - 3} ${x + 6} ${y - 3} ${x + 7} ${y}C${x + 5} ${y + 2} ${x + 2} ${y + 2} ${x} ${y}Z" fill="${P.wing}" transform="rotate(${r} ${x} ${y})"/>`).join('')}</g>`,
+  petals: P => `<g class="h17fall">${[[8, 14, 20], [55, 18, -40], [52, 50, 10], [10, 46, 70]].map(([x, y, r]) => `<ellipse cx="${x}" cy="${y}" rx="2.2" ry="1.3" fill="${P.glow}" transform="rotate(${r} ${x} ${y})"/>`).join('')}</g>`,
+  wisps: P => `<g class="flick">${[[6, 22], [56, 26]].map(([x, y]) => `<path d="M${x} ${y}C${x - 2} ${y - 4} ${x} ${y - 8} ${x + 2} ${y - 10}C${x + 2} ${y - 6} ${x + 5} ${y - 5} ${x + 4} ${y - 1}C${x + 3} ${y + 1} ${x + 1} ${y + 1} ${x} ${y}Z" fill="${P.glow}" opacity=".85"/>`).join('')}</g>`,
+  smoke: P => `<g class="h17rise">${[[10, 50, 4], [54, 46, 3.4], [50, 14, 2.6]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${P.glow}" opacity=".25"/>`).join('')}</g>${sparkles8([[8, 12, 2]], P.glow)}`,
+  sparks: P => `<g class="tw">${sparkles8([[8, 14, 2.2], [56, 12, 1.8], [54, 48, 2]], '#fff')}</g><g class="tw t2"><path d="M6 40l3-2M57 32l-3 2M10 56l2-3" stroke="${P.glow}" stroke-width="1" stroke-linecap="round"/></g>`,
+  sparkle: P => `<g class="tw">${sparkles8([[8, 10, 3], [56, 14, 2.5], [54, 50, 2], [8, 50, 1.8]], '#fff')}</g>`,
+};
+function faceH(u, P, eyes) {
+  const iris = P.eye || mix8(P.glow, '#000000', .25), lash = '#2a1830';
+  if (eyes === 'happy') return `<path d="M-5.6 1.6Q-3.6-1.4-1.6 1.6M1.6 1.6Q3.6-1.4 5.6 1.6" stroke="${lash}" stroke-width=".95" fill="none" stroke-linecap="round"/>`;
+  const open = `<ellipse cx="-3.6" cy=".9" rx="1.75" ry="2.1" fill="${lash}"/><ellipse cx="3.6" cy=".9" rx="1.75" ry="2.1" fill="${lash}"/><ellipse cx="-3.5" cy="1.3" rx="1.15" ry="1.45" fill="${iris}"/><ellipse cx="3.7" cy="1.3" rx="1.15" ry="1.45" fill="${iris}"/><circle cx="-3" cy=".2" r=".6" fill="#fff"/><circle cx="4.2" cy=".2" r=".6" fill="#fff"/>`;
+  if (eyes === 'sly') return open + `<path d="M-6-1.6H-1.2V.4Q-3.6-.1-6 .5Z M1.2-1.6H6V.5Q3.6-.1 1.2.4Z" fill="url(#${u}s)"/><path d="M-6 .5Q-3.6-.1-1.4.4M1.4.4Q3.6-.1 6 .5M-6 .5-6.8-.2M6 .5 6.8-.2" stroke="${lash}" stroke-width=".75" fill="none" stroke-linecap="round"/>`;
+  return open + `<path d="M-5.8 0Q-3.6-1.6-1.6-.2M1.6-.2Q3.6-1.6 5.8 0M-5.8 0-6.7-.9M5.8 0 6.7-.9" stroke="${lash}" stroke-width=".7" fill="none" stroke-linecap="round"/>`;
+}
+function heroSVG(o, P, u, extra = '') {
+  const back = `<circle r="34" cy="4" fill="url(#${u}a)"/>${o.back ? BACKX[o.back](u, P) : ''}${o.wing && o.wing !== 'none' ? `<g opacity=".95">${mir(WINGS[o.wing](u, P))}</g>` : ''}
+    ${HAIRB[o.hair || 'long'](u)}${LOWER[o.lower || 'dress'](u, P)}
+    <path d="M-3 6.5H3V10.5C1 11.5-1 11.5-3 10.5Z" fill="${P.skin}"/>
+    ${o.ears === false ? '' : `<path d="M-7.8-1.5-18-9.5C-15.5-5.5-12.5-1.5-8.4 3.5Z M7.8-1.5 18-9.5C15.5-5.5 12.5-1.5 8.4 3.5Z" fill="url(#${u}s)" stroke="${mix8(P.skin, P.glow, .5)}" stroke-width=".4"/>`}
+    <ellipse rx="8.7" ry="9.6" fill="url(#${u}s)"/>
+    <path d="M-9.6 0C-10.4-10-4-14.2 0-13.6C4.6-14.2 10.6-10 9.6 0C8.3-5.6 5-8.6 1.2-7.9C-1.6-9.6-6.4-6.6-9.6 0Z" fill="url(#${u}h)"/>
+    ${o.hair === 'short' ? '' : `<path d="M-9.4-1C-11.6 5-8.6 9.6-11.2 15.2M9.4-1C11.6 5 8.6 9.6 11.2 15.2" stroke="url(#${u}h)" stroke-width="3.4" fill="none" stroke-linecap="round"/>`}
+    ${o.head ? HEADX[o.head](u, P) : ''}
+    <path d="M-5.6-2.6Q-3.6-3.6-1.8-2.9M5.6-2.6Q3.6-3.6 1.8-2.9" stroke="${mix8(P.hair, '#000000', .35)}" stroke-width=".55" fill="none" stroke-linecap="round"/>
+    ${faceH(u, P, o.eyes)}
+    <ellipse cx="-5.6" cy="4" rx="1.8" ry="1.1" fill="#ff6b9a" opacity=".45"/><ellipse cx="5.6" cy="4" rx="1.8" ry="1.1" fill="#ff6b9a" opacity=".45"/>
+    <path d="M-1.3 5Q0 5.9 1.3 5" stroke="#b0406a" stroke-width=".65" fill="none" stroke-linecap="round"/>
+    ${o.held ? HELD[o.held](u, P) : ''}
+    <path d="M-8.5 12C-6 15.5-1 15 2.6 12.8M8.5 12C6 15.5 1 15-2.6 12.8" stroke="url(#${u}s)" stroke-width="3.3" fill="none" stroke-linecap="round"/>
+    <ellipse cx="-2.4" cy="11.6" rx="2.6" ry="1.9" fill="${P.skin}"/><ellipse cx="2.4" cy="11.6" rx="2.6" ry="1.9" fill="${P.skin}"/>`;
+  return `${hdefs(u, P)}<g class="ffloat"><g transform="translate(32 ${o.lower === 'tail' || o.lower === 'gown' ? 22 : 24}) scale(${o.lower === 'tail' ? .74 : .8})">${back}</g></g>${o.fx ? PARTX[o.fx](P) : ''}${extra}`;
+}
+// ---------- las 16 compañeras (cada una: normal legendaria en la tienda + Noche, Plata y Diamante en cajas)
+const HEROES = {
+  angel: ['Ángel guardiana', { wing: 'feather', hair: 'long', head: 'halo', lower: 'gown', fx: 'feathers', eyes: 'happy' }, { hair: '#f2d27a', skin: '#fff1e4', wing: '#ffffff', dress: '#eef0ff', glow: '#ffe9a8', acc: '#e0b040' }],
+  diablita: ['Diablita', { wing: 'bat', hair: 'twin', head: 'horns', lower: 'dress', back: 'devtail', fx: 'embers', eyes: 'sly' }, { hair: '#3a1a2e', skin: '#ffe6e6', wing: '#c0203a', dress: '#d62a4a', glow: '#ff4a6a', acc: '#ff8a3d' }],
+  sirena: ['Sirena', { hair: 'wavy', head: 'shell', lower: 'tail', held: 'trident', fx: 'bubbles' }, { hair: '#ff7ab8', skin: '#ffe9f0', wing: '#9ff5ff', dress: '#2ac8c0', glow: '#7fe8ff', acc: '#c8a0ff' }],
+  bruja: ['Bruja estelar', { hair: 'long', head: 'witch', lower: 'gown', held: 'starstaff', fx: 'stars' }, { hair: '#9a6ae6', skin: '#f6eeff', wing: '#d1b8ff', dress: '#3a2a6a', glow: '#c08bff', acc: '#ffd24a' }],
+  hielo: ['Princesa de hielo', { wing: 'crystal', hair: 'long', head: 'icetiara', lower: 'gown', fx: 'snow' }, { hair: '#dff4ff', skin: '#f4fbff', wing: '#bfeaff', dress: '#6ab8ff', glow: '#9fe0ff', acc: '#ffffff', eye: '#3a8aff' }],
+  driade: ['Dríade del bosque', { wing: 'leaf', hair: 'wavy', head: 'flowers', lower: 'dress', fx: 'leaves', eyes: 'happy' }, { hair: '#5aa83a', skin: '#f2ffe8', wing: '#8fe07a', dress: '#3a9a4a', glow: '#a8f0a0', acc: '#ff9ac8' }],
+  lunar: ['Hechicera lunar', { wing: 'moth', hair: 'long', head: 'moon', lower: 'gown', held: 'orb', fx: 'stars' }, { hair: '#c8d0ff', skin: '#f6f6ff', wing: '#a8b8ff', dress: '#2a2a6a', glow: '#bfc8ff', acc: '#ffe9a8' }],
+  valquiria: ['Valquiria', { wing: 'feather', hair: 'long', head: 'wingedhelm', lower: 'armor', held: 'spear', fx: 'sparks' }, { hair: '#ffd24a', skin: '#fff2e4', wing: '#e8f0ff', dress: '#4a6ab8', glow: '#9fd0ff', acc: '#d6dce8' }],
+  kitsune: ['Kitsune', { hair: 'twin', head: 'foxears', back: 'foxtails', lower: 'kimono', fx: 'wisps', eyes: 'sly', ears: false }, { hair: '#fff4ea', skin: '#fff6f0', wing: '#ff9a5a', dress: '#e0405a', glow: '#ff8a5a', acc: '#ffd24a' }],
+  dragona: ['Dragona', { wing: 'dragon', hair: 'short', head: 'horns2', back: 'dragtail', lower: 'dress', fx: 'embers' }, { hair: '#3ad68a', skin: '#f0fff6', wing: '#1a8a5a', dress: '#2a6a4a', glow: '#5ff2b0', acc: '#ffd24a' }],
+  genio: ['Genio de la lámpara', { hair: 'short', head: 'topknot', lower: 'smoke', held: 'lamp', fx: 'sparkle' }, { hair: '#2a1a4a', skin: '#a8d6ff', wing: '#ffffff', dress: '#7a3ad6', glow: '#8fd6ff', acc: '#ffd24a', eye: '#2a1a4a' }],
+  fenix: ['Dama fénix', { wing: 'flame', hair: 'long', head: 'flamecrown', lower: 'gown', fx: 'embers' }, { hair: '#ff6a1a', skin: '#fff2e4', wing: '#ffb03d', dress: '#d6301a', glow: '#ffb03d', acc: '#ffe066' }],
+  sombra: ['Reina de las sombras', { wing: 'shadow', hair: 'long', head: 'crown', lower: 'gown', held: 'orb', fx: 'smoke', eyes: 'sly' }, { hair: '#1e1630', skin: '#ece4f8', wing: '#2a1a3a', dress: '#1a1024', glow: '#a050ff', acc: '#c080ff' }],
+  sol: ['Sacerdotisa del sol', { wing: 'feather', hair: 'long', head: 'sun', back: 'sunrays', lower: 'gown', held: 'sunstaff', fx: 'sparkle', eyes: 'happy' }, { hair: '#ffb030', skin: '#fff4e4', wing: '#fff3c4', dress: '#ffffff', glow: '#ffd24a', acc: '#ffb000' }],
+  cerezo: ['Espíritu del cerezo', { wing: 'fairy', hair: 'twin', head: 'flowers', lower: 'dress', fx: 'petals', eyes: 'happy' }, { hair: '#ffb3d1', skin: '#fff2f7', wing: '#ffd1e6', dress: '#ff8ab8', glow: '#ffb3d9', acc: '#ffffff' }],
+  mecanica: ['Hada mecánica', { wing: 'gear', hair: 'short', head: 'goggles', lower: 'dress', fx: 'sparks' }, { hair: '#c8642a', skin: '#fff2e8', wing: '#f0d8a0', dress: '#6a4a2a', glow: '#ffcf6a', acc: '#d6a040' }],
+};
+const HVAR = {
+  noche: (P) => ({ hair: mix8(P.hair, '#0a0614', .65), skin: mix8(P.skin, '#c8b8e8', .35), wing: mix8(P.wing, '#140a24', .6), dress: '#17121f', glow: P.glow, acc: P.acc, eye: P.eye }),
+  plata: () => ({ hair: '#e6eaf4', skin: '#f8f9fc', wing: '#dfe6f0', dress: '#a8b2c8', glow: '#dbe4ff', acc: '#ffffff', eye: '#6a7a9a' }),
+  diamante: () => ({ hair: '#f2fbff', skin: '#ffffff', wing: '#d6f6ff', dress: '#bfeaff', glow: '#9ff5ff', acc: '#ffffff', eye: '#3ab8ff' }),
+};
+const HUNQ = {
+  sombra: ['Reina Eclipse', { hair: '#0a0a0a', skin: '#fff8ec', wing: '#050505', dress: '#0a0a0a', glow: '#ffd24a', acc: '#ffd24a', eye: '#ffb000' }],
+  sirena: ['Sirena de Oro', { hair: '#ffd24a', skin: '#fff6e4', wing: '#fff3c4', dress: '#e8b830', glow: '#ffe08a', acc: '#ffffff', eye: '#c8781a' }],
+  fenix: ['Fénix Eterna', { hair: '#3a8aff', skin: '#eef6ff', wing: '#8fd6ff', dress: '#1a3ad6', glow: '#8fd6ff', acc: '#ffffff', eye: '#1a3ad6' }],
+  angel: ['Ángel del Alba', { hair: '#ff9ac8', skin: '#fff4f0', wing: '#ffe0f0', dress: '#ffd6a8', glow: '#ffb3d9', acc: '#ffd24a' }],
+};
+const UNQX = '<g class="tw">' + sparkles8([[4, 4, 3.2], [60, 4, 2.8], [60, 60, 2.8], [4, 60, 2.4], [32, 2, 2]], '#fff') + '</g>';
+for (const [k, [n, o, P]] of Object.entries(HEROES)) CRIT['h17' + k] = [n, (a, ak) => {
+  if (ak === 'u' && HUNQ[k]) return heroSVG(o, HUNQ[k][1], 'h17' + k + 'u', UNQX);
+  const pal = HVAR[ak] ? HVAR[ak](P) : P, svg = heroSVG(o, pal, 'h17' + k + (HVAR[ak] ? ak : 'b'), ak === 'diamante' ? UNQX : '');
+  return ak === 'diamante' ? `<g class="prisma slow">${svg}</g>` : svg;
 }];
-STYLE_OPTS.compa.push(...Object.entries(COMPA3).map(([k, [n]]) => lgo('lg-c3-' + k, n + ' 3D', `c3${k}|base`)));
+STYLE_OPTS.compa.push(...Object.entries(HEROES).map(([k, [n]]) => lgo('lg-h17-' + k, n, `h17${k}|base`)));
 {
   const L = [];
-  for (const [k, [n]] of Object.entries(COMPA3)) L.push(['cx-c3o-' + k, n + ' dorado 3D', 'mitica', `c3${k}|oro`], ['cx-c3x-' + k, n + ' prisma 3D', 'exotica', `c3${k}|prisma`]);
-  for (const [k, n] of Object.entries(C3U)) L.push(['cx-c3u-' + k, n, 'unica', `c3${k}|u`]);
+  for (const [k, [n]] of Object.entries(HEROES)) L.push(['cx-h17n-' + k, n + ' · Noche', 'mitica', `h17${k}|noche`], ['cx-h17p-' + k, n + ' · Plata', 'mitica', `h17${k}|plata`], ['cx-h17d-' + k, n + ' · Diamante', 'exotica', `h17${k}|diamante`]);
+  for (const [k, [n]] of Object.entries(HUNQ)) L.push(['cx-h17u-' + k, n, 'unica', `h17${k}|u`]);
   for (const [k, n, r, v] of L) STYLE_OPTS.compa.push(Object.assign(C(k, n, v), { cx: r }));
 }
+Object.assign(LG_TOP, { 'compa:lg-h17-sombra': 30000, 'compa:lg-h17-fenix': 30000, 'compa:lg-h17-angel': 30000 });
 for (const r of collectCatalog()) CAT_IDX[r[0]] = { id: r[0], f: r[1], k: r[2], n: r[3], r: r[4], max: r[5], b: r[6] };
 PRO_COUNT = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.filter(o => !o.f).length, 0) + 4;
 
@@ -6859,11 +6905,295 @@ function fill17() {
       const e = el.querySelector('[data-est]'); if (e) e.textContent = fmtc(estOf(it));
       const m = el.querySelector('[data-mk]'); if (m) m.innerHTML = mkLine(it.cid);
     }
-    if (tot) { tot.dataset.mkd = '1'; const sum = INV.list.reduce((a, it) => a + estOf(it), 0); tot.innerHTML = sum ? ` Tu colección vale <b>${coinSVG(14)} ${fmtc(sum)}</b> (estimado).` : ''; }
+    if (tot) { tot.dataset.mkd = '1'; const sum = INV.list.reduce((a, it) => a + estOf(it), 0); tot.innerHTML = (sum ? ` Tu colección vale <b>${coinSVG(14)} ${fmtc(sum)}</b> (estimado).` : '') + ' <a href="#" data-act="valhelp">¿Qué hace valioso a un objeto?</a>'; }
   }, 120);
 }
 if (document.body) new MutationObserver(fill17).observe(document.body, { childList: true, subtree: true });
 else document.addEventListener('DOMContentLoaded', () => new MutationObserver(fill17).observe(document.body, { childList: true, subtree: true }));
+
+
+// ============================================================ V18: CRIATURAS MÍTICAS (compañeros que no son hadas, con el mismo nivel de detalle)
+const glw = (id, a) => `<radialGradient id="${id}"><stop offset="0" stop-color="#fff"/><stop offset=".4" stop-color="${a}"/><stop offset="1" stop-color="${a}" stop-opacity="0"/></radialGradient>`;
+const CRP = {
+  caballero: { b: '#8a9ab8', a: '#c8a040', g: '#5ac8ff', e: '#9ff5ff' },
+  oriental: { b: '#d6302a', a: '#ffd24a', g: '#ff8a3d', e: '#ffe066' },
+  grifo: { b: '#c8904a', a: '#f4f0e8', g: '#ffd24a', e: '#ffb000' },
+  parca: { b: '#2a2238', a: '#c8b8e8', g: '#7fffd0', e: '#7fffd0' },
+  liche: { b: '#4a2a7a', a: '#ffd24a', g: '#9f6aff', e: '#5ff2ff' },
+  kraken: { b: '#2a4ab8', a: '#ff6aa8', g: '#5ff2ff', e: '#ffd24a' },
+  anubis: { b: '#1c1a22', a: '#ffc83a', g: '#3a7aff', e: '#ffd24a' },
+  titan: { b: '#2a1a6a', a: '#ff6ac8', g: '#9fd8ff', e: '#ffffff' },
+  pirata: { b: '#2a2430', a: '#e8b830', g: '#5fffb0', e: '#5fffb0' },
+  demonio: { b: '#d02a3e', a: '#1a0a14', g: '#ff6a2a', e: '#ffd24a' },
+  gargola: { b: '#7a7a8a', a: '#4a8a5a', g: '#ff4a3a', e: '#ff6a3a' },
+  primigenio: { b: '#3a8a6a', a: '#8ad6a8', g: '#b0ff6a', e: '#ffe066' },
+  lava: { b: '#2a1e1e', a: '#ff6a1a', g: '#ffd24a', e: '#fff3a0' },
+  mimico: { b: '#8a5a2a', a: '#e8b830', g: '#ffd24a', e: '#ff3d5a' },
+};
+const CRV = {
+  oro: P => ({ b: '#e8b830', a: '#fff3c4', g: '#ffe08a', e: P.e === '#ffd24a' ? '#3ad68a' : '#fff3c4' }),
+  sombra: P => ({ b: mix8(P.b, '#08050f', .72), a: mix8(P.a, '#08050f', .35), g: '#b070ff', e: '#ff4a9a' }),
+};
+const CRU = { oriental: ['Dragón Emperador', { b: '#0a0a0a', a: '#ffd24a', g: '#ffd24a', e: '#ffffff' }], liche: ['Rey Liche Eterno', { b: '#0a0a12', a: '#ffffff', g: '#ff2a5a', e: '#ff2a5a' }], titan: ['Titán del Big Bang', { b: '#000000', a: '#ffd24a', g: '#ffffff', e: '#ffd24a' }], mimico: ['Mímico Diamante', { b: '#bfeaff', a: '#ffffff', g: '#9ff5ff', e: '#3ab8ff' }] };
+const CREA = {
+  caballero: ['Caballero espectral', (P, u) => `<defs>${lg3('kh' + u, L3(P.b, .5), D3(P.b, .5))}${lg3('kt' + u, L3(P.a, .4), D3(P.a, .35))}${lg3('kp' + u, '#ffffff', P.g)}${glw('ke' + u, P.e)}<linearGradient id="kw${u}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${P.g}" stop-opacity=".7"/><stop offset="1" stop-color="${P.g}" stop-opacity="0"/></linearGradient></defs>
+    <path d="M20 40C22 46 28 44 32 47C36 44 42 46 44 40L46 50H18Z" fill="url(#kw${u})"/>
+    <g class="ffloat"><g class="flick"><path d="M34 13C38 7 36 3 42 0C40 6 47 8 45 14C43 19 36 19 34 13Z" fill="url(#kp${u})"/><path d="M36 13C38 9 38 6 41 4C40 8 44 10 42 14C41 16 37 16 36 13Z" fill="#fff" opacity=".7"/></g>
+    <path d="M18 27C18 13 46 13 46 27V35C46 39 42 41 32 41S18 39 18 35Z" fill="url(#kh${u})"/><path d="M32 13V41" stroke="${L3(P.b, .55)}" stroke-width="2"/><path d="M18 27C18 13 46 13 46 27" stroke="url(#kt${u})" stroke-width="1.6" fill="none"/>
+    <path d="M21 27H43V31.5H21Z" fill="#06040c"/><ellipse cx="27" cy="29.2" rx="3.4" ry="2" fill="url(#ke${u})" class="halo"/><ellipse cx="37" cy="29.2" rx="3.4" ry="2" fill="url(#ke${u})" class="halo"/>
+    <path d="M24 35h1M27 36h1M30 36.4h1M33 36.4h1M36 36h1M39 35h1" stroke="#06040c" stroke-width="1.4" stroke-linecap="round"/>${shine3(23, 19, 4, 1.6)}</g>
+    <path d="M14 47C18 43 46 43 50 47L46 59C40 61 24 61 18 59Z" fill="url(#kh${u})"/><path d="M14 47C18 43 46 43 50 47" stroke="url(#kt${u})" stroke-width="2" fill="none"/><path d="M32 45V60M24 50 32 54 40 50" stroke="url(#kt${u})" stroke-width="1.4" fill="none"/>
+    <g class="ffloat"><path d="M5 44C5 39 12 39 12 44V51C12 54 5 54 5 51Z" fill="url(#kh${u})"/><path d="M52 44C52 39 59 39 59 44V51C59 54 52 54 52 51Z" fill="url(#kh${u})"/><path d="M5 44H12M52 44H59" stroke="url(#kt${u})" stroke-width="1.6"/></g>`],
+  oriental: ['Dragón oriental', (P, u) => `<defs>${lg3('ob' + u, L3(P.b, .3), D3(P.b, .35))}${lg3('oa' + u, L3(P.a, .5), D3(P.a, .3))}${glw('op' + u, P.g)}${EYESH}</defs>
+    <circle cx="13" cy="20" r="8" fill="url(#op${u})" class="halo"/><circle cx="13" cy="20" r="4" fill="#fff" opacity=".9"/>
+    <path d="M10 57C3 49 13 42 22 46C30 50 37 44 33 36C29 28 38 21 44 25" stroke="${P.g}" stroke-width="12" stroke-dasharray="1.6 4.4" fill="none" opacity=".75"/>
+    <path d="M10 57C3 49 13 42 22 46C30 50 37 44 33 36C29 28 38 21 44 25" stroke="url(#ob${u})" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <path d="M10 57C3 49 13 42 22 46C30 50 37 44 33 36C29 28 38 21 44 25" stroke="${P.a}" stroke-width="2.6" stroke-dasharray="3 2" fill="none" transform="translate(1 1.6)"/>
+    <path d="M10 57C6 60 2 58 2 54C5 56 7 55 8 53Z" fill="${P.g}" class="flick"/>
+    <path d="M26 46 22 52M34 40 40 44" stroke="url(#ob${u})" stroke-width="3" stroke-linecap="round"/><path d="M21 52l-1.5 2M23 53v2M39 45l2 1M40 43l2 0" stroke="${P.a}" stroke-width="1" stroke-linecap="round"/>
+    <g class="ffloat"><path d="M44 14 41 3 47 11ZM50 13 53 2 54 13Z" fill="url(#oa${u})"/>
+    <path d="M38 20C34 14 37 9 41 12C40 7 45 6 46 10C48 6 52 8 51 11" fill="${P.g}" opacity=".9"/>
+    <path d="M37 22C37 14 50 11 56 15C61 18 63 22 59 27C55 31 42 31 37 22Z" fill="url(#ob${u})"/><path d="M50 25C54 25 58 24 60 23C59 27 55 29 50 28Z" fill="${P.a}"/>
+    ${eye3(46.5, 19, 2.6, P.e, true)}<circle cx="57" cy="19" r=".9" fill="#1a0a0a"/>
+    <path d="M58 25C63 29 63 35 58 40M55 27C58 33 56 37 51 40" stroke="url(#oa${u})" stroke-width="1.1" fill="none" stroke-linecap="round"/>${shine3(43, 15, 3, 1.2)}</g>
+    <g class="tw">${sparkles8([[6, 8, 2], [58, 52, 2.2]], P.a)}</g>`],
+  grifo: ['Grifo', (P, u) => `<defs>${rg3('gb' + u, P.b, .35, .3)}${rg3('gh' + u, P.a, .35, .25)}${lg3('gw' + u, L3(P.a, .2), P.b)}${lg3('gk' + u, '#ffe08a', '#c8781a')}${EYESH}</defs>
+    <path d="M46 56C56 58 61 50 58 43" stroke="url(#gb${u})" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="58" cy="42" r="3.2" fill="${D3(P.b, .3)}"/>
+    <g opacity=".96"><g transform="translate(32 34)"><g class="fw"><path d="M8 8C16-6 28-12 30-8C28-4 30 0 26 4C28 8 22 12 14 12Z" fill="url(#gw${u})" stroke="${D3(P.b, .3)}" stroke-width=".5"/><path d="M10 9C18 0 24-4 28-6M12 10C18 5 22 3 26 2M13 11C18 8 21 7 24 6" stroke="${D3(P.b, .35)}" stroke-width=".5" fill="none"/></g></g><g transform="translate(32 34) scale(-1 1)"><g class="fw"><path d="M8 8C16-6 28-12 30-8C28-4 30 0 26 4C28 8 22 12 14 12Z" fill="url(#gw${u})" stroke="${D3(P.b, .3)}" stroke-width=".5"/><path d="M10 9C18 0 24-4 28-6M12 10C18 5 22 3 26 2M13 11C18 8 21 7 24 6" stroke="${D3(P.b, .35)}" stroke-width=".5" fill="none"/></g></g></g>
+    <path d="M16 62C14 48 22 40 32 40S50 48 48 62Z" fill="url(#gb${u})"/><ellipse cx="24" cy="60" rx="5" ry="3.4" fill="${D3(P.b, .2)}"/><ellipse cx="40" cy="60" rx="5" ry="3.4" fill="${D3(P.b, .2)}"/>
+    <path d="M23 39C25 51 39 51 41 39C37 46 27 46 23 39Z" fill="url(#gh${u})"/>
+    <path d="M20 19 17 7 27 14ZM44 19 47 7 37 14Z" fill="url(#gh${u})"/>
+    <circle cx="32" cy="26" r="13.5" fill="url(#gh${u})"/><path d="M19 26C22 22 26 21 28 22M45 26C42 22 38 21 36 22" stroke="${D3(P.a, .35)}" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+    ${eye3(25.5, 25, 3.2, P.e, true)}${eye3(38.5, 25, 3.2, P.e, true)}
+    <path d="M28 29C30 27 34 27 36 29C36.4 34 34 38 32 41C30.4 37 28 33 28 29Z" fill="url(#gk${u})"/><path d="M32 41C31.4 38.4 31 36 31.4 34" stroke="#8a4a0a" stroke-width=".6" fill="none"/>${shine3(26, 17, 4, 1.6)}`],
+  parca: ['Parca', (P, u) => `<defs>${lg3('rc' + u, L3(P.b, .3), D3(P.b, .6))}${lg3('rb' + u, '#ffffff', P.g)}${glw('re' + u, P.e)}</defs>
+    <path d="M51 62 44 6" stroke="#5a3a2a" stroke-width="2.4" stroke-linecap="round"/><path d="M44 6C34 1 17 5 10 16C21 9 32 10 44 12Z" fill="url(#rb${u})" stroke="${P.g}" stroke-width=".6"/><path d="M44 8C34 5 22 8 14 14" stroke="#fff" stroke-width=".7" fill="none" opacity=".9"/>
+    <g class="ffloat"><path d="M14 30C14 12 50 12 50 30L54 56 48 52 44 60 38 54 32 62 26 54 20 60 16 52 10 56Z" fill="url(#rc${u})"/>
+    <path d="M20 31C20 18 44 18 44 31C44 39 38 43 32 43S20 39 20 31Z" fill="#05030a"/>
+    <ellipse cx="27" cy="31" rx="4" ry="3" fill="url(#re${u})" class="halo"/><ellipse cx="37" cy="31" rx="4" ry="3" fill="url(#re${u})" class="halo"/>
+    <path d="M18 44C24 48 40 48 46 44" stroke="${P.a}" stroke-width="1.4" fill="none"/><path d="M30 46 28 54M34 46 36 52" stroke="${P.a}" stroke-width="1" fill="none"/>
+    <path d="M44 40C46 38 50 38 50 41C50 43 47 44 45 43Z" fill="#ece8f4"/><path d="M45 42h5M45.6 40.6h4.6" stroke="#9a94a8" stroke-width=".5"/>
+    <path d="M16 30C16 18 26 13 32 13" stroke="${L3(P.b, .4)}" stroke-width="1.2" fill="none" opacity=".7"/></g>
+    <g class="h17rise">${[[8, 48, 2.4], [56, 44, 2], [10, 20, 1.6]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${P.g}" opacity=".35"/>`).join('')}</g>`],
+  liche: ['Rey liche', (P, u) => `<defs>${lg3('lr' + u, L3(P.b, .3), D3(P.b, .5))}${lg3('ls' + u, '#fffaf0', '#c8c0b0')}${lg3('lg' + u, L3(P.a, .5), D3(P.a, .35))}${glw('le' + u, P.e)}${glw('lo' + u, P.g)}</defs>
+    <ellipse cx="32" cy="59" rx="22" ry="4.4" fill="none" stroke="${P.g}" stroke-width="1.2" stroke-dasharray="3 3" class="h17dash" opacity=".85"/>
+    <g class="ffloat"><path d="M13 39 17 21 24 33 32 29 40 33 47 21 51 39Z" fill="url(#lr${u})" stroke="url(#lg${u})" stroke-width=".8"/>
+    <path d="M16 62C16 46 22 38 32 38S48 46 48 62Z" fill="url(#lr${u})"/><path d="M26 40 32 50 38 40" stroke="url(#lg${u})" stroke-width="1.6" fill="none"/><path d="M32 50V62" stroke="url(#lg${u})" stroke-width="1.2"/>
+    <path d="M20 24C20 12 26 8 32 8S44 12 44 24C44 30 41 33 39 34V38H25V34C23 33 20 30 20 24Z" fill="url(#ls${u})"/>
+    <ellipse cx="26.5" cy="24" rx="4" ry="4.6" fill="#0a0612"/><ellipse cx="37.5" cy="24" rx="4" ry="4.6" fill="#0a0612"/><circle cx="26.5" cy="24.6" r="3.4" fill="url(#le${u})" class="halo"/><circle cx="37.5" cy="24.6" r="3.4" fill="url(#le${u})" class="halo"/>
+    <path d="M32 29 30 32.6H34Z" fill="#0a0612"/><path d="M26 35.5H38M28 34V37.4M30.6 34V37.4M33.4 34V37.4M36 34V37.4" stroke="#6a6458" stroke-width=".7"/>
+    <path d="M21 13 22 3 26 8.6 32 1.4 38 8.6 42 3 43 13C36 11 28 11 21 13Z" fill="url(#lg${u})"/><circle cx="32" cy="9" r="1.6" fill="${P.g}"/>
+    <circle cx="53" cy="40" r="7" fill="url(#lo${u})" class="halo"/><circle cx="53" cy="40" r="3.4" fill="#fff" opacity=".85"/><path d="M47 46C48 44 50 44 51 45" stroke="#e8e0d0" stroke-width="1.6" fill="none" stroke-linecap="round"/>${shine3(26, 13, 4, 1.4)}</g>`],
+  kraken: ['Kraken', (P, u) => `<defs>${rg3('xb' + u, P.b, .35, .25)}${lg3('xt' + u, P.b, D3(P.b, .4))}${EYESH}</defs>
+    ${[[1, 0], [-1, 0]].map(([s]) => `<g transform="${s < 0 ? 'translate(64 0) scale(-1 1)' : ''}"><g class="h17sway"><path d="M24 40C14 42 6 48 8 56C10 61 16 60 15 56C13 51 18 47 26 45Z" fill="url(#xt${u})"/><path d="M27 43C22 50 22 58 28 62C31 63 32 60 30 58C27 54 28 50 31 46Z" fill="url(#xt${u})"/><path d="M22 38C14 36 6 30 4 22C3 18 7 17 8 20C10 26 16 32 23 34Z" fill="url(#xt${u})"/></g></g>`).join('')}
+    <g fill="${P.a}" opacity=".8"><circle cx="11" cy="55" r="1"/><circle cx="13" cy="51" r=".9"/><circle cx="53" cy="55" r="1"/><circle cx="51" cy="51" r=".9"/><circle cx="7" cy="23" r=".9"/><circle cx="57" cy="23" r=".9"/><circle cx="28" cy="57" r=".9"/><circle cx="36" cy="57" r=".9"/></g>
+    <path d="M14 30C14 8 50 8 50 30C50 40 44 46 32 46S14 40 14 30Z" fill="url(#xb${u})"/>
+    <circle cx="22" cy="16" r="2" fill="${P.g}" class="tw"/><circle cx="40" cy="13" r="1.6" fill="${P.g}" class="tw t2"/><circle cx="45" cy="21" r="1.3" fill="${P.g}" class="tw"/><circle cx="18" cy="24" r="1.2" fill="${P.g}" class="tw t2"/>
+    ${eye3(24, 31, 4.4, P.e, true)}${eye3(40, 31, 4.4, P.e, true)}<path d="M28 40Q32 42.4 36 40" stroke="${D3(P.b, .5)}" stroke-width="1.4" fill="none" stroke-linecap="round"/>${shine3(23, 15, 6, 2.4)}
+    <g class="h17rise"><circle cx="54" cy="10" r="2" fill="none" stroke="#fff" stroke-width=".6"/><circle cx="8" cy="40" r="1.5" fill="none" stroke="#fff" stroke-width=".6"/></g>`],
+  anubis: ['Anubis', (P, u) => `<defs>${lg3('ab' + u, L3(P.b, .25), D3(P.b, .4))}${lg3('ag' + u, L3(P.a, .5), D3(P.a, .3))}${EYESH}</defs>
+    <path d="M52 62 54 8" stroke="url(#ag${u})" stroke-width="1.8"/><path d="M54 8C52 4 56 2 58 5L56 8Z" fill="url(#ag${u})"/><path d="M52 62 50 58M52 62 55 58" stroke="url(#ag${u})" stroke-width="1.4"/>
+    <path d="M15 24C15 13 49 13 49 24L51 44H13Z" fill="url(#ag${u})"/><path d="M14 30H50M13.6 35H50.4M13.2 40H50.8" stroke="${P.g}" stroke-width="2.6"/>
+    <path d="M18 62C18 48 24 43 32 43S46 48 46 62Z" fill="url(#ab${u})"/><path d="M24 54H40L42 62H22Z" fill="#f4f0e8"/><path d="M32 54V62" stroke="url(#ag${u})" stroke-width="1.6"/>
+    <path d="M17 45C22 40 42 40 47 45C42 51 22 51 17 45Z" fill="url(#ag${u})"/><path d="M19 45.4C24 48.4 40 48.4 45 45.4" stroke="${P.g}" stroke-width="1.4" fill="none"/>
+    <path d="M21 20 18 0 30 12ZM43 20 46 0 34 12Z" fill="url(#ab${u})"/><path d="M21.6 15 20 4 27 12ZM42.4 15 44 4 37 12Z" fill="url(#ag${u})" opacity=".8"/>
+    <circle cx="32" cy="24" r="12.5" fill="url(#ab${u})"/><ellipse cx="32" cy="32" rx="6.4" ry="5.6" fill="${L3(P.b, .12)}"/><ellipse cx="32" cy="29.6" rx="2.6" ry="1.8" fill="#000"/>
+    <path d="M21 22.4C23 21 27 21 29 22.6M43 22.4C41 21 37 21 35 22.6" stroke="url(#ag${u})" stroke-width="1.2" fill="none"/>${eye3(25.5, 24.6, 2.8, P.e)}${eye3(38.5, 24.6, 2.8, P.e)}
+    <path d="M22.6 26.6 19 29M41.4 26.6 45 29" stroke="url(#ag${u})" stroke-width="1" stroke-linecap="round"/>${shine3(26, 15, 3.4, 1.4)}`],
+  titan: ['Titán estelar', (P, u) => `<defs><radialGradient id="tb${u}" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="${P.a}"/><stop offset=".45" stop-color="${P.b}"/><stop offset="1" stop-color="#05030c"/></radialGradient>${glw('te' + u, P.e)}${lg3('tr' + u, P.g, P.a)}</defs>
+    <g transform="rotate(-14 32 30)"><ellipse cx="32" cy="30" rx="30" ry="7" fill="none" stroke="url(#tr${u})" stroke-width="1.4" opacity=".7"/></g>
+    <g class="ffloat"><path d="M14 62C12 48 20 40 32 40S52 48 50 62Z" fill="url(#tb${u})"/><path d="M8 50C10 44 16 42 18 46L16 54C14 56 9 55 8 50ZM56 50C54 44 48 42 46 46L48 54C50 56 55 55 56 50Z" fill="url(#tb${u})"/>
+    <circle cx="32" cy="24" r="16" fill="url(#tb${u})"/>
+    <path d="M22 50 28 46 34 52 42 47M24 56 30 58" stroke="${P.g}" stroke-width=".6" fill="none" opacity=".8"/><g fill="#fff"><circle cx="22" cy="50" r=".9"/><circle cx="28" cy="46" r=".7"/><circle cx="34" cy="52" r=".9"/><circle cx="42" cy="47" r=".7"/><circle cx="24" cy="56" r=".6"/><circle cx="30" cy="58" r=".6"/></g>
+    <g class="tw">${sparkles8([[22, 14, 1.4], [42, 16, 1.1], [38, 33, 1], [20, 31, .9]], '#fff')}</g>
+    <ellipse cx="26" cy="24" rx="3.2" ry="4.2" fill="url(#te${u})" class="halo"/><ellipse cx="38" cy="24" rx="3.2" ry="4.2" fill="url(#te${u})" class="halo"/>
+    <path d="M18 12C24 6 40 6 46 12" stroke="${P.g}" stroke-width="1" fill="none" opacity=".6"/></g>
+    <g transform="rotate(-14 32 30)"><path d="M2 30A30 7 0 0 0 62 30" fill="none" stroke="url(#tr${u})" stroke-width="2"/><circle cx="58" cy="33" r="2.4" fill="${P.a}"/></g>`],
+  pirata: ['Pirata fantasma', (P, u) => `<defs><linearGradient id="pg${u}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${L3(P.g, .55)}" stop-opacity=".95"/><stop offset="1" stop-color="${P.g}" stop-opacity=".35"/></linearGradient>${lg3('ph' + u, L3(P.b, .25), D3(P.b, .4))}${lg3('pa' + u, L3(P.a, .5), D3(P.a, .3))}${glw('pe' + u, P.e)}</defs>
+    <g class="ffloat"><path d="M14 62V36a18 18 0 0 1 36 0V62l-6-5-6 5-6-5-6 5-6-5z" fill="url(#pg${u})"/>
+    <path d="M8 24C16 19 48 19 56 24C52 15 43 8 32 8S12 15 8 24Z" fill="url(#ph${u})"/><path d="M8 24C16 19 48 19 56 24" stroke="url(#pa${u})" stroke-width="1.6" fill="none"/>
+    <circle cx="32" cy="15" r="3.2" fill="#f4f0e8"/><circle cx="30.8" cy="14.6" r=".8" fill="#000"/><circle cx="33.2" cy="14.6" r=".8" fill="#000"/><path d="M27 19 37 23M37 19 27 23" stroke="#f4f0e8" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M18 30 46 38" stroke="#1a1018" stroke-width="1.2"/><ellipse cx="25" cy="34" rx="4.4" ry="3.6" fill="#1a1018"/>
+    <circle cx="39" cy="33" r="3.6" fill="url(#pe${u})" class="halo"/><circle cx="39" cy="33" r="1.4" fill="#fff"/>
+    <path d="M26 44Q32 48 38 44" stroke="#1a1018" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M29 45.4V47M35 45.4V47" stroke="#fff" stroke-width="1.2"/>
+    <path d="M50 46C56 46 58 52 54 54C52 55 50.6 53 52 51.6" stroke="#dfe6f0" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <path d="M8 44H14V54C14 56 8 56 8 54Z" fill="url(#pa${u})" opacity=".9"/><circle cx="11" cy="49" r="2.2" fill="${P.g}" class="flick"/><path d="M11 44V40" stroke="url(#pa${u})" stroke-width="1"/></g>`],
+  demonio: ['Rey demonio', (P, u) => `<defs><radialGradient id="db${u}" cx=".35" cy=".3" r=".85"><stop offset="0" stop-color="${L3(P.b, .45)}"/><stop offset=".6" stop-color="${P.b}"/><stop offset="1" stop-color="${D3(P.b, .28)}"/></radialGradient>${lg3('dc' + u, D3(P.b, .3), '#0a0408')}${lg3('dh' + u, '#f4ecdc', '#6a5a4a')}${glw('de' + u, P.e)}</defs>
+    <g opacity=".95">${mir(`<path d="M44 34C50 22 60 18 62 22C60 24 61 28 58 30C59 34 55 36 52 35C52 39 48 40 46 38Z" fill="url(#dc${u})" stroke="${P.g}" stroke-opacity=".5" stroke-width=".5"/>`, 'fw').replace('<g transform="scale(-1 1)">', '<g transform="translate(64 0) scale(-1 1)">')}</g>
+    <path d="M12 62C10 46 18 36 32 36S54 46 52 62Z" fill="url(#dc${u})"/><path d="M24 40C26 50 38 50 40 40Z" fill="${P.g}" opacity=".85"/>
+    <circle cx="32" cy="25" r="13" fill="url(#db${u})"/>
+    <path d="M21 18C14 16 10 8 14 2C15 8 18 11 23 13ZM43 18C50 16 54 8 50 2C49 8 46 11 41 13Z" fill="url(#dh${u})"/>
+    <path d="M23 22 29 24.6M41 22 35 24.6" stroke="#1a0408" stroke-width="1.8" stroke-linecap="round"/><ellipse cx="26.6" cy="27" rx="3" ry="2.4" fill="url(#de${u})" class="halo"/><ellipse cx="37.4" cy="27" rx="3" ry="2.4" fill="url(#de${u})" class="halo"/>
+    <path d="M26 33Q32 36 38 33" stroke="#1a0408" stroke-width="1.4" fill="none"/><path d="M28 33.8 29 36.4 30 34.4ZM36 33.8 35 36.4 34 34.4Z" fill="#fff"/>
+    <g class="flick"><path d="M24 12C24 8 27 7 27 4C29 7 30 8 32 3C34 8 35 7 37 4C37 7 40 8 40 12C36 10.4 28 10.4 24 12Z" fill="${P.g}"/></g>${shine3(26, 17, 3.4, 1.4)}`],
+  gargola: ['Gárgola', (P, u) => `<defs>${rg3('rb' + u, P.b, .35, .25)}${lg3('rw' + u, L3(P.b, .2), D3(P.b, .45))}${glw('rg' + u, P.e)}</defs>
+    <g opacity=".96">${mir(`<path d="M42 34C46 18 58 10 62 14C58 16 60 20 57 22C59 26 55 28 52 27C53 31 49 33 46 32Z" fill="url(#rw${u})"/><path d="M44 32 61 14M47 31 57 22M49 31 52 27" stroke="${D3(P.b, .45)}" stroke-width=".7"/>`, 'fw').replace('<g transform="scale(-1 1)">', '<g transform="translate(64 0) scale(-1 1)">')}</g>
+    <path d="M16 62C14 50 20 42 32 42S50 50 48 62Z" fill="url(#rb${u})"/><path d="M14 62C12 56 16 52 22 54L22 62ZM50 62C52 56 48 52 42 54L42 62Z" fill="url(#rw${u})"/>
+    <path d="M22 50 26 56M40 48 37 53M30 58 33 55" stroke="${D3(P.b, .45)}" stroke-width=".8" fill="none"/>
+    <path d="M20 18 14 4 26 13ZM44 18 50 4 38 13Z" fill="url(#rw${u})"/>
+    <path d="M17 28C17 16 47 16 47 28C47 38 40 44 32 44S17 38 17 28Z" fill="url(#rb${u})"/>
+    <path d="M22 24 29 26.6M42 24 35 26.6" stroke="${D3(P.b, .6)}" stroke-width="2.2" stroke-linecap="round"/><ellipse cx="26.6" cy="29" rx="3" ry="2.4" fill="url(#rg${u})" class="halo"/><ellipse cx="37.4" cy="29" rx="3" ry="2.4" fill="url(#rg${u})" class="halo"/>
+    <path d="M27 37C29 39 35 39 37 37" stroke="${D3(P.b, .6)}" stroke-width="1.4" fill="none"/><path d="M28.6 37.6 29.4 40.4 30.4 38.2ZM35.4 37.6 34.6 40.4 33.6 38.2Z" fill="#f4f0e8"/>
+    <path d="M36 18 38 22 36 24" stroke="${D3(P.b, .5)}" stroke-width=".7" fill="none"/><path d="M18 30C17 26 20 24 22 26C20 27 19 29 18 30Z" fill="${P.a}" opacity=".9"/><path d="M44 44C46 42 49 43 48 46Z" fill="${P.a}" opacity=".9"/>${shine3(24, 20, 4, 1.4, -30, .35)}`],
+  primigenio: ['Primigenio', (P, u) => `<defs>${rg3('cb' + u, P.b, .35, .25)}${lg3('ct' + u, P.b, D3(P.b, .45))}${lg3('cw' + u, L3(P.b, .1), D3(P.b, .55))}${EYESH}</defs>
+    <g opacity=".96">${mir(`<path d="M44 30C48 18 58 12 62 15C60 18 61 22 58 24C59 28 55 30 52 28C52 32 48 34 46 32Z" fill="url(#cw${u})"/><path d="M45 30 61 15M48 29 57 23" stroke="${D3(P.b, .5)}" stroke-width=".6"/>`, 'fw').replace('<g transform="scale(-1 1)">', '<g transform="translate(64 0) scale(-1 1)">')}</g>
+    <path d="M16 62C14 50 22 44 32 44S50 50 48 62Z" fill="url(#cb${u})"/>
+    <path d="M14 26C14 8 50 8 50 26C50 32 46 36 40 37H24C18 36 14 32 14 26Z" fill="url(#cb${u})"/>
+    <g class="h17sway">${[[24, 36, -6], [29, 37, -2], [35, 37, 2], [40, 36, 6]].map(([x, y, d]) => `<path d="M${x - 2} ${y}C${x - 3} ${y + 6} ${x + d} ${y + 9} ${x + d * .6} ${y + 14}C${x + d * .6 + 2} ${y + 13} ${x + d + 2} ${y + 8} ${x + 2} ${y}Z" fill="url(#ct${u})"/>`).join('')}</g>
+    <g fill="${P.a}" opacity=".85"><circle cx="22" cy="44" r=".8"/><circle cx="42" cy="44" r=".8"/><circle cx="28" cy="47" r=".7"/><circle cx="36" cy="47" r=".7"/></g>
+    ${eye3(24, 25, 4, P.e, true)}${eye3(40, 25, 4, P.e, true)}<path d="M18 19 28 21M46 19 36 21" stroke="${D3(P.b, .5)}" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="32" cy="14" r="1.6" fill="${P.g}" class="tw"/>${shine3(22, 13, 5, 2)}<g class="tw t2">${sparkles8([[6, 50, 1.8], [58, 52, 1.6]], P.g)}</g>`],
+  lava: ['Elemental de lava', (P, u) => `<defs>${rg3('vb' + u, P.b, .35, .25)}${lg3('vf' + u, '#fff6c0', P.a)}${glw('ve' + u, P.e)}</defs>
+    <g class="flick"><path d="M14 22C12 12 18 10 18 2C21 8 24 8 26 0C28 8 32 6 34 0C36 8 40 8 43 2C44 10 52 12 50 22Z" fill="url(#vf${u})"/></g>
+    <path d="M16 62C14 50 20 42 32 42S50 50 48 62Z" fill="url(#vb${u})"/><path d="M6 46C6 40 14 38 16 44L16 54C14 58 6 56 6 50ZM58 46C58 40 50 38 48 44L48 54C50 58 58 56 58 50Z" fill="url(#vb${u})"/>
+    <path d="M14 26C14 12 50 12 50 26C50 38 42 44 32 44S14 38 14 26Z" fill="url(#vb${u})"/>
+    <path d="M18 16 22 22 20 28M44 14 40 20 43 26M24 46 28 52 26 58M40 46 36 54M9 46 12 50M55 46 52 51" stroke="${P.a}" stroke-width="1.4" fill="none" stroke-linecap="round" class="halo"/>
+    <ellipse cx="25" cy="29" rx="3.8" ry="3" fill="url(#ve${u})"/><ellipse cx="39" cy="29" rx="3.8" ry="3" fill="url(#ve${u})"/>
+    <path d="M27 37Q32 40 37 37" stroke="${P.a}" stroke-width="1.8" fill="none" stroke-linecap="round" class="halo"/>
+    <g class="h17rise">${[[10, 34, 1.2], [54, 30, 1], [8, 20, .9], [56, 14, 1.1]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${P.g}"/>`).join('')}</g>`],
+  mimico: ['Mímico', (P, u) => `<defs>${lg3('mb' + u, L3(P.b, .3), D3(P.b, .4))}${lg3('ma' + u, L3(P.a, .5), D3(P.a, .35))}${EYESH}<radialGradient id="mi${u}" cx=".5" cy=".3"><stop offset="0" stop-color="#5a0a1a"/><stop offset="1" stop-color="#14040a"/></radialGradient></defs>
+    <g class="ffloat"><g class="c3clap"><path d="M8 26 12 8C14 4 50 4 52 8L56 26Z" fill="url(#mb${u})"/><path d="M8 26 12 8M56 26 52 8M14 6H50" stroke="url(#ma${u})" stroke-width="2.4" fill="none"/><path d="M22 6 20 26M42 6 44 26" stroke="url(#ma${u})" stroke-width="2"/>
+    <path d="M10 26 14 32 18 26 22 32 26 26 30 32 34 26 38 32 42 26 46 32 50 26 54 32 56 26Z" fill="#fff8ec"/></g>
+    <path d="M8 30H56L54 58C54 60 10 60 10 58Z" fill="url(#mi${u})"/>
+    <path d="M10 46 14 40 18 46 22 40 26 46 30 40 34 46 38 40 42 46 46 40 50 46 54 40 54 48H10Z" fill="#fff8ec"/>
+    <path d="M24 44C24 52 40 52 40 44C36 48 28 48 24 44Z" fill="${P.e}"/>
+    ${eye3(24, 36, 3.4, P.g, true)}${eye3(40, 36, 3.4, P.g, true)}
+    <path d="M8 46H56V60C56 62 8 62 8 60Z" fill="url(#mb${u})"/><path d="M8 46H56M8 60H56M20 46V61M44 46V61" stroke="url(#ma${u})" stroke-width="2.2"/><rect x="28" y="48" width="8" height="8" rx="2" fill="url(#ma${u})"/><circle cx="32" cy="52" r="1.4" fill="#2a1a0a"/></g>
+    <g class="tw"><circle cx="6" cy="58" r="3" fill="url(#ma${u})"/><circle cx="58" cy="60" r="2.4" fill="url(#ma${u})"/><path d="M58 50 60 46 62 50 60 54Z" fill="${P.e}"/></g>`],
+};
+for (const [k, [n, fn]] of Object.entries(CREA)) CRIT['m18' + k] = [n, (a, ak) => {
+  if (ak === 'u' && CRU[k]) return `<g class="prisma slow">${fn(CRU[k][1], 'm18' + k + 'u')}</g><g class="tw">${sparkles8([[4, 4, 3.2], [60, 4, 2.8], [60, 60, 2.8], [4, 60, 2.4]], '#fff')}</g>`;
+  const pal = CRV[ak] ? CRV[ak](CRP[k]) : CRP[k], svg = fn(pal, 'm18' + k + (CRV[ak] ? ak : ak === 'prisma' ? 'x' : 'b'));
+  return ak === 'prisma' ? `<g class="prisma">${svg}</g><g class="tw">${sparkles8([[6, 6, 2.4], [58, 58, 2.2]], '#fff')}</g>` : svg;
+}];
+STYLE_OPTS.compa.push(...Object.entries(CREA).map(([k, [n]]) => lgo('lg-m18-' + k, n, `m18${k}|base`)));
+{
+  const L = [];
+  for (const [k, [n]] of Object.entries(CREA)) L.push(['cx-m18o-' + k, n + ' · Dorado', 'mitica', `m18${k}|oro`], ['cx-m18s-' + k, n + ' · Sombra', 'mitica', `m18${k}|sombra`], ['cx-m18x-' + k, n + ' · Prisma', 'exotica', `m18${k}|prisma`]);
+  for (const [k, [n]] of Object.entries(CRU)) L.push(['cx-m18u-' + k, n, 'unica', `m18${k}|u`]);
+  for (const [k, n, r, v] of L) STYLE_OPTS.compa.push(Object.assign(C(k, n, v), { cx: r }));
+}
+Object.assign(LG_TOP, { 'compa:lg-m18-oriental': 40000, 'compa:lg-m18-liche': 30000, 'compa:lg-m18-titan': 30000 });
+for (const r of collectCatalog()) CAT_IDX[r[0]] = { id: r[0], f: r[1], k: r[2], n: r[3], r: r[4], max: r[5], b: r[6] };
+PRO_COUNT = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.filter(o => !o.f).length, 0) + 4;
+
+
+// ============================================================ V19: GEMAS DE PATRÓN (como el Case Hardened), CARTA MÁS SIMPLE Y MINI TUTORIAL
+// Cada objeto tiene SUS PROPIOS patrones secretos (salen del nombre del objeto), así que el #412 puede ser gema en uno y normal en otro.
+const GEMT = {
+  azulp: { n: 'Gema azul perfecta', i: '💎', c: '#1a6aff', s: 'A', w: [0, .01], v: 3000000, cls: 'azul' },
+  negra: { n: 'Gema negra', i: '🖤', c: '#a050ff', s: 'N', w: [0, .02], v: 1000000, cls: 'negra' },
+  rubi: { n: 'Rubí', i: '🔴', c: '#ff2a4a', s: 'R', w: [0, .05], v: 600000, cls: 'rubi' },
+  azul: { n: 'Gema azul', i: '💎', c: '#3a8aff', s: 'A', w: [.01, .11], v: 300000, cls: 'azul' },
+  galaxia: { n: 'Galaxia', i: '🌌', c: '#8a6aff', s: 'G', w: [0, .1], v: 250000, cls: 'galaxia' },
+  oro: { n: 'Gema dorada', i: '🟡', c: '#ffc83a', s: 'O', w: [0, .2], v: 120000, cls: 'oro' },
+  esmeralda: { n: 'Esmeralda', i: '🟢', c: '#2ad67a', s: 'E', w: [0, .2], v: 120000, cls: 'verde' },
+  fuegohielo: { n: 'Fuego y hielo', i: '🔥', c: '#ff6a3a', s: 'F', w: [0, .3], v: 80000, cls: 'fh' },
+  diamante: { n: 'Diamante', i: '🤍', c: '#dff6ff', s: 'D', w: [0, .33], v: 60000, cls: 'diamante' },
+  arco: { n: 'Arcoíris', i: '🌈', c: '#ff7ab8', s: 'I', w: [0, .5], v: 40000, cls: 'arco' },
+  azulg: { n: 'Azul gastada', i: '🔹', c: '#5a9aff', s: 'A', w: [.11, 1.01], v: 20000, cls: 'casi' },
+  espejo: { n: 'Espejo', i: '🪞', c: '#bfeaff', v: 15000, cls: 'espejo', odds: 1000, how: 'El patrón es igual al número de serie' },
+  casi: { n: 'Casi azul', i: '🔷', c: '#7fb8ff', s: 'C', w: [0, 1.01], m: 2, cls: 'casi' },
+};
+for (const d of Object.values(GEMT)) if (d.s && !d.odds) d.odds = Math.round(1000 / ((d.s === 'C' ? 3 : 1) * Math.min(1, d.w[1] - d.w[0])));
+const RF = { comun: 1, rara: 1.2, epica: 1.5, legendaria: 2, mitica: 3, exotica: 5, unica: 10 };
+const GEM_CACHE = {};
+function gemSeeds(cid) {
+  if (GEM_CACHE[cid]) return GEM_CACHE[cid];
+  let x = hs17('gema|' + cid) + 7; const used = new Set(), out = {};
+  for (const L of ['A', 'N', 'R', 'G', 'O', 'E', 'F', 'D', 'I', 'C', 'C', 'C']) { let p; do { x = (x * 1103515245 + 12345) % 2147483648; p = 1 + (x >> 8) % 1000; } while (used.has(p)); used.add(p); out[p] = L; }
+  return GEM_CACHE[cid] = out;
+}
+// recibe el objeto entero (patrón + estado + número de serie), como en el CS donde importa el patrón y el float
+function gemOf(it) {
+  if (!it || !it.pattern) return null;
+  const pat = +it.pattern, w = +it.wear, L = gemSeeds(it.cid)[pat];
+  if (L) for (const [k, d] of Object.entries(GEMT)) if (d.s === L && w >= d.w[0] && w < d.w[1]) return k;
+  if (it.serial && pat === ((+it.serial - 1) % 1000) + 1) return 'espejo';
+  return null;
+}
+const serMult = s => s === 1 ? 2.5 : s <= 10 ? 1.6 : s <= 50 ? 1.2 : s <= 100 ? 1.08 : 1;
+function estMult(it) {
+  const g = gemOf(it), w = +it.wear;
+  let m = serMult(+it.serial);
+  if (g && GEMT[g].m) m *= GEMT[g].m; else if (!g && RAREPAT.has(+it.pattern)) m *= 1.5;
+  m *= w < .07 ? 1.25 : w < .15 ? 1.1 : w < .38 ? 1 : w < .45 ? .92 : .85;
+  return m;
+}
+function estOf(it) {
+  const c = catOf(it.cid); if (!c) return 0;
+  const g = gemOf(it);
+  if (g && GEMT[g].v) return nice(GEMT[g].v * (RF[c.r] || 1) * serMult(+it.serial));
+  const sold = MK17.sold[it.cid];
+  let base;
+  if (sold && sold.length >= 2) base = median(sold.slice(0, 10));
+  else { base = BASEV[c.r] || 100; if (!isCX(c.f, c.k)) { let shop = 0; try { shop = priceOf(c.f, c.k); } catch (e) { } if (shop) base = Math.round(shop * .75); } base *= .88 + (hs17(it.cid) % 25) / 100; }
+  return nice(base * estMult(it));
+}
+// precios del mercado: las ventas se "normalizan" (se les saca el extra de gema, serie y estado) para que el valor sea justo
+function loadMk17() {
+  if (Date.now() - MK17.t < 60000) return Promise.resolve();
+  if (MK17.p) return MK17.p;
+  MK17.p = (async () => {
+    const [a, s] = await Promise.all([
+      sbTry(() => rest('market?select=price,item:items(cid)&status=eq.active&limit=1000', { auth: false }), []),
+      sbTry(() => rest('item_history?select=cid,price,item:items(serial,pattern,wear)&kind=eq.market&order=at.desc&limit=600', { auth: false }), []),
+    ]);
+    const min = {}, n = {}, sold = {}, last = {};
+    for (const r of a || []) { const c = r.item && r.item.cid; if (!c) continue; n[c] = (n[c] || 0) + 1; if (min[c] == null || r.price < min[c]) min[c] = r.price; }
+    for (const r of s || []) { if (!r.cid || !r.price) continue; if (last[r.cid] == null) last[r.cid] = r.price; const it = Object.assign({ cid: r.cid, serial: 999, pattern: 0, wear: .2 }, r.item || {}), g = gemOf(it); if (g && GEMT[g].v) continue; (sold[r.cid] = sold[r.cid] || []).push(r.price / estMult(it)); }
+    Object.assign(MK17, { t: Date.now(), min, n, sold, last, p: null });
+  })();
+  return MK17.p;
+}
+function mkLine(cid) {
+  const n = MK17.n[cid] || 0, last = MK17.last && MK17.last[cid];
+  return (n ? `<span>En el mercado: desde <b>${coinSVG(12)} ${fmtc(MK17.min[cid])}</b> <small class="dim">(${n} en venta)</small></span>` : `<span class="dim">Nadie lo vende ahora</span>`) + (last ? `<span class="dim">Última venta: ${coinSVG(11)} ${fmtc(last)}</span>` : '');
+}
+function itemThumb(cid, pattern, wear, serial) {
+  const c = catOf(cid), o = c && optOf(c.f, c.k); if (!o) return '';
+  const g = wear != null ? gemOf({ cid, pattern, wear, serial }) : null, shift = pattern ? (pattern % 31) - 15 : 0;
+  return `<span class="ithumb ${g ? 'gem-' + GEMT[g].cls : ''}" style="${!g && c.r !== 'comun' && pattern ? `filter:hue-rotate(${shift}deg)` : ''}">${isLegend(c.f, o.k) || isCX(c.f, o.k) ? lgCard(c.f, o) : shopThumb(c.f, o)}</span>`;
+}
+function patLabel(it) { const pat = it.pattern, g = gemOf(it); return g ? `<em class="pg" style="--gc:${GEMT[g].c}">${GEMT[g].i} ${GEMT[g].n}</em>` : RAREPAT.has(+pat) ? '<em class="pg sp">★ Número especial</em>' : '<em class="pg nm">Normal</em>'; }
+function collCard(it, actions = '', extra = '') {
+  const c = catOf(it.cid), R = RAR[c.r] || RAR.comun, w = +it.wear, s = +it.serial, g = gemOf(it), code = itemCode(it);
+  const ser = s === 1 ? '<em class="sbad gold">Número 1</em>' : s <= 10 ? '<em class="sbad">Serie baja</em>' : '';
+  return `<div class="icard v17 v19 r-${c.r} ${g ? 'isgem' : ''}" style="--rc:${R.c};${g ? `--gc:${GEMT[g].c}` : ''}" data-mkcid="${h(it.cid)}" data-ser="${s}" data-pat="${+it.pattern}" data-wear="${w}">
+    <div class="ihead"><span class="irar">${R.n}</span><span class="iser" title="Número de serie: cuántos salieron antes que este">#${s}${c.max ? `<small>/${c.max}</small>` : ''}</span></div>
+    <div class="ithumbw">${itemThumb(it.cid, it.pattern, it.wear, it.serial)}</div>
+    <b class="iname">${h(c.n)}</b><small class="dim">${h(CAT_NAMES[c.f] || c.f)}</small>${ser}
+    ${g ? `<div class="igem">${GEMT[g].i} ${GEMT[g].n.toUpperCase()} <small>1 en ${fmtc(GEMT[g].odds)}</small></div>` : ''}
+    <div class="ival"><small>Valor estimado</small><b>${coinSVG(16)} <span data-est>${fmtc(estOf(it))}</span></b></div>
+    <div class="imk" data-mk><span class="dim">Mirando el mercado…</span></div>
+    <div class="ichips"><span><small>Patrón</small><b>#${+it.pattern}</b>${patLabel(it)}</span><span><small>Estado</small><b>${WEAR(w)}</b><i class="iwbar"><i style="left:${Math.min(100, w * 100).toFixed(1)}%"></i></i></span></div>
+    <div class="icode2"><code title="Código único: prueba que este objeto es tuyo y no hay otro igual">${code}</code><button class="ihelp" data-act="valhelp" title="¿Qué hace valioso a un objeto?">?</button></div>
+    ${extra}${actions ? `<div class="iact">${actions}</div>` : ''}</div>`;
+}
+// ---------- mini tutorial
+function valHelpHTML() {
+  const row = (i, t, d, m) => `<div class="vhrow"><span class="vhi">${i}</span><div><b>${t}</b><small>${d}</small></div><em>${m}</em></div>`;
+  const how = d => d.how || (d.s === 'C' ? 'Uno de sus 3 patrones casi azules' : `Su patrón secreto${d.w[0] > 0 || d.w[1] < 1 ? ` + desgaste ${d.w[0] > 0 ? 'entre ' + String(d.w[0]).replace('.', ',') + ' y ' + String(Math.min(1, d.w[1])).replace('.', ',') : 'menor a ' + String(d.w[1]).replace('.', ',')}` : ''}`);
+  return `<div class="vhov" data-act="vhclose"><div class="vhbox" onclick="event.stopPropagation()"><button class="vhx" data-act="vhclose">✕</button>
+    <h2>¿Cuánto vale mi objeto?</h2><p class="dim">Todo lo decide el servidor al azar cuando abrís la caja. Lo que más importa es si te salió una <b>gema</b>: puede hacer que hasta un objeto común valga cientos de miles.</p>
+    <h3>1 · ¿Es una gema? <span class="dim">(lo más importante)</span></h3>
+    <p class="small dim">Cada objeto tiene su propio patrón secreto para cada gema. Para que salga, tiene que coincidir el <b>patrón</b> (#1 al #1000) y, en las mejores, también el <b>desgaste</b> (el número tipo 0,0312). Igual que en el CS.</p>
+    ${Object.values(GEMT).map(d => row(d.i, `${d.n} <span class="vhodds">1 en ${fmtc(d.odds)}</span>`, how(d), d.v ? `desde ${fmtc(d.v)}` : `×${d.m}`)).join('')}
+    ${row('★', 'Número especial', 'Números lindos como el 7, el 100, el 777 o el 1000', '×1,5')}
+    <h3>2 · La rareza del objeto</h3>
+    <p class="small dim">Si no es gema, la rareza marca el valor de base. Si es gema, lo multiplica:</p>
+    <div class="vhrar">${RORD.map(r => `<span style="--rc:${RAR[r].c}">${RAR[r].n}<b>${coinSVG(11)} ${fmtc(BASEV[r])}</b><small>gema ×${String(RF[r]).replace('.', ',')}</small></span>`).join('')}</div>
+    <h3>3 · El número de serie</h3>
+    ${row('#1', 'El primero que salió', 'Hay uno solo', '×2,5')}${row('#2–10', 'Serie baja', '', '×1,6')}${row('#11–50', 'Serie media', '', '×1,2')}
+    <h3>4 · El estado <span class="dim">(si no es gema)</span></h3>
+    ${row('✨', 'Recién salida', 'Desgaste menor a 0,07', '×1,25')}${row('👍', 'Casi nueva', 'Hasta 0,15', '×1,1')}${row('👌', 'Bastante usada', 'Hasta 0,38', '×1')}${row('🫤', 'Gastada / Muy gastada', 'Más de 0,38', '×0,9')}
+    <div class="vhex"><b>Ejemplos:</b> un objeto <b>Común</b> con Gema azul vale <b>${coinSVG(13)} 300.000</b>. Uno <b>Mítico</b>, <b>${coinSVG(13)} 900.000</b>. Un <b>1 de 1</b> con Gema azul perfecta, <b>${coinSVG(13)} 30.000.000</b>.</div>
+    <p class="small dim">El código de abajo de cada carta (tipo <code>JVN-CMP-0003-HPM6</code>) es como el DNI del objeto: prueba que es único. No cambia el precio.</p></div></div>`;
+}
+document.addEventListener('click', e => {
+  if (e.target.closest('[data-act="valhelp"]')) { e.preventDefault(); document.body.insertAdjacentHTML('beforeend', valHelpHTML()); return; }
+  const c = e.target.closest('[data-act="vhclose"]'); if (c && (e.target === c || c.classList.contains('vhx'))) document.querySelectorAll('.vhov').forEach(x => x.remove());
+});
 
 
 // ============================================================ ONLINE (Supabase)
