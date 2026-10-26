@@ -759,6 +759,101 @@ a.social:hover{border-color:var(--paccent)}
 .sdots button{width:22px;height:5px;border-radius:3px;border:0;background:rgba(255,255,255,.3);padding:0}
 .sdots button.on{background:var(--accent);width:34px}
 @media (max-width:600px){.slides{height:330px}.slide{grid-template-columns:1fr;padding:22px 20px 40px;align-content:end}.sposter{display:none}.sdots{left:20px}.badges2{grid-template-columns:1fr}}
+/* ---------- v5: fondo con más vida, Pro y personalización ---------- */
+:root{--amb1:rgba(243,198,207,.10);--amb2:rgba(61,139,255,.09)}
+body{background:radial-gradient(1100px 620px at 8% -8%,var(--amb1),transparent 62%),radial-gradient(900px 560px at 108% 6%,var(--amb2),transparent 60%),radial-gradient(800px 600px at 50% 120%,var(--amb1),transparent 60%),var(--bg);background-attachment:fixed}
+.top{background:color-mix(in srgb,var(--bg) 80%,transparent)}
+.panel,.hero,.stathero,.mhero,.pcover,.nx,.calrow,.fitem,.pcard,.kpi,.tile,.calsum div,.invite,.eps{background:color-mix(in srgb,var(--surface) 88%,transparent)}
+.propill{color:var(--accent)!important;border:1px solid var(--accent);margin-left:4px}
+.propill:hover{background:var(--accent-soft)!important}
+/* perfil v5 */
+.pcover.v5{background:var(--ptheme,color-mix(in srgb,var(--surface) 88%,transparent))}
+.pcover.v5 .pid h1{font-family:var(--pfont),var(--display);line-height:1.1}
+.pcover.v5.nm-c .pid h1{color:var(--pname)}
+.pcover.v5.nm-g .pid h1{background:var(--pname);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% 100%}
+.fx-upper .pid h1,.fxs.fx-upper{text-transform:uppercase;letter-spacing:.02em}
+.fx-shadow .pid h1,.fxs.fx-shadow{text-shadow:0 3px 0 rgba(0,0,0,.55)}
+.fx-outline .pid h1,.fxs.fx-outline{-webkit-text-stroke:1.2px var(--paccent,var(--accent));color:transparent!important;background:none!important}
+.fx-under .pid h1,.fxs.fx-under{text-decoration:underline;text-decoration-color:var(--paccent,var(--accent));text-decoration-thickness:4px;text-underline-offset:6px}
+.fx-soft .pid h1,.fxs.fx-soft{text-shadow:0 0 18px color-mix(in srgb,var(--paccent,var(--accent)) 45%,transparent)}
+.fx-d3 .pid h1,.fxs.fx-d3{text-shadow:2px 2px 0 var(--paccent,var(--accent)),4px 4px 0 rgba(0,0,0,.5)}
+.fx-wide .pid h1,.fxs.fx-wide{letter-spacing:.12em}
+.fx-italic .pid h1,.fxs.fx-italic{font-style:italic}
+.fx-stamp .pid h1,.fxs.fx-stamp{display:inline-block;border:3px solid currentColor;padding:0 10px;border-radius:8px;transform:rotate(-2deg)}
+.pcover.v5 .pmain .avatar{border:5px solid transparent;background:linear-gradient(var(--raise),var(--raise)) padding-box,var(--pframe,var(--paccent)) border-box;box-shadow:none;border-radius:var(--pshape,50%)}
+.pcover.v5 .pmain .avatar img{border-radius:calc(var(--pshape,50%))}
+.pcover.v5.fr-none .pmain .avatar{border-color:var(--surface);background:var(--raise)}
+.pcover.v5.fr-double .pmain .avatar{border:3px solid var(--paccent);background:var(--raise);box-shadow:0 0 0 4px var(--surface),0 0 0 7px var(--paccent)}
+.pcover.v5.fr-dashed .pmain .avatar{border:4px dashed var(--paccent);background:var(--raise)}
+.pcover.v5.fr-spin .pmain .avatar{background:linear-gradient(var(--raise),var(--raise)) padding-box,conic-gradient(#ff7aa8,#ffd36b,#a8f0c6,#7fe0ff,#c3a8ff,#ff7aa8) border-box;animation:spinhue 4s linear infinite}
+.pcover.v5.fr-pulse .pmain .avatar{border-color:var(--paccent);background:var(--raise);animation:pulsefr 2.2s ease-in-out infinite}
+@keyframes spinhue{to{filter:hue-rotate(360deg)}}
+@keyframes pulsefr{50%{box-shadow:0 0 0 8px color-mix(in srgb,var(--paccent) 25%,transparent)}}
+.pcover.v5.sh-hex .pmain .avatar{border-radius:0;clip-path:polygon(25% 3%,75% 3%,100% 50%,75% 97%,25% 97%,0 50%)}
+.ppat{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.9}
+.pbanner.bfx-shift{background-size:220% 220%!important;animation:bshift 14s ease-in-out infinite alternate}
+.pbanner.bfx-zoom{animation:bzoom 18s ease-in-out infinite alternate}
+.pbanner.bfx-shine::before{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.18) 50%,transparent 65%) -150% 0/200% 100% no-repeat;animation:bshine 5s ease-in-out infinite}
+@keyframes bshift{to{background-position:100% 50%}}
+@keyframes bzoom{to{background-size:130%}}
+@keyframes bshine{60%,100%{background-position:150% 0}}
+.ptitle{display:flex;gap:8px;align-items:center;margin:6px 0 2px}
+.ptitle span{font-size:13px;font-weight:800;color:var(--paccent,var(--accent));letter-spacing:.02em}
+.probadge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:900;letter-spacing:.06em;padding:3px 8px;border-radius:6px;background:linear-gradient(90deg,#ffd76a,#f3c6cf);color:#1b1400;vertical-align:middle}
+/* editor de personalización */
+.c5head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.probig{display:inline-flex;gap:8px;align-items:center;font-weight:800}
+.pvbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:12px 0;padding:12px 14px;border-radius:12px;border:1px solid #ffd76a;background:rgba(255,215,106,.08);font-size:14px}
+.ctabs{margin:14px 0 6px}
+.c5 .cgroup{margin-top:16px}
+.c5 .cgroup>.lb{margin-bottom:8px}
+.swgrid{display:flex;flex-wrap:wrap;gap:8px}
+.swgrid.fonts .sw{min-width:118px}
+.sw{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:38px;min-width:38px;padding:4px 10px;border-radius:10px;border:2px solid var(--line);background:var(--raise);color:var(--fg);font-size:13px;font-weight:600;cursor:pointer}
+.sw.on{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.sw .dot{width:20px;height:20px;border-radius:50%;display:block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
+.sw .dot.picker{background:conic-gradient(red,yellow,lime,cyan,blue,magenta,red)}
+.sw input[type=color]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.sw .lk,.bchoice .lk{position:absolute;top:-6px;right:-6px;width:18px;height:18px;padding:3px;border-radius:50%;background:#ffd76a;color:#1b1400}
+.bchoice{position:relative}
+.sw.locked,.bchoice.locked span{opacity:.85}
+.gsample{font-family:var(--display);font-weight:900;font-size:15px;-webkit-background-clip:text;background-clip:text;color:transparent}
+.fxs{font-family:var(--display);font-weight:800}
+.frs{display:block;width:34px;height:34px;border-radius:50%;border:4px solid transparent;background:linear-gradient(var(--surface),var(--surface)) padding-box,var(--pframe) border-box}
+.frs.fr-none{border-color:var(--line);background:var(--surface)}
+.frs.fr-double{border:2px solid var(--accent);box-shadow:0 0 0 2px var(--raise),0 0 0 4px var(--accent);background:var(--surface)}
+.frs.fr-dashed{border:3px dashed var(--accent);background:var(--surface)}
+.frs.fr-spin{background:linear-gradient(var(--surface),var(--surface)) padding-box,conic-gradient(#ff7aa8,#ffd36b,#a8f0c6,#7fe0ff,#c3a8ff,#ff7aa8) border-box;animation:spinhue 4s linear infinite}
+.frs.fr-pulse{border-color:var(--accent);background:var(--surface);animation:pulsefr 2.2s ease-in-out infinite}
+.sw small{font-size:11.5px;color:var(--dim)}
+.swgrid .sw:has(.frs),.swgrid .sw:has(.shs){flex-direction:column;padding:8px;min-width:86px}
+.shs{display:block;width:34px;height:34px;background:linear-gradient(135deg,var(--accent),var(--blue))}
+.shs.sh-hex{clip-path:polygon(25% 3%,75% 3%,100% 50%,75% 97%,25% 97%,0 50%)}
+.soc.locked{opacity:.55}
+/* página Pro */
+.prohero{padding:34px 30px;border-radius:22px;border:1px solid var(--line);background:radial-gradient(120% 140% at 100% 0%,rgba(255,215,106,.16),transparent 55%),radial-gradient(90% 120% at 0% 100%,var(--amb1),transparent 60%),var(--surface)}
+.prohero h1{font-size:clamp(32px,5vw,54px);margin-top:6px}
+.prohero p{max-width:58ch;font-size:16px}
+.plans{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;align-items:start}
+.plan{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px}
+.plan.best{border-color:#ffd76a}
+.ptag{position:absolute;top:-12px;left:20px;background:#ffd76a;color:#1b1400;font-size:12px;font-weight:900;padding:3px 10px;border-radius:999px}
+.price{font-family:var(--display);font-weight:900;font-size:42px;font-stretch:90%;margin:8px 0 12px}
+.price small{font:600 13px var(--body);color:var(--dim);margin-left:8px}
+.plan ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.plan li{padding-left:24px;position:relative;font-size:14.5px;color:var(--dim)}
+.plan li b{color:var(--fg)}
+.plan li::before{content:"";position:absolute;left:0;top:5px;width:12px;height:7px;border-left:2.5px solid var(--accent);border-bottom:2.5px solid var(--accent);transform:rotate(-45deg)}
+.steps{margin:6px 0 14px;padding-left:20px;display:grid;gap:8px}
+.uname{color:var(--accent)}
+.paybtns{display:flex;gap:10px;flex-wrap:wrap}
+.mpbox{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px;padding:14px;border-radius:12px;background:var(--raise);border:1px solid var(--line)}
+.mpbox b{display:block}.mpbox span{font-size:13px;color:var(--dim)}
+.alias{display:flex;gap:8px;align-items:center}
+.alias code{font-size:18px;font-weight:800;background:var(--bg);padding:6px 12px;border-radius:8px;border:1px solid var(--line);-webkit-user-select:text;user-select:text}
+.mgenres{margin-top:18px}
+@media (max-width:920px){.plans{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.pbanner,.pcover .avatar,.frs{animation:none!important}}
 </style>
 </head>
 <body>
@@ -777,6 +872,7 @@ a.social:hover{border-color:var(--paccent)}
     <a href="#/stats" data-r="stats">Estadísticas</a>
     <a href="#/gente" data-r="gente" hidden>Gente</a>
     <a href="#/perfil" data-r="perfil">Perfil</a>
+    <a href="#/pro" data-r="pro" class="propill">Pro</a>
   </nav>
   <div id="acct" class="acctwrap" hidden></div>
 </div></header>
@@ -787,7 +883,7 @@ a.social:hover{border-color:var(--paccent)}
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 3.2</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 4.0</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -1249,7 +1345,7 @@ async function route(keepScroll) {
   const id = ++renderId, R = parseRoute(), app = $('#app');
   const y = window.scrollY;
   document.querySelectorAll('[data-r]').forEach(a => a.classList.toggle('on', a.dataset.r === R.name || (R.name === 'stats' && a.dataset.r === 'perfil' && a.closest('.bnav'))));
-  const views = { '': vHome, 'buscar': vSearch, 'serie': vShow, 'ep': vEpisode, 'mis-series': vMine, 'calendario': vCalendar, 'descubrir': vDiscover, 'peliculas': vMovies, 'stats': vStats, 'perfil': vProfile, 'entrar': vLogin, 'nueva-clave': vNewPass, 'gente': vPeople, 'u': vUser, 'categoria': vCategory, 'peli': vMovie };
+  const views = { '': vHome, 'buscar': vSearch, 'serie': vShow, 'ep': vEpisode, 'mis-series': vMine, 'calendario': vCalendar, 'descubrir': vDiscover, 'peliculas': vMovies, 'stats': vStats, 'perfil': vProfile, 'entrar': vLogin, 'nueva-clave': vNewPass, 'gente': vPeople, 'u': vUser, 'categoria': vCategory, 'peli': vMovie, 'pro': vPro };
   const v = views[R.name] || vHome;
   const draw = html => { if (id === renderId) { app.innerHTML = html; fillAds(); } return id === renderId; };
   try { await v(R.args, draw, () => id === renderId); }
@@ -1615,6 +1711,7 @@ function favList() {
   return top.map(id => S.shows[id]);
 }
 async function vProfile(_, draw) {
+  const PSV = myStyleView();
   const p = S.profile, ps = profileStats(), mine = myShows(), favs = favList();
   const seen = mine.filter(r => watchedCount(r) > 0 || r.list === 'done');
   const notes = Object.entries(S.notes).filter(([, n]) => n.text || n.score || n.react).sort((a, b) => (b[1].t || 0) - (a[1].t || 0));
@@ -1648,11 +1745,11 @@ async function vProfile(_, draw) {
       <section><h3>Copia de seguridad</h3><p class="small dim" style="margin-top:0">Todo se guarda en este navegador. Descargá una copia para no perder nada o pasar tus datos a otra compu.</p>
       <div class="actions"><button class="btn" data-act="export">Descargar copia</button><label class="btn" for="importf">Cargar copia</label><input type="file" id="importf" accept="application/json,.json" hidden><button class="btn ghost danger" data-act="wipe">Borrar todo</button></div></section></div>`;
   }
-  draw(`<section class="pcover ${profileClasses(p.style)}" ${accentStyle(p.style)}>${bannerHTML(p.style, favs)}
+  draw(`<section class="pcover ${profileClasses(PSV)}" ${accentStyle(PSV)}>${bannerHTML(PSV, favs)}
     <div class="pmain"><div class="avatar">${p.photo ? `<img src="${p.photo}" alt="Tu foto">` : h(initials(p.name || 'Yo'))}</div>
-      <div class="pid"><h1>${h(p.name || 'Tu perfil')}</h1>${p.bio ? `<p>${h(p.bio)}</p>` : `<p class="dim">Contá algo sobre vos en “Editar perfil”.</p>`}${extrasHTML(p.style)}<div class="small dim">En JVNN desde ${h(fmtDate(S.created, { month: 'long', year: 'numeric' }))}</div>${showcaseHTML(p.style, bsMine)}</div>
+      <div class="pid"><h1>${h(p.name || 'Tu perfil')}</h1>${p.bio ? `<p>${h(p.bio)}</p>` : `<p class="dim">Contá algo sobre vos en “Editar perfil”.</p>`}${extrasHTML(PSV)}<div class="small dim">En JVNN desde ${h(fmtDate(S.created, { month: 'long', year: 'numeric' }))}</div>${showcaseHTML(PSV, bsMine)}</div>
       <div class="actions"><label class="btn" for="photo">Cambiar foto</label>${p.photo ? '<button class="btn ghost" data-act="nophoto">Quitar foto</button>' : ''}<input type="file" id="photo" accept="image/*" hidden></div></div>
-    ${featuredHTML(p.style, S.shows)}
+    ${featuredHTML(PSV, S.shows)}
     <div class="pstats"><a href="#/stats"><b>${h(shortTime(ps.min + movieStats().min))}</b><span>de series y pelis</span></a><a href="#/stats"><b>${ps.eps.toLocaleString('es-AR')}</b><span>capítulos</span></a><a data-act="ptab" data-v="seen" href="#/perfil"><b>${seen.length}</b><span>series vistas</span></a><a data-act="ptab" data-v="fav" href="#/perfil"><b>${favs.length}</b><span>favoritas</span></a><a data-act="ptab" data-v="badges" href="#/perfil"><b>${badgeList(bsMine).filter(x => x.on).length}</b><span>logros</span></a></div></section>
   ${ONLINE ? (ME ? `<div class="acctbar"><div>${avatar(ME, 36)}<div><b>@${h(ME.username)}</b><span id="syncst" class="sync ok">Sincronizado</span></div></div><div class="actions"><a class="btn sm" href="#/u/${h(ME.username)}">Ver mi perfil público</a><button class="btn sm" data-act="copylink" data-u="${h(ME.username)}">Copiar link</button><button class="btn sm ghost" data-act="logout">Cerrar sesión</button></div></div>`
     : `<div class="invite" style="margin-top:16px"><div><h2>Poné tu perfil online</h2><p class="dim">Creá tu cuenta gratis para tener un link de perfil, seguir gente, comentar y ver tus series en cualquier dispositivo.</p></div><a class="btn pri" href="#/entrar/crear">Crear cuenta</a></div>`) : ''}
@@ -2334,8 +2431,8 @@ function bannerHTML(style, favs) {
   if (BANNERS[st.banner]) return `<div class="pbanner custom${pat}" style="background:${BANNERS[st.banner][1]}"></div>`;
   return `<div class="pbanner${pat}">${(favs || []).slice(0, 3).map(r => r.img ? `<div style="background-image:url('${h(r.img)}')"></div>` : '').join('')}</div>`;
 }
-const accentStyle = st => st && st.accent && /^#[0-9a-f]{6}$/i.test(st.accent) ? `style="--paccent:${st.accent}"` : '';
-const profileClasses = st => `frame-${FRAMES[st && st.frame] ? st.frame : 'accent'} font-${FONTS[st && st.nameFont] ? st.nameFont : 'display'}`;
+function accentStyle(st) { return st && st.accent && /^#[0-9a-f]{6}$/i.test(st.accent) ? `style="--paccent:${st.accent}"` : ''; }
+function profileClasses(st) { return `frame-${FRAMES[st && st.frame] ? st.frame : 'accent'} font-${FONTS[st && st.nameFont] ? st.nameFont : 'display'}`; }
 function featuredHTML(st, shows) {
   const f = st && st.featured && shows[st.featured];
   return f ? `<a class="featured" href="#/serie/${f.id}"><div class="fimg">${img(f.img, f.name)}</div><div><div class="eyebrow">Serie destacada</div><b>${h(f.name)}</b><span>${f.score ? 'Su nota: ' + f.score + '/10 · ' : ''}${Object.keys(f.eps || {}).length} capítulos vistos</span></div></a>` : '';
@@ -2421,6 +2518,319 @@ function startSlider() {
 document.addEventListener('click', e => { const b = e.target.closest('[data-act="slide"]'); if (b) { slideTo(+b.dataset.v); startSlider(); } });
 
 
+// ============================================================ V5: JVNN PRO + 200 COSAS PARA PERSONALIZAR + PELÍCULAS POR GÉNERO
+// ---------------------------------------------------------- estado Pro (lo activa el dueño en Supabase, tabla "premium")
+const PRO = { me: false, items: [], plan: '' };
+const PAY = { paypal: 'https://www.paypal.com/paypalme/Totood', mp: 'totoo.d', combo: 3.99, socials: 2 };
+const isProRow = r => !!(r && (r.plan === 'combo' || (r.items || []).includes('combo')));
+const hasSocials = row => !!(row && (isProRow(row) || (row.items || []).includes('redes') || row.plan === 'redes'));
+async function loadPro() {
+  PRO.me = false; PRO.items = []; PRO.plan = '';
+  if (typeof ME !== 'undefined' && ME) {
+    const rows = await sbTry(() => rest(`premium?select=plan,items&user_id=eq.${ME.id}`), []);
+    const r = rows && rows[0];
+    if (r) { PRO.me = isProRow(r); PRO.items = r.items || []; PRO.plan = r.plan || ''; }
+  }
+  enforceSiteTheme();
+  renderProPill();
+}
+const myProRow = () => ({ plan: PRO.plan, items: PRO.items.concat(PRO.me ? ['combo'] : []) });
+
+// ---------------------------------------------------------- catálogo de opciones: [clave, nombre, valor, gratis]
+const C = (k, n, v, f) => ({ k, n, v, f: !!f });
+const COLORS = [['rosa', 'Rosa JVNN', '#f3c6cf'], ['chicle', 'Chicle', '#ff8fb8'], ['frutilla', 'Frutilla', '#ff5c8a'], ['coral', 'Coral', '#ff8a7a'], ['durazno', 'Durazno', '#ffb38a'], ['naranja', 'Naranja', '#ffa24a'], ['ambar', 'Ámbar', '#ffc24a'], ['oro', 'Oro', '#ffd76a'], ['limon', 'Limón', '#f2f07a'], ['lima', 'Lima', '#c6f07a'], ['menta', 'Menta', '#8ff0c6'], ['verde', 'Verde', '#5ad18a'], ['esmeralda', 'Esmeralda', '#2bc48a'], ['turquesa', 'Turquesa', '#4ad6d6'], ['cielo', 'Cielo', '#7fd6ff'], ['celeste', 'Celeste', '#8fbcff'], ['azul', 'Azul', '#5a8bff'], ['indigo', 'Índigo', '#7a7aff'], ['lavanda', 'Lavanda', '#c3a8ff'], ['violeta', 'Violeta', '#a26bff'], ['uva', 'Uva', '#9a5ae6'], ['magenta', 'Magenta', '#ff6bd6'], ['fucsia', 'Fucsia', '#ff4ab8'], ['vino', 'Vino', '#d6386e'], ['cafe', 'Café', '#c89a6b'], ['arena', 'Arena', '#e6d2b5'], ['plata', 'Plata', '#cfd6e2'], ['gris', 'Gris', '#9aa0b0'], ['hielo', 'Hielo', '#e8f4ff'], ['blanco', 'Blanco', '#ffffff']];
+const GRADS = [['atardecer', 'Atardecer', 'linear-gradient(90deg,#ffb36b,#ff5c8a,#a26bff)'], ['aurora', 'Aurora', 'linear-gradient(90deg,#5ad1c6,#7fd6ff,#a26bff)'], ['caramelo', 'Caramelo', 'linear-gradient(90deg,#ff9ac6,#ffd1a8,#c3a8ff)'], ['oceano', 'Océano', 'linear-gradient(90deg,#7fd6ff,#5a8bff,#2bc48a)'], ['fuego', 'Fuego', 'linear-gradient(90deg,#ffd76a,#ff8a3d,#ff3d5a)'], ['dorado', 'Dorado', 'linear-gradient(90deg,#fff3c4,#ffd76a,#c9971f,#fff3c4)'], ['arcoiris', 'Arcoíris', 'linear-gradient(90deg,#ff7aa8,#ffd36b,#a8f0c6,#7fe0ff,#c3a8ff)'], ['menta', 'Menta fresca', 'linear-gradient(90deg,#e8fff6,#8ff0c6,#4ad6d6)'], ['galaxia', 'Galaxia', 'linear-gradient(90deg,#c3a8ff,#7a7aff,#ff6bd6)'], ['cerezo', 'Cerezo', 'linear-gradient(90deg,#fff0f3,#f3c6cf,#ff5c8a)'], ['hielo', 'Hielo', 'linear-gradient(90deg,#ffffff,#bfe3ff,#8fbcff)'], ['lava', 'Lava', 'linear-gradient(90deg,#ff3d5a,#ff8a3d,#ffd76a)'], ['durazno', 'Durazno', 'linear-gradient(90deg,#ffe0c8,#ffb38a,#ff8a7a)'], ['bosque', 'Bosque', 'linear-gradient(90deg,#e6f7c8,#8fd16b,#2bc48a)'], ['lila', 'Lila', 'linear-gradient(90deg,#f2e8ff,#c3a8ff,#a26bff)'], ['holograma', 'Holograma', 'linear-gradient(90deg,#ffd1f0,#c8f7ff,#e8d1ff,#fff3c4)']];
+const STYLE_OPTS = {
+  name: [C('def', 'Normal', '', 1), C('c:rosa', 'Rosa JVNN', '#f3c6cf', 1), ...COLORS.filter(c => c[0] !== 'rosa').map(c => C('c:' + c[0], c[1], c[2])), ...GRADS.map(g => C('g:' + g[0], g[1] + ' (degradado)', g[2]))],
+  font: [['Archivo', 'Moderna', 1], ['Nunito', 'Redondeada', 1], ['Playfair Display', 'Clásica', 1], ['Bebas Neue', 'Afiche'], ['Pacifico', 'Surf'], ['Lobster', 'Retro'], ['Righteous', 'Arcade'], ['Bungee', 'Cartel'], ['Press Start 2P', 'Videojuego'], ['Orbitron', 'Futurista'], ['Caveat', 'Escrita a mano'], ['Dancing Script', 'Elegante'], ['Permanent Marker', 'Fibrón'], ['Abril Fatface', 'Revista'], ['Cinzel', 'Épica'], ['Comfortaa', 'Suave'], ['Fredoka', 'Burbuja'], ['Josefin Sans', 'Minimal'], ['Monoton', 'Disco'], ['Rubik Mono One', 'Bloque'], ['Shrikhand', 'Gruesa'], ['Satisfy', 'Firma'], ['Audiowide', 'Velocidad'], ['Black Ops One', 'Militar'], ['Creepster', 'Terror'], ['Special Elite', 'Máquina de escribir'], ['Silkscreen', 'Píxel'], ['Kaushan Script', 'Pincel'], ['Alfa Slab One', 'Western'], ['Space Mono', 'Código']].map(([k, n, f]) => C(k, n, k, f)),
+  fx: [C('none', 'Sin efecto', '', 1), C('upper', 'Mayúsculas', '', 1), C('shadow', 'Sombra', ''), C('outline', 'Contorno', ''), C('under', 'Subrayado de color', ''), C('soft', 'Brillo suave', ''), C('d3', 'Sombra 3D', ''), C('wide', 'Espaciado', ''), C('italic', 'Inclinada', ''), C('stamp', 'Sello', '')],
+  frame: [C('accent', 'Color del perfil', 'var(--paccent)', 1), C('none', 'Sin marco', 'transparent', 1), C('plata', 'Plateado', 'linear-gradient(135deg,#ffffff,#9aa7bd,#e6ebf5)'), C('oro', 'Dorado', 'linear-gradient(135deg,#fff3c4,#d4a017,#8a6a1a,#ffd76a)'), C('bronce', 'Bronce', 'linear-gradient(135deg,#f2c29a,#a8642f,#d08a52)'), C('arcoiris', 'Arcoíris', 'conic-gradient(#ff7aa8,#ffd36b,#a8f0c6,#7fe0ff,#c3a8ff,#ff7aa8)'), ...GRADS.filter(g => g[0] !== 'arcoiris' && g[0] !== 'dorado').map(g => C(g[0], g[1], g[2])), C('doble', 'Doble', 'double'), C('punteado', 'Punteado', 'dashed'), C('giro', 'Arcoíris girando (animado)', 'spin'), C('latido', 'Latido (animado)', 'pulse')],
+  shape: [C('circle', 'Círculo', '50%', 1), C('rounded', 'Redondeado', '28%'), C('square', 'Cuadrado', '12%'), C('hex', 'Hexágono', 'hex'), C('blob', 'Gota', '42% 58% 55% 45% / 45% 45% 55% 55%')],
+  banner: [C('fav', 'Mis favoritas', 'fav', 1), C('carbon', 'Carbón', 'linear-gradient(120deg,#2a2a34,#121217)', 1), C('rosa', 'Rosa', 'linear-gradient(120deg,#f3c6cf,#b57a8a 60%,#3a2a33)', 1),
+    ...Object.entries({ noche: 'linear-gradient(120deg,#1b2a6b,#0a0a1f 70%)', atardecer: 'linear-gradient(120deg,#ffb36b,#ff5c8a 55%,#5a2bff)', galaxia: 'radial-gradient(circle at 20% 30%,#7a2bff,transparent 40%),radial-gradient(circle at 80% 60%,#3d8bff,transparent 40%),#0a0a1f', menta: 'linear-gradient(120deg,#a8f0d8,#1fa08c 60%,#0a2a24)', fuego: 'linear-gradient(120deg,#ffd36b,#ff5c2b 50%,#5a0a0a)', hielo: 'linear-gradient(120deg,#e8f4ff,#8fbcff 50%,#2a3a6b)', aurora: 'linear-gradient(160deg,#0b1a2a,#13a89e 45%,#7a2bff 80%)', cerezo: 'linear-gradient(120deg,#fff0f3,#f7b2c4 45%,#c45a7d)', oceano: 'linear-gradient(180deg,#5ad1ff,#0a5aa8 60%,#06223f)', bosque: 'linear-gradient(120deg,#c8e6a0,#3d7a3a 55%,#0f2a14)', lava: 'radial-gradient(circle at 70% 120%,#ff5c2b,transparent 55%),linear-gradient(120deg,#1a0505,#5a0a0a)', lavanda: 'linear-gradient(120deg,#efe6ff,#b9a3ff 50%,#4a3a8f)', oro: 'linear-gradient(120deg,#fff3c4,#e0b84a 50%,#5a420a)', neblina: 'linear-gradient(180deg,#d6dbe6,#7b8496 60%,#2a2e38)', durazno: 'linear-gradient(120deg,#ffe0c8,#ffb38a 50%,#8a4a3a)', uva: 'linear-gradient(120deg,#e6c8ff,#8a4ad6 55%,#2a0a4a)', limonada: 'linear-gradient(120deg,#fffbd1,#f2f07a 45%,#5ad18a)', tormenta: 'linear-gradient(160deg,#3a4256,#141824 60%,#5a8bff)', vino: 'linear-gradient(120deg,#ff8fb8,#8a1a3a 55%,#1a0510)', desierto: 'linear-gradient(180deg,#ffd9a8,#d68a4a 55%,#4a2a14)', polar: 'linear-gradient(180deg,#ffffff,#cfe8ff 45%,#5a8bff)', medianoche: 'radial-gradient(circle at 80% 20%,#ffffff22,transparent 30%),linear-gradient(180deg,#0a0a2a,#000)', chicle: 'linear-gradient(120deg,#ffd1e8,#ff8fb8 50%,#7fd6ff)', jungla: 'linear-gradient(120deg,#0a2a14,#2bc48a 50%,#c6f07a)', coral: 'linear-gradient(120deg,#ffd1c8,#ff8a7a 50%,#4ad6d6)', retro: 'linear-gradient(180deg,#ffd76a 0 25%,#ff8a3d 25% 50%,#ff5c8a 50% 75%,#a26bff 75%)', sunsetbeach: 'linear-gradient(180deg,#ffb36b,#ff8a7a 40%,#4ad6d6 70%,#0a5aa8)', cosmos: 'radial-gradient(circle at 30% 70%,#ff6bd6,transparent 35%),radial-gradient(circle at 70% 30%,#4ad6d6,transparent 35%),#0a0a1f', carbonrosa: 'linear-gradient(120deg,#121217 40%,#f3c6cf)', pastel: 'linear-gradient(120deg,#ffd1e8,#d1e8ff,#e8ffd1)', sepia: 'linear-gradient(120deg,#f2e2c8,#a88a6a 55%,#3a2a1a)', neon: 'linear-gradient(120deg,#1a0a2a,#3a1a6b 50%,#ff6bd6)' }).map(([k, v]) => C(k, k[0].toUpperCase() + k.slice(1).replace('rosa', ' rosa').replace('beach', ' de playa'), v)), C('img', 'Tu propia imagen', 'img')],
+  pattern: [C('none', 'Liso', '', 1), C('dots', 'Puntos', 'radial-gradient(rgba(255,255,255,.35) 1.2px,transparent 1.6px) 0 0/14px 14px', 1), C('lines', 'Rayas', 'repeating-linear-gradient(45deg,rgba(255,255,255,.12) 0 2px,transparent 2px 12px)'), C('grid', 'Cuadrícula', 'linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px) 0 0/22px 22px'), C('stars', 'Estrellas', 'radial-gradient(rgba(255,255,255,.9) 1px,transparent 1.5px) 0 0/40px 40px,radial-gradient(rgba(255,255,255,.6) 1px,transparent 1.5px) 20px 13px/56px 56px'), C('waves', 'Ondas', 'radial-gradient(circle at 50% 120%,transparent 14px,rgba(255,255,255,.14) 15px,transparent 17px) 0 0/34px 18px'), C('checker', 'Damero', 'conic-gradient(rgba(255,255,255,.08) 25%,transparent 0 50%,rgba(255,255,255,.08) 0 75%,transparent 0) 0 0/28px 28px'), C('diag', 'Diagonales finas', 'repeating-linear-gradient(-45deg,rgba(255,255,255,.08) 0 1px,transparent 1px 7px)'), C('zigzag', 'Zigzag', 'linear-gradient(135deg,rgba(255,255,255,.12) 25%,transparent 25%) -10px 0/20px 20px,linear-gradient(225deg,rgba(255,255,255,.12) 25%,transparent 25%) -10px 0/20px 20px'), C('confetti', 'Confeti', 'radial-gradient(#ff8fb8 1.5px,transparent 2px) 0 0/30px 30px,radial-gradient(#7fd6ff 1.5px,transparent 2px) 10px 15px/34px 34px,radial-gradient(#ffd76a 1.5px,transparent 2px) 20px 5px/26px 26px'), C('circles', 'Círculos', 'radial-gradient(circle,transparent 8px,rgba(255,255,255,.12) 9px,transparent 10px) 0 0/30px 30px'), C('scan', 'Líneas de tele', 'repeating-linear-gradient(0deg,rgba(0,0,0,.25) 0 1px,transparent 1px 4px)')],
+  bfx: [C('none', 'Quieto', '', 1), C('shift', 'Colores que se mueven (animado)', ''), C('shine', 'Destello (animado)', ''), C('zoom', 'Zoom lento (animado)', '')],
+  theme: [C('def', 'Clásico', '', 1), C('vidrio', 'Vidrio', 'linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02))'), C('rosa', 'Rosa suave', 'linear-gradient(180deg,#2a1d22,#151217)'), C('medianoche', 'Medianoche', 'linear-gradient(180deg,#121a35,#0b0f1f)'), C('ciruela', 'Ciruela', 'linear-gradient(180deg,#2a1838,#140c1c)'), C('oceano', 'Océano', 'linear-gradient(180deg,#0f2433,#0a1219)'), C('bosque', 'Bosque', 'linear-gradient(180deg,#132a1d,#0b140f)'), C('brasa', 'Brasa', 'linear-gradient(180deg,#2e1611,#140a08)'), C('arena', 'Arena', 'linear-gradient(180deg,#2c2519,#16130d)'), C('mono', 'Blanco y negro', 'linear-gradient(180deg,#1c1c1c,#0c0c0c)'), C('aurora', 'Aurora', 'linear-gradient(160deg,#0e2a2a,#1a1438 60%,#0b0b14)'), C('caramelo', 'Caramelo', 'linear-gradient(160deg,#2e1a26,#1c1a2e 60%,#121217)')],
+  accent: [C('', 'Rosa JVNN', '', 1), C('#8fbcff', 'Azul', '#8fbcff', 1), C('#ffffff', 'Blanco', '#ffffff', 1), ...COLORS.filter(c => !['rosa', 'celeste', 'blanco'].includes(c[0])).map(c => C(c[2], c[1], c[2]))],
+  title: [C('', 'Sin título', '', 1), C('Fan de las series', 'Fan de las series', '', 1), C('Cinéfilo', 'Cinéfilo', '', 1), C('Otaku', 'Otaku', '', 1), ...['Maratonista', 'Crítico de sillón', 'Fan de los doramas', 'Noctámbulo', 'Spoiler humano', 'Cazador de estrenos', 'Coleccionista', 'Leyenda JVNN', 'Rey del sofá', 'Reina del sofá', 'Experto en terror', 'Fan del anime', 'Cinéfilo de culto', 'Teórico conspiranoico', 'Llorón de finales', 'Team final abierto', 'Ve todo doblado', 'Ve todo subtitulado', 'Fundador JVNN', 'Miembro Pro'].map(t => C(t, t, ''))],
+  site: [C('def', 'Noche rosa', { bg: '#08080b', surface: '#121217', raise: '#1b1b22', line: '#2a2a34', accent: '#f3c6cf', amb1: 'rgba(243,198,207,.10)', amb2: 'rgba(61,139,255,.09)' }, 1), C('carbon', 'Carbón', { bg: '#0b0b0c', surface: '#151516', raise: '#1e1e20', line: '#2c2c30', accent: '#e6e6ea', amb1: 'rgba(255,255,255,.05)', amb2: 'rgba(255,255,255,.03)' }, 1), C('azul', 'Azul noche', { bg: '#070b16', surface: '#0f1528', raise: '#172038', line: '#24304f', accent: '#8fbcff', amb1: 'rgba(143,188,255,.12)', amb2: 'rgba(162,107,255,.08)' }, 1), C('ciruela', 'Ciruela', { bg: '#0c0712', surface: '#170f20', raise: '#22172e', line: '#33243f', accent: '#c3a8ff', amb1: 'rgba(195,168,255,.12)', amb2: 'rgba(255,107,214,.07)' }), C('bosque', 'Bosque', { bg: '#060c09', surface: '#0f1813', raise: '#17241c', line: '#24382b', accent: '#8ff0c6', amb1: 'rgba(143,240,198,.10)', amb2: 'rgba(255,215,106,.06)' }), C('brasa', 'Brasa', { bg: '#0f0807', surface: '#1b100d', raise: '#261814', line: '#3a241d', accent: '#ffb38a', amb1: 'rgba(255,138,61,.12)', amb2: 'rgba(255,92,138,.07)' }), C('oceano', 'Océano', { bg: '#050c10', surface: '#0c1820', raise: '#13232e', line: '#1f3644', accent: '#7fd6ff', amb1: 'rgba(127,214,255,.12)', amb2: 'rgba(43,196,138,.07)' }), C('chicle', 'Chicle', { bg: '#0f0710', surface: '#1c0f1d', raise: '#28162a', line: '#3d2240', accent: '#ff8fb8', amb1: 'rgba(255,143,184,.14)', amb2: 'rgba(127,214,255,.08)' }), C('oro', 'Oro negro', { bg: '#0b0905', surface: '#17130b', raise: '#221c10', line: '#3a301a', accent: '#ffd76a', amb1: 'rgba(255,215,106,.10)', amb2: 'rgba(255,138,61,.05)' }), C('hielo', 'Hielo', { bg: '#080b0f', surface: '#111720', raise: '#1a2230', line: '#283447', accent: '#e8f4ff', amb1: 'rgba(232,244,255,.08)', amb2: 'rgba(143,188,255,.08)' })],
+};
+const SOCIALS5 = { ig: ['Instagram', u => `https://instagram.com/${u}`], tt: ['TikTok', u => `https://www.tiktok.com/@${u}`], x: ['X', u => `https://x.com/${u}`], yt: ['YouTube', u => `https://www.youtube.com/@${u}`], tw: ['Twitch', u => `https://twitch.tv/${u}`], lb: ['Letterboxd', u => `https://letterboxd.com/${u}`], sp: ['Spotify', u => `https://open.spotify.com/user/${u}`], st: ['Steam', u => `https://steamcommunity.com/id/${u}`], rd: ['Reddit', u => `https://reddit.com/user/${u}`], dc: ['Discord', null] };
+const STYLE_DEF = { name: 'def', font: 'Archivo', fx: 'none', frame: 'accent', shape: 'circle', banner: 'fav', pattern: 'none', bfx: 'none', theme: 'def', accent: '', title: '' };
+const optOf = (f, k) => (STYLE_OPTS[f] || []).find(o => o.k === k);
+const PRO_COUNT = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.filter(o => !o.f).length, 0) + 4;
+const FREE_COUNT = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.filter(o => o.f).length, 0);
+
+// migración desde la versión anterior (banner, pattern, frame, nameFont)
+(function migrate() {
+  const st = S.profile.style;
+  if (st.nameFont && !st.font) st.font = { display: 'Archivo', serif: 'Playfair Display', mono: 'Space Mono', condensed: 'Bebas Neue', round: 'Nunito' }[st.nameFont] || 'Archivo';
+  const fm = { gold: 'oro', silver: 'plata', rainbow: 'arcoiris', double: 'doble', dashed: 'punteado', sunset: 'atardecer' };
+  if (fm[st.frame]) st.frame = fm[st.frame];
+  for (const [k, v] of Object.entries(STYLE_DEF)) if (st[k] == null) st[k] = v;
+  S.ui = S.ui || { site: 'def' };
+})();
+
+// limpia el estilo según lo que la persona tiene pagado (sirve para tu perfil y para los perfiles de otros)
+function sanitizeStyle(st, row) {
+  st = Object.assign({}, STYLE_DEF, st || {});
+  const pro = isProRow(row), out = { ...st };
+  for (const f of Object.keys(STYLE_OPTS)) {
+    if (f === 'site') continue;
+    const o = optOf(f, st[f]);
+    if (f === 'name' && String(st.name || '').startsWith('x:')) { if (!pro || !/^x:#[0-9a-f]{6}$/i.test(st.name)) out.name = 'def'; continue; }
+    if (f === 'accent' && /^#[0-9a-f]{6}$/i.test(st.accent || '') && !o) { if (!pro) out.accent = ''; continue; }
+    if (!o || (!o.f && !pro)) out[f] = STYLE_DEF[f];
+  }
+  if (out.banner === 'img' && !(pro && /^data:image\/(jpeg|png|webp);base64,/.test(st.bannerImg || ''))) out.banner = 'fav';
+  const so = Object.entries(st.socials || {}).filter(([k, u]) => SOCIALS5[k] && cleanHandle(u));
+  out.socials = Object.fromEntries(hasSocials(row) ? so : so.slice(0, 3));
+  out.showcase = (st.showcase || []).slice(0, pro ? 6 : 3);
+  out._pro = pro;
+  return out;
+}
+
+// ---------------------------------------------------------- dibujar el perfil con su estilo
+const loadedFonts = new Set();
+function ensureFont(fam) {
+  if (!fam || fam === 'Archivo' || loadedFonts.has(fam)) return;
+  loadedFonts.add(fam);
+  const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(fam).replace(/%20/g, '+')}&display=swap`; document.head.appendChild(l);
+}
+function nameVar(st) {
+  const n = st.name || 'def';
+  if (n.startsWith('x:')) return ['c', n.slice(2)];
+  const o = optOf('name', n); if (!o || !o.v) return ['', ''];
+  return [n.startsWith('g:') ? 'g' : 'c', o.v];
+}
+function frameVar(st) { const o = optOf('frame', st.frame) || optOf('frame', 'accent'); return o.v; }
+function profileClasses(st) {
+  st = Object.assign({}, STYLE_DEF, st || {});
+  const [nk] = nameVar(st), fv = frameVar(st), sh = optOf('shape', st.shape);
+  return ['v5', nk ? 'nm-' + nk : '', 'fx-' + (st.fx || 'none'), fv === 'double' ? 'fr-double' : fv === 'dashed' ? 'fr-dashed' : fv === 'spin' ? 'fr-spin' : fv === 'pulse' ? 'fr-pulse' : fv === 'transparent' ? 'fr-none' : 'fr-grad', sh && sh.v === 'hex' ? 'sh-hex' : '', st._pro ? 'is-pro' : ''].filter(Boolean).join(' ');
+}
+function accentStyle(st) {
+  st = Object.assign({}, STYLE_DEF, st || {});
+  ensureFont(st.font);
+  const [, nv] = nameVar(st), fv = frameVar(st), sh = optOf('shape', st.shape), th = optOf('theme', st.theme);
+  const acc = /^#[0-9a-f]{6}$/i.test(st.accent || '') ? st.accent : '';
+  const vars = [acc ? `--paccent:${acc}` : '', nv ? `--pname:${nv}` : '', `--pfont:'${String(st.font).replace(/'/g, '')}'`, ['double', 'dashed', 'spin', 'pulse', 'transparent'].includes(fv) ? '' : `--pframe:${fv}`, sh && sh.v !== 'hex' ? `--pshape:${sh.v}` : '', th && th.v ? `--ptheme:${th.v}` : ''].filter(Boolean).join(';');
+  return `style="${h(vars)}"`;
+}
+function bannerHTML(style, favs) {
+  const st = Object.assign({}, STYLE_DEF, style || {});
+  const pat = optOf('pattern', st.pattern), fx = st.bfx && st.bfx !== 'none' ? ' bfx-' + st.bfx : '';
+  const over = pat && pat.v ? `<div class="ppat" style="background:${pat.v}"></div>` : '';
+  if (st.banner === 'img' && /^data:image\/(jpeg|png|webp);base64,/.test(st.bannerImg || '')) return `<div class="pbanner custom${fx}" style="background-image:url('${st.bannerImg}')">${over}</div>`;
+  const o = optOf('banner', st.banner);
+  if (o && o.v !== 'fav' && o.v !== 'img') return `<div class="pbanner custom${fx}" style="background:${o.v}">${over}</div>`;
+  return `<div class="pbanner${fx}">${(favs || []).slice(0, 3).map(r => r.img ? `<div style="background-image:url('${h(r.img)}')"></div>` : '').join('')}${over}</div>`;
+}
+const proBadge = () => `<span class="probadge" title="Miembro JVNN Pro"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.5 7L12 17.6 5.7 21.1l1.5-7L2 9.3l7-.8z" fill="currentColor"/></svg>PRO</span>`;
+function extrasHTML(st) {
+  const s = st || {}, so = s.socials || {};
+  const links = Object.entries(SOCIALS5).filter(([k]) => cleanHandle(so[k])).map(([k, [n, url]]) => { const u = cleanHandle(so[k]); return url ? `<a class="social s-${k}" href="${h(url(u))}" target="_blank" rel="noopener"><b>${n}</b> @${h(u)}</a>` : `<span class="social s-${k}" title="Usuario de Discord"><b>${n}</b> ${h(u)}</span>`; }).join('');
+  return `${s.title || s._pro ? `<div class="ptitle">${s._pro ? proBadge() : ''}${s.title ? `<span>${h(s.title)}</span>` : ''}</div>` : ''}` + (s.status ? `<div class="pstatus"><span class="dotlive"></span>${h(String(s.status).slice(0, 70))}</div>` : '') + (links ? `<div class="socials">${links}</div>` : '');
+}
+function showcaseHTML(style, bs) {
+  const n = style && style._pro ? 6 : 3;
+  const ids = (style && style.showcase) || [], list = badgeList(bs).filter(x => x.on);
+  const pick = ids.length ? ids.map(id => list.find(x => x.b[0] === id)).filter(Boolean) : list.sort((a, c) => 'pgsb'.indexOf(a.b[4]) - 'pgsb'.indexOf(c.b[4])).slice(0, 3);
+  return pick.length ? `<div class="showcase">${pick.slice(0, n).map(x => `<span class="sbadge" title="${h(x.b[1])}: ${h(x.b[2])}">${medalSVG(x.b, true, 34)}<b>${h(x.b[1])}</b></span>`).join('')}</div>` : '';
+}
+
+// ---------------------------------------------------------- vista previa (probar cosas Pro sin pagar)
+let PREVIEW = {};
+function myStyleView() {
+  const raw = Object.assign({}, S.profile.style, PREVIEW);
+  const s = sanitizeStyle(raw, PRO.me ? myProRow() : (Object.keys(PREVIEW).length ? { plan: 'combo' } : myProRow()));
+  if (!PRO.me) s._pro = false;
+  return s;
+}
+window.addEventListener('hashchange', () => { if (parseRoute().name !== 'perfil') PREVIEW = {}; });
+const lockSVG = '<svg class="lk" width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2" fill="currentColor"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2.6"/></svg>';
+function opt(f, o, cur, inner) {
+  const locked = !o.f && !PRO.me;
+  return `<button class="sw ${cur === o.k ? 'on' : ''} ${locked ? 'locked' : ''}" data-act="sty" data-f="${f}" data-v="${h(o.k)}" title="${h(o.n)}${locked ? ' · JVNN Pro' : ''}">${inner}${locked ? lockSVG : ''}</button>`;
+}
+let fontsPreviewLoaded = false;
+function loadAllFontsPreview() {
+  if (fontsPreviewLoaded) return; fontsPreviewLoaded = true;
+  const fams = STYLE_OPTS.font.map(o => o.k).filter(k => k !== 'Archivo');
+  const text = encodeURIComponent([...new Set(STYLE_OPTS.font.map(o => o.n).join('') + 'Aa')].join(''));
+  const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = `https://fonts.googleapis.com/css2?${fams.map(f => 'family=' + encodeURIComponent(f).replace(/%20/g, '+')).join('&')}&text=${text}&display=swap`; document.head.appendChild(l);
+}
+const CTABS = [['nombre', 'Nombre'], ['foto', 'Foto'], ['banner', 'Banner'], ['perfil', 'Perfil'], ['pagina', 'La página'], ['redes', 'Redes y vitrina']];
+function customizeHTML() {
+  loadAllFontsPreview();
+  const st = Object.assign({}, STYLE_DEF, S.profile.style), view = Object.assign({}, st, PREVIEW), tab = UI.ctab || 'nombre';
+  const prevKeys = Object.keys(PREVIEW);
+  const g = (title, inner, note) => `<div class="cgroup"><div class="lb">${title}${note ? ` <span class="dim">· ${note}</span>` : ''}</div>${inner}</div>`;
+  let body = '';
+  if (tab === 'nombre') {
+    body = g('Color del nombre', `<div class="swgrid">${STYLE_OPTS.name.filter(o => !o.k.startsWith('g:')).map(o => opt('name', o, view.name, `<i class="dot" style="background:${o.v || 'var(--fg)'}"></i>`)).join('')}<label class="sw ${String(view.name).startsWith('x:') ? 'on' : ''} ${PRO.me ? '' : 'locked'}" title="Elegí cualquier color${PRO.me ? '' : ' · JVNN Pro'}"><i class="dot picker"></i><input type="color" id="pnamecolor" value="${String(view.name).startsWith('x:') ? view.name.slice(2) : '#f3c6cf'}">${PRO.me ? '' : lockSVG}</label></div>`, 'como en Discord, el que quieras')
+      + g('Nombre en degradado', `<div class="swgrid wide">${STYLE_OPTS.name.filter(o => o.k.startsWith('g:')).map(o => opt('name', o, view.name, `<span class="gsample" style="background:${o.v}">${h(o.n.replace(' (degradado)', ''))}</span>`)).join('')}</div>`)
+      + g('Letra del nombre', `<div class="swgrid fonts">${STYLE_OPTS.font.map(o => opt('font', o, view.font, `<span style="font-family:'${o.k}',var(--display)">${h(o.n)}</span>`)).join('')}</div>`, STYLE_OPTS.font.length + ' letras')
+      + g('Efecto del nombre', `<div class="swgrid wide">${STYLE_OPTS.fx.map(o => opt('fx', o, view.fx, `<span class="fxs fx-${o.k}">${h(o.n)}</span>`)).join('')}</div>`)
+      + g('Título abajo de tu nombre', `<div class="swgrid wide">${STYLE_OPTS.title.map(o => opt('title', o, view.title, h(o.n))).join('')}</div>`);
+  } else if (tab === 'foto') {
+    body = g('Marco de tu foto', `<div class="swgrid">${STYLE_OPTS.frame.map(o => opt('frame', o, view.frame, `<span class="frs ${o.v === 'double' ? 'fr-double' : o.v === 'dashed' ? 'fr-dashed' : o.v === 'spin' ? 'fr-spin' : o.v === 'pulse' ? 'fr-pulse' : o.v === 'transparent' ? 'fr-none' : 'fr-grad'}" style="--pframe:${['double', 'dashed', 'spin', 'pulse', 'transparent'].includes(o.v) ? 'var(--paccent)' : o.v}"><i></i></span><small>${h(o.n)}</small>`)).join('')}</div>`, STYLE_OPTS.frame.length + ' marcos')
+      + g('Forma de tu foto', `<div class="swgrid">${STYLE_OPTS.shape.map(o => opt('shape', o, view.shape, `<span class="shs ${o.v === 'hex' ? 'sh-hex' : ''}" style="border-radius:${o.v === 'hex' ? '0' : o.v}"></span><small>${h(o.n)}</small>`)).join('')}</div>`);
+  } else if (tab === 'banner') {
+    body = g('Banner', `<div class="banners">${STYLE_OPTS.banner.map(o => o.k === 'img' ? `<label class="bchoice ${view.banner === 'img' ? 'on' : ''} ${PRO.me ? '' : 'locked'}" for="pbanimg" title="Subí tu imagen${PRO.me ? '' : ' · JVNN Pro'}"><span style="${st.bannerImg ? `background-image:url('${st.bannerImg}');background-size:cover` : 'background:var(--raise)'}">${st.bannerImg ? 'Mi imagen' : '+ Subir imagen'}</span>${PRO.me ? '' : lockSVG}</label><input type="file" id="pbanimg" accept="image/*" hidden>` : `<button class="bchoice ${view.banner === o.k ? 'on' : ''} ${!o.f && !PRO.me ? 'locked' : ''}" data-act="sty" data-f="banner" data-v="${o.k}"><span style="background:${o.v === 'fav' ? 'linear-gradient(90deg,#333,#555)' : o.v}">${h(o.n)}</span>${!o.f && !PRO.me ? lockSVG : ''}</button>`).join('')}</div>`, STYLE_OPTS.banner.length + ' banners')
+      + g('Textura arriba del banner', `<div class="banners">${STYLE_OPTS.pattern.map(o => `<button class="bchoice ${view.pattern === o.k ? 'on' : ''} ${!o.f && !PRO.me ? 'locked' : ''}" data-act="sty" data-f="pattern" data-v="${o.k}"><span style="background:${o.v ? o.v + ',' : ''}linear-gradient(120deg,#3a2a33,#1b2a6b)">${h(o.n)}</span>${!o.f && !PRO.me ? lockSVG : ''}</button>`).join('')}</div>`)
+      + g('Movimiento del banner', `<div class="swgrid wide">${STYLE_OPTS.bfx.map(o => opt('bfx', o, view.bfx, h(o.n))).join('')}</div>`);
+  } else if (tab === 'perfil') {
+    body = g('Color de tu perfil (botones, números, marco)', `<div class="swgrid">${STYLE_OPTS.accent.map(o => opt('accent', o, view.accent, `<i class="dot" style="background:${o.v || '#f3c6cf'}"></i>`)).join('')}<label class="sw ${/^#[0-9a-f]{6}$/i.test(view.accent) && !optOf('accent', view.accent) ? 'on' : ''} ${PRO.me ? '' : 'locked'}" title="Cualquier color${PRO.me ? '' : ' · JVNN Pro'}"><i class="dot picker"></i><input type="color" id="paccpick" value="${/^#[0-9a-f]{6}$/i.test(view.accent) ? view.accent : '#f3c6cf'}">${PRO.me ? '' : lockSVG}</label></div>`)
+      + g('Fondo de tu tarjeta de perfil', `<div class="banners">${STYLE_OPTS.theme.map(o => `<button class="bchoice ${view.theme === o.k ? 'on' : ''} ${!o.f && !PRO.me ? 'locked' : ''}" data-act="sty" data-f="theme" data-v="${o.k}"><span style="background:${o.v || 'var(--surface)'};border:1px solid var(--line)">${h(o.n)}</span>${!o.f && !PRO.me ? lockSVG : ''}</button>`).join('')}</div>`)
+      + `<div class="two" style="margin-top:4px"><div><label class="lb" for="pfeat">Serie destacada</label><select class="btn" id="pfeat" style="width:100%"><option value="">Ninguna</option>${myShows().sort((a, b) => a.name.localeCompare(b.name)).map(r => `<option value="${r.id}" ${st.featured === r.id ? 'selected' : ''}>${h(r.name)}</option>`).join('')}</select></div>
+        <div><label class="lb" for="pstat">Estado</label><input type="text" id="pstat" maxlength="70" value="${h(st.status || '')}" placeholder="Ej: viendo Bleach por tercera vez"></div></div>`;
+  } else if (tab === 'pagina') {
+    const cur = (S.ui && S.ui.site) || 'def';
+    body = g('Colores de toda la página (solo los ves vos)', `<div class="banners">${STYLE_OPTS.site.map(o => `<button class="bchoice ${cur === o.k ? 'on' : ''} ${!o.f && !PRO.me ? 'locked' : ''}" data-act="site" data-v="${o.k}"><span style="background:radial-gradient(circle at 20% 20%,${o.v.amb1.replace(/[\d.]+\)$/, '.6)')},transparent 60%),${o.v.surface};color:${o.v.accent};border:1px solid ${o.v.line}">${h(o.n)}</span>${!o.f && !PRO.me ? lockSVG : ''}</button>`).join('')}</div>`, STYLE_OPTS.site.length + ' temas');
+  } else {
+    const so = st.socials || {}, lim = hasSocials(myProRow()) ? 99 : 3, filled = Object.keys(SOCIALS5).filter(k => cleanHandle(so[k])).length;
+    const got = badgeList(myBadgeStats()).filter(x => x.on), maxShow = PRO.me ? 6 : 3;
+    body = g(`Tus redes <span class="dim">(${filled}/${lim === 99 ? '∞' : lim})</span>`, `<div class="socgrid">${Object.entries(SOCIALS5).map(([k, [n]]) => { const has = !!cleanHandle(so[k]), dis = !has && filled >= lim; return `<label class="soc ${dis ? 'locked' : ''}"><span>${n}${dis ? ' ' + lockSVG : ''}</span><input type="text" data-soc="${k}" maxlength="32" value="${h(so[k] || '')}" placeholder="${dis ? 'Redes ilimitadas: Pro' : 'usuario'}" ${dis ? 'disabled' : ''}></label>`; }).join('')}</div>${lim === 3 ? `<p class="small dim" style="margin:8px 0 0">Gratis podés poner 3. Para poner todas: <a href="#/pro" style="color:var(--accent);font-weight:700">Redes ilimitadas US$ ${PAY.socials} o JVNN Pro</a>.</p>` : ''}`)
+      + g(`Logros en vitrina (hasta ${maxShow})`, got.length ? `<div class="opts">${got.map(x => `<button class="opt badgeopt ${(st.showcase || []).includes(x.b[0]) ? 'on' : ''}" data-act="pshow5" data-v="${x.b[0]}">${medalSVG(x.b, true, 22)} ${h(x.b[1])}</button>`).join('')}</div>` : '<p class="small dim" style="margin:0">Cuando desbloquees logros, los podés mostrar acá.</p>');
+  }
+  return `<section class="custom-sec c5"><div class="c5head"><div><h3 style="margin:0">Personalizá tu perfil</h3><p class="small dim" style="margin:4px 0 0">${FREE_COUNT} cosas gratis · más de ${PRO_COUNT} con <a href="#/pro" style="color:var(--accent);font-weight:700">JVNN Pro</a></p></div>${PRO.me ? `<span class="probig">${proBadge()} Sos Pro</span>` : `<a class="btn pri sm" href="#/pro">Desbloquear todo · US$ ${String(PAY.combo).replace('.', ',')}</a>`}</div>
+    ${prevKeys.length ? `<div class="pvbar"><div><b>Estás probando ${plural(prevKeys.length, 'cosa', 'cosas')} de JVNN Pro.</b> Mirá cómo queda arriba. No se guarda hasta que tengas Pro.</div><div class="actions"><a class="btn sm pri" href="#/pro">Quiero Pro</a><button class="btn sm" data-act="pvclear">Sacar la prueba</button></div></div>` : ''}
+    <div class="tabs ctabs">${CTABS.map(([k, n]) => `<button class="tab ${k === tab ? 'on' : ''}" data-act="ctab" data-v="${k}">${n}</button>`).join('')}</div>${body}</section>`;
+}
+function setStyle(f, v) {
+  const o = optOf(f, v), free = o && o.f;
+  if (free || PRO.me) { S.profile.style[f] = v; delete PREVIEW[f]; save(); }
+  else { PREVIEW[f] = v; toast('Vista previa de JVNN Pro: mirá cómo queda arriba.'); }
+  refresh();
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-act]'); if (!b) return;
+  const a = b.dataset.act;
+  if (a === 'sty') { e.stopImmediatePropagation(); setStyle(b.dataset.f, b.dataset.v); }
+  else if (a === 'ctab') { UI.ctab = b.dataset.v; refresh(); }
+  else if (a === 'pvclear') { PREVIEW = {}; refresh(); }
+  else if (a === 'pshow5') { const st = S.profile.style, l = st.showcase || [], max = PRO.me ? 6 : 3; st.showcase = l.includes(b.dataset.v) ? l.filter(x => x !== b.dataset.v) : l.concat(b.dataset.v).slice(-max); save(); refresh(); }
+  else if (a === 'site') { const o = optOf('site', b.dataset.v); if (o.f || PRO.me) { S.ui.site = o.k; save(); applySiteTheme(o.k); refresh(); } else { applySiteTheme(o.k); toast('Vista previa del tema: es de JVNN Pro. Recargá la página para volver.'); } }
+  else if (a === 'copymp') { try { navigator.clipboard.writeText(PAY.mp).then(() => toast('Alias copiado: ' + PAY.mp)).catch(() => toast('Alias: ' + PAY.mp)); } catch (x) { toast('Alias: ' + PAY.mp); } }
+}, true);
+document.addEventListener('input', e => {
+  const t = e.target;
+  if (t.id === 'pnamecolor') { const v = 'x:' + t.value; if (PRO.me) { S.profile.style.name = v; save(); } else PREVIEW.name = v; clearTimeout(window._pcT); window._pcT = setTimeout(refresh, 250); }
+  if (t.id === 'paccpick') { if (PRO.me) { S.profile.style.accent = t.value; save(); } else PREVIEW.accent = t.value; clearTimeout(window._pcT); window._pcT = setTimeout(refresh, 250); }
+  if (t.dataset && t.dataset.soc) {
+    const so = S.profile.style.socials = S.profile.style.socials || {}, k = t.dataset.soc;
+    const others = Object.keys(SOCIALS5).filter(x => x !== k && cleanHandle(so[x])).length;
+    if (cleanHandle(t.value) && !cleanHandle(so[k]) && others >= 3 && !hasSocials(myProRow())) { e.stopImmediatePropagation(); t.value = ''; toast('Gratis podés poner 3 redes. Para todas: Redes ilimitadas o JVNN Pro.'); return; }
+    so[k] = cleanHandle(t.value); clearTimeout(window._psT); window._psT = setTimeout(save, 500);
+  }
+}, true);
+document.addEventListener('change', e => { if (e.target.id === 'pbanimg' && !PRO.me) { e.stopImmediatePropagation(); e.target.value = ''; toast('Subir tu propia imagen es de JVNN Pro.'); location.hash = '#/pro'; } }, true);
+
+// ---------------------------------------------------------- tema de toda la página
+function applySiteTheme(k) {
+  const o = optOf('site', k) || optOf('site', 'def'), v = o.v, r = document.documentElement.style;
+  r.setProperty('--bg', v.bg); r.setProperty('--surface', v.surface); r.setProperty('--raise', v.raise); r.setProperty('--line', v.line); r.setProperty('--accent', v.accent); r.setProperty('--amb1', v.amb1); r.setProperty('--amb2', v.amb2);
+  r.setProperty('--accent-soft', v.accent + '26');
+}
+function enforceSiteTheme() { const o = optOf('site', S.ui.site); applySiteTheme(o && (o.f || PRO.me) ? o.k : 'def'); }
+applySiteTheme((optOf('site', S.ui.site) || {}).f ? S.ui.site : 'def');
+function renderProPill() { document.querySelectorAll('.propill').forEach(a => { a.textContent = PRO.me ? 'Pro ✓' : 'Pro'; }); }
+
+// ---------------------------------------------------------- página de JVNN Pro
+async function vPro(_, draw) {
+  const user = typeof ME !== 'undefined' && ME ? ME.username : '';
+  const money = n => 'US$ ' + String(n).replace('.', ',');
+  const pp = n => `${PAY.paypal}/${n}USD`;
+  const feats = [['30 colores + cualquier color', 'para tu nombre, como en Discord'], ['16 degradados', 'para tu nombre'], [STYLE_OPTS.font.length + ' letras', 'para tu nombre'], ['10 efectos', 'sombra, contorno, 3D, sello…'], [STYLE_OPTS.frame.length + ' marcos', 'para tu foto, 2 animados'], ['5 formas', 'para tu foto'], [STYLE_OPTS.banner.length + ' banners', 'más subir tu propia imagen'], ['12 texturas', 'y 3 movimientos para el banner'], ['12 fondos', 'para tu tarjeta de perfil'], ['10 temas', 'de colores para toda la página'], ['20 títulos', 'abajo de tu nombre'], ['Vitrina de 6 logros', 'en vez de 3'], ['Redes ilimitadas', 'en vez de 3'], ['Insignia PRO', 'en tu perfil']];
+  draw(`<section class="prohero"><div class="eyebrow">JVNN Pro</div><h1>Tu perfil, a tu manera.</h1><p class="dim">Más de ${PRO_COUNT} cosas para personalizar tu perfil y la página. Pagás una vez y es tuyo para siempre.</p></section>
+  ${PRO.me ? `<div class="invite sec"><div><h2>¡Ya sos JVNN Pro! ${proBadge()}</h2><p class="dim">Tenés todo desbloqueado. Gracias por bancar la página.</p></div><a class="btn pri" href="#/perfil">Personalizar mi perfil</a></div>` : ''}
+  <div class="plans sec">
+    <div class="plan best"><div class="ptag">Lo más elegido</div><h2>Combo Total</h2><div class="price">${money(PAY.combo)}<small>pago único</small></div><ul>${feats.map(([a, b]) => `<li><b>${a}</b> ${b}</li>`).join('')}</ul></div>
+    <div class="plan"><h2>Redes ilimitadas</h2><div class="price">${money(PAY.socials)}<small>pago único</small></div><ul><li><b>Todas tus redes</b> en tu perfil (gratis son 3)</li><li>Instagram, TikTok, X, YouTube, Twitch, Letterboxd, Spotify, Steam, Reddit y Discord</li></ul><p class="small dim">Ya viene incluido en el Combo Total.</p></div>
+  </div>
+  <section class="panel sec paybox"><h2 style="margin-bottom:6px">Cómo pagar</h2>
+    ${user ? `<ol class="steps"><li><b>Pagá</b> con PayPal o Mercado Pago (botones abajo).</li><li>En el mensaje o nota del pago escribí tu usuario: <b class="uname">@${h(user)}</b> y qué compraste (Combo o Redes).</li><li>En menos de 24 horas se activa solo en tu cuenta. Recargá la página y vas a ver el ✓ en el botón Pro.</li></ol>
+    <div class="paybtns"><a class="btn pri" href="${pp(PAY.combo)}" target="_blank" rel="noopener">Pagar Combo con PayPal · ${money(PAY.combo)}</a><a class="btn" href="${pp(PAY.socials)}" target="_blank" rel="noopener">Pagar Redes con PayPal · ${money(PAY.socials)}</a></div>
+    <div class="mpbox"><div><b>Mercado Pago (Argentina)</b><span>Transferí el equivalente en pesos al dólar del día al alias:</span></div><div class="alias"><code>${h(PAY.mp)}</code><button class="btn sm" data-act="copymp">Copiar alias</button></div></div>
+    <p class="small dim" style="margin:12px 0 0">¿Dudas o problemas con un pago? Escribí en el Discord de JVNN.</p>`
+    : `<div class="invite sm"><span>Primero necesitás una cuenta, así la compra queda guardada a tu nombre en cualquier dispositivo.</span><a class="btn sm pri" href="#/entrar/crear">Crear cuenta gratis</a></div>`}
+  </section>
+  <section class="panel sec"><h3>Gratis siempre</h3><p class="dim" style="margin:0">Anotar series y películas, estadísticas, calendario, logros, comentarios, seguir gente y ${FREE_COUNT} opciones de personalización siguen siendo gratis.</p></section>`);
+}
+
+// ---------------------------------------------------------- PELÍCULAS: más listas y categorías por género
+const CURATED2 = {
+  'Imprescindibles': CURATED['Imprescindibles'],
+  'Suspenso y policiales': ['tt0102926', 'tt0114369', 'tt0114814', 'tt0099685', 'tt0407887', 'tt0482571', 'tt0209144', 'tt1305806', 'tt0110912', 'tt0247586'],
+  'Acción': ['tt1392190', 'tt2911666', 'tt0172495', 'tt0133093', 'tt1745960', 'tt0468569', 'tt0372784', 'tt1345836'],
+  'Superhéroes': ['tt0371746', 'tt0848228', 'tt4154756', 'tt4154796', 'tt10872600', 'tt1825683', 'tt2015381', 'tt1431045', 'tt3315342', 'tt0145487', 'tt4633694', 'tt7286456'],
+  'Sagas': CURATED['Sagas'],
+  'Animadas y anime': ['tt0245429', 'tt5311514', 'tt0347149', 'tt0119698', 'tt0094625', 'tt0114709', 'tt0435761', 'tt2380307', 'tt1049413', 'tt0910970', 'tt0110357', 'tt2096673', 'tt0126029', 'tt2294629', 'tt0266543', 'tt0198781', 'tt0382932'],
+  'Terror': ['tt0081505', 'tt5052448', 'tt7784604', 'tt1457767', 'tt1396484', 'tt0078748', 'tt6644200', 'tt6857112', 'tt0070047', 'tt0077651', 'tt0117571'],
+  'Ciencia ficción': ['tt0816692', 'tt1375666', 'tt1856101', 'tt1160419', 'tt15239678', 'tt2543164', 'tt0499549', 'tt1454468', 'tt3659388', 'tt0088763'],
+  'Romance': ['tt0120338', 'tt0332280', 'tt0414387', 'tt2194499', 'tt0211915', 'tt3783958', 'tt0338013'],
+  'Comedia': ['tt0829482', 'tt2278388', 'tt0099785', 'tt1119646', 'tt0120382', 'tt3011894'],
+  'Dramas que pegan': ['tt0111161', 'tt0109830', 'tt0108052', 'tt0120815', 'tt2582802', 'tt1285016', 'tt6751668', 'tt0457430', 'tt6155172', 'tt15398776'],
+  'Tarantino y compañía': ['tt0110912', 'tt1853728', 'tt0361748', 'tt0266697'],
+  'De habla hispana': CURATED['De habla hispana'],
+};
+const MGENRES = [['Action', 'Acción'], ['Comedy', 'Comedia'], ['Drama', 'Drama'], ['Horror', 'Terror'], ['Sci-Fi', 'Ciencia ficción'], ['Romance', 'Romance'], ['Animation', 'Animación'], ['Thriller', 'Suspenso'], ['Crime', 'Policial'], ['Adventure', 'Aventura'], ['Fantasy', 'Fantasía'], ['Family', 'Familia'], ['Mystery', 'Misterio'], ['Documentary', 'Documental'], ['War', 'Bélica'], ['Music', 'Música'], ['Biography', 'Biografía'], ['History', 'Historia']];
+let communityMovies = null;
+async function moviePool() {
+  if (!communityMovies) {
+    const rows = await sbTry(() => rest('omdb_cache?select=data&limit=5000', { auth: false }), []);
+    communityMovies = (rows || []).map(r => r.data).filter(m => m && m.type !== 'series');
+  }
+  const all = new Map();
+  for (const m of communityMovies) all.set(m.id, m);
+  for (const m of omdbMem.values()) if (m.type !== 'series') all.set(m.id, m);
+  for (const r of Object.values(S.movies)) if (!all.has(r.id)) all.set(r.id, { id: r.id, title: r.title, year: r.year, poster: r.poster, genres: r.genres || [], runtime: r.runtime });
+  return [...all.values()];
+}
+const MSORTS = { imdb: ['Mejor puntaje IMDb', (a, b) => (b.imdb || 0) - (a.imdb || 0)], new: ['Más nuevas', (a, b) => (parseInt(b.year) || 0) - (parseInt(a.year) || 0)], old: ['Más viejas', (a, b) => (parseInt(a.year) || 9999) - (parseInt(b.year) || 9999)], name: ['Nombre', (a, b) => String(a.title).localeCompare(b.title)] };
+async function vMovies(args, draw, alive) {
+  const mode = args[0] || '', q = mode === 'buscar' ? (args[1] || '') : '', gen = mode === 'genero' ? (args[1] || '') : '';
+  const ms = movieStats(), my = Object.values(S.movies);
+  const head = `<section class="mhero"><div><div class="eyebrow">Películas</div><h1>Anotá cada peli que ves.</h1><p class="dim">Buscá cualquier película del mundo, marcala como vista con un toque y mirá su puntaje de IMDb y Rotten Tomatoes.</p>
+    <form class="search big" id="mform"><input id="mq" type="search" value="${h(q)}" placeholder="Buscar una película… (ej: Interstellar)" aria-label="Buscar película"></form></div>
+    <div class="mstat"><div class="units sm">${unitsHTML(ms.min)}</div><div class="small dim">${plural(ms.n, 'película vista', 'películas vistas')}</div></div></section>
+    <div class="chips subchips mgenres"><a class="chip ${!gen && !q ? 'on' : ''}" href="#/peliculas">Inicio</a>${MGENRES.map(([k, n]) => `<a class="chip ${gen === k ? 'on' : ''}" href="#/peliculas/genero/${encodeURIComponent(k)}">${n}</a>`).join('')}</div>`;
+  if (q) {
+    draw(head + `<div class="sec">${skelGrid(8)}</div>`);
+    const pages = UI.mpages || 1; let res = [], err = '', total = 0;
+    try { for (let pg = 1; pg <= pages; pg++) { const d = await cached(`msearch:${q.toLowerCase()}:${pg}`, 7 * 86400e3, () => omdbFetch('s=' + encodeURIComponent(q) + '&type=movie&page=' + pg)); if (d) { res = res.concat(d.Search || []); total = +d.totalResults || res.length; } } } catch (e) { err = e.message; }
+    if (!alive()) return;
+    return draw(head + `<section class="sec"><div class="sechead"><h2>Resultados para “${h(q)}”</h2><span class="small dim">${total ? plural(total, 'película', 'películas') : ''}</span></div>${err ? `<div class="err">${h(err)}</div>` : res.length ? `<div class="grid">${res.map(x => mposter({ id: x.imdbID, title: x.Title, year: x.Year, poster: x.Poster !== 'N/A' ? x.Poster : '' })).join('')}</div>${res.length < total ? `<div style="text-align:center;margin-top:22px"><button class="btn" data-act="mmore">Ver más resultados</button></div>` : ''}` : empty('No encontramos esa película', 'Probá con el nombre en inglés (ej: “The Godfather”) o sin tildes.')}</section>`);
+  }
+  if (gen) {
+    const gname2 = (MGENRES.find(x => x[0] === gen) || [gen, gname(gen)])[1];
+    draw(head + `<div class="sec">${skelGrid(12)}</div>`);
+    const ids = [...new Set(Object.values(CURATED2).flat())];
+    await omdbMany(ids).catch(() => null);
+    const pool = (await moviePool()).filter(m => (m.genres || []).includes(gen));
+    if (!alive()) return;
+    const so = MSORTS[UI.msort] ? UI.msort : 'imdb', list = pool.sort(MSORTS[so][1]);
+    return draw(head + `<section class="sec"><div class="sechead"><h2>${h(gname2)}</h2><label class="small dim">Ordenar <select class="btn sm" id="msortsel">${Object.entries(MSORTS).map(([k, [l]]) => `<option value="${k}" ${k === so ? 'selected' : ''}>${l}</option>`).join('')}</select></label></div>
+      ${list.length ? `<div class="grid">${list.map(m => mposter(m)).join('')}</div>` : empty('Todavía no hay películas acá', 'Buscá una arriba y se suma sola a esta categoría.')}
+      <p class="small dim" style="margin-top:20px">Esta lista crece sola: cada película que alguien busca o abre en JVNN se suma a su categoría para todos.</p></section>`);
+  }
+  const tab = UI.mtab || 'seen';
+  const tabs = { seen: 'Vistas', plan: 'Para ver', fav: 'Favoritas' };
+  const inTab = (r, t) => t === 'fav' ? r.fav : t === 'seen' ? (r.seen || []).length > 0 : !(r.seen || []).length;
+  const mine = my.filter(r => inTab(r, tab)).sort((a, b) => (b.act || 0) - (a.act || 0));
+  const my_ = my.length ? `<section class="sec"><div class="sechead"><h2>Mis películas</h2></div><div class="tabs" style="margin-top:0">${Object.entries(tabs).map(([k, v]) => `<button class="tab ${k === tab ? 'on' : ''}" data-act="mtab" data-v="${k}">${v}<span>${my.filter(r => inTab(r, k)).length}</span></button>`).join('')}</div>${mine.length ? row(mine.map(r => mposter({ id: r.id, title: r.title, year: r.year, poster: r.poster, genres: r.genres }, (r.seen || []).length > 1 ? `Vista ${r.seen.length} veces` : r.score ? `Tu nota: ${r.score}` : r.year)).join('')) : '<p class="dim">Nada por acá todavía.</p>'}</section>` : '';
+  const ids = [...new Set(Object.values(CURATED2).flat())];
+  draw(head + my_ + Object.keys(CURATED2).slice(0, 4).map(k => `<section class="sec"><div class="sechead"><h2>${h(k)}</h2></div>${row(CURATED2[k].map(() => '<div><div class="skel" style="aspect-ratio:2/3"></div></div>').join(''))}</section>`).join(''));
+  const data = await omdbMany(ids);
+  if (!alive()) return;
+  draw(head + my_ + Object.entries(CURATED2).map(([k, l]) => { const list = l.map(id => data[id]).filter(Boolean); return list.length ? `<section class="sec"><div class="sechead"><h2>${h(k)}</h2></div>${row(list.map(m => mposter(m)).join(''))}</section>` : ''; }).join('') + (Object.keys(data).length ? '' : `<div class="err sec">No se pudo cargar la lista de películas. Igual podés buscar una arriba.</div>`));
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-act="mmore"]'); if (b) { UI.mpages = (UI.mpages || 1) + 1; refresh(); } });
+document.addEventListener('change', e => { if (e.target.id === 'msortsel') { UI.msort = e.target.value; refresh(); } });
+window.addEventListener('hashchange', () => { UI.mpages = 1; });
+
+
 // ============================================================ ONLINE (Supabase)
 // Cliente propio y liviano: Auth (GoTrue) + base de datos (PostgREST) con fetch.
 const ONLINE = !!(CONFIG.supabaseUrl && CONFIG.supabaseKey);
@@ -2489,7 +2899,7 @@ async function signIn(email, password) { const d = await auth('token?grant_type=
 async function signOut() {
   await flushPush().catch(() => { });
   try { await auth('logout', {}); } catch (e) { }
-  setAuth(null); ME = null; FOLLOWING = new Set(); renderAcct();
+  setAuth(null); ME = null; FOLLOWING = new Set(); renderAcct(); loadPro();
 }
 async function recover(email) { await auth(`recover?redirect_to=${encodeURIComponent(siteURL())}`, { email }); }
 async function setPassword(password) { await auth('user', { password }, 'PUT'); }
@@ -2550,6 +2960,7 @@ async function afterLogin(fresh) {
   const f = await rest(`follows?select=following&follower=eq.${uid}`).catch(() => []);
   FOLLOWING = new Set((f || []).map(x => x.following));
   renderAcct();
+  loadPro();
   if (fresh) await pushNow();
 }
 let pushT = null, pushing = null;
@@ -2674,9 +3085,9 @@ async function vUser(args, draw, alive) {
   const p = rows && rows[0];
   if (!p) return draw(empty('Ese perfil no existe', `No hay nadie con el usuario @${uname}.`, '<a class="btn" href="#/gente">Buscar gente</a>'));
   const isMe = ME && ME.id === p.id;
-  const [followers, following] = await Promise.all([restCount('follows', `following=eq.${p.id}`), restCount('follows', `follower=eq.${p.id}`)]);
+  const [followers, following, premRows] = await Promise.all([restCount('follows', `following=eq.${p.id}`), restCount('follows', `follower=eq.${p.id}`), sbTry(() => rest(`premium?select=plan,items&user_id=eq.${p.id}`, { auth: false }), [])]);
   if (!alive()) return;
-  const d = p.data || {}, shows = Object.values(d.shows || {}), st = p.stats || {};
+  const d = p.data || {}, ds = sanitizeStyle(d.style, premRows && premRows[0]), shows = Object.values(d.shows || {}), st = p.stats || {};
   const favs = (d.top || []).map(id => d.shows && d.shows[id]).filter(r => r && r.fav);
   for (const r of shows) if (r.fav && !favs.includes(r)) favs.push(r);
   const seen = shows.filter(r => Object.keys(r.eps || {}).length || r.list === 'done').sort((a, b) => (a.added || 0) - (b.added || 0));
@@ -2701,11 +3112,11 @@ async function vUser(args, draw, alive) {
   const nMov = Object.values(d.movies || {}).filter(r => (r.seen || []).length).length;
   const tabs = [['fav', 'Favoritas', favs.length], ['seen', 'Series vistas', seen.length], ['movies', 'Películas', nMov], ['badges', 'Logros', ''], ['act', 'Actividad', ''], ['followers', 'Seguidores', followers], ['following', 'Siguiendo', following]];
   const bsU = badgeStats(d.shows, d.movies, st.notes || 0, {});
-  draw(`<section class="pcover ${profileClasses(d.style)}" ${accentStyle(d.style)}>${bannerHTML(d.style, favs)}
+  draw(`<section class="pcover ${profileClasses(ds)}" ${accentStyle(ds)}>${bannerHTML(ds, favs)}
     <div class="pmain"><div class="avatar">${p.photo ? `<img src="${h(p.photo)}" alt="">` : h(initials(p.name || p.username))}</div>
-      <div class="pid"><h1>${h(p.name || p.username)}</h1><div class="dim" style="font-weight:600">@${h(p.username)}</div>${p.bio ? `<p>${h(p.bio)}</p>` : ''}${extrasHTML(d.style)}<div class="small dim">En JVNN desde ${h(fmtDate(p.created_at, { month: 'long', year: 'numeric' }))}</div>${showcaseHTML(d.style, bsU)}</div>
+      <div class="pid"><h1>${h(p.name || p.username)}</h1><div class="dim" style="font-weight:600">@${h(p.username)}</div>${p.bio ? `<p>${h(p.bio)}</p>` : ''}${extrasHTML(ds)}<div class="small dim">En JVNN desde ${h(fmtDate(p.created_at, { month: 'long', year: 'numeric' }))}</div>${showcaseHTML(ds, bsU)}</div>
       <div class="actions">${isMe ? `<a class="btn" href="#/perfil">Editar mi perfil</a><button class="btn" data-act="copylink" data-u="${h(p.username)}">Copiar link</button>` : followBtn(p.id)}</div></div>
-    ${featuredHTML(d.style, d.shows || {})}
+    ${featuredHTML(ds, d.shows || {})}
     <div class="pstats"><div><b>${h(shortTime(st.min || 0))}</b><span>de series y pelis</span></div><div><b>${(st.eps || 0).toLocaleString('es-AR')}</b><span>capítulos</span></div><div><b>${st.seen ?? seen.length}</b><span>series vistas</span></div><a href="#/u/${h(p.username)}" data-act="utab" data-v="followers"><b>${followers}</b><span>seguidores</span></a><a href="#/u/${h(p.username)}" data-act="utab" data-v="following"><b>${following}</b><span>siguiendo</span></a></div></section>
   ${st.rwMin ? `<p class="small dim" style="margin:12px 4px 0">↻ Además volvió a ver ${h(timeText(st.rwMin))} de series y películas.</p>` : ''}
   <div class="tabs">${tabs.map(([k, l, n]) => `<button class="tab ${k === tab ? 'on' : ''}" data-act="utab" data-v="${k}">${l}${n !== '' ? `<span>${n}</span>` : ''}</button>`).join('')}</div>
