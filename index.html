@@ -1150,6 +1150,19 @@ a.invite{color:inherit}
 .al-right .pmain .socials,.al-right .pmain .ptitle,.al-right .pmain .showcase{justify-content:flex-end}
 .sp-top .statwrap .pstats{margin-top:18px}
 .statwrap{display:block}
+
+.pcover .pbanner[style*="--bh"]{height:var(--bh)}
+.pcover.pmini .pbanner[style*="--bh"]{height:calc(var(--bh) * .64)}
+.pbanner.bimg{overflow:hidden;background:#111}
+.pbanner.bimg>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.pbanner.bimg::after{background:linear-gradient(0deg,var(--surface),transparent 45%);z-index:1}
+.pbanner.bimg .ppat{z-index:1}
+.branges{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px 18px}
+.brange{display:grid;gap:4px;font-size:13px;font-weight:700;color:var(--dim)}
+.brange input{width:100%;accent-color:var(--accent)}
+.plink{display:inline-flex;align-items:center;gap:7px;margin-top:8px;padding:6px 12px;border-radius:999px;border:1px solid var(--paccent,var(--accent));color:var(--paccent,var(--accent));font-weight:700;font-size:13.5px;max-width:100%}
+.plink span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.plink:hover{background:rgba(255,255,255,.05)}
 </style>
 </head>
 <body>
@@ -2727,7 +2740,7 @@ const FRAMES = { accent: 'Color del perfil', none: 'Sin marco', gold: 'Dorado', 
 const FONTS = { display: 'Moderna', serif: 'Clásica', mono: 'Máquina de escribir', condensed: 'Angosta', round: 'Redondeada' };
 const ACCENTS = { '': 'Rosa JVNN', '#8fbcff': 'Azul', '#c3a8ff': 'Violeta', '#a8f0c6': 'Verde', '#ffd08a': 'Dorado', '#ff9a8a': 'Coral', '#7fe0ff': 'Celeste', '#ffb36b': 'Naranja', '#ffffff': 'Blanco' };
 const SOCIALS = { ig: ['Instagram', u => `https://instagram.com/${u}`], tt: ['TikTok', u => `https://www.tiktok.com/@${u}`], x: ['X', u => `https://x.com/${u}`], yt: ['YouTube', u => `https://www.youtube.com/@${u}`], lb: ['Letterboxd', u => `https://letterboxd.com/${u}`], dc: ['Discord', null] };
-const cleanHandle = u => String(u || '').trim().replace(/^@/, '').replace(/[^\w.\-#]/g, '').slice(0, 32);
+const cleanHandle = u => String(u || '').replace(/^\s*@/, '').replace(/[^\p{L}\p{N}_.\-# ]/gu, '').replace(/\s{2,}/g, ' ').replace(/^\s+/, '').slice(0, 40);
 function bannerHTML(style, favs) {
   const st = style || {}, pat = PATTERNS[st.pattern] && st.pattern !== 'none' ? ` pat-${st.pattern}` : '';
   if (st.banner === 'img' && st.bannerImg && /^data:image\/(jpeg|png|webp);base64,/.test(st.bannerImg)) return `<div class="pbanner custom${pat}" style="background-image:url('${st.bannerImg}')"></div>`;
@@ -2824,6 +2837,8 @@ document.addEventListener('click', e => { const b = e.target.closest('[data-act=
 // ============================================================ V5: JVNN PRO + 200 COSAS PARA PERSONALIZAR + PELÍCULAS POR GÉNERO
 // ---------------------------------------------------------- estado Pro (lo activa el dueño en Supabase, tabla "premium")
 const PRO = { me: false, items: [], plan: '' };
+const FOUNDER_ID = '4352a5d0-e741-476b-91d7-ffb4dadf8c12';
+const isFounderId = id => id === FOUNDER_ID;
 const PAY = { paypal: 'https://www.paypal.com/paypalme/Totood', mp: 'totoo.d', combo: 4.99, layout: 1.99, socials: 2 };
 const isProRow = r => !!(r && (r.plan === 'combo' || (r.items || []).includes('combo')));
 const hasSocials = row => !!(row && (isProRow(row) || (row.items || []).includes('redes') || row.plan === 'redes'));
@@ -2833,6 +2848,7 @@ async function loadPro() {
     const rows = await sbTry(() => rest(`premium?select=plan,items&user_id=eq.${ME.id}`), []);
     const r = rows && rows[0];
     if (r) { PRO.me = isProRow(r); PRO.items = r.items || []; PRO.plan = r.plan || ''; }
+    if (isFounderId(ME.id)) { PRO.me = true; PRO.plan = 'combo'; PRO.items = [...new Set([...PRO.items, 'combo', 'redes', 'layout', 'founder'])]; }
   }
   enforceSiteTheme();
   renderProPill();
@@ -2921,7 +2937,7 @@ function accentStyle5(st) {
   const vars = [acc ? `--paccent:${acc}` : '', nv ? `--pname:${nv}` : '', `--pfont:'${String(st.font).replace(/'/g, '')}'`, ['double', 'dashed', 'spin', 'pulse', 'transparent'].includes(fv) ? '' : `--pframe:${fv}`, sh && sh.v !== 'hex' ? `--pshape:${sh.v}` : '', th && th.v ? `--ptheme:${th.v}` : ''].filter(Boolean).join(';');
   return `style="${h(vars)}"`;
 }
-function bannerHTML(style, favs) {
+function bannerHTML5(style, favs) {
   const st = Object.assign({}, STYLE_DEF, style || {});
   const pat = optOf('pattern', st.pattern), fx = st.bfx && st.bfx !== 'none' ? ' bfx-' + st.bfx : '';
   const over = pat && pat.v ? `<div class="ppat" style="background:${pat.v}"></div>` : '';
@@ -2931,9 +2947,9 @@ function bannerHTML(style, favs) {
   return `<div class="pbanner${fx}">${(favs || []).slice(0, 3).map(r => r.img ? `<div style="background-image:url('${h(r.img)}')"></div>` : '').join('')}${over}</div>`;
 }
 const proBadge = () => `<span class="probadge" title="Miembro JVNN Pro"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.5 7L12 17.6 5.7 21.1l1.5-7L2 9.3l7-.8z" fill="currentColor"/></svg>PRO</span>`;
-function extrasHTML(st) {
+function extrasHTML5(st) {
   const s = st || {}, so = s.socials || {};
-  const links = Object.entries(SOCIALS5).filter(([k]) => cleanHandle(so[k])).map(([k, [n, url]]) => { const u = cleanHandle(so[k]); return url ? `<a class="social s-${k}" href="${h(url(u))}" target="_blank" rel="noopener"><b>${n}</b> @${h(u)}</a>` : `<span class="social s-${k}" title="Usuario de Discord"><b>${n}</b> ${h(u)}</span>`; }).join('');
+  const links = Object.entries(SOCIALS5).filter(([k]) => cleanHandle(so[k])).map(([k, [n, url]]) => { const u = cleanHandle(so[k]); return url ? `<a class="social s-${k}" href="${h(url(encodeURIComponent(u.trim())))}" target="_blank" rel="noopener"><b>${n}</b> @${h(u)}</a>` : `<span class="social s-${k}" title="Usuario de Discord"><b>${n}</b> ${h(u)}</span>`; }).join('');
   return `${s.title || s._pro ? `<div class="ptitle">${s._pro ? proBadge() : ''}${s.title ? `<span>${h(s.title)}</span>` : ''}</div>` : ''}` + (s.status ? `<div class="pstatus"><span class="dotlive"></span>${h(String(s.status).slice(0, 70))}</div>` : '') + (links ? `<div class="socials">${links}</div>` : '');
 }
 function showcaseHTML(style, bs) {
@@ -3557,7 +3573,7 @@ function weekNum() { const d = new Date(); const y = new Date(d.getFullYear(), 0
 let ROT = null;
 function rotation() {
   if (ROT && ROT.w === weekNum()) return ROT.set;
-  const all = []; for (const [f, l] of Object.entries(STYLE_OPTS)) if (f !== 'site') for (const o of l) if (!o.f && !['img'].includes(o.k)) all.push(f + ':' + o.k);
+  const all = []; for (const [f, l] of Object.entries(STYLE_OPTS)) if (f !== 'site') for (const o of l) if (!o.f && !['img'].includes(o.k) && !(f === 'tag' && o.k === 'fundador')) all.push(f + ':' + o.k);
   let seed = weekNum(); const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
   const set = new Set(); while (set.size < 5 && all.length) set.add(all[Math.floor(rnd() * all.length)]);
   ROT = { w: weekNum(), set }; return set;
@@ -3725,6 +3741,11 @@ function sanitizeStyle(st, row) {
   out.showcase = (src.showcase || []).slice(0, full ? 6 : 3);
   out.actors = (Array.isArray(src.actors) ? src.actors : []).filter(a => a && a.name).slice(0, full ? 24 : 6).map(a => ({ id: +a.id || 0, name: String(a.name).slice(0, 60), img: /^https:\/\/static\.tvmaze\.com\//.test(a.img || '') ? a.img : '' }));
   out.layout = src.layout || null;
+  if (out.tag === 'fundador' && !(row && (row.items || []).includes('founder'))) out.tag = 'none';
+  const lk = src.link || {}, lurl = String(lk.url || '').trim();
+  out.link = full && /^https?:\/\/[^\s"'<>]{3,300}$/i.test(lurl) ? { url: lurl, label: String(lk.label || '').trim().slice(0, 40) } : null;
+  const bp = src.bpos || {}, cl = (v, a, b, d) => { v = +v; return isFinite(v) ? Math.min(b, Math.max(a, v)) : d; };
+  out.bpos = { x: cl(bp.x, 0, 100, 50), y: cl(bp.y, 0, 100, 50), z: cl(bp.z, 100, 300, 100), hgt: cl(bp.hgt, 110, 300, 150) };
   out._pro = full;
   return out;
 }
@@ -3769,10 +3790,10 @@ function setStyle(f, v) {
 }
 function myStyleView() {
   const raw = Object.assign({}, S.profile.style, PREVIEW);
-  const row = Object.keys(PREVIEW).length ? { plan: 'combo', items: [] } : myProRow();
+  const row = Object.keys(PREVIEW).length ? { plan: 'combo', items: myProRow().items } : myProRow();
   const s = sanitizeStyle(raw, row); s._pro = PRO.me; return s;
 }
-function myProRow() { return { plan: PRO.plan, items: [...PRO.items, ...WALLET.items, ...(PRO.me ? ['combo'] : []), ...(PRO.plan === 'layout' ? ['layout'] : [])] }; }
+function myProRow() { return { plan: PRO.plan, items: [...PRO.items, ...WALLET.items, ...(PRO.me ? ['combo'] : []), ...(PRO.plan === 'layout' ? ['layout'] : []), ...(isLogged() && isFounderId(ME.id) ? ['combo', 'redes', 'layout', 'founder'] : [])] }; }
 function previewCard() {
   const v = myStyleView(), p = S.profile, favs = favList();
   return `<div class="pcover pmini ${profileClasses(v)}" ${accentStyle(v)} ${v.pfx && v.pfx !== 'none' ? `data-pfx="${h(v.pfx)}"` : ''}>${bannerHTML(v, favs)}
@@ -3797,7 +3818,7 @@ function customizeHTML() {
       + g('Letra', `<div class="swgrid fonts">${STYLE_OPTS.font.map(o => opt('font', o, view.font, `<span style="font-family:'${o.k}',var(--display)">${h(o.n)}</span>`)).join('')}</div>`, STYLE_OPTS.font.length + ' letras')
       + g('Efecto', `<div class="swgrid wide">${STYLE_OPTS.fx.map(o => opt('fx', o, view.fx, `<span class="fxs fx-${o.k}">${h(o.n)}</span>`)).join('')}</div>`)
       + g('Ícono al lado del nombre', `<div class="swgrid">${STYLE_OPTS.nicon.map(o => { const [gg, col] = (o.v || '|').split('|'); return opt('nicon', o, view.nicon, o.v ? `<svg width="20" height="20" viewBox="0 0 24 24" style="color:${col};fill:currentColor">${NGLYPH[gg]}</svg>` : 'Ninguno'); }).join('')}</div>`, '40 íconos')
-      + g('Insignia especial', `<div class="swgrid wide">${STYLE_OPTS.tag.map(o => { const [a, b] = (o.v || '|').split('|'); return opt('tag', o, view.tag, o.v ? `<span class="uptag" style="background:linear-gradient(135deg,${a},${b})">${h(o.n)}</span>` : 'Ninguna'); }).join('')}</div>`)
+      + g('Insignia especial', `<div class="swgrid wide">${STYLE_OPTS.tag.filter(o => o.k !== 'fundador' || myProRow().items.includes('founder')).map(o => { const [a, b] = (o.v || '|').split('|'); return opt('tag', o, view.tag, o.v ? `<span class="uptag" style="background:linear-gradient(135deg,${a},${b})">${h(o.n)}</span>` : 'Ninguna'); }).join('')}</div>`)
       + g('Título abajo de tu nombre', sw('title'));
   } else if (tab === 'foto') {
     body = g('Decoración de tu foto', `<div class="swgrid decos">${STYLE_OPTS.deco.map(o => opt('deco', o, view.deco, o.v ? `<span class="dprev"><i></i>${decoHTML({ deco: o.k })}</span><small>${h(o.n)}</small>` : '<small>Sin decoración</small>')).join('')}</div>`, '40 decoraciones')
@@ -3807,6 +3828,7 @@ function customizeHTML() {
     const imgOk = unlocked('banner', { k: 'img', f: false });
     body = g('Banner', `<div class="banners">${STYLE_OPTS.banner.map(o => o.k === 'img' ? `<label class="bchoice ${view.banner === 'img' ? 'on' : ''} ${imgOk ? '' : 'locked'}" for="pbanimg"><span style="${st.bannerImg ? `background-image:url('${st.bannerImg}');background-size:cover` : 'background:var(--raise)'}">${st.bannerImg ? 'Mi imagen' : '+ Subir imagen'}</span>${imgOk ? '' : lockSVG}</label><input type="file" id="pbanimg" accept="image/*" hidden>` : tile('banner', o, view.banner, `background:${o.v === 'fav' ? 'linear-gradient(90deg,#333,#555)' : o.v}`)).join('')}</div>`, STYLE_OPTS.banner.length + ' banners')
       + g('Textura', `<div class="banners">${STYLE_OPTS.pattern.map(o => tile('pattern', o, view.pattern, `background:${o.v ? o.v + ',' : ''}linear-gradient(120deg,#3a2a33,#1b2a6b)`)).join('')}</div>`)
+      + bannerAdjustHTML(st)
       + g('Movimiento', sw('bfx'));
   } else if (tab === 'perfil') {
     const accOk = unlocked('accent', { k: 'custom', f: false });
@@ -3834,7 +3856,8 @@ function customizeHTML() {
     const so = st.socials || {}, lim = hasSocials(myProRow()) ? 99 : 3, filled = Object.keys(SOCIALS5).filter(k => cleanHandle(so[k])).length;
     const got = badgeList(myBadgeStats()).filter(x => x.on), maxShow = PRO.me ? 6 : 3;
     body = g(`Tus redes <span class="dim">(${filled}/${lim === 99 ? '∞' : lim})</span>`, `<div class="socgrid">${Object.entries(SOCIALS5).map(([k, [n]]) => { const has = !!cleanHandle(so[k]), dis = !has && filled >= lim; return `<label class="soc ${dis ? 'locked' : ''}"><span>${n}</span><input type="text" data-soc="${k}" maxlength="32" value="${h(so[k] || '')}" placeholder="${dis ? 'Redes ilimitadas: Pro' : 'usuario'}" ${dis ? 'disabled' : ''}></label>`; }).join('')}</div>`)
-      + g(`Logros en vitrina (hasta ${maxShow})`, got.length ? `<div class="opts">${got.map(x => `<button class="opt badgeopt ${(st.showcase || []).includes(x.b[0]) ? 'on' : ''}" data-act="pshow5" data-v="${x.b[0]}">${medalSVG(x.b, true, 22)} ${h(x.b[1])}</button>`).join('')}</div>` : '<p class="small dim" style="margin:0">Cuando desbloquees logros, los podés mostrar acá.</p>');
+      + g(`Logros en vitrina (hasta ${maxShow})`, got.length ? `<div class="opts">${got.map(x => `<button class="opt badgeopt ${(st.showcase || []).includes(x.b[0]) ? 'on' : ''}" data-act="pshow5" data-v="${x.b[0]}">${medalSVG(x.b, true, 22)} ${h(x.b[1])}</button>`).join('')}</div>` : '<p class="small dim" style="margin:0">Cuando desbloquees logros, los podés mostrar acá.</p>')
+      + linkEditHTML(st);
   }
   const prevKeys = Object.keys(PREVIEW);
   const total = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.length, 0);
@@ -3865,6 +3888,78 @@ document.addEventListener('input', e => {
 
 PRO_COUNT = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.filter(o => !o.f).length, 0) + 4;
 FREE_COUNT = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.filter(o => o.f).length, 0);
+
+// ---------------------------------------------------------- link en la descripción (solo Pro)
+function extrasHTML(st) {
+  const base = extrasHTML5(st), l = st && st.link;
+  if (!l || !/^https?:\/\//i.test(l.url)) return base;
+  let host = ''; try { host = new URL(l.url).hostname.replace(/^www\./, ''); } catch (e) { return base; }
+  return base + `<a class="plink" href="${h(l.url)}" target="_blank" rel="noopener nofollow ugc">${icon('link', 15)}<span>${h(l.label || host)}</span></a>`;
+}
+function linkEditHTML(st) {
+  const ok = PRO.me, l = st.link || {};
+  return `<div class="cgroup"><div class="lb">Link en tu descripción <span class="dim">· ${ok ? 'Discord, YouTube, tu página, lo que quieras' : 'solo JVNN Pro'}</span></div>
+    <div class="two"><input type="url" id="plinkurl" maxlength="300" placeholder="https://discord.gg/…" value="${h(l.url || '')}" ${ok ? '' : 'disabled'}><input type="text" id="plinklab" maxlength="40" placeholder="Texto (ej: Mi Discord)" value="${h(l.label || '')}" ${ok ? '' : 'disabled'}></div>
+    ${ok ? '' : '<a class="btn sm pri" style="margin-top:8px" href="#/pro">Desbloquear con Pro</a>'}</div>`;
+}
+document.addEventListener('input', e => {
+  const t = e.target; if (t.id !== 'plinkurl' && t.id !== 'plinklab') return;
+  if (!PRO.me) return;
+  const st = S.profile.style; st.link = Object.assign({}, st.link || {}); st.link[t.id === 'plinkurl' ? 'url' : 'label'] = t.value.trim();
+  clearTimeout(window._plT); window._plT = setTimeout(() => { save(); refresh(); }, 700);
+}, true);
+
+// ---------------------------------------------------------- banner con foto propia: mover, acercar y alto
+const bposOf = st => { const b = (st && st.bpos) || {}, n = (v, d) => isFinite(+v) && v !== '' && v != null ? +v : d; return { x: n(b.x, 50), y: n(b.y, 50), z: n(b.z, 100), hgt: n(b.hgt, 150) }; };
+function bannerHTML(style, favs) {
+  const st = Object.assign({}, STYLE_DEF, style || {}), b = bposOf(st);
+  const hs = b.hgt !== 150 ? ` style="--bh:${b.hgt}px"` : '';
+  if (st.banner === 'img' && /^data:image\/(jpeg|png|webp);base64,/.test(st.bannerImg || '')) {
+    const pat = optOf('pattern', st.pattern), fx = st.bfx && st.bfx !== 'none' ? ' bfx-' + st.bfx : '';
+    const over = pat && pat.v ? `<div class="ppat" style="background:${pat.v}"></div>` : '';
+    return `<div class="pbanner custom bimg${fx}"${hs}><img src="${st.bannerImg}" alt="" style="object-position:${b.x}% ${b.y}%;transform:scale(${b.z / 100});transform-origin:${b.x}% ${b.y}%">${over}</div>`;
+  }
+  const out = bannerHTML5(style, favs);
+  return hs ? out.replace('<div class="pbanner', `<div${hs} class="pbanner`) : out;
+}
+function bannerAdjustHTML(st) {
+  const b = bposOf(st), isImg = st.banner === 'img' && st.bannerImg;
+  const r = (k, n, a, z, v) => `<label class="brange"><span>${n}</span><input type="range" data-bpos="${k}" min="${a}" max="${z}" value="${v}"></label>`;
+  return `<div class="cgroup"><div class="lb">Ajustar banner <span class="dim">· ${isImg ? 'mové y acercá tu foto hasta que quede bien' : 'el alto sirve para cualquier banner'}</span></div><div class="branges">
+    ${isImg ? r('x', 'Izquierda ↔ derecha', 0, 100, b.x) + r('y', 'Arriba ↕ abajo', 0, 100, b.y) + r('z', 'Acercar', 100, 300, b.z) : ''}${r('hgt', 'Alto del banner', 110, 300, b.hgt)}</div>
+    <button class="btn sm ghost" data-act="bposreset" style="margin-top:8px">Volver a como estaba</button></div>`;
+}
+function applyBpos() {
+  const b = bposOf(S.profile.style);
+  document.querySelectorAll('#app .pcover .pbanner').forEach(el => {
+    el.style.setProperty('--bh', b.hgt + 'px'); const im = el.querySelector(':scope > img');
+    if (im) { im.style.objectPosition = `${b.x}% ${b.y}%`; im.style.transform = `scale(${b.z / 100})`; im.style.transformOrigin = `${b.x}% ${b.y}%`; }
+  });
+}
+document.addEventListener('input', e => {
+  const t = e.target; if (!t.dataset || !t.dataset.bpos) return;
+  const st = S.profile.style; st.bpos = Object.assign({ x: 50, y: 50, z: 100, hgt: 150 }, st.bpos || {}); st.bpos[t.dataset.bpos] = +t.value;
+  applyBpos(); clearTimeout(window._bpT); window._bpT = setTimeout(save, 500);
+}, true);
+document.addEventListener('click', e => { if (e.target.closest('[data-act="bposreset"]')) { S.profile.style.bpos = { x: 50, y: 50, z: 100, hgt: 150 }; save(); refresh(); } });
+// al subir la foto ya no se recorta: se guarda entera para poder acomodarla
+document.addEventListener('change', e => {
+  const t = e.target; if (t.id !== 'pbanimg' || !t.files || !t.files[0]) return;
+  e.stopImmediatePropagation();
+  (async () => {
+    try {
+      const bmp = await createImageBitmap(t.files[0]), max = 1400, sc = Math.min(1, max / Math.max(bmp.width, bmp.height));
+      const cv = document.createElement('canvas'); cv.width = Math.round(bmp.width * sc); cv.height = Math.round(bmp.height * sc);
+      cv.getContext('2d').drawImage(bmp, 0, 0, cv.width, cv.height);
+      let q = 0.82, url = cv.toDataURL('image/jpeg', q);
+      while (url.length > 220000 && q > 0.45) { q -= 0.08; url = cv.toDataURL('image/jpeg', q); }
+      if (url.length > 220000) { const c2 = document.createElement('canvas'); c2.width = Math.round(cv.width * .7); c2.height = Math.round(cv.height * .7); c2.getContext('2d').drawImage(cv, 0, 0, c2.width, c2.height); url = c2.toDataURL('image/jpeg', 0.7); }
+      const st = S.profile.style; st.banner = 'img'; st.bannerImg = url; st.bpos = { x: 50, y: 50, z: 100, hgt: (st.bpos && st.bpos.hgt) || 150 };
+      save(); toast('Banner listo. Abajo lo podés mover y acercar.'); refresh();
+    } catch (x) { toast('No se pudo leer esa imagen. Probá con un JPG o PNG.'); }
+  })();
+}, true);
+ICONS.link = '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>';
 
 
 // ============================================================ ONLINE (Supabase)
@@ -4124,7 +4219,7 @@ async function vUser(args, draw, alive) {
   const isMe = ME && ME.id === p.id;
   const [followers, following, premRows, walRows] = await Promise.all([restCount('follows', `following=eq.${p.id}`), restCount('follows', `follower=eq.${p.id}`), sbTry(() => rest(`premium?select=plan,items&user_id=eq.${p.id}`, { auth: false }), []), sbTry(() => rest(`wallets?select=items&user_id=eq.${p.id}`, { auth: false }), [])]);
   if (!alive()) return;
-  const d = p.data || {}, uRow = mergeRow(premRows && premRows[0], walRows && walRows[0]), ds = sanitizeStyle(d.style, uRow), shows = Object.values(d.shows || {}), st = p.stats || {};
+  const d = p.data || {}, uRow = isFounderId(p.id) ? { plan: 'combo', items: ['combo', 'redes', 'layout', 'founder'] } : mergeRow(premRows && premRows[0], walRows && walRows[0]), ds = sanitizeStyle(d.style, uRow), shows = Object.values(d.shows || {}), st = p.stats || {};
   const favs = (d.top || []).map(id => d.shows && d.shows[id]).filter(r => r && r.fav);
   for (const r of shows) if (r.fav && !favs.includes(r)) favs.push(r);
   const seen = shows.filter(r => Object.keys(r.eps || {}).length || r.list === 'done').sort((a, b) => (a.added || 0) - (b.added || 0));
