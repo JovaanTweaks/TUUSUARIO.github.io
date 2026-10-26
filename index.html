@@ -577,6 +577,13 @@ input[type=password]{border-radius:10px;border:1px solid var(--line);background:
 .pstats>div:first-child{border-left:0}
 @media (max-width:920px){.authbox{grid-template-columns:1fr;gap:20px}}
 @media (max-width:600px){.cacts{padding-left:0}.people{grid-template-columns:minmax(0,1fr)}.acctwrap .btn{padding:0 10px}}
+/* zonas de anuncios */
+.adzone{padding-block:14px 0;display:flex;justify-content:center}
+.adbottom{gap:20px;align-items:flex-start;padding-block:10px 30px;flex-wrap:wrap}
+.adbottom .adn{flex:1 1 420px;min-width:0}
+.adbottom .ad3{flex:none}
+.adzone iframe{border-radius:8px}
+@media (max-width:780px){.adbottom .adn{flex-basis:100%}}
 </style>
 </head>
 <body>
@@ -599,7 +606,9 @@ input[type=password]{border-radius:10px;border:1px solid var(--line);background:
   <div id="acct" class="acctwrap" hidden></div>
 </div></header>
 
+<div class="wrap adzone" id="adtop" hidden aria-label="Publicidad"></div>
 <main class="wrap" id="app"></main>
+<div class="wrap adzone adbottom" id="adbottom" hidden aria-label="Publicidad"></div>
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
@@ -624,7 +633,15 @@ input[type=password]{border-radius:10px;border:1px solid var(--line);background:
 const CONFIG = {
   adsenseClient: '',
   adSlots: { home: '', show: '', list: '', stats: '' },
-  showAdPlaceholders: true, // muestra dónde van los anuncios mientras no haya ID de AdSense
+  showAdPlaceholders: false,
+  // Adsterra: banners (clave de cada uno) y Native Banner.
+  adsterra: {
+    host: 'https://bancadeltempoidea.org',
+    b728: '60a1805d45df9269ee27d7fe72595655',
+    b320: '6d2a425a3c78444adfe31eff32b48253',
+    b300: 'ce051e7463ead3a5e78d99fd4390b404',
+    native: '955bedceb3f7f0af8ef9497b3e0113eb',
+  },
   // Parte online (Supabase). La clave publicable se puede mostrar: la seguridad la dan las reglas (RLS) de la base.
   supabaseUrl: 'https://jrbhsfxweeptdfaomgdj.supabase.co',
   supabaseKey: 'sb_publishable_5xs-8lmRmwrZNSlo2ezV7w_bS26y-iB',
@@ -912,6 +929,42 @@ function timeText(min) {
   return p.join(', ');
 }
 const shortTime = min => { min = Math.round(min); return min >= 1440 ? `${Math.floor(min / 1440)} d ${Math.floor(min % 1440 / 60)} h` : min >= 60 ? `${Math.floor(min / 60)} h${min % 60 ? ' ' + (min % 60) + ' min' : ''}` : `${min} min`; };
+
+// ---- Anuncios de Adsterra en zonas fijas (fuera del contenido), para que no se recarguen al marcar capítulos.
+// Cada anuncio va en su propio iframe para que sus variables globales no choquen entre sí.
+const AD = CONFIG.adsterra || {};
+const adDoc = inner => `<!doctype html><html><head><meta charset="utf-8"><base target="_blank"><style>html,body{margin:0;padding:0;background:transparent;overflow:hidden;font-family:system-ui,sans-serif;color:#ddd}</style></head><body>${inner}</body></html>`;
+const bannerDoc = (key, w, hh) => adDoc(`<script>atOptions={'key':'${key}','format':'iframe','height':${hh},'width':${w},'params':{}};<\/script><script src="${AD.host}/22/${key}"><\/script>`);
+function adFrame(doc, w, hh, title) {
+  const f = document.createElement('iframe');
+  f.title = title; f.width = w; f.height = hh; f.setAttribute('scrolling', 'no'); f.setAttribute('loading', 'lazy');
+  f.style.cssText = `border:0;display:block;margin:0 auto;max-width:100%;width:${typeof w === 'number' ? w + 'px' : w};height:${hh}px;background:transparent`;
+  f.srcdoc = doc; return f;
+}
+let adTopAt = 0, adTopWide = null;
+function loadTopAd(force) {
+  const box = document.getElementById('adtop'); if (!box || !AD.b728) return;
+  const wide = window.innerWidth >= 780;
+  if (!force && adTopWide === wide && Date.now() - adTopAt < 45000) return; // como máximo uno nuevo cada 45 s
+  adTopAt = Date.now(); adTopWide = wide;
+  box.replaceChildren(wide ? adFrame(bannerDoc(AD.b728, 728, 90), 728, 90, 'Publicidad') : adFrame(bannerDoc(AD.b320, 320, 50), 320, 50, 'Publicidad'));
+  box.hidden = false;
+}
+function loadBottomAds() {
+  const box = document.getElementById('adbottom'); if (!box || box.dataset.done) return;
+  box.dataset.done = '1'; box.hidden = false;
+  if (AD.native) {
+    const f = adFrame(adDoc(`<script async data-cfasync="false" src="${AD.host}/21/${AD.native}"><\/script><div id="container-${AD.native}"></div>`), '100%', 260, 'Publicidad');
+    f.className = 'adnative';
+    // ajustar la altura al contenido real del anuncio
+    f.addEventListener('load', () => { let n = 0; const fit = () => { try { const hh = f.contentDocument.body.scrollHeight; if (hh > 20) f.style.height = hh + 'px'; } catch (e) { } if (++n < 20) setTimeout(fit, 500); }; fit(); });
+    const w = document.createElement('div'); w.className = 'adn'; w.appendChild(f); box.appendChild(w);
+  }
+  if (AD.b300) { const w = document.createElement('div'); w.className = 'ad3'; w.appendChild(adFrame(bannerDoc(AD.b300, 300, 250), 300, 250, 'Publicidad')); box.appendChild(w); }
+}
+let adResizeT;
+window.addEventListener('resize', () => { clearTimeout(adResizeT); adResizeT = setTimeout(() => { if ((window.innerWidth >= 780) !== adTopWide) loadTopAd(true); }, 400); });
+window.addEventListener('hashchange', () => loadTopAd(false));
 
 // ============================================================ RUTAS
 const UI = { season: {}, listTab: 'watching', listSort: 'act', genre: '' };
@@ -1878,6 +1931,7 @@ async function boot() {
     }
   }
   route(false);
+  if (AD.b728) setTimeout(() => { loadTopAd(true); loadBottomAds(); }, 600);
 }
 boot();
 
