@@ -1842,6 +1842,44 @@ h1{letter-spacing:-.03em}h2{letter-spacing:-.022em}
 @keyframes pgin{from{opacity:0;transform:translateY(8px)}}
 footer{border-top:1px solid var(--line)!important;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--surface) 60%,transparent))}
 .logo span{text-transform:none!important;letter-spacing:-.01em!important;font-size:15.5px!important;font-weight:700!important;color:var(--dim)!important}
+
+/* ============ V13.1: perfil más compacto y vista previa sin recortes */
+#app.profpage{max-width:1180px}
+.pcover:not(.pmini) .pbanner{max-height:210px}
+.pcover:not(.pmini) .pbanner[style*="--bh"]{height:min(var(--bh),210px)}
+.pcover:not(.pmini) .pmain .avatar{width:112px;height:112px}
+.pcover:not(.pmini) .pid h1{font-size:clamp(30px,3.2vw,42px)}
+@media (min-width:601px){.pcover:not(.pmini):not(.al-center) .pmain .pid{padding-top:66px}}
+.pcover:not(.pmini) .pstats b{font-size:21px}
+.pcover:not(.pmini) .favrow{grid-template-columns:repeat(8,minmax(0,1fr));gap:8px}
+.pcover:not(.pmini) .favrow .fr{max-height:170px}
+@media (min-width:981px){.c7prev{overflow:visible!important;max-height:none!important;padding:24px!important}}
+.c7prev .pcover.pmini{margin:6px}
+
+/* ============ V14: exóticas, únicas, cajas múltiples */
+.exo,.adeco.exo{animation:exo 3s linear infinite}
+@keyframes exo{0%{filter:hue-rotate(0) drop-shadow(0 0 6px rgba(255,255,255,.55))}50%{filter:hue-rotate(180deg) drop-shadow(0 0 12px rgba(255,255,255,.8))}100%{filter:hue-rotate(360deg) drop-shadow(0 0 6px rgba(255,255,255,.55))}}
+.unq,.adeco.unq{animation:unq 2.6s ease-in-out infinite}
+@keyframes unq{0%,100%{filter:drop-shadow(0 0 6px #ffd76a) drop-shadow(0 0 1px #fff)}50%{filter:drop-shadow(0 0 16px #ffd76a) drop-shadow(0 0 3px #fff) brightness(1.12)}}
+.compa.exo svg{animation:exo 3s linear infinite}.compa.unq svg{animation:unq 2.6s ease-in-out infinite}
+.petw.cx-exotica .petb{animation:exo 3s linear infinite}.petw.cx-unica .petb{animation:unq 2.6s ease-in-out infinite}.petw.cx-mitica{filter:drop-shadow(0 0 8px rgba(255,79,168,.7)) drop-shadow(0 6px 6px rgba(0,0,0,.4))}
+.boxbtns{display:grid;gap:8px}.boxbtns .btn{width:100%;justify-content:center}
+.multi{margin-top:16px;max-height:42vh;overflow:auto;padding:4px}
+.multi .lb{margin-bottom:8px;font-weight:800}
+.au-cx-ax-supernova{--an-au:auarc 1.6s linear infinite}
+.au-cx-ax-eclipse{--an-au:auvac 3s ease-in-out infinite}
+.au-cx-ax-cometa{--an-au:augiro 1.4s linear infinite;--auc:#bfe3ff}
+.au-cx-ax-plasma{--an-au:augal 2.4s linear infinite}
+.au-cx-ax-espejismo{--an-au:auhad 2.6s linear infinite}
+.au-cx-ax-abismo{--an-au:auvac2 4s ease-in-out infinite}
+.au-cx-bigbang{--an-au:aubig 3.2s ease-in-out infinite}@keyframes aubig{0%{box-shadow:0 0 0 0 #fff,0 0 0 0 #ffd76a}20%{box-shadow:0 0 60px 20px #fff,0 0 120px 40px #ffd76a}40%{box-shadow:0 0 30px 6px #ff8fc8,0 0 60px 12px #7a2bff}100%{box-shadow:0 0 20px 4px #7a2bff,0 0 40px 8px #3d8bff}}
+.pcover.na-cx-nx-supernova .pid h1{background:radial-gradient(circle,#fff 0 10%,#ffd76a 30%,#ff5c8a 55%,#7a2bff 80%)!important;background-size:250% 250%!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;animation:thblob 2.4s ease-in-out infinite alternate!important;filter:drop-shadow(0 0 12px rgba(255,215,106,.7))}
+.pcover.na-cx-nx-vortice .pid h1{background:conic-gradient(from var(--tha),#7a2bff,#3d8bff,#5ff2d0,#ff6bd6,#7a2bff)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;animation:thspin 3s linear infinite!important}
+.pcover.na-cx-nx-cristalino .pid h1{color:rgba(255,255,255,.12)!important;-webkit-text-fill-color:rgba(200,240,255,.15)!important;-webkit-text-stroke:1.5px #e8f8ff;background:linear-gradient(110deg,transparent 30%,#fff 50%,transparent 70%) 0 0/250% 100% no-repeat!important;-webkit-background-clip:text!important;background-clip:text!important;animation:lgcrys 1.8s ease-in-out infinite,exo 4s linear infinite!important}
+.pcover.na-cx-nx-oroblanco .pid h1{background:linear-gradient(100deg,#e6ebf5,#fff 25%,#ffd76a 40%,#fff 55%,#cfd6e2)!important;background-size:250% 100%!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;animation:na-shine 2.2s linear infinite!important;filter:drop-shadow(0 0 10px rgba(255,255,255,.6))}
+.pcover.na-cx-nx-magma .pid h1{background:repeating-linear-gradient(0deg,#3a0a00 0,#ff3d00 12px,#ffd24a 22px,#ff3d00 32px,#3a0a00 44px)!important;background-size:100% 44px!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;animation:lgmag 1.6s linear infinite!important;filter:drop-shadow(0 0 10px #ff4a00)}@keyframes lgmag{to{background-position:0 -44px}}
+.pcover.na-cx-nx-nebula .pid h1{background:radial-gradient(circle at 20% 50%,#ff6bd6,transparent 40%),radial-gradient(circle at 70% 40%,#5ff2d0,transparent 40%),radial-gradient(circle,#fff 0 1px,transparent 1.6px) 0 0/9px 9px,#3a1a6a!important;background-size:200% 200%,200% 200%,9px 9px,auto!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;animation:thblob 4s ease-in-out infinite alternate,thhue 10s linear infinite!important}
+.pcover.na-cx-bigbang .pid h1{background:radial-gradient(circle,#fff 0 8%,#ffd76a 20%,#ff5c8a 40%,#7a2bff 60%,#0a0514 85%)!important;background-size:300% 300%!important;background-position:50% 50%;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;animation:nabig 4s ease-in-out infinite!important;filter:drop-shadow(0 0 14px rgba(255,215,106,.8)) drop-shadow(0 0 2px #fff)}@keyframes nabig{0%{background-size:600% 600%}50%{background-size:150% 150%}100%{background-size:600% 600%}}
 </style>
 </head>
 <body>
@@ -1872,7 +1910,7 @@ footer{border-top:1px solid var(--line)!important;background:linear-gradient(180
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 12.0</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 13.0</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -4222,7 +4260,7 @@ const ratingOf = s => imdbOf(s.imdb) ?? s.rating ?? 0;
 // ---------------------------------------------------------- MONEDAS JVNN
 const WALLET = { coins: 0, items: [], ok: false };
 const COIN_PRICE = { name: 200, font: 250, fx: 200, frame: 400, shape: 300, banner: 300, pattern: 200, bfx: 400, theme: 300, accent: 150, title: 200, site: 500, deco: 600, pfx: 800, favframe: 300, card: 400, nameanim: 600, nicon: 250, statstyle: 300, tag: 400 };
-const priceOf7 = (f, k) => ['name:custom', 'accent:custom', 'banner:img'].includes(f + ':' + k) ? 800 : (COIN_PRICE[f] || 300);
+const priceOf7 = (f, k) => ['name:custom', 'accent:custom', 'banner:img'].includes(f + ':' + k) ? 1600 : (COIN_PRICE[f] || 600);
 const coinSVG7 = (sz = 16) => `<svg class="coin" width="${sz}" height="${sz}" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#ffd76a"/><circle cx="12" cy="12" r="7.2" fill="none" stroke="#b8860b" stroke-width="1.6"/><path d="M9.5 8.5h4a2 2 0 0 1 0 4h-3m0-4v7m0-3h3.5a2 2 0 0 1 0 4h-4" fill="none" stroke="#8a6a1a" stroke-width="1.6" stroke-linecap="round"/></svg>`;
 function setWallet(w) { if (!w) return; WALLET.coins = w.coins || 0; WALLET.items = w.items || []; WALLET.ok = true; renderCoins(); }
 async function loadWallet7() {
@@ -4260,8 +4298,8 @@ async function buyWithCoins(f, k) {
 }
 async function vCoins(_, draw) {
   draw(`<section class="pagehead"><div class="eyebrow">Monedas JVNN</div><h1>${coinSVG(36)} ${WALLET.coins.toLocaleString('es-AR')} monedas</h1><p class="dim">Juntás monedas usando la página y con ellas comprás cosas para tu perfil, una por una.</p></section>
-  <div class="stiles sec">${statTile('cada 5 minutos usando JVNN', '+5', '#ffd76a', 'clock')}${statTile('por entrar cada día', '+10', '#f3c6cf', 'heart')}${statTile('máximo por día, en total', '30', '#8fbcff', 'loop')}${statTile('cosas que ya compraste', WALLET.items.length, '#c3a8ff', 'plus')}</div>
-  <section class="panel sec"><h3>Cuánto cuesta cada cosa</h3><div class="pricelist">${Object.entries(COIN_PRICE).map(([f, p]) => `<div><span>${h(CAT_NAMES[f] || f)}</span><b>${coinSVG(14)} ${p}</b></div>`).join('')}<div><span>Color libre / foto propia de banner</span><b>${coinSVG(14)} 800</b></div></div>
+  <div class="stiles sec">${statTile('regalo de bienvenida (una vez)', '+1.000', '#ff8fc8', 'plus')}${statTile('cada 5 minutos usando JVNN', '+5', '#ffd76a', 'clock')}${statTile('por entrar cada día', '+20', '#f3c6cf', 'heart')}${statTile('si entrás 7 días seguidos', '+100', '#c3a8ff', 'check')}${statTile('máximo por día (sin contar bonus)', '80', '#8fbcff', 'loop')}${statTile('cosas que ya compraste', WALLET.items.length, '#c3a8ff', 'plus')}</div>
+  <section class="panel sec"><h3>Cuánto cuesta cada cosa</h3><div class="pricelist">${Object.entries(COIN_PRICE).map(([f, p]) => `<div><span>${h(CAT_NAMES[f] || f)}</span><b>${coinSVG(14)} ${p}</b></div>`).join('')}<div><span>Color libre / foto propia de banner</span><b>${coinSVG(14)} 1600</b></div></div>
   <p class="small dim" style="margin:12px 0 0">Son precios base: las cosas más simples salen menos y siempre hay algunas en oferta en la <a href="#/tienda" style="color:var(--accent);font-weight:700">tienda</a>. Con <a href="#/pro" style="color:var(--accent);font-weight:700">JVNN Pro</a> tenés todo desbloqueado de una. Las monedas sirven para ir comprando de a una sin pagar.</p></section>
   ${isLogged() ? '<div class="sec actions"><a class="btn pri" href="#/tienda">Ir a la tienda</a><a class="btn" href="#/perfil">Personalizar mi perfil</a></div>' : '<div class="invite sec"><div><h2>Empezá a juntar monedas</h2><p class="dim">Necesitás una cuenta gratis.</p></div><a class="btn pri" href="#/entrar/crear">Crear cuenta</a></div>'}`);
 }
@@ -4541,7 +4579,7 @@ function customizeHTML() {
   } else if (tab === 'compa') {
     body = compaEditHTML(view);
   } else if (tab === 'efectos') {
-    body = g('Efecto animado en tu perfil', `<div class="banners">${STYLE_OPTS.pfx.map(o => tile('pfx', o, view.pfx, 'background:radial-gradient(circle at 30% 30%,#2a2440,#0b0b14)')).join('')}</div>`, 'se ve en tu perfil en movimiento') + g('Aura alrededor de tu tarjeta', sw('aura'), 'brillo animado en todo el borde de afuera') + g('Borde animado de la tarjeta', sw('cardframe')) + g('Fondo detrás de tu nombre', sw('namebg')) + g('Entrada del perfil', `<div class="banners">${STYLE_OPTS.entrada.map(o => tile('entrada', o, view.entrada, 'background:linear-gradient(135deg,#2a2440,#141020)')).join('')}</div>`, 'la animación cuando alguien abre tu perfil') + g('Efecto del mouse', sw('mouse'), 'cuando alguien mueve el mouse sobre tu perfil');
+    body = g('Efecto animado en tu perfil', `<div class="banners">${STYLE_OPTS.pfx.map(o => tile('pfx', o, view.pfx, 'background:radial-gradient(circle at 30% 30%,#2a2440,#0b0b14)')).join('')}</div>`, 'se ve en tu perfil en movimiento') + g('Aura alrededor de tu tarjeta', sw('aura'), 'brillo animado en todo el borde de afuera') + g('Borde animado de la tarjeta', sw('cardframe')) + g('Fondo detrás de tu nombre', sw('namebg')) + g('Efecto al tocar tu perfil', sw('clickfx'), 'cuando alguien hace clic en tu tarjeta') + g('Entrada del perfil', `<div class="banners">${STYLE_OPTS.entrada.map(o => tile('entrada', o, view.entrada, 'background:linear-gradient(135deg,#2a2440,#141020)')).join('')}</div>`, 'la animación cuando alguien abre tu perfil') + g('Efecto del mouse', sw('mouse'), 'cuando alguien mueve el mouse sobre tu perfil');
   } else if (tab === 'diseno') {
     const row = myProRow(), ok = hasLayout(row), L = ok ? layoutOf(st, row) : { ...LAYOUT_DEF };
     const ch = (k, v, n) => `<button class="opt ${L[k] === v ? 'on' : ''}" data-act="lay" data-k="${k}" data-v="${v}" ${ok ? '' : 'disabled'}>${n}</button>`;
@@ -5681,9 +5719,9 @@ function accentStyle(st) {
   for (const [f, varn] of [['aura', '--auc'], ['cardframe', '--cfc'], ['namebg', '--nbc']]) { const o = optOf(f, st[f]); if (o && o.v && !isLegend(f, o.k) && !isCX(f, o.k)) v.push(varn + ':' + twoPart(o.v)[1]); }
   return v.length ? base.slice(0, -1) + ';' + h(v.join(';')) + '"' : base;
 }
-function pfxAttr(st) {
+function pfxAttr11(st) {
   let a = pfxAttr10(st); st = st || {};
-  const po = optOf('pet', st.pet); if (po && po.v) a += ` data-pet="${h(po.v)}${isLegend('pet', po.k) ? '|lg|' + h(po.k) : ''}"`;
+  const po = optOf('pet', st.pet); if (po && po.v) a += ` data-pet="${h(po.v)}${isLegend('pet', po.k) ? '|lg|' + h(po.k) : po.cx ? '|lg|cx-' + po.cx : ''}"`;
   const sk = (st.stickers || []).filter(x => optOf('sticker', x.k)); if (sk.length) a += ` data-stk="${h(JSON.stringify(sk))}"`;
   return a;
 }
@@ -5809,7 +5847,7 @@ Object.assign(LGDRAW, {
   'cx-tormentaprisma': { n: 'Tormenta prisma', init(S) { S.items = []; }, draw(ctx, S, W, H, t, { R, fade }) { fade(.2); if (Math.random() < .07) S.items.push({ x: R(0, W), y: R(0, H * .3), a: Math.PI / 2 + R(-.7, .7), l: R(H * .5, H), life: 10, c: `hsl(${(t * 3) % 360},100%,75%)` }); for (const b of S.items) { if (b.life % 3) { ctx.save(); bolt(ctx, b.x, b.y, b.l, b.a, 2.2, b.c); ctx.restore(); } b.life--; } S.items = S.items.filter(b => b.life > 0); } },
 });
 LGFX['cx-tormentaviva'] = 'Tormenta viva'; LGFX['cx-tormentaprisma'] = 'Tormenta prisma';
-function decoHTML(st) {
+function decoHTML12(st) {
   const o = optOf('deco', st && st.deco);
   if (o && o.v === 'cxojo|azul') return `<svg class="adeco anim" viewBox="0 0 160 160" aria-hidden="true"><defs><radialGradient id="ojo"><stop offset=".55" stop-color="#3d8bff" stop-opacity="0"/><stop offset=".8" stop-color="#8fd6ff" stop-opacity=".55"/><stop offset="1" stop-color="#0a1a4a" stop-opacity="0"/></radialGradient></defs><circle cx="80" cy="80" r="80" fill="url(#ojo)"/><g class="spin">${Array.from({ length: 6 }, (_, i) => `<path d="M80 80m0-76a76 76 0 0 1 60 30" fill="none" stroke="${i % 2 ? '#bfe3ff' : '#3d8bff'}" stroke-width="${i % 2 ? 2 : 4}" stroke-linecap="round" transform="rotate(${i * 60} 80 80)" opacity=".85"/>`).join('')}</g><g class="spin rev">${Array.from({ length: 4 }, (_, i) => `<path d="M80 80m0-70a70 70 0 0 1 40 14" fill="none" stroke="#fff" stroke-width="1.4" transform="rotate(${i * 90 + 30} 80 80)" opacity=".7"/>`).join('')}</g><g class="bolt"><path d="M150 40 138 62H148L136 84 158 56H148L156 40Z" fill="#ffe14a"/><path d="M14 100 6 118H14L6 136 22 112H14L20 100Z" fill="#ffe14a"/></g></svg>`;
   const svg = decoHTML11(st);
@@ -6089,6 +6127,168 @@ new MutationObserver(() => {
 
 // ---------- transición suave al cambiar de página
 window.addEventListener('hashchange', () => { const a = document.getElementById('app'); a.classList.remove('pgin'); void a.offsetWidth; a.classList.add('pgin'); });
+
+// ---------- perfil más compacto (no ocupa toda la pantalla)
+function markProfPage() { const n = parseRoute().name; document.getElementById('app').classList.toggle('profpage', n === 'perfil' || n === 'u'); }
+window.addEventListener('hashchange', markProfPage); markProfPage();
+
+
+// ============================================================ V14: +120 COLECCIONABLES (hadas de gemas, dragones elementales, lobos, ballenas…), MÁS MASCOTAS, EFECTO AL TOCAR, PRECIOS NUEVOS, CAJAS x5/x10
+// ---------- paletas nuevas de hadas (cada una con su brillo)
+const GEMS = {
+  oscura: ['Hada oscura', { hair: '#2a1a3a', skin: '#d8c8e8', wing: '#6a4a8a', dress: '#1a0f24', glow: '#8a5ad6' }],
+  blanca: ['Hada blanca', { hair: '#f4f4f8', skin: '#ffffff', wing: '#ffffff', dress: '#e6e8f0', glow: '#ffffff' }],
+  plateada: ['Hada plateada', { hair: '#c8ced8', skin: '#f2f4f8', wing: '#e6ebf5', dress: '#8a93a8', glow: '#dfe5ef' }],
+  diamante: ['Hada de diamante', { hair: '#bfeaff', skin: '#f2fcff', wing: '#e8faff', dress: '#7fd6ff', glow: '#c8f2ff' }],
+  oro: ['Hada de oro', { hair: '#ffcf3a', skin: '#fff6dc', wing: '#fff0b0', dress: '#c8961a', glow: '#ffd76a' }],
+  rubi: ['Hada de rubí', { hair: '#d61a4a', skin: '#ffe0e8', wing: '#ffb3c6', dress: '#9a0a2a', glow: '#ff4a6a' }],
+  esmeralda: ['Hada de esmeralda', { hair: '#1aa86a', skin: '#e0fff0', wing: '#b8f5d8', dress: '#0a7a4a', glow: '#3ad68a' }],
+  sombra: ['Hada de sombra', { hair: '#14101c', skin: '#b8aec8', wing: '#3a3048', dress: '#0a0810', glow: '#5a4a7a' }],
+  luna: ['Hada de la luna', { hair: '#e8ecff', skin: '#f6f8ff', wing: '#dfe6ff', dress: '#8a9ad6', glow: '#c8d4ff' }],
+  fuegonegro: ['Hada de fuego negro', { hair: '#1a0a0a', skin: '#e8c8c0', wing: '#5a1a0a', dress: '#2a0a0a', glow: '#ff4a1a' }],
+  cristalrosa: ['Hada de cristal rosa', { hair: '#ffb3d6', skin: '#fff4fa', wing: '#ffe0f0', dress: '#ff8fc8', glow: '#ffd1ea' }],
+  zafiro: ['Hada de zafiro', { hair: '#1a3ad6', skin: '#e0e8ff', wing: '#b8c8ff', dress: '#0a1a8a', glow: '#4a6aff' }],
+  amatista: ['Hada de amatista', { hair: '#8a3ad6', skin: '#f2e6ff', wing: '#dcc4ff', dress: '#5a1a9a', glow: '#b07aff' }],
+  ambar: ['Hada de ámbar', { hair: '#e08a1a', skin: '#fff0dc', wing: '#ffd9a8', dress: '#a85a0a', glow: '#ffb03d' }],
+  perla: ['Hada de perla', { hair: '#f2ece2', skin: '#fffcf6', wing: '#fff8ee', dress: '#d6cbb8', glow: '#fff4e0' }],
+  obsidiana: ['Hada de obsidiana', { hair: '#0a0a12', skin: '#c8c8d6', wing: '#2a2a3a', dress: '#05050a', glow: '#6a6aa8' }],
+  aurora: ['Hada aurora', { hair: '#3ad6b0', skin: '#ecfff8', wing: '#c8f0ff', dress: '#8a5ad6', glow: '#5ff2d0' }],
+  coral: ['Hada de coral', { hair: '#ff6a5a', skin: '#fff0ec', wing: '#ffc8bc', dress: '#d63a2a', glow: '#ff9a8a' }],
+  jade: ['Hada de jade', { hair: '#3a9a7a', skin: '#e8fff6', wing: '#c8eedf', dress: '#1a6a52', glow: '#7fd6b0' }],
+  nieve: ['Hada de nieve', { hair: '#ffffff', skin: '#f6fbff', wing: '#eef8ff', dress: '#bfe3ff', glow: '#e8f6ff' }],
+};
+for (const [k, [, P]] of Object.entries(GEMS)) HP['g-' + k] = P;
+const GEMK = Object.keys(GEMS);
+// ---------- criaturas nuevas (sin hadas)
+const recolor = (svg, map, tag) => { let s = svg; for (const [a, b] of Object.entries(map)) s = s.split(a).join(b); return tag ? s.replace(/id="phx"/g, `id="phx${tag}"`).replace(/url\(#phx\)/g, `url(#phx${tag})`) : s; };
+const ELEM = {
+  fuego: ['de fuego', { '#9a5aff': '#ff6a3d', '#7a3ad6': '#c4321a', '#c3a8ff': '#ffd24a', '#e6d6ff': '#ffe0b0' }],
+  hielo: ['de hielo', { '#9a5aff': '#8fd6ff', '#7a3ad6': '#4ab8e6', '#c3a8ff': '#ffffff', '#e6d6ff': '#eef8ff' }],
+  rayo: ['del rayo', { '#9a5aff': '#3d6bff', '#7a3ad6': '#1a2a8a', '#c3a8ff': '#ffe14a', '#e6d6ff': '#bfe3ff' }],
+  sombra: ['de sombra', { '#9a5aff': '#2a2238', '#7a3ad6': '#120e1c', '#c3a8ff': '#7a5aa8', '#e6d6ff': '#4a3a5a' }],
+  luz: ['de luz', { '#9a5aff': '#fff3c4', '#7a3ad6': '#ffd76a', '#c3a8ff': '#ffffff', '#e6d6ff': '#ffffff' }],
+  veneno: ['venenoso', { '#9a5aff': '#7ad64a', '#7a3ad6': '#3a8a1a', '#c3a8ff': '#d6ff4a', '#e6d6ff': '#e8ffc8' }],
+  tierra: ['de tierra', { '#9a5aff': '#a8784a', '#7a3ad6': '#6a4a2a', '#c3a8ff': '#d6b88a', '#e6d6ff': '#f2e2c8' }],
+  agua: ['de agua', { '#9a5aff': '#3aa8d6', '#7a3ad6': '#1a6a9a', '#c3a8ff': '#9ae6ff', '#e6d6ff': '#dff6ff' }],
+  viento: ['del viento', { '#9a5aff': '#a8f0d8', '#7a3ad6': '#5ad6a8', '#c3a8ff': '#ffffff', '#e6d6ff': '#f2fffa' }],
+  cristal: ['de cristal', { '#9a5aff': '#bfe8ff', '#7a3ad6': '#8fc8f0', '#c3a8ff': '#ffffff', '#e6d6ff': '#ffffff' }],
+};
+for (const [k, [n, map]] of Object.entries(ELEM)) CRIT['xdragon' + k] = ['Dragón ' + n, a => recolor(CRIT.lgdragon[1](a), map) + (k === 'rayo' ? `<g class="bolt"><path d="M50 4 46 12H50L47 20 55 10H51L53 4Z" fill="#ffe14a"/></g>` : '')];
+const FENIX = { azul: ['azul', { '#ffe066': '#e8f8ff', '#ff8a3d': '#6aa8ff', '#ff3d00': '#1a3ad6', '#ffb03d': '#bfe3ff' }], verde: ['verde', { '#ffe066': '#e8ffc8', '#ff8a3d': '#5ad68a', '#ff3d00': '#1a8a3a', '#ffb03d': '#a8f0c6' }], violeta: ['violeta', { '#ffe066': '#f2e6ff', '#ff8a3d': '#b07aff', '#ff3d00': '#5a1a9a', '#ffb03d': '#dcc4ff' }], negro: ['negro', { '#ffe066': '#ff4a1a', '#ff8a3d': '#3a1a1a', '#ff3d00': '#0a0505', '#ffb03d': '#6a2a1a' }], rosa: ['rosa', { '#ffe066': '#fff0f8', '#ff8a3d': '#ff8fc8', '#ff3d00': '#d6386e', '#ffb03d': '#ffd1ea' }], blanco: ['blanco', { '#ffe066': '#ffffff', '#ff8a3d': '#e6ebf5', '#ff3d00': '#9aa7bd', '#ffb03d': '#ffffff' }] };
+for (const [k, [n, map]] of Object.entries(FENIX)) CRIT['xfenix' + k] = ['Fénix ' + n, a => recolor(CRIT.lgfenix[1](a), map, k)];
+CRIT.lobo = ['Lobo de luz', a => `<path d="M48 54C60 52 62 40 56 36c2 8-2 12-6 14z" fill="${mix8(a, '#ffffff', .5)}"/><path d="M14 62C12 46 20 38 32 38S52 46 50 62Z" fill="${mix8(a, '#ffffff', .65)}"/><path d="M12 22 14 2 26 14ZM52 22 50 2 38 14Z" fill="${mix8(a, '#ffffff', .6)}"/><path d="M16 14 16 7 22 12ZM48 14 48 7 42 12Z" fill="${a}"/><path d="M14 28C14 14 50 14 50 28C50 36 42 44 32 44S14 36 14 28Z" fill="${mix8(a, '#ffffff', .75)}"/><path d="M24 34C24 40 40 40 40 34C38 38 26 38 24 34Z" fill="#fff"/><ellipse cx="32" cy="34" rx="3" ry="2.2" fill="#2a1a3a"/><path d="M21 26l5 2M43 26l-5 2" stroke="${a}" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="27" r="1.4" fill="#fff"/><circle cx="40" cy="27" r="1.4" fill="#fff"/>`];
+CRIT.ballena = ['Ballena del cielo', a => `<g class="ffloat"><path d="M6 34C6 20 20 14 34 16S60 26 58 36C56 46 44 50 30 50S6 46 6 34Z" fill="${a}"/><path d="M8 38C14 46 24 48 34 48S52 44 56 38C50 42 40 44 30 44S14 42 8 38Z" fill="#fff" opacity=".85"/><path d="M58 32C62 26 64 22 62 18C60 24 56 26 54 28Z" fill="${a}"/><path d="M58 34C62 38 64 42 62 46C60 40 56 38 54 36Z" fill="${a}"/><circle cx="20" cy="30" r="2.4" fill="#1b1b22"/><circle cx="20.8" cy="29" r=".8" fill="#fff"/><path d="M14 36Q18 39 22 36" stroke="#1b1b22" stroke-width="1.2" fill="none"/><g class="tw"><path d="M28 12C28 6 26 4 24 2M32 12C32 6 34 4 36 2" stroke="#bfe3ff" stroke-width="2" fill="none" stroke-linecap="round"/></g></g>${sparkles8([[6, 12, 3], [58, 52, 2.5], [44, 8, 2]], '#fff')}`];
+CRIT.gatogal = ['Gato galáctico', a => `<defs><radialGradient id="gg${a.slice(1)}" cx=".3" cy=".3"><stop offset="0" stop-color="${mix8(a, '#ffffff', .3)}"/><stop offset=".6" stop-color="${a}"/><stop offset="1" stop-color="#0a0514"/></radialGradient></defs>` + CRIT.gato[1](a).split('#c9ccd6').join(`url(#gg${a.slice(1)})`) + `<g class="tw">${sparkles8([[24, 50, 1.6], [40, 46, 1.2], [30, 18, 1.4], [44, 26, 1]], '#fff')}</g>`];
+CRIT.mariposa = ['Mariposa de cristal', a => `<g class="ffloat"><g class="fw"><path d="M33 30C44 10 62 14 56 30C62 40 46 52 33 36Z" fill="${a}" fill-opacity=".75" stroke="#fff" stroke-width="1.2"/></g><g transform="matrix(-1 0 0 1 64 0)"><g class="fw"><path d="M33 30C44 10 62 14 56 30C62 40 46 52 33 36Z" fill="${a}" fill-opacity=".75" stroke="#fff" stroke-width="1.2"/></g></g><path d="M32 18V46" stroke="#2a1830" stroke-width="3" stroke-linecap="round"/><path d="M32 18 28 10M32 18 36 10" stroke="#2a1830" stroke-width="1.4" fill="none"/></g>${sparkles8([[10, 50, 2.4], [54, 8, 2]], '#fff')}`];
+CRIT.coronavacio = ['Corona del vacío', a => `<g class="ffloat"><path d="M10 44 6 18 20 30 32 10 44 30 58 18 54 44Z" fill="#14101c" stroke="${a}" stroke-width="2.4" stroke-linejoin="round"/><circle cx="32" cy="34" r="5" fill="${a}"/><circle cx="18" cy="38" r="3" fill="${a}" opacity=".8"/><circle cx="46" cy="38" r="3" fill="${a}" opacity=".8"/></g><g class="tw">${sparkles8([[32, 4, 3], [6, 10, 2], [58, 10, 2]], a)}</g>`];
+
+// ---------- registrar los nuevos coleccionables
+const CXN = [];
+for (const k of GEMK) CXN.push(['deco', 'cx-hg-' + k, GEMS[k][0], 'mitica', 'lgfairy|g-' + k], ['compa', 'cx-hgc-' + k, GEMS[k][0] + ' compañera', 'mitica', 'lghada|g-' + k], ['deco', 'cx-hgx-' + k, GEMS[k][0] + ' radiante', 'exotica', 'lgfairyx|g-' + k]);
+for (const [a, b] of [['oscura', 'blanca'], ['oro', 'plateada'], ['rubi', 'esmeralda'], ['luna', 'sombra'], ['diamante', 'obsidiana'], ['zafiro', 'ambar'], ['cristalrosa', 'amatista'], ['aurora', 'coral'], ['perla', 'jade'], ['nieve', 'fuegonegro']]) CXN.push(['deco', `cx-hgd-${a}-${b}`, `${GEMS[a][0]} y ${GEMS[b][0].replace('Hada ', '').replace(/^de /, '')}`, 'exotica', `lgfairy2|g-${a}+g-${b}`]);
+for (const k of Object.keys(ELEM)) CXN.push(['pet', 'cx-dr-' + k, 'Dragón ' + ELEM[k][0], 'mitica', `xdragon${k}|violeta`]);
+for (const k of Object.keys(FENIX)) CXN.push(['compa', 'cx-fx-' + k, 'Fénix ' + FENIX[k][0], 'mitica', `xfenix${k}|oro`]);
+for (const [ak, an] of ACC) CXN.push(['pet', 'cx-lobo-' + ak, 'Lobo de luz ' + an, 'exotica', `lobo|${ak}`], ['compa', 'cx-ballena-' + ak, 'Ballena del cielo ' + an, 'exotica', `ballena|${ak}`], ['pet', 'cx-gatogal-' + ak, 'Gato galáctico ' + an, 'exotica', `gatogal|${ak}`]);
+for (const [k, n] of [['supernova', 'Aura supernova'], ['eclipse', 'Aura eclipse'], ['cometa', 'Aura cometa'], ['plasma', 'Aura de plasma'], ['espejismo', 'Aura espejismo'], ['abismo', 'Aura del abismo']]) CXN.push(['aura', 'cx-ax-' + k, n, 'exotica', 'cx-ax-' + k]);
+for (const [k, n] of [['supernova', 'Nombre supernova'], ['vortice', 'Nombre vórtice'], ['cristalino', 'Nombre cristalino'], ['oroblanco', 'Nombre de oro blanco'], ['magma', 'Nombre de magma'], ['nebula', 'Nombre nébula']]) CXN.push(['nameanim', 'cx-nx-' + k, n, 'exotica', 'cx-nx-' + k]);
+CXN.push(['deco', 'cx-reinaoscura', 'Reina de las Hadas Oscuras', 'unica', 'lgfairyq|g-oscura'], ['pet', 'cx-eclipse', 'Dragón Eclipse', 'unica', 'xdragonsombra|negro'], ['compa', 'cx-ballenaoro', 'Ballena Celestial Dorada', 'unica', 'ballena|oro'], ['pet', 'cx-lobolunar', 'Lobo Lunar', 'unica', 'lobo|azul'], ['compa', 'cx-coronavacio', 'Corona del Vacío', 'unica', 'coronavacio|violeta'], ['nameanim', 'cx-bigbang', 'Nombre Big Bang', 'unica', 'cx-bigbang'], ['aura', 'cx-bigbang', 'Aura Big Bang', 'unica', 'cx-bigbang'], ['pet', 'cx-gatocosmico', 'Gato Cósmico', 'unica', 'gatogal|violeta'], ['compa', 'cx-mariposaeterna', 'Mariposa Eterna', 'unica', 'mariposa|rosa']);
+for (const [ak, an] of ACC) CXN.push(['compa', 'cx-mariposa-' + ak, 'Mariposa de cristal ' + an, 'mitica', `mariposa|${ak}`]);
+for (const [f, k, n, r, v] of CXN) { STYLE_OPTS[f].push(Object.assign(C(k, n, v), { cx: r })); CAT_IDX[f + ':' + k] = { id: f + ':' + k, f, k, n, r, max: CX_MAX[r] || null }; }
+// las exóticas se mueven con colores, las únicas brillan dorado
+function decoHTML(st) {
+  const o = optOf('deco', st && st.deco);
+  if (o && o.v && /^lgfairy(x|2|q)\|/.test(o.v)) {
+    const [t, p] = o.v.split('|');
+    if (t === 'lgfairy2') { const [a, b] = p.split('+'); return `<svg class="adeco anim exo" viewBox="0 0 160 160" aria-hidden="true">${OUTSIDE}<g class="ffloat"><g clip-path="url(#dk-out)">${fairySVG(56, 0, 1.25, HP[a], false, 'back')}${fairySVG(136, 94, 1.15, HP[b], true, 'back')}</g>${fairySVG(56, 0, 1.25, HP[a], false, 'front')}${fairySVG(136, 94, 1.15, HP[b], true, 'front')}</g><g class="tw">${sparkles8([[20, 30, 5], [154, 64, 4], [104, 2, 3.5]], '#fff')}</g></svg>`; }
+    const P = HP[p]; const big = t === 'lgfairyq';
+    return `<svg class="adeco anim ${t === 'lgfairyx' ? 'exo' : 'unq'}" viewBox="0 0 160 160" aria-hidden="true">${OUTSIDE}<circle cx="80" cy="80" r="78" fill="none" stroke="${P.glow}" stroke-width="${big ? 3 : 1.6}" stroke-dasharray="2 9" class="spin"/><g class="ffloat"><g clip-path="url(#dk-out)">${fairySVG(58, 0, big ? 1.5 : 1.3, P, false, 'back')}</g>${fairySVG(58, 0, big ? 1.5 : 1.3, P, false, 'front')}</g><g class="tw">${sparkles8([[20, 30, 5], [30, 6, 3], [140, 40, 4]], '#fff')}</g><g class="tw t2">${sparkles8([[104, 2, 4], [118, 22, 2.5], [10, 60, 3], [150, 100, 3]], P.glow)}</g>${big ? `<path d="M40 -4 46 -14 52 -6 58 -18 64 -6 70 -14 76 -4Z" fill="#ffd76a" stroke="#fff" stroke-width=".8" class="tw"/>` : ''}</svg>`;
+  }
+  return decoHTML12(st);
+}
+// la compañera hada usa la paleta de gema
+const _lghada = CRIT.lghada[1];
+CRIT.lghada[1] = (a, ak) => String(ak || '').startsWith('g-') && HP[ak] ? `<g class="ffloat">${fairySVG(32, 24, .8, HP[ak])}</g><g class="tw">${sparkles8([[8, 10, 3], [56, 14, 2.5], [54, 50, 2]], '#fff')}</g>` : _lghada(a, ak);
+function compaHTML(st) { const o = optOf('compa', st && st.compa); return o && o.v ? `<div class="compa ${o.cx === 'exotica' ? 'exo' : o.cx === 'unica' ? 'unq' : ''}">${compaSVG(o.v)}</div>` : ''; }
+
+// ---------- MÁS MASCOTAS (colores extra de cada una)
+{ const base = PETS.slice(), i0 = STYLE_OPTS.pet.findIndex(o => isLegend('pet', o.k)); STYLE_OPTS.pet.splice(i0, 0, ...base.flatMap((k, i) => [ACC[(i + 2) % ACC.length], ACC[(i + 4) % ACC.length]].map(([ak, an]) => C(`${k}-${ak}`, `${CRIT[k][0]} ${an} que camina`, `${k}|${ak}`)))); }
+
+// ---------- CATEGORÍA NUEVA: efecto al tocar tu perfil
+const CLK = [['estrellas', 'Estrellas', 'star'], ['corazones', 'Corazones', 'corazones'], ['burbujas', 'Burbujas', 'burbujas'], ['petalos', 'Pétalos', 'petalos'], ['chispas', 'Chispas', 'chispas'], ['puntos', 'Puntitos', 'nieve']];
+const CLKP = [['rosa', 'rosa', ['#ff8fc8', '#ffd1ea']], ['azul', 'azul', ['#8fbcff', '#dff4ff']], ['violeta', 'violeta', ['#c3a8ff', '#ebdeff']], ['oro', 'dorado', ['#ffd76a', '#fff3c4']], ['menta', 'menta', ['#8ff0c6', '#e0fff0']], ['rojo', 'rojo', ['#ff5c5c', '#ffb3b3']], ['blanco', 'blanco', ['#ffffff', '#e6ebf5']], ['arcoiris', 'arcoíris', ['#ff7aa8', '#ffd36b', '#a8f0c6', '#7fe0ff', '#c3a8ff']], ['hadas', 'de hadas', FAIRYC], ['fuego', 'fuego', ['#ff3d00', '#ff8a00', '#ffd24a']]];
+STYLE_OPTS.clickfx = [C('none', 'Nada', '', 1), ...CLK.flatMap(([s, n]) => CLKP.map(([pk, pn, cols]) => swatch(C(`${s}-${pk}`, `${n} ${pn}`, `${s}|${pk}`), cols[0]))), lgo('lg-explosion', 'Explosión de estrellas'), lgo('lg-fuegos', 'Fuegos artificiales'), lgo('lg-rayo', 'Rayo'), lgo('lg-hadas', 'Lluvia de hadas')];
+STYLE_DEF.clickfx = 'none'; if (S.profile.style.clickfx == null) S.profile.style.clickfx = 'none';
+CAT_NAMES.clickfx = 'Efecto al tocar'; COIN_PRICE.clickfx = 350; LG_PRICE.clickfx = 2500;
+SHOP_CATS.splice(3, 0, ['clickfx', 'Al tocar']);
+function pfxAttr(st) { let a = pfxAttr11(st); const o = optOf('clickfx', st && st.clickfx); if (o && o.v) a += ` data-click="${h(o.v)}"`; return a; }
+document.addEventListener('click', e => {
+  const card = e.target.closest('.pcover[data-click]'); if (!card || e.target.closest('a,button,input,select,textarea,label,.petw,.compa,.stk')) return;
+  const v = card.dataset.click, x = e.clientX, y = e.clientY;
+  if (v === 'lg-explosion') { burstAt(x, y, ['#ffffff', '#ffd76a', '#ff8fc8', '#8fd6ff'], 60, 'confeti'); return; }
+  if (v === 'lg-fuegos') { for (let i = 0; i < 4; i++) setTimeout(() => burstAt(x + (Math.random() - .5) * 160, y + (Math.random() - .5) * 80, [['#ff8fc8', '#fff'], ['#ffd76a', '#fff'], ['#8fd6ff', '#fff'], ['#a8f0c6', '#fff']][i], 30, 'confeti'), i * 160); return; }
+  if (v === 'lg-rayo') { card.classList.add('entflash'); setTimeout(() => card.classList.remove('entflash'), 600); burstAt(x, y, ['#ffffff', '#bfe3ff', '#ffe14a'], 26, 'confeti'); return; }
+  if (v === 'lg-hadas') { burstAt(x, y, FAIRYC, 40, 'heart'); burstAt(x, y, FAIRYC, 30, 'confeti'); return; }
+  const [s, pk] = v.split('|'), cols = (CLKP.find(p => p[0] === pk) || CLKP[0])[2], kind = (CLK.find(c => c[0] === s) || CLK[0])[2];
+  mouseLayer(); for (let i = 0; i < 22; i++) { const a = Math.random() * 6.28, sp = 1.5 + Math.random() * 3.5; mparts.push({ k: kind, x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - (kind === 'burbujas' ? 1 : 0), g: kind === 'chispas' ? .12 : kind === 'burbujas' ? -.02 : .03, r: kind === 'corazones' ? 4 + Math.random() * 3 : 2 + Math.random() * 3, c: cols[i % cols.length], l: 1, dl: .02, a: Math.random() * 6 }); }
+  if (!mrun) { mrun = true; requestAnimationFrame(mloop); }
+});
+
+// ---------- PRECIOS NUEVOS: todo al doble y legendarios desde 5.200
+var COIN_PRICE0 = Object.assign({}, COIN_PRICE);
+for (const k of Object.keys(COIN_PRICE)) COIN_PRICE[k] *= 2;
+// la rareza se calcula con los precios de antes, así no cambia nada de lo que ya existe
+function rarityOf(f, o) {
+  if (o.cx) return o.cx;
+  if (isLegend(f, o.k)) return 'legendaria';
+  const tbl = COIN_PRICE0 || COIN_PRICE, base = ['name:custom', 'accent:custom', 'banner:img'].includes(f + ':' + o.k) ? 800 : (tbl[f] || 300);
+  const c = CUTS.find(([cf, re]) => cf === f && re.test(o.k)), p = base - (c ? c[2] : 0);
+  return p >= 550 ? 'epica' : p >= 300 ? 'rara' : 'comun';
+}
+for (const r of collectCatalog()) CAT_IDX[r[0]] = { id: r[0], f: r[1], k: r[2], n: r[3], r: r[4], max: r[5] };
+const LG_TIERS = [5200, 5300, 5500, 6000, 7000, 10500];
+const LG_TOP = { 'deco:lg-ronda0': 40000, 'deco:lg-ronda1': 30000, 'pfx:lg-galaxia': 30000, 'pfx:lg-tormenta': 30000, 'pet:lg-fenix': 30000, 'pet:lg-dragon': 30000, 'nameanim:lg-galaxia': 30000, 'theme:lg-galaxia': 30000, 'deco:lg-coronarayo': 40000, 'aura:lg-tormenta': 30000, 'mouse:lg-holocarta': 30000 };
+function lgPrice(f, k) { const id = f + ':' + k; return LG_TOP[id] || LG_TIERS[itemHash(id) % LG_TIERS.length]; }
+function priceOf(f, k) { return isLegend(f, k) ? lgPrice(f, k) : priceOf10(f, k); }
+Object.assign(LG_PRICE, Object.fromEntries(Object.keys(LG_PRICE).map(k => [k, 5200])));
+
+// ---------- CAJAS: más caras, más chance de 1 de 1 y abrir de a varias
+Object.assign(BOXES.normal, { p: 250, w: { comun: 54.9, rara: 30, epica: 11.4, legendaria: 3, mitica: .5, exotica: .09, unica: .1 } });
+Object.assign(BOXES.especial, { p: 700, w: { rara: 50, epica: 32, legendaria: 13.5, mitica: 3.4, exotica: .8, unica: .3 } });
+async function vBoxes(_, draw) {
+  const odds = b => RORD.filter(r => b.w[r]).map(r => `<li style="--rc:${RAR[r].c}"><span>${RAR[r].n}</span><b>${String(b.w[r]).replace('.', ',')}%</b></li>`).join('');
+  draw(`${ecoNav('cajas')}<section class="pagehead"><div class="eyebrow">Cajas</div><h1>Abrí cajas y conseguí objetos únicos</h1><p class="dim">Cada objeto tiene número de serie y código de patrón. Hay ${Object.values(CAT_IDX).filter(c => c.r === 'mitica').length} míticos, ${Object.values(CAT_IDX).filter(c => c.r === 'exotica').length} exóticos y ${Object.values(CAT_IDX).filter(c => c.r === 'unica').length} objetos que existen una sola vez.</p></section>
+    <div class="boxgrid">${Object.entries(BOXES).map(([k, b]) => `<div class="boxcard bx-${k}"><div class="boxart"><div class="boxcube"><i></i><i></i><i></i></div></div><h2>${b.n}</h2><ul class="odds">${odds(b)}</ul><div class="boxbtns">${[1, 5, 10].map(n => `<button class="btn ${n === 1 ? 'pri' : ''} big" data-act="openboxn" data-b="${k}" data-n="${n}">${n === 1 ? 'Abrir 1' : 'Abrir ' + n} · ${coinSVG(16)} ${(b.p * n).toLocaleString('es-AR')}</button>`).join('')}</div></div>`).join('')}</div>
+    <p class="small dim sec">Las probabilidades son reales y las calcula el servidor. Las cajas se abren solo con monedas que ganás usando la página: no se compran con plata y lo que sacás no se puede cambiar por plata.</p>`);
+}
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-act="openboxn"]'); if (!b || opening) return;
+  if (!isLogged()) { location.hash = '#/entrar/crear'; return; }
+  const box = BOXES[b.dataset.b], n = +b.dataset.n || 1; if (WALLET.coins < box.p * n) return toast(`Te faltan ${(box.p * n - WALLET.coins).toLocaleString('es-AR')} monedas.`);
+  opening = true; document.querySelectorAll('[data-act="openboxn"]').forEach(x => x.disabled = true);
+  let res = null;
+  try { res = await rest('rpc/open_boxes', { method: 'POST', body: { box_id: b.dataset.b, n } }); }
+  catch (x) { opening = false; document.querySelectorAll('[data-act="openboxn"]').forEach(x => x.disabled = false); return toast(/function|404/i.test(x.message) && !/monedas/.test(x.message) ? 'Falta activar las cajas nuevas en Supabase (supabase_v12.sql).' : x.message); }
+  if (typeof res === 'string') try { res = JSON.parse(res); } catch (x) { }
+  const items = (res.items || []).map(r => r.item); WALLET.coins = res.coins ?? WALLET.coins; renderCoins(); INV.list.unshift(...items);
+  const best = items.slice().sort((a, c) => RAR[catOf(c.cid).r].o - RAR[catOf(a.cid).r].o)[0];
+  spinReveal(b.dataset.b, best, () => {
+    opening = false;
+    if (items.length > 1) { const rv = document.querySelector('.boxov .reveal'); if (rv) rv.insertAdjacentHTML('beforeend', `<div class="multi"><div class="lb">Todo lo que salió (${items.length})</div><div class="igrid small">${items.map(it => collCard(it)).join('')}</div></div>`); }
+  });
+});
+
+// ---------- monedas: aviso del regalo de bienvenida y la racha
+async function claimCoins(reason) {
+  if (!isLogged() || document.hidden) return;
+  if (reason !== 'daily' && Date.now() - lastClaim < 5 * 60e3 + 5e3) return;
+  if (reason !== 'daily') lastClaim = Date.now();
+  const before = WALLET.coins;
+  const w = await sbTry(() => rest('rpc/claim_coins', { method: 'POST', body: { reason: reason === 'daily' ? 'daily' : 'time' } }), null);
+  if (!w) return; const row = Array.isArray(w) ? w[0] : w; setWallet(row);
+  const won = WALLET.coins - before; if (won <= 0) return;
+  coinToast(won, won >= 1000 ? '¡regalo de bienvenida!' : reason === 'daily' ? (row.streak && row.streak % 7 === 0 ? `racha de ${row.streak} días` : 'por entrar hoy') : 'por usar JVNN');
+}
+PRO_COUNT = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.filter(o => !o.f).length, 0) + 4;
 
 
 // ============================================================ ONLINE (Supabase)
