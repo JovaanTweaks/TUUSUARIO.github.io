@@ -10,7 +10,7 @@
 <meta name="theme-color" content="#08080b">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2308080b'/%3E%3Crect x='10' y='16' width='44' height='30' rx='6' fill='none' stroke='%23f3c6cf' stroke-width='5'/%3E%3Cpath d='M26 52h12' stroke='%23f3c6cf' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M27 25l11 6-11 6z' fill='%23f3c6cf'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Space+Mono:wght@700&family=Fredoka:wght@600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Archivo:wdth,wght@62..125,400..900&family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Space+Mono:wght@700&family=Fredoka:wght@600;700&display=swap">
 <!--ADSENSE-->
 <style>
 /* Layout: barra superior fija + columna central de 1200px; en celular, barra de navegación abajo. */
@@ -1163,6 +1163,110 @@ a.invite{color:inherit}
 .plink{display:inline-flex;align-items:center;gap:7px;margin-top:8px;padding:6px 12px;border-radius:999px;border:1px solid var(--paccent,var(--accent));color:var(--paccent,var(--accent));font-weight:700;font-size:13.5px;max-width:100%}
 .plink span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .plink:hover{background:rgba(255,255,255,.05)}
+
+/* ============ V8: interfaz nueva para todos */
+:root{--display:"Bricolage Grotesque","Archivo","Arial Narrow",system-ui,sans-serif;--body:"Plus Jakarta Sans","Figtree",system-ui,-apple-system,"Segoe UI",sans-serif}
+body{font-size:15px;letter-spacing:-.003em}
+h1,h2,h3{letter-spacing:-.025em;font-weight:800}
+.pagehead h1{font-size:clamp(30px,4.4vw,48px)}
+.sechead h2{font-size:clamp(20px,2.4vw,26px)}
+.eyebrow{letter-spacing:.14em;font-weight:800}
+/* pestañas */
+.tabs{display:flex;flex-wrap:nowrap;gap:4px;padding:5px;margin:18px 0;background:color-mix(in srgb,var(--surface) 85%,transparent);border:1px solid var(--line);border-radius:16px;overflow-x:auto;scrollbar-width:none;width:max-content;max-width:100%;box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 16px;border:0!important;border-radius:11px!important;background:transparent;color:var(--dim);font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.tab:hover{color:var(--fg);background:rgba(255,255,255,.04)}
+.tab.on{background:var(--raise)!important;color:var(--fg)!important;box-shadow:inset 0 0 0 1px var(--line),0 6px 18px -10px rgba(0,0,0,.8)}
+.tab.on::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none}
+.tab span{display:inline-grid;place-items:center;min-width:22px;height:20px;padding:0 6px;margin-left:2px;border-radius:999px;background:rgba(255,255,255,.06);font-size:12px;color:var(--dim)}
+.tab.on span{background:var(--accent-soft);color:var(--accent)}
+.tab.tabrot{color:#ffe7a3}
+/* botones, paneles y tarjetas */
+.btn{border-radius:12px;font-weight:700;letter-spacing:-.005em;transition:transform .15s,background .2s,border-color .2s}
+.btn:active{transform:scale(.97)}
+.btn.pri{box-shadow:0 8px 22px -12px var(--accent)}
+.panel{border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.025),transparent 120px),var(--surface)}
+.card .pimg{transition:transform .25s,box-shadow .25s}
+.card:hover .pimg{transform:translateY(-3px);box-shadow:0 18px 30px -18px rgba(0,0,0,.9),0 0 0 1px var(--line)}
+.cname{font-weight:700;letter-spacing:-.01em}
+input[type=text],input[type=search],input[type=url],input[type=email],input[type=password],textarea,select{border-radius:12px}
+/* slider de estrenos */
+.sarrow{position:absolute;top:50%;z-index:4;width:44px;height:44px;margin-top:-22px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(10,10,14,.55);color:#fff;font-size:26px;line-height:1;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(6px);opacity:.85}
+.sarrow:hover{opacity:1;background:rgba(10,10,14,.8)}
+.sarrow.prev{left:14px}.sarrow.next{right:14px}
+.sprog{position:absolute;left:0;right:0;bottom:0;height:3px;z-index:4;background:rgba(255,255,255,.08)}
+.sprog i{display:block;height:100%;width:100%;background:var(--accent);transform-origin:left;animation:sprog 6s linear infinite}
+.slider:hover .sprog i{animation-play-state:paused}
+@keyframes sprog{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (max-width:760px){.sarrow{display:none}}
+.plans{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))!important}
+/* nuevas cosas del perfil */
+.fx-ts .pid h1{text-shadow:var(--pts)}
+.sh-clip .pmain .avatar{border-radius:0!important;clip-path:var(--pclip)}
+.pcover.cs-cb{border:2px solid var(--csc);box-shadow:0 16px 44px -22px var(--csc)}
+.pcover.cs-cg{border:2px solid transparent;background:linear-gradient(var(--ptheme,var(--surface)),var(--ptheme,var(--surface))) padding-box,var(--csc) border-box}
+.ss-sk .pstats b{color:var(--ssc)!important}
+.ss-sg .pstats b{background:var(--ssc);-webkit-background-clip:text;background-clip:text;color:transparent!important}
+.na-nb .pid h1{background:linear-gradient(100deg,var(--pname,var(--fg)) 40%,var(--nab) 50%,var(--pname,var(--fg)) 60%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:na-shine 3s linear infinite}
+.na-nd .pid h1{background:var(--nad);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:na-move 5s linear infinite}
+.na-ng .pid h1{animation:na-glow 2.6s ease-in-out infinite}
+@keyframes na-glow{50%{text-shadow:0 0 18px var(--nag),0 0 2px var(--nag)}}
+.ff-fc .fr{box-shadow:0 0 0 3px var(--ffc)}
+.ff-fg .fr{border:3px solid transparent;background:var(--ffg) border-box}
+.bfx-pan{background-size:170% 170%!important;animation:bpan 20s ease-in-out infinite alternate}@keyframes bpan{from{background-position:0 0}to{background-position:100% 100%}}
+.bfx-pulso{animation:bpulse 4s ease-in-out infinite}@keyframes bpulse{50%{filter:brightness(1.22) saturate(1.15)}}
+.bfx-hue{animation:bhue 14s linear infinite}@keyframes bhue{to{filter:hue-rotate(360deg)}}
+.bfx-respira{animation:bbreath 7s ease-in-out infinite}@keyframes bbreath{50%{transform:scale(1.035)}}
+.bfx-vaiven{background-size:200% 100%!important;animation:bsway 10s ease-in-out infinite alternate}@keyframes bsway{to{background-position:100% 0}}
+.bfx-ondas::before,.bfx-brillos::before,.bfx-lluvia::before,.bfx-scan::before,.bfx-aurora::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none}
+.bfx-ondas::before{background:repeating-radial-gradient(circle at 50% 130%,rgba(255,255,255,.09) 0 2px,transparent 2px 24px);animation:bwave 5s linear infinite}@keyframes bwave{to{background-position:0 -26px}}
+.bfx-brillos::before{background:radial-gradient(rgba(255,255,255,.8) 1px,transparent 1.6px) 0 0/43px 43px,radial-gradient(rgba(255,255,255,.6) 1px,transparent 1.6px) 19px 23px/61px 61px;animation:btw 2.4s ease-in-out infinite alternate}@keyframes btw{from{opacity:.25}to{opacity:1}}
+.bfx-lluvia::before{background:repeating-linear-gradient(100deg,transparent 0 22px,rgba(255,255,255,.12) 22px 23px);background-size:200% 200%;animation:brain 1.4s linear infinite}@keyframes brain{to{background-position:-40px 90px}}
+.bfx-scan::before{background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px),linear-gradient(0deg,transparent 45%,rgba(255,255,255,.08) 50%,transparent 55%) 0 0/100% 300%;animation:bscan 5s linear infinite}@keyframes bscan{to{background-position:0 0,0 300%}}
+.bfx-aurora::before{background:radial-gradient(ellipse at 20% 0,rgba(95,242,208,.35),transparent 55%),radial-gradient(ellipse at 80% 20%,rgba(192,139,255,.35),transparent 55%);background-size:160% 160%;animation:baur 12s ease-in-out infinite alternate;mix-blend-mode:screen}@keyframes baur{to{background-position:100% 50%}}
+@media (prefers-reduced-motion:reduce){[class*="bfx-"],[class*="bfx-"]::before{animation:none!important}}
+.compa{position:absolute;right:20px;top:12px;width:78px;height:78px;z-index:3;animation:cfloat 3.4s ease-in-out infinite;filter:drop-shadow(0 6px 8px rgba(0,0,0,.45));pointer-events:none}
+.compa svg{width:100%;height:100%;overflow:visible}
+.pcover.pmini .compa{width:50px;height:50px;right:10px;top:6px}
+@keyframes cfloat{50%{transform:translateY(-6px)}}
+.cprev{display:block;width:52px;height:52px;margin:4px auto}.cprev svg{width:100%;height:100%;overflow:visible}
+.adeco{overflow:visible}
+/* tienda */
+.shophead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.walletbig{display:flex;align-items:center;gap:12px;padding:12px 18px;border-radius:18px;border:1px solid rgba(255,215,106,.4);background:linear-gradient(135deg,rgba(255,215,106,.14),rgba(255,215,106,.03))}
+.walletbig b{display:block;font-family:var(--display);font-size:26px;line-height:1;color:#ffe7a3}.walletbig span{font-size:12.5px;color:var(--dim);font-weight:700}
+.shoptabs{margin-top:20px}
+.shopitems{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.sitem{display:flex;flex-direction:column;gap:8px;padding:10px;border-radius:18px;border:1px solid var(--line);background:var(--surface);text-align:center;transition:border-color .2s,transform .2s}
+.sitem:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.sitem.on{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.sitem>b{font-size:13px;line-height:1.25;min-height:2.5em;display:grid;place-items:center}
+.sitem .btn{justify-content:center;width:100%}
+.sitem .buy{background:rgba(255,215,106,.1);border-color:rgba(255,215,106,.4);color:#ffe7a3}
+.sitem.mine{background:linear-gradient(180deg,rgba(143,240,198,.06),transparent),var(--surface)}
+.sthumb{display:grid;place-items:center;height:104px;border:0;border-radius:13px;background:radial-gradient(circle at 50% 35%,#24222e,#121217);cursor:pointer;overflow:hidden;position:relative;padding:0;color:var(--fg)}
+.sthumb .dprev.big{width:62px;height:62px;margin:0}
+.sthumb .cprev.big{width:78px;height:78px;margin:0}
+.sthumb .tbg{position:absolute;inset:0}
+.sthumb .tname{font-family:var(--display);font-weight:800;font-size:24px}.sthumb .tname.small{font-size:14px;padding:0 8px}
+.sthumb .frs.big,.sthumb .shs.big{width:58px;height:58px}
+.sthumb .dot.big{width:46px;height:46px;border-radius:50%;display:block}
+.sthumb .uptag{margin:0;font-size:12px}
+.tpfx{position:absolute!important;inset:0;border:0!important;border-radius:0!important;background:radial-gradient(circle at 50% 35%,#2a2440,#0b0b14)!important;overflow:hidden}
+/* ranking con perfiles */
+.rk8 li{position:relative;overflow:hidden;isolation:isolate}
+.rk8 .rkbg,.pod8 .podbg{position:absolute;inset:0;z-index:-1;background:var(--rkbg);opacity:.22;-webkit-mask:linear-gradient(90deg,#000,transparent 85%);mask:linear-gradient(90deg,#000,transparent 85%)}
+.pod8 .podbg{opacity:.35;-webkit-mask:linear-gradient(0deg,transparent,#000);mask:linear-gradient(0deg,transparent,#000)}
+.pod8 .pod{position:relative;overflow:hidden;isolation:isolate}
+.rk8 .avwrap,.pod8 .avwrap{flex:none}
+.rk8 .avwrap .adeco,.pod8 .avwrap .adeco{filter:none}
+.sname{font-weight:800;font-size:16px}
+.rkline{display:flex;align-items:center;gap:4px;min-width:0}
+.rkline .nicon{width:18px;height:18px;margin-left:4px}
+.rkline .uptag{font-size:10px;padding:2px 7px;margin-left:6px;vertical-align:0}
+.podname{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px}.podname .nicon{width:18px;height:18px;margin-left:2px}.podname .uptag{font-size:10px;padding:2px 7px;margin:0}
+.rkcompa{width:40px;height:40px;flex:none}.rkcompa svg{width:100%;height:100%;overflow:visible}
+@media (max-width:640px){.rkcompa{display:none}}
 </style>
 </head>
 <body>
@@ -1193,7 +1297,7 @@ a.invite{color:inherit}
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 6.0</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 7.0</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -1655,7 +1759,7 @@ async function route(keepScroll) {
   const id = ++renderId, R = parseRoute(), app = $('#app');
   const y = window.scrollY;
   document.querySelectorAll('[data-r]').forEach(a => a.classList.toggle('on', a.dataset.r === R.name || (R.name === 'stats' && a.dataset.r === 'perfil' && a.closest('.bnav'))));
-  const views = { '': vHome, 'buscar': vSearch, 'serie': vShow, 'ep': vEpisode, 'mis-series': vMine, 'calendario': vCalendar, 'descubrir': vDiscover, 'peliculas': vMovies, 'stats': vStats, 'perfil': vProfile, 'entrar': vLogin, 'nueva-clave': vNewPass, 'gente': vPeople, 'u': vUser, 'categoria': vCategory, 'peli': vMovie, 'pro': vPro, 'monedas': vCoins, 'listas': vLists, 'lista': vList };
+  const views = { '': vHome, 'buscar': vSearch, 'serie': vShow, 'ep': vEpisode, 'mis-series': vMine, 'calendario': vCalendar, 'descubrir': vDiscover, 'peliculas': vMovies, 'stats': vStats, 'perfil': vProfile, 'entrar': vLogin, 'nueva-clave': vNewPass, 'gente': vPeople, 'u': vUser, 'categoria': vCategory, 'peli': vMovie, 'pro': vPro, 'monedas': vCoins, 'tienda': vShop, 'listas': vLists, 'lista': vList };
   const v = views[R.name] || vHome;
   const draw = html => { if (id === renderId) { app.innerHTML = html; fillAds(); } return id === renderId; };
   try { await v(R.args, draw, () => id === renderId); }
@@ -2815,23 +2919,27 @@ document.addEventListener('click', async e => {
 // ---------------------------------------------------------- destacadas de hoy (carrusel del inicio)
 let heroT = null;
 function heroHTML(list) {
-  const items = list.filter(s => s.imgL || s.img).slice(0, 6);
+  const items = list.filter(s => s.imgL || s.img).slice(0, 15);
   if (!items.length) return '';
-  return `<section class="slider sec" id="slider"><div class="slides">${items.map((s, i) => `<article class="slide ${i ? '' : 'on'}" data-i="${i}"><div class="sbg" style="background-image:url('${h(s.imgL || s.img)}')"></div><div class="sin"><div class="eyebrow">Hoy se estrena · T${s.ep.s} · E${s.ep.n}${s.ep.air ? ' · ' + fmtTime(s.ep.air) : ''}</div><h2>${h(s.name)}</h2><p>${h([s.genres.slice(0, 3).map(gname).join(' · '), s.net].filter(Boolean).join(' — '))}</p><div class="stack"><a class="btn pri" href="#/serie/${s.id}">Ver serie</a>${S.shows[s.id] ? `<span class="chip">${LISTS[S.shows[s.id].list]}</span>` : `<button class="btn" data-act="quickadd" data-id="${s.id}">+ Para ver</button>`}</div></div><a class="sposter" href="#/serie/${s.id}">${img(s.img, s.name)}</a></article>`).join('')}</div>
-  <div class="sdots">${items.map((_, i) => `<button class="${i ? '' : 'on'}" data-act="slide" data-v="${i}" aria-label="Destacada ${i + 1}"></button>`).join('')}</div></section>`;
+  const cur = Math.min(window.HERO_I || 0, items.length - 1);
+  return `<section class="slider sec" id="slider"><div class="slides">${items.map((s, i) => `<article class="slide ${i === cur ? 'on' : ''}" data-i="${i}"><div class="sbg" style="background-image:url('${h(s.imgL || s.img)}')"></div><div class="sin"><div class="eyebrow">Hoy se estrena · ${i + 1} de ${items.length} · T${s.ep.s} · E${s.ep.n}${s.ep.air ? ' · ' + fmtTime(s.ep.air) : ''}</div><h2>${h(s.name)}</h2><p>${h([s.genres.slice(0, 3).map(gname).join(' · '), s.net].filter(Boolean).join(' — '))}</p><div class="stack"><a class="btn pri" href="#/serie/${s.id}">Ver serie</a>${S.shows[s.id] ? `<span class="chip">${LISTS[S.shows[s.id].list]}</span>` : `<button class="btn" data-act="quickadd" data-id="${s.id}">+ Para ver</button>`}</div></div><a class="sposter" href="#/serie/${s.id}">${img(s.img, s.name)}</a></article>`).join('')}</div>
+  <button class="sarrow prev" data-act="slidestep" data-v="-1" aria-label="Anterior">‹</button><button class="sarrow next" data-act="slidestep" data-v="1" aria-label="Siguiente">›</button><div class="sprog"><i></i></div>
+  <div class="sdots">${items.map((_, i) => `<button class="${i === cur ? 'on' : ''}" data-act="slide" data-v="${i}" aria-label="Destacada ${i + 1}"></button>`).join('')}</div></section>`;
 }
 function slideTo(i) {
   const sl = document.getElementById('slider'); if (!sl) return;
   const all = sl.querySelectorAll('.slide'), n = all.length; i = (i + n) % n;
   all.forEach((x, k) => x.classList.toggle('on', k === i)); sl.querySelectorAll('.sdots button').forEach((x, k) => x.classList.toggle('on', k === i));
-  sl.dataset.i = i;
+  sl.dataset.i = i; window.HERO_I = i;
+  const pr = sl.querySelector('.sprog i'); if (pr) { pr.style.animation = 'none'; void pr.offsetWidth; pr.style.animation = ''; }
 }
 function startSlider() {
   clearInterval(heroT);
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  heroT = setInterval(() => { const sl = document.getElementById('slider'); if (!sl) return clearInterval(heroT); if (!sl.matches(':hover')) slideTo((+sl.dataset.i || 0) + 1); }, 6500);
+  const sl0 = document.getElementById('slider'); if (sl0) sl0.dataset.i = window.HERO_I || 0;
+  heroT = setInterval(() => { const sl = document.getElementById('slider'); if (!sl) return clearInterval(heroT); if (!sl.matches(':hover')) slideTo((+sl.dataset.i || 0) + 1); }, 6000);
 }
-document.addEventListener('click', e => { const b = e.target.closest('[data-act="slide"]'); if (b) { slideTo(+b.dataset.v); startSlider(); } });
+document.addEventListener('click', e => { const b = e.target.closest('[data-act="slide"]'); if (b) { slideTo(+b.dataset.v); startSlider(); } const st = e.target.closest('[data-act="slidestep"]'); if (st) { const sl = document.getElementById('slider'); slideTo((+(sl && sl.dataset.i) || 0) + +st.dataset.v); startSlider(); } });
 
 
 // ============================================================ V5: JVNN PRO + 200 COSAS PARA PERSONALIZAR + PELÍCULAS POR GÉNERO
@@ -3064,16 +3172,18 @@ async function vPro(_, draw) {
   const pp = n => `${PAY.paypal}/${n}USD`;
   const feats = [['30 colores + cualquier color', 'para tu nombre, como en Discord'], ['16 degradados', 'para tu nombre'], [STYLE_OPTS.font.length + ' letras', 'para tu nombre'], ['10 efectos', 'sombra, contorno, 3D, sello…'], [STYLE_OPTS.frame.length + ' marcos', 'para tu foto, 2 animados'], ['5 formas', 'para tu foto'], [STYLE_OPTS.banner.length + ' banners', 'más subir tu propia imagen'], ['12 texturas', 'y 3 movimientos para el banner'], ['12 fondos', 'para tu tarjeta de perfil'], ['10 temas', 'de colores para toda la página'], ['20 títulos', 'abajo de tu nombre'], [(STYLE_OPTS.deco ? STYLE_OPTS.deco.length - 1 : 40) + ' decoraciones', 'para tu foto (coronas, orejitas, auriculares…)'], [(STYLE_OPTS.pfx ? STYLE_OPTS.pfx.length - 1 : 20) + ' efectos animados', 'nieve, pétalos, estrellas, confeti…'], ['15 animaciones', 'para tu nombre'], ['40 íconos y 20 insignias', 'al lado de tu nombre'], ['Estilos de tarjeta, números y favoritas', 'para que tu perfil sea único'], ['24 actores favoritos', 'en vez de 6'], ['Vitrina de 6 logros', 'en vez de 3'], ['Redes ilimitadas', 'en vez de 3'], ['Insignia PRO', 'en tu perfil']];
   draw(`<section class="prohero"><div class="eyebrow">JVNN Pro</div><h1>Tu perfil, a tu manera.</h1><p class="dim">Más de ${PRO_COUNT} cosas para personalizar tu perfil y la página. Pagás una vez y es tuyo para siempre.</p></section>
+  ${!PRO.me && PRO.plan === 'medio' ? `<div class="invite sec"><div><h2>Tenés el Combo Medio</h2><p class="dim">Más de la mitad de todo ya es tuyo. Si querés todo, podés pasarte al Combo Total.</p></div><a class="btn pri" href="#/tienda">Ir a la tienda</a></div>` : ''}
   ${PRO.me ? `<div class="invite sec"><div><h2>¡Ya sos JVNN Pro! ${proBadge()}</h2><p class="dim">Tenés todo desbloqueado. Gracias por bancar la página.</p></div><a class="btn pri" href="#/perfil">Personalizar mi perfil</a></div>` : ''}
   <div class="plans sec">
+    <div class="plan"><h2>Combo Medio</h2><div class="price">${money(PAY.medio)}<small>pago único</small></div><ul><li><b>Más de la mitad</b> de todo lo que se puede personalizar</li><li><b>Hadas, compañeros, efectos, letras, banners…</b> una buena parte de cada categoría</li><li>Las otras cosas las podés sumar con monedas</li></ul><p class="small dim">No incluye "Ordenar mi perfil".</p></div>
     <div class="plan best"><div class="ptag">Lo más elegido</div><h2>Combo Total</h2><div class="price">${money(PAY.combo)}<small>pago único</small></div><ul>${feats.map(([a, b]) => `<li><b>${a}</b> ${b}</li>`).join('')}</ul></div>
     <div class="plan"><h2>Redes ilimitadas</h2><div class="price">${money(PAY.socials)}<small>pago único</small></div><ul><li><b>Todas tus redes</b> en tu perfil (gratis son 3)</li><li>Instagram, TikTok, X, YouTube, Twitch, Letterboxd, Spotify, Steam, Reddit y Discord</li></ul><p class="small dim">Ya viene incluido en el Combo Total.</p></div>
-    <div class="plan"><h2>Ordenar mi perfil</h2><div class="price">${money(PAY.layout)}<small>pago único</small></div><ul><li><b>Nombre y foto</b> a la izquierda, al centro o a la derecha</li><li><b>Números</b> arriba, al final u ocultos</li><li><b>Secciones</b> en el orden que quieras, o escondidas</li></ul><p class="small dim">Es aparte: no viene en el Combo.</p></div>
+    <div class="plan"><h2>Ordenar mi perfil</h2><div class="price">${money(PAY.layout)}<small>pago único</small></div><ul><li><b>Nombre y foto</b> a la izquierda, al centro o a la derecha</li><li><b>Números</b> arriba, al final u ocultos</li><li><b>Secciones</b> en el orden que quieras, o escondidas</li></ul><p class="small dim">Es aparte: no viene en ningún combo.</p></div>
   </div>
-  <div class="invite sec"><div><h2>${typeof coinSVG === 'function' ? coinSVG(26) : ''} ¿No querés pagar? Juntá monedas</h2><p class="dim">Usando la página ganás monedas y con ellas comprás cosas de a una. Además, cada semana hay 5 cosas Pro gratis para todos.</p></div><a class="btn" href="#/monedas">Ver monedas</a></div>
+  <div class="invite sec"><div><h2>${typeof coinSVG === 'function' ? coinSVG(26) : ''} ¿No querés pagar? Juntá monedas</h2><p class="dim">Usando la página ganás monedas (hasta 30 por día) y en la tienda comprás cosas de a una, probándolas antes. Además, cada semana hay 5 cosas Pro gratis para todos.</p></div><a class="btn" href="#/tienda">Ir a la tienda</a></div>
   <section class="panel sec paybox"><h2 style="margin-bottom:6px">Cómo pagar</h2>
-    ${user ? `<ol class="steps"><li><b>Pagá</b> con PayPal o Mercado Pago (botones abajo).</li><li>En el mensaje o nota del pago escribí tu usuario: <b class="uname">@${h(user)}</b> y qué compraste (Combo, Redes u Ordenar perfil).</li><li>En menos de 24 horas se activa solo en tu cuenta. Recargá la página y vas a ver el ✓ en el botón Pro.</li></ol>
-    <div class="paybtns"><a class="btn pri" href="${pp(PAY.combo)}" target="_blank" rel="noopener">Pagar Combo con PayPal · ${money(PAY.combo)}</a><a class="btn" href="${pp(PAY.socials)}" target="_blank" rel="noopener">Pagar Redes con PayPal · ${money(PAY.socials)}</a><a class="btn" href="${pp(PAY.layout)}" target="_blank" rel="noopener">Pagar Ordenar perfil · ${money(PAY.layout)}</a></div>
+    ${user ? `<ol class="steps"><li><b>Pagá</b> con PayPal o Mercado Pago (botones abajo).</li><li>En el mensaje o nota del pago escribí tu usuario: <b class="uname">@${h(user)}</b> y qué compraste (Combo Total, Combo Medio, Redes u Ordenar perfil).</li><li>En menos de 24 horas se activa solo en tu cuenta. Recargá la página y vas a ver el ✓ en el botón Pro.</li></ol>
+    <div class="paybtns"><a class="btn pri" href="${pp(PAY.combo)}" target="_blank" rel="noopener">Pagar Combo Total · ${money(PAY.combo)}</a><a class="btn" href="${pp(PAY.medio)}" target="_blank" rel="noopener">Pagar Combo Medio · ${money(PAY.medio)}</a><a class="btn" href="${pp(PAY.socials)}" target="_blank" rel="noopener">Pagar Redes con PayPal · ${money(PAY.socials)}</a><a class="btn" href="${pp(PAY.layout)}" target="_blank" rel="noopener">Pagar Ordenar perfil · ${money(PAY.layout)}</a></div>
     <div class="mpbox"><div><b>Mercado Pago (Argentina)</b><span>Transferí el equivalente en pesos al dólar del día al alias:</span></div><div class="alias"><code>${h(PAY.mp)}</code><button class="btn sm" data-act="copymp">Copiar alias</button></div></div>
     <p class="small dim" style="margin:12px 0 0">¿Dudas o problemas con un pago? Escribí en el Discord de JVNN.</p>`
     : `<div class="invite sm"><span>Primero necesitás una cuenta, así la compra queda guardada a tu nombre en cualquier dispositivo.</span><a class="btn sm pri" href="#/entrar/crear">Crear cuenta gratis</a></div>`}
@@ -3525,7 +3635,7 @@ const ratingOf = s => imdbOf(s.imdb) ?? s.rating ?? 0;
 const WALLET = { coins: 0, items: [], ok: false };
 const COIN_PRICE = { name: 200, font: 250, fx: 200, frame: 400, shape: 300, banner: 300, pattern: 200, bfx: 400, theme: 300, accent: 150, title: 200, site: 500, deco: 600, pfx: 800, favframe: 300, card: 400, nameanim: 600, nicon: 250, statstyle: 300, tag: 400 };
 const priceOf = (f, k) => ['name:custom', 'accent:custom', 'banner:img'].includes(f + ':' + k) ? 800 : (COIN_PRICE[f] || 300);
-const coinSVG = (sz = 16) => `<svg class="coin" width="${sz}" height="${sz}" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#ffd76a"/><circle cx="12" cy="12" r="7.2" fill="none" stroke="#b8860b" stroke-width="1.6"/><path d="M9.5 8.5h4a2 2 0 0 1 0 4h-3m0-4v7m0-3h3.5a2 2 0 0 1 0 4h-4" fill="none" stroke="#8a6a1a" stroke-width="1.6" stroke-linecap="round"/></svg>`;
+const coinSVG7 = (sz = 16) => `<svg class="coin" width="${sz}" height="${sz}" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#ffd76a"/><circle cx="12" cy="12" r="7.2" fill="none" stroke="#b8860b" stroke-width="1.6"/><path d="M9.5 8.5h4a2 2 0 0 1 0 4h-3m0-4v7m0-3h3.5a2 2 0 0 1 0 4h-4" fill="none" stroke="#8a6a1a" stroke-width="1.6" stroke-linecap="round"/></svg>`;
 function setWallet(w) { if (!w) return; WALLET.coins = w.coins || 0; WALLET.items = w.items || []; WALLET.ok = true; renderCoins(); }
 async function loadWallet() {
   WALLET.ok = false; WALLET.coins = 0; WALLET.items = [];
@@ -3548,7 +3658,7 @@ setInterval(() => claimCoins('time'), 60e3);
 document.addEventListener('click', e => { if (e.target.closest('[data-act="ep"],[data-act="nextep"],[data-act="calep"],[data-act="mseen"],[data-act="mquick"]')) setTimeout(() => claimCoins('time'), 800); });
 function renderCoins() {
   let el = document.getElementById('coinchip');
-  if (!el) { const a = document.getElementById('acct'); if (!a) return; el = document.createElement('a'); el.id = 'coinchip'; el.className = 'coinchip'; el.href = '#/monedas'; a.parentNode.insertBefore(el, a); }
+  if (!el) { const a = document.getElementById('acct'); if (!a) return; el = document.createElement('a'); el.id = 'coinchip'; el.className = 'coinchip'; el.href = '#/tienda'; a.parentNode.insertBefore(el, a); }
   el.hidden = !isLogged();
   el.innerHTML = `${coinSVG(18)}<b>${WALLET.coins.toLocaleString('es-AR')}</b>`;
 }
@@ -3562,10 +3672,10 @@ async function buyWithCoins(f, k) {
 }
 async function vCoins(_, draw) {
   draw(`<section class="pagehead"><div class="eyebrow">Monedas JVNN</div><h1>${coinSVG(36)} ${WALLET.coins.toLocaleString('es-AR')} monedas</h1><p class="dim">Juntás monedas usando la página y con ellas comprás cosas para tu perfil, una por una.</p></section>
-  <div class="stiles sec">${statTile('cada 4 minutos usando JVNN', '+5', '#ffd76a', 'clock')}${statTile('por entrar cada día', '+30', '#f3c6cf', 'heart')}${statTile('máximo por día (sin contar el diario)', '300', '#8fbcff', 'loop')}${statTile('cosas que ya compraste', WALLET.items.length, '#c3a8ff', 'plus')}</div>
+  <div class="stiles sec">${statTile('cada 5 minutos usando JVNN', '+5', '#ffd76a', 'clock')}${statTile('por entrar cada día', '+10', '#f3c6cf', 'heart')}${statTile('máximo por día, en total', '30', '#8fbcff', 'loop')}${statTile('cosas que ya compraste', WALLET.items.length, '#c3a8ff', 'plus')}</div>
   <section class="panel sec"><h3>Cuánto cuesta cada cosa</h3><div class="pricelist">${Object.entries(COIN_PRICE).map(([f, p]) => `<div><span>${h(CAT_NAMES[f] || f)}</span><b>${coinSVG(14)} ${p}</b></div>`).join('')}<div><span>Color libre / foto propia de banner</span><b>${coinSVG(14)} 800</b></div></div>
   <p class="small dim" style="margin:12px 0 0">Con <a href="#/pro" style="color:var(--accent);font-weight:700">JVNN Pro</a> tenés todo desbloqueado de una. Las monedas sirven para ir comprando de a una sin pagar.</p></section>
-  ${isLogged() ? '<div class="sec"><a class="btn pri" href="#/perfil">Ir a personalizar mi perfil</a></div>' : '<div class="invite sec"><div><h2>Empezá a juntar monedas</h2><p class="dim">Necesitás una cuenta gratis.</p></div><a class="btn pri" href="#/entrar/crear">Crear cuenta</a></div>'}`);
+  ${isLogged() ? '<div class="sec actions"><a class="btn pri" href="#/tienda">Ir a la tienda</a><a class="btn" href="#/perfil">Personalizar mi perfil</a></div>' : '<div class="invite sec"><div><h2>Empezá a juntar monedas</h2><p class="dim">Necesitás una cuenta gratis.</p></div><a class="btn pri" href="#/entrar/crear">Crear cuenta</a></div>'}`);
 }
 
 // ---------------------------------------------------------- rotación semanal: 5 cosas Pro gratis por semana
@@ -3573,14 +3683,14 @@ function weekNum() { const d = new Date(); const y = new Date(d.getFullYear(), 0
 let ROT = null;
 function rotation() {
   if (ROT && ROT.w === weekNum()) return ROT.set;
-  const all = []; for (const [f, l] of Object.entries(STYLE_OPTS)) if (f !== 'site') for (const o of l) if (!o.f && !['img'].includes(o.k) && !(f === 'tag' && o.k === 'fundador')) all.push(f + ':' + o.k);
+  const all = []; for (const [f, l] of Object.entries(STYLE_OPTS)) if (f !== 'site') for (const o of l) if (!o.f && !['img'].includes(o.k) && !FOUNDER_ONLY(f, o.k)) all.push(f + ':' + o.k);
   let seed = weekNum(); const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
   const set = new Set(); while (set.size < 5 && all.length) set.add(all[Math.floor(rnd() * all.length)]);
   ROT = { w: weekNum(), set }; return set;
 }
 const rotFree = (f, k) => rotation().has(f + ':' + k);
 const ownsItem = (row, f, k) => !!(row && (row.items || []).includes(f + ':' + k));
-const unlockedFor = (row, f, o) => !!(o && (o.f || isProRow(row) || ownsItem(row, f, o.k) || rotFree(f, o.k)));
+const unlockedFor = (row, f, o) => !!(o && (FOUNDER_ONLY(f, o.k) ? !!(row && (row.items || []).includes('founder')) : (o.f || isProRow(row) || ownsItem(row, f, o.k) || rotFree(f, o.k) || inMedio(row, f, o))));
 const unlocked = (f, o) => unlockedFor(myProRow(), f, o);
 const hasLayout = row => !!(row && (row.plan === 'layout' || (row.items || []).includes('layout')));
 function mergeRow(prem, wal) { return { plan: prem ? prem.plan : '', items: [...((prem && prem.items) || []), ...((wal && wal.items) || []), ...(prem && prem.plan === 'layout' ? ['layout'] : [])] }; }
@@ -3806,7 +3916,7 @@ function customizeHTML() {
   loadAllFontsPreview();
   const st = Object.assign({}, STYLE_DEF, S.profile.style), view = Object.assign({}, st, PREVIEW), tab = UI.ctab || 'nombre';
   const g = (title, inner, note) => `<div class="cgroup"><div class="lb">${title}${note ? ` <span class="dim">· ${note}</span>` : ''}</div>${inner}</div>`;
-  const sw = f => `<div class="swgrid wide">${STYLE_OPTS[f].map(o => opt(f, o, view[f], h(o.n))).join('')}</div>`;
+  const sw = f => `<div class="swgrid wide">${STYLE_OPTS[f].filter(o => !FOUNDER_ONLY(f, o.k) || myProRow().items.includes('founder')).map(o => opt(f, o, view[f], (o.c ? `<i class="dot" style="background:${o.c}"></i>` : '') + h(o.n))).join('')}</div>`;
   let body = '';
   if (tab === 'semana') {
     const items = [...rotation()].map(x => { const i = x.indexOf(':'); const f = x.slice(0, i), k = x.slice(i + 1); return [f, optOf(f, k)]; }).filter(x => x[1]);
@@ -3816,14 +3926,14 @@ function customizeHTML() {
       + g('Nombre en degradado', `<div class="swgrid wide">${STYLE_OPTS.name.filter(o => o.k.startsWith('g:')).map(o => opt('name', o, view.name, `<span class="gsample" style="background:${o.v}">${h(o.n.replace(' (degradado)', ''))}</span>`)).join('')}</div>`)
       + g('Animación del nombre', sw('nameanim'))
       + g('Letra', `<div class="swgrid fonts">${STYLE_OPTS.font.map(o => opt('font', o, view.font, `<span style="font-family:'${o.k}',var(--display)">${h(o.n)}</span>`)).join('')}</div>`, STYLE_OPTS.font.length + ' letras')
-      + g('Efecto', `<div class="swgrid wide">${STYLE_OPTS.fx.map(o => opt('fx', o, view.fx, `<span class="fxs fx-${o.k}">${h(o.n)}</span>`)).join('')}</div>`)
+      + g('Efecto', `<div class="swgrid wide">${STYLE_OPTS.fx.map(o => opt('fx', o, view.fx, `<span class="fxs fx-${o.k}" ${/^ts\d/.test(o.k) ? `style="text-shadow:${o.v}"` : ''}>${h(o.n)}</span>`)).join('')}</div>`)
       + g('Ícono al lado del nombre', `<div class="swgrid">${STYLE_OPTS.nicon.map(o => { const [gg, col] = (o.v || '|').split('|'); return opt('nicon', o, view.nicon, o.v ? `<svg width="20" height="20" viewBox="0 0 24 24" style="color:${col};fill:currentColor">${NGLYPH[gg]}</svg>` : 'Ninguno'); }).join('')}</div>`, '40 íconos')
       + g('Insignia especial', `<div class="swgrid wide">${STYLE_OPTS.tag.filter(o => o.k !== 'fundador' || myProRow().items.includes('founder')).map(o => { const [a, b] = (o.v || '|').split('|'); return opt('tag', o, view.tag, o.v ? `<span class="uptag" style="background:linear-gradient(135deg,${a},${b})">${h(o.n)}</span>` : 'Ninguna'); }).join('')}</div>`)
       + g('Título abajo de tu nombre', sw('title'));
   } else if (tab === 'foto') {
     body = g('Decoración de tu foto', `<div class="swgrid decos">${STYLE_OPTS.deco.map(o => opt('deco', o, view.deco, o.v ? `<span class="dprev"><i></i>${decoHTML({ deco: o.k })}</span><small>${h(o.n)}</small>` : '<small>Sin decoración</small>')).join('')}</div>`, '40 decoraciones')
       + g('Marco de tu foto', `<div class="swgrid">${STYLE_OPTS.frame.map(o => opt('frame', o, view.frame, `<span class="frs ${o.v === 'double' ? 'fr-double' : o.v === 'dashed' ? 'fr-dashed' : o.v === 'spin' ? 'fr-spin' : o.v === 'pulse' ? 'fr-pulse' : o.v === 'transparent' ? 'fr-none' : 'fr-grad'}" style="--pframe:${['double', 'dashed', 'spin', 'pulse', 'transparent'].includes(o.v) ? 'var(--paccent,var(--accent))' : o.v}"><i></i></span><small>${h(o.n)}</small>`)).join('')}</div>`)
-      + g('Forma de tu foto', `<div class="swgrid">${STYLE_OPTS.shape.map(o => opt('shape', o, view.shape, `<span class="shs ${o.v === 'hex' ? 'sh-hex' : ''}" style="border-radius:${o.v === 'hex' ? '0' : o.v}"></span><small>${h(o.n)}</small>`)).join('')}</div>`);
+      + g('Forma de tu foto', `<div class="swgrid">${STYLE_OPTS.shape.map(o => opt('shape', o, view.shape, `<span class="shs ${o.v === 'hex' ? 'sh-hex' : ''}" style="${String(o.v).startsWith('clip:') ? `clip-path:${o.v.slice(5)};border-radius:0` : `border-radius:${o.v === 'hex' ? '0' : o.v}`}"></span><small>${h(o.n)}</small>`)).join('')}</div>`);
   } else if (tab === 'banner') {
     const imgOk = unlocked('banner', { k: 'img', f: false });
     body = g('Banner', `<div class="banners">${STYLE_OPTS.banner.map(o => o.k === 'img' ? `<label class="bchoice ${view.banner === 'img' ? 'on' : ''} ${imgOk ? '' : 'locked'}" for="pbanimg"><span style="${st.bannerImg ? `background-image:url('${st.bannerImg}');background-size:cover` : 'background:var(--raise)'}">${st.bannerImg ? 'Mi imagen' : '+ Subir imagen'}</span>${imgOk ? '' : lockSVG}</label><input type="file" id="pbanimg" accept="image/*" hidden>` : tile('banner', o, view.banner, `background:${o.v === 'fav' ? 'linear-gradient(90deg,#333,#555)' : o.v}`)).join('')}</div>`, STYLE_OPTS.banner.length + ' banners')
@@ -3836,6 +3946,8 @@ function customizeHTML() {
       + g('Estilo de la tarjeta', sw('card')) + g('Fondo de la tarjeta', `<div class="banners">${STYLE_OPTS.theme.map(o => tile('theme', o, view.theme, `background:${o.v || 'var(--surface)'};border:1px solid var(--line)`)).join('')}</div>`)
       + g('Estilo de los números', sw('statstyle')) + g('Marco de tus favoritas', sw('favframe'))
       + `<div class="two" style="margin-top:12px"><div><label class="lb" for="pfeat">Serie destacada</label><select class="btn" id="pfeat" style="width:100%"><option value="">Ninguna</option>${myShows().sort((a, b) => a.name.localeCompare(b.name)).map(r => `<option value="${r.id}" ${st.featured === r.id ? 'selected' : ''}>${h(r.name)}</option>`).join('')}</select></div><div><label class="lb" for="pstat">Estado</label><input type="text" id="pstat" maxlength="70" value="${h(st.status || '')}" placeholder="Ej: viendo Bleach por tercera vez"></div></div>`;
+  } else if (tab === 'compa') {
+    body = compaEditHTML(view);
   } else if (tab === 'efectos') {
     body = g('Efecto animado en tu perfil', `<div class="banners">${STYLE_OPTS.pfx.map(o => tile('pfx', o, view.pfx, 'background:radial-gradient(circle at 30% 30%,#2a2440,#0b0b14)')).join('')}</div>`, 'se ve en tu perfil en movimiento');
   } else if (tab === 'diseno') {
@@ -3911,7 +4023,7 @@ document.addEventListener('input', e => {
 
 // ---------------------------------------------------------- banner con foto propia: mover, acercar y alto
 const bposOf = st => { const b = (st && st.bpos) || {}, n = (v, d) => isFinite(+v) && v !== '' && v != null ? +v : d; return { x: n(b.x, 50), y: n(b.y, 50), z: n(b.z, 100), hgt: n(b.hgt, 150) }; };
-function bannerHTML(style, favs) {
+function bannerHTMLv7(style, favs) {
   const st = Object.assign({}, STYLE_DEF, style || {}), b = bposOf(st);
   const hs = b.hgt !== 150 ? ` style="--bh:${b.hgt}px"` : '';
   if (st.banner === 'img' && /^data:image\/(jpeg|png|webp);base64,/.test(st.bannerImg || '')) {
@@ -3960,6 +4072,300 @@ document.addEventListener('change', e => {
   })();
 }, true);
 ICONS.link = '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>';
+
+
+// ============================================================ V8: +600 PERSONALIZABLES (HADAS, COMPAÑEROS…), COMBO MEDIO, TIENDA CON VISTA PREVIA, RANKING CON PERFILES
+const hx8 = c => [1, 3, 5].map(i => parseInt(c.slice(i, i + 2), 16));
+const mix8 = (a, b, t) => { const A = hx8(a), B = hx8(b); return '#' + A.map((v, i) => Math.round(v + (B[i] - v) * t).toString(16).padStart(2, '0')).join(''); };
+const rgba8 = (c, a) => `rgba(${hx8(c).join(',')},${a})`;
+const swatch = (o, c) => Object.assign(o, { c });
+const XCOL = [['cereza', 'Cereza', '#d6264f'], ['sandia', 'Sandía', '#ff6b7a'], ['salmon', 'Salmón', '#ff9e8a'], ['mandarina', 'Mandarina', '#ff8c42'], ['miel', 'Miel', '#e8b04a'], ['mostaza', 'Mostaza', '#d9b23a'], ['pistacho', 'Pistacho', '#b5d67a'], ['oliva', 'Oliva', '#8fa85a'], ['esmeralda', 'Esmeralda', '#2bb07a'], ['jade', 'Jade', '#3ec9a0'], ['turquesa', 'Turquesa', '#3fd6d0'], ['agua', 'Agua', '#7ff0e8'], ['cielo', 'Cielo', '#9ad0ff'], ['zafiro', 'Zafiro', '#3d6bff'], ['indigo', 'Índigo', '#6a5aff'], ['lavanda', 'Lavanda', '#b9a8ff'], ['orquidea', 'Orquídea', '#d07aff'], ['magenta', 'Magenta', '#ff4ad6'], ['fucsia', 'Fucsia', '#ff2e9a'], ['chicle2', 'Rosa chicle', '#ffa8d8'], ['palo', 'Rosa palo', '#f2d0d6'], ['nude', 'Nude', '#e8c4b0'], ['arena', 'Arena', '#e6d2a8'], ['cafe', 'Café', '#b07a52'], ['chocolate', 'Chocolate', '#8a5a3a'], ['grafito', 'Grafito', '#7a7f8c'], ['hielo', 'Hielo', '#dff4ff'], ['perla', 'Perla', '#f4efe6'], ['vino', 'Vino', '#a8325a'], ['bosque', 'Bosque', '#3a8a5a'], ['noche', 'Azul noche', '#4a6ad6'], ['melocoton', 'Melocotón', '#ffc8a8']];
+const ALLCOL = [...COLORS, ...XCOL];
+const PALN = BNAMES;
+
+// ---------- colores, degradados y efectos del nombre
+STYLE_OPTS.name.push(...BPAL.slice(0, 16).map((p, i) => C('g:x' + i, PALN[i] + ' (degradado)', `linear-gradient(90deg,${p[0]},${p[1]})`)));
+const TSN = [['Brillo', c => `0 0 14px ${rgba8(c, .6)}`], ['Sombra', c => `0 3px 0 ${c}`], ['Doble', c => `2px 2px 0 ${c},4px 4px 0 rgba(0,0,0,.45)`], ['Larga', c => `1px 1px 0 ${c},2px 2px 0 ${c},3px 3px 0 ${c},4px 4px 0 ${c},5px 5px 0 rgba(0,0,0,.35)`], ['Halo', c => `0 0 2px #000,0 0 10px ${c}`]];
+const TSC = [['rosa', 'rosa', '#ff8fb8'], ['azul', 'azul', '#6aa8ff'], ['violeta', 'violeta', '#a87aff'], ['oro', 'dorado', '#ffd76a'], ['menta', 'menta', '#5ad1a8'], ['rojo', 'rojo', '#ff5c5c'], ['blanco', 'blanco', '#ffffff'], ['negro', 'negro', '#000000'], ['turquesa', 'turquesa', '#3fd6d0'], ['naranja', 'naranja', '#ff9a4a']];
+STYLE_OPTS.fx.push(...TSN.flatMap(([n, f], i) => TSC.map(([k, cn, c], j) => C(`ts${i}${j}`, `${n} ${cn}`, f(c)))));
+
+// ---------- marcos, formas, texturas, fondos, colores
+STYLE_OPTS.frame.push(...BPAL.map((p, i) => C('fg' + i, PALN[i], `linear-gradient(135deg,${p[0]},${p[1]})`)), ...BPAL.map((p, i) => C('fc' + i, PALN[i] + ' giratorio', `conic-gradient(${p[0]},${p[1]},${p[0]})`)).slice(0, 8), ...XCOL.slice(0, 8).map(([k, n, c]) => C('fs-' + k, n, `linear-gradient(${c},${c})`)));
+const poly = (n, rot = -90, r = 50) => 'polygon(' + Array.from({ length: n }, (_, i) => { const a = (rot + i * 360 / n) * Math.PI / 180; return `${(50 + r * Math.cos(a)).toFixed(1)}% ${(50 + r * Math.sin(a)).toFixed(1)}%`; }).join(',') + ')';
+const star = (n, k) => 'polygon(' + Array.from({ length: n * 2 }, (_, i) => { const a = (-90 + i * 180 / n) * Math.PI / 180, r = i % 2 ? 50 * k : 50; return `${(50 + r * Math.cos(a)).toFixed(1)}% ${(50 + r * Math.sin(a)).toFixed(1)}%`; }).join(',') + ')';
+let seed8 = 7; const rnd8 = () => (seed8 = (seed8 * 9301 + 49297) % 233280) / 233280;
+const SHAPES8 = [
+  ['tri', 'Triángulo', 'clip:' + poly(3, -90, 56)], ['rombo', 'Rombo', 'clip:polygon(50% 0,100% 50%,50% 100%,0 50%)'], ['penta', 'Pentágono', 'clip:' + poly(5)], ['hexa', 'Hexágono parado', 'clip:' + poly(6)], ['hepta', 'Heptágono', 'clip:' + poly(7)], ['octo', 'Octógono', 'clip:' + poly(8, -67.5)], ['enea', 'Eneágono', 'clip:' + poly(9)], ['deca', 'Decágono', 'clip:' + poly(10)], ['once', '11 lados', 'clip:' + poly(11)], ['doce', '12 lados', 'clip:' + poly(12)],
+  ...[4, 5, 6, 7, 8, 10, 12].flatMap(n => [['st' + n, `Estrella de ${n} puntas`, 'clip:' + star(n, .5)], ['sts' + n, `Estrella suave de ${n}`, 'clip:' + star(n, .75)]]),
+  ['escudo', 'Escudo', 'clip:polygon(50% 0,100% 14%,100% 58%,50% 100%,0 58%,0 14%)'], ['corte', 'Esquinas cortadas', 'clip:polygon(18% 0,82% 0,100% 18%,100% 82%,82% 100%,18% 100%,0 82%,0 18%)'], ['cruz', 'Cruz', 'clip:polygon(30% 0,70% 0,70% 30%,100% 30%,100% 70%,70% 70%,70% 100%,30% 100%,30% 70%,0 70%,0 30%,30% 30%)'], ['ticket', 'Ticket', 'clip:polygon(0 0,100% 0,100% 40%,92% 50%,100% 60%,100% 100%,0 100%,0 60%,8% 50%,0 40%)'], ['casa', 'Casita', 'clip:polygon(50% 0,100% 38%,100% 100%,0 100%,0 38%)'],
+  ['r6', 'Casi cuadrado', '6%'], ['r18', 'Redondeado suave', '18%'], ['r22', 'Redondeado medio', '22%'], ['r34', 'Muy redondeado', '34%'], ['r40', 'Squircle', '40%'], ['r0', 'Cuadrado recto', '0'],
+  ['hoja', 'Hoja', '0 50%'], ['hoja2', 'Hoja al revés', '50% 0'], ['lagrima', 'Lágrima', '50% 50% 50% 0'], ['lagrima2', 'Lágrima al revés', '0 50% 50% 50%'],
+  ...Array.from({ length: 16 }, (_, i) => { const r = () => Math.round(35 + rnd8() * 30); return ['blob' + i, 'Burbuja ' + (i + 1), `${r()}% ${r()}% ${r()}% ${r()}% / ${r()}% ${r()}% ${r()}% ${r()}%`]; })];
+STYLE_OPTS.shape.push(...SHAPES8.map(([k, n, v]) => C(k, n, v)));
+const PATCOL = [['blanco', 'blancos', '255,255,255', .28], ['rosa', 'rosas', '255,143,184', .35], ['azul', 'azules', '143,188,255', .35]];
+STYLE_OPTS.pattern.push(
+  ...[8, 18, 26].flatMap(s => PATCOL.map(([k, n, c, a]) => C(`pd${s}${k}`, `Puntos ${s < 10 ? 'chicos' : s < 20 ? 'medianos' : 'grandes'} ${n}`, `radial-gradient(rgba(${c},${a}) ${s / 9}px,transparent ${s / 9 + .5}px) 0 0/${s}px ${s}px`))),
+  ...[[45, 'Rayas diagonales'], [-45, 'Rayas al revés'], [0, 'Rayas horizontales'], [90, 'Rayas verticales']].flatMap(([d, n]) => [8, 18].flatMap(s => PATCOL.map(([k, cn, c, a]) => C(`pl${d}${s}${k}`, `${n} ${s < 10 ? 'finas' : 'anchas'} ${cn}`, `repeating-linear-gradient(${d}deg,rgba(${c},${a * .5}) 0 2px,transparent 2px ${s}px)`)))),
+  ...[12, 30].flatMap(s => PATCOL.map(([k, cn, c, a]) => C(`pg${s}${k}`, `Cuadrícula ${s < 20 ? 'chica' : 'grande'} ${cn}`, `linear-gradient(rgba(${c},${a * .45}) 1px,transparent 1px) 0 0/${s}px ${s}px,linear-gradient(90deg,rgba(${c},${a * .45}) 1px,transparent 1px) 0 0/${s}px ${s}px`))),
+  ...[16, 32].flatMap(s => PATCOL.map(([k, cn, c, a]) => C(`pc${s}${k}`, `Ajedrez ${s < 20 ? 'chico' : 'grande'} ${cn}`, `repeating-conic-gradient(rgba(${c},${a * .4}) 0 25%,transparent 0 50%) 0 0/${s}px ${s}px`))),
+  ...PATCOL.map(([k, cn, c, a]) => C(`pw${k}`, `Olas ${cn}`, `radial-gradient(circle at 50% 100%,transparent 8px,rgba(${c},${a}) 9px,transparent 10.5px) 0 0/22px 11px`)),
+  ...PATCOL.map(([k, cn, c, a]) => C(`ps${k}`, `Estrellitas ${cn}`, `radial-gradient(rgba(${c},${a + .2}) 1px,transparent 1.5px) 0 0/37px 37px,radial-gradient(rgba(${c},${a}) 1px,transparent 1.5px) 11px 19px/53px 53px`)));
+STYLE_OPTS.theme.push(...ALLCOL.filter(c => c[0] !== 'rosa').slice(0, 30).map(([k, n, c]) => C('t-' + k, n, `linear-gradient(180deg,${mix8(c, '#0e0e13', .82)},${mix8(c, '#0b0b0f', .93)})`)), ...BPAL.map((p, i) => C('tp' + i, PALN[i], `linear-gradient(160deg,${mix8(p[0], '#0e0e13', .8)},${mix8(p[1], '#0b0b0f', .85)})`)));
+STYLE_OPTS.accent.push(...XCOL.map(([k, n, c]) => C(c, n, c)));
+STYLE_OPTS.site.push(...ALLCOL.filter(c => !['rosa', 'blanco'].includes(c[0])).slice(0, 50).map(([k, n, c]) => C('s-' + k, n, { bg: mix8(c, '#07070a', .95), surface: mix8(c, '#111116', .92), raise: mix8(c, '#1a1a21', .9), line: mix8(c, '#2a2a34', .82), accent: c, amb1: rgba8(c, .1), amb2: 'rgba(61,139,255,.07)' })));
+const TITLES8 = ['Fan de las sitcoms', 'Adicto a los realities', 'Experto en policiales', 'Fan de la ciencia ficción', 'Fan de la fantasía', 'Fan del romance', 'Shippeo todo', 'Team villanos', 'Llorón profesional', 'Me duermo a mitad de capítulo', 'Un capítulo más y me voy', 'Maratón de fin de semana', 'Coleccionista de temporadas', 'Fan de los thrillers', 'Fan de las comedias', 'Fan del anime shonen', 'Fan del isekai', 'Cazador de joyas ocultas', 'Crítico exigente', 'Amante del cine clásico', 'Vivo en el sofá', 'Pochoclero', 'Series con mate', 'Nocturno de series', 'Madrugador de estrenos', 'Profeta de spoilers', 'Anti spoilers', 'Sabe todos los finales', 'Fan de las miniseries', 'Fan de los documentales', 'Fan del true crime', 'Fan del terror psicológico', 'Fan del drama', 'Fan de la animación', 'Fan del cine argentino', 'Fan de las telenovelas', 'Experto en sagas', 'Rey del rewatch', 'Reina del rewatch', 'Leyenda del maratón', 'Viajero de mundos', 'Amigo de las hadas'];
+STYLE_OPTS.title.push(...TITLES8.map(t => C(t, t, '')));
+
+// ---------- tarjeta, números, animaciones del nombre, marco de favoritas (con colores)
+const XC24 = ALLCOL.filter(c => !['blanco'].includes(c[0])).slice(0, 25);
+STYLE_OPTS.card.push(...XC24.map(([k, n, c]) => swatch(C('cb-' + k, 'Borde ' + n.toLowerCase(), c), c)), ...BPAL.map((p, i) => swatch(C('cg-' + i, 'Borde ' + PALN[i].toLowerCase(), `linear-gradient(135deg,${p[0]},${p[1]})`), `linear-gradient(135deg,${p[0]},${p[1]})`)));
+STYLE_OPTS.statstyle.push(...ALLCOL.slice(0, 30).map(([k, n, c]) => swatch(C('sk-' + k, 'Números ' + n.toLowerCase(), c), c)), ...BPAL.map((p, i) => swatch(C('sg-' + i, 'Degradé ' + PALN[i].toLowerCase(), `linear-gradient(90deg,${p[0]},${p[1]})`), `linear-gradient(90deg,${p[0]},${p[1]})`)));
+STYLE_OPTS.nameanim.push(...ALLCOL.slice(0, 15).map(([k, n, c]) => swatch(C('nb-' + k, 'Brillo ' + n.toLowerCase() + ' que pasa', c), c)), ...BPAL.map((p, i) => swatch(C('nd-' + i, PALN[i] + ' en movimiento', `linear-gradient(90deg,${p[0]},${p[1]},${p[0]})`), `linear-gradient(90deg,${p[0]},${p[1]})`)), ...TSC.map(([k, n, c]) => swatch(C('ng-' + k, 'Late con brillo ' + n, c), c)));
+STYLE_OPTS.favframe.push(...ALLCOL.slice(0, 20).map(([k, n, c]) => swatch(C('fc-' + k, n, c), c)), ...BPAL.map((p, i) => swatch(C('fg-' + i, PALN[i], `linear-gradient(135deg,${p[0]},${p[1]})`), `linear-gradient(135deg,${p[0]},${p[1]})`)));
+STYLE_OPTS.bfx.push(...[['pan', 'Paneo lento (animado)'], ['pulso', 'Late suave (animado)'], ['hue', 'Cambia de color (animado)'], ['respira', 'Respira (animado)'], ['ondas', 'Ondas (animado)'], ['brillos', 'Brillitos (animado)'], ['lluvia', 'Lluvia (animado)'], ['scan', 'Tele vieja (animado)'], ['aurora', 'Aurora (animado)'], ['vaiven', 'Vaivén (animado)']].map(([k, n]) => C(k, n, '')));
+
+// ---------- efectos de partículas: combinaciones nuevas
+const PPAL = { rosa: ['#ff8fb8', '#ffd1e8'], azul: ['#8fbcff', '#bfe3ff'], violeta: ['#c3a8ff', '#e6d6ff'], oro: ['#ffd76a', '#fff3c4'], menta: ['#8ff0c6', '#c2f5d8'], rojo: ['#ff6b6b', '#ffb3b3'], blanco: ['#ffffff'], arcoiris: ['#ff8fb8', '#ffd76a', '#8ff0c6', '#8fbcff', '#c3a8ff'], turquesa: ['#5ff2d0', '#b8fff0'] };
+const PPN = { rosa: 'rosa', azul: 'azul', violeta: 'violeta', oro: 'dorado', menta: 'menta', rojo: 'rojo', blanco: 'blanco', arcoiris: 'arcoíris', turquesa: 'turquesa' };
+{
+  let added = 0;
+  for (const t of ['estrellas', 'burbujas', 'petalos', 'corazones', 'luciernagas', 'bokeh', 'diamantes', 'nieve', 'chispas', 'brillos']) for (const p of Object.keys(PPAL)) {
+    if (added >= 40) break;
+    const k = `g-${t}-${p}`; if (PFX[k]) continue;
+    if ((t === 'nieve' && p === 'blanco') || (t === 'corazones' && p === 'rosa') || (t === 'brillos' && p === 'oro') || (t === 'burbujas' && p === 'azul')) continue;
+    PFX[k] = { ...PFX[t], c: PPAL[p] }; PFXN[k] = `${PFXN[t]} (${PPN[p]})`; STYLE_OPTS.pfx.push(C(k, PFXN[k], k)); added++;
+  }
+}
+// hadas con su brillo
+PFX.hadas = { s: 'glow', c: ['#5ff2d0', '#ff8fc8', '#c08bff', '#ffd76a'], n: 30, r: [1.5, 3.5], vy: [-.4, .4], vx: .5, tw: 1 }; PFXN.hadas = 'Polvo de hadas'; STYLE_OPTS.pfx.push(C('hadas', 'Polvo de hadas', 'hadas'));
+
+// ---------- íconos y etiquetas nuevas
+Object.assign(NGLYPH, { brillo: '<path d="M12 2C13 8 16 11 22 12C16 13 13 16 12 22C11 16 8 13 2 12C8 11 11 8 12 2Z"/>', nube: '<path d="M7 19a5 5 0 0 1-.5-10A6 6 0 0 1 18 8a4.5 4.5 0 0 1 0 11z"/>', gota: '<path d="M12 2s7 8 7 13a7 7 0 0 1-14 0c0-5 7-13 7-13z"/>', hoja: '<path d="M20 4C10 4 4 9 4 16c0 2 1 4 1 4s2-6 9-9c-5 4-7 8-7 10 9 0 13-7 13-17z"/>', planeta: '<circle cx="12" cy="12" r="6"/><path d="M2 16c3 3 17-1 20-8" fill="none" stroke="currentColor" stroke-width="1.8"/>', varita: '<path d="M3 21 14 10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M17 2l1.2 3.3L21.5 4.5l-3.3 1.2L17 9l-1.2-3.3L12.5 4.5l3.3-1.2z"/>', mariposa: '<path d="M12 8c-2-5-9-6-9-1 0 3 3 5 6 5-3 1-5 4-3 6 2 2 5-1 6-4 1 3 4 6 6 4 2-2 0-5-3-6 3 0 6-2 6-5 0-5-7-4-9 1z"/>', alas: '<path d="M12 12C8 4 2 4 2 9c0 4 5 5 10 3zM12 12c4-8 10-8 10-3 0 4-5 5-10 3z"/>', copo: '<path d="M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>', llave: '<circle cx="8" cy="12" r="4.5"/><path d="M12 11h10v3h-2v3h-3v-3h-5z"/>', ojo: '<path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>', cristal: '<path d="M12 2 18 8 12 22 6 8z"/>' });
+Object.assign(NGN, { brillo: 'Destello', nube: 'Nube', gota: 'Gota', hoja: 'Hoja', planeta: 'Planeta', varita: 'Varita mágica', mariposa: 'Mariposa', alas: 'Alas de hada', copo: 'Copo de nieve', llave: 'Llave', ojo: 'Ojo', cristal: 'Cristal' });
+STYLE_OPTS.nicon.push(...Object.keys(NGLYPH).filter(g => STYLE_OPTS.nicon.some(o => o.k === g + '-color')).map(g => C(g + '-blanco', NGN[g] + ' blanco', g + '|#ffffff')), ...['brillo', 'nube', 'gota', 'hoja', 'planeta', 'varita', 'mariposa', 'alas', 'copo', 'llave', 'ojo', 'cristal'].flatMap(g => [C(g + '-color', NGN[g] + ' (color del perfil)', g + '|var(--paccent,var(--accent))'), C(g + '-oro', NGN[g] + ' dorado', g + '|#ffd76a'), C(g + '-blanco', NGN[g] + ' blanco', g + '|#ffffff')]));
+const TAGS8 = ['Pochoclero', 'Mateador', 'Hada', 'Estrella', 'Sin dormir', 'Rewatcher', 'Team villano', 'Shipper', 'Drama', 'Romance', 'Sci-fi', 'Fantasía', 'Thriller', 'Comedia', 'Documental', 'True crime', 'Isekai', 'Shonen', 'Shojo', 'Seinen', 'Mecha', 'Slice of life', 'Cine clásico', 'Cine de culto', 'Cine argentino', 'Telenovelas', 'Realities', 'Sitcom', 'Policiales', 'Misterio', 'Superhéroes', 'Musical', 'Western', 'Zombies', 'Vampiros', 'Viajes en el tiempo', 'Espacio', 'Dragones', 'Magia', 'Corazón de serie'];
+STYLE_OPTS.tag.push(...TAGS8.map((n, i) => { const p = BPAL[i % BPAL.length]; return C('t8-' + i, n, mix8(p[0], '#ffffff', .25) + '|' + p[0]); }));
+
+// ---------- DECORACIONES NUEVAS: hadas, gorras, mariposas, gatito…
+const HP = { turquesa: { hair: '#2fcca6', skin: '#c2fff2', wing: '#9ff5ff', dress: '#1fa08c', glow: '#5ff2d0' }, rosa: { hair: '#d65ab8', skin: '#ffd6ec', wing: '#ffb3e0', dress: '#ff5c8a', glow: '#ff8fc8' }, violeta: { hair: '#8a5ad6', skin: '#ebdeff', wing: '#d1b8ff', dress: '#6a3ad6', glow: '#c08bff' }, dorada: { hair: '#e0a82e', skin: '#fff3d6', wing: '#fff3b0', dress: '#d68a1a', glow: '#ffd76a' }, celeste: { hair: '#4a9ae0', skin: '#dcefff', wing: '#bfe3ff', dress: '#2a6ad6', glow: '#8fd6ff' }, lila: { hair: '#c46ad6', skin: '#f7e2ff', wing: '#efc2ff', dress: '#9a4ab8', glow: '#e0a8ff' }, menta: { hair: '#3fb87e', skin: '#e0ffec', wing: '#c2f5d8', dress: '#2a9a6a', glow: '#a8f0c6' }, fuego: { hair: '#e05a2e', skin: '#ffe4d2', wing: '#ffc8a8', dress: '#c43a1a', glow: '#ff9a5c' } };
+const HPN = { turquesa: 'turquesa', rosa: 'rosa', violeta: 'violeta', dorada: 'dorada', celeste: 'celeste', lila: 'lila', menta: 'menta', fuego: 'de fuego' };
+function fairySVG(x, y, s, P, flip) {
+  const wing = `<path d="M-3 4C-14-10-26-6-24 2C-22 8-10 8-3 6Z" fill="${P.wing}" fill-opacity=".7" stroke="#fff" stroke-opacity=".7" stroke-width=".6"/><path d="M-3 7C-14 10-20 18-14 20C-9 21-5 13-3 9Z" fill="${P.wing}" fill-opacity=".7" stroke="#fff" stroke-opacity=".7" stroke-width=".6"/><path d="M-6 4-18-2M-6 6-20 4" stroke="#fff" stroke-opacity=".5" stroke-width=".4"/>`;
+  return `<g transform="translate(${x} ${y}) scale(${flip ? -s : s} ${s})">
+    <circle r="22" cy="3" fill="${P.glow}" opacity=".18"/><circle r="13" cy="1" fill="${P.glow}" opacity=".2"/>
+    ${wing}<g transform="scale(-1 1)">${wing}</g>
+    <path d="M-9-2C-13 8-10 17-4 19H4C10 17 13 8 9-2Z" fill="${P.hair}"/>
+    <path d="M-4 6H4L7 18H-7Z" fill="${P.dress}"/>
+    <path d="M-7-1-14-7-7 3Z M7-1 14-7 7 3Z" fill="${P.skin}"/>
+    <circle r="7.6" fill="${P.skin}"/>
+    <path d="M-8-1C-9-9-3-11.5 0-10.5C4-11.5 9-8 8-1C6-6 2-7.5 0-6C-3-7.5-6-5-8-1Z" fill="${P.hair}"/>
+    <path d="M0-6.6-1.7-8.2A1 1 0 0 1 0-9.5 1 1 0 0 1 1.7-8.2Z" fill="#fff"/>
+    <ellipse cx="-2.8" cy=".6" rx="1.15" ry="1.55" fill="#2a1830"/><ellipse cx="2.8" cy=".6" rx="1.15" ry="1.55" fill="#2a1830"/><circle cx="-2.4" cy="0" r=".45" fill="#fff"/><circle cx="3.2" cy="0" r=".45" fill="#fff"/>
+    <circle cx="-4.6" cy="3" r="1.4" fill="#ff6b9a" opacity=".45"/><circle cx="4.6" cy="3" r="1.4" fill="#ff6b9a" opacity=".45"/>
+    <path d="M-1.1 3.7Q0 4.6 1.1 3.7" stroke="#9a3a5a" stroke-width=".65" fill="none" stroke-linecap="round"/>
+    <path d="M-6.5 7.5Q-3 11.5 2.5 9.4M6.5 7.5Q3 11.5-2.5 9.4" stroke="${P.skin}" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    <path d="M-1.6 6.6 0 8.6 1.6 6.6" fill="${P.skin}"/>
+  </g>`;
+}
+const sparkles8 = (pts, col) => pts.map(([x, y, r]) => `<path d="M${x} ${y - r}C${x + r * .2} ${y - r * .2} ${x + r * .2} ${y - r * .2} ${x + r} ${y}C${x + r * .2} ${y + r * .2} ${x + r * .2} ${y + r * .2} ${x} ${y + r}C${x - r * .2} ${y + r * .2} ${x - r * .2} ${y + r * .2} ${x - r} ${y}C${x - r * .2} ${y - r * .2} ${x - r * .2} ${y - r * .2} ${x} ${y - r}Z" fill="${col}"/>`).join('');
+const OUTSIDE = '<clipPath id="dk-out"><path clip-rule="evenodd" d="M-40-40H200V200H-40Z M80 22a58 58 0 1 0 .01 0Z"/></clipPath>';
+const FAIRY_DECO = {
+  hada: P => `${OUTSIDE}<g clip-path="url(#dk-out)">${fairySVG(60, 4, 1.5, P)}</g>${sparkles8([[24, 30, 4], [100, 4, 3], [34, 8, 2.5]], P.glow)}`,
+  hombro: P => `${OUTSIDE}<g clip-path="url(#dk-out)">${fairySVG(138, 96, 1.35, P, true)}</g>${sparkles8([[150, 64, 4], [156, 126, 3]], P.glow)}`,
+  vuela: P => `${fairySVG(24, 34, 1.15, P)}${[[40, 54, 1.8], [50, 64, 1.4], [58, 76, 1.1], [64, 88, .8]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${P.glow}"/>`).join('')}${sparkles8([[14, 62, 3.5], [46, 18, 3]], '#fff')}`,
+};
+const HPAIRS = [['turquesa', 'rosa'], ['violeta', 'dorada'], ['celeste', 'lila'], ['menta', 'fuego'], ['rosa', 'celeste'], ['dorada', 'turquesa']];
+const DSHAPE8 = {
+  mariposas: c => [[22, 34, 1, -15], [138, 44, .8, 20]].map(([x, y, s, r]) => `<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})"><ellipse cx="-7" cy="-5" rx="8" ry="6" fill="${c[0]}" stroke="${c[1]}" stroke-width="1.5"/><ellipse cx="7" cy="-5" rx="8" ry="6" fill="${c[0]}" stroke="${c[1]}" stroke-width="1.5"/><ellipse cx="-5" cy="5" rx="5" ry="4" fill="${c[0]}" stroke="${c[1]}" stroke-width="1.5"/><ellipse cx="5" cy="5" rx="5" ry="4" fill="${c[0]}" stroke="${c[1]}" stroke-width="1.5"/><path d="M0-8V9M0-8-3-13M0-8 3-13" stroke="${c[1]}" stroke-width="1.8" fill="none" stroke-linecap="round"/></g>`).join(''),
+  luna: c => `<path d="M128 0a19 19 0 1 0 18 27 15 15 0 1 1-18-27z" fill="${c[0]}" stroke="${c[1]}" stroke-width="2"/>${sparkles8([[104, 8, 4], [150, 48, 3], [116, 32, 2.5]], c[0])}`,
+  gorra: c => `<path d="M24 58C22 14 60 6 80 6s58 8 56 52C120 42 40 42 24 58Z" fill="${c[0]}" stroke="${c[1]}" stroke-width="2.5" stroke-linejoin="round"/><path d="M118 48c18-2 34 2 38 12-14 2-28 0-40-4z" fill="${c[0]}" stroke="${c[1]}" stroke-width="2.5" stroke-linejoin="round"/><circle cx="80" cy="8" r="4" fill="${c[1]}"/><path d="M80 10V44M52 14C58 28 60 38 60 46M108 14C102 28 100 38 100 46" stroke="${c[1]}" stroke-width="1.3" opacity=".6" fill="none"/>`,
+  tiara: c => `<path d="M40 30Q80 6 120 30L114 36Q80 16 46 36Z" fill="${c[0]}" stroke="${c[1]}" stroke-width="2"/><path d="M80 4l5 10-5 6-5-6z" fill="${c[0]}" stroke="${c[1]}" stroke-width="1.6"/>${[[58, 22], [102, 22], [80, 16]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="3" fill="#fff" stroke="${c[1]}" stroke-width="1"/>`).join('')}`,
+  nubes: c => [[22, 128, 1], [134, 26, .8]].map(([x, y, s]) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-18 8a9 9 0 0 1 2-17 12 12 0 0 1 22-3 9 9 0 0 1 12 11 7 7 0 0 1-2 9z" fill="${c[0]}" stroke="${c[1]}" stroke-width="2"/></g>`).join(''),
+  orbita: c => `<ellipse cx="80" cy="80" rx="80" ry="20" transform="rotate(-22 80 80)" fill="none" stroke="${c[0]}" stroke-width="3.5" opacity=".9"/><circle cx="148" cy="52" r="9" fill="${c[0]}" stroke="${c[1]}" stroke-width="2"/><circle cx="16" cy="106" r="5" fill="${c[1]}"/>`,
+  gatito: c => `<g transform="translate(80 18)"><path d="M-16-4-14-22-3-12Z M16-4 14-22 3-12Z" fill="${c[0]}" stroke="${c[1]}" stroke-width="2" stroke-linejoin="round"/><circle r="16" fill="${c[0]}" stroke="${c[1]}" stroke-width="2"/><ellipse cx="-6" cy="-1" rx="2.2" ry="3" fill="#1b1b22"/><ellipse cx="6" cy="-1" rx="2.2" ry="3" fill="#1b1b22"/><path d="M-1.6 4h3.2L0 6z" fill="#ff8fb8"/><path d="M-12 4H-20M-12 7H-19M12 4H20M12 7H19" stroke="${c[1]}" stroke-width="1" opacity=".7"/><ellipse cx="-11" cy="15" rx="6" ry="4" fill="${c[0]}" stroke="${c[1]}" stroke-width="2"/><ellipse cx="11" cy="15" rx="6" ry="4" fill="${c[0]}" stroke="${c[1]}" stroke-width="2"/></g>`,
+};
+Object.assign(DSHAPE, DSHAPE8);
+Object.assign(DCOL, { gris: ['#c9ccd6', '#6a6f7c'] });
+Object.assign(DNAMES, { mariposas: 'Mariposas', luna: 'Luna y estrellas', gorra: 'Gorra', tiara: 'Tiara', nubes: 'Nubes', orbita: 'Órbita', gatito: 'Gatito arriba' });
+STYLE_OPTS.deco.push(
+  ...['hada', 'hombro', 'vuela'].flatMap(s => Object.keys(HP).map(c => C(`${s}-${c}`, `${s === 'hada' ? 'Hada en la cabeza' : s === 'hombro' ? 'Hada en el hombro' : 'Hada volando'} ${HPN[c]}`, s + '|' + c))),
+  ...HPAIRS.map(([a, b]) => C(`hadas2-${a}-${b}`, `Dos hadas ${HPN[a]} y ${HPN[b]}`, `hadas2|${a}+${b}`)),
+  ...[['mariposas', ['azul', 'rosa', 'oro', 'violeta']], ['luna', ['oro', 'plata', 'rosa']], ['gorra', ['negro', 'azul', 'rojo', 'rosa', 'blanco']], ['tiara', ['oro', 'plata', 'rosa', 'diamante']], ['nubes', ['blanco', 'rosa', 'azul']], ['orbita', ['violeta', 'azul', 'oro']], ['gatito', ['naranja', 'negro', 'blanco', 'gris']]].flatMap(([s, cols]) => cols.map(c => C(`${s}-${c}`, `${DNAMES[s]} ${c}`, s + '|' + c))));
+function decoHTML(st) {
+  const o = optOf('deco', st && st.deco); if (!o || !o.v) return '';
+  const [s, c] = o.v.split('|'); let inner = '';
+  if (FAIRY_DECO[s]) inner = FAIRY_DECO[s](HP[c] || HP.rosa);
+  else if (s === 'hadas2') { const [a, b] = c.split('+'); inner = `${OUTSIDE}<g clip-path="url(#dk-out)">${fairySVG(56, 4, 1.4, HP[a] || HP.turquesa)}${fairySVG(140, 98, 1.3, HP[b] || HP.rosa, true)}</g>${sparkles8([[22, 34, 4], [154, 64, 3.5], [104, 2, 3]], '#fff')}`; }
+  else if (DSHAPE[s]) inner = DSHAPE[s](DCOL[c] || DCOL.oro);
+  return `<svg class="adeco" viewBox="0 0 160 160" aria-hidden="true">${inner}</svg>`;
+}
+
+// ---------- CATEGORÍA NUEVA: COMPAÑERO (un bichito que vive en tu banner)
+const ACC = [['rosa', 'rosa', '#ff8fb8'], ['azul', 'azul', '#6aa8ff'], ['rojo', 'rojo', '#ff5c5c'], ['violeta', 'violeta', '#a87aff'], ['oro', 'dorado', '#ffd76a'], ['menta', 'menta', '#5ad1a8']];
+const eyes8 = (y, dx = 7, cx = 32) => `<ellipse cx="${cx - dx}" cy="${y}" rx="2.6" ry="3.3" fill="#1b1b22"/><ellipse cx="${cx + dx}" cy="${y}" rx="2.6" ry="3.3" fill="#1b1b22"/><circle cx="${cx - dx + .9}" cy="${y - 1.2}" r=".9" fill="#fff"/><circle cx="${cx + dx + .9}" cy="${y - 1.2}" r=".9" fill="#fff"/><circle cx="${cx - dx - 4}" cy="${y + 4}" r="2.2" fill="#ff6b9a" opacity=".35"/><circle cx="${cx + dx + 4}" cy="${y + 4}" r="2.2" fill="#ff6b9a" opacity=".35"/>`;
+const scarf8 = (a, y = 40) => `<path d="M20 ${y}Q32 ${y + 6} 44 ${y}" stroke="${a}" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M38 ${y + 2}l4 10 4-3-3-8z" fill="${a}"/>`;
+const bow8 = (a, x, y) => `<g transform="translate(${x} ${y})"><path d="M0 0-7-5V5ZM0 0 7-5V5Z" fill="${a}" stroke="rgba(0,0,0,.25)" stroke-width=".8"/><circle r="2.2" fill="${a}"/></g>`;
+const CRIT = {
+  gato: ['Gatito', a => `<path d="M50 56C60 54 62 40 56 36" stroke="#c9ccd6" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M14 62C12 44 20 37 32 37S52 44 50 62Z" fill="#c9ccd6"/><path d="M14 22 16 5 28 15ZM50 22 48 5 36 15Z" fill="#c9ccd6"/><path d="M17 17 18 9 25 15ZM47 17 46 9 39 15Z" fill="#ffb3cf"/><circle cx="32" cy="25" r="17" fill="#c9ccd6"/>${eyes8(25)}<path d="M30.5 30h3L32 32z" fill="#ff8fb8"/>${scarf8(a, 40)}<circle cx="32" cy="45" r="2.6" fill="#ffd76a"/>`],
+  perro: ['Perrito', a => `<path d="M14 62C12 44 20 37 32 37S52 44 50 62Z" fill="#d9a066"/><circle cx="32" cy="25" r="17" fill="#d9a066"/><ellipse cx="15" cy="24" rx="6" ry="12" fill="#9a6a3a" transform="rotate(14 15 24)"/><ellipse cx="49" cy="24" rx="6" ry="12" fill="#9a6a3a" transform="rotate(-14 49 24)"/><ellipse cx="32" cy="31" rx="9" ry="6.5" fill="#f3dcc0"/>${eyes8(23)}<ellipse cx="32" cy="29" rx="3" ry="2.2" fill="#2a1a10"/><path d="M20 39 32 52 44 39Z" fill="${a}"/>`],
+  conejo: ['Conejito', a => `<ellipse cx="24" cy="10" rx="5.5" ry="14" fill="#f4f1ea"/><ellipse cx="40" cy="10" rx="5.5" ry="14" fill="#f4f1ea"/><ellipse cx="24" cy="11" rx="2.6" ry="10" fill="#ffc2d6"/><ellipse cx="40" cy="11" rx="2.6" ry="10" fill="#ffc2d6"/><path d="M14 62C12 44 20 38 32 38S52 44 50 62Z" fill="#f4f1ea"/><circle cx="32" cy="28" r="16" fill="#f4f1ea"/>${eyes8(28)}<path d="M30.5 33h3L32 35z" fill="#ff8fb8"/>${bow8(a, 32, 12)}`],
+  fantasma: ['Fantasmita', a => `<path d="M14 62V30a18 18 0 0 1 36 0V62l-6-5-6 5-6-5-6 5-6-5z" fill="#f4f6ff"/>${eyes8(30)}<ellipse cx="32" cy="38" rx="3" ry="2.4" fill="#2a1830"/>${bow8(a, 44, 16)}`],
+  zorro: ['Zorrito', a => `<path d="M50 60C62 58 62 42 54 38c2 8-2 14-6 16z" fill="#ff9a4a"/><path d="M55 40c2 4 2 8 0 10" stroke="#fff" stroke-width="3" fill="none"/><path d="M14 62C12 44 20 37 32 37S52 44 50 62Z" fill="#ff9a4a"/><path d="M22 62C22 50 26 46 32 46S42 50 42 62Z" fill="#fff4e8"/><path d="M14 20 15 3 28 14ZM50 20 49 3 36 14Z" fill="#ff9a4a"/><path d="M15 9 15 3 20 7ZM49 9 49 3 44 7Z" fill="#3a2a2a"/><circle cx="32" cy="25" r="17" fill="#ff9a4a"/><path d="M15 28C22 30 28 34 32 40 36 34 42 30 49 28 46 40 18 40 15 28Z" fill="#fff4e8"/>${eyes8(24)}<ellipse cx="32" cy="35" rx="2.6" ry="2" fill="#2a1a10"/>${scarf8(a, 42)}`],
+  panda: ['Panda', a => `<path d="M14 62C12 44 20 37 32 37S52 44 50 62Z" fill="#2a2a32"/><path d="M22 62C22 50 26 45 32 45S42 50 42 62Z" fill="#f4f4f4"/><circle cx="17" cy="11" r="6" fill="#2a2a32"/><circle cx="47" cy="11" r="6" fill="#2a2a32"/><circle cx="32" cy="25" r="17" fill="#f4f4f4"/><ellipse cx="25" cy="25" rx="5" ry="6" fill="#2a2a32" transform="rotate(-20 25 25)"/><ellipse cx="39" cy="25" rx="5" ry="6" fill="#2a2a32" transform="rotate(20 39 25)"/><circle cx="25.5" cy="24.5" r="1.6" fill="#fff"/><circle cx="38.5" cy="24.5" r="1.6" fill="#fff"/><ellipse cx="32" cy="31" rx="2.6" ry="2" fill="#2a2a32"/>${bow8(a, 47, 10)}`],
+  pato: ['Patito', a => `<ellipse cx="32" cy="50" rx="19" ry="13" fill="#ffd84a"/><circle cx="32" cy="27" r="15" fill="#ffd84a"/>${eyes8(24, 6)}<path d="M25 31Q32 27 39 31Q32 37 25 31Z" fill="#ff9a3d"/><path d="M28 12c2-6 6-6 6 0" stroke="#ffd84a" stroke-width="3" fill="none"/>${scarf8(a, 40)}`],
+  buho: ['Búho', a => `<path d="M14 18 18 6 24 14ZM50 18 46 6 40 14Z" fill="#8a6a4a"/><path d="M12 62V30a20 20 0 0 1 40 0V62Z" fill="#a8805a"/><ellipse cx="32" cy="48" rx="13" ry="12" fill="#e6d2b5"/><circle cx="24" cy="26" r="8" fill="#fff"/><circle cx="40" cy="26" r="8" fill="#fff"/><circle cx="24" cy="26" r="4" fill="#1b1b22"/><circle cx="40" cy="26" r="4" fill="#1b1b22"/><circle cx="25.4" cy="24.6" r="1.2" fill="#fff"/><circle cx="41.4" cy="24.6" r="1.2" fill="#fff"/><path d="M30 32h4l-2 4z" fill="#ffb03d"/><g transform="translate(32 40)"><path d="M0 0-7-4V4ZM0 0 7-4V4Z" fill="${a}"/><circle r="2" fill="${a}"/></g>`],
+  dragon: ['Dragoncito', a => `<path d="M12 36C2 30 2 20 8 18c0 6 4 10 8 12z M52 36c10-6 10-16 4-18 0 6-4 10-8 12z" fill="#4ab86a"/><path d="M14 62C12 44 20 37 32 37S52 44 50 62Z" fill="#6ad68a"/><path d="M24 62C24 50 27 46 32 46S40 50 40 62Z" fill="#fff3c4"/><path d="M22 10 20 2 27 8ZM42 10 44 2 37 8Z" fill="#fff3c4"/><circle cx="32" cy="25" r="17" fill="#6ad68a"/>${eyes8(24)}<circle cx="29" cy="31" r=".9" fill="#2a5a3a"/><circle cx="35" cy="31" r=".9" fill="#2a5a3a"/>${scarf8(a, 41)}`],
+  hada: ['Hadita', (a, ak) => fairySVG(32, 27, 1.7, HP[{ rosa: 'rosa', azul: 'celeste', rojo: 'fuego', violeta: 'violeta', oro: 'dorada', menta: 'turquesa' }[ak]] || HP.rosa)],
+};
+const ACCMAP = Object.fromEntries(ACC.map(([k, , c]) => [k, c]));
+STYLE_OPTS.compa = [C('none', 'Sin compañero', '', 1), ...Object.entries(CRIT).flatMap(([k, [n]]) => ACC.map(([ak, an]) => C(`${k}-${ak}`, `${n} ${an}`, `${k}|${ak}`)))];
+STYLE_DEF.compa = 'none'; if (S.profile.style.compa == null) S.profile.style.compa = 'none';
+CAT_NAMES.compa = 'Compañero'; COIN_PRICE.compa = 700;
+const compaSVG = v => { const [k, a] = String(v || '').split('|'); return CRIT[k] ? `<svg viewBox="0 0 64 64" aria-hidden="true">${CRIT[k][1](ACCMAP[a] || ACCMAP.rosa, a)}</svg>` : ''; };
+function compaHTML(st) { const o = optOf('compa', st && st.compa); return o && o.v ? `<div class="compa">${compaSVG(o.v)}</div>` : ''; }
+function bannerHTML(style, favs) { const out = bannerHTMLv7(style, favs), c = compaHTML(style); return c ? out.slice(0, -6) + c + '</div>' : out; }
+
+// ---------- todo lo nuevo en el perfil: clases y variables
+function extraClasses(st) {
+  st = st || {}; const out = [], pre = v => String(v || '').split('-')[0];
+  if (st.card && st.card !== 'def') out.push(['cb', 'cg'].includes(pre(st.card)) ? 'cs-' + pre(st.card) : 'cs-' + st.card);
+  if (st.nameanim && st.nameanim !== 'none') out.push(['nb', 'nd', 'ng'].includes(pre(st.nameanim)) ? 'na-' + pre(st.nameanim) : 'na-' + st.nameanim);
+  if (st.statstyle && st.statstyle !== 'def') out.push(['sk', 'sg'].includes(pre(st.statstyle)) ? 'ss-' + pre(st.statstyle) : 'ss-' + st.statstyle);
+  if (st.favframe && st.favframe !== 'none') out.push(['fc', 'fg'].includes(pre(st.favframe)) ? 'ff-' + pre(st.favframe) : 'ff-' + st.favframe);
+  if (/^ts\d/.test(st.fx || '')) out.push('fx-ts');
+  const sh = optOf('shape', st.shape); if (sh && String(sh.v).startsWith('clip:')) out.push('sh-clip');
+  return out.join(' ');
+}
+function extraVars8(st) {
+  st = st || {}; const v = [], o = (f) => optOf(f, st[f]);
+  const pre = f => String(st[f] || '').split('-')[0];
+  if (['cb', 'cg'].includes(pre('card')) && o('card')) v.push('--csc:' + o('card').v);
+  if (pre('nameanim') === 'nb' && o('nameanim')) v.push('--nab:' + o('nameanim').v);
+  if (pre('nameanim') === 'nd' && o('nameanim')) v.push('--nad:' + o('nameanim').v);
+  if (pre('nameanim') === 'ng' && o('nameanim')) v.push('--nag:' + o('nameanim').v);
+  if (['sk', 'sg'].includes(pre('statstyle')) && o('statstyle')) v.push('--ssc:' + o('statstyle').v);
+  if (pre('favframe') === 'fc' && o('favframe')) v.push('--ffc:' + o('favframe').v);
+  if (pre('favframe') === 'fg' && o('favframe')) v.push('--ffg:' + o('favframe').v);
+  if (/^ts\d/.test(st.fx || '') && o('fx')) v.push('--pts:' + o('fx').v);
+  const sh = o('shape'); if (sh && String(sh.v).startsWith('clip:')) v.push('--pclip:' + sh.v.slice(5));
+  return v.join(';');
+}
+function accentStyle(st) { const base = accentStyle5(st), x = extraVars8(st); return x ? base.slice(0, -1) + ';' + h(x) + '"' : base; }
+
+// ---------- COMBO MEDIO: desbloquea un poco más de la mitad
+PAY.medio = 2.99;
+function inMedio(row, f, o) {
+  if (!row || !(row.plan === 'medio' || (row.items || []).includes('medio'))) return false;
+  if (FOUNDER_ONLY(f, o.k)) return false;
+  const paid = (STYLE_OPTS[f] || []).filter(x => !x.f), i = paid.indexOf(o);
+  return i >= 0 && i < Math.ceil(paid.length * 0.55);
+}
+function FOUNDER_ONLY(f, k) { return (f === 'tag' && k === 'fundador') || (f === 'title' && k === 'Fundador JVNN'); }
+
+// ---------- MONEDAS: nueva moneda con J y nuevas reglas
+function coinSVG(sz = 16) { return `<svg class="coin" width="${sz}" height="${sz}" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5" fill="#e8b23a"/><circle cx="12" cy="12" r="9" fill="#ffd76a"/><circle cx="12" cy="12" r="6.8" fill="none" stroke="#c48a1a" stroke-width="1.2" opacity=".7"/><path d="M13.6 7.2v6.4a2.6 2.6 0 0 1-5.2.3" fill="none" stroke="#7a5410" stroke-width="2.2" stroke-linecap="round"/><path d="M6.5 6.5a7 7 0 0 1 4-2" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity=".7" fill="none"/></svg>`; }
+async function claimCoins(reason) {
+  if (!isLogged() || document.hidden) return;
+  if (reason !== 'daily' && Date.now() - lastClaim < 5 * 60e3 + 5e3) return;
+  if (reason !== 'daily') lastClaim = Date.now();
+  const before = WALLET.coins;
+  const w = await sbTry(() => rest('rpc/claim_coins', { method: 'POST', body: { reason: reason === 'daily' ? 'daily' : 'time' } }), null);
+  if (w) { setWallet(Array.isArray(w) ? w[0] : w); const won = WALLET.coins - before; if (won > 0) coinToast(won, reason === 'daily' ? 'por entrar hoy' : 'por usar JVNN'); }
+}
+
+// ---------- editor: pestaña Compañero, muestras de color y fundador
+CTABS7.splice(5, 0, ['compa', 'Compañero']);
+function compaEditHTML(view) {
+  return `<div class="cgroup"><div class="lb">Tu compañero <span class="dim">· vive arriba a la derecha de tu banner</span></div><div class="swgrid decos">${STYLE_OPTS.compa.map(o => opt('compa', o, view.compa, o.v ? `<span class="cprev">${compaSVG(o.v)}</span><small>${h(o.n)}</small>` : '<small>Ninguno</small>')).join('')}</div></div>`;
+}
+
+// ---------- TIENDA con vista previa de cada cosa
+const SHOP_CATS = [['deco', 'Decoraciones'], ['compa', 'Compañeros'], ['pfx', 'Efectos'], ['nameanim', 'Animación del nombre'], ['name', 'Color del nombre'], ['font', 'Letras'], ['nicon', 'Íconos'], ['tag', 'Insignias'], ['banner', 'Banners'], ['frame', 'Marcos'], ['shape', 'Formas'], ['card', 'Tarjetas'], ['theme', 'Fondos'], ['statstyle', 'Números'], ['favframe', 'Favoritas'], ['fx', 'Efectos de letra'], ['pattern', 'Texturas'], ['bfx', 'Movimientos'], ['accent', 'Color del perfil'], ['title', 'Títulos']];
+function shopThumb(f, o) {
+  switch (f) {
+    case 'deco': return `<span class="dprev big"><i></i>${decoHTML({ deco: o.k })}</span>`;
+    case 'compa': return `<span class="cprev big">${compaSVG(o.v)}</span>`;
+    case 'pfx': return `<span class="tpfx" data-pfxk="${h(o.k)}"></span>`;
+    case 'name': return `<span class="tname" style="${String(o.k).startsWith('g:') ? `background:${o.v};-webkit-background-clip:text;background-clip:text;color:transparent` : `color:${o.v}`}">Nombre</span>`;
+    case 'font': ensureFont(o.k); return `<span class="tname" style="font-family:'${h(o.k)}',var(--display)">Nombre</span>`;
+    case 'fx': return `<span class="tname fxs fx-${h(o.k)}" ${/^ts/.test(o.k) ? `style="text-shadow:${o.v}"` : ''}>Nombre</span>`;
+    case 'nicon': { const [g, c] = o.v.split('|'); return `<svg width="40" height="40" viewBox="0 0 24 24" style="color:${c};fill:currentColor">${NGLYPH[g]}</svg>`; }
+    case 'tag': { const [a, b] = o.v.split('|'); return `<span class="uptag" style="background:linear-gradient(135deg,${a},${b})">${h(o.n)}</span>`; }
+    case 'banner': case 'theme': return `<span class="tbg" style="background:${o.v === 'fav' ? 'linear-gradient(90deg,#333,#555)' : o.v}"></span>`;
+    case 'pattern': return `<span class="tbg" style="background:${o.v ? o.v + ',' : ''}linear-gradient(120deg,#3a2a33,#1b2a6b)"></span>`;
+    case 'frame': return `<span class="frs fr-grad big" style="--pframe:${o.v}"><i></i></span>`;
+    case 'shape': return `<span class="shs big" style="${String(o.v).startsWith('clip:') ? `clip-path:${o.v.slice(5)};border-radius:0` : `border-radius:${o.v === 'hex' ? '0' : o.v}`}"></span>`;
+    case 'accent': return `<i class="dot big" style="background:${o.v || '#f3c6cf'}"></i>`;
+    default: return o.c ? `<i class="dot big" style="background:${o.c}"></i>` : `<span class="tname small">${h(o.n)}</span>`;
+  }
+}
+async function vShop(args, draw) {
+  const cat = SHOP_CATS.some(c => c[0] === args[0]) ? args[0] : 'deco';
+  const list = STYLE_OPTS[cat].filter(o => !o.f && !FOUNDER_ONLY(cat, o.k));
+  const owned = o => unlocked(cat, o), tryK = PREVIEW[cat];
+  draw(`<section class="pagehead shophead"><div><div class="eyebrow">Tienda JVNN</div><h1>Tienda</h1><p class="dim">Tocá cualquier cosa para probarla en tu perfil. Si te gusta, comprala con monedas.</p></div>
+    <a class="walletbig" href="#/monedas">${coinSVG(30)}<div><b>${WALLET.coins.toLocaleString('es-AR')}</b><span>${isLogged() ? 'tus monedas' : 'entrá para juntar'}</span></div></a></section>
+    <div class="tabs shoptabs">${SHOP_CATS.map(([k, n]) => `<a class="tab ${k === cat ? 'on' : ''}" href="#/tienda/${k}">${n}</a>`).join('')}</div>
+    <div class="c7grid shopgrid"><div><div class="shopitems">${list.map(o => { const mine = owned(o), rot = rotFree(cat, o.k), on = tryK === o.k || (!tryK && S.profile.style[cat] === o.k);
+      return `<div class="sitem ${on ? 'on' : ''} ${mine ? 'mine' : ''}"><button class="sthumb" data-act="shoptry" data-f="${cat}" data-v="${h(o.k)}" title="Probar">${shopThumb(cat, o)}</button><b>${h(o.n)}</b>
+      ${mine ? `<button class="btn sm ${S.profile.style[cat] === o.k ? '' : 'pri'}" data-act="shopuse" data-f="${cat}" data-v="${h(o.k)}">${S.profile.style[cat] === o.k ? 'Puesto' : rot ? 'Gratis esta semana · Poner' : 'Poner'}</button>` : `<button class="btn sm buy" data-act="buyc" data-f="${cat}" data-v="${h(o.k)}">${coinSVG(14)} ${priceOf(cat, o.k)}</button>`}</div>`; }).join('')}</div></div>
+    <aside class="c7prev"><div class="eyebrow" style="margin-bottom:8px">Así queda tu perfil</div>${previewCard()}${Object.keys(PREVIEW).length ? '<button class="btn sm ghost" data-act="pvclear" style="margin-top:10px;width:100%">Sacar lo que estoy probando</button>' : ''}<a class="btn sm" href="#/pro" style="margin-top:8px;width:100%;justify-content:center">O desbloqueá todo con Pro</a></aside></div>`);
+  document.querySelectorAll('.tpfx[data-pfxk]').forEach(el => { el.classList.add('pcover'); el.dataset.pfx = el.dataset.pfxk; });
+  startPfx();
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-act="shoptry"],[data-act="shopuse"]'); if (!b) return;
+  const f = b.dataset.f, v = b.dataset.v;
+  if (b.dataset.act === 'shopuse') { S.profile.style[f] = v; delete PREVIEW[f]; save(); toast('Listo, ya lo tenés puesto.'); }
+  else { if (unlocked(f, optOf(f, v))) delete PREVIEW[f]; PREVIEW[f] = v; }
+  refresh();
+});
+window.addEventListener('hashchange', () => { const n = parseRoute().name; if (n !== 'perfil' && n !== 'tienda') PREVIEW = {}; });
+
+// ---------- RANKING con los perfiles como están
+const RK_FIELDS = ['name', 'font', 'fx', 'deco', 'nicon', 'tag', 'nameanim', 'accent', 'banner', 'title', 'compa'];
+function styledName(p, ds) {
+  ensureFont(ds.font);
+  const [k, v] = nameVar(ds); let s = `font-family:'${String(ds.font || 'Archivo').replace(/'/g, '')}',var(--display)`;
+  if (k === 'c') s += `;color:${v}`; if (k === 'g') s += `;background:${v};-webkit-background-clip:text;background-clip:text;color:transparent`;
+  return `<b class="sname" style="${h(s)}">${h(p.name || p.username)}</b>${nameIconHTML(ds)}`;
+}
+const decoAvatar = (p, sz, ds) => `<span class="avwrap" style="width:${sz}px;height:${sz}px">${avatar(p, sz)}${decoHTML(ds)}</span>`;
+async function vRanking(nav, draw, alive) {
+  const head = `<section class="pagehead"><div class="eyebrow">Estadísticas</div><h1>Ranking de la comunidad</h1><p class="dim">Las personas que más horas vieron en JVNN, con su perfil tal cual lo armaron.</p></section>${nav}`;
+  if (!sbOK()) return draw(head + empty('La parte online no está activada', ''));
+  const mode = UI.rmode || 'total', mk = monthKey(Date.now());
+  const modes = [['total', 'Total'], ['month', 'Este mes'], ['tv', 'Series'], ['movies', 'Películas']];
+  const field = { total: 'min', month: 'monthMin', tv: 'tvMin', movies: 'movieMin' }[mode];
+  draw(head + `<div class="sec">${Array.from({ length: 8 }, () => '<div class="skel" style="height:62px;margin-top:8px"></div>').join('')}</div>`);
+  const sel = 'id,username,name,photo,stats,' + RK_FIELDS.map(f => `s_${f}:data->style->>${f}`).join(',');
+  const rows = await sbTry(() => rest(`profiles?select=${sel}&order=stats->${field}.desc.nullslast&limit=100${mode === 'month' ? `&stats->>mk=eq.${mk}` : ''}`, { auth: false }), []) || [];
+  if (!alive()) return;
+  const list = rows.filter(p => p.stats && (p.stats[field] || 0) > 0);
+  const ids = list.map(p => p.id);
+  const [prem, wal] = ids.length ? await Promise.all([sbTry(() => rest(`premium?select=user_id,plan,items&user_id=${inList(ids)}`, { auth: false }), []), sbTry(() => rest(`wallets?select=user_id,items&user_id=${inList(ids)}`, { auth: false }), [])]) : [[], []];
+  if (!alive()) return;
+  const pm = Object.fromEntries((prem || []).map(r => [r.user_id, r])), wm = Object.fromEntries((wal || []).map(r => [r.user_id, r]));
+  for (const p of list) {
+    const st = {}; for (const f of RK_FIELDS) if (p['s_' + f] != null) st[f] = p['s_' + f];
+    const row = isFounderId(p.id) ? { plan: 'combo', items: ['combo', 'redes', 'layout', 'founder'] } : mergeRow(pm[p.id], wm[p.id]);
+    p.ds = sanitizeStyle(st, row);
+    const bo = optOf('banner', p.ds.banner); p.bg = bo && bo.v && !['fav', 'img'].includes(bo.v) ? bo.v : '';
+  }
+  const meIdx = isLogged() ? list.findIndex(p => p.id === ME.id) : -1;
+  const medal = i => i < 3 ? `<span class="rkmedal m${i}">${i + 1}</span>` : `<span class="rkn">${i + 1}</span>`;
+  const acc = p => /^#[0-9a-f]{6}$/i.test(p.ds.accent || '') ? `--paccent:${p.ds.accent};` : '';
+  draw(head + `<div class="tabs" style="margin-top:16px">${modes.map(([k, n]) => `<button class="tab ${k === mode ? 'on' : ''}" data-act="rmode" data-v="${k}">${n}</button>`).join('')}</div>
+    ${meIdx >= 0 ? `<div class="mypos">Estás en el puesto <b>#${meIdx + 1}</b> de ${list.length}.</div>` : isLogged() ? '<div class="mypos">Todavía no aparecés: marcá algo y volvé.</div>' : '<div class="mypos"><a href="#/entrar/crear" style="color:var(--accent);font-weight:700">Creá tu cuenta</a> para aparecer en el ranking.</div>'}
+    ${list.length > 2 ? `<div class="podium pod8">${[1, 0, 2].map(i => { const p = list[i]; return `<a class="pod p${i} ${extraClasses(p.ds)}" href="#/u/${h(p.username)}" style="${acc(p)}${p.bg ? `--rkbg:${h(p.bg)}` : ''}">${p.bg ? '<span class="podbg"></span>' : ''}${decoAvatar(p, i === 0 ? 84 : 66, p.ds)}<span class="podname">${styledName(p, p.ds)}</span>${p.ds.title ? `<small class="dim">${h(p.ds.title)}</small>` : ''}<span>${h(shortTime(p.stats[field]))}</span><div class="pbase">${i + 1}</div></a>`; }).join('')}</div>` : ''}
+    <ol class="rklist rk8">${list.map((p, i) => `<li class="${isLogged() && p.id === ME.id ? 'me' : ''}" style="${acc(p)}${p.bg ? `--rkbg:${h(p.bg)}` : ''}">${p.bg ? '<span class="rkbg"></span>' : ''}${medal(i)}<a href="#/u/${h(p.username)}">${decoAvatar(p, 44, p.ds)}</a><a class="rkname" href="#/u/${h(p.username)}"><span class="rkline">${styledName(p, p.ds)}</span><span>@${h(p.username)}${p.ds.title ? ' · ' + h(p.ds.title) : ''}</span></a>${p.ds.compa && p.ds.compa !== 'none' ? `<span class="rkcompa">${compaSVG(optOf('compa', p.ds.compa).v)}</span>` : ''}<em>${h(shortTime(p.stats[field]))}</em></li>`).join('') || '<p class="dim">Todavía no hay nadie en este ranking.</p>'}</ol>`);
+}
+
+PRO_COUNT = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.filter(o => !o.f).length, 0) + 4;
+FREE_COUNT = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.filter(o => o.f).length, 0);
+
+// ---------- slider de estrenos: deslizar con el dedo
+(() => { let x0 = null; document.addEventListener('touchstart', e => { x0 = e.target.closest('#slider') ? e.touches[0].clientX : null; }, { passive: true }); document.addEventListener('touchend', e => { if (x0 == null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) < 40) return; const sl = document.getElementById('slider'); if (!sl) return; slideTo((+sl.dataset.i || 0) + (dx < 0 ? 1 : -1)); startSlider(); }, { passive: true }); })();
 
 
 // ============================================================ ONLINE (Supabase)
