@@ -1925,6 +1925,39 @@ footer{border-top:1px solid var(--line)!important;background:linear-gradient(180
 .rwfoot{display:flex;justify-content:space-between;align-items:center}.rwfoot b{display:inline-flex;gap:6px;align-items:center;color:#ff8fc8;font-size:18px}
 .rwform{display:flex;gap:8px}.rwform input{flex:1;min-width:0}
 .rwrow{display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+
+/* ===== V17: compañeros 3D + carta pro de objetos ===== */
+.c3spin{transform-box:fill-box;transform-origin:50% 50%;animation:c3spin 6s linear infinite}.c3spin.slow{animation-duration:16s}
+@keyframes c3spin{to{transform:rotate(360deg)}}
+.c3clap{transform-box:fill-box;transform-origin:4% 100%;animation:c3clap 2.6s ease-in-out infinite}
+@keyframes c3clap{0%,70%,100%{transform:rotate(0)}78%{transform:rotate(-16deg)}86%{transform:rotate(0)}}
+.c3pop{animation:c3pop 2.2s ease-in-out infinite}@keyframes c3pop{0%,100%{transform:translateY(0)}45%{transform:translateY(-5px)}}
+.c3beat{transform-box:fill-box;transform-origin:50% 60%;animation:c3beat 1.4s ease-in-out infinite}@keyframes c3beat{0%,100%{transform:scale(1)}15%{transform:scale(1.08)}30%{transform:scale(.98)}45%{transform:scale(1.05)}}
+.c3look{animation:c3look 4s ease-in-out infinite}@keyframes c3look{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}60%{transform:translateX(4px)}}
+.c3zz{animation:c3zz 3s ease-in-out infinite}@keyframes c3zz{0%{opacity:0;transform:translateY(4px)}40%{opacity:1}100%{opacity:0;transform:translateY(-6px)}}
+.c3scan{animation:c3scan 2.4s linear infinite}@keyframes c3scan{from{transform:translateY(0)}to{transform:translateY(28px)}}
+.icard.v17{gap:7px;max-width:260px;padding:12px 12px 10px}
+.icard.v17::after{display:none}
+.icard.v17 .ihead{display:flex;justify-content:space-between;align-items:center}
+.icard.v17 .irar{align-self:auto}
+.icard.v17 .iser{font:900 15px/1 var(--display);color:var(--rc);text-shadow:0 0 12px color-mix(in srgb,var(--rc) 60%,transparent)}.icard.v17 .iser small{font-size:11px;opacity:.7;margin-left:1px}
+.icard.v17 .ithumbw{height:120px}
+.icard.v17 .sbad{align-self:center;font:800 10px/1 var(--body);font-style:normal;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;background:color-mix(in srgb,var(--rc) 25%,transparent);color:var(--rc)}.icard.v17 .sbad.gold{background:#ffd76a;color:#2a1a00}
+.ival{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px;border-radius:12px;background:rgba(0,0,0,.28);border:1px solid color-mix(in srgb,var(--rc) 30%,var(--line))}
+.ival small{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);font-weight:800}
+.ival b{display:inline-flex;align-items:center;gap:6px;font:900 20px/1 var(--display);color:#ffe08a}
+.imk{display:flex;flex-direction:column;gap:2px;font-size:11.5px;line-height:1.35;min-height:30px;justify-content:center}.imk b{display:inline-flex;align-items:center;gap:3px;color:var(--text)}.imk span{display:inline-flex;gap:4px;align-items:center;justify-content:center;flex-wrap:wrap}
+.istats{display:grid;grid-template-columns:1fr 1fr;gap:6px;text-align:left}
+.istat{padding:6px 8px;border-radius:10px;background:var(--raise);border:1px solid var(--line);display:flex;flex-direction:column;gap:2px;min-width:0}
+.istat small{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);font-weight:800}.istat b{font-size:12px;line-height:1.2}
+.istat code,.icode code{font:600 10.5px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--dim)}
+.iwbar{position:relative;height:5px;border-radius:9px;background:linear-gradient(90deg,#3ddc84 0 7%,#9be15d 7% 15%,#ffd24a 15% 38%,#ff9a3d 38% 45%,#ff4a5a 45%);margin:3px 0 1px}
+.iwbar i{position:absolute;top:-3px;width:3px;height:11px;border-radius:2px;background:#fff;box-shadow:0 0 6px #fff;transform:translateX(-50%)}
+.icode{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 8px 5px;border-radius:10px;background:#f4f2f8;color:#120a18}
+.icode svg{width:100%;height:16px;fill:#120a18}.icode code{color:#120a18;font-weight:800;letter-spacing:.06em}
+.icard.v17.r-unica .icode{background:#ffd76a}
+.reveal .icard.v17{max-width:300px}
+.rvfair{margin:10px auto 0;max-width:420px}
 </style>
 </head>
 <body>
@@ -1955,7 +1988,7 @@ footer{border-top:1px solid var(--line)!important;background:linear-gradient(180
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 15.0</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 16.0</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -5993,7 +6026,7 @@ async function vInventory(_, draw, alive) {
   const lm = Object.fromEntries(listed.map(l => [l.item_id, l]));
   const fr = UI.invR || 'todas', list = INV.list.filter(it => fr === 'todas' || catOf(it.cid).r === fr).sort((a, b) => RAR[catOf(b.cid).r].o - RAR[catOf(a.cid).r].o || a.serial - b.serial);
   const counts = {}; for (const it of INV.list) counts[catOf(it.cid).r] = (counts[catOf(it.cid).r] || 0) + 1;
-  draw(`${ecoNav('inventario')}<section class="pagehead"><div class="eyebrow">Inventario</div><h1>Tus objetos</h1><p class="dim">${plural(INV.list.length, 'objeto', 'objetos')}. Lo que tenés acá ya está desbloqueado para tu perfil.</p></section>
+  draw(`${ecoNav('inventario')}<section class="pagehead"><div class="eyebrow">Inventario</div><h1>Tus objetos</h1><p class="dim">${plural(INV.list.length, 'objeto', 'objetos')}. Lo que tenés acá ya está desbloqueado para tu perfil.<span data-invtotal></span></p></section>
     <div class="tabs">${[['todas', 'Todas']].concat(RORD.map(r => [r, RAR[r].n])).map(([k, n]) => `<button class="tab ${k === fr ? 'on' : ''}" data-act="invr" data-v="${k}">${n}${k === 'todas' ? '' : `<span>${counts[k] || 0}</span>`}</button>`).join('')}</div>
     ${list.length ? `<div class="igrid">${list.map(it => { const l = lm[it.id], c = catOf(it.cid), on = c.f === 'sticker' ? false : S.profile.style[c.f] === c.k; return collCard(it, l ? `<span class="chip">En venta · ${coinSVG(12)} ${l.price}</span><button class="btn sm ghost" data-act="mkcancel" data-id="${l.id}">Sacar de venta</button>` : `<button class="btn sm ${on ? '' : 'pri'}" data-act="equipitem" data-cid="${h(it.cid)}">${on ? 'Puesto' : 'Poner'}</button><button class="btn sm" data-act="mklist" data-id="${it.id}">Vender</button>`); }).join('')}</div>`
       : `<div class="empty sec"><h3>Todavía no tenés objetos</h3><div>Abrí una caja para empezar tu colección.</div><a class="btn pri" href="#/cajas">Ir a las cajas</a></div>`}`);
@@ -6505,7 +6538,7 @@ function spinReveal(boxId, item, done) {
     setTimeout(() => {
       const rv = ov.querySelector('.reveal'), big = R0.o >= 4;
       st.children[WIN].classList.add('win'); ov.classList.add('done', 'r-' + c0.r);
-      rv.hidden = false; rv.innerHTML = `<div class="burstrays" style="--rc:${R0.c}"></div><div class="rvtitle" style="--rc:${R0.c}">${c0.r === 'unica' ? '¡¡1 DE 1!! Existe uno solo y es tuyo' : big ? '¡INCREÍBLE! Te salió algo ' + R0.n.toLowerCase() : R0.o === 3 ? '¡Legendario!' : 'Te salió algo ' + R0.n.toLowerCase()}</div>${collCard(item)}<div class="actions" style="justify-content:center;margin-top:14px"><button class="btn pri" data-act="equipitem" data-cid="${h(item.cid)}">Ponérmelo</button><button class="btn" data-act="openagain" data-b="${boxId}">Abrir otra</button><a class="btn ghost" href="#/inventario" data-act="closebox">Ver inventario</a><button class="btn ghost" data-act="closebox">Cerrar</button></div>`;
+      rv.hidden = false; rv.innerHTML = `<div class="burstrays" style="--rc:${R0.c}"></div><div class="rvtitle" style="--rc:${R0.c}">${c0.r === 'unica' ? '¡¡1 DE 1!! Existe uno solo y es tuyo' : big ? '¡INCREÍBLE! Te salió algo ' + R0.n.toLowerCase() : R0.o === 3 ? '¡Legendario!' : 'Te salió algo ' + R0.n.toLowerCase()}</div>${collCard(item)}<p class="small dim rvfair">🎲 Lo sorteó el servidor 100% al azar: el número de serie, el patrón y el desgaste. Nadie puede elegir qué te sale.</p><div class="actions" style="justify-content:center;margin-top:14px"><button class="btn pri" data-act="equipitem" data-cid="${h(item.cid)}">Ponérmelo</button><button class="btn" data-act="openagain" data-b="${boxId}">Abrir otra</button><a class="btn ghost" href="#/inventario" data-act="closebox">Ver inventario</a><button class="btn ghost" data-act="closebox">Cerrar</button></div>`;
       if (R0.o >= 3) { const rc = rv.getBoundingClientRect(); for (let i = 0; i < (big ? 10 : 4); i++) setTimeout(() => burstAt(rc.left + rc.width * Math.random(), rc.top + 60 * Math.random(), c0.r === 'exotica' || c0.r === 'unica' ? ['#ff7aa8', '#ffd36b', '#a8f0c6', '#7fe0ff', '#c3a8ff', '#ffffff'] : [R0.c, '#ffffff', '#ffd76a'], 34, 'confeti'), i * 120); }
       done();
     }, 7300);
@@ -6604,6 +6637,233 @@ function renderCoins() {
   el.hidden = !isLogged();
   el.innerHTML = `${coinSVG(18)}<b>${WALLET.coins.toLocaleString('es-AR')}</b>${WALLET.bucks ? `<span class="bksep"></span>${buckSVG(18)}<b>${WALLET.bucks.toLocaleString('es-AR')}</b>` : ''}`;
 }
+
+
+// ============================================================ V17: COMPAÑEROS 3D (cosas raras, no animales) + CARTA PRO DE CADA OBJETO (código, valor estimado, mercado)
+// ---------- paletas: base (legendario de la tienda), oro (mítico de caja), prisma (exótico de caja), u (1 de 1)
+const GOLD17 = { b: '#e8b830', a: '#ffe08a', g: '#fff3c4', e: '#3a2200' };
+const C3P = {
+  orbe: { b: '#7a5aff', a: '#c8963a', g: '#d6c8ff', e: '#2a1a4a', u: { b: '#0a0612', a: '#ffd24a', g: '#ff3d9a', e: '#ffd24a' } },
+  cristal: { b: '#3ad6c8', a: '#9ff5ff', g: '#bffff4', e: '#0a2a2a' },
+  linterna: { b: '#ff6a4a', a: '#2a1a1a', g: '#ffe08a', e: '#2a0a00' },
+  agujero: { b: '#000000', a: '#7a3aff', g: '#ffb03d', e: '#ffffff', u: { b: '#000000', a: '#ff2a6a', g: '#ffffff', e: '#ffffff' } },
+  grimorio: { b: '#5a2a8a', a: '#a87aff', g: '#7fe8ff', e: '#1a0a2a' },
+  reloj: { b: '#ff8ac8', a: '#c8963a', g: '#bfe3ff', e: '#2a1a1a' },
+  dado: { b: '#f4f2fa', a: '#e0405a', g: '#ffd76a', e: '#2a1a3a', u: { b: '#24222c', a: '#ffd24a', g: '#ffd24a', e: '#ffd24a' } },
+  cohete: { b: '#f0f2f8', a: '#ff4a6a', g: '#7fd6ff', e: '#0a1a2a' },
+  ovni: { b: '#9aa4c0', a: '#ff4a8a', g: '#7fffb0', e: '#1a3a2a' },
+  claqueta: { b: '#2a2a34', a: '#f4f4f8', g: '#ff6a9a', e: '#5ab8ff', u: { b: '#e8b830', a: '#1a1a22', g: '#ffffff', e: '#1a1a22' } },
+  pochoclo: { b: '#ffffff', a: '#e0303a', g: '#fff2c4', e: '#2a1408' },
+  ojo: { b: '#3a1a5a', a: '#3ad68a', g: '#c3a8ff', e: '#d6fff0' },
+  corazon: { b: '#ff3d7a', a: '#ff8fb8', g: '#ffd1ea', e: '#2a0a14', u: { b: '#ff1a4a', a: '#ffffff', g: '#ffffff', e: '#2a0a14' } },
+  calavera: { b: '#e8e6f2', a: '#ff3d9a', g: '#3dffb4', e: '#0a0612' },
+  espada: { b: '#bfe3ff', a: '#c8963a', g: '#7fd6ff', e: '#0a1a2a' },
+  hongo: { b: '#e0303a', a: '#ffffff', g: '#7fffb0', e: '#2a1408' },
+  luna: { b: '#ffe9a8', a: '#5a6aff', g: '#bfe3ff', e: '#5a3a1a' },
+  cubo: { b: '#5ab8ff', a: '#c3a8ff', g: '#5ff2ff', e: '#0a1a2a' },
+  tarot: { b: '#2a1a4a', a: '#ffd24a', g: '#ffd76a', e: '#2a1a4a' },
+  mascara: { b: '#d62a3a', a: '#ffd24a', g: '#ffe14a', e: '#1a0a10' },
+  tele: { b: '#c8946a', a: '#ff6a4a', g: '#7fe8d0', e: '#0a2a20' },
+};
+const C3U = { orbe: 'Orbe del Destino', agujero: 'Singularidad', dado: 'Dado del Destino', claqueta: 'Claqueta Estelar', corazon: 'Corazón Eterno' };
+const glowG = (id, a, b) => `<radialGradient id="${id}"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="${a}"/><stop offset="1" stop-color="${b}" stop-opacity="0"/></radialGradient>`;
+const COMPA3 = {
+  orbe: ['Orbe arcano', (P, u) => `<defs>${rg3('ob' + u, P.b, .35, .3)}${lg3('os' + u, L3(P.a, .3), D3(P.a, .45))}${glowG('oi' + u, P.g, P.g)}</defs>
+    <path d="M18 61 22 50H42L46 61Z" fill="url(#os${u})"/><ellipse cx="32" cy="50" rx="12" ry="3" fill="${D3(P.a, .3)}"/>
+    <g class="ffloat"><circle cx="32" cy="28" r="19" fill="url(#ob${u})" opacity=".94"/><circle cx="32" cy="28" r="11" fill="url(#oi${u})" class="halo"/>
+    <g class="c3spin"><path d="M20 28C24 18 40 18 44 28M44 28C40 38 24 38 20 28" stroke="#fff" stroke-opacity=".55" stroke-width="1.4" fill="none"/></g>${shine3(24, 19, 6, 2.6)}</g>`],
+  cristal: ['Cristal flotante', (P, u) => `<defs>${lg3('cl' + u, L3(P.b, .55), P.b)}${lg3('cd' + u, P.b, D3(P.b, .5))}</defs>
+    <ellipse cx="32" cy="60" rx="12" ry="2.5" fill="${P.g}" opacity=".4" class="halo"/>
+    <g class="ffloat"><path d="M32 4 46 22 32 54 18 22Z" fill="url(#cd${u})"/><path d="M32 4 18 22 32 54Z" fill="url(#cl${u})"/><path d="M32 4 26 22H38Z" fill="#fff" opacity=".45"/><path d="M18 22H46" stroke="#fff" stroke-opacity=".5" stroke-width=".8"/>
+    <path d="M10 30 14 24 18 30 14 38Z" fill="url(#cl${u})" class="tw"/><path d="M50 12 53 8 56 12 53 17Z" fill="url(#cl${u})" class="tw t2"/>${shine3(27, 16, 2.4, 6, 10, .7)}</g>`],
+  linterna: ['Linterna espiritual', (P, u) => `<defs>${rg3('lb' + u, P.b, .4, .35)}${glowG('lf' + u, P.g, P.a)}${EYESH}</defs>
+    <path d="M32 1V8" stroke="${D3(P.a, .2)}" stroke-width="2"/>
+    <g class="ffloat"><rect x="24" y="8" width="16" height="5" rx="2" fill="${D3(P.a, .1)}"/><ellipse cx="32" cy="32" rx="18" ry="20" fill="url(#lb${u})"/><path d="M16 26H48M15 34H49M17 42H47" stroke="${D3(P.b, .35)}" stroke-width="1" opacity=".5"/><circle cx="32" cy="33" r="11" fill="url(#lf${u})" class="halo"/>
+    ${eye3(26, 30, 2.8, P.e)}${eye3(38, 30, 2.8, P.e)}<path d="M29 37Q32 40 35 37" stroke="${P.e}" stroke-width="1.4" fill="none" stroke-linecap="round"/><rect x="24" y="51" width="16" height="5" rx="2" fill="${D3(P.a, .1)}"/><path d="M32 56V62" stroke="${P.g}" stroke-width="2" stroke-linecap="round" class="tw"/>${shine3(23, 22, 4, 2)}</g>`],
+  agujero: ['Agujero negro', (P, u) => `<defs><radialGradient id="ah${u}"><stop offset="0" stop-color="#000"/><stop offset=".5" stop-color="#000"/><stop offset=".72" stop-color="${P.g}"/><stop offset="1" stop-color="${P.a}" stop-opacity="0"/></radialGradient>${lg3('ad' + u, P.g, P.a)}</defs>
+    <circle cx="32" cy="32" r="24" fill="url(#ah${u})" class="halo"/>
+    <g transform="rotate(-18 32 32)"><g class="c3spin"><ellipse cx="32" cy="32" rx="29" ry="9" fill="none" stroke="url(#ad${u})" stroke-width="3.6" stroke-dasharray="30 8 14 6"/></g></g>
+    <circle cx="32" cy="32" r="10" fill="#000"/><circle cx="32" cy="32" r="10.5" fill="none" stroke="${P.g}" stroke-width="1" opacity=".8"/>
+    <g transform="rotate(-18 32 32)"><path d="M3 32A29 9 0 0 0 61 32" fill="none" stroke="url(#ad${u})" stroke-width="3.6"/></g>
+    <g class="tw">${sparkles8([[6, 8, 2.4], [58, 54, 2], [54, 10, 1.6]], P.e)}</g>`],
+  grimorio: ['Grimorio vivo', (P, u) => `<defs>${lg3('gb' + u, P.b, D3(P.b, .4))}${lg3('gp' + u, '#fffaf0', '#e8dcc8')}</defs>
+    <g class="ffloat"><path d="M6 24 32 30 58 24 58 52 32 58 6 52Z" fill="url(#gb${u})"/><path d="M9 22C18 18 26 20 32 26V54C26 48 18 46 9 50Z" fill="url(#gp${u})"/><path d="M55 22C46 18 38 20 32 26V54C38 48 46 46 55 50Z" fill="url(#gp${u})"/>
+    <g class="tw"><path d="M13 28H27M13 33H26M13 38H27M37 28H51M38 33H51M37 38H50" stroke="${P.a}" stroke-width="1.6" stroke-linecap="round"/></g>
+    <g class="tw t2"><path d="M32 22 30 12 34 16 36 6" stroke="${P.g}" stroke-width="1.8" fill="none" stroke-linecap="round"/></g>${sparkles8([[20, 10, 2.4], [46, 8, 2.8]], P.g)}</g>`],
+  reloj: ['Reloj de arena cósmico', (P, u) => `<defs>${lg3('rf' + u, L3(P.a, .3), D3(P.a, .4))}${lg3('rs' + u, P.g, P.b)}</defs>
+    <g class="ffloat"><path d="M18 10H46C46 22 36 26 34 32C36 38 46 42 46 54H18C18 42 28 38 30 32C28 26 18 22 18 10Z" fill="#fff" fill-opacity=".16" stroke="#fff" stroke-opacity=".6" stroke-width="1.2"/>
+    <path d="M22 16H42C40 22 34 25 32 30C30 25 24 22 22 16Z" fill="url(#rs${u})"/><path d="M20 52H44C42 44 36 42 32 40C28 42 22 44 20 52Z" fill="url(#rs${u})"/><path d="M32 30V44" stroke="${P.g}" stroke-width="1.4" class="tw"/>
+    <rect x="13" y="4" width="38" height="6" rx="3" fill="url(#rf${u})"/><rect x="13" y="54" width="38" height="6" rx="3" fill="url(#rf${u})"/><path d="M16 10V54M48 10V54" stroke="url(#rf${u})" stroke-width="2.4"/>
+    ${sparkles8([[26, 48, 1.4], [37, 46, 1.2], [30, 20, 1.2]], '#fff')}${shine3(22, 20, 1.4, 6, 0, .5)}</g>`],
+  dado: ['Dado de la suerte', (P, u) => `<defs>${lg3('dt' + u, L3(P.b, .5), L3(P.b, .15))}${lg3('dl' + u, P.b, D3(P.b, .2))}${lg3('dr' + u, D3(P.b, .2), D3(P.b, .5))}</defs>
+    <g class="ffloat"><path d="M32 6 56 18 32 30 8 18Z" fill="url(#dt${u})"/><path d="M8 18 32 30V58L8 46Z" fill="url(#dl${u})"/><path d="M56 18 32 30V58L56 46Z" fill="url(#dr${u})"/>
+    <ellipse cx="32" cy="18" rx="4.2" ry="2.3" fill="${P.a}"/>
+    <ellipse cx="14" cy="27" rx="2" ry="2.4" fill="${P.e}"/><ellipse cx="20" cy="36" rx="2" ry="2.4" fill="${P.e}"/><ellipse cx="26" cy="45" rx="2" ry="2.4" fill="${P.e}"/>
+    <ellipse cx="38" cy="38" rx="2" ry="2.4" fill="${P.e}"/><ellipse cx="50" cy="28" rx="2" ry="2.4" fill="${P.e}"/><ellipse cx="38" cy="50" rx="2" ry="2.4" fill="${P.e}"/><ellipse cx="50" cy="40" rx="2" ry="2.4" fill="${P.e}"/>
+    <path d="M32 6 8 18 32 30" stroke="#fff" stroke-opacity=".6" stroke-width="1" fill="none"/><g class="tw">${sparkles8([[58, 6, 2.6], [6, 58, 1.8]], P.g)}</g></g>`],
+  cohete: ['Cohete', (P, u) => `<defs>${lg3('kb' + u, L3(P.b, .4), D3(P.b, .3))}${lg3('kf' + u, '#fff3c4', '#ff6a1a')}</defs>
+    <g class="ffloat"><g class="flick"><path d="M26 50C26 58 30 62 32 64C34 62 38 58 38 50Z" fill="url(#kf${u})"/></g>
+    <path d="M22 38 11 52 23 50ZM42 38 53 52 41 50Z" fill="${P.a}"/>
+    <path d="M32 2C44 12 44 34 40 50H24C20 34 20 12 32 2Z" fill="url(#kb${u})"/><path d="M32 2C38 7 41 14 42 20H22C23 14 26 7 32 2Z" fill="${P.a}"/>
+    <circle cx="32" cy="30" r="6.4" fill="${D3(P.g, .5)}" stroke="${L3(P.b, .5)}" stroke-width="2"/><circle cx="32" cy="30" r="3.8" fill="${P.g}" opacity=".85"/>${shine3(30, 28, 1.6, .8, -30, .9)}
+    <path d="M29 50V46M35 50V46" stroke="${D3(P.b, .4)}" stroke-width="1.6"/>${shine3(26, 26, 1.4, 8, 0, .45)}</g>`],
+  ovni: ['Platillo volador', (P, u) => `<defs>${lg3('ub' + u, L3(P.b, .45), D3(P.b, .45))}<radialGradient id="ud${u}" cx=".4" cy=".3"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="${P.g}" stop-opacity=".55"/></radialGradient>${EYESH}</defs>
+    <path d="M22 36 12 64H52L42 36Z" fill="${P.g}" opacity=".2" class="halo"/>
+    <g class="ffloat"><path d="M18 26C18 11 46 11 46 26Z" fill="url(#ud${u})"/>${eye3(28, 21, 2.8, P.e)}${eye3(36, 21, 2.8, P.e)}
+    <ellipse cx="32" cy="30" rx="28" ry="9" fill="url(#ub${u})"/><ellipse cx="32" cy="27.5" rx="20" ry="3.6" fill="${L3(P.b, .55)}" opacity=".6"/>
+    <circle cx="12" cy="31" r="2" fill="${P.a}" class="tw"/><circle cx="22" cy="35" r="2" fill="${P.g}" class="tw t2"/><circle cx="32" cy="36.5" r="2" fill="${P.a}" class="tw"/><circle cx="42" cy="35" r="2" fill="${P.g}" class="tw t2"/><circle cx="52" cy="31" r="2" fill="${P.a}" class="tw"/></g>`],
+  claqueta: ['Claqueta de cine', (P, u) => `<defs>${lg3('qb' + u, L3(P.b, .25), D3(P.b, .5))}${EYESH}</defs>
+    <g class="ffloat"><g class="c3clap"><path d="M8 15 52 5 54 13 10 23Z" fill="${D3(P.b, .15)}"/><path d="M15 14 21 21M25 12 31 19M35 10 41 17M45 8 51 15" stroke="${P.a}" stroke-width="4"/></g>
+    <rect x="8" y="23" width="48" height="36" rx="4" fill="url(#qb${u})"/><path d="M8 31H56" stroke="${P.a}" stroke-width="3"/>
+    ${eye3(24, 41, 3.8, P.e)}${eye3(40, 41, 3.8, P.e)}<path d="M27 50Q32 54 37 50" stroke="${P.g}" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="17" cy="48" r="2.4" fill="${P.g}" opacity=".45"/><circle cx="47" cy="48" r="2.4" fill="${P.g}" opacity=".45"/></g>`],
+  pochoclo: ['Balde de pochoclos', (P, u) => `<defs>${lg3('pk' + u, '#ffffff', '#e4dcea')}${rg3('pp' + u, P.g, .35, .3)}${EYESH}</defs>
+    <g class="ffloat"><circle cx="20" cy="19" r="8" fill="url(#pp${u})"/><circle cx="32" cy="13" r="9" fill="url(#pp${u})"/><circle cx="44" cy="19" r="8" fill="url(#pp${u})"/><circle cx="26" cy="23" r="7" fill="url(#pp${u})"/><circle cx="38" cy="23" r="7" fill="url(#pp${u})"/>
+    <g class="c3pop"><circle cx="52" cy="8" r="4" fill="url(#pp${u})"/></g>
+    <path d="M12 26H52L46 62H18Z" fill="url(#pk${u})"/><path d="M19 26 22 62H28L26 26ZM33 26V62H39L41 26Z" fill="${P.a}"/><rect x="10" y="24" width="44" height="5" rx="2" fill="${D3(P.a, .12)}"/>
+    <rect x="18" y="35" width="28" height="15" rx="7" fill="#fff" opacity=".94"/>${eye3(26, 42, 2.8, P.e)}${eye3(38, 42, 2.8, P.e)}<path d="M30 46.5Q32 48.5 34 46.5" stroke="${P.e}" stroke-width="1.4" fill="none"/></g>`],
+  ojo: ['Ojo místico', (P, u) => `<defs><radialGradient id="ji${u}"><stop offset="0" stop-color="${P.e}"/><stop offset=".55" stop-color="${P.a}"/><stop offset="1" stop-color="${D3(P.a, .6)}"/></radialGradient>${rg3('jw' + u, '#ffffff', .4, .3)}</defs>
+    <g class="c3spin slow"><path d="M32 0V7M32 57V64M0 32H7M57 32H64M9 9 14 14M50 50 55 55M55 9 50 14M9 55 14 50" stroke="${P.g}" stroke-width="2.4" stroke-linecap="round" opacity=".75"/></g>
+    <g class="ffloat"><path d="M6 32C14 18 50 18 58 32C50 46 14 46 6 32Z" fill="url(#jw${u})" stroke="${P.b}" stroke-width="2.4"/><g class="c3look"><circle cx="32" cy="32" r="11" fill="url(#ji${u})"/><circle cx="32" cy="32" r="5" fill="#0a0612"/>${shine3(28, 28, 2.6, 1.6, -30, .9)}</g>
+    <path d="M10 26 6 20M18 21 16 14M26 18.5 25 11M38 18.5 39 11M46 21 48 14M54 26 58 20" stroke="${P.b}" stroke-width="2" stroke-linecap="round"/></g>`],
+  corazon: ['Corazón de cristal', (P, u) => `<defs>${lg3('hl' + u, L3(P.b, .5), P.b)}${lg3('hd' + u, P.b, D3(P.b, .55))}</defs>
+    <g class="ffloat"><g class="c3beat"><path d="M32 58 6 30C0 20 6 8 18 8C25 8 30 13 32 18Z" fill="url(#hl${u})"/><path d="M32 58 58 30C64 20 58 8 46 8C39 8 34 13 32 18Z" fill="url(#hd${u})"/>
+    <path d="M32 18 20 26 32 58M32 18 44 26 32 58M6 30H58M20 26H44" stroke="#fff" stroke-opacity=".38" stroke-width="1" fill="none"/>${shine3(16, 16, 5, 2.4, -35, .7)}</g></g><g class="tw">${sparkles8([[57, 6, 2.6], [6, 52, 2], [60, 46, 1.6]], P.g)}</g>`],
+  calavera: ['Calavera neón', (P, u) => `<defs>${rg3('sk' + u, P.b, .35, .25)}${glowG('se' + u, P.g, P.g)}</defs>
+    <g class="ffloat"><path d="M10 28C10 12 20 4 32 4S54 12 54 28C54 36 50 40 46 42V50H18V42C14 40 10 36 10 28Z" fill="url(#sk${u})"/><path d="M22 50V58H42V50Z" fill="url(#sk${u})"/><path d="M27 50V57M32 50V57M37 50V57" stroke="${D3(P.b, .5)}" stroke-width="1.4"/>
+    <ellipse cx="22" cy="29" rx="7" ry="8" fill="#0a0612"/><ellipse cx="42" cy="29" rx="7" ry="8" fill="#0a0612"/><circle cx="22" cy="30" r="6.5" fill="url(#se${u})" class="halo"/><circle cx="42" cy="30" r="6.5" fill="url(#se${u})" class="halo"/>
+    <path d="M32 38 29 44H35Z" fill="#0a0612"/>${shine3(20, 12, 6, 2.4)}<g class="tw"><path d="M51 14 55 10M47 8 49 4" stroke="${P.a}" stroke-width="1.8" stroke-linecap="round"/></g></g>`],
+  espada: ['Espada encantada', (P, u) => `<defs>${lg3('eb' + u, '#ffffff', D3(P.b, .35))}${lg3('eh' + u, L3(P.a, .3), D3(P.a, .45))}</defs>
+    <ellipse cx="32" cy="30" rx="7" ry="28" fill="${P.g}" opacity=".25" class="halo"/>
+    <g class="ffloat"><path d="M32 2 37 10V42H27V10Z" fill="url(#eb${u})"/><path d="M32 2V42H27V10Z" fill="#fff" opacity=".45"/><path d="M32 9V40" stroke="${P.g}" stroke-width="1.2" class="tw"/>
+    <path d="M16 42H48C48 46 44 48 40 47H24C20 48 16 46 16 42Z" fill="url(#eh${u})"/><rect x="29" y="47" width="6" height="11" rx="2" fill="${D3(P.a, .35)}"/><circle cx="32" cy="60" r="3.4" fill="url(#eh${u})"/><circle cx="32" cy="44.5" r="2.4" fill="${P.g}" class="halo"/></g>
+    <g class="tw">${sparkles8([[45, 12, 2.4], [18, 24, 2]], '#fff')}</g>`],
+  hongo: ['Hongo mágico', (P, u) => `<defs>${rg3('mc' + u, P.b, .35, .25)}${lg3('ms' + u, '#fff8ee', '#e6d4bc')}${EYESH}</defs>
+    <ellipse cx="32" cy="60" rx="16" ry="3" fill="${P.g}" opacity=".4" class="halo"/>
+    <path d="M22 34C20 48 22 56 24 60H40C42 56 44 48 42 34Z" fill="url(#ms${u})"/>${eye3(28, 45, 2.6, P.e)}${eye3(36, 45, 2.6, P.e)}<path d="M30 51Q32 53 34 51" stroke="${P.e}" stroke-width="1.3" fill="none"/>
+    <path d="M4 34C4 14 18 6 32 6S60 14 60 34C52 38 12 38 4 34Z" fill="url(#mc${u})"/>
+    <circle cx="18" cy="22" r="4.5" fill="${P.a}" opacity=".95"/><circle cx="34" cy="14" r="3.6" fill="${P.a}"/><circle cx="46" cy="25" r="5" fill="${P.a}"/><circle cx="28" cy="28" r="2.6" fill="${P.a}"/>${shine3(16, 14, 5, 2)}
+    <g class="tw">${sparkles8([[58, 8, 2.4], [6, 10, 2]], P.g)}</g>`],
+  luna: ['Luna dormilona', (P, u) => `<defs>${rg3('nl' + u, P.b, .3, .3)}${lg3('nh' + u, P.a, D3(P.a, .4))}</defs>
+    <g class="ffloat"><path d="M40 6C26 8 16 20 16 34S28 60 44 58C30 54 24 44 24 32S30 10 40 6Z" fill="url(#nl${u})"/>
+    <path d="M18.5 31Q21 33.5 23.5 31" stroke="${P.e}" stroke-width="1.6" fill="none" stroke-linecap="round"/><circle cx="20" cy="38" r="2.4" fill="#ff9ab8" opacity=".6"/><path d="M20 44Q22 46 24 44" stroke="${P.e}" stroke-width="1.4" fill="none"/>
+    <path d="M37 8C44 1 56 4 58 14C54 10 48 10 42 14Z" fill="url(#nh${u})"/><circle cx="58" cy="15" r="3.2" fill="#fff"/></g>
+    <g class="c3zz"><text x="42" y="36" font-size="9" font-weight="900" fill="${P.g}">z</text><text x="49" y="28" font-size="7" font-weight="900" fill="${P.g}">z</text></g>${sparkles8([[8, 10, 2.4], [54, 52, 2]], '#fff')}`],
+  cubo: ['Cubo holográfico', (P, u) => `<defs>${lg3('xb' + u, P.g, P.a)}</defs>
+    <g class="ffloat"><g class="c3spin"><path d="M32 6 54 18V44L32 56 10 44V18Z" fill="${P.b}" fill-opacity=".25" stroke="url(#xb${u})" stroke-width="2.2" stroke-linejoin="round"/><path d="M10 18 32 30 54 18M32 30V56" stroke="url(#xb${u})" stroke-width="2.2" fill="none"/></g>
+    <circle cx="32" cy="31" r="6" fill="${P.g}" class="halo"/></g><path d="M14 60H50" stroke="${P.g}" stroke-width="3" stroke-linecap="round" opacity=".35" class="tw"/>`],
+  tarot: ['Carta del destino', (P, u) => `<defs>${lg3('tc' + u, L3(P.b, .2), D3(P.b, .45))}${lg3('tg' + u, L3(P.a, .4), D3(P.a, .3))}</defs>
+    <g class="ffloat"><g transform="rotate(-8 32 32)"><rect x="14" y="4" width="36" height="56" rx="5" fill="url(#tc${u})" stroke="url(#tg${u})" stroke-width="2"/><rect x="18" y="8" width="28" height="48" rx="3" fill="none" stroke="url(#tg${u})" stroke-width=".8"/>
+    <g class="c3spin slow"><path d="M32 18V14M32 46V50M18 32H22M42 32H46M22 22 25 25M42 22 39 25M22 42 25 39M42 42 39 39" stroke="url(#tg${u})" stroke-width="1.6" stroke-linecap="round"/></g>
+    <circle cx="32" cy="32" r="9" fill="url(#tg${u})"/><path d="M25 32C28 27 36 27 39 32C36 37 28 37 25 32Z" fill="#fff"/><circle cx="32" cy="32" r="2.6" fill="${P.e}"/></g></g>
+    <g class="tw">${sparkles8([[56, 8, 2.4], [6, 54, 2]], P.g)}</g>`],
+  mascara: ['Máscara oni', (P, u) => `<defs>${rg3('mk' + u, P.b, .35, .25)}${lg3('mh' + u, '#fff8e6', '#c8b896')}</defs>
+    <g class="ffloat"><path d="M15 18 8 2 23 12ZM49 18 56 2 41 12Z" fill="url(#mh${u})"/>
+    <path d="M10 28C10 12 54 12 54 28V40C54 54 44 60 32 60S10 54 10 40Z" fill="url(#mk${u})"/>
+    <path d="M16 26 28 30M48 26 36 30" stroke="${P.e}" stroke-width="3" stroke-linecap="round"/><path d="M18 33C20 29 26 31 27 35C24 37 20 37 18 33ZM46 33C44 29 38 31 37 35C40 37 44 37 46 33Z" fill="${P.g}" class="halo"/>
+    <path d="M18 44C24 52 40 52 46 44C40 48 24 48 18 44Z" fill="${P.e}"/><path d="M22 46 24 50.5 26 47ZM42 46 40 50.5 38 47Z" fill="#fff"/>
+    <path d="M14 22C18 18 24 16 28 16" stroke="${P.a}" stroke-width="2" stroke-linecap="round" fill="none"/>${shine3(20, 18, 5, 2)}</g>`],
+  tele: ['Tele retro', (P, u) => `<defs>${lg3('vb' + u, L3(P.b, .3), D3(P.b, .45))}<radialGradient id="vs${u}" cx=".4" cy=".35"><stop offset="0" stop-color="${L3(P.g, .4)}"/><stop offset="1" stop-color="${D3(P.g, .55)}"/></radialGradient><clipPath id="vc${u}"><rect x="11" y="19" width="34" height="30" rx="7"/></clipPath></defs>
+    <g class="ffloat"><path d="M24 14 16 3M40 14 50 5" stroke="${D3(P.b, .4)}" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="3" r="2.2" fill="${P.a}" class="tw"/><circle cx="50" cy="5" r="2.2" fill="${P.a}" class="tw t2"/>
+    <rect x="6" y="14" width="52" height="40" rx="9" fill="url(#vb${u})"/><rect x="11" y="19" width="34" height="30" rx="7" fill="url(#vs${u})"/>
+    <g clip-path="url(#vc${u})"><g class="c3scan"><rect x="11" y="19" width="34" height="3" fill="#fff" opacity=".22"/></g></g>
+    <circle cx="22" cy="32" r="2.5" fill="${P.e}"/><circle cx="34" cy="32" r="2.5" fill="${P.e}"/><path d="M24 39Q28 42 32 39" stroke="${P.e}" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+    <circle cx="51" cy="25" r="3" fill="${P.a}"/><circle cx="51" cy="34" r="3" fill="${D3(P.a, .3)}"/><path d="M48 42H54M48 45H54" stroke="${D3(P.b, .4)}" stroke-width="1.2"/>
+    <path d="M14 54 12 60M50 54 52 60" stroke="${D3(P.b, .4)}" stroke-width="3" stroke-linecap="round"/>${shine3(16, 22, 4, 1.6)}</g>`],
+};
+for (const [k, [n, fn]] of Object.entries(COMPA3)) CRIT['c3' + k] = [n, (a, ak) => {
+  const pal = ak === 'oro' ? Object.assign({}, C3P[k], GOLD17, k === 'dado' ? { e: '#5a3a00' } : {}) : ak === 'u' && C3P[k].u ? C3P[k].u : C3P[k];
+  const svg = fn(pal, 'c3' + k + (ak || 'base'));
+  return ak === 'prisma' ? `<g class="prisma">${svg}</g>` : ak === 'u' ? `<g class="prisma slow">${svg}</g><g class="tw">${sparkles8([[4, 4, 3], [60, 4, 2.6], [60, 60, 2.6], [4, 60, 2.2]], '#fff')}</g>` : svg;
+}];
+STYLE_OPTS.compa.push(...Object.entries(COMPA3).map(([k, [n]]) => lgo('lg-c3-' + k, n + ' 3D', `c3${k}|base`)));
+{
+  const L = [];
+  for (const [k, [n]] of Object.entries(COMPA3)) L.push(['cx-c3o-' + k, n + ' dorado 3D', 'mitica', `c3${k}|oro`], ['cx-c3x-' + k, n + ' prisma 3D', 'exotica', `c3${k}|prisma`]);
+  for (const [k, n] of Object.entries(C3U)) L.push(['cx-c3u-' + k, n, 'unica', `c3${k}|u`]);
+  for (const [k, n, r, v] of L) STYLE_OPTS.compa.push(Object.assign(C(k, n, v), { cx: r }));
+}
+for (const r of collectCatalog()) CAT_IDX[r[0]] = { id: r[0], f: r[1], k: r[2], n: r[3], r: r[4], max: r[5], b: r[6] };
+PRO_COUNT = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.filter(o => !o.f).length, 0) + 4;
+
+// ---------- CARTA PRO DE CADA OBJETO: código único, desgaste, patrón, valor estimado y precio en el mercado
+const hs17 = s => { let x = 0; s = String(s); for (let i = 0; i < s.length; i++) x = (x * 31 + s.charCodeAt(i)) % 1000003; return x; };
+const CAT3 = { pet: 'PET', compa: 'CMP', deco: 'DEC', pfx: 'EFX', nameanim: 'NOM', aura: 'AUR', theme: 'FON', banner: 'BAN', frame: 'MAR', tag: 'INS', sticker: 'STK', cardframe: 'TAR', namebg: 'NBG', clickfx: 'CLK', mouse: 'MOU', entrada: 'ENT', titleanim: 'TIT' };
+const itemCode = it => { const c = catOf(it.cid), hh = hs17((it.id || '') + '|' + it.cid + '|' + it.pattern + '|' + it.wear); return `JVN-${CAT3[c.f] || String(c.f).slice(0, 3).toUpperCase()}-${String(it.serial).padStart(4, '0')}-${hh.toString(36).toUpperCase().padStart(4, '0').slice(-4)}`; };
+const barcode = code => { let x = hs17(code), out = '', px = 0; for (let i = 0; i < 34 && px < 118; i++) { x = (x * 1103515245 + 12345) % 2147483648; const w = 1 + (x >> 8) % 3; if (i % 2 === 0) out += `<rect x="${px}" y="0" width="${w}" height="16"/>`; px += w; } return `<svg viewBox="0 0 120 16" preserveAspectRatio="none" aria-hidden="true">${out}</svg>`; };
+const BASEV = { comun: 80, rara: 250, epica: 700, legendaria: 2500, mitica: 9000, exotica: 30000, unica: 150000 };
+const MK17 = { t: 0, min: {}, n: {}, sold: {}, p: null };
+function loadMk17() {
+  if (Date.now() - MK17.t < 60000) return Promise.resolve();
+  if (MK17.p) return MK17.p;
+  MK17.p = (async () => {
+    const [a, s] = await Promise.all([
+      sbTry(() => rest('market?select=price,item:items(cid)&status=eq.active&limit=1000', { auth: false }), []),
+      sbTry(() => rest('item_history?select=cid,price&kind=eq.market&order=at.desc&limit=600', { auth: false }), []),
+    ]);
+    const min = {}, n = {}, sold = {};
+    for (const r of a || []) { const c = r.item && r.item.cid; if (!c) continue; n[c] = (n[c] || 0) + 1; if (min[c] == null || r.price < min[c]) min[c] = r.price; }
+    for (const r of s || []) { if (r.cid && r.price) (sold[r.cid] = sold[r.cid] || []).push(r.price); }
+    Object.assign(MK17, { t: Date.now(), min, n, sold, p: null });
+  })();
+  return MK17.p;
+}
+const median = l => { const s = l.slice().sort((a, b) => a - b), m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+const nice = v => { if (v < 100) return Math.max(10, Math.round(v / 5) * 5); const p = Math.pow(10, Math.floor(Math.log10(v)) - 1); return Math.round(v / p) * p; };
+function estMult(it) {
+  let m = 1; const s = +it.serial, w = +it.wear;
+  if (s === 1) m *= 2.5; else if (s <= 10) m *= 1.6; else if (s <= 50) m *= 1.2; else if (s <= 100) m *= 1.08;
+  if (RAREPAT.has(+it.pattern)) m *= 1.5;
+  m *= w < .07 ? 1.25 : w < .15 ? 1.1 : w < .38 ? 1 : w < .45 ? .92 : .85;
+  return m;
+}
+function estOf(it) {
+  const c = catOf(it.cid); if (!c) return 0;
+  const sold = MK17.sold[it.cid];
+  let base;
+  if (sold && sold.length >= 2) base = median(sold.slice(0, 10));
+  else { base = BASEV[c.r] || 100; if (!isCX(c.f, c.k)) { let shop = 0; try { shop = priceOf(c.f, c.k); } catch (e) { } if (shop) base = Math.round(shop * .75); } base *= .88 + (hs17(it.cid) % 25) / 100; }
+  return nice(base * estMult(it));
+}
+const fmtc = v => Math.round(v).toLocaleString('es-AR');
+function mkLine(cid) {
+  const n = MK17.n[cid] || 0, sold = MK17.sold[cid];
+  const now = n ? `<span>En el mercado ahora: <b>${coinSVG(12)} ${fmtc(MK17.min[cid])}</b> <small class="dim">· ${plural(n, 'en venta', 'en venta')}</small></span>` : `<span class="dim">Nadie lo vende ahora</span>`;
+  return now + (sold && sold.length ? `<span class="dim">Última venta: ${coinSVG(11)} ${fmtc(sold[0])}</span>` : '');
+}
+function collCard(it, actions = '', extra = '') {
+  const c = catOf(it.cid), R = RAR[c.r] || RAR.comun, rp = RAREPAT.has(+it.pattern), w = +it.wear, code = itemCode(it), s = +it.serial;
+  const ser = s === 1 ? '<em class="sbad gold">Número 1</em>' : s <= 10 ? '<em class="sbad">Serie baja</em>' : '';
+  return `<div class="icard v17 r-${c.r} ${rp ? 'rarepat' : ''}" style="--rc:${R.c}" data-mkcid="${h(it.cid)}" data-ser="${s}" data-pat="${+it.pattern}" data-wear="${w}">
+    <div class="ihead"><span class="irar">${R.n}</span><span class="iser" title="Número de serie">#${s}${c.max ? `<small>/${c.max}</small>` : ''}</span></div>
+    <div class="ithumbw">${itemThumb(it.cid, it.pattern)}</div>
+    <b class="iname">${h(c.n)}</b><small class="dim">${h(CAT_NAMES[c.f] || c.f)}</small>${ser}
+    <div class="ival"><small>Valor estimado</small><b>${coinSVG(16)} <span data-est>${fmtc(estOf(it))}</span></b></div>
+    <div class="imk" data-mk><span class="dim">Mirando el mercado…</span></div>
+    <div class="istats">
+      <div class="istat"><small>Desgaste</small><b>${WEAR(w)}</b><div class="iwbar"><i style="left:${Math.min(100, w * 100).toFixed(1)}%"></i></div><code>${w.toFixed(4).replace('.', ',')}</code></div>
+      <div class="istat"><small>Patrón</small><b>P${+it.pattern}${rp ? ' ★' : ''}</b><code>${rp ? 'Patrón raro' : 'de 1000'}</code></div>
+    </div>
+    <div class="icode" title="Código único de este objeto">${barcode(code)}<code>${code}</code></div>
+    ${extra}${actions ? `<div class="iact">${actions}</div>` : ''}</div>`;
+}
+let fillT17 = 0;
+function fill17() {
+  clearTimeout(fillT17);
+  fillT17 = setTimeout(async () => {
+    const els = [...document.querySelectorAll('.icard.v17:not([data-mkd])')], tot = document.querySelector('[data-invtotal]:not([data-mkd])');
+    if (!els.length && !tot) return;
+    await loadMk17();
+    for (const el of els) {
+      el.dataset.mkd = '1';
+      const it = { cid: el.dataset.mkcid, serial: +el.dataset.ser, pattern: +el.dataset.pat, wear: +el.dataset.wear };
+      const e = el.querySelector('[data-est]'); if (e) e.textContent = fmtc(estOf(it));
+      const m = el.querySelector('[data-mk]'); if (m) m.innerHTML = mkLine(it.cid);
+    }
+    if (tot) { tot.dataset.mkd = '1'; const sum = INV.list.reduce((a, it) => a + estOf(it), 0); tot.innerHTML = sum ? ` Tu colección vale <b>${coinSVG(14)} ${fmtc(sum)}</b> (estimado).` : ''; }
+  }, 120);
+}
+if (document.body) new MutationObserver(fill17).observe(document.body, { childList: true, subtree: true });
+else document.addEventListener('DOMContentLoaded', () => new MutationObserver(fill17).observe(document.body, { childList: true, subtree: true }));
 
 
 // ============================================================ ONLINE (Supabase)
