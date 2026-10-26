@@ -1,0 +1,1886 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>JVNN Series & Movies</title>
+<meta name="description" content="Anotá las series que ves, marcá capítulos y temporadas, mirá cuánto tiempo pasaste viendo series y descubrí qué ver después. Gratis.">
+<meta property="og:title" content="JVNN Series & Movies">
+<meta property="og:description" content="Anotá tus series, marcá capítulos y descubrí cuánto tiempo de tu vida pasaste viendo tele.">
+<meta name="theme-color" content="#08080b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2308080b'/%3E%3Crect x='10' y='16' width='44' height='30' rx='6' fill='none' stroke='%23f3c6cf' stroke-width='5'/%3E%3Cpath d='M26 52h12' stroke='%23f3c6cf' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M27 25l11 6-11 6z' fill='%23f3c6cf'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Figtree:wght@400;500;600;700&display=swap">
+<!--ADSENSE-->
+<style>
+/* Layout: barra superior fija + columna central de 1200px; en celular, barra de navegación abajo. */
+:root{
+  /* Paleta JVNN: negro, rosa y blanco, con azul de apoyo. Un solo tema oscuro, a propósito. */
+  --bg:#08080b; --surface:#121217; --raise:#1b1b22; --line:#2a2a34; --fg:#ffffff; --dim:#a6a6b8;
+  --accent:#f3c6cf; --accent-ink:#2b1519; --accent-soft:#2c2225; --blue:#3d8bff; --blue-soft:#0f2142;
+  --good:#3ddc97; --bad:#ff5c6c;
+  --display:"Archivo","Arial Narrow",system-ui,sans-serif; --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:14px; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font:15px/1.5 var(--body);-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom,0px)}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+[hidden]{display:none!important}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* barra superior */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.logo{font-family:var(--display);font-weight:900;font-stretch:125%;font-size:22px;letter-spacing:-.02em;white-space:nowrap;display:flex;align-items:baseline;gap:7px}
+.logo b{background:var(--accent);color:var(--accent-ink);padding:1px 7px 2px;border-radius:7px}
+.logo span{font-stretch:75%;font-weight:700;font-size:17px;color:var(--dim)}
+.nav{display:flex;gap:2px;margin-left:auto}
+.nav a{padding:8px 11px;border-radius:9px;font-weight:600;color:var(--dim);font-size:14px;white-space:nowrap}
+.nav a:hover{color:var(--fg);background:var(--raise)}
+.nav a.on{color:var(--fg);background:var(--raise)}
+.search{position:relative;flex:1;max-width:340px}
+.search input{width:100%;height:40px;border-radius:20px;border:1px solid var(--line);background:var(--surface);padding:0 16px 0 38px}
+.search svg{position:absolute;left:13px;top:12px;color:var(--dim)}
+.bnav{display:none}
+
+main{padding-block:26px 60px;min-height:70vh}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+h1{font-size:clamp(28px,4vw,44px);font-weight:850;font-stretch:112%;letter-spacing:-.02em;line-height:1.05}
+h2{font-size:21px;font-weight:800;font-stretch:108%;letter-spacing:-.01em}
+.sec{margin-top:34px}
+.sec:first-child{margin-top:0}
+.sechead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px}
+.sechead a{font-size:14px;font-weight:600;color:var(--accent)}
+.dim{color:var(--dim)}
+.small{font-size:13px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;height:40px;padding:0 16px;border-radius:10px;border:1px solid var(--line);background:var(--surface);font-weight:650;white-space:nowrap}
+.btn:hover{border-color:var(--dim)}
+.btn.pri{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.btn.pri:hover{filter:brightness(1.06)}
+.btn.ghost{background:transparent}
+.btn.sm{height:32px;padding:0 11px;font-size:13px;border-radius:8px}
+.btn.danger{color:var(--bad)}
+.btn[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent)}
+select.btn{padding-right:30px;appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--dim) 50%),linear-gradient(135deg,var(--dim) 50%,transparent 50%);background-position:calc(100% - 16px) 17px,calc(100% - 11px) 17px;background-size:5px 5px;background-repeat:no-repeat}
+
+/* grillas de pósters */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:18px 14px}
+.row{display:grid;grid-auto-flow:column;grid-auto-columns:150px;gap:14px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.row>*{scroll-snap-align:start}
+.card{min-width:0;display:flex;flex-direction:column;gap:8px}
+.pimg{position:relative;aspect-ratio:2/3;border-radius:10px;overflow:hidden;background:var(--raise);box-shadow:var(--shadow);max-width:100%}
+.pimg img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.card:hover .pimg img{transform:scale(1.04)}
+.noimg{width:100%;height:100%;display:grid;place-items:center;font-family:var(--display);font-weight:900;font-stretch:125%;font-size:30px;color:var(--dim);background:linear-gradient(150deg,var(--raise),var(--line))}
+.rt{position:absolute;left:7px;top:7px;background:rgba(0,0,0,.78);color:#fff;font-size:12px;font-weight:700;padding:2px 7px;border-radius:7px;font-variant-numeric:tabular-nums}
+.tag{position:absolute;right:7px;bottom:7px;background:var(--accent);color:var(--accent-ink);font-size:11px;font-weight:800;padding:2px 7px;border-radius:6px}
+.cname{font-weight:700;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.csub{font-size:12.5px;color:var(--dim);margin-top:-4px}
+.mini{align-self:flex-start;height:28px;padding:0 10px;border-radius:7px;border:1px solid var(--line);background:var(--surface);font-size:12.5px;font-weight:650}
+.mini:hover{border-color:var(--accent)}
+.pbar{height:5px;border-radius:3px;background:var(--line);overflow:hidden}
+.pbar i{display:block;height:100%;background:var(--accent);border-radius:3px}
+
+/* bienvenida */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:34px;overflow:hidden}
+.hero p{font-size:17px;color:var(--dim);max-width:52ch}
+.hero .stack{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.clock{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(46px,7vw,84px);line-height:.9;letter-spacing:-.01em}
+.clock small{display:block;font-family:var(--body);font-size:14px;font-weight:600;color:var(--dim);letter-spacing:0;margin-top:10px}
+
+/* seguir viendo */
+.next{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.nx{display:flex;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px;min-width:0}
+.nx .th{width:118px;flex:none;aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:var(--raise)}
+.nx .th img{width:100%;height:100%;object-fit:cover}
+.nx .tx{min-width:0;flex:1;display:flex;flex-direction:column;gap:2px}
+.nx .tx b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nx .tx span{font-size:13px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nx .go{align-self:center;flex:none}
+.check{width:40px;height:40px;border-radius:50%;border:2px solid var(--line);background:transparent;display:grid;place-items:center;color:var(--line);transition:all .15s}
+.check:hover{border-color:var(--accent);color:var(--accent)}
+.check.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+
+/* serie */
+.shero{position:relative;border-radius:20px;overflow:hidden;background:var(--surface);border:1px solid var(--line)}
+.shero .bg{position:absolute;inset:0;background-size:cover;background-position:center 25%;opacity:.28;filter:blur(2px) saturate(1.1)}
+.shero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--surface) 15%,transparent 85%),linear-gradient(0deg,var(--surface),transparent 60%)}
+.shin{position:relative;display:grid;grid-template-columns:200px 1fr;gap:28px;padding:28px}
+.spost{border-radius:12px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:2/3;background:var(--raise)}
+.spost img{width:100%;height:100%;object-fit:cover}
+.sinfo{min-width:0;display:flex;flex-direction:column;gap:12px}
+.facts{color:var(--dim);font-weight:500}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-size:12.5px;font-weight:650;padding:3px 10px;border-radius:20px;background:var(--raise);border:1px solid var(--line)}
+button.chip:hover,button.chip.on{border-color:var(--accent);background:var(--accent-soft)}
+.ratings{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.bigr{font-family:var(--display);font-weight:900;font-size:30px;font-stretch:90%;font-variant-numeric:tabular-nums}
+.bigr small{font:600 12px var(--body);color:var(--dim);margin-left:4px}
+.ext{font-weight:700;font-size:13px;padding:5px 10px;border-radius:7px;background:#f5c518;color:#111}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.prog{display:flex;flex-direction:column;gap:6px;max-width:460px}
+.prog .pbar{height:8px}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:26px;margin-top:26px;align-items:start}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.panel+.panel{margin-top:16px}
+.two>.panel{margin-top:0}
+.panel h3{font-size:16px;font-weight:800;margin-bottom:10px}
+.stabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:12px}
+.stab{flex:none;height:36px;padding:0 14px;border-radius:9px;border:1px solid var(--line);background:var(--surface);font-weight:650;font-size:14px;display:flex;align-items:center;gap:7px}
+.stab.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.stab .dot{width:7px;height:7px;border-radius:50%;background:var(--good)}
+.shead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.eps{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.ep{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px;padding:10px 14px;border-top:1px solid var(--line)}
+.ep:first-child{border-top:0}
+.ep .check{width:34px;height:34px}
+.ep .t{min-width:0}
+.ep .t a{font-weight:650;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ep .t a:hover{color:var(--accent)}
+.ep .code{font-family:var(--display);font-stretch:80%;font-weight:800;color:var(--dim);margin-right:6px;font-variant-numeric:tabular-nums}
+.ep .m{font-size:12.5px;color:var(--dim);white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums}
+.ep.w .t a{color:var(--dim)}
+.ep.fut{opacity:.6}
+.ep.fut .check{pointer-events:none;border-style:dashed}
+.ep .note{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-left:6px;vertical-align:middle}
+.cast{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+.person{display:flex;gap:9px;align-items:center;min-width:0}
+.person .av{width:42px;height:42px;border-radius:50%;overflow:hidden;background:var(--raise);flex:none}
+.person .av img{width:100%;height:100%;object-fit:cover}
+.person div{min-width:0;font-size:13px;line-height:1.3}
+.person b,.person span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.person span{color:var(--dim)}
+.score{display:flex;gap:4px;flex-wrap:wrap}
+.score button{width:28px;height:30px;border-radius:7px;border:1px solid var(--line);background:var(--surface);font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+.score button.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+textarea{width:100%;min-height:90px;border-radius:10px;border:1px solid var(--line);background:var(--bg);padding:10px 12px;resize:vertical}
+input[type=text],input[type=search]:not(.sq){border-radius:10px;border:1px solid var(--line);background:var(--bg);padding:9px 12px;width:100%}
+.summary{color:var(--dim);font-size:14.5px;max-width:68ch}
+
+/* episodio */
+.ephero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px;align-items:start}
+.still{border-radius:14px;overflow:hidden;aspect-ratio:16/9;background:var(--raise);box-shadow:var(--shadow)}
+.still img{width:100%;height:100%;object-fit:cover}
+.reacts{display:flex;gap:8px;flex-wrap:wrap}
+.reacts button{height:38px;padding:0 12px;border-radius:19px;border:1px solid var(--line);background:var(--surface);font-weight:600;font-size:14px}
+.reacts button.on{border-color:var(--accent);background:var(--accent-soft)}
+.epnav{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
+
+/* listas */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:18px 0}
+.tab{height:36px;padding:0 14px;border-radius:18px;border:1px solid var(--line);background:var(--surface);font-weight:650;font-size:14px}
+.tab.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.tab span{color:var(--dim);margin-left:4px;font-variant-numeric:tabular-nums}
+.tab.on span{color:inherit;opacity:.7}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+
+/* calendario */
+.day{margin-top:22px}
+.day h3{font-size:15px;font-weight:800;margin-bottom:8px;display:flex;gap:8px;align-items:baseline}
+.day h3 span{font-family:var(--body);font-weight:500;color:var(--dim);font-size:13px}
+.calrow{display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin-top:6px}
+.calrow .pp{width:38px;aspect-ratio:2/3;border-radius:5px;overflow:hidden;flex:none;background:var(--raise)}
+.calrow .pp img{width:100%;height:100%;object-fit:cover}
+.calrow .tx{min-width:0;flex:1}
+.calrow .tx b,.calrow .tx span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.calrow .tx span{font-size:13px;color:var(--dim)}
+.calrow time{font-weight:700;font-variant-numeric:tabular-nums;font-size:14px}
+
+/* estadísticas */
+.tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.tile b{display:block;font-family:var(--display);font-stretch:70%;font-weight:900;font-size:42px;line-height:1;font-variant-numeric:tabular-nums}
+.tile span{font-size:13px;color:var(--dim);font-weight:600}
+.bars{display:flex;flex-direction:column;gap:9px}
+.bar{display:grid;grid-template-columns:130px minmax(0,1fr) 84px;gap:10px;align-items:center;font-size:14px}
+.bar .track{height:12px;background:var(--raise);border-radius:6px;overflow:hidden}
+.bar .track i{display:block;height:100%;background:var(--accent);border-radius:6px}
+.bar em{font-style:normal;color:var(--dim);text-align:right;font-variant-numeric:tabular-nums;font-size:13px}
+.bar span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.months{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px;align-items:end;height:170px}
+.months div{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px;height:100%;min-width:0}
+.months i{width:100%;max-width:34px;background:var(--accent);border-radius:5px 5px 2px 2px;min-height:2px}
+.months span{font-size:11px;color:var(--dim)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:16px}
+
+/* perfil */
+.prof{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center}
+.avatar{width:128px;height:128px;border-radius:50%;overflow:hidden;background:var(--raise);display:grid;place-items:center;font-family:var(--display);font-weight:900;font-size:44px;color:var(--dim);border:3px solid var(--accent)}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.toplist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.toplist li{display:grid;grid-template-columns:30px 44px minmax(0,1fr) auto;gap:10px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:6px 8px}
+.toplist .n{font-family:var(--display);font-weight:900;font-size:22px;text-align:center;color:var(--accent)}
+.toplist .pp{width:44px;aspect-ratio:2/3;border-radius:5px;overflow:hidden;background:var(--raise)}
+.toplist .pp img{width:100%;height:100%;object-fit:cover}
+.toplist b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ord{display:flex;gap:4px}
+.ord button{width:30px;height:30px;border-radius:7px;border:1px solid var(--line);background:var(--surface)}
+.form{display:grid;gap:10px;max-width:520px}
+label.lb{font-size:13px;font-weight:650;color:var(--dim)}
+
+/* varios */
+.empty{text-align:center;padding:50px 20px;background:var(--surface);border:1px dashed var(--line);border-radius:16px;color:var(--dim)}
+.empty h3{color:var(--fg);font-size:19px;margin-bottom:6px}
+.empty .btn{margin-top:14px}
+.skel{background:linear-gradient(90deg,var(--raise),var(--line),var(--raise));background-size:200% 100%;animation:sk 1.2s infinite;border-radius:10px}
+@keyframes sk{to{background-position:-200% 0}}
+.err{padding:18px;border-radius:12px;background:var(--surface);border:1px solid var(--bad);color:var(--fg)}
+.ad{margin:30px 0;min-height:90px}
+.ad.ph{display:grid;place-items:center;border:1px dashed var(--line);border-radius:12px;color:var(--dim);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+footer{border-top:1px solid var(--line);padding-block:26px 90px;color:var(--dim);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:underline}
+.modal{position:fixed;inset:0;z-index:50;background:rgba(8,10,25,.55);display:grid;place-items:center;padding:20px}
+.mbox{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;max-width:440px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.mbox h3{font-size:20px;margin-bottom:8px}
+.mbox p{color:var(--dim);margin:0 0 18px}
+.mbox .acts{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:60;background:var(--fg);color:var(--bg);padding:10px 12px 10px 18px;border-radius:12px;font-weight:600;display:flex;gap:12px;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,.3);max-width:calc(100% - 32px)}
+.toast button{background:transparent;border:1px solid currentColor;color:inherit;border-radius:8px;padding:4px 10px;font-weight:700}
+.movies{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.movies .big{font-family:var(--display);font-weight:900;font-stretch:62%;font-size:120px;line-height:.85;color:var(--accent)}
+
+@media (max-width:1100px){.nav a{padding:8px 8px;font-size:13.5px}.logo span{display:none}}
+@media (max-width:920px){
+  .nav{display:none}
+  .search{max-width:none}
+  .bnav{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
+  .bnav a{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;font-weight:650;color:var(--dim);padding:4px 0}
+  .bnav a.on{color:var(--accent)}
+  .cols{grid-template-columns:minmax(0,1fr)}
+  .hero{grid-template-columns:1fr;padding:24px}
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .two{grid-template-columns:minmax(0,1fr)}
+  .ephero{grid-template-columns:minmax(0,1fr)}
+  .movies{grid-template-columns:1fr}
+  footer{padding-bottom:100px}
+}
+@media (max-width:600px){
+  .top .wrap{gap:10px}
+  .logo{font-size:19px}
+  .shin{grid-template-columns:minmax(0,1fr);gap:16px;padding:16px}
+  .spost{width:120px}
+  .shin h1{font-size:24px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:14px 10px}
+  .row{grid-auto-columns:118px}
+  .next{grid-template-columns:minmax(0,1fr)}
+  .nx .th{width:92px}
+  .bar{grid-template-columns:96px minmax(0,1fr) 70px}
+  .prof{grid-template-columns:1fr;justify-items:start}
+  .ep{padding:9px 10px;gap:9px}
+  .ep .m{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ---------- JVNN v2: negro, rosa, blanco y azul ---------- */
+body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+input,textarea,select{-webkit-user-select:text;user-select:text}
+img{-webkit-user-drag:none;user-drag:none;pointer-events:auto}
+*{scrollbar-width:thin;scrollbar-color:var(--accent) transparent}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px;border:2px solid var(--bg)}
+::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+.logo b{box-shadow:0 0 0 0 transparent,0 6px 22px rgba(255,46,136,.35)}
+.hero,.stathero{background:radial-gradient(120% 140% at 100% 0%,rgba(255,46,136,.22),transparent 55%),radial-gradient(90% 120% at 0% 100%,rgba(61,139,255,.16),transparent 60%),var(--surface)}
+.sechead a,.chip.blue{color:var(--blue)}
+.chip.blue{border-color:var(--blue);background:var(--blue-soft)}
+.pbar i{background:linear-gradient(90deg,var(--accent),#ff7ab8)}
+.stab .dot{background:var(--blue)}
+.btn.pri{box-shadow:0 6px 20px rgba(255,46,136,.28)}
+.clock{background:linear-gradient(180deg,#fff 30%,#ffb3d4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav a.on{color:#fff;background:var(--accent-soft);box-shadow:inset 0 -2px 0 var(--accent)}
+.card .pimg{outline:1px solid rgba(255,255,255,.04)}
+/* filas con flechas */
+.rowwrap{position:relative}
+.row{scrollbar-width:none;padding-bottom:4px}
+.row::-webkit-scrollbar{display:none}
+.rowwrap::after{content:"";position:absolute;top:0;right:0;bottom:60px;width:60px;background:linear-gradient(90deg,transparent,var(--bg));pointer-events:none;transition:opacity .2s}
+.rowwrap.atend::after{opacity:0}
+.rowbtn{position:absolute;top:calc(50% - 60px);z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(18,18,23,.92);color:#fff;font-size:26px;line-height:1;display:grid;place-items:center;box-shadow:var(--shadow);transition:opacity .2s,background .2s}
+.rowbtn:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.rowbtn.l{left:-14px}.rowbtn.r{right:-14px}
+.rowwrap.atstart .rowbtn.l,.rowwrap.atend .rowbtn.r{opacity:0;pointer-events:none}
+@media (hover:none){.rowbtn{display:none}}
+/* calendario */
+.calbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:20px}
+.seg{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:4px;gap:2px}
+.seg button{height:36px;padding:0 16px;border:0;border-radius:9px;background:transparent;font-weight:700;color:var(--dim)}
+.seg button span{font-weight:600;opacity:.75;margin-left:3px;font-variant-numeric:tabular-nums}
+.seg button.on{background:var(--accent);color:var(--accent-ink)}
+.toggle{display:inline-flex;gap:8px;align-items:center;font-weight:600;cursor:pointer}
+.toggle input{width:18px;height:18px;accent-color:var(--accent)}
+.calsum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+.calsum div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;min-width:0}
+.calsum b{display:block;font-family:var(--display);font-stretch:75%;font-weight:900;font-size:28px;line-height:1.1}
+.calsum span{font-size:13px;color:var(--dim);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.day.today h3{color:var(--accent)}
+.calrow time{color:var(--blue)}
+.calrow.w{opacity:.62}
+.calrow .tx:hover b{color:var(--accent)}
+.state{font-size:12px;font-weight:700;padding:3px 8px;border-radius:6px;white-space:nowrap}
+.state.new{background:var(--accent-soft);color:#ff8cbf}
+.state.seen{background:var(--raise);color:var(--dim)}
+.check.sm{width:32px;height:32px;flex:none}
+/* estadísticas */
+.stathero{border:1px solid var(--line);border-radius:22px;padding:30px}
+.units{display:flex;flex-wrap:wrap;gap:10px 30px;margin:14px 0 8px}
+.unit b{display:block;font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(56px,9vw,104px);line-height:.9;background:linear-gradient(180deg,#fff 35%,#ff9ac6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.unit span{font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;font-size:13px}
+.stathero p{margin:10px 0 0;color:var(--dim)}
+.stathero p b{color:var(--fg)}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.kpi span{font-size:13px;font-weight:600;color:var(--dim)}
+.kpi b{font-family:var(--display);font-stretch:80%;font-weight:850;font-size:26px;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpi.alt{border-left:3px solid var(--blue)}
+.kpis:not(:has(.alt)) .kpi{border-left:3px solid var(--accent)}
+.phead{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:14px}
+.phead h3{margin:0}
+.months{height:auto}
+.months div{height:150px}
+.months em{font-style:normal;font-size:11px;font-weight:700;color:var(--dim);font-variant-numeric:tabular-nums;min-height:15px}
+.months i{background:var(--blue);opacity:.75}
+.months .cur i{background:var(--accent);opacity:1}
+.months .cur span{color:var(--accent);font-weight:700}
+.bar .track i{background:linear-gradient(90deg,var(--accent),#ff7ab8)}
+.wdays{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;align-items:end;height:130px}
+.wdays div{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px;height:100%}
+.wdays i{width:100%;max-width:38px;border-radius:6px 6px 2px 2px;background:var(--blue);opacity:.7}
+.wdays .cur i{background:var(--accent);opacity:1}
+.wdays span{font-size:12px;color:var(--dim);font-weight:600}
+.ranking{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.ranking li{display:grid;grid-template-columns:28px 40px minmax(0,1fr) 92px;gap:12px;align-items:center}
+.ranking .n{font-family:var(--display);font-weight:900;font-size:20px;color:var(--accent);text-align:center}
+.ranking .pp{width:40px;aspect-ratio:2/3;border-radius:5px;overflow:hidden;background:var(--raise)}
+.ranking .pp img{width:100%;height:100%;object-fit:cover}
+.rk{min-width:0;display:flex;flex-direction:column;gap:6px}
+.rk b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rk .track{height:8px;background:var(--raise);border-radius:4px;overflow:hidden}
+.rk .track i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),#7fb2ff);border-radius:4px}
+.ranking em{font-style:normal;text-align:right;font-weight:700;font-variant-numeric:tabular-nums;font-size:14px}
+.ranking em small{display:block;font-weight:500;color:var(--dim);font-size:12px}
+/* perfil */
+.pcover{background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.pbanner{height:150px;display:grid;grid-template-columns:repeat(3,1fr);background:linear-gradient(120deg,#ff2e88,#7a2bff 55%,#3d8bff);position:relative}
+.pbanner div{background-size:cover;background-position:center 30%;opacity:.45;filter:saturate(1.2)}
+.pbanner::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--surface),rgba(18,18,23,.15) 70%)}
+.pmain{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:22px;align-items:end;padding:0 26px;margin-top:-64px;position:relative}
+.pmain .avatar{border:4px solid var(--surface);box-shadow:0 0 0 3px var(--accent)}
+.pid h1{font-size:clamp(26px,3.5vw,38px)}
+.pid p{margin:4px 0;max-width:60ch}
+.pstats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--line);margin-top:22px}
+.pstats a{padding:16px 10px;text-align:center;border-left:1px solid var(--line);min-width:0}
+.pstats a:first-child{border-left:0}
+.pstats a:hover{background:var(--raise)}
+.pstats b{display:block;font-family:var(--display);font-stretch:80%;font-weight:900;font-size:24px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pstats span{font-size:12.5px;color:var(--dim);font-weight:600}
+.favgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:18px 14px}
+.fav{display:flex;flex-direction:column;gap:8px;min-width:0}
+.fav b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fav .rank{position:absolute;left:0;bottom:0;background:var(--accent);color:var(--accent-ink);font-family:var(--display);font-weight:900;font-size:22px;min-width:40px;height:40px;display:grid;place-items:center;border-top-right-radius:12px}
+.fav:first-child .pimg{box-shadow:0 0 0 2px var(--accent),0 10px 30px rgba(255,46,136,.3)}
+.fav .ord{display:flex;gap:4px}
+.fav .ord button{flex:1;height:30px;border-radius:7px;border:1px solid var(--line);background:var(--raise);color:var(--fg)}
+.fav .ord button:hover:not(:disabled){border-color:var(--accent)}
+.fav .ord button:disabled{opacity:.35}
+.addrow{display:flex;gap:8px;margin-top:20px;max-width:560px}
+.addrow select{flex:1;min-width:0}
+.notes{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.noteitem{background:var(--raise);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.noteitem:hover{border-color:var(--accent)}
+.noteitem .nh b{display:block}
+.noteitem .nh span{font-size:13px;color:var(--dim)}
+.noteitem .nm{display:flex;gap:6px;flex-wrap:wrap}
+.noteitem p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.noteitem time{font-size:12px;color:var(--dim)}
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.badge{display:flex;gap:12px;align-items:center;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--raise);opacity:.5}
+.badge.on{opacity:1;border-color:var(--accent);background:linear-gradient(120deg,var(--accent-soft),var(--raise))}
+.badge .medal{width:44px;height:44px;flex:none;border-radius:50%;display:grid;place-items:center;font-size:22px;background:var(--line);color:var(--dim)}
+.badge.on .medal{background:var(--accent);color:var(--accent-ink)}
+.badge b{display:block}
+.badge span{font-size:13px;color:var(--dim)}
+.panel h3{margin-bottom:10px}
+@media (max-width:920px){
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pmain{grid-template-columns:auto minmax(0,1fr)}
+  .pmain .actions{grid-column:1/-1}
+  .pstats{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .pstats a:nth-child(4){border-left:0}
+  .pstats a:nth-child(n+4){border-top:1px solid var(--line)}
+}
+@media (max-width:600px){
+  .calsum{grid-template-columns:minmax(0,1fr)}
+  .calsum div{display:flex;align-items:baseline;gap:10px}
+  .calsum b{font-size:22px}
+  .stathero{padding:22px}
+  .units{gap:6px 20px}
+  .ranking li{grid-template-columns:22px 34px minmax(0,1fr) 74px;gap:9px}
+  .pmain{grid-template-columns:minmax(0,1fr);padding:0 18px;margin-top:-70px}
+  .pmain .avatar{width:104px;height:104px}
+  .favgrid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
+  .seg button{padding:0 11px}
+  .calrow .state{display:none}
+}
+.units{gap:12px 0}
+.unit{padding-right:30px;margin-right:30px;border-right:1px solid var(--line)}
+.unit:last-child{border-right:0;margin-right:0;padding-right:0}
+.units.sm .unit b{font-size:clamp(44px,6vw,70px)}
+.units.sm .unit{padding-right:18px;margin-right:18px}
+.units.sm{margin:0 0 6px}
+@media (max-width:600px){.unit{padding-right:16px;margin-right:16px}.unit b{font-size:52px}.units.sm .unit b{font-size:44px}}
+/* vista previa de capítulos */
+.ep{grid-template-columns:auto 132px minmax(0,1fr);align-items:start;padding:12px 14px}
+.ep .check{margin-top:22px}
+.epthumb{aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:var(--raise);display:block}
+.epthumb img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.ep:hover .epthumb img{transform:scale(1.05)}
+.epthumb .noimg{font-size:18px}
+.epsum{margin:3px 0 4px;font-size:13px;color:var(--dim);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.m2{font-size:12.5px;color:var(--dim);font-variant-numeric:tabular-nums}
+.rw{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:6px;background:var(--blue-soft);color:#8fbcff;font-weight:700;font-size:11.5px}
+.rwbtn{border-color:var(--blue);color:#a9ccff}
+.rwbtn:hover{background:var(--blue-soft);border-color:var(--blue)}
+.rwbox{display:flex;align-items:center;gap:10px;background:var(--blue-soft);border:1px solid var(--blue);border-radius:12px;padding:10px 12px;align-self:flex-start}
+.rwbox div{display:flex;align-items:baseline;gap:6px;margin-right:6px}
+.rwbox b{font-family:var(--display);font-weight:900;font-size:26px;color:#fff}
+.rwbox span{font-size:13px;color:#a9ccff;font-weight:600}
+.rwsec{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:center;background:radial-gradient(100% 140% at 0% 0%,rgba(61,139,255,.2),transparent 60%),var(--surface);border:1px solid var(--blue);border-radius:18px;padding:24px}
+.rwsec:not(:has(.ranking)){grid-template-columns:1fr}
+.rwsec .eyebrow{color:#8fbcff}
+.rwsec .unit span{color:#8fbcff}
+.rwsec .unit b{background:linear-gradient(180deg,#fff 35%,#9cc4ff);-webkit-background-clip:text;background-clip:text}
+.rwsec .ranking .n{color:var(--blue)}
+/* reparto */
+a.person{border-radius:10px;padding:4px;margin:-4px}
+a.person:hover{background:var(--raise)}
+a.person em{font-style:normal;font-size:11px;font-weight:800;color:#f5c518;opacity:0;transition:opacity .15s}
+a.person:hover em,a.person:focus-visible em{opacity:1}
+/* sugerencias del buscador */
+.sugg{position:absolute;top:46px;left:0;right:0;z-index:40;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.6);padding:6px;max-height:min(70vh,520px);overflow-y:auto;min-width:300px}
+.sg{display:flex;gap:10px;align-items:center;padding:7px 8px;border-radius:9px;font-size:14px}
+a.sg:hover,a.sg.on{background:var(--raise)}
+.sg .sp{width:34px;aspect-ratio:2/3;border-radius:5px;overflow:hidden;flex:none;background:var(--raise)}
+.sg .sp img{width:100%;height:100%;object-fit:cover}
+.sg .sp .noimg{font-size:11px}
+.sg .st{min-width:0;flex:1}
+.sg .st b,.sg .st span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sg .st span{font-size:12.5px;color:var(--dim)}
+.sg em{font-style:normal;font-weight:700;font-size:12.5px;color:#fff;background:var(--accent-soft);padding:2px 7px;border-radius:6px}
+.sg.all{justify-content:center;color:var(--accent);font-weight:700;border-top:1px solid var(--line);border-radius:0 0 9px 9px;margin-top:4px}
+@media (max-width:920px){.rwsec{grid-template-columns:1fr}}
+@media (max-width:600px){
+  .ep{grid-template-columns:auto 96px minmax(0,1fr);gap:10px}
+  .ep .check{margin-top:12px}
+  .epsum{-webkit-line-clamp:1}
+  .sugg{min-width:0;position:fixed;left:12px;right:12px;top:62px}
+}
+/* sin efectos neón: superficies planas, rosa claro */
+.logo b{box-shadow:none}
+.hero,.stathero,.rwsec{background:var(--surface)}
+.btn.pri{box-shadow:none}
+.btn.pri:hover{filter:none;background:#f8d6dc}
+.clock,.unit b,.rwsec .unit b{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--fg)}
+.fav:first-child .pimg{box-shadow:0 0 0 2px var(--accent)}
+.pbar i,.bar .track i{background:var(--accent)}
+.rk .track i{background:var(--blue)}
+.months i,.wdays i{opacity:.55}
+.pbanner{background:linear-gradient(120deg,#4a3a3e,#24242c)}
+.pbanner div{opacity:.35;filter:none}
+.state.new{color:var(--accent)}
+.nav a.on{box-shadow:inset 0 -2px 0 var(--accent)}
+.rowbtn:hover{background:var(--accent);color:var(--accent-ink)}
+.sg em{color:var(--accent)}
+/* calendario general */
+.scope{display:inline-flex;gap:6px;margin-top:18px}
+.days{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;flex:1;min-width:0}
+.days::-webkit-scrollbar{display:none}
+.dchip{flex:none;display:flex;flex-direction:column;align-items:center;min-width:58px;padding:7px 8px;border-radius:11px;border:1px solid var(--line);background:var(--surface);font-weight:700;line-height:1.15}
+.dchip span{font-size:11.5px;color:var(--dim);font-weight:600;text-transform:capitalize}
+.dchip.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.dchip.on span{color:var(--accent-ink)}
+.dchip.today:not(.on){border-color:var(--accent)}
+.daynav{display:flex;gap:8px;align-items:center;margin-top:16px}
+.daynav .arrow{flex:none;width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--surface);font-size:20px}
+.daynav input[type=date]{height:40px;border-radius:10px;border:1px solid var(--line);background:var(--surface);padding:0 10px;color-scheme:dark}
+.calrow .net{font-size:12px;color:var(--dim);white-space:nowrap}
+.calrow.mine{border-color:var(--accent)}
+select.btn.sm{padding-right:30px;background-position:calc(100% - 16px) 13px,calc(100% - 11px) 13px}
+/* ---------- online ---------- */
+.bnav{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:1fr}
+@media (max-width:1250px){.search{max-width:240px}}
+@media (max-width:920px){.search{max-width:none}}
+.acctwrap{flex:none;display:flex;align-items:center}
+.av{display:inline-grid;place-items:center;border-radius:50%;overflow:hidden;background:var(--raise);color:var(--dim);font-family:var(--display);font-weight:900;font-size:14px;flex:none;border:1px solid var(--line)}
+.av img{width:100%;height:100%;object-fit:cover}
+.acct .av{border:2px solid var(--accent)}
+.invite{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+.invite h2{font-size:19px}
+.invite p{margin:4px 0 0}
+.invite.sm{padding:12px 14px;border-radius:12px;margin-bottom:12px}
+.feed{display:flex;flex-direction:column;gap:8px}
+.fitem{display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.ft{flex:1;min-width:0;font-size:14.5px}
+.ft a:hover b{color:var(--accent)}
+.ft>span{display:block;font-size:12.5px;color:var(--dim)}
+.fp{width:34px;aspect-ratio:2/3;border-radius:5px;overflow:hidden;flex:none;background:var(--raise)}
+.fp img{width:100%;height:100%;object-fit:cover}
+.cform{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+.crow{display:flex;gap:10px;align-items:flex-start}
+.crow textarea{min-height:70px}
+.cacts{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-left:46px}
+.clist{display:flex;flex-direction:column;gap:16px}
+.citem{display:flex;gap:10px}
+.cb{flex:1;min-width:0}
+.ch{display:flex;gap:6px;align-items:baseline;flex-wrap:wrap;font-size:14px}
+.ch a:hover b{color:var(--accent)}
+.citem p{margin:4px 0 6px;white-space:pre-wrap;overflow-wrap:anywhere}
+.citem p.blur{filter:blur(6px);cursor:pointer;background:var(--raise);border-radius:8px;padding:4px 8px}
+.chip.sp{border-color:var(--bad);color:var(--bad);font-size:11px;padding:1px 7px}
+.cf{display:flex;gap:12px;align-items:center}
+.like{height:28px;padding:0 10px;border-radius:14px;border:1px solid var(--line);background:transparent;color:var(--dim);font-weight:700;font-size:13px}
+.like.on{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.like:disabled{cursor:default}
+.linkbtn{background:none;border:0;color:var(--dim);font-size:13px;text-decoration:underline;padding:0}
+.authbox{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:40px;align-items:center;max-width:980px;margin:20px auto 0}
+.perks{list-style:none;padding:0;margin:18px 0;display:flex;flex-direction:column;gap:10px}
+.perks li{padding-left:26px;position:relative}
+.perks li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:900}
+.seg a{height:36px;padding:0 16px;border-radius:9px;font-weight:700;color:var(--dim);display:inline-flex;align-items:center}
+.seg a.on{background:var(--accent);color:var(--accent-ink)}
+.ferr{background:rgba(255,92,108,.12);border:1px solid var(--bad);color:#ffb3bb;border-radius:10px;padding:10px 12px;font-size:14px}
+input[type=password]{border-radius:10px;border:1px solid var(--line);background:var(--bg);padding:9px 12px;width:100%}
+.people{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+.pcard{display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-width:0}
+.pcard .pt{flex:1;min-width:0}
+.pcard .pt b,.pcard .pt span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pcard .pt span{font-size:12.5px;color:var(--dim)}
+.acctbar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-top:16px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.acctbar>div:first-child{display:flex;gap:10px;align-items:center}
+.acctbar b{display:block}
+.sync{font-size:12px;font-weight:600}
+.sync.ok{color:var(--good)}
+.sync.err{color:var(--bad)}
+.search.big{max-width:520px;margin-top:16px}
+.search.big input{padding-left:16px;height:46px;border-radius:23px}
+.pstats>div{padding:16px 10px;text-align:center;border-left:1px solid var(--line);min-width:0}
+.pstats>div:first-child{border-left:0}
+@media (max-width:920px){.authbox{grid-template-columns:1fr;gap:20px}}
+@media (max-width:600px){.cacts{padding-left:0}.people{grid-template-columns:minmax(0,1fr)}.acctwrap .btn{padding:0 10px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="#/" aria-label="JVNN Series and Movies, inicio"><b>JVNN</b><span>Series &amp; Movies</span></a>
+  <form class="search" id="sform" role="search">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="q" class="sq" type="search" placeholder="Buscar series…" autocomplete="off" aria-label="Buscar series">
+  </form>
+  <nav class="nav" id="nav">
+    <a href="#/" data-r="">Inicio</a>
+    <a href="#/mis-series" data-r="mis-series">Mis series</a>
+    <a href="#/calendario" data-r="calendario">Calendario</a>
+    <a href="#/descubrir" data-r="descubrir">Descubrir</a>
+    <a href="#/peliculas" data-r="peliculas">Películas</a>
+    <a href="#/stats" data-r="stats">Estadísticas</a>
+    <a href="#/gente" data-r="gente" hidden>Gente</a>
+    <a href="#/perfil" data-r="perfil">Perfil</a>
+  </nav>
+  <div id="acct" class="acctwrap" hidden></div>
+</div></header>
+
+<main class="wrap" id="app"></main>
+
+<footer><div class="wrap">
+  <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: comunidad de TVmaze. Los enlaces de IMDb llevan a su sitio.</div>
+</div></footer>
+
+<nav class="bnav" id="bnav">
+  <a href="#/" data-r=""><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"/></svg>Inicio</a>
+  <a href="#/mis-series" data-r="mis-series"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8"/></svg>Mis series</a>
+  <a href="#/descubrir" data-r="descubrir"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg>Descubrir</a>
+  <a href="#/gente" data-r="gente" hidden><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c1.9.7 3.2 2.5 3.6 5.2"/></svg>Gente</a>
+  <a href="#/calendario" data-r="calendario"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Calendario</a>
+  <a href="#/perfil" data-r="perfil"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg>Perfil</a>
+</nav>
+
+<div class="modal" id="modal" hidden><div class="mbox" id="mbox" role="dialog" aria-modal="true"></div></div>
+<div class="toast" id="toast" hidden></div>
+<script>
+'use strict';
+// ============================================================ CONFIGURACIÓN
+// Para cobrar con anuncios: poné tu ID de AdSense (ca-pub-XXXXXXXX) y los IDs de cada bloque.
+const CONFIG = {
+  adsenseClient: '',
+  adSlots: { home: '', show: '', list: '', stats: '' },
+  showAdPlaceholders: true, // muestra dónde van los anuncios mientras no haya ID de AdSense
+  // Parte online (Supabase). La clave publicable se puede mostrar: la seguridad la dan las reglas (RLS) de la base.
+  supabaseUrl: 'https://jrbhsfxweeptdfaomgdj.supabase.co',
+  supabaseKey: 'sb_publishable_5xs-8lmRmwrZNSlo2ezV7w_bS26y-iB',
+};
+const API = 'https://api.tvmaze.com';
+const KEY = 'jvnn_sm_v1';
+
+// ============================================================ UTILIDADES
+const $ = s => document.querySelector(s);
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const h = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const parser = new DOMParser();
+const txt = html => html ? (parser.parseFromString(html, 'text/html').body.textContent || '').trim() : '';
+const initials = s => String(s || '?').split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
+const year = d => d ? d.slice(0, 4) : '';
+const fmtDate = (d, o = { day: 'numeric', month: 'short', year: 'numeric' }) => d ? new Date(d).toLocaleDateString('es-AR', o) : '';
+const fmtTime = d => new Date(d).toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
+const code = e => `T${e.s} · E${e.n}`;
+const aired = e => !!e.air && Date.parse(e.air) <= Date.now();
+const plural = (n, a, b) => `${n} ${n === 1 ? a : b}`;
+const dayKey = d => { const x = new Date(d); return `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, '0')}-${String(x.getDate()).padStart(2, '0')}`; };
+const todayKey = () => dayKey(Date.now());
+
+const GEN = { Drama: 'Drama', Comedy: 'Comedia', Action: 'Acción', Adventure: 'Aventura', Anime: 'Anime', Children: 'Infantil', Crime: 'Policial', DIY: 'Manualidades', Espionage: 'Espionaje', Family: 'Familia', Fantasy: 'Fantasía', Food: 'Cocina', History: 'Historia', Horror: 'Terror', Legal: 'Judicial', Medical: 'Médico', Music: 'Música', Mystery: 'Misterio', Nature: 'Naturaleza', Romance: 'Romance', 'Science-Fiction': 'Ciencia ficción', Sports: 'Deportes', Supernatural: 'Sobrenatural', Thriller: 'Suspenso', Travel: 'Viajes', War: 'Bélico', Western: 'Western' };
+const gname = g => GEN[g] || g;
+const STATUS = { Running: 'En emisión', Ended: 'Finalizada', 'To Be Determined': 'Sin confirmar', 'In Development': 'En desarrollo' };
+const LISTS = { watching: 'Viendo', plan: 'Para ver', done: 'Terminada', dropped: 'Abandonada' };
+const REACTS = [['love', '😍 Me encantó'], ['lol', '😂 Me reí'], ['shock', '😱 Impactante'], ['sad', '😢 Triste'], ['meh', '😐 Meh'], ['angry', '😡 Me enojó']];
+
+// ============================================================ DATOS DEL USUARIO
+let S = null;
+try { S = JSON.parse(localStorage.getItem(KEY)); } catch (e) { S = null; }
+S = Object.assign({ v: 1, profile: { name: '', bio: '', photo: '', top: [] }, shows: {}, notes: {}, created: Date.now() }, S || {});
+S.profile = Object.assign({ name: '', bio: '', photo: '', top: [] }, S.profile);
+function save() {
+  try { localStorage.setItem(KEY, JSON.stringify(S)); }
+  catch (e) { toast('No se pudo guardar: el navegador no tiene más espacio. Borrá la foto de perfil o hacé una copia.'); }
+  if (typeof schedulePush === 'function') schedulePush();
+}
+const watchedCount = r => Object.keys(r.eps || {}).length;
+const myShows = () => Object.values(S.shows);
+
+// ============================================================ CACHÉ (IndexedDB) Y API
+const idb = (() => {
+  let dbp;
+  const db = () => dbp || (dbp = new Promise(res => {
+    try {
+      const r = indexedDB.open('jvnn_sm_cache', 1);
+      r.onupgradeneeded = () => r.result.createObjectStore('kv');
+      r.onsuccess = () => res(r.result); r.onerror = () => res(null); r.onblocked = () => res(null);
+    } catch (e) { res(null); }
+  }));
+  return {
+    async get(k) { const d = await db(); if (!d) return null; return new Promise(res => { try { const q = d.transaction('kv').objectStore('kv').get(k); q.onsuccess = () => res(q.result || null); q.onerror = () => res(null); } catch (e) { res(null); } }); },
+    async set(k, v) { const d = await db(); if (!d) return; try { d.transaction('kv', 'readwrite').objectStore('kv').put(v, k); } catch (e) { } },
+  };
+})();
+
+let active = 0; const waiting = [];
+async function raw(path) {
+  while (active >= 4) await new Promise(r => waiting.push(r));
+  active++;
+  try {
+    for (let i = 0; i < 5; i++) {
+      let r;
+      try { r = await fetch(API + path); }
+      catch (e) { if (i >= 2) throw new Error('No hay conexión con el servidor de series. Revisá tu internet.'); await sleep(900); continue; }
+      if (r.status === 429) { await sleep(1300 * (i + 1)); continue; }
+      if (r.status === 404) return null;
+      if (!r.ok) throw new Error(`El servidor de series respondió con error ${r.status}.`);
+      return await r.json();
+    }
+    throw new Error('El servidor de series está ocupado. Probá de nuevo en un minuto.');
+  } finally { active--; const w = waiting.shift(); if (w) w(); }
+}
+const mem = new Map();
+function cached(key, ttl, loader) {
+  if (mem.has(key)) return mem.get(key);
+  const p = (async () => {
+    const c = await idb.get(key);
+    if (c && Date.now() - c.t < ttl) return c.d;
+    try { const d = await loader(); if (d != null) idb.set(key, { t: Date.now(), d }); return d; }
+    catch (e) { if (c) return c.d; throw e; }
+  })();
+  mem.set(key, p); p.catch(() => mem.delete(key));
+  return p;
+}
+
+function lite(s) {
+  const ch = s.network || s.webChannel || {};
+  return {
+    id: s.id, name: s.name, img: s.image?.medium || '', imgL: s.image?.original || '', genres: s.genres || [],
+    rating: s.rating?.average || null, runtime: s.runtime || s.averageRuntime || null, status: s.status,
+    premiered: s.premiered || '', ended: s.ended || '', net: ch.name || '', country: ch.country?.name || '',
+    lang: s.language || '', weight: s.weight || 0, imdb: s.externals?.imdb || '', site: s.officialSite || '',
+    summary: txt(s.summary), type: s.type || '',
+  };
+}
+function getShow(id) {
+  return cached('show:' + id, 12 * 3600e3, async () => {
+    const s = await raw(`/shows/${id}?embed[]=episodes&embed[]=seasons&embed[]=cast`);
+    if (!s) return null;
+    const c = lite(s), E = s._embedded || {};
+    c.seasons = (E.seasons || []).map(x => ({ id: x.id, n: x.number, name: x.name || '', count: x.episodeOrder, start: x.premiereDate, end: x.endDate, img: x.image?.medium || '' }));
+    c.eps = (E.episodes || []).filter(e => e.number != null).map(e => ({
+      id: e.id, s: e.season, n: e.number, name: e.name || `Episodio ${e.number}`,
+      air: e.airstamp || (e.airdate ? e.airdate + 'T12:00:00Z' : ''), rt: e.runtime || c.runtime || 30,
+      r: e.rating?.average || null, img: e.image?.medium || '', imgL: e.image?.original || '', sum: txt(e.summary),
+    })).sort((a, b) => a.s - b.s || a.n - b.n);
+    c.cast = (E.cast || []).slice(0, 18).map(x => ({ name: x.person?.name || '', char: x.character?.name || '', img: x.character?.image?.medium || x.person?.image?.medium || '' }));
+    return c;
+  });
+}
+const searchShows = q => cached('search:' + q.toLowerCase(), 3600e3, async () => ((await raw('/search/shows?q=' + encodeURIComponent(q))) || []).map(x => lite(x.show)));
+function schedule() {
+  const d = todayKey();
+  return cached('sched:' + d, 3 * 3600e3, async () => {
+    const [web, tv] = await Promise.all([raw('/schedule/web?date=' + d).catch(() => []), raw('/schedule?country=US&date=' + d).catch(() => [])]);
+    const out = new Map();
+    for (const e of [...(web || []), ...(tv || [])]) {
+      const s = e.show || e._embedded?.show; if (!s || out.has(s.id)) continue;
+      out.set(s.id, { ...lite(s), ep: { s: e.season, n: e.number, name: e.name, air: e.airstamp } });
+    }
+    return [...out.values()].sort((a, b) => b.weight - a.weight || (b.rating || 0) - (a.rating || 0));
+  });
+}
+// Catálogo para recomendar: páginas repartidas del índice de TVmaze, solo series populares.
+const POOL_PAGES = [0, 1, 2, 3, 5, 8, 12, 16, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100, 115, 130, 150, 170, 190, 210];
+let poolCache = null;
+async function getPool(onProgress) {
+  if (poolCache) return poolCache;
+  let done = 0; const all = new Map();
+  await Promise.all(POOL_PAGES.map(p => cached('page:' + p, 7 * 86400e3, async () => {
+    const list = await raw('/shows?page=' + p);
+    return (list || []).filter(s => (s.weight || 0) >= 80 && s.image).map(s => { const l = lite(s); delete l.summary; delete l.imgL; return l; });
+  }).catch(() => []).then(list => { for (const s of list) all.set(s.id, s); done++; onProgress && onProgress(done / POOL_PAGES.length); })));
+  try { for (const s of await schedule()) if (s.img && !all.has(s.id)) all.set(s.id, s); } catch (e) { }
+  poolCache = [...all.values()];
+  return poolCache;
+}
+
+// ============================================================ SEGUIMIENTO
+function syncMeta(r, c) {
+  Object.assign(r, { name: c.name, img: c.img, genres: c.genres, rating: c.rating, runtime: c.runtime, status: c.status, net: c.net, premiered: c.premiered });
+  if (c.eps) { r.aired = c.eps.filter(aired).length; r.total = c.eps.length; }
+}
+function track(c, list) {
+  let r = S.shows[c.id];
+  if (!r) { r = S.shows[c.id] = { id: c.id, list: list || 'watching', fav: false, score: 0, note: '', added: Date.now(), eps: {} }; logAct('added', c, LISTS[r.list]); }
+  else if (list) r.list = list;
+  syncMeta(r, c); r.act = Date.now(); save();
+  return r;
+}
+function untrack(id) {
+  const r = S.shows[id]; if (!r) return;
+  const snap = JSON.stringify(r);
+  delete S.shows[id]; S.profile.top = S.profile.top.filter(x => x !== id); save();
+  toast(`Quitaste ${r.name} de tus series.`, () => { S.shows[id] = JSON.parse(snap); save(); refresh(); });
+}
+function markEps(c, list, on, quiet) {
+  const r = S.shows[c.id] || track(c, 'watching');
+  const snap = JSON.stringify(r.eps), prevList = r.list;
+  for (const e of list) {
+    if (on) { if (!r.eps[e.id]) r.eps[e.id] = { t: Date.now(), m: e.rt || c.runtime || 30, s: e.s, n: e.n }; }
+    else delete r.eps[e.id];
+  }
+  syncMeta(r, c); r.act = Date.now();
+  if (on && (r.list === 'plan' || r.list === 'dropped')) r.list = 'watching';
+  const all = c.eps.filter(aired), seen = all.filter(e => r.eps[e.id]).length;
+  let msg = on ? (list.length > 1 ? `Marcaste ${list.length} capítulos como vistos.` : `Visto: ${c.name} ${code(list[0])}.`) : (list.length > 1 ? `Desmarcaste ${list.length} capítulos.` : `Desmarcaste ${code(list[0])}.`);
+  if (on && all.length && seen === all.length && c.status === 'Ended' && r.list !== 'done') { r.list = 'done'; msg = `¡Terminaste ${c.name}! La pasé a Terminadas.`; logAct('finished', c, ''); }
+  if (on) logAct('watched', c, list.length > 1 ? `${list.length} capítulos` : code(list[0]), list.length);
+  if (!on && r.list === 'done' && seen < all.length) r.list = 'watching';
+  save();
+  if (!quiet) toast(msg, () => { r.eps = JSON.parse(snap); r.list = prevList; save(); refresh(); });
+  refresh();
+}
+async function toggleEp(c, ep) {
+  const r = S.shows[c.id];
+  const on = !(r && r.eps[ep.id]);
+  const order = c.eps.filter(aired), i = order.findIndex(e => e.id === ep.id);
+  let list = [ep];
+  if (on) {
+    const prev = order.slice(0, i).filter(e => !(r && r.eps[e.id]));
+    if (prev.length) {
+      const a = await ask(`¿Marcar también los anteriores?`, `Marcaste ${code(ep)} y hay ${plural(prev.length, 'capítulo anterior', 'capítulos anteriores')} sin ver.`, [['one', 'Solo este'], ['all', `Sí, marcar ${prev.length + 1}`, 'pri']]);
+      if (!a) return; if (a === 'all') list = prev.concat(ep);
+    }
+  } else {
+    const next = order.slice(i + 1).filter(e => r.eps[e.id]);
+    if (next.length) {
+      const a = await ask(`¿Desmarcar también los siguientes?`, `Desmarcaste ${code(ep)} y tenés ${plural(next.length, 'capítulo posterior marcado', 'capítulos posteriores marcados')}.`, [['one', 'Solo este'], ['all', `Sí, desmarcar ${next.length + 1}`, 'pri']]);
+      if (!a) return; if (a === 'all') list = [ep].concat(next);
+    }
+  }
+  markEps(c, list, on);
+}
+// ---- Revistos: r.rw[epId] = [fecha, fecha, ...] (una por cada vez que lo volviste a ver)
+const rwCount = (r, id) => (r && r.rw && r.rw[id] ? r.rw[id].length : 0);
+function rwShowTimes(r) { if (!r || !r.rw) return 0; const ids = Object.keys(r.eps || {}); if (!ids.length) return 0; return Math.min(...ids.map(id => rwCount(r, id))); }
+function rewatch(c, list, delta) {
+  const r = S.shows[c.id]; if (!r) return;
+  r.rw = r.rw || {}; const snap = JSON.stringify(r.rw); let n = 0;
+  for (const e of list) {
+    if (!r.eps[e.id]) continue;
+    const a = r.rw[e.id] = r.rw[e.id] || [];
+    if (delta > 0) { a.push(Date.now()); n++; } else if (a.length) { a.pop(); n++; }
+    if (!a.length) delete r.rw[e.id];
+  }
+  if (!n) return toast('Primero marcá esos capítulos como vistos.');
+  if (delta > 0) logAct('rewatch', c, n > 1 ? `${n} capítulos` : code(list[0]), n);
+  r.act = Date.now(); save();
+  toast(delta > 0 ? (n > 1 ? `Sumaste ${n} capítulos revistos.` : 'Sumaste un revisto.') : 'Restaste un revisto.', () => { r.rw = JSON.parse(snap); save(); refresh(); });
+  refresh();
+}
+function rwStats() {
+  let min = 0, eps = 0; const per = [], byM = {};
+  for (const r of myShows()) {
+    let m = 0, k = 0;
+    for (const [id, ts] of Object.entries(r.rw || {})) { const mm = r.eps[id]?.m || r.runtime || 30; m += mm * ts.length; k += ts.length; for (const t of ts) { const mk = dayKey(t).slice(0, 7); byM[mk] = (byM[mk] || 0) + mm; } }
+    if (k) per.push({ r, m, k, times: rwShowTimes(r) });
+    min += m; eps += k;
+  }
+  return { min, eps, per: per.sort((a, b) => b.m - a.m), byM };
+}
+function showMinutes(r) { let m = 0; for (const e of Object.values(r.eps || {})) m += e.m || 30; return m; }
+function nextUp(c) {
+  const r = S.shows[c.id]; if (!r) return null;
+  return c.eps.find(e => aired(e) && !r.eps[e.id]) || null;
+}
+function nextAiring(c) { return c.eps.find(e => e.air && !aired(e)) || null; }
+
+// ============================================================ UI BÁSICA
+function ask(title, text, buttons) {
+  return new Promise(res => {
+    const m = $('#modal'), box = $('#mbox');
+    box.innerHTML = `<h3>${h(title)}</h3><p>${h(text)}</p><div class="acts"><button class="btn ghost" data-v="">Cancelar</button>${buttons.map(([v, l, k]) => `<button class="btn ${k || ''}" data-v="${h(v)}">${h(l)}</button>`).join('')}</div>`;
+    m.hidden = false;
+    const done = v => { m.hidden = true; m.onclick = null; document.removeEventListener('keydown', key); res(v || null); };
+    const key = e => { if (e.key === 'Escape') done(null); };
+    document.addEventListener('keydown', key);
+    m.onclick = e => { if (e.target === m) return done(null); const b = e.target.closest('button[data-v]'); if (b) done(b.dataset.v); };
+    box.querySelector('.btn.pri, .btn:last-child').focus();
+  });
+}
+let toastT;
+function toast(msg, undo) {
+  const t = $('#toast');
+  t.innerHTML = `<span>${h(msg)}</span>${undo ? '<button type="button">Deshacer</button>' : ''}`;
+  t.hidden = false;
+  if (undo) t.querySelector('button').onclick = () => { t.hidden = true; undo(); };
+  clearTimeout(toastT); toastT = setTimeout(() => t.hidden = true, undo ? 6000 : 3200);
+}
+const img = (src, alt) => src ? `<img src="${h(src)}" alt="" loading="lazy">` : `<div class="noimg">${h(initials(alt))}</div>`;
+function poster(s, sub) {
+  const r = S.shows[s.id];
+  return `<article class="card"><a href="#/serie/${s.id}" class="pimg" aria-label="${h(s.name)}">${img(s.img, s.name)}${s.rating ? `<span class="rt">★ ${s.rating.toFixed(1)}</span>` : ''}${r ? `<span class="tag">${LISTS[r.list]}</span>` : ''}</a>
+  <div><a href="#/serie/${s.id}" class="cname">${h(s.name)}</a><div class="csub">${h(sub ?? [year(s.premiered), s.genres?.[0] && gname(s.genres[0])].filter(Boolean).join(' · '))}</div></div>
+  ${r ? '' : `<button class="mini" data-act="quickadd" data-id="${s.id}">+ Para ver</button>`}</article>`;
+}
+function ad(slot) {
+  if (CONFIG.adsenseClient) return `<div class="ad"><ins class="adsbygoogle" style="display:block" data-ad-client="${h(CONFIG.adsenseClient)}" data-ad-slot="${h(CONFIG.adSlots[slot] || '')}" data-ad-format="auto" data-full-width-responsive="true"></ins></div>`;
+  return CONFIG.showAdPlaceholders ? `<div class="ad ph" aria-hidden="true"><span>Espacio publicitario</span></div>` : '';
+}
+function fillAds() {
+  if (!CONFIG.adsenseClient) return;
+  document.querySelectorAll('ins.adsbygoogle:not([data-adsbygoogle-status])').forEach(() => { try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) { } });
+}
+const skelGrid = n => `<div class="grid">${Array.from({ length: n }, () => '<div><div class="skel" style="aspect-ratio:2/3"></div><div class="skel" style="height:14px;margin-top:8px;width:80%"></div></div>').join('')}</div>`;
+const errBox = e => `<div class="err"><b>No se pudo cargar.</b> ${h(e.message || e)} <button class="btn sm" data-act="reload" style="margin-left:8px">Reintentar</button></div>`;
+const empty = (t, p, btn) => `<div class="empty"><h3>${h(t)}</h3><div>${h(p)}</div>${btn || ''}</div>`;
+
+function splitTime(min) {
+  let r = Math.round(min);
+  const y = Math.floor(r / 525600); r -= y * 525600;
+  const mo = Math.floor(r / 43200); r -= mo * 43200;
+  const d = Math.floor(r / 1440); r -= d * 1440;
+  const hh = Math.floor(r / 60); const mi = r - hh * 60;
+  return { y, mo, d, h: hh, mi };
+}
+function timeText(min) {
+  const t = splitTime(min), p = [];
+  if (t.y) p.push(plural(t.y, 'año', 'años')); if (t.mo) p.push(plural(t.mo, 'mes', 'meses')); if (t.d) p.push(plural(t.d, 'día', 'días'));
+  if (t.h) p.push(plural(t.h, 'hora', 'horas')); if (t.mi || !p.length) p.push(plural(t.mi, 'minuto', 'minutos'));
+  return p.join(', ');
+}
+const shortTime = min => { min = Math.round(min); return min >= 1440 ? `${Math.floor(min / 1440)} d ${Math.floor(min % 1440 / 60)} h` : min >= 60 ? `${Math.floor(min / 60)} h${min % 60 ? ' ' + (min % 60) + ' min' : ''}` : `${min} min`; };
+
+// ============================================================ RUTAS
+const UI = { season: {}, listTab: 'watching', listSort: 'act', genre: '' };
+let CUR = { show: null };
+let renderId = 0;
+function parseRoute() {
+  const parts = location.hash.replace(/^#\/?/, '').split('/').map(decodeURIComponent);
+  return { name: parts[0] || '', args: parts.slice(1) };
+}
+async function route(keepScroll) {
+  const id = ++renderId, R = parseRoute(), app = $('#app');
+  const y = window.scrollY;
+  document.querySelectorAll('[data-r]').forEach(a => a.classList.toggle('on', a.dataset.r === R.name || (R.name === 'stats' && a.dataset.r === 'perfil' && a.closest('.bnav'))));
+  const views = { '': vHome, 'buscar': vSearch, 'serie': vShow, 'ep': vEpisode, 'mis-series': vMine, 'calendario': vCalendar, 'descubrir': vDiscover, 'peliculas': vMovies, 'stats': vStats, 'perfil': vProfile, 'entrar': vLogin, 'nueva-clave': vNewPass, 'gente': vPeople, 'u': vUser };
+  const v = views[R.name] || vHome;
+  const draw = html => { if (id === renderId) { app.innerHTML = html; fillAds(); } return id === renderId; };
+  try { await v(R.args, draw, () => id === renderId); }
+  catch (e) { console.error(e); draw(errBox(e)); }
+  if (id === renderId) { if (keepScroll) window.scrollTo(0, y); else window.scrollTo(0, 0); }
+}
+const refresh = () => route(true);
+window.addEventListener('hashchange', () => route(false));
+
+// ------------------------------------------------------------ INICIO
+let jobsFeed = null;
+async function vHome(_, draw, alive) {
+  const mine = myShows();
+  const watching = mine.filter(r => r.list === 'watching').sort((a, b) => (b.act || 0) - (a.act || 0));
+  const totalMin = mine.reduce((a, r) => a + showMinutes(r), 0);
+  const welcome = !mine.length;
+  const head = welcome
+    ? `<section class="hero"><div><div class="eyebrow">Gratis · sin vueltas</div><h1 style="margin-top:8px">Anotá cada capítulo que ves.</h1><p>Seguí tus series, marcá episodios y temporadas, enterate de los estrenos y mirá cuánto tiempo de tu vida pasaste frente a la pantalla.</p><div class="stack"><button class="btn pri" data-act="focussearch">Buscar una serie</button><a class="btn" href="#/descubrir">Ver populares</a></div></div>
+       <div><div class="clock">0 días<br>0 horas<small>Tu contador arranca con el primer capítulo que marques.</small></div></div></section>`
+    : `<section class="hero"><div><div class="eyebrow">Hola${S.profile.name ? ', ' + h(S.profile.name) : ''}</div><h1 style="margin-top:8px">${watching.length ? 'Seguí donde lo dejaste.' : '¿Qué vas a ver hoy?'}</h1><p>${plural(mine.length, 'serie', 'series')} en tu lista · ${plural(mine.reduce((a, r) => a + watchedCount(r), 0), 'capítulo visto', 'capítulos vistos')}.</p><div class="stack"><a class="btn pri" href="#/mis-series">Mis series</a><a class="btn" href="#/stats">Mis estadísticas</a></div></div>
+       <div><div class="units sm">${unitsHTML(totalMin)}</div><div class="small dim" style="font-weight:600">de series vistas en total · <a href="#/stats" style="color:var(--blue)">ver estadísticas</a></div></div></section>`;
+  const parts = { feed: '', next: watching.length ? `<section class="sec"><div class="sechead"><h2>Seguir viendo</h2><a href="#/mis-series">Ver todas</a></div><div class="next">${watching.slice(0, 6).map(() => '<div class="skel" style="height:88px"></div>').join('')}</div></section>` : '', today: `<section class="sec"><div class="sechead"><h2>Se estrena hoy</h2><a href="#/calendario">Calendario</a></div>${skelGrid(6)}</section>`, rec: '' };
+  const paint = () => draw(head + parts.next + parts.feed + parts.today + ad('home') + parts.rec);
+  if (ONLINE) jobsFeed = (async () => { try { parts.feed = await feedHTML(); if (alive()) paint(); } catch (e) { } })();
+  paint();
+  const jobs = [];
+  if (watching.length) jobs.push((async () => {
+    const shows = (await Promise.all(watching.slice(0, 12).map(r => getShow(r.id).catch(() => null)))).filter(Boolean);
+    const cards = [];
+    for (const c of shows) {
+      const r = S.shows[c.id]; if (r) syncMeta(r, c);
+      const e = nextUp(c), up = nextAiring(c);
+      if (e) cards.push(`<div class="nx"><a class="th" href="#/ep/${c.id}/${e.id}">${img(e.img || c.img, c.name)}</a><a class="tx" href="#/ep/${c.id}/${e.id}"><b>${h(c.name)}</b><span>${code(e)} · ${h(e.name)}</span><span>${plural(c.eps.filter(aired).length - watchedCount(r), 'capítulo pendiente', 'capítulos pendientes')}</span></a><button class="check go" data-act="nextep" data-show="${c.id}" data-ep="${e.id}" aria-label="Marcar ${h(code(e))} como visto"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5 9-10"/></svg></button></div>`);
+      else cards.push(`<div class="nx"><a class="th" href="#/serie/${c.id}">${img(c.img, c.name)}</a><a class="tx" href="#/serie/${c.id}"><b>${h(c.name)}</b><span>Estás al día</span><span>${up ? 'Próximo: ' + fmtDate(up.air, { day: 'numeric', month: 'long' }) : c.status === 'Ended' ? 'La serie terminó' : 'Sin fecha de regreso'}</span></a></div>`);
+    }
+    save();
+    parts.next = `<section class="sec"><div class="sechead"><h2>Seguir viendo</h2><a href="#/mis-series">Ver todas</a></div><div class="next">${cards.join('')}</div></section>`;
+    if (alive()) paint();
+  })());
+  jobs.push((async () => {
+    try {
+      const list = await schedule();
+      parts.today = `<section class="sec"><div class="sechead"><h2>Se estrena hoy</h2><a href="#/calendario">Calendario</a></div>${list.length ? `${row(list.slice(0, 18).map(s => poster(s, `T${s.ep.s} · E${s.ep.n}${s.ep.air ? ' · ' + fmtTime(s.ep.air) : ''}`)).join(''))}` : empty('Hoy no hay estrenos cargados', 'Volvé más tarde.')}</section>`;
+    } catch (e) { parts.today = `<section class="sec"><h2>Se estrena hoy</h2>${errBox(e)}</section>`; }
+    if (alive()) paint();
+  })());
+  jobs.push((async () => {
+    try {
+      const pool = await getPool();
+      const recs = recommend(pool, 18);
+      parts.rec = `<section class="sec"><div class="sechead"><h2>${mine.length ? 'Recomendadas para vos' : 'Populares para empezar'}</h2><a href="#/descubrir">Descubrir más</a></div>${row(recs.map(s => poster(s, s.because ? `Porque viste ${s.because}` : undefined)).join(''))}</section>`;
+      if (alive()) paint();
+    } catch (e) { }
+  })());
+  await Promise.all(jobs);
+}
+
+// ------------------------------------------------------------ BUSCAR
+let searchT;
+async function vSearch(args, draw, alive) {
+  const q = (args[0] || '').trim();
+  $('#q').value = q;
+  if (!q) return draw(`<h1>Buscar</h1><p class="dim">Escribí el nombre de una serie arriba.</p>`);
+  draw(`<h1>Resultados para “${h(q)}”</h1><div class="sec">${skelGrid(8)}</div>`);
+  const res = await searchShows(q);
+  if (!alive()) return;
+  draw(`<h1>Resultados para “${h(q)}”</h1><div class="sec">${res.length ? `<div class="grid">${res.map(s => poster(s, [year(s.premiered), s.net, STATUS[s.status]].filter(Boolean).join(' · '))).join('')}</div>` : empty('No encontramos nada', 'Probá con el nombre original en inglés o revisá cómo está escrito.')}</div>${ad('list')}`);
+}
+
+// ------------------------------------------------------------ SERIE
+async function vShow(args, draw, alive) {
+  const id = +args[0];
+  draw(`<div class="skel" style="height:320px;border-radius:20px"></div><div class="skel" style="height:400px;margin-top:26px"></div>`);
+  const c = await getShow(id);
+  if (!alive()) return;
+  if (!c) return draw(empty('Esta serie no existe', 'Puede que la hayan borrado de la base de datos.', '<a class="btn" href="#/">Volver al inicio</a>'));
+  CUR.show = c;
+  const r = S.shows[id]; if (r) { syncMeta(r, c); save(); }
+  const airedEps = c.eps.filter(aired), seen = r ? airedEps.filter(e => r.eps[e.id]).length : 0;
+  const seasons = [...new Set(c.eps.map(e => e.s))];
+  let cur = UI.season[id];
+  if (!seasons.includes(cur)) { const nu = r && nextUp(c); cur = nu ? nu.s : seasons[0]; UI.season[id] = cur; }
+  const sEps = c.eps.filter(e => e.s === cur), sAired = sEps.filter(aired), sSeen = r ? sAired.filter(e => r.eps[e.id]).length : 0;
+  const years = c.premiered ? year(c.premiered) + (c.status === 'Ended' && c.ended ? '–' + year(c.ended) : c.status === 'Running' ? '–hoy' : '') : '';
+  const mins = r ? showMinutes(r) : 0, left = airedEps.filter(e => !(r && r.eps[e.id])).reduce((a, e) => a + e.rt, 0);
+  const listSel = `<select class="btn" id="listsel" data-act="setlist" aria-label="Lista"><option value="" ${r ? '' : 'selected'}>+ Agregar a…</option>${Object.entries(LISTS).map(([k, v]) => `<option value="${k}" ${r && r.list === k ? 'selected' : ''}>${v}</option>`).join('')}</select>`;
+  const seasonTabs = seasons.map(n => { const se = c.eps.filter(e => e.s === n && aired(e)); const full = r && se.length && se.every(e => r.eps[e.id]); return `<button class="stab ${n === cur ? 'on' : ''}" data-act="season" data-n="${n}">${full ? '<span class="dot"></span>' : ''}Temporada ${n}</button>`; }).join('');
+  const eps = sEps.map(e => {
+    const w = r && r.eps[e.id], a = aired(e), note = S.notes[e.id];
+    return `<li class="ep ${w ? 'w' : ''} ${a ? '' : 'fut'}"><button class="check ${w ? 'on' : ''}" data-act="ep" data-ep="${e.id}" aria-pressed="${w ? 'true' : 'false'}" aria-label="${w ? 'Desmarcar' : 'Marcar'} ${h(code(e))}" ${a ? '' : 'tabindex="-1"'}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5 9-10"/></svg></button>
+      <a class="epthumb" href="#/ep/${id}/${e.id}" tabindex="-1">${e.img ? `<img src="${h(e.img)}" alt="" loading="lazy">` : `<div class="noimg">E${e.n}</div>`}</a>
+      <div class="t"><a href="#/ep/${id}/${e.id}"><span class="code">E${e.n}</span>${h(e.name)}${note && (note.text || note.score || note.react) ? '<span class="note" title="Tiene tu comentario"></span>' : ''}</a>
+      ${e.sum ? `<p class="epsum">${h(e.sum)}</p>` : ''}
+      <div class="m2">${a ? fmtDate(e.air) : e.air ? 'Se estrena ' + fmtDate(e.air, { day: 'numeric', month: 'short' }) : 'Sin fecha'} · ${e.rt} min${e.r ? ' · ★ ' + e.r : ''}${rwCount(r, e.id) ? ` <span class="rw">↻ revisto ${rwCount(r, e.id)} ${rwCount(r, e.id) === 1 ? 'vez' : 'veces'}</span>` : ''}</div></div></li>`;
+  }).join('');
+  draw(`<section class="shero"><div class="bg" style="background-image:url('${h(c.imgL || c.img)}')"></div><div class="shin">
+    <div class="spost">${img(c.img, c.name)}</div>
+    <div class="sinfo"><div class="eyebrow">${h([c.net, c.country].filter(Boolean).join(' · ') || 'Serie')}</div><h1>${h(c.name)}</h1>
+      <div class="facts">${h([years, STATUS[c.status] || c.status, plural(seasons.length, 'temporada', 'temporadas'), plural(c.eps.length, 'capítulo', 'capítulos'), c.runtime ? c.runtime + ' min' : ''].filter(Boolean).join(' · '))}</div>
+      <div class="chips">${c.genres.map(g => `<a class="chip" href="#/descubrir/${encodeURIComponent(g)}">${h(gname(g))}</a>`).join('')}</div>
+      <div class="ratings">${c.rating ? `<span class="bigr">★ ${c.rating.toFixed(1)}<small>/10 TVmaze</small></span>` : '<span class="dim">Sin puntaje todavía</span>'}${c.imdb ? `<a class="ext" href="https://www.imdb.com/title/${h(c.imdb)}/" target="_blank" rel="noopener">IMDb ↗</a>` : ''}${c.site ? `<a class="btn sm" href="${h(c.site)}" target="_blank" rel="noopener">Sitio oficial ↗</a>` : ''}</div>
+      <div class="actions">${listSel}<button class="btn" data-act="fav" aria-pressed="${r && r.fav ? 'true' : 'false'}">${r && r.fav ? '♥ Favorita' : '♡ Favorita'}</button>${airedEps.length ? `<button class="btn" data-act="markall">${seen === airedEps.length ? 'Desmarcar toda la serie' : 'Marcar toda la serie'}</button>` : ''}${seen ? `<button class="btn rwbtn" data-act="rwshow">↻ Revisté la serie${rwShowTimes(r) ? ` · ${rwShowTimes(r)} ${rwShowTimes(r) === 1 ? "vez" : "veces"}` : ''}</button>` : ''}${r ? '<button class="btn ghost danger" data-act="untrack">Quitar</button>' : ''}</div>
+      ${airedEps.length ? `<div class="prog"><div class="pbar"><i style="width:${seen / airedEps.length * 100}%"></i></div><div class="small dim">${seen} de ${airedEps.length} capítulos vistos · ${mins ? shortTime(mins) + ' vistos · ' : ''}${left ? 'te faltan ' + shortTime(left) : 'estás al día'}</div></div>` : ''}
+    </div></div></section>
+  <div class="cols"><div>
+    <div class="stabs" role="tablist">${seasonTabs}</div>
+    <div class="shead"><h2>Temporada ${cur}</h2><div class="small dim">${sSeen}/${sAired.length} vistos ${sAired.length ? `<button class="btn sm" data-act="markseason" style="margin-left:8px">${sSeen === sAired.length ? 'Desmarcar temporada' : 'Marcar temporada completa'}</button>` : ''}${sSeen ? `<button class="btn sm rwbtn" data-act="rwseason" style="margin-left:6px">↻ Revisté la temporada</button>` : ''}</div></div>
+    <ul class="eps">${eps || '<li class="ep"><span></span><div class="t dim">Todavía no hay capítulos cargados.</div></li>'}</ul>
+    ${c.cast.length ? `<section class="sec"><h2 style="margin-bottom:14px">Reparto</h2><div class="cast">${c.cast.map(p => `<a class="person" href="https://www.imdb.com/find/?q=${encodeURIComponent(p.name)}&s=nm" target="_blank" rel="noopener" title="Ver ${h(p.name)} en IMDb"><div class="av">${p.img ? `<img src="${h(p.img)}" alt="" loading="lazy">` : ''}</div><div><b>${h(p.name)}</b><span>${h(p.char)}</span><em>IMDb ↗</em></div></a>`).join('')}</div></section>` : ''}
+  </div><aside>
+    <div class="panel"><h3>Tu puntaje</h3><div class="score">${Array.from({ length: 10 }, (_, i) => `<button data-act="score" data-v="${i + 1}" class="${r && r.score > i ? 'on' : ''}" aria-label="${i + 1} de 10">${i + 1}</button>`).join('')}</div>
+      <h3 style="margin-top:16px">Tu nota</h3><textarea id="shownote" placeholder="¿Qué te pareció? Solo la ves vos.">${h(r ? r.note : '')}</textarea></div>
+    ${c.summary ? `<div class="panel"><h3>De qué trata</h3><p class="summary" style="margin:0">${h(c.summary)}</p></div>` : ''}
+    ${ad('show')}
+  </aside></div>`);
+}
+
+// ------------------------------------------------------------ EPISODIO
+async function vEpisode(args, draw, alive) {
+  const sid = +args[0], eid = +args[1];
+  draw(`<div class="skel" style="height:360px"></div>`);
+  const c = await getShow(sid);
+  if (!alive()) return;
+  const i = c ? c.eps.findIndex(e => e.id === eid) : -1;
+  if (i < 0) return draw(empty('No encontramos ese capítulo', 'Puede que la serie se haya actualizado.', `<a class="btn" href="#/serie/${sid}">Ir a la serie</a>`));
+  CUR.show = c;
+  const e = c.eps[i], r = S.shows[sid], w = r && r.eps[e.id], n = S.notes[e.id] || {};
+  const prev = c.eps[i - 1], next = c.eps[i + 1];
+  draw(`<a href="#/serie/${sid}" class="small" style="font-weight:700;color:var(--accent)">← ${h(c.name)}</a>
+  <div class="ephero" style="margin-top:14px"><div class="still">${img(e.imgL || e.img || c.imgL, c.name)}</div>
+  <div style="display:flex;flex-direction:column;gap:12px;min-width:0"><div class="eyebrow">Temporada ${e.s} · Episodio ${e.n}</div><h1>${h(e.name)}</h1>
+    <div class="facts">${h([e.air ? fmtDate(e.air, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : 'Sin fecha', e.rt + ' min'].join(' · '))}${e.r ? ` · <b>★ ${e.r}</b>` : ''}</div>
+    ${aired(e) ? `<div><button class="btn ${w ? '' : 'pri'}" data-act="ep" data-ep="${e.id}" aria-pressed="${w ? 'true' : 'false'}">${w ? '✓ Visto el ' + fmtDate(w.t, { day: 'numeric', month: 'short' }) + ' · desmarcar' : 'Marcar como visto'}</button></div>${w ? `<div class="rwbox"><div><b>${rwCount(r, e.id)}</b><span>${rwCount(r, e.id) === 1 ? 'vez revisto' : 'veces revisto'}</span></div><button class="btn sm" data-act="rwep" data-ep="${e.id}" data-v="-1" ${rwCount(r, e.id) ? '' : 'disabled'} aria-label="Restar un revisto">−</button><button class="btn sm pri" data-act="rwep" data-ep="${e.id}" data-v="1">↻ Lo volví a ver</button></div>` : ''}` : `<div class="chip" style="align-self:flex-start">Se estrena ${fmtDate(e.air)}</div>`}
+    ${e.sum ? `<p class="summary" style="margin:0">${h(e.sum)}</p>` : ''}
+  </div></div>
+  <div class="two"><div class="panel"><h3>¿Cómo te pegó?</h3><div class="reacts">${REACTS.map(([k, l]) => `<button data-act="react" data-v="${k}" class="${n.react === k ? 'on' : ''}">${l}</button>`).join('')}</div>
+    <h3 style="margin-top:18px">Tu puntaje del capítulo</h3><div class="score">${Array.from({ length: 10 }, (_, j) => `<button data-act="epscore" data-v="${j + 1}" class="${n.score > j ? 'on' : ''}">${j + 1}</button>`).join('')}</div></div>
+  <div class="panel"><h3>Tu nota privada</h3><textarea id="epnote" data-ep="${e.id}" placeholder="Teorías, momentos, lo que quieras. Se guarda solo.">${h(n.text || '')}</textarea><div class="small dim" style="margin-top:6px">Esta nota es privada: solo la ves vos.</div></div></div>
+  <div class="epnav">${prev ? `<a class="btn" href="#/ep/${sid}/${prev.id}">← ${code(prev)}</a>` : '<span></span>'}${next ? `<a class="btn" href="#/ep/${sid}/${next.id}">${code(next)} →</a>` : ''}</div><div id="cbox">${ONLINE ? '<div class="skel sec" style="height:140px"></div>' : ''}</div>`);
+  if (ONLINE) { const ch = await commentsHTML(c, e); const box = document.getElementById('cbox'); if (alive() && box) box.innerHTML = ch; }
+}
+
+// ------------------------------------------------------------ MIS SERIES
+async function vMine(_, draw) {
+  const mine = myShows();
+  if (!mine.length) return draw(`<h1>Mis series</h1><div class="sec">${empty('Todavía no agregaste ninguna serie', 'Buscá una arriba o mirá las populares.', '<a class="btn pri" href="#/descubrir">Descubrir series</a>')}</div>`);
+  const tabs = { watching: 'Viendo', plan: 'Para ver', done: 'Terminadas', dropped: 'Abandonadas', fav: 'Favoritas', all: 'Todas' };
+  const inTab = (r, t) => t === 'all' ? true : t === 'fav' ? r.fav : r.list === t;
+  const t = UI.listTab;
+  const prog = r => r.aired ? watchedCount(r) / r.aired : 0;
+  const sorts = { act: ['Última actividad', (a, b) => (b.act || 0) - (a.act || 0)], name: ['Nombre', (a, b) => a.name.localeCompare(b.name)], prog: ['Progreso', (a, b) => prog(b) - prog(a)], rating: ['Puntaje TVmaze', (a, b) => (b.rating || 0) - (a.rating || 0)], score: ['Mi puntaje', (a, b) => (b.score || 0) - (a.score || 0)], time: ['Tiempo visto', (a, b) => showMinutes(b) - showMinutes(a)], added: ['Fecha agregada', (a, b) => b.added - a.added] };
+  const list = mine.filter(r => inTab(r, t)).sort(sorts[UI.listSort][1]);
+  draw(`<h1>Mis series</h1>
+  <div class="tabs">${Object.entries(tabs).map(([k, v]) => `<button class="tab ${k === t ? 'on' : ''}" data-act="listtab" data-v="${k}">${v}<span>${mine.filter(r => inTab(r, k)).length}</span></button>`).join('')}</div>
+  <div class="toolbar"><div class="small dim">${plural(list.length, 'serie', 'series')} · ${shortTime(list.reduce((a, r) => a + showMinutes(r), 0))} vistos</div>
+  <label class="small dim">Ordenar por <select class="btn sm" id="sortsel">${Object.entries(sorts).map(([k, [l]]) => `<option value="${k}" ${k === UI.listSort ? 'selected' : ''}>${l}</option>`).join('')}</select></label></div>
+  <div class="sec">${list.length ? `<div class="grid">${list.map(r => `<article class="card"><a href="#/serie/${r.id}" class="pimg">${img(r.img, r.name)}${r.score ? `<span class="rt">Mi nota ${r.score}</span>` : r.rating ? `<span class="rt">★ ${r.rating.toFixed(1)}</span>` : ''}${r.fav ? '<span class="tag">♥</span>' : ''}</a><div><a href="#/serie/${r.id}" class="cname">${h(r.name)}</a><div class="csub">${watchedCount(r)}/${r.aired ?? '?'} caps · ${LISTS[r.list]}</div></div><div class="pbar"><i style="width:${Math.min(100, prog(r) * 100)}%"></i></div></article>`).join('')}</div>` : empty('Nada por acá', t === 'fav' ? 'Tocá “Favorita” en una serie para sumarla.' : 'Cuando muevas series a esta lista, aparecen acá.')}</div>${ad('list')}`);
+}
+
+// ------------------------------------------------------------ DESCUBRIR
+function tasteProfile() {
+  const g = {};
+  for (const r of myShows()) {
+    const n = watchedCount(r);
+    let w = r.list === 'dropped' ? -1.5 : n ? 1 + Math.min(3, n / 12) : 0.7;
+    if (r.fav) w += 3; if (r.score) w += (r.score - 5.5) / 1.5;
+    for (const x of r.genres || []) g[x] = (g[x] || 0) + w;
+  }
+  return g;
+}
+function recommend(pool, n) {
+  const g = tasteProfile(), tot = Object.values(g).reduce((a, b) => a + Math.max(0, b), 0);
+  const mine = myShows().filter(r => r.list !== 'dropped');
+  const langs = {}; // idioma preferido según lo que ves
+  return pool.filter(s => !S.shows[s.id]).map(s => {
+    const taste = tot ? s.genres.reduce((a, x) => a + (g[x] || 0), 0) / tot : 0;
+    const score = taste * 12 + (s.rating || 6) * 0.7 + s.weight * 0.04 + (s.status === 'Running' ? 0.4 : 0);
+    return { s, score };
+  }).sort((a, b) => b.score - a.score).slice(0, n).map(({ s }) => {
+    let best = null, bk = 0;
+    for (const r of mine) { const k = (r.genres || []).filter(x => s.genres.includes(x)).length + (r.fav ? 0.5 : 0) + (r.score >= 8 ? 0.3 : 0); if (k > bk) { bk = k; best = r; } }
+    return { ...s, because: bk >= 1 && best ? best.name : '' };
+  });
+}
+async function vDiscover(args, draw, alive) {
+  UI.genre = args[0] || '';
+  const title = `<h1>Descubrir</h1><p class="dim">Recomendaciones según lo que ves, lo mejor puntuado y búsqueda por género.</p>`;
+  draw(title + `<div class="sec"><div class="pbar" style="max-width:320px"><i id="poolbar" style="width:5%"></i></div><div class="small dim" style="margin-top:6px">Cargando el catálogo…</div></div><div class="sec">${skelGrid(12)}</div>`);
+  const pool = await getPool(p => { const b = document.getElementById('poolbar'); if (b) b.style.width = Math.round(p * 100) + '%'; });
+  if (!alive()) return;
+  const genres = [...new Set(pool.flatMap(s => s.genres))].sort((a, b) => gname(a).localeCompare(gname(b)));
+  const g = UI.genre;
+  const chips = `<div class="chips" style="margin-top:18px"><a class="chip ${g ? '' : 'on'}" href="#/descubrir">Todos</a>${genres.map(x => `<a class="chip ${x === g ? 'on' : ''}" style="${x === g ? 'border-color:var(--accent);background:var(--accent-soft)' : ''}" href="#/descubrir/${encodeURIComponent(x)}">${h(gname(x))}</a>`).join('')}</div>`;
+  const base = g ? pool.filter(s => s.genres.includes(g)) : pool;
+  const top = base.filter(s => s.rating).sort((a, b) => b.rating - a.rating || b.weight - a.weight).slice(0, 30);
+  const pop = base.slice().sort((a, b) => b.weight - a.weight || (b.rating || 0) - (a.rating || 0)).slice(0, 30);
+  const recs = myShows().length ? recommend(g ? base : pool, 18) : [];
+  draw(title + chips +
+    (recs.length ? `<section class="sec"><div class="sechead"><h2>Para vos${g ? ' · ' + h(gname(g)) : ''}</h2></div>${row(recs.map(s => poster(s, s.because ? `Porque viste ${s.because}` : undefined)).join(''))}</section>` : '') +
+    `<section class="sec"><div class="sechead"><h2>Lo mejor puntuado${g ? ' · ' + h(gname(g)) : ''}</h2></div><div class="grid">${top.map(s => poster(s)).join('')}</div></section>` + ad('list') +
+    `<section class="sec"><div class="sechead"><h2>Lo más popular${g ? ' · ' + h(gname(g)) : ''}</h2></div><div class="grid">${pop.map(s => poster(s)).join('')}</div></section>`);
+}
+
+// ------------------------------------------------------------ PELÍCULAS
+async function vMovies(_, draw) {
+  draw(`<section class="hero movies"><div><div class="eyebrow">Muy pronto</div><h1 style="margin-top:8px">Películas</h1><p>Vas a poder anotar las películas que viste, armar tu lista para ver y sumar sus minutos a tu contador. Mientras tanto, seguí con tus series.</p><div class="stack"><a class="btn pri" href="#/descubrir">Descubrir series</a></div></div><div class="big" aria-hidden="true">PRÓX-<br>IMA-<br>MENTE</div></section>`);
+}
+
+// ------------------------------------------------------------ CALENDARIO
+// Tres vistas: próximos (por fecha), anteriores (todo lo que ya salió, del más nuevo al más viejo) y todo junto.
+const calScope = sc => `<div class="scope"><button class="tab ${sc === 'mine' ? 'on' : ''}" data-act="calscope" data-v="mine">Mis series</button><button class="tab ${sc === 'all' ? 'on' : ''}" data-act="calscope" data-v="all">Todas las series</button></div>`;
+const COUNTRIES = { US: 'Estados Unidos', GB: 'Reino Unido', AR: 'Argentina', MX: 'México', ES: 'España', BR: 'Brasil', CA: 'Canadá', AU: 'Australia', FR: 'Francia', DE: 'Alemania', JP: 'Japón', KR: 'Corea del Sur' };
+function daySchedule(date, country) {
+  return cached(`day:${date}:${country}`, date < todayKey() ? 30 * 86400e3 : 3 * 3600e3, async () => {
+    const [web, tv] = await Promise.all([raw('/schedule/web?date=' + date).catch(() => []), raw(`/schedule?country=${country}&date=${date}`).catch(() => [])]);
+    const out = [], seen = new Set();
+    for (const e of [...(tv || []), ...(web || [])]) {
+      const s = e.show || e._embedded?.show; if (!s || seen.has(e.id) || e.number == null) continue; seen.add(e.id);
+      const l = lite(s); delete l.summary; delete l.imgL;
+      out.push({ show: l, e: { id: e.id, s: e.season, n: e.number, name: e.name || `Episodio ${e.number}`, air: e.airstamp || (e.airdate ? e.airdate + 'T12:00:00Z' : '') }, web: !e.show });
+    }
+    return out;
+  });
+}
+async function vCalAll(draw, alive) {
+  const day = UI.calDay || todayKey(), country = UI.calCountry || 'US';
+  const base = new Date(day + 'T12:00:00'), tk = todayKey();
+  const chips = Array.from({ length: 15 }, (_, i) => { const d = new Date(base); d.setDate(d.getDate() + i - 7); return d; });
+  const head = `<h1>Calendario</h1><p class="dim">Todos los capítulos de todas las series del mundo: los que ya salieron y los que van a salir, día por día.</p>${calScope('all')}
+  <div class="daynav"><button class="arrow" data-act="calday" data-v="-1" aria-label="Día anterior">‹</button><div class="days">${chips.map(d => { const k = dayKey(d); return `<button class="dchip ${k === day ? 'on' : ''} ${k === tk ? 'today' : ''}" data-act="calpick" data-v="${k}"><span>${k === tk ? 'hoy' : h(d.toLocaleDateString('es-AR', { weekday: 'short' }).replace('.', ''))}</span>${d.getDate()}</button>`; }).join('')}</div><button class="arrow" data-act="calday" data-v="1" aria-label="Día siguiente">›</button></div>
+  <div class="calbar"><input type="date" id="caldate" value="${day}" aria-label="Elegir fecha"><button class="btn sm" data-act="calpick" data-v="${tk}">Hoy</button><label class="small dim">Tele de <select class="btn sm" id="calcountry">${Object.entries(COUNTRIES).map(([k, v]) => `<option value="${k}" ${k === country ? 'selected' : ''}>${v}</option>`).join('')}</select></label><span class="small dim">+ plataformas de streaming</span></div>`;
+  draw(head + `<div class="sec">${Array.from({ length: 6 }, () => '<div class="skel" style="height:58px;margin-top:8px"></div>').join('')}</div>`);
+  const list = await daySchedule(day, country);
+  if (!alive()) return;
+  // Relevancia: tus series primero, después popularidad (weight de TVmaze, 0-100) y puntaje.
+  const sortBy = UI.calSort || 'rel', lang = UI.calLang || '', popOnly = !!UI.calPop;
+  const langs = [...new Set(list.map(x => x.show.lang).filter(Boolean))].sort((a, b) => list.filter(x => x.show.lang === b).length - list.filter(x => x.show.lang === a).length);
+  const relev = x => (S.shows[x.show.id] ? 1000 : 0) + x.show.weight + (x.show.rating || 0) * 2;
+  const full = list.length;
+  let L2 = list.filter(x => (!lang || x.show.lang === lang) && (!popOnly || x.show.weight >= 70 || S.shows[x.show.id]));
+  L2.sort(sortBy === 'time' ? (a, b) => Date.parse(a.e.air) - Date.parse(b.e.air) || relev(b) - relev(a) : (a, b) => relev(b) - relev(a) || Date.parse(a.e.air) - Date.parse(b.e.air));
+  list.length = 0; list.push(...L2);
+  const LANG_ES = { English: 'Inglés', Spanish: 'Español', Russian: 'Ruso', Japanese: 'Japonés', Korean: 'Coreano', Chinese: 'Chino', Portuguese: 'Portugués', French: 'Francés', German: 'Alemán', Italian: 'Italiano', Turkish: 'Turco', Hindi: 'Hindi', Dutch: 'Neerlandés', Swedish: 'Sueco', Polish: 'Polaco', Arabic: 'Árabe', Thai: 'Tailandés', Ukrainian: 'Ucraniano' };
+  const filters = `<div class="calbar"><label class="small dim">Ordenar <select class="btn sm" id="calsort"><option value="rel" ${sortBy === 'rel' ? 'selected' : ''}>Más relevantes primero</option><option value="time" ${sortBy === 'time' ? 'selected' : ''}>Por horario</option></select></label>
+    <label class="small dim">Idioma <select class="btn sm" id="callang"><option value="">Todos</option>${langs.map(l => `<option value="${h(l)}" ${l === lang ? 'selected' : ''}>${h(LANG_ES[l] || l)}</option>`).join('')}</select></label>
+    <label class="toggle"><input type="checkbox" id="calpop" ${popOnly ? 'checked' : ''}> Solo las más conocidas</label>${list.length < full ? `<span class="small dim">Mostrando ${list.length} de ${full}</span>` : ''}</div>`;
+  const past = Date.parse(day + 'T23:59:59') < Date.now();
+  const row = x => { const r = S.shows[x.show.id]; return `<div class="calrow ${r ? 'mine' : ''}"><a class="pp" href="#/serie/${x.show.id}">${img(x.show.img, x.show.name)}</a><a class="tx" href="#/serie/${x.show.id}"><b>${h(x.show.name)}</b><span>${code(x.e)} · ${h(x.e.name)}</span></a><span class="net">${h(x.show.net || '')}</span>${x.e.air ? `<time>${fmtTime(x.e.air)}</time>` : ''}${r ? `<span class="state new">${LISTS[r.list]}</span>` : `<button class="mini" data-act="quickadd" data-id="${x.show.id}">+ Para ver</button>`}</div>`; };
+  const mineN = list.filter(x => S.shows[x.show.id]).length;
+  draw(head + filters + `<div class="day"><h3>${h(fmtDate(day + 'T12:00:00', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }))}<span>${plural(list.length, 'capítulo', 'capítulos')} ${past ? 'salieron' : day === tk ? 'salen hoy' : 'van a salir'}${mineN ? ` · ${mineN} de tus series` : ''}</span></h3>
+    ${list.length ? list.slice(0, UI.calLimit || 80).map(row).join('') : `<p class="dim">No hay capítulos cargados para este día.</p>`}</div>
+    ${list.length > (UI.calLimit || 80) ? `<div style="text-align:center;margin-top:20px"><button class="btn" data-act="calmore">Ver más (${list.length - (UI.calLimit || 80)} restantes)</button></div>` : ''}`);
+}
+async function vCalendar(_, draw, alive) {
+  const mine = myShows().filter(r => r.list !== 'dropped');
+  if (!mine.length || UI.calScope === 'all') return vCalAll(draw, alive);
+  const title = `<h1>Calendario</h1><p class="dim">Todos los capítulos de las series que seguís: lo que ya salió y lo que viene, en tu horario.</p>${calScope('mine')}`;
+  draw(title + `<div class="sec">${Array.from({ length: 6 }, () => '<div class="skel" style="height:62px;margin-top:8px"></div>').join('')}</div>`);
+  const shows = (await Promise.all(mine.map(r => getShow(r.id).catch(() => null)))).filter(Boolean);
+  if (!alive()) return;
+  const now = Date.now(), all = [];
+  for (const c of shows) { const r = S.shows[c.id]; if (r) syncMeta(r, c); for (const e of c.eps) if (e.air) all.push({ c, e, t: Date.parse(e.air), w: !!(r && r.eps[e.id]) }); }
+  save();
+  const past = all.filter(x => x.t <= now).sort((a, b) => b.t - a.t), fut = all.filter(x => x.t > now).sort((a, b) => a.t - b.t);
+  const unseen = past.filter(x => !x.w);
+  const mode = UI.calMode || 'next', onlyNew = !!UI.calUnseen;
+  let items = mode === 'next' ? fut : mode === 'prev' ? past : fut.slice().reverse().concat(past);
+  if (onlyNew && mode !== 'next') items = items.filter(x => x.t > now || !x.w);
+  const limit = UI.calLimit || 80, shown = items.slice(0, limit);
+  const tk = todayKey(), tm = dayKey(now + 864e5), ye = dayKey(now - 864e5);
+  const label = (k, t) => k === tk ? 'Hoy' : k === tm ? 'Mañana' : k === ye ? 'Ayer' : fmtDate(t, { weekday: 'long', day: 'numeric', month: 'long', year: new Date(t).getFullYear() === new Date().getFullYear() ? undefined : 'numeric' });
+  const groups = []; for (const x of shown) { const k = dayKey(x.t); const g = groups[groups.length - 1]; if (g && g.k === k) g.xs.push(x); else groups.push({ k, t: x.t, xs: [x] }); }
+  const chk = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5 9-10"/></svg>`;
+  const row = x => `<div class="calrow ${x.w ? 'w' : ''}"><a class="pp" href="#/serie/${x.c.id}">${img(x.c.img, x.c.name)}</a><a class="tx" href="#/ep/${x.c.id}/${x.e.id}"><b>${h(x.c.name)}</b><span>${code(x.e)} · ${h(x.e.name)}</span></a>
+    ${x.t > now ? `<time>${fmtTime(x.e.air)}</time>` : `<span class="state ${x.w ? 'seen' : 'new'}">${x.w ? 'Visto' : 'Sin ver'}</span><button class="check sm ${x.w ? 'on' : ''}" data-act="calep" data-show="${x.c.id}" data-ep="${x.e.id}" aria-label="${x.w ? 'Desmarcar' : 'Marcar'} ${h(x.c.name)} ${h(code(x.e))}">${chk}</button>`}</div>`;
+  draw(title + `<div class="calbar">
+    <div class="seg" role="tablist"><button class="${mode === 'next' ? 'on' : ''}" data-act="calmode" data-v="next">Próximos <span>${fut.length}</span></button><button class="${mode === 'prev' ? 'on' : ''}" data-act="calmode" data-v="prev">Anteriores <span>${past.length}</span></button><button class="${mode === 'all' ? 'on' : ''}" data-act="calmode" data-v="all">Todo</button></div>
+    ${mode !== 'next' ? `<label class="toggle"><input type="checkbox" id="calunseen" ${onlyNew ? 'checked' : ''}> Solo sin ver <span class="dim">(${unseen.length})</span></label>` : ''}</div>
+  <div class="calsum"><div><b>${fut.length}</b><span>capítulos por salir</span></div><div><b>${unseen.length}</b><span>salieron y no los viste</span></div><div><b>${fut[0] ? h(fmtDate(fut[0].t, { day: 'numeric', month: 'short' })) : '—'}</b><span>${fut[0] ? 'próximo: ' + h(fut[0].c.name) : 'sin fechas anunciadas'}</span></div></div>
+  ${groups.length ? groups.map(g => `<div class="day ${g.k === tk ? 'today' : ''}"><h3>${h(label(g.k, g.t))}${g.k === tk || g.k === tm || g.k === ye ? `<span>${h(fmtDate(g.t, { day: 'numeric', month: 'long' }))}</span>` : ''}</h3>${g.xs.map(row).join('')}</div>`).join('') : `<div class="sec">${empty(mode === 'next' ? 'No hay fechas anunciadas' : 'Nada por acá', mode === 'next' ? 'Ninguna de tus series anunció capítulos nuevos todavía.' : 'Estás al día con todo.')}</div>`}
+  ${items.length > limit ? `<div style="text-align:center;margin-top:20px"><button class="btn" data-act="calmore">Ver más (${items.length - limit} restantes)</button></div>` : ''}`);
+}
+
+// ------------------------------------------------------------ ESTADÍSTICAS
+function stats() {
+  let min = 0, eps = 0, first = Infinity; const byG = {}, byM = {}, byDay = {}, byWd = [0, 0, 0, 0, 0, 0, 0], per = [];
+  for (const r of myShows()) {
+    let m = 0, last = 0;
+    for (const e of Object.values(r.eps || {})) {
+      const x = e.m || 30; m += x; eps++; first = Math.min(first, e.t); last = Math.max(last, e.t);
+      const k = dayKey(e.t); byDay[k] = (byDay[k] || 0) + 1; byM[k.slice(0, 7)] = (byM[k.slice(0, 7)] || 0) + x; byWd[(new Date(e.t).getDay() + 6) % 7] += x;
+    }
+    min += m; if (m) per.push({ r, m, last, n: watchedCount(r) });
+    const gs = r.genres?.length ? r.genres : ['Otros'];
+    for (const x of gs) byG[x] = (byG[x] || 0) + m / gs.length;
+  }
+  return { min, eps, byG, byM, byDay, byWd, first, per: per.sort((a, b) => b.m - a.m) };
+}
+function since(ms) { let m = 0; for (const r of myShows()) for (const e of Object.values(r.eps || {})) if (e.t >= ms) m += e.m || 30; return m; }
+function unitsHTML(min) {
+  const t = splitTime(min), U = [['y', 'año', 'años'], ['mo', 'mes', 'meses'], ['d', 'día', 'días'], ['h', 'hora', 'horas'], ['mi', 'minuto', 'minutos']];
+  let list = U.filter(([k]) => t[k]); if (!list.length) list = [U[4]];
+  return list.map(([k, a, b]) => `<div class="unit"><b>${t[k]}</b><span>${t[k] === 1 ? a : b}</span></div>`).join('');
+}
+async function vStats(_, draw) {
+  const st = stats(), mine = myShows();
+  if (!st.eps) return draw(`<h1>Tus estadísticas</h1><div class="sec">${empty('Todavía no hay nada para contar', 'Marcá tu primer capítulo y acá aparece cuánto tiempo pasaste viendo series.', '<a class="btn pri" href="#/descubrir">Buscar una serie</a>')}</div>`);
+  const now = new Date(), wk = new Date(now); wk.setHours(0, 0, 0, 0); wk.setDate(wk.getDate() - ((wk.getDay() + 6) % 7));
+  const mo = new Date(now.getFullYear(), now.getMonth(), 1), yr = new Date(now.getFullYear(), 0, 1);
+  const weeks = Math.max(1, (Date.now() - st.first) / (7 * 864e5));
+  const gs = Object.entries(st.byG).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]).slice(0, 8), gmax = gs[0]?.[1] || 1, gtot = gs.reduce((a, [, v]) => a + v, 0) || 1;
+  const months = []; for (let i = 11; i >= 0; i--) { const x = new Date(now.getFullYear(), now.getMonth() - i, 1); const k = `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, '0')}`; months.push({ l: x.toLocaleDateString('es-AR', { month: 'short' }).replace('.', ''), v: st.byM[k] || 0, cur: i === 0 }); }
+  const mmax = Math.max(1, ...months.map(m => m.v));
+  const WD = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'], WDL = ['los lunes', 'los martes', 'los miércoles', 'los jueves', 'los viernes', 'los sábados', 'los domingos'];
+  const wmax = Math.max(1, ...st.byWd), wbest = st.byWd.indexOf(Math.max(...st.byWd));
+  const best = Object.entries(st.byDay).sort((a, b) => b[1] - a[1])[0];
+  const done = mine.filter(r => r.list === 'done').length, favs = mine.filter(r => r.fav).length;
+  draw(`<section class="stathero"><div class="eyebrow">Tiempo total viendo series</div><div class="units">${unitsHTML(st.min)}</div>
+    <p>Son <b>${Math.round(st.min / 60).toLocaleString('es-AR')} horas</b> en ${plural(st.eps, 'capítulo', 'capítulos')} de ${plural(st.per.length, 'serie', 'series')}.</p></section>
+  ${rwSection(st)}
+  <h2 class="sec" style="margin-bottom:12px">Por período</h2>
+  <div class="kpis">${[['Esta semana', since(wk.getTime())], ['Este mes', since(mo.getTime())], ['Este año', since(yr.getTime())], ['Promedio por semana', Math.round(st.min / weeks)]].map(([l, v]) => `<div class="kpi"><span>${l}</span><b>${h(shortTime(v))}</b></div>`).join('')}</div>
+  <div class="kpis" style="margin-top:12px">${[['Capítulos vistos', st.eps.toLocaleString('es-AR')], ['Series empezadas', st.per.length], ['Series terminadas', done], ['Favoritas', favs]].map(([l, v]) => `<div class="kpi alt"><span>${l}</span><b>${v}</b></div>`).join('')}</div>
+  <section class="panel sec"><div class="phead"><h3>Últimos 12 meses</h3><span class="dim small">horas vistas por mes</span></div>
+    <div class="months">${months.map(m => `<div class="${m.cur ? 'cur' : ''}"><em>${m.v ? Math.round(m.v / 60) : ''}</em><i style="height:${Math.max(2, m.v / mmax * 120)}px"></i><span>${h(m.l)}</span></div>`).join('')}</div></section>
+  <div class="two">
+    <section class="panel"><div class="phead"><h3>Géneros</h3><span class="dim small">% de tu tiempo</span></div><div class="bars">${gs.map(([g, v]) => `<div class="bar"><span>${h(gname(g))}</span><div class="track"><i style="width:${v / gmax * 100}%"></i></div><em>${Math.round(v / gtot * 100)}%</em></div>`).join('')}</div></section>
+    <section class="panel"><div class="phead"><h3>Cuándo ves series</h3><span class="dim small">por día de la semana</span></div>
+      <div class="wdays">${st.byWd.map((v, i) => `<div class="${i === wbest ? 'cur' : ''}"><i style="height:${Math.max(2, v / wmax * 100)}px"></i><span>${WD[i]}</span></div>`).join('')}</div>
+      <p class="small dim" style="margin:12px 0 0">Ves más series <b style="color:var(--fg)">${WDL[wbest]}</b>.${best ? ` Tu récord: <b style="color:var(--fg)">${plural(best[1], 'capítulo', 'capítulos')}</b> el ${h(fmtDate(best[0] + 'T12:00:00', { day: 'numeric', month: 'long', year: 'numeric' }))}.` : ''}</p></section>
+  </div>
+  <section class="panel sec"><div class="phead"><h3>Las series que más tiempo te llevaron</h3><span class="dim small">${plural(Math.min(10, st.per.length), 'serie', 'series')}</span></div>
+    <ol class="ranking">${st.per.slice(0, 10).map(({ r, m, n }, i) => `<li><span class="n">${i + 1}</span><a class="pp" href="#/serie/${r.id}">${img(r.img, r.name)}</a><div class="rk"><a href="#/serie/${r.id}"><b>${h(r.name)}</b></a><div class="track"><i style="width:${m / st.per[0].m * 100}%"></i></div></div><em>${h(shortTime(m))}<small>${plural(n, 'cap.', 'caps.')}</small></em></li>`).join('')}</ol></section>
+  ${ad('stats')}`);
+}
+
+function rwSection(st) {
+  const rw = rwStats();
+  if (!rw.eps) return `<section class="rwsec sec"><div><div class="eyebrow">Revistos</div><h2 style="margin-top:6px">Todavía no volviste a ver nada</h2><p class="dim small" style="margin:6px 0 0">En cada capítulo, temporada o serie que ya viste tenés el botón “↻ Revisté”. Lo que vuelvas a ver se cuenta acá, aparte de tu tiempo total.</p></div></section>`;
+  return `<section class="rwsec sec"><div><div class="eyebrow">↻ Revistos · aparte de tu tiempo total</div><div class="units sm" style="margin-top:12px">${unitsHTML(rw.min)}</div>
+    <p class="small dim" style="margin:6px 0 0"><b style="color:var(--fg)">${plural(rw.eps, 'capítulo revisto', 'capítulos revistos')}</b> en ${plural(rw.per.length, 'serie', 'series')} · contando la primera vez llevás <b style="color:var(--fg)">${h(timeText(st.min + rw.min))}</b>.</p></div>
+    <ol class="ranking">${rw.per.slice(0, 5).map(({ r, m, k, times }, i) => `<li><span class="n">${i + 1}</span><a class="pp" href="#/serie/${r.id}">${img(r.img, r.name)}</a><div class="rk"><a href="#/serie/${r.id}"><b>${h(r.name)}</b></a><div class="small dim">${times ? `Completa ${times} ${times === 1 ? 'vez' : 'veces'} más · ` : ''}${plural(k, 'capítulo revisto', 'capítulos revistos')}</div></div><em>${h(shortTime(m))}</em></li>`).join('')}</ol></section>`;
+}
+
+// ------------------------------------------------------------ PERFIL
+const BADGES = [
+  ['Primer capítulo', 'Marcaste tu primer capítulo.', s => s.eps >= 1],
+  ['Maratonista', '100 capítulos vistos.', s => s.eps >= 100],
+  ['Adicto a las series', '500 capítulos vistos.', s => s.eps >= 500],
+  ['Leyenda JVNN', '1.000 capítulos vistos.', s => s.eps >= 1000],
+  ['Un día entero', '24 horas de series.', s => s.min >= 1440],
+  ['Una semana entera', '7 días de series.', s => s.min >= 10080],
+  ['Un mes entero', '30 días de series.', s => s.min >= 43200],
+  ['Lo terminé', 'Terminaste tu primera serie.', s => s.done >= 1],
+  ['Terminator', '10 series terminadas.', s => s.done >= 10],
+  ['Coleccionista', '25 series en tu lista.', s => s.shows >= 25],
+  ['Corazón de fan', '5 series favoritas.', s => s.favs >= 5],
+  ['Crítico', '10 capítulos comentados o puntuados.', s => s.notes >= 10],
+  ['Otra vez, por favor', 'Volviste a ver una serie completa.', s => s.rwFull >= 1],
+];
+function profileStats() {
+  const st = stats(), mine = myShows();
+  return { ...st, done: mine.filter(r => r.list === 'done').length, shows: mine.length, favs: mine.filter(r => r.fav).length, notes: Object.values(S.notes).filter(n => n.text || n.score || n.react).length, rwFull: mine.filter(r => rwShowTimes(r) > 0).length };
+}
+function favList() {
+  // el orden de favoritas vive en profile.top; se sincroniza con la marca de favorita de cada serie
+  const top = S.profile.top.filter(id => S.shows[id] && S.shows[id].fav);
+  for (const r of myShows()) if (r.fav && !top.includes(r.id)) top.push(r.id);
+  S.profile.top = top;
+  return top.map(id => S.shows[id]);
+}
+async function vProfile(_, draw) {
+  const p = S.profile, ps = profileStats(), mine = myShows(), favs = favList();
+  const seen = mine.filter(r => watchedCount(r) > 0 || r.list === 'done');
+  const notes = Object.entries(S.notes).filter(([, n]) => n.text || n.score || n.react).sort((a, b) => (b[1].t || 0) - (a[1].t || 0));
+  const tab = UI.ptab || 'fav';
+  const tabs = [['fav', 'Favoritas', favs.length], ['seen', 'Series vistas', seen.length], ['notes', 'Comentarios', notes.length], ['badges', 'Logros', BADGES.filter(b => b[2](ps)).length + '/' + BADGES.length], ['edit', 'Editar perfil', '']];
+  let body = '';
+  if (tab === 'fav') {
+    const cand = mine.filter(r => !r.fav).sort((a, b) => a.name.localeCompare(b.name));
+    body = (favs.length ? `<p class="small dim" style="margin-top:0">Ordenalas como quieras con las flechas. La número 1 es tu serie favorita de todas.</p><div class="favgrid">${favs.map((r, i) => `<article class="fav"><a href="#/serie/${r.id}" class="pimg">${img(r.img, r.name)}<span class="rank">${i + 1}</span></a><b>${h(r.name)}</b><div class="ord"><button data-act="topup" data-id="${r.id}" aria-label="Mover antes" ${i ? '' : 'disabled'}>←</button><button data-act="topdown" data-id="${r.id}" aria-label="Mover después" ${i < favs.length - 1 ? '' : 'disabled'}>→</button><button data-act="topdel" data-id="${r.id}" aria-label="Sacar de favoritas">✕</button></div></article>`).join('')}</div>` : `<div class="empty"><h3>Todavía no tenés favoritas</h3><div>Tocá “Favorita” en cualquier serie o agregala acá abajo.</div></div>`) +
+      (cand.length ? `<div class="addrow"><select class="btn" id="topadd" aria-label="Serie para agregar"><option value="">Agregar una serie a favoritas…</option>${cand.map(r => `<option value="${r.id}">${h(r.name)}</option>`).join('')}</select><button class="btn pri" data-act="topadd">Agregar</button></div>` : '');
+  } else if (tab === 'seen') {
+    const lastSeen = r => Math.max(0, ...Object.values(r.eps || {}).map(e => e.t));
+    const sorts = { added: ['Orden en que las agregaste', (a, b) => a.added - b.added], recent: ['Vistas más recientemente', (a, b) => lastSeen(b) - lastSeen(a)], name: ['Nombre', (a, b) => a.name.localeCompare(b.name)], time: ['Más tiempo visto', (a, b) => showMinutes(b) - showMinutes(a)], score: ['Mi puntaje', (a, b) => (b.score || 0) - (a.score || 0)] };
+    const so = sorts[UI.seenSort] ? UI.seenSort : 'added';
+    const list = seen.slice().sort(sorts[so][1]), show = UI.seenAll ? list : list.slice(0, 18);
+    body = seen.length ? `<div class="toolbar"><div class="small dim">${plural(seen.length, 'serie vista', 'series vistas')} · ${plural(seen.filter(r => r.list === 'done').length, 'terminada', 'terminadas')}</div><select class="btn sm" id="seensort" aria-label="Ordenar">${Object.entries(sorts).map(([k, [l]]) => `<option value="${k}" ${k === so ? 'selected' : ''}>${l}</option>`).join('')}</select></div>
+      <div class="grid" style="margin-top:16px">${show.map((r, i) => `<article class="card"><a href="#/serie/${r.id}" class="pimg">${img(r.img, r.name)}${so === 'added' ? `<span class="rt">#${i + 1}</span>` : ''}${r.list === 'done' ? '<span class="tag">Terminada</span>' : ''}</a><div><a href="#/serie/${r.id}" class="cname">${h(r.name)}</a><div class="csub">${watchedCount(r)}/${r.aired ?? '?'} caps · ${h(shortTime(showMinutes(r)))}</div></div><div class="pbar"><i style="width:${Math.min(100, r.aired ? watchedCount(r) / r.aired * 100 : 0)}%"></i></div></article>`).join('')}</div>
+      ${list.length > 18 ? `<div style="text-align:center;margin-top:20px"><button class="btn" data-act="seenall">${UI.seenAll ? 'Mostrar menos' : `Ver todas (${list.length})`}</button></div>` : ''}` : `<div class="empty"><h3>Todavía no viste ninguna serie</h3><div>Cuando marques capítulos, tus series aparecen acá.</div></div>`;
+  } else if (tab === 'notes') {
+    const R = Object.fromEntries(REACTS);
+    body = notes.length ? `<div class="notes">${notes.map(([id, n]) => `<a class="noteitem" href="${n.sid ? `#/ep/${n.sid}/${id}` : '#/perfil'}"><div class="nh"><b>${h(n.sname || 'Capítulo')}</b><span>${h(n.code || '')}${n.ename ? ' · ' + h(n.ename) : ''}</span></div>${n.react || n.score ? `<div class="nm">${n.react ? `<span class="chip">${h(R[n.react] || '')}</span>` : ''}${n.score ? `<span class="chip blue">${n.score}/10</span>` : ''}</div>` : ''}${n.text ? `<p>${h(n.text)}</p>` : ''}<time>${h(fmtDate(n.t, { day: 'numeric', month: 'short', year: 'numeric' }))}</time></a>`).join('')}</div>` : `<div class="empty"><h3>Sin comentarios todavía</h3><div>Entrá a un capítulo y dejá tu reacción, puntaje o comentario.</div></div>`;
+  } else if (tab === 'badges') {
+    body = `<div class="badges">${BADGES.map(([t, d, f]) => { const on = f(ps); return `<div class="badge ${on ? 'on' : ''}"><div class="medal">${on ? '★' : '·'}</div><div><b>${h(t)}</b><span>${h(d)}</span></div></div>`; }).join('')}</div>`;
+  } else {
+    body = `<div class="two" style="margin-top:0"><section><h3>Tus datos</h3><form class="form" id="pform"><label class="lb" for="pname">Nombre</label><input type="text" id="pname" maxlength="40" value="${h(p.name)}" placeholder="Cómo te llamás">
+      <label class="lb" for="pbio">Sobre vos</label><textarea id="pbio" maxlength="240" placeholder="Fan de las series policiales…">${h(p.bio)}</textarea><div><button class="btn pri" type="submit">Guardar perfil</button></div></form></section>
+      <section><h3>Copia de seguridad</h3><p class="small dim" style="margin-top:0">Todo se guarda en este navegador. Descargá una copia para no perder nada o pasar tus datos a otra compu.</p>
+      <div class="actions"><button class="btn" data-act="export">Descargar copia</button><label class="btn" for="importf">Cargar copia</label><input type="file" id="importf" accept="application/json,.json" hidden><button class="btn ghost danger" data-act="wipe">Borrar todo</button></div></section></div>`;
+  }
+  const t3 = favs.slice(0, 3);
+  draw(`<section class="pcover"><div class="pbanner">${t3.map(r => r.img ? `<div style="background-image:url('${h(r.img)}')"></div>` : '').join('')}</div>
+    <div class="pmain"><div class="avatar">${p.photo ? `<img src="${p.photo}" alt="Tu foto">` : h(initials(p.name || 'Yo'))}</div>
+      <div class="pid"><h1>${h(p.name || 'Tu perfil')}</h1>${p.bio ? `<p>${h(p.bio)}</p>` : `<p class="dim">Contá algo sobre vos en “Editar perfil”.</p>`}<div class="small dim">En JVNN desde ${h(fmtDate(S.created, { month: 'long', year: 'numeric' }))}</div></div>
+      <div class="actions"><label class="btn" for="photo">Cambiar foto</label>${p.photo ? '<button class="btn ghost" data-act="nophoto">Quitar foto</button>' : ''}<input type="file" id="photo" accept="image/*" hidden></div></div>
+    <div class="pstats"><a href="#/stats"><b>${h(shortTime(ps.min))}</b><span>de series</span></a><a href="#/stats"><b>${ps.eps.toLocaleString('es-AR')}</b><span>capítulos</span></a><a data-act="ptab" data-v="seen" href="#/perfil"><b>${seen.length}</b><span>series vistas</span></a><a data-act="ptab" data-v="fav" href="#/perfil"><b>${favs.length}</b><span>favoritas</span></a><a data-act="ptab" data-v="badges" href="#/perfil"><b>${BADGES.filter(b => b[2](ps)).length}</b><span>logros</span></a></div></section>
+  ${ONLINE ? (ME ? `<div class="acctbar"><div>${avatar(ME, 36)}<div><b>@${h(ME.username)}</b><span id="syncst" class="sync ok">Sincronizado</span></div></div><div class="actions"><a class="btn sm" href="#/u/${h(ME.username)}">Ver mi perfil público</a><button class="btn sm" data-act="copylink" data-u="${h(ME.username)}">Copiar link</button><button class="btn sm ghost" data-act="logout">Cerrar sesión</button></div></div>`
+    : `<div class="invite" style="margin-top:16px"><div><h2>Poné tu perfil online</h2><p class="dim">Creá tu cuenta gratis para tener un link de perfil, seguir gente, comentar y ver tus series en cualquier dispositivo.</p></div><a class="btn pri" href="#/entrar/crear">Crear cuenta</a></div>`) : ''}
+  <div class="tabs">${tabs.map(([k, l, n]) => `<button class="tab ${k === tab ? 'on' : ''}" data-act="ptab" data-v="${k}">${l}${n !== '' ? `<span>${n}</span>` : ''}</button>`).join('')}</div>
+  <section class="panel">${body}</section>`);
+}
+
+// ============================================================ EVENTOS
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-act]'); if (!b) return;
+  const act = b.dataset.act, c = CUR.show;
+  if (b.tagName === 'SELECT') return;
+  switch (act) {
+    case 'focussearch': $('#q').focus(); break;
+    case 'reload': mem.clear(); refresh(); break;
+    case 'quickadd': {
+      b.disabled = true; b.textContent = 'Agregando…';
+      try { const s = await getShow(+b.dataset.id); track(s, 'plan'); toast(`${s.name} quedó en Para ver.`, () => { delete S.shows[s.id]; save(); refresh(); }); refresh(); }
+      catch (err) { b.disabled = false; b.textContent = '+ Para ver'; toast(err.message); }
+      break;
+    }
+    case 'nextep': { const s = await getShow(+b.dataset.show); const ep = s.eps.find(x => x.id === +b.dataset.ep); if (ep) markEps(s, [ep], true); break; }
+    case 'ep': { const ep = c && c.eps.find(x => x.id === +b.dataset.ep); if (ep) toggleEp(c, ep); break; }
+    case 'season': UI.season[c.id] = +b.dataset.n; refresh(); break;
+    case 'markseason': {
+      const n = UI.season[c.id] ?? +document.querySelector('.stab.on')?.dataset.n, r = S.shows[c.id];
+      const se = c.eps.filter(x => x.s === n && aired(x)), all = r && se.every(x => r.eps[x.id]);
+      if (!all) { const prev = c.eps.filter(x => x.s < n && aired(x) && !(r && r.eps[x.id])); if (prev.length) { const a = await ask('¿Marcar también las temporadas anteriores?', `Hay ${plural(prev.length, 'capítulo', 'capítulos')} de temporadas anteriores sin ver.`, [['one', 'Solo esta temporada'], ['all', 'Sí, marcar todo', 'pri']]); if (!a) return; if (a === 'all') return markEps(c, prev.concat(se), true); } }
+      markEps(c, se, !all); break;
+    }
+    case 'markall': {
+      const r = S.shows[c.id], al = c.eps.filter(aired), all = r && al.every(x => r.eps[x.id]);
+      const a = await ask(all ? '¿Desmarcar toda la serie?' : '¿Marcar toda la serie como vista?', all ? `Se van a desmarcar ${al.length} capítulos.` : `Se van a marcar ${al.length} capítulos (${shortTime(al.reduce((s, x) => s + x.rt, 0))}).`, [['yes', all ? 'Desmarcar todo' : 'Marcar todo', 'pri']]);
+      if (a) markEps(c, al, !all); break;
+    }
+    case 'fav': { const r = S.shows[c.id] || track(c, 'plan'); r.fav = !r.fav; S.profile.top = S.profile.top.filter(x => x !== r.id); if (r.fav) { S.profile.top.push(r.id); logAct('fav', c, ''); } save(); toast(r.fav ? 'Agregada a favoritas.' : 'Sacada de favoritas.'); refresh(); break; }
+    case 'untrack': { const a = await ask(`¿Quitar ${c.name}?`, 'Se borran los capítulos que marcaste de esta serie.', [['yes', 'Quitar', 'pri']]); if (a) { untrack(c.id); refresh(); } break; }
+    case 'score': { const r = S.shows[c.id] || track(c, 'watching'); const v = +b.dataset.v; r.score = r.score === v ? 0 : v; save(); refresh(); break; }
+    case 'react': case 'epscore': {
+      const id = +document.getElementById('epnote').dataset.ep, n = noteFor(id);
+      if (act === 'react') n.react = n.react === b.dataset.v ? '' : b.dataset.v; else n.score = n.score === +b.dataset.v ? 0 : +b.dataset.v;
+      n.t = Date.now(); save(); refresh(); break;
+    }
+    case 'rwep': { const ep = c && c.eps.find(x => x.id === +b.dataset.ep); if (ep) rewatch(c, [ep], +b.dataset.v); break; }
+    case 'rwseason': { const n = UI.season[c.id], r = S.shows[c.id]; const se = c.eps.filter(x => x.s === n && r && r.eps[x.id]); const a = await ask(`¿Revisaste la temporada ${n}?`, `Se suma una vista más a ${plural(se.length, 'capítulo', 'capítulos')} (${shortTime(se.reduce((t, x) => t + x.rt, 0))}).`, [['yes', 'Sí, la volví a ver', 'pri']]); if (a) rewatch(c, se, 1); break; }
+    case 'rwshow': { const r = S.shows[c.id]; const se = c.eps.filter(x => r && r.eps[x.id]); const a = await ask(`¿Volviste a ver ${c.name}?`, `Se suma una vista más a los ${plural(se.length, 'capítulo que ya marcaste', 'capítulos que ya marcaste')} (${shortTime(se.reduce((t, x) => t + x.rt, 0))}). Va a la sección Revistos de tus estadísticas.`, [['yes', 'Sí, la revisté', 'pri']]); if (a) rewatch(c, se, 1); break; }
+    case 'listtab': UI.listTab = b.dataset.v; refresh(); break;
+    case 'topup': case 'topdown': { const t = S.profile.top, i = t.indexOf(+b.dataset.id), j = act === 'topup' ? i - 1 : i + 1; if (i >= 0 && j >= 0 && j < t.length) { [t[i], t[j]] = [t[j], t[i]]; save(); refresh(); } break; }
+    case 'topdel': { const id = +b.dataset.id; S.profile.top = S.profile.top.filter(x => x !== id); if (S.shows[id]) S.shows[id].fav = false; save(); refresh(); break; }
+    case 'topadd': { const v = +$('#topadd').value; if (v && S.shows[v]) { S.shows[v].fav = true; if (!S.profile.top.includes(v)) S.profile.top.push(v); save(); refresh(); } break; }
+    case 'ptab': e.preventDefault(); UI.ptab = b.dataset.v; if (parseRoute().name !== 'perfil') location.hash = '#/perfil'; else refresh(); break;
+    case 'seenall': UI.seenAll = !UI.seenAll; refresh(); break;
+    case 'calscope': UI.calScope = b.dataset.v; UI.calLimit = 80; refresh(); break;
+    case 'calpick': UI.calDay = b.dataset.v; UI.calLimit = 80; refresh(); break;
+    case 'calday': { const d = new Date((UI.calDay || todayKey()) + 'T12:00:00'); d.setDate(d.getDate() + +b.dataset.v); UI.calDay = dayKey(d); UI.calLimit = 80; refresh(); break; }
+    case 'calmode': UI.calMode = b.dataset.v; UI.calLimit = 80; refresh(); break;
+    case 'calmore': UI.calLimit = (UI.calLimit || 80) + 120; refresh(); break;
+    case 'calep': { const s2 = await getShow(+b.dataset.show); const ep = s2 && s2.eps.find(x => x.id === +b.dataset.ep); if (ep) { CUR.show = s2; toggleEp(s2, ep); } break; }
+    case 'rowl': case 'rowr': { const r = b.parentElement.querySelector('.row'); r.scrollBy({ left: (act === 'rowl' ? -1 : 1) * r.clientWidth * 0.85, behavior: 'smooth' }); break; }
+    case 'nophoto': S.profile.photo = ''; save(); refresh(); break;
+    case 'export': {
+      const blob = new Blob([JSON.stringify(S, null, 1)], { type: 'application/json' });
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `jvnn-series-${todayKey()}.json`; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 4000); toast('Copia descargada.'); break;
+    }
+    case 'wipe': { const a = await ask('¿Borrar todos tus datos?', 'Se borran tus series, capítulos marcados, notas y perfil de este navegador. No se puede deshacer.', [['yes', 'Borrar todo', 'pri']]); if (a) { localStorage.removeItem(KEY); location.hash = '#/'; location.reload(); } break; }
+  }
+});
+document.addEventListener('change', async e => {
+  const t = e.target;
+  if (t.id === 'listsel' && CUR.show) { if (t.value) { track(CUR.show, t.value); toast(`${CUR.show.name} está en ${LISTS[t.value]}.`); refresh(); } }
+  if (t.id === 'sortsel') { UI.listSort = t.value; refresh(); }
+  if (t.id === 'seensort') { UI.seenSort = t.value; refresh(); }
+  if (t.id === 'caldate' && t.value) { UI.calDay = t.value; UI.calLimit = 80; refresh(); }
+  if (t.id === 'calcountry') { UI.calCountry = t.value; UI.calLang = ''; refresh(); }
+  if (t.id === 'calsort') { UI.calSort = t.value; refresh(); }
+  if (t.id === 'callang') { UI.calLang = t.value; UI.calLimit = 80; refresh(); }
+  if (t.id === 'calpop') { UI.calPop = t.checked; UI.calLimit = 80; refresh(); }
+  if (t.id === 'calunseen') { UI.calUnseen = t.checked; UI.calLimit = 80; refresh(); }
+  if (t.id === 'photo' && t.files[0]) {
+    try {
+      const bmp = await createImageBitmap(t.files[0]); const cv = document.createElement('canvas'); cv.width = cv.height = 256;
+      const s = Math.min(bmp.width, bmp.height); cv.getContext('2d').drawImage(bmp, (bmp.width - s) / 2, (bmp.height - s) / 2, s, s, 0, 0, 256, 256);
+      S.profile.photo = cv.toDataURL('image/jpeg', 0.85); save(); toast('Foto actualizada.'); refresh();
+    } catch (err) { toast('No se pudo leer esa imagen. Probá con un JPG o PNG.'); }
+  }
+  if (t.id === 'importf' && t.files[0]) {
+    try {
+      const d = JSON.parse(await t.files[0].text());
+      if (!d || typeof d.shows !== 'object') throw new Error();
+      const a = await ask('¿Reemplazar tus datos?', `La copia tiene ${plural(Object.keys(d.shows).length, 'serie', 'series')}. Lo que tenés ahora se reemplaza.`, [['yes', 'Cargar copia', 'pri']]);
+      if (a) { S = Object.assign({ profile: { name: '', bio: '', photo: '', top: [] }, shows: {}, notes: {}, created: Date.now() }, d); save(); toast('Copia cargada.'); refresh(); }
+    } catch (err) { toast('Ese archivo no es una copia de JVNN Series.'); }
+    t.value = '';
+  }
+});
+let noteT;
+document.addEventListener('input', e => {
+  const t = e.target;
+  if (t.id === 'shownote' && CUR.show) { clearTimeout(noteT); noteT = setTimeout(() => { const r = S.shows[CUR.show.id] || track(CUR.show, 'watching'); r.note = t.value; save(); }, 400); }
+  if (t.id === 'epnote') { clearTimeout(noteT); noteT = setTimeout(() => { const id = +t.dataset.ep, n = noteFor(id); n.text = t.value; n.t = Date.now(); save(); }, 400); }
+});
+document.addEventListener('submit', e => {
+  e.preventDefault();
+  if (e.target.id === 'sform') { const q = $('#q').value.trim(); if (q) location.hash = '#/buscar/' + encodeURIComponent(q); $('#q').blur(); }
+  if (e.target.id === 'pform') { S.profile.name = $('#pname').value.trim(); S.profile.bio = $('#pbio').value.trim(); save(); toast('Perfil guardado.'); refresh(); }
+});
+document.addEventListener('keydown', e => { if (e.key === '/' && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) { e.preventDefault(); $('#q').focus(); } });
+
+
+function noteFor(id) {
+  const n = S.notes[id] = S.notes[id] || {};
+  const c = CUR.show, e = c && c.eps.find(x => x.id === id);
+  if (e) Object.assign(n, { sid: c.id, sname: c.name, code: code(e), ename: e.name });
+  return n;
+}
+const row = html => `<div class="rowwrap"><button class="rowbtn l" data-act="rowl" aria-label="Anteriores" tabindex="-1">‹</button><div class="row">${html}</div><button class="rowbtn r" data-act="rowr" aria-label="Siguientes" tabindex="-1">›</button></div>`;
+function updRow(r) { const w = r.parentElement; if (!w || !w.classList.contains('rowwrap')) return; w.classList.toggle('atstart', r.scrollLeft < 8); w.classList.toggle('atend', r.scrollLeft + r.clientWidth > r.scrollWidth - 8); }
+document.addEventListener('scroll', e => { if (e.target.classList && e.target.classList.contains('row')) updRow(e.target); }, true);
+new MutationObserver(() => document.querySelectorAll('.row').forEach(updRow)).observe(document.getElementById('app'), { childList: true });
+window.addEventListener('resize', () => document.querySelectorAll('.row').forEach(updRow));
+// Proteger el contenido: sin copiar, cortar, arrastrar imágenes ni menú contextual (salvo en campos de texto).
+const editable = t => t && t.closest && t.closest('input, textarea, select, [contenteditable]');
+['copy', 'cut', 'contextmenu', 'selectstart'].forEach(ev => document.addEventListener(ev, e => { if (!editable(e.target)) e.preventDefault(); }));
+document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG' || !editable(e.target)) e.preventDefault(); });
+
+// ---- Sugerencias mientras escribís en el buscador
+let sugT, sugQ = '', sugI = -1;
+const sugBox = document.createElement('div'); sugBox.className = 'sugg'; sugBox.hidden = true; sugBox.setAttribute('role', 'listbox'); $('#sform').appendChild(sugBox);
+function closeSug() { sugBox.hidden = true; sugI = -1; }
+$('#q').addEventListener('input', () => {
+  const q = $('#q').value.trim(); clearTimeout(sugT);
+  if (q.length < 2) return closeSug();
+  sugT = setTimeout(async () => {
+    sugQ = q;
+    sugBox.innerHTML = '<div class="sg dim">Buscando…</div>'; sugBox.hidden = false;
+    try {
+      const res = (await searchShows(q)).slice(0, 8);
+      if (sugQ !== q) return;
+      sugBox.innerHTML = res.length ? res.map((s, i) => `<a class="sg" role="option" href="#/serie/${s.id}" data-i="${i}"><span class="sp">${img(s.img, s.name)}</span><span class="st"><b>${h(s.name)}</b><span>${h([year(s.premiered), s.net, S.shows[s.id] ? LISTS[S.shows[s.id].list] : ''].filter(Boolean).join(' · '))}</span></span>${s.rating ? `<em>★ ${s.rating.toFixed(1)}</em>` : ''}</a>`).join('') + `<a class="sg all" href="#/buscar/${encodeURIComponent(q)}">Ver todos los resultados de “${h(q)}”</a>` : `<div class="sg dim">No encontramos “${h(q)}”.</div>`;
+      sugI = -1;
+    } catch (e) { sugBox.innerHTML = `<div class="sg dim">${h(e.message)}</div>`; }
+  }, 220);
+});
+$('#q').addEventListener('keydown', e => {
+  const items = [...sugBox.querySelectorAll('a.sg')];
+  if (e.key === 'Escape') { closeSug(); return; }
+  if (sugBox.hidden || !items.length) return;
+  if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); sugI = (sugI + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length; items.forEach((a, i) => a.classList.toggle('on', i === sugI)); items[sugI].scrollIntoView({ block: 'nearest' }); }
+  if (e.key === 'Enter' && sugI >= 0) { e.preventDefault(); location.hash = items[sugI].getAttribute('href'); closeSug(); $('#q').blur(); }
+});
+$('#q').addEventListener('focus', () => { if ($('#q').value.trim().length >= 2 && sugBox.innerHTML) sugBox.hidden = false; });
+document.addEventListener('pointerdown', e => { if (!e.target.closest('#sform')) closeSug(); });
+window.addEventListener('hashchange', closeSug);
+
+// ============================================================ ARRANQUE
+
+
+
+// ============================================================ ONLINE (Supabase)
+// Cliente propio y liviano: Auth (GoTrue) + base de datos (PostgREST) con fetch.
+const ONLINE = !!(CONFIG.supabaseUrl && CONFIG.supabaseKey);
+const AUTH_KEY = 'jvnn_auth_v1';
+let AUTH = null; // { access_token, refresh_token, expires_at, user }
+let ME = null;   // fila de profiles del usuario conectado
+let FOLLOWING = new Set();
+try { AUTH = JSON.parse(localStorage.getItem(AUTH_KEY)); } catch (e) { AUTH = null; }
+const setAuth = a => { AUTH = a; try { a ? localStorage.setItem(AUTH_KEY, JSON.stringify(a)) : localStorage.removeItem(AUTH_KEY); } catch (e) { } };
+const siteURL = () => location.origin + location.pathname;
+
+function niceErr(d, status) {
+  const m = (d && (d.msg || d.error_description || d.message || d.error)) || '';
+  if (/Invalid login credentials/i.test(m)) return 'Mail o contraseña incorrectos.';
+  if (/Email not confirmed/i.test(m)) return 'Todavía no confirmaste tu mail. Buscá el mail de JVNN (mirá en Spam) y tocá el enlace.';
+  if (/already registered|already been registered/i.test(m)) return 'Ese mail ya tiene una cuenta. Probá entrar.';
+  if (/Password should be at least/i.test(m)) return 'La contraseña tiene que tener al menos 8 caracteres.';
+  if (/rate limit|too many/i.test(m) || status === 429) return 'Demasiados intentos. Esperá unos minutos y probá de nuevo.';
+  if (/duplicate key.*username/i.test(m)) return 'Ese nombre de usuario ya está en uso.';
+  if (/JWT expired/i.test(m)) return 'Tu sesión venció. Volvé a entrar.';
+  if (status === 0) return 'No hay conexión con el servidor.';
+  return m || `Error ${status} del servidor.`;
+}
+async function sbRaw(path, { method = 'GET', body, headers = {}, auth = true } = {}) {
+  const h = { apikey: CONFIG.supabaseKey, 'Content-Type': 'application/json', ...headers };
+  if (auth && AUTH) { await ensureFresh(); if (AUTH) h.Authorization = 'Bearer ' + AUTH.access_token; }
+  let r;
+  try { r = await fetch(CONFIG.supabaseUrl + path, { method, headers: h, body: body !== undefined ? JSON.stringify(body) : undefined }); }
+  catch (e) { throw new Error(niceErr(null, 0)); }
+  const t = await r.text(); let d = null; try { d = t ? JSON.parse(t) : null; } catch (e) { d = t; }
+  if (r.status === 401 && auth && AUTH && /JWT/i.test(t)) { setAuth(null); ME = null; renderAcct(); }
+  if (!r.ok) throw new Error(niceErr(d, r.status));
+  const cr = r.headers.get('content-range'); const count = cr && cr.includes('/') ? +cr.split('/')[1] : null;
+  return { data: d, count };
+}
+const rest = (path, opts) => sbRaw('/rest/v1/' + path, opts).then(x => x.data);
+const restCount = async (table, filter) => (await sbRaw(`/rest/v1/${table}?select=*&${filter}`, { method: 'HEAD', headers: { Prefer: 'count=exact', Range: '0-0' } })).count || 0;
+const inList = ids => `in.(${ids.map(x => encodeURIComponent(x)).join(',')})`;
+
+let refreshing = null;
+async function ensureFresh() {
+  if (!AUTH || !AUTH.refresh_token) return;
+  if (AUTH.expires_at && AUTH.expires_at * 1000 > Date.now() + 60e3) return;
+  if (!refreshing) refreshing = (async () => {
+    try {
+      const r = await fetch(CONFIG.supabaseUrl + '/auth/v1/token?grant_type=refresh_token', { method: 'POST', headers: { apikey: CONFIG.supabaseKey, 'Content-Type': 'application/json' }, body: JSON.stringify({ refresh_token: AUTH.refresh_token }) });
+      const d = await r.json().catch(() => null);
+      if (r.ok && d && d.access_token) setAuth(sessionFrom(d)); else { setAuth(null); ME = null; renderAcct(); }
+    } catch (e) { /* sin conexión: se reintenta en la próxima llamada */ }
+    finally { refreshing = null; }
+  })();
+  await refreshing;
+}
+const sessionFrom = d => ({ access_token: d.access_token, refresh_token: d.refresh_token, expires_at: d.expires_at || Math.floor(Date.now() / 1000) + (d.expires_in || 3600), user: d.user || (AUTH && AUTH.user) });
+const auth = (path, body, method = 'POST') => sbRaw('/auth/v1/' + path, { method, body, auth: method !== 'POST' || /logout/.test(path) }).then(x => x.data);
+
+// ---------- cuenta ----------
+async function signUp(username, email, password) {
+  const taken = await rest(`profiles?select=id&username=eq.${encodeURIComponent(username)}`, { auth: false });
+  if (taken && taken.length) throw new Error('Ese nombre de usuario ya está en uso.');
+  const d = await auth(`signup?redirect_to=${encodeURIComponent(siteURL())}`, { email, password, data: { username } });
+  if (d && d.access_token) { setAuth(sessionFrom(d)); await afterLogin(true); return 'in'; }
+  return 'confirm';
+}
+async function signIn(email, password) { const d = await auth('token?grant_type=password', { email, password }); setAuth(sessionFrom(d)); await afterLogin(true); }
+async function signOut() {
+  await flushPush().catch(() => { });
+  try { await auth('logout', {}); } catch (e) { }
+  setAuth(null); ME = null; FOLLOWING = new Set(); renderAcct();
+}
+async function recover(email) { await auth(`recover?redirect_to=${encodeURIComponent(siteURL())}`, { email }); }
+async function setPassword(password) { await auth('user', { password }, 'PUT'); }
+
+// ---------- sincronización ----------
+function publicData() {
+  const shows = {};
+  for (const [id, r] of Object.entries(S.shows)) { const { note, ...rest } = r; shows[id] = rest; }
+  return { v: 1, shows, top: S.profile.top, created: S.created };
+}
+function privateData() { const sn = {}; for (const [id, r] of Object.entries(S.shows)) if (r.note) sn[id] = r.note; return { notes: S.notes, showNotes: sn }; }
+function publicStats() { const p = profileStats(), rw = rwStats(); return { min: p.min, eps: p.eps, shows: p.shows, seen: p.per.length, done: p.done, favs: p.favs, rwMin: rw.min, notes: p.notes }; }
+function mergeShows(local, remote) {
+  for (const [id, R] of Object.entries(remote || {})) {
+    const L = local[id];
+    if (!L) { local[id] = R; continue; }
+    for (const [eid, e] of Object.entries(R.eps || {})) if (!L.eps[eid] || e.t < L.eps[eid].t) L.eps[eid] = e;
+    L.rw = L.rw || {}; for (const [eid, ts] of Object.entries(R.rw || {})) if (!L.rw[eid] || ts.length > L.rw[eid].length) L.rw[eid] = ts;
+    if ((R.act || 0) > (L.act || 0)) { L.list = R.list; L.fav = R.fav; L.score = R.score; L.act = R.act; }
+    L.added = Math.min(L.added || Infinity, R.added || Infinity);
+  }
+}
+async function afterLogin(fresh) {
+  if (!AUTH) return;
+  const uid = AUTH.user && AUTH.user.id;
+  if (!uid) return;
+  let rows = await rest(`profiles?select=*&id=eq.${uid}`);
+  let row = rows && rows[0];
+  if (!row) {
+    let base = String((AUTH.user.user_metadata && AUTH.user.user_metadata.username) || (AUTH.user.email || 'fan').split('@')[0]).toLowerCase().replace(/[^a-z0-9_]/g, '').slice(0, 16) || 'fan';
+    if (base.length < 3) base = (base + 'fan').slice(0, 16);
+    let name = base;
+    for (let i = 0; i < 6; i++) {
+      try { rows = await rest('profiles', { method: 'POST', headers: { Prefer: 'return=representation' }, body: { id: uid, username: name, name: S.profile.name || '', bio: S.profile.bio || '', photo: S.profile.photo || '', data: publicData(), stats: publicStats() } }); row = rows[0]; break; }
+      catch (e) { if (!/en uso|duplicate/i.test(e.message)) throw e; name = base + Math.floor(Math.random() * 900 + 100); }
+    }
+  } else if (fresh) {
+    // unir lo de este navegador con lo de la cuenta
+    mergeShows(S.shows, row.data && row.data.shows);
+    if (row.data && row.data.top && row.data.top.length) S.profile.top = [...new Set([...row.data.top, ...S.profile.top])];
+    if (row.data && row.data.created) S.created = Math.min(S.created, row.data.created);
+    S.profile.name = row.name || S.profile.name; S.profile.bio = row.bio || S.profile.bio; S.profile.photo = row.photo || S.profile.photo;
+    const priv = await rest(`private_data?select=data&id=eq.${uid}`).catch(() => []);
+    const pd = priv && priv[0] && priv[0].data;
+    if (pd) {
+      for (const [id, n] of Object.entries(pd.notes || {})) if (!S.notes[id] || (n.t || 0) > (S.notes[id].t || 0)) S.notes[id] = n;
+      for (const [id, t] of Object.entries(pd.showNotes || {})) if (S.shows[id] && !S.shows[id].note) S.shows[id].note = t;
+    }
+    try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { }
+  }
+  ME = row;
+  const f = await rest(`follows?select=following&follower=eq.${uid}`).catch(() => []);
+  FOLLOWING = new Set((f || []).map(x => x.following));
+  renderAcct();
+  if (fresh) await pushNow();
+}
+let pushT = null, pushing = null;
+function schedulePush() { if (!ME) return; clearTimeout(pushT); pushT = setTimeout(pushNow, 2500); }
+async function pushNow() {
+  if (!ME || !AUTH) return;
+  clearTimeout(pushT); pushT = null;
+  const body = { name: S.profile.name, bio: S.profile.bio, photo: S.profile.photo, data: publicData(), stats: publicStats(), updated_at: new Date().toISOString() };
+  pushing = (async () => {
+    try {
+      await rest(`profiles?id=eq.${ME.id}`, { method: 'PATCH', body });
+      await rest('private_data', { method: 'POST', headers: { Prefer: 'resolution=merge-duplicates' }, body: { id: ME.id, data: privateData(), updated_at: body.updated_at } });
+      Object.assign(ME, body); setSync('ok');
+    } catch (e) { setSync('err', e.message); }
+  })();
+  await pushing;
+}
+async function flushPush() { if (pushT) await pushNow(); else if (pushing) await pushing; }
+window.addEventListener('beforeunload', () => { if (pushT) pushNow(); });
+function setSync(st, msg) { const el = document.getElementById('syncst'); if (el) { el.textContent = st === 'ok' ? 'Sincronizado' : 'Sin sincronizar: ' + (msg || ''); el.className = 'sync ' + st; } }
+
+// ---------- actividad (feed) ----------
+const actQ = new Map(); let actT = null;
+function logAct(kind, c, detail, n = 1) {
+  if (!ME || !c) return;
+  const k = kind + ':' + c.id, prev = actQ.get(k);
+  actQ.set(k, { kind, show_id: c.id, show_name: c.name, show_img: c.img || '', detail, n: (prev ? prev.n : 0) + n });
+  clearTimeout(actT); actT = setTimeout(flushAct, 12000);
+}
+async function flushAct() {
+  if (!ME || !actQ.size) return;
+  const rows = [...actQ.values()].map(a => ({ kind: a.kind, show_id: a.show_id, show_name: a.show_name, show_img: a.show_img, detail: a.n > 1 && (a.kind === 'watched' || a.kind === 'rewatch') ? `${a.n} capítulos` : a.detail }));
+  actQ.clear();
+  try { await rest('activity', { method: 'POST', body: rows }); } catch (e) { }
+}
+window.addEventListener('beforeunload', () => { if (actQ.size) flushAct(); });
+function actText(a) {
+  const s = `<a href="#/serie/${a.show_id}"><b>${h(a.show_name)}</b></a>`;
+  return { watched: `vio ${h(a.detail)} de ${s}`, rewatch: `volvió a ver ${h(a.detail)} de ${s}`, finished: `terminó ${s}`, fav: `agregó ${s} a sus favoritas`, added: `agregó ${s} a ${h(a.detail || 'su lista')}`, comment: `comentó ${h(a.detail)} de ${s}` }[a.kind] || s;
+}
+function ago(t) {
+  const s = (Date.now() - Date.parse(t)) / 1000;
+  if (s < 60) return 'recién'; if (s < 3600) return `hace ${Math.floor(s / 60)} min`; if (s < 86400) return `hace ${Math.floor(s / 3600)} h`;
+  if (s < 7 * 86400) return `hace ${Math.floor(s / 86400)} d`; return fmtDate(t, { day: 'numeric', month: 'short' });
+}
+const avatar = (p, size = 40) => `<span class="av" style="width:${size}px;height:${size}px">${p && p.photo ? `<img src="${h(p.photo)}" alt="">` : h(initials((p && (p.name || p.username)) || '?'))}</span>`;
+async function profilesByIds(ids) {
+  ids = [...new Set(ids)].filter(Boolean); if (!ids.length) return {};
+  const rows = await rest(`profiles?select=id,username,name,photo,stats&id=${inList(ids)}`, { auth: false });
+  return Object.fromEntries((rows || []).map(r => [r.id, r]));
+}
+async function feedHTML() {
+  if (!ONLINE) return '';
+  if (!ME) return `<section class="sec"><div class="invite"><div><h2>Mirá lo que ven tus amigos</h2><p class="dim">Creá tu cuenta gratis: tu perfil queda online, seguís gente y comentás capítulos.</p></div><a class="btn pri" href="#/entrar">Crear cuenta</a></div></section>`;
+  if (!FOLLOWING.size) return `<section class="sec"><div class="invite"><div><h2>Seguí gente</h2><p class="dim">Cuando sigas a alguien, acá vas a ver qué capítulos mira y qué comenta.</p></div><a class="btn pri" href="#/gente">Buscar gente</a></div></section>`;
+  const rows = await rest(`activity?select=*&user_id=${inList([...FOLLOWING])}&order=created_at.desc&limit=24`).catch(() => []);
+  const ps = await profilesByIds(rows.map(r => r.user_id));
+  return `<section class="sec"><div class="sechead"><h2>Lo que ven tus amigos</h2><a href="#/gente">Buscar gente</a></div>${rows.length ? `<div class="feed">${rows.map(a => { const p = ps[a.user_id] || {}; return `<div class="fitem"><a href="#/u/${h(p.username || '')}">${avatar(p)}</a><div class="ft"><div><a href="#/u/${h(p.username || '')}"><b>@${h(p.username || 'alguien')}</b></a> ${actText(a)}</div><span>${h(ago(a.created_at))}</span></div>${a.show_img ? `<a class="fp" href="#/serie/${a.show_id}"><img src="${h(a.show_img)}" alt="" loading="lazy"></a>` : ''}</div>`; }).join('')}</div>` : '<p class="dim">Las personas que seguís todavía no marcaron nada.</p>'}</section>`;
+}
+
+// ---------- comentarios de capítulos ----------
+async function commentsHTML(c, e) {
+  if (!ONLINE) return '';
+  const rows = await rest(`comments?select=*&ep_id=eq.${e.id}&order=created_at.desc&limit=100`, { auth: false }).catch(() => null);
+  if (!rows) return `<section class="panel sec"><h3>Comentarios</h3><p class="dim">No se pudieron cargar los comentarios.</p></section>`;
+  const ps = await profilesByIds(rows.map(r => r.user_id));
+  const likes = rows.length ? await rest(`comment_likes?select=comment_id,user_id&comment_id=${inList(rows.map(r => r.id))}`, { auth: false }).catch(() => []) : [];
+  const lc = {}, mine = new Set(); for (const l of likes) { lc[l.comment_id] = (lc[l.comment_id] || 0) + 1; if (ME && l.user_id === ME.id) mine.add(l.comment_id); }
+  const seen = S.shows[c.id] && S.shows[c.id].eps[e.id];
+  const form = ME ? `<form class="cform" id="cform" data-show="${c.id}" data-ep="${e.id}"><div class="crow">${avatar(ME, 36)}<textarea id="ctext" maxlength="1000" placeholder="¿Qué te pareció el capítulo?" required></textarea></div><div class="cacts"><label class="toggle small"><input type="checkbox" id="cspoiler"> Tiene spoilers</label><button class="btn pri sm" type="submit">Publicar</button></div></form>`
+    : `<div class="invite sm"><span class="dim">Entrá para comentar y dar me gusta.</span><a class="btn sm pri" href="#/entrar">Entrar</a></div>`;
+  return `<section class="panel sec" id="comments"><div class="phead"><h3>Comentarios <span class="dim">${rows.length}</span></h3>${!seen && rows.some(r => r.spoiler) ? '<span class="small dim">Los spoilers están ocultos</span>' : ''}</div>${form}
+    <div class="clist">${rows.length ? rows.map(r => { const p = ps[r.user_id] || {}; const hide = r.spoiler; return `<div class="citem"><a href="#/u/${h(p.username || '')}">${avatar(p, 36)}</a><div class="cb"><div class="ch"><a href="#/u/${h(p.username || '')}"><b>${h(p.name || p.username || 'Alguien')}</b> <span class="dim">@${h(p.username || '')}</span></a><span class="dim small">· ${h(ago(r.created_at))}</span>${r.spoiler ? '<span class="chip sp">Spoiler</span>' : ''}</div>
+      <p class="${hide ? 'blur' : ''}" ${hide ? 'data-act="unblur" title="Tocá para ver el spoiler"' : ''}>${h(r.text)}</p>
+      <div class="cf"><button class="like ${mine.has(r.id) ? 'on' : ''}" data-act="like" data-id="${r.id}" ${ME ? '' : 'disabled'} aria-label="Me gusta">♥ ${lc[r.id] || 0}</button>${ME && r.user_id === ME.id ? `<button class="linkbtn" data-act="cdel" data-id="${r.id}">Borrar</button>` : ''}</div></div></div>`; }).join('') : '<p class="dim" style="margin:6px 0 0">Nadie comentó este capítulo todavía. ¡Sé el primero!</p>'}</div></section>`;
+}
+
+// ---------- vistas online ----------
+async function vLogin(args, draw) {
+  if (!ONLINE) return draw(empty('La parte online todavía no está activada', 'Falta configurar la base de datos.'));
+  if (ME) { location.hash = '#/u/' + ME.username; return; }
+  const mode = args[0] === 'crear' ? 'up' : args[0] === 'olvide' ? 'forgot' : 'in';
+  draw(`<section class="authbox"><div class="authside"><div class="eyebrow">JVNN online</div><h1>${mode === 'up' ? 'Creá tu cuenta' : mode === 'forgot' ? 'Recuperá tu contraseña' : 'Entrá a tu cuenta'}</h1>
+    <ul class="perks"><li>Tu perfil público con tus series y estadísticas</li><li>Tus capítulos marcados en la compu y el celular</li><li>Seguí gente y mirá qué ven</li><li>Comentá cada capítulo</li></ul><p class="small dim">Gratis. Lo que ya marcaste en este navegador se suma a tu cuenta.</p></div>
+  <div class="panel"><div class="seg" style="margin-bottom:18px"><a class="${mode === 'in' ? 'on' : ''}" href="#/entrar">Entrar</a><a class="${mode === 'up' ? 'on' : ''}" href="#/entrar/crear">Crear cuenta</a></div>
+  <form class="form" id="authform" data-mode="${mode}" novalidate>
+    ${mode === 'up' ? `<label class="lb" for="au">Nombre de usuario</label><input type="text" id="au" autocomplete="username" maxlength="20" placeholder="ej: tomas_series" required><div class="small dim">Entre 3 y 20 letras minúsculas, números o _. Va en el link de tu perfil.</div>` : ''}
+    <label class="lb" for="ae">Mail</label><input type="text" inputmode="email" id="ae" autocomplete="email" placeholder="tu@mail.com" required>
+    ${mode !== 'forgot' ? `<label class="lb" for="ap">Contraseña</label><input type="password" id="ap" autocomplete="${mode === 'up' ? 'new-password' : 'current-password'}" minlength="8" placeholder="Mínimo 8 caracteres" required>` : ''}
+    <div class="ferr" id="aerr" hidden></div>
+    <button class="btn pri" type="submit">${mode === 'up' ? 'Crear cuenta' : mode === 'forgot' ? 'Mandarme el mail' : 'Entrar'}</button>
+    ${mode === 'in' ? '<a class="small" style="color:var(--blue)" href="#/entrar/olvide">Me olvidé la contraseña</a>' : ''}
+  </form></div></section>`);
+}
+async function vNewPass(_, draw) {
+  if (!AUTH) return draw(empty('El enlace venció', 'Pedí otro mail para recuperar la contraseña.', '<a class="btn pri" href="#/entrar/olvide">Pedir otro</a>'));
+  draw(`<section class="authbox"><div class="authside"><h1>Elegí una contraseña nueva</h1></div><div class="panel"><form class="form" id="passform"><label class="lb" for="np">Contraseña nueva</label><input type="password" id="np" autocomplete="new-password" minlength="8" required><div class="ferr" id="aerr" hidden></div><button class="btn pri" type="submit">Guardar contraseña</button></form></div></section>`);
+}
+async function vPeople(args, draw, alive) {
+  if (!ONLINE) return draw(empty('La parte online todavía no está activada', 'Falta configurar la base de datos.'));
+  const q = (args[0] || '').trim();
+  const head = `<h1>Gente</h1><p class="dim">Buscá amigos por usuario o nombre y seguilos para ver qué miran.</p><form class="search big" id="pform2"><input id="pq" type="search" value="${h(q)}" placeholder="Buscar por usuario o nombre…" aria-label="Buscar gente"></form>`;
+  draw(head + `<div class="sec">${Array.from({ length: 4 }, () => '<div class="skel" style="height:64px;margin-top:8px"></div>').join('')}</div>`);
+  const clean = q.replace(/[%*,()]/g, '');
+  const rows = clean ? await rest(`profiles?select=id,username,name,photo,stats,bio&or=(username.ilike.*${encodeURIComponent(clean)}*,name.ilike.*${encodeURIComponent(clean)}*)&limit=40`, { auth: false })
+    : await rest(`profiles?select=id,username,name,photo,stats,bio&order=updated_at.desc&limit=40`, { auth: false });
+  if (!alive()) return;
+  draw(head + `<section class="sec"><h2 style="margin-bottom:12px">${q ? `Resultados para “${h(q)}”` : 'Activos hace poco'}</h2>${rows.length ? `<div class="people">${rows.filter(p => !ME || p.id !== ME.id).map(personCard).join('')}</div>` : empty('No encontramos a nadie', 'Probá con otro nombre.')}</section>`);
+}
+function personCard(p) {
+  const st = p.stats || {};
+  return `<div class="pcard"><a href="#/u/${h(p.username)}">${avatar(p, 52)}</a><a class="pt" href="#/u/${h(p.username)}"><b>${h(p.name || p.username)}</b><span>@${h(p.username)} · ${h(shortTime(st.min || 0))} de series</span></a>${followBtn(p.id)}</div>`;
+}
+const followBtn = id => !ONLINE || (ME && ME.id === id) ? '' : `<button class="btn sm ${FOLLOWING.has(id) ? '' : 'pri'}" data-act="follow" data-id="${id}">${FOLLOWING.has(id) ? 'Siguiendo' : 'Seguir'}</button>`;
+async function vUser(args, draw, alive) {
+  if (!ONLINE) return draw(empty('La parte online todavía no está activada', 'Falta configurar la base de datos.'));
+  const uname = (args[0] || '').toLowerCase();
+  draw(`<div class="skel" style="height:300px;border-radius:22px"></div>`);
+  const rows = await rest(`profiles?select=*&username=eq.${encodeURIComponent(uname)}`, { auth: false });
+  if (!alive()) return;
+  const p = rows && rows[0];
+  if (!p) return draw(empty('Ese perfil no existe', `No hay nadie con el usuario @${uname}.`, '<a class="btn" href="#/gente">Buscar gente</a>'));
+  const isMe = ME && ME.id === p.id;
+  const [followers, following] = await Promise.all([restCount('follows', `following=eq.${p.id}`), restCount('follows', `follower=eq.${p.id}`)]);
+  if (!alive()) return;
+  const d = p.data || {}, shows = Object.values(d.shows || {}), st = p.stats || {};
+  const favs = (d.top || []).map(id => d.shows && d.shows[id]).filter(r => r && r.fav);
+  for (const r of shows) if (r.fav && !favs.includes(r)) favs.push(r);
+  const seen = shows.filter(r => Object.keys(r.eps || {}).length || r.list === 'done').sort((a, b) => (a.added || 0) - (b.added || 0));
+  const tab = UI.utab || 'fav';
+  let body = '';
+  if (tab === 'fav') body = favs.length ? `<div class="favgrid">${favs.map((r, i) => `<article class="fav"><a href="#/serie/${r.id}" class="pimg">${img(r.img, r.name)}<span class="rank">${i + 1}</span></a><b>${h(r.name)}</b></article>`).join('')}</div>` : '<p class="dim">Todavía no eligió favoritas.</p>';
+  else if (tab === 'seen') body = seen.length ? `<div class="grid">${seen.map(r => { const n = Object.keys(r.eps || {}).length; return `<article class="card"><a href="#/serie/${r.id}" class="pimg">${img(r.img, r.name)}${r.list === 'done' ? '<span class="tag">Terminada</span>' : ''}</a><div><a href="#/serie/${r.id}" class="cname">${h(r.name)}</a><div class="csub">${n}/${r.aired ?? '?'} caps${r.score ? ' · nota ' + r.score : ''}</div></div><div class="pbar"><i style="width:${Math.min(100, r.aired ? n / r.aired * 100 : 0)}%"></i></div></article>`; }).join('')}</div>` : '<p class="dim">Todavía no marcó capítulos.</p>';
+  else if (tab === 'act') {
+    const acts = await rest(`activity?select=*&user_id=eq.${p.id}&order=created_at.desc&limit=40`, { auth: false }).catch(() => []);
+    if (!alive()) return;
+    body = acts.length ? `<div class="feed">${acts.map(a => `<div class="fitem">${avatar(p)}<div class="ft"><div><b>@${h(p.username)}</b> ${actText(a)}</div><span>${h(ago(a.created_at))}</span></div>${a.show_img ? `<a class="fp" href="#/serie/${a.show_id}"><img src="${h(a.show_img)}" alt="" loading="lazy"></a>` : ''}</div>`).join('')}</div>` : '<p class="dim">Sin actividad todavía.</p>';
+  } else {
+    const col = tab === 'followers' ? 'follower' : 'following', by = tab === 'followers' ? 'following' : 'follower';
+    const f = await rest(`follows?select=${col}&${by}=eq.${p.id}&order=created_at.desc&limit=100`, { auth: false }).catch(() => []);
+    const ps = await profilesByIds(f.map(x => x[col]));
+    if (!alive()) return;
+    const list = f.map(x => ps[x[col]]).filter(Boolean);
+    body = list.length ? `<div class="people">${list.map(personCard).join('')}</div>` : `<p class="dim">${tab === 'followers' ? 'Todavía no tiene seguidores.' : 'Todavía no sigue a nadie.'}</p>`;
+  }
+  const tabs = [['fav', 'Favoritas', favs.length], ['seen', 'Series vistas', seen.length], ['act', 'Actividad', ''], ['followers', 'Seguidores', followers], ['following', 'Siguiendo', following]];
+  draw(`<section class="pcover"><div class="pbanner">${favs.slice(0, 3).map(r => r.img ? `<div style="background-image:url('${h(r.img)}')"></div>` : '').join('')}</div>
+    <div class="pmain"><div class="avatar">${p.photo ? `<img src="${h(p.photo)}" alt="">` : h(initials(p.name || p.username))}</div>
+      <div class="pid"><h1>${h(p.name || p.username)}</h1><div class="dim" style="font-weight:600">@${h(p.username)}</div>${p.bio ? `<p>${h(p.bio)}</p>` : ''}<div class="small dim">En JVNN desde ${h(fmtDate(p.created_at, { month: 'long', year: 'numeric' }))}</div></div>
+      <div class="actions">${isMe ? `<a class="btn" href="#/perfil">Editar mi perfil</a><button class="btn" data-act="copylink" data-u="${h(p.username)}">Copiar link</button>` : followBtn(p.id)}</div></div>
+    <div class="pstats"><div><b>${h(shortTime(st.min || 0))}</b><span>de series</span></div><div><b>${(st.eps || 0).toLocaleString('es-AR')}</b><span>capítulos</span></div><div><b>${st.seen ?? seen.length}</b><span>series vistas</span></div><a href="#/u/${h(p.username)}" data-act="utab" data-v="followers"><b>${followers}</b><span>seguidores</span></a><a href="#/u/${h(p.username)}" data-act="utab" data-v="following"><b>${following}</b><span>siguiendo</span></a></div></section>
+  ${st.rwMin ? `<p class="small dim" style="margin:12px 4px 0">↻ Además volvió a ver ${h(timeText(st.rwMin))} de series.</p>` : ''}
+  <div class="tabs">${tabs.map(([k, l, n]) => `<button class="tab ${k === tab ? 'on' : ''}" data-act="utab" data-v="${k}">${l}${n !== '' ? `<span>${n}</span>` : ''}</button>`).join('')}</div>
+  <section class="panel">${body}</section>`);
+}
+
+// ---------- cabecera ----------
+function renderAcct() {
+  const el = document.getElementById('acct'); if (!el) return;
+  if (!ONLINE) { el.hidden = true; return; }
+  el.hidden = false;
+  el.innerHTML = ME ? `<a class="acct" href="#/u/${h(ME.username)}" title="Tu perfil público">${avatar(ME, 34)}</a>` : `<a class="btn sm pri" href="#/entrar">Entrar</a>`;
+  document.querySelectorAll('[data-r="gente"]').forEach(a => a.hidden = false);
+}
+
+// ---------- eventos online ----------
+document.addEventListener('submit', async e => {
+  const f = e.target;
+  if (f.id === 'authform') {
+    e.preventDefault();
+    const mode = f.dataset.mode, err = $('#aerr'), btn = f.querySelector('button[type=submit]');
+    const show = m => { err.textContent = m; err.hidden = false; };
+    const email = $('#ae').value.trim(), pass = $('#ap') ? $('#ap').value : '', user = $('#au') ? $('#au').value.trim().toLowerCase() : '';
+    if (mode === 'up' && !/^[a-z0-9_]{3,20}$/.test(user)) return show('El usuario tiene que tener entre 3 y 20 letras minúsculas, números o _ (sin espacios ni puntos).');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return show('Revisá el mail, parece que está mal escrito.');
+    if (mode !== 'forgot' && pass.length < 8) return show('La contraseña tiene que tener al menos 8 caracteres.');
+    btn.disabled = true; err.hidden = true;
+    try {
+      if (mode === 'in') { await signIn(email, pass); toast(`¡Hola, @${ME.username}!`); location.hash = '#/'; }
+      else if (mode === 'up') { const r = await signUp(user, email, pass); if (r === 'in') { toast('¡Cuenta creada!'); location.hash = '#/u/' + ME.username; } else $('#app').innerHTML = empty('Revisá tu mail', `Te mandamos un enlace a ${email} para confirmar la cuenta. Si no lo ves, mirá en Spam o Promociones.`, '<a class="btn" href="#/entrar">Ya confirmé, entrar</a>'); }
+      else { await recover(email); $('#app').innerHTML = empty('Revisá tu mail', `Si ${email} tiene cuenta, te llega un enlace para elegir una contraseña nueva.`, '<a class="btn" href="#/entrar">Volver</a>'); }
+    } catch (x) { show(x.message); btn.disabled = false; }
+  }
+  if (f.id === 'passform') {
+    e.preventDefault();
+    const p = $('#np').value; if (p.length < 8) { $('#aerr').textContent = 'Mínimo 8 caracteres.'; $('#aerr').hidden = false; return; }
+    try { await setPassword(p); toast('Contraseña actualizada.'); location.hash = '#/'; } catch (x) { $('#aerr').textContent = x.message; $('#aerr').hidden = false; }
+  }
+  if (f.id === 'cform') {
+    e.preventDefault();
+    const text = $('#ctext').value.trim(); if (!text) return;
+    const btn = f.querySelector('button[type=submit]'); btn.disabled = true;
+    const c = CUR.show, ep = c && c.eps.find(x => x.id === +f.dataset.ep);
+    try {
+      await rest('comments', { method: 'POST', body: { show_id: +f.dataset.show, ep_id: +f.dataset.ep, show_name: c ? c.name : '', ep_code: ep ? code(ep) : '', text, spoiler: $('#cspoiler').checked } });
+      if (c && ep) logAct('comment', c, code(ep));
+      toast('Comentario publicado.'); refresh();
+    } catch (x) { toast(x.message); btn.disabled = false; }
+  }
+  if (f.id === 'pform2') { e.preventDefault(); location.hash = '#/gente/' + encodeURIComponent($('#pq').value.trim()); }
+}, true);
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-act]'); if (!b) return;
+  const act = b.dataset.act;
+  if (act === 'unblur') { b.classList.remove('blur'); b.removeAttribute('data-act'); return; }
+  if (act === 'utab') { e.preventDefault(); UI.utab = b.dataset.v; refresh(); return; }
+  if (act === 'follow') {
+    if (!ME) { location.hash = '#/entrar'; return; }
+    const id = b.dataset.id, on = FOLLOWING.has(id); b.disabled = true;
+    try {
+      if (on) { await rest(`follows?follower=eq.${ME.id}&following=eq.${id}`, { method: 'DELETE' }); FOLLOWING.delete(id); }
+      else { await rest('follows', { method: 'POST', body: { follower: ME.id, following: id } }); FOLLOWING.add(id); }
+      refresh();
+    } catch (x) { toast(x.message); b.disabled = false; }
+    return;
+  }
+  if (act === 'like') {
+    if (!ME) return;
+    const id = +b.dataset.id, on = b.classList.contains('on'); b.disabled = true;
+    try {
+      if (on) await rest(`comment_likes?comment_id=eq.${id}&user_id=eq.${ME.id}`, { method: 'DELETE' });
+      else await rest('comment_likes', { method: 'POST', body: { comment_id: id, user_id: ME.id } });
+      const n = parseInt(b.textContent.replace(/\D/g, '')) || 0; b.classList.toggle('on', !on); b.textContent = `♥ ${n + (on ? -1 : 1)}`;
+    } catch (x) { toast(x.message); }
+    b.disabled = false; return;
+  }
+  if (act === 'cdel') {
+    const a = await ask('¿Borrar tu comentario?', 'No se puede deshacer.', [['yes', 'Borrar', 'pri']]);
+    if (a) { try { await rest(`comments?id=eq.${+b.dataset.id}`, { method: 'DELETE' }); toast('Comentario borrado.'); refresh(); } catch (x) { toast(x.message); } }
+    return;
+  }
+  if (act === 'logout') { await signOut(); toast('Cerraste sesión. Tus datos siguen en este navegador.'); location.hash = '#/'; return; }
+  if (act === 'copylink') {
+    const url = `${siteURL()}#/u/${b.dataset.u}`;
+    try { await navigator.clipboard.writeText(url); toast('Link copiado: ' + url); } catch (x) { toast(url); }
+  }
+});
+
+// ---------- arranque ----------
+function readAuthCallback() {
+  const hs = location.hash.replace(/^#\/?/, '');
+  if (!/access_token=|error_description=/.test(hs)) return null;
+  const q = new URLSearchParams(hs);
+  if (q.get('error_description')) { history.replaceState(null, '', location.pathname + '#/entrar'); return { error: q.get('error_description').replace(/\+/g, ' ') }; }
+  setAuth({ access_token: q.get('access_token'), refresh_token: q.get('refresh_token'), expires_at: +q.get('expires_at') || Math.floor(Date.now() / 1000) + (+q.get('expires_in') || 3600), user: null });
+  const type = q.get('type');
+  history.replaceState(null, '', location.pathname + (type === 'recovery' ? '#/nueva-clave' : '#/'));
+  return { type };
+}
+async function boot() {
+  if (CONFIG.adsenseClient) { const s = document.createElement('script'); s.async = true; s.crossOrigin = 'anonymous'; s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + encodeURIComponent(CONFIG.adsenseClient); document.head.appendChild(s); }
+  renderAcct();
+  if (ONLINE) {
+    const cb = readAuthCallback();
+    if (cb && cb.error) toast('No se pudo confirmar: ' + cb.error);
+    if (AUTH) {
+      try {
+        if (!AUTH.user) AUTH.user = await auth('user', undefined, 'GET'), setAuth(AUTH);
+        await afterLogin(!!cb || !ME);
+        if (cb && cb.type === 'signup') toast(`¡Mail confirmado! Bienvenido, @${ME.username}.`);
+      } catch (x) { if (cb) toast(x.message); }
+    }
+  }
+  route(false);
+}
+boot();
+
+</script>
+</body>
+</html>
