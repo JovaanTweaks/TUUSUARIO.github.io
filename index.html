@@ -279,7 +279,7 @@ footer a{text-decoration:underline}
   .ep{padding:9px 10px;gap:9px}
   .ep .m{display:none}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
 
 /* ---------- JVNN v2: negro, rosa, blanco y azul ---------- */
 body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -853,7 +853,7 @@ body{background:radial-gradient(1100px 620px at 8% -8%,var(--amb1),transparent 6
 .alias code{font-size:18px;font-weight:800;background:var(--bg);padding:6px 12px;border-radius:8px;border:1px solid var(--line);-webkit-user-select:text;user-select:text}
 .mgenres{margin-top:18px}
 @media (max-width:920px){.plans{grid-template-columns:1fr}}
-@media (prefers-reduced-motion:reduce){.pbanner,.pcover .avatar,.frs{animation:none!important}}
+
 /* =================== v6: interfaz nueva (cine en inicio y fichas, app moderna en el resto) =================== */
 html,body{overflow-x:clip}
 :root{--r:16px}
@@ -1071,7 +1071,7 @@ a.invite{color:inherit}
 @keyframes na-type{from{max-width:0}}
 @keyframes na-glitch{0%,92%,100%{text-shadow:none;transform:none}93%{text-shadow:2px 0 #7fd6ff,-2px 0 #ff8fb8;transform:translateX(1px)}96%{text-shadow:-2px 0 #7fd6ff,2px 0 #ff8fb8;transform:translateX(-1px)}}
 @keyframes na-zoom{50%{transform:scale(1.04)}}
-@media (prefers-reduced-motion:reduce){[class*="na-"] .pid h1{animation:none!important}}
+
 /* estilos de tarjeta */
 .pcover.cs-vidrio{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02)),var(--surface);backdrop-filter:blur(10px);border-color:rgba(255,255,255,.14)}
 .pcover.cs-degrade{border:2px solid transparent;background:linear-gradient(var(--ptheme,var(--surface)),var(--ptheme,var(--surface))) padding-box,linear-gradient(135deg,var(--paccent),#8fbcff,#c3a8ff) border-box}
@@ -1224,7 +1224,7 @@ input[type=text],input[type=search],input[type=url],input[type=email],input[type
 .bfx-lluvia::before{background:repeating-linear-gradient(100deg,transparent 0 22px,rgba(255,255,255,.12) 22px 23px);background-size:200% 200%;animation:brain 1.4s linear infinite}@keyframes brain{to{background-position:-40px 90px}}
 .bfx-scan::before{background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px),linear-gradient(0deg,transparent 45%,rgba(255,255,255,.08) 50%,transparent 55%) 0 0/100% 300%;animation:bscan 5s linear infinite}@keyframes bscan{to{background-position:0 0,0 300%}}
 .bfx-aurora::before{background:radial-gradient(ellipse at 20% 0,rgba(95,242,208,.35),transparent 55%),radial-gradient(ellipse at 80% 20%,rgba(192,139,255,.35),transparent 55%);background-size:160% 160%;animation:baur 12s ease-in-out infinite alternate;mix-blend-mode:screen}@keyframes baur{to{background-position:100% 50%}}
-@media (prefers-reduced-motion:reduce){[class*="bfx-"],[class*="bfx-"]::before{animation:none!important}}
+
 .compa{position:absolute;right:20px;top:12px;width:78px;height:78px;z-index:3;animation:cfloat 3.4s ease-in-out infinite;filter:drop-shadow(0 6px 8px rgba(0,0,0,.45));pointer-events:none}
 .compa svg{width:100%;height:100%;overflow:visible}
 .pcover.pmini .compa{width:50px;height:50px;right:10px;top:6px}
@@ -1267,6 +1267,14 @@ input[type=text],input[type=search],input[type=url],input[type=email],input[type
 .podname{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px}.podname .nicon{width:18px;height:18px;margin-left:2px}.podname .uptag{font-size:10px;padding:2px 7px;margin:0}
 .rkcompa{width:40px;height:40px;flex:none}.rkcompa svg{width:100%;height:100%;overflow:visible}
 @media (max-width:640px){.rkcompa{display:none}}
+
+@property --fa{syntax:'<angle>';inherits:true;initial-value:0deg}
+.pcover.fr-rot{animation:frrot 4s linear infinite}
+.sw .frs.fr-rot i,.sthumb .frs.fr-rot{animation:frrot 4s linear infinite}
+@keyframes frrot{to{--fa:360deg}}
+.sitem .oferta{position:absolute;top:8px;left:8px;z-index:2;padding:2px 8px;border-radius:999px;background:#ff5c8a;color:#fff;font-size:10.5px;font-weight:900;letter-spacing:.04em}
+.sitem{position:relative}
+.sitem .buy s{opacity:.55;font-weight:600;margin-right:2px}
 </style>
 </head>
 <body>
@@ -1297,7 +1305,7 @@ input[type=text],input[type=search],input[type=url],input[type=email],input[type
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 7.0</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 7.2</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -2844,6 +2852,19 @@ const FRAMES = { accent: 'Color del perfil', none: 'Sin marco', gold: 'Dorado', 
 const FONTS = { display: 'Moderna', serif: 'Clásica', mono: 'Máquina de escribir', condensed: 'Angosta', round: 'Redondeada' };
 const ACCENTS = { '': 'Rosa JVNN', '#8fbcff': 'Azul', '#c3a8ff': 'Violeta', '#a8f0c6': 'Verde', '#ffd08a': 'Dorado', '#ff9a8a': 'Coral', '#7fe0ff': 'Celeste', '#ffb36b': 'Naranja', '#ffffff': 'Blanco' };
 const SOCIALS = { ig: ['Instagram', u => `https://instagram.com/${u}`], tt: ['TikTok', u => `https://www.tiktok.com/@${u}`], x: ['X', u => `https://x.com/${u}`], yt: ['YouTube', u => `https://www.youtube.com/@${u}`], lb: ['Letterboxd', u => `https://letterboxd.com/${u}`], dc: ['Discord', null] };
+function extractHandle(k, raw) {
+  let t = String(raw || '').trim();
+  if (!/^(https?:\/\/|www\.)|\.(com|tv|gg|net)\//i.test(t)) return t;
+  try {
+    const u = new URL(/^https?:\/\//i.test(t) ? t : 'https://' + t), p = u.pathname.split('/').filter(Boolean).map(decodeURIComponent);
+    if (k === 'tt' || k === 'yt') { const at = p.find(x => x.startsWith('@')); if (at) return at.slice(1); }
+    if (k === 'sp') { const i = p.indexOf('user'); return i >= 0 ? p[i + 1] || '' : ''; }
+    if (k === 'st') return p[1] || '';
+    if (k === 'rd') return p[0] === 'user' || p[0] === 'u' ? p[1] || '' : p[0] || '';
+    if (k === 'yt' && p[0] === 'c') return p[1] || '';
+    return p[0] || '';
+  } catch (e) { return t; }
+}
 const cleanHandle = u => String(u || '').replace(/^\s*@/, '').replace(/[^\p{L}\p{N}_.\-# ]/gu, '').replace(/\s{2,}/g, ' ').replace(/^\s+/, '').slice(0, 40);
 function bannerHTML(style, favs) {
   const st = style || {}, pat = PATTERNS[st.pattern] && st.pattern !== 'none' ? ` pat-${st.pattern}` : '';
@@ -2896,7 +2917,7 @@ let styleT;
 document.addEventListener('input', e => {
   const t = e.target, st = S.profile.style;
   if (t.id === 'pstat') { st.status = t.value; clearTimeout(styleT); styleT = setTimeout(save, 500); }
-  if (t.dataset && t.dataset.soc) { st.socials = st.socials || {}; st.socials[t.dataset.soc] = cleanHandle(t.value); clearTimeout(styleT); styleT = setTimeout(save, 500); }
+  if (t.dataset && t.dataset.soc) { st.socials = st.socials || {}; st.socials[t.dataset.soc] = cleanHandle(extractHandle(t.dataset.soc, t.value)); clearTimeout(styleT); styleT = setTimeout(save, 500); }
 });
 
 // ---------------------------------------------------------- marcar películas vistas desde la tarjeta
@@ -2935,7 +2956,6 @@ function slideTo(i) {
 }
 function startSlider() {
   clearInterval(heroT);
-  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const sl0 = document.getElementById('slider'); if (sl0) sl0.dataset.i = window.HERO_I || 0;
   heroT = setInterval(() => { const sl = document.getElementById('slider'); if (!sl) return clearInterval(heroT); if (!sl.matches(':hover')) slideTo((+sl.dataset.i || 0) + 1); }, 6000);
 }
@@ -3150,7 +3170,7 @@ document.addEventListener('input', e => {
     const so = S.profile.style.socials = S.profile.style.socials || {}, k = t.dataset.soc;
     const others = Object.keys(SOCIALS5).filter(x => x !== k && cleanHandle(so[x])).length;
     if (cleanHandle(t.value) && !cleanHandle(so[k]) && others >= 3 && !hasSocials(myProRow())) { e.stopImmediatePropagation(); t.value = ''; toast('Gratis podés poner 3 redes. Para todas: Redes ilimitadas o JVNN Pro.'); return; }
-    so[k] = cleanHandle(t.value); clearTimeout(window._psT); window._psT = setTimeout(save, 500);
+    so[k] = cleanHandle(extractHandle(k, t.value)); clearTimeout(window._psT); window._psT = setTimeout(save, 500);
   }
 }, true);
 document.addEventListener('change', e => { if (e.target.id === 'pbanimg' && !PRO.me) { e.stopImmediatePropagation(); e.target.value = ''; toast('Subir tu propia imagen es de JVNN Pro.'); location.hash = '#/pro'; } }, true);
@@ -3634,7 +3654,7 @@ const ratingOf = s => imdbOf(s.imdb) ?? s.rating ?? 0;
 // ---------------------------------------------------------- MONEDAS JVNN
 const WALLET = { coins: 0, items: [], ok: false };
 const COIN_PRICE = { name: 200, font: 250, fx: 200, frame: 400, shape: 300, banner: 300, pattern: 200, bfx: 400, theme: 300, accent: 150, title: 200, site: 500, deco: 600, pfx: 800, favframe: 300, card: 400, nameanim: 600, nicon: 250, statstyle: 300, tag: 400 };
-const priceOf = (f, k) => ['name:custom', 'accent:custom', 'banner:img'].includes(f + ':' + k) ? 800 : (COIN_PRICE[f] || 300);
+const priceOf7 = (f, k) => ['name:custom', 'accent:custom', 'banner:img'].includes(f + ':' + k) ? 800 : (COIN_PRICE[f] || 300);
 const coinSVG7 = (sz = 16) => `<svg class="coin" width="${sz}" height="${sz}" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#ffd76a"/><circle cx="12" cy="12" r="7.2" fill="none" stroke="#b8860b" stroke-width="1.6"/><path d="M9.5 8.5h4a2 2 0 0 1 0 4h-3m0-4v7m0-3h3.5a2 2 0 0 1 0 4h-4" fill="none" stroke="#8a6a1a" stroke-width="1.6" stroke-linecap="round"/></svg>`;
 function setWallet(w) { if (!w) return; WALLET.coins = w.coins || 0; WALLET.items = w.items || []; WALLET.ok = true; renderCoins(); }
 async function loadWallet() {
@@ -3674,7 +3694,7 @@ async function vCoins(_, draw) {
   draw(`<section class="pagehead"><div class="eyebrow">Monedas JVNN</div><h1>${coinSVG(36)} ${WALLET.coins.toLocaleString('es-AR')} monedas</h1><p class="dim">Juntás monedas usando la página y con ellas comprás cosas para tu perfil, una por una.</p></section>
   <div class="stiles sec">${statTile('cada 5 minutos usando JVNN', '+5', '#ffd76a', 'clock')}${statTile('por entrar cada día', '+10', '#f3c6cf', 'heart')}${statTile('máximo por día, en total', '30', '#8fbcff', 'loop')}${statTile('cosas que ya compraste', WALLET.items.length, '#c3a8ff', 'plus')}</div>
   <section class="panel sec"><h3>Cuánto cuesta cada cosa</h3><div class="pricelist">${Object.entries(COIN_PRICE).map(([f, p]) => `<div><span>${h(CAT_NAMES[f] || f)}</span><b>${coinSVG(14)} ${p}</b></div>`).join('')}<div><span>Color libre / foto propia de banner</span><b>${coinSVG(14)} 800</b></div></div>
-  <p class="small dim" style="margin:12px 0 0">Con <a href="#/pro" style="color:var(--accent);font-weight:700">JVNN Pro</a> tenés todo desbloqueado de una. Las monedas sirven para ir comprando de a una sin pagar.</p></section>
+  <p class="small dim" style="margin:12px 0 0">Son precios base: las cosas más simples salen menos y siempre hay algunas en oferta en la <a href="#/tienda" style="color:var(--accent);font-weight:700">tienda</a>. Con <a href="#/pro" style="color:var(--accent);font-weight:700">JVNN Pro</a> tenés todo desbloqueado de una. Las monedas sirven para ir comprando de a una sin pagar.</p></section>
   ${isLogged() ? '<div class="sec actions"><a class="btn pri" href="#/tienda">Ir a la tienda</a><a class="btn" href="#/perfil">Personalizar mi perfil</a></div>' : '<div class="invite sec"><div><h2>Empezá a juntar monedas</h2><p class="dim">Necesitás una cuenta gratis.</p></div><a class="btn pri" href="#/entrar/crear">Crear cuenta</a></div>'}`);
 }
 
@@ -3758,17 +3778,17 @@ function startPfx() {
   document.querySelectorAll('.pcover[data-pfx]:not([data-pfxon])').forEach(card => {
     const p = PFX[card.dataset.pfx]; if (!p) return;
     card.dataset.pfxon = '1';
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const cv = document.createElement('canvas'); cv.className = 'pfxcv'; card.appendChild(cv);
     const ctx = cv.getContext('2d'); let W = 0, H = 0, dpr = Math.min(2, window.devicePixelRatio || 1);
     const size = () => { W = card.clientWidth; H = card.clientHeight; cv.width = W * dpr; cv.height = H * dpr; cv.style.width = W + 'px'; cv.style.height = H + 'px'; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
     size();
     const rr = (a, b) => a + Math.random() * (b - a);
     const mk = init => ({ x: rr(0, W), y: init ? rr(0, H) : (p.vy[0] < 0 ? H + 20 : -20), r: rr(p.r[0], p.r[1]), vy: rr(p.vy[0], p.vy[1]), vx: rr(-1, 1) * (p.vx || 0), c: p.c[Math.floor(Math.random() * p.c.length)], a: rr(0, 6.28), va: rr(-.04, .04), t: rr(0, 6.28) });
-    const parts = Array.from({ length: p.n }, () => mk(true));
+    const dens = Math.max(1, Math.min(4, (W * H) / 90000));
+    const parts = Array.from({ length: Math.round(p.n * dens) }, () => mk(true));
     const draw = q => {
       ctx.save(); ctx.translate(q.x, q.y); ctx.rotate(p.rot ? q.a : 0);
-      const al = p.tw ? .35 + .65 * Math.abs(Math.sin(q.t)) : 1; ctx.globalAlpha = al; ctx.fillStyle = q.c; ctx.strokeStyle = q.c;
+      const al = p.tw ? .45 + .55 * Math.abs(Math.sin(q.t)) : 1; ctx.globalAlpha = al; ctx.shadowColor = q.c; ctx.shadowBlur = q.r > 2.5 ? 6 : 3; ctx.fillStyle = q.c; ctx.strokeStyle = q.c;
       switch (p.s) {
         case 'circle': ctx.beginPath(); ctx.arc(0, 0, q.r, 0, 6.28); ctx.fill(); break;
         case 'ring': ctx.lineWidth = 1.2; ctx.globalAlpha = al * .7; ctx.beginPath(); ctx.arc(0, 0, q.r, 0, 6.28); ctx.stroke(); break;
@@ -3785,7 +3805,7 @@ function startPfx() {
     };
     const tick = () => {
       if (!cv.isConnected) return;
-      if (card.clientWidth !== W) size();
+      if (card.clientWidth !== W || card.clientHeight !== H) size();
       ctx.clearRect(0, 0, W, H);
       for (let i = 0; i < parts.length; i++) {
         const q = parts[i]; q.x += q.vx + (p.s === 'line' ? p.vx || 0 : Math.sin(q.t) * .2); q.y += q.vy; q.a += q.va; q.t += .03;
@@ -3967,7 +3987,7 @@ function customizeHTML() {
   } else {
     const so = st.socials || {}, lim = hasSocials(myProRow()) ? 99 : 3, filled = Object.keys(SOCIALS5).filter(k => cleanHandle(so[k])).length;
     const got = badgeList(myBadgeStats()).filter(x => x.on), maxShow = PRO.me ? 6 : 3;
-    body = g(`Tus redes <span class="dim">(${filled}/${lim === 99 ? '∞' : lim})</span>`, `<div class="socgrid">${Object.entries(SOCIALS5).map(([k, [n]]) => { const has = !!cleanHandle(so[k]), dis = !has && filled >= lim; return `<label class="soc ${dis ? 'locked' : ''}"><span>${n}</span><input type="text" data-soc="${k}" maxlength="32" value="${h(so[k] || '')}" placeholder="${dis ? 'Redes ilimitadas: Pro' : 'usuario'}" ${dis ? 'disabled' : ''}></label>`; }).join('')}</div>`)
+    body = g(`Tus redes <span class="dim">(${filled}/${lim === 99 ? '∞' : lim})</span>`, `<div class="socgrid">${Object.entries(SOCIALS5).map(([k, [n]]) => { const has = !!cleanHandle(so[k]), dis = !has && filled >= lim; return `<label class="soc ${dis ? 'locked' : ''}"><span>${n}</span><input type="text" data-soc="${k}" maxlength="32" value="${h(so[k] || '')}" placeholder="${dis ? 'Redes ilimitadas: Pro' : k === 'sp' ? 'pegá el link de tu perfil' : 'usuario o link'}" ${dis ? 'disabled' : ''}></label>`; }).join('')}</div><p class="small dim" style="margin:8px 0 0">Podés poner el usuario o pegar el link de tu perfil. En Spotify pegá el link: Spotify &gt; tu perfil &gt; ⋯ &gt; Compartir &gt; Copiar enlace.</p>`)
       + g(`Logros en vitrina (hasta ${maxShow})`, got.length ? `<div class="opts">${got.map(x => `<button class="opt badgeopt ${(st.showcase || []).includes(x.b[0]) ? 'on' : ''}" data-act="pshow5" data-v="${x.b[0]}">${medalSVG(x.b, true, 22)} ${h(x.b[1])}</button>`).join('')}</div>` : '<p class="small dim" style="margin:0">Cuando desbloquees logros, los podés mostrar acá.</p>')
       + linkEditHTML(st);
   }
@@ -4090,7 +4110,7 @@ const TSC = [['rosa', 'rosa', '#ff8fb8'], ['azul', 'azul', '#6aa8ff'], ['violeta
 STYLE_OPTS.fx.push(...TSN.flatMap(([n, f], i) => TSC.map(([k, cn, c], j) => C(`ts${i}${j}`, `${n} ${cn}`, f(c)))));
 
 // ---------- marcos, formas, texturas, fondos, colores
-STYLE_OPTS.frame.push(...BPAL.map((p, i) => C('fg' + i, PALN[i], `linear-gradient(135deg,${p[0]},${p[1]})`)), ...BPAL.map((p, i) => C('fc' + i, PALN[i] + ' giratorio', `conic-gradient(${p[0]},${p[1]},${p[0]})`)).slice(0, 8), ...XCOL.slice(0, 8).map(([k, n, c]) => C('fs-' + k, n, `linear-gradient(${c},${c})`)));
+STYLE_OPTS.frame.push(...BPAL.map((p, i) => C('fg' + i, PALN[i], `linear-gradient(135deg,${p[0]},${p[1]})`)), ...BPAL.map((p, i) => C('fc' + i, PALN[i] + ' girando (animado)', `conic-gradient(from var(--fa,0deg),${p[0]},${p[1]},${p[0]})`)).slice(0, 8), ...XCOL.slice(0, 8).map(([k, n, c]) => C('fs-' + k, n, `linear-gradient(${c},${c})`)));
 const poly = (n, rot = -90, r = 50) => 'polygon(' + Array.from({ length: n }, (_, i) => { const a = (rot + i * 360 / n) * Math.PI / 180; return `${(50 + r * Math.cos(a)).toFixed(1)}% ${(50 + r * Math.sin(a)).toFixed(1)}%`; }).join(',') + ')';
 const star = (n, k) => 'polygon(' + Array.from({ length: n * 2 }, (_, i) => { const a = (-90 + i * 180 / n) * Math.PI / 180, r = i % 2 ? 50 * k : 50; return `${(50 + r * Math.cos(a)).toFixed(1)}% ${(50 + r * Math.sin(a)).toFixed(1)}%`; }).join(',') + ')';
 let seed8 = 7; const rnd8 = () => (seed8 = (seed8 * 9301 + 49297) % 233280) / 233280;
@@ -4149,30 +4169,41 @@ STYLE_OPTS.tag.push(...TAGS8.map((n, i) => { const p = BPAL[i % BPAL.length]; re
 // ---------- DECORACIONES NUEVAS: hadas, gorras, mariposas, gatito…
 const HP = { turquesa: { hair: '#2fcca6', skin: '#c2fff2', wing: '#9ff5ff', dress: '#1fa08c', glow: '#5ff2d0' }, rosa: { hair: '#d65ab8', skin: '#ffd6ec', wing: '#ffb3e0', dress: '#ff5c8a', glow: '#ff8fc8' }, violeta: { hair: '#8a5ad6', skin: '#ebdeff', wing: '#d1b8ff', dress: '#6a3ad6', glow: '#c08bff' }, dorada: { hair: '#e0a82e', skin: '#fff3d6', wing: '#fff3b0', dress: '#d68a1a', glow: '#ffd76a' }, celeste: { hair: '#4a9ae0', skin: '#dcefff', wing: '#bfe3ff', dress: '#2a6ad6', glow: '#8fd6ff' }, lila: { hair: '#c46ad6', skin: '#f7e2ff', wing: '#efc2ff', dress: '#9a4ab8', glow: '#e0a8ff' }, menta: { hair: '#3fb87e', skin: '#e0ffec', wing: '#c2f5d8', dress: '#2a9a6a', glow: '#a8f0c6' }, fuego: { hair: '#e05a2e', skin: '#ffe4d2', wing: '#ffc8a8', dress: '#c43a1a', glow: '#ff9a5c' } };
 const HPN = { turquesa: 'turquesa', rosa: 'rosa', violeta: 'violeta', dorada: 'dorada', celeste: 'celeste', lila: 'lila', menta: 'menta', fuego: 'de fuego' };
-function fairySVG(x, y, s, P, flip) {
-  const wing = `<path d="M-3 4C-14-10-26-6-24 2C-22 8-10 8-3 6Z" fill="${P.wing}" fill-opacity=".7" stroke="#fff" stroke-opacity=".7" stroke-width=".6"/><path d="M-3 7C-14 10-20 18-14 20C-9 21-5 13-3 9Z" fill="${P.wing}" fill-opacity=".7" stroke="#fff" stroke-opacity=".7" stroke-width=".6"/><path d="M-6 4-18-2M-6 6-20 4" stroke="#fff" stroke-opacity=".5" stroke-width=".4"/>`;
-  return `<g transform="translate(${x} ${y}) scale(${flip ? -s : s} ${s})">
-    <circle r="22" cy="3" fill="${P.glow}" opacity=".18"/><circle r="13" cy="1" fill="${P.glow}" opacity=".2"/>
-    ${wing}<g transform="scale(-1 1)">${wing}</g>
-    <path d="M-9-2C-13 8-10 17-4 19H4C10 17 13 8 9-2Z" fill="${P.hair}"/>
-    <path d="M-4 6H4L7 18H-7Z" fill="${P.dress}"/>
-    <path d="M-7-1-14-7-7 3Z M7-1 14-7 7 3Z" fill="${P.skin}"/>
-    <circle r="7.6" fill="${P.skin}"/>
-    <path d="M-8-1C-9-9-3-11.5 0-10.5C4-11.5 9-8 8-1C6-6 2-7.5 0-6C-3-7.5-6-5-8-1Z" fill="${P.hair}"/>
-    <path d="M0-6.6-1.7-8.2A1 1 0 0 1 0-9.5 1 1 0 0 1 1.7-8.2Z" fill="#fff"/>
-    <ellipse cx="-2.8" cy=".6" rx="1.15" ry="1.55" fill="#2a1830"/><ellipse cx="2.8" cy=".6" rx="1.15" ry="1.55" fill="#2a1830"/><circle cx="-2.4" cy="0" r=".45" fill="#fff"/><circle cx="3.2" cy="0" r=".45" fill="#fff"/>
-    <circle cx="-4.6" cy="3" r="1.4" fill="#ff6b9a" opacity=".45"/><circle cx="4.6" cy="3" r="1.4" fill="#ff6b9a" opacity=".45"/>
-    <path d="M-1.1 3.7Q0 4.6 1.1 3.7" stroke="#9a3a5a" stroke-width=".65" fill="none" stroke-linecap="round"/>
-    <path d="M-6.5 7.5Q-3 11.5 2.5 9.4M6.5 7.5Q3 11.5-2.5 9.4" stroke="${P.skin}" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-    <path d="M-1.6 6.6 0 8.6 1.6 6.6" fill="${P.skin}"/>
-  </g>`;
+function fairySVG(x, y, s, P, flip, part = 'all') {
+  const id = 'f' + P.glow.slice(1);
+  const defs = `<defs><radialGradient id="${id}a"><stop offset="0" stop-color="${P.glow}" stop-opacity=".75"/><stop offset=".45" stop-color="${P.glow}" stop-opacity=".25"/><stop offset="1" stop-color="${P.glow}" stop-opacity="0"/></radialGradient><linearGradient id="${id}w" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".5" stop-color="${P.wing}" stop-opacity=".7"/><stop offset="1" stop-color="${P.glow}" stop-opacity=".35"/></linearGradient><linearGradient id="${id}s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="${P.skin}"/><stop offset="1" stop-color="${mix8(P.skin, P.glow, .35)}"/></linearGradient><linearGradient id="${id}h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${mix8(P.hair, '#ffffff', .35)}"/><stop offset=".5" stop-color="${P.hair}"/><stop offset="1" stop-color="${mix8(P.hair, '#000000', .25)}"/></linearGradient><linearGradient id="${id}d" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${mix8(P.dress, '#ffffff', .25)}"/><stop offset="1" stop-color="${P.dress}"/></linearGradient></defs>`;
+  const wingR = `<path d="M3 5C12-16 36-26 39-9C41 2 22 9 3 8Z" fill="url(#${id}w)" stroke="#fff" stroke-opacity=".85" stroke-width=".55"/><path d="M3 9C15 10 28 20 22 28C16 33 6 21 3 12Z" fill="url(#${id}w)" stroke="#fff" stroke-opacity=".85" stroke-width=".55"/><path d="M4 6C14-4 24-10 34-12M5 7C16 2 26-1 36-3M5 8C14 6 24 6 31 5M4 10C11 14 17 20 20 26M4 10C10 16 13 21 14 27" stroke="#fff" stroke-opacity=".6" stroke-width=".35" fill="none"/>`;
+  const back = `<circle r="34" cy="4" fill="url(#${id}a)"/>
+    <g opacity=".92">${wingR}<g transform="scale(-1 1)">${wingR}</g></g>
+    <path d="M-11-3C-17 6-12 13-16 21C-20 29-14 37-7 35C-4 38 4 38 7 35C14 37 20 29 16 21C12 13 17 6 11-3Z" fill="url(#${id}h)"/>
+    <path d="M-12 6C-15 14-11 20-14 28M12 6C15 14 11 20 14 28M-7 10C-9 18-6 25-8 32M7 10C9 18 6 25 8 32" stroke="${mix8(P.hair, '#000000', .3)}" stroke-opacity=".45" stroke-width=".8" fill="none" stroke-linecap="round"/>
+    <path d="M-7.5 10C-5 8.6 5 8.6 7.5 10L9.5 26C3 28-3 28-9.5 26Z" fill="url(#${id}d)"/>
+    <path d="M-7.5 10C-3 12.5 3 12.5 7.5 10" stroke="#fff" stroke-opacity=".5" stroke-width=".6" fill="none"/>
+    <path d="M-3 6.5H3V10.5C1 11.5-1 11.5-3 10.5Z" fill="${P.skin}"/>
+    <path d="M-7.8-1.5-20-10.5C-17-6-13.5-1.5-8.4 3.5Z M7.8-1.5 20-10.5C17-6 13.5-1.5 8.4 3.5Z" fill="url(#${id}s)" stroke="${mix8(P.skin, P.glow, .5)}" stroke-width=".4"/>
+    <circle cx="-9" cy="4" r="1.1" fill="#fff"/><circle cx="9" cy="4" r="1.1" fill="#fff"/>
+    <ellipse rx="8.7" ry="9.6" fill="url(#${id}s)"/>
+    <path d="M-9.6 0C-10.4-10-4-14.2 0-13.6C4.6-14.2 10.6-10 9.6 0C8.3-5.6 5-8.6 1.2-7.9C-1.6-9.6-6.4-6.6-9.6 0Z" fill="url(#${id}h)"/>
+    <path d="M-9.4-1C-11.6 5-8.6 9.6-11.2 15.2M9.4-1C11.6 5 8.6 9.6 11.2 15.2" stroke="url(#${id}h)" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+    <path d="M-3.4-8.9-5.8-11.2A1.45 1.45 0 0 1-3.4-13 1.45 1.45 0 0 1-1-11.2Z" fill="#fff" stroke="${P.glow}" stroke-width=".5"/>
+    <path d="M-5.6-2.6Q-3.6-3.6-1.8-2.9M5.6-2.6Q3.6-3.6 1.8-2.9" stroke="${mix8(P.hair, '#000000', .35)}" stroke-width=".55" fill="none" stroke-linecap="round"/>
+    <ellipse cx="-3.6" cy=".9" rx="1.75" ry="2.1" fill="#2a1830"/><ellipse cx="3.6" cy=".9" rx="1.75" ry="2.1" fill="#2a1830"/>
+    <ellipse cx="-3.5" cy="1.3" rx="1.15" ry="1.45" fill="${mix8(P.glow, '#000000', .25)}"/><ellipse cx="3.7" cy="1.3" rx="1.15" ry="1.45" fill="${mix8(P.glow, '#000000', .25)}"/>
+    <circle cx="-3" cy=".2" r=".6" fill="#fff"/><circle cx="4.2" cy=".2" r=".6" fill="#fff"/>
+    <path d="M-5.8 0Q-3.6-1.6-1.6-.2M1.6-.2Q3.6-1.6 5.8 0M-5.8 0-6.7-.9M5.8 0 6.7-.9" stroke="#2a1830" stroke-width=".7" fill="none" stroke-linecap="round"/>
+    <ellipse cx="-5.6" cy="4" rx="1.8" ry="1.1" fill="#ff6b9a" opacity=".45"/><ellipse cx="5.6" cy="4" rx="1.8" ry="1.1" fill="#ff6b9a" opacity=".45"/>
+    <path d="M-1.3 5Q0 5.9 1.3 5" stroke="#b0406a" stroke-width=".65" fill="none" stroke-linecap="round"/>`;
+  const front = `<path d="M-8.5 12C-6 15.5-1 15 2.6 12.8M8.5 12C6 15.5 1 15-2.6 12.8" stroke="url(#${id}s)" stroke-width="3.3" fill="none" stroke-linecap="round"/>
+    <ellipse cx="-2.4" cy="11.6" rx="2.6" ry="1.9" fill="${P.skin}" stroke="${mix8(P.skin, P.glow, .5)}" stroke-width=".35"/><ellipse cx="2.4" cy="11.6" rx="2.6" ry="1.9" fill="${P.skin}" stroke="${mix8(P.skin, P.glow, .5)}" stroke-width=".35"/>`;
+  const body = part === 'back' ? back : part === 'front' ? front : back + front;
+  return `<g transform="translate(${x} ${y}) scale(${flip ? -s : s} ${s})">${part !== 'front' ? defs : ''}${body}</g>`;
 }
 const sparkles8 = (pts, col) => pts.map(([x, y, r]) => `<path d="M${x} ${y - r}C${x + r * .2} ${y - r * .2} ${x + r * .2} ${y - r * .2} ${x + r} ${y}C${x + r * .2} ${y + r * .2} ${x + r * .2} ${y + r * .2} ${x} ${y + r}C${x - r * .2} ${y + r * .2} ${x - r * .2} ${y + r * .2} ${x - r} ${y}C${x - r * .2} ${y - r * .2} ${x - r * .2} ${y - r * .2} ${x} ${y - r}Z" fill="${col}"/>`).join('');
 const OUTSIDE = '<clipPath id="dk-out"><path clip-rule="evenodd" d="M-40-40H200V200H-40Z M80 22a58 58 0 1 0 .01 0Z"/></clipPath>';
 const FAIRY_DECO = {
-  hada: P => `${OUTSIDE}<g clip-path="url(#dk-out)">${fairySVG(60, 4, 1.5, P)}</g>${sparkles8([[24, 30, 4], [100, 4, 3], [34, 8, 2.5]], P.glow)}`,
-  hombro: P => `${OUTSIDE}<g clip-path="url(#dk-out)">${fairySVG(138, 96, 1.35, P, true)}</g>${sparkles8([[150, 64, 4], [156, 126, 3]], P.glow)}`,
-  vuela: P => `${fairySVG(24, 34, 1.15, P)}${[[40, 54, 1.8], [50, 64, 1.4], [58, 76, 1.1], [64, 88, .8]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${P.glow}"/>`).join('')}${sparkles8([[14, 62, 3.5], [46, 18, 3]], '#fff')}`,
+  hada: P => `${OUTSIDE}<g clip-path="url(#dk-out)">${fairySVG(58, 0, 1.3, P, false, 'back')}</g>${fairySVG(58, 0, 1.3, P, false, 'front')}${sparkles8([[20, 30, 4.5], [104, 2, 3.5], [30, 4, 2.5], [112, 20, 2]], '#fff')}`,
+  hombro: P => `${OUTSIDE}<g clip-path="url(#dk-out)">${fairySVG(136, 92, 1.2, P, true, 'back')}</g>${fairySVG(136, 92, 1.2, P, true, 'front')}${sparkles8([[152, 60, 4], [158, 124, 3], [120, 132, 2.2]], '#fff')}`,
+  vuela: P => `${fairySVG(24, 32, 1.05, P)}${[[40, 54, 1.8], [50, 64, 1.4], [58, 76, 1.1], [64, 88, .8]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${P.glow}"/>`).join('')}${sparkles8([[14, 62, 3.5], [46, 18, 3]], '#fff')}`,
 };
 const HPAIRS = [['turquesa', 'rosa'], ['violeta', 'dorada'], ['celeste', 'lila'], ['menta', 'fuego'], ['rosa', 'celeste'], ['dorada', 'turquesa']];
 const DSHAPE8 = {
@@ -4195,7 +4226,7 @@ function decoHTML(st) {
   const o = optOf('deco', st && st.deco); if (!o || !o.v) return '';
   const [s, c] = o.v.split('|'); let inner = '';
   if (FAIRY_DECO[s]) inner = FAIRY_DECO[s](HP[c] || HP.rosa);
-  else if (s === 'hadas2') { const [a, b] = c.split('+'); inner = `${OUTSIDE}<g clip-path="url(#dk-out)">${fairySVG(56, 4, 1.4, HP[a] || HP.turquesa)}${fairySVG(140, 98, 1.3, HP[b] || HP.rosa, true)}</g>${sparkles8([[22, 34, 4], [154, 64, 3.5], [104, 2, 3]], '#fff')}`; }
+  else if (s === 'hadas2') { const [a, b] = c.split('+'); const A = HP[a] || HP.turquesa, B = HP[b] || HP.rosa; inner = `${OUTSIDE}<g clip-path="url(#dk-out)">${fairySVG(56, 0, 1.25, A, false, 'back')}${fairySVG(136, 94, 1.15, B, true, 'back')}</g>${fairySVG(56, 0, 1.25, A, false, 'front')}${fairySVG(136, 94, 1.15, B, true, 'front')}${sparkles8([[22, 34, 4], [154, 64, 3.5], [104, 2, 3]], '#fff')}`; }
   else if (DSHAPE[s]) inner = DSHAPE[s](DCOL[c] || DCOL.oro);
   return `<svg class="adeco" viewBox="0 0 160 160" aria-hidden="true">${inner}</svg>`;
 }
@@ -4215,7 +4246,7 @@ const CRIT = {
   pato: ['Patito', a => `<ellipse cx="32" cy="50" rx="19" ry="13" fill="#ffd84a"/><circle cx="32" cy="27" r="15" fill="#ffd84a"/>${eyes8(24, 6)}<path d="M25 31Q32 27 39 31Q32 37 25 31Z" fill="#ff9a3d"/><path d="M28 12c2-6 6-6 6 0" stroke="#ffd84a" stroke-width="3" fill="none"/>${scarf8(a, 40)}`],
   buho: ['Búho', a => `<path d="M14 18 18 6 24 14ZM50 18 46 6 40 14Z" fill="#8a6a4a"/><path d="M12 62V30a20 20 0 0 1 40 0V62Z" fill="#a8805a"/><ellipse cx="32" cy="48" rx="13" ry="12" fill="#e6d2b5"/><circle cx="24" cy="26" r="8" fill="#fff"/><circle cx="40" cy="26" r="8" fill="#fff"/><circle cx="24" cy="26" r="4" fill="#1b1b22"/><circle cx="40" cy="26" r="4" fill="#1b1b22"/><circle cx="25.4" cy="24.6" r="1.2" fill="#fff"/><circle cx="41.4" cy="24.6" r="1.2" fill="#fff"/><path d="M30 32h4l-2 4z" fill="#ffb03d"/><g transform="translate(32 40)"><path d="M0 0-7-4V4ZM0 0 7-4V4Z" fill="${a}"/><circle r="2" fill="${a}"/></g>`],
   dragon: ['Dragoncito', a => `<path d="M12 36C2 30 2 20 8 18c0 6 4 10 8 12z M52 36c10-6 10-16 4-18 0 6-4 10-8 12z" fill="#4ab86a"/><path d="M14 62C12 44 20 37 32 37S52 44 50 62Z" fill="#6ad68a"/><path d="M24 62C24 50 27 46 32 46S40 50 40 62Z" fill="#fff3c4"/><path d="M22 10 20 2 27 8ZM42 10 44 2 37 8Z" fill="#fff3c4"/><circle cx="32" cy="25" r="17" fill="#6ad68a"/>${eyes8(24)}<circle cx="29" cy="31" r=".9" fill="#2a5a3a"/><circle cx="35" cy="31" r=".9" fill="#2a5a3a"/>${scarf8(a, 41)}`],
-  hada: ['Hadita', (a, ak) => fairySVG(32, 27, 1.7, HP[{ rosa: 'rosa', azul: 'celeste', rojo: 'fuego', violeta: 'violeta', oro: 'dorada', menta: 'turquesa' }[ak]] || HP.rosa)],
+  hada: ['Hadita', (a, ak) => fairySVG(32, 24, .8, HP[{ rosa: 'rosa', azul: 'celeste', rojo: 'fuego', violeta: 'violeta', oro: 'dorada', menta: 'turquesa' }[ak]] || HP.rosa)],
 };
 const ACCMAP = Object.fromEntries(ACC.map(([k, , c]) => [k, c]));
 STYLE_OPTS.compa = [C('none', 'Sin compañero', '', 1), ...Object.entries(CRIT).flatMap(([k, [n]]) => ACC.map(([ak, an]) => C(`${k}-${ak}`, `${n} ${an}`, `${k}|${ak}`)))];
@@ -4233,6 +4264,7 @@ function extraClasses(st) {
   if (st.statstyle && st.statstyle !== 'def') out.push(['sk', 'sg'].includes(pre(st.statstyle)) ? 'ss-' + pre(st.statstyle) : 'ss-' + st.statstyle);
   if (st.favframe && st.favframe !== 'none') out.push(['fc', 'fg'].includes(pre(st.favframe)) ? 'ff-' + pre(st.favframe) : 'ff-' + st.favframe);
   if (/^ts\d/.test(st.fx || '')) out.push('fx-ts');
+  if (/^fc\d/.test(st.frame || '')) out.push('fr-rot');
   const sh = optOf('shape', st.shape); if (sh && String(sh.v).startsWith('clip:')) out.push('sh-clip');
   return out.join(' ');
 }
@@ -4308,7 +4340,7 @@ async function vShop(args, draw) {
     <div class="tabs shoptabs">${SHOP_CATS.map(([k, n]) => `<a class="tab ${k === cat ? 'on' : ''}" href="#/tienda/${k}">${n}</a>`).join('')}</div>
     <div class="c7grid shopgrid"><div><div class="shopitems">${list.map(o => { const mine = owned(o), rot = rotFree(cat, o.k), on = tryK === o.k || (!tryK && S.profile.style[cat] === o.k);
       return `<div class="sitem ${on ? 'on' : ''} ${mine ? 'mine' : ''}"><button class="sthumb" data-act="shoptry" data-f="${cat}" data-v="${h(o.k)}" title="Probar">${shopThumb(cat, o)}</button><b>${h(o.n)}</b>
-      ${mine ? `<button class="btn sm ${S.profile.style[cat] === o.k ? '' : 'pri'}" data-act="shopuse" data-f="${cat}" data-v="${h(o.k)}">${S.profile.style[cat] === o.k ? 'Puesto' : rot ? 'Gratis esta semana · Poner' : 'Poner'}</button>` : `<button class="btn sm buy" data-act="buyc" data-f="${cat}" data-v="${h(o.k)}">${coinSVG(14)} ${priceOf(cat, o.k)}</button>`}</div>`; }).join('')}</div></div>
+      ${mine ? `<button class="btn sm ${S.profile.style[cat] === o.k ? '' : 'pri'}" data-act="shopuse" data-f="${cat}" data-v="${h(o.k)}">${S.profile.style[cat] === o.k ? 'Puesto' : rot ? 'Gratis esta semana · Poner' : 'Poner'}</button>` : `${saleOf(cat, o.k) ? '<span class="oferta">OFERTA</span>' : ''}<button class="btn sm buy" data-act="buyc" data-f="${cat}" data-v="${h(o.k)}">${coinSVG(14)} ${saleOf(cat, o.k) ? `<s>${basePrice(cat, o.k)}</s>` : ''}${priceOf(cat, o.k)}</button>`}</div>`; }).join('')}</div></div>
     <aside class="c7prev"><div class="eyebrow" style="margin-bottom:8px">Así queda tu perfil</div>${previewCard()}${Object.keys(PREVIEW).length ? '<button class="btn sm ghost" data-act="pvclear" style="margin-top:10px;width:100%">Sacar lo que estoy probando</button>' : ''}<a class="btn sm" href="#/pro" style="margin-top:8px;width:100%;justify-content:center">O desbloqueá todo con Pro</a></aside></div>`);
   document.querySelectorAll('.tpfx[data-pfxk]').forEach(el => { el.classList.add('pcover'); el.dataset.pfx = el.dataset.pfxk; });
   startPfx();
@@ -4366,6 +4398,16 @@ FREE_COUNT = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.filter(o => o
 
 // ---------- slider de estrenos: deslizar con el dedo
 (() => { let x0 = null; document.addEventListener('touchstart', e => { x0 = e.target.closest('#slider') ? e.touches[0].clientX : null; }, { passive: true }); document.addEventListener('touchend', e => { if (x0 == null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) < 40) return; const sl = document.getElementById('slider'); if (!sl) return; slideTo((+sl.dataset.i || 0) + (dx < 0 ? 1 : -1)); startSlider(); }, { passive: true }); })();
+
+// ---------- precios: lo más simple sale menos y ~5% de las cosas están en oferta (igual que en el servidor)
+function itemHash(s) { let x = 0; for (const ch of s) x = (x * 31 + ch.codePointAt(0)) % 1000003; return x; }
+const CUTS = [['pattern', /^(pd\d|pl-?\d|pg\d|pc\d|pw|ps)/, 50], ['shape', /^(r\d+|blob\d+)$/, 100], ['shape', /^(tri|rombo|penta|hexa|hepta|octo|enea|deca|once|doce|sts?\d+|escudo|corte|cruz|ticket|casa|hoja2?|lagrima2?)$/, 50], ['frame', /^fs-/, 100], ['frame', /^fg\d/, 50], ['theme', /^t-/, 100], ['theme', /^tp\d/, 50], ['name', /^g:x\d/, 50], ['fx', /^ts\d/, 50], ['card', /^cb-/, 100], ['card', /^cg-/, 50], ['statstyle', /^sk-/, 100], ['statstyle', /^sg-/, 50], ['favframe', /^fc-/, 100], ['favframe', /^fg-/, 50], ['nameanim', /^n[bg]-/, 200], ['nameanim', /^nd-/, 150], ['nicon', /-blanco$/, 50], ['tag', /^t8-/, 100], ['site', /^s-/, 150], ['pfx', /^g-/, 200], ['deco', /^(gorra|nubes|orbita|luna|tiara|mariposas|gatito)-/, 150], ['banner', /^[dr]\d+$/, 50]];
+function basePrice(f, k) { const p = priceOf7(f, k); if (['name:custom', 'accent:custom', 'banner:img'].includes(f + ':' + k)) return p; const c = CUTS.find(([cf, re]) => cf === f && re.test(k)); return c ? p - c[2] : p; }
+function saleOf(f, k) { if (['name:custom', 'accent:custom', 'banner:img'].includes(f + ':' + k)) return 0; const x = itemHash(f + ':' + k); return x % 100 < 5 ? (x % 2 ? 30 : 20) : 0; }
+function priceOf(f, k) { return Math.max(80, basePrice(f, k) - saleOf(f, k)); }
+
+// ---------- efectos del perfil más visibles: más partículas según el tamaño de la tarjeta y más grandes
+for (const k of Object.keys(PFX)) { const p = PFX[k]; if (p._v8) continue; p._v8 = 1; p.r = [p.r[0] * 1.7, p.r[1] * 1.7]; }
 
 
 // ============================================================ ONLINE (Supabase)
