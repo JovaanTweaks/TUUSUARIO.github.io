@@ -578,6 +578,8 @@ input[type=password]{border-radius:10px;border:1px solid var(--line);background:
 @media (max-width:920px){.authbox{grid-template-columns:1fr;gap:20px}}
 @media (max-width:600px){.cacts{padding-left:0}.people{grid-template-columns:minmax(0,1fr)}.acctwrap .btn{padding:0 10px}}
 /* zonas de anuncios */
+.adnative{height:300px!important}
+@media (max-width:780px){.adnative{height:560px!important}}
 .adzone{padding-block:14px 0;display:flex;justify-content:center}
 .adbottom{gap:20px;align-items:flex-start;padding-block:10px 30px;flex-wrap:wrap}
 .adbottom .adn{flex:1 1 420px;min-width:0}
@@ -938,6 +940,10 @@ const bannerDoc = (key, w, hh) => adDoc(`<script>atOptions={'key':'${key}','form
 function adFrame(doc, w, hh, title) {
   const f = document.createElement('iframe');
   f.title = title; f.width = w; f.height = hh; f.setAttribute('scrolling', 'no'); f.setAttribute('loading', 'lazy');
+  // Jaula de seguridad: el anuncio puede mostrarse y abrir una pestaña nueva si el usuario hace clic,
+  // pero NO puede redirigir tu página, abrir ventanas solo, descargar archivos ni leer los datos del sitio.
+  f.setAttribute('sandbox', 'allow-scripts allow-popups allow-popups-to-escape-sandbox');
+  f.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
   f.style.cssText = `border:0;display:block;margin:0 auto;max-width:100%;width:${typeof w === 'number' ? w + 'px' : w};height:${hh}px;background:transparent`;
   f.srcdoc = doc; return f;
 }
@@ -955,9 +961,7 @@ function loadBottomAds() {
   box.dataset.done = '1'; box.hidden = false;
   if (AD.native) {
     const f = adFrame(adDoc(`<script async data-cfasync="false" src="${AD.host}/21/${AD.native}"><\/script><div id="container-${AD.native}"></div>`), '100%', 260, 'Publicidad');
-    f.className = 'adnative';
-    // ajustar la altura al contenido real del anuncio
-    f.addEventListener('load', () => { let n = 0; const fit = () => { try { const hh = f.contentDocument.body.scrollHeight; if (hh > 20) f.style.height = hh + 'px'; } catch (e) { } if (++n < 20) setTimeout(fit, 500); }; fit(); });
+    f.className = 'adnative'; f.style.height = '';
     const w = document.createElement('div'); w.className = 'adn'; w.appendChild(f); box.appendChild(w);
   }
   if (AD.b300) { const w = document.createElement('div'); w.className = 'ad3'; w.appendChild(adFrame(bannerDoc(AD.b300, 300, 250), 300, 250, 'Publicidad')); box.appendChild(w); }
