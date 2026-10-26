@@ -2024,7 +2024,7 @@ footer{border-top:1px solid var(--line)!important;background:linear-gradient(180
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 16.0</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 16.2</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -6509,15 +6509,15 @@ for (const [f, k, n, r, v] of CX3) { STYLE_OPTS[f].push(Object.assign(C(k, n, v)
 Object.assign(LG_TOP, { 'pet:lg-p3-pantera': 40000, 'pet:lg-p3-kitsune': 30000, 'pet:lg-p3-golem': 30000 });
 
 // ---------- CAJAS: probabilidades más difíciles, cajas temáticas y caja gratis del día
-Object.assign(BOXES.normal, { p: 250, w: { comun: 60, rara: 30, epica: 8.25, legendaria: 1.5, mitica: .2, exotica: .04, unica: .01 } });
-Object.assign(BOXES.especial, { p: 700, w: { rara: 58, epica: 32, legendaria: 8.5, mitica: 1.2, exotica: .25, unica: .05 } });
+Object.assign(BOXES.normal, { p: 1000, w: { comun: 60, rara: 30, epica: 8.25, legendaria: 1.5, mitica: .2, exotica: .04, unica: .01 } });
+Object.assign(BOXES.especial, { p: 2100, w: { rara: 58, epica: 32, legendaria: 8.5, mitica: 1.2, exotica: .25, unica: .05 } });
 const THEME_W = { rara: 55, epica: 33, legendaria: 10, mitica: 1.6, exotica: .35, unica: .05 };
 Object.assign(BOXES, {
-  hadas: { n: 'Caja de Hadas', p: 600, w: THEME_W, re: /hada|fairy|lgfairy|lghada|hgc|ronda/ },
-  tormenta: { n: 'Caja Tormenta', p: 600, w: THEME_W, re: /tormenta|rayo|lluvia|nube|electr|relamp|vidrio|plasma/ },
-  galaxia: { n: 'Caja Galáctica', p: 600, w: THEME_W, re: /galax|estrell|nebul|cosm|luna|planeta|orbita|supernova|cielo|meteor|constel|warp|vortice|nova/ },
-  mascotas: { n: 'Caja de Mascotas', p: 650, w: { epica: 88, legendaria: 10, mitica: 1.6, exotica: .35, unica: .05 }, cat: ['pet', 'compa'] },
-  legendaria: { n: 'Caja Legendaria', p: 3500, w: { legendaria: 91.5, mitica: 6.8, exotica: 1.5, unica: .2 } },
+  hadas: { n: 'Caja de Hadas', p: 2100, w: THEME_W, re: /hada|fairy|lgfairy|lghada|hgc|ronda/ },
+  tormenta: { n: 'Caja Tormenta', p: 2400, w: THEME_W, re: /tormenta|rayo|lluvia|nube|electr|relamp|vidrio|plasma/ },
+  galaxia: { n: 'Caja Galáctica', p: 2200, w: THEME_W, re: /galax|estrell|nebul|cosm|luna|planeta|orbita|supernova|cielo|meteor|constel|warp|vortice|nova/ },
+  mascotas: { n: 'Caja de Mascotas', p: 2700, w: { epica: 88, legendaria: 10, mitica: 1.6, exotica: .35, unica: .05 }, cat: ['pet', 'compa'] },
+  legendaria: { n: 'Caja Legendaria', p: 9000, w: { legendaria: 91.5, mitica: 6.8, exotica: 1.5, unica: .2 } },
 });
 function boxesFor(f, k, r) {
   const out = r === 'comun' ? ['normal'] : ['normal', 'especial'];
