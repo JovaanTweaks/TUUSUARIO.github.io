@@ -1880,6 +1880,51 @@ footer{border-top:1px solid var(--line)!important;background:linear-gradient(180
 .pcover.na-cx-nx-magma .pid h1{background:repeating-linear-gradient(0deg,#3a0a00 0,#ff3d00 12px,#ffd24a 22px,#ff3d00 32px,#3a0a00 44px)!important;background-size:100% 44px!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;animation:lgmag 1.6s linear infinite!important;filter:drop-shadow(0 0 10px #ff4a00)}@keyframes lgmag{to{background-position:0 -44px}}
 .pcover.na-cx-nx-nebula .pid h1{background:radial-gradient(circle at 20% 50%,#ff6bd6,transparent 40%),radial-gradient(circle at 70% 40%,#5ff2d0,transparent 40%),radial-gradient(circle,#fff 0 1px,transparent 1.6px) 0 0/9px 9px,#3a1a6a!important;background-size:200% 200%,200% 200%,9px 9px,auto!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;animation:thblob 4s ease-in-out infinite alternate,thhue 10s linear infinite!important}
 .pcover.na-cx-bigbang .pid h1{background:radial-gradient(circle,#fff 0 8%,#ffd76a 20%,#ff5c8a 40%,#7a2bff 60%,#0a0514 85%)!important;background-size:300% 300%!important;background-position:50% 50%;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;animation:nabig 4s ease-in-out infinite!important;filter:drop-shadow(0 0 14px rgba(255,215,106,.8)) drop-shadow(0 0 2px #fff)}@keyframes nabig{0%{background-size:600% 600%}50%{background-size:150% 150%}100%{background-size:600% 600%}}
+
+/* ============ V15: arreglo del fondo del nombre (sin cuadrado), mascotas 3D, cajas y misiones */
+.nb .pid::before{border-radius:50%!important;-webkit-mask:none!important;mask:none!important;-webkit-mask-image:radial-gradient(closest-side,#000 45%,transparent 100%)!important;mask-image:radial-gradient(closest-side,#000 45%,transparent 100%)!important;inset:-22px auto -18px -34px!important;width:min(600px,calc(100% + 68px))!important}
+.nb-humo .pid::before{filter:none!important;background:radial-gradient(circle at 25% 45%,var(--nbc),transparent 45%),radial-gradient(circle at 60% 55%,var(--nbc),transparent 50%),radial-gradient(circle at 85% 35%,var(--nbc),transparent 40%)!important;background-size:200% 200%!important;opacity:.45!important}
+.pcover.pmini .nb .pid::before,.pmini.nb .pid::before{inset:-12px auto -10px -18px!important}
+.wave path{animation:wave 1.6s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 0}@keyframes wave{to{transform:skewX(10deg) translateX(1.5px)}}
+.fw.fast{animation-duration:.08s!important}
+.freebox{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:18px 22px;margin-bottom:18px;border-radius:22px;border:1px solid rgba(90,209,138,.5);background:radial-gradient(circle at 10% 50%,rgba(90,209,138,.2),transparent 60%),var(--surface)}
+.freebox h2{margin:0}.freebox p{margin:4px 0 0}.freebox .btn{margin-left:auto}.freebox.used{border-color:var(--line);opacity:.8}
+.boxcube.small{width:56px;height:56px}.boxcube.small i{border-radius:12px;background:linear-gradient(135deg,#5ad18a,#3fd6d0)}
+.bx-hadas{border-color:rgba(255,143,200,.5);background:radial-gradient(circle at 50% 0,rgba(255,143,200,.22),transparent 60%),var(--surface)}.bx-hadas .boxcube i{background:linear-gradient(135deg,#ff8fc8,#5ff2d0)}
+.bx-tormenta{border-color:rgba(106,168,255,.5);background:radial-gradient(circle at 50% 0,rgba(106,168,255,.22),transparent 60%),var(--surface)}.bx-tormenta .boxcube i{background:linear-gradient(135deg,#3d5a9a,#8fd6ff)}
+.bx-galaxia{border-color:rgba(163,91,255,.5);background:radial-gradient(circle at 50% 0,rgba(163,91,255,.22),transparent 60%),var(--surface)}.bx-galaxia .boxcube i{background:linear-gradient(135deg,#3a1c8f,#ff6bd6)}
+.bx-mascotas{border-color:rgba(90,209,138,.45);background:radial-gradient(circle at 50% 0,rgba(90,209,138,.18),transparent 60%),var(--surface)}.bx-mascotas .boxcube i{background:linear-gradient(135deg,#5ad18a,#ffd76a)}
+.bx-legendaria{border:2px solid #ffb21f;background:radial-gradient(circle at 50% 0,rgba(255,178,31,.3),transparent 60%),radial-gradient(circle at 50% 100%,rgba(255,79,168,.2),transparent 60%),var(--surface);box-shadow:0 0 40px -12px #ffb21f}.bx-legendaria .boxcube i{background:linear-gradient(135deg,#fff3c4,#ffb21f,#ff4fa8)}
+.chargebox{position:relative;display:grid;place-items:center;gap:22px;height:320px}
+.boxcube.big{width:150px;height:150px;animation:shake .14s linear infinite,cube 6s ease-in-out infinite}
+.boxcube.big i{box-shadow:0 0 50px var(--hint),0 0 120px var(--hint)}
+@keyframes shake{0%{translate:0 0}25%{translate:-3px 2px}50%{translate:3px -2px}75%{translate:-2px -3px}100%{translate:2px 3px}}
+.rays{position:absolute;width:520px;height:520px;border-radius:50%;background:repeating-conic-gradient(from 0deg,color-mix(in srgb,var(--hint) 45%,transparent) 0 6deg,transparent 6deg 18deg);-webkit-mask-image:radial-gradient(circle,#000 10%,transparent 65%);mask-image:radial-gradient(circle,#000 10%,transparent 65%);animation:lgspin 6s linear infinite,enfade .6s}
+.chargetxt{font:800 18px var(--display);color:var(--fg);animation:napp 1s ease-in-out infinite}
+.rlitem.r-mitica,.rlitem.r-exotica,.rlitem.r-unica{box-shadow:inset 0 0 20px color-mix(in srgb,var(--rc) 40%,transparent)}
+.reveal{position:relative}
+.burstrays{position:absolute;left:50%;top:40%;width:900px;height:900px;margin:-450px 0 0 -450px;z-index:-1;border-radius:50%;background:repeating-conic-gradient(from 0deg,color-mix(in srgb,var(--rc) 35%,transparent) 0 5deg,transparent 5deg 15deg);-webkit-mask-image:radial-gradient(circle,#000 5%,transparent 60%);mask-image:radial-gradient(circle,#000 5%,transparent 60%);animation:lgspin 14s linear infinite,enzoom .6s;pointer-events:none}
+.boxov.r-comun .burstrays,.boxov.r-rara .burstrays{opacity:.35}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:12px}
+.mission{display:grid;gap:8px;padding:16px;border-radius:20px;border:1px solid var(--line);background:var(--surface)}
+.mission h3{margin:0;font-size:18px}.mission p{margin:0}.mtop{display:flex;justify-content:space-between;align-items:center}.mcoin{display:inline-flex;align-items:center;gap:5px;color:#ff8fc8}
+.mission.ready{border-color:rgba(90,209,138,.6);box-shadow:0 0 24px -10px #5ad18a}.mission.claimed{opacity:.55}
+.mission .pbar{height:6px;border-radius:6px;background:var(--raise);overflow:hidden}.mission .pbar i{display:block;height:100%;background:var(--accent)}
+
+/* ============ V16: Bucks, canjes, sorteos */
+.ecocoins.bk{margin-left:6px;background:rgba(106,168,255,.1);border-color:rgba(106,168,255,.4)}
+.econav .ecocoins:first-of-type{margin-left:auto}
+.bksep{width:1px;height:16px;background:var(--line);margin:0 4px}
+.bkgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+.bkpack{position:relative;display:grid;gap:10px;justify-items:center;padding:22px 16px;border-radius:22px;border:1px solid var(--line);background:radial-gradient(circle at 50% 0,rgba(106,168,255,.18),transparent 60%),var(--surface);text-align:center}
+.bkpack.best{border:2px solid #6aa8ff;box-shadow:0 0 30px -10px #6aa8ff}
+.bkpack .ptag{position:absolute;top:-11px;padding:3px 10px;border-radius:999px;background:#6aa8ff;color:#0a1450;font-weight:800;font-size:12px}
+.bkamt{display:flex;align-items:center;gap:8px;font:900 26px var(--display)}.bkprice{font-weight:800;color:var(--dim)}
+.rwgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.rwcard{display:grid;gap:8px;padding:18px;border-radius:22px;border:1px solid var(--line);background:var(--surface)}.rwcard h3{margin:0}.rwcard p{margin:0}.rwcard.done{opacity:.6}
+.rwfoot{display:flex;justify-content:space-between;align-items:center}.rwfoot b{display:inline-flex;gap:6px;align-items:center;color:#ff8fc8;font-size:18px}
+.rwform{display:flex;gap:8px}.rwform input{flex:1;min-width:0}
+.rwrow{display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
 </style>
 </head>
 <body>
@@ -1897,7 +1942,7 @@ footer{border-top:1px solid var(--line)!important;background:linear-gradient(180
     <a href="#/peliculas" data-r="peliculas">Películas</a>
     <a href="#/stats" data-r="stats">Estadísticas</a>
     <div class="navdd"><button type="button" class="ddbtn" data-act="navdd" aria-haspopup="true" aria-expanded="false">Comunidad<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-      <div class="ddm" hidden><a href="#/gente" data-r="gente" hidden>Gente</a><a href="#/listas" data-r="listas">Listas</a><a href="#/stats/ranking">Ranking</a><a href="#/mercado" data-r="mercado">Mercado</a><a href="#/cajas" data-r="cajas">Cajas</a></div></div>
+      <div class="ddm" hidden><a href="#/gente" data-r="gente" hidden>Gente</a><a href="#/listas" data-r="listas">Listas</a><a href="#/stats/ranking">Ranking</a><a href="#/mercado" data-r="mercado">Mercado</a><a href="#/cajas" data-r="cajas">Cajas</a><a href="#/misiones" data-r="misiones">Misiones</a><a href="#/canjes" data-r="canjes">Canjes</a><a href="#/sorteos" data-r="sorteos">Sorteos</a><a href="#/bucks" data-r="bucks">Comprar Bucks</a></div></div>
     <a href="#/perfil" data-r="perfil">Perfil</a>
     <a href="#/pro" data-r="pro" class="propill">Pro</a>
   </nav>
@@ -1910,7 +1955,7 @@ footer{border-top:1px solid var(--line)!important;background:linear-gradient(180
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 13.1</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 15.0</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -2371,7 +2416,7 @@ async function route(keepScroll) {
   const id = ++renderId, R = parseRoute(), app = $('#app');
   const y = window.scrollY;
   document.querySelectorAll('[data-r]').forEach(a => a.classList.toggle('on', a.dataset.r === R.name || (R.name === 'stats' && a.dataset.r === 'perfil' && a.closest('.bnav'))));
-  const views = { '': vHome, 'buscar': vSearch, 'serie': vShow, 'ep': vEpisode, 'mis-series': vMine, 'calendario': vCalendar, 'descubrir': vDiscover, 'peliculas': vMovies, 'stats': vStats, 'perfil': vProfile, 'entrar': vLogin, 'nueva-clave': vNewPass, 'gente': vPeople, 'u': vUser, 'categoria': vCategory, 'peli': vMovie, 'pro': vPro, 'monedas': vCoins, 'tienda': vShopDaily, 'cajas': vBoxes, 'inventario': vInventory, 'mercado': vMarket, 'intercambios': vTrades, 'actor': vActor, 'top-episodios': vTopEps, 'listas': vLists, 'lista': vList };
+  const views = { '': vHome, 'buscar': vSearch, 'serie': vShow, 'ep': vEpisode, 'mis-series': vMine, 'calendario': vCalendar, 'descubrir': vDiscover, 'peliculas': vMovies, 'stats': vStats, 'perfil': vProfile, 'entrar': vLogin, 'nueva-clave': vNewPass, 'gente': vPeople, 'u': vUser, 'categoria': vCategory, 'peli': vMovie, 'pro': vPro, 'monedas': vCoins, 'tienda': vShopDaily, 'cajas': vBoxes, 'inventario': vInventory, 'mercado': vMarket, 'intercambios': vTrades, 'misiones': vMissions, 'bucks': vBucks, 'canjes': vRewards, 'sorteos': vRaffles, 'actor': vActor, 'top-episodios': vTopEps, 'listas': vLists, 'lista': vList };
   const v = views[R.name] || vHome;
   const draw = html => { if (id === renderId) { app.innerHTML = html; fillAds(); } return id === renderId; };
   try { await v(R.args, draw, () => id === renderId); }
@@ -4262,11 +4307,11 @@ const WALLET = { coins: 0, items: [], ok: false };
 const COIN_PRICE = { name: 200, font: 250, fx: 200, frame: 400, shape: 300, banner: 300, pattern: 200, bfx: 400, theme: 300, accent: 150, title: 200, site: 500, deco: 600, pfx: 800, favframe: 300, card: 400, nameanim: 600, nicon: 250, statstyle: 300, tag: 400 };
 const priceOf7 = (f, k) => ['name:custom', 'accent:custom', 'banner:img'].includes(f + ':' + k) ? 1600 : (COIN_PRICE[f] || 600);
 const coinSVG7 = (sz = 16) => `<svg class="coin" width="${sz}" height="${sz}" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#ffd76a"/><circle cx="12" cy="12" r="7.2" fill="none" stroke="#b8860b" stroke-width="1.6"/><path d="M9.5 8.5h4a2 2 0 0 1 0 4h-3m0-4v7m0-3h3.5a2 2 0 0 1 0 4h-4" fill="none" stroke="#8a6a1a" stroke-width="1.6" stroke-linecap="round"/></svg>`;
-function setWallet(w) { if (!w) return; WALLET.coins = w.coins || 0; WALLET.items = w.items || []; WALLET.ok = true; renderCoins(); }
+function setWallet(w) { if (!w) return; WALLET.coins = w.coins || 0; WALLET.items = w.items || []; WALLET.bucks = w.bucks || 0; WALLET.ok = true; renderCoins(); }
 async function loadWallet7() {
   WALLET.ok = false; WALLET.coins = 0; WALLET.items = [];
   if (!isLogged()) { renderCoins(); return; }
-  const rows = await sbTry(() => rest(`wallets?select=coins,items&user_id=eq.${ME.id}`), null);
+  const rows = await sbTry(() => rest(`wallets?select=*&user_id=eq.${ME.id}`), null);
   if (rows && rows[0]) setWallet(rows[0]);
   claimCoins('daily');
 }
@@ -4288,7 +4333,7 @@ function renderCoins() {
   el.hidden = !isLogged();
   el.innerHTML = `${coinSVG(18)}<b>${WALLET.coins.toLocaleString('es-AR')}</b>`;
 }
-async function buyWithCoins(f, k) {
+async function buyWithCoins7(f, k) {
   if (!isLogged()) { location.hash = '#/entrar/crear'; toast('Creá tu cuenta para juntar y usar monedas.'); return false; }
   const key = f + ':' + k, price = priceOf(f, k);
   const ok = await ask(`¿Comprar con monedas?`, `Cuesta ${price.toLocaleString('es-AR')} monedas y tenés ${WALLET.coins.toLocaleString('es-AR')}. Queda tuyo para siempre.`, [['yes', `Comprar por ${price}`, 'pri']]);
@@ -6292,6 +6337,273 @@ PRO_COUNT = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.filter(o => !o
 
 // el fundador tiene todo, y además lo que tenga en su billetera (exclusivos desbloqueados)
 function founderRow(id, row) { return isFounderId(id) ? { plan: 'combo', items: [...((row && row.items) || []), 'combo', 'redes', 'layout', 'founder'] } : row; }
+
+
+// ============================================================ V15: MASCOTAS 3D, MISIONES, CAJAS TEMÁTICAS + CAJA GRATIS, APERTURA ESPECTACULAR
+// ---------- herramientas de dibujo con volumen (luz arriba a la izquierda, sombra abajo)
+const L3 = (c, t) => mix8(c, '#ffffff', t), D3 = (c, t) => mix8(c, '#000000', t);
+const rg3 = (id, c, cx = .32, cy = .28) => `<radialGradient id="${id}" cx="${cx}" cy="${cy}" r=".8"><stop offset="0" stop-color="${L3(c, .5)}"/><stop offset=".5" stop-color="${c}"/><stop offset="1" stop-color="${D3(c, .6)}"/></radialGradient>`;
+const lg3 = (id, a, b) => `<linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient>`;
+const shine3 = (x, y, rx, ry, rot = -30, o = .6) => `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="#fff" opacity="${o}" transform="rotate(${rot} ${x} ${y})"/>`;
+const eye3 = (x, y, r, iris, slit) => `<circle cx="${x}" cy="${y}" r="${r}" fill="#fff"/><circle cx="${x}" cy="${y + r * .08}" r="${r * .78}" fill="${iris}"/><circle cx="${x}" cy="${y + r * .08}" r="${r * .78}" fill="url(#eyeshade)" opacity=".7"/>${slit ? `<ellipse cx="${x}" cy="${y + r * .1}" rx="${r * .18}" ry="${r * .62}" fill="#0a0612"/>` : `<circle cx="${x}" cy="${y + r * .1}" r="${r * .4}" fill="#0a0612"/>`}<circle cx="${x - r * .32}" cy="${y - r * .3}" r="${r * .3}" fill="#fff"/><circle cx="${x + r * .3}" cy="${y + r * .34}" r="${r * .13}" fill="#fff" opacity=".85"/>`;
+const EYESH = `<radialGradient id="eyeshade" cx=".5" cy=".2" r=".8"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></radialGradient>`;
+// paletas: base (legendaria), oro (mítica), prisma (exótica: cambia de color)
+const P3 = {
+  pantera: { base: { b: '#1c1824', a: '#2e2840', g: '#a87aff', e: '#ffcf3a' }, oro: { b: '#c8961a', a: '#ffe08a', g: '#fff3c4', e: '#3ad68a' } },
+  kitsune: { base: { b: '#f4f2fa', a: '#e0405a', g: '#5ab8ff', e: '#ff6a8a' }, oro: { b: '#ffe6a0', a: '#d6641a', g: '#ffd24a', e: '#ff4a1a' } },
+  ciervo: { base: { b: '#c89a6a', a: '#fff0dc', g: '#7fe8ff', e: '#3a1a0a' }, oro: { b: '#e8c060', a: '#fff8e0', g: '#ffd76a', e: '#5a3a0a' } },
+  medusa: { base: { b: '#ff8fc8', a: '#c08bff', g: '#ffd1ea', e: '#2a1840' }, oro: { b: '#ffcf3a', a: '#ff8a3d', g: '#fff3c4', e: '#3a2000' } },
+  manta: { base: { b: '#2a3a8a', a: '#6aa8ff', g: '#9ff5ff', e: '#0a0a2a' }, oro: { b: '#8a6a1a', a: '#ffd76a', g: '#fff3c4', e: '#2a1a00' } },
+  tigre: { base: { b: '#f4f4f8', a: '#2a2a38', g: '#8fd6ff', e: '#4ab8ff' }, oro: { b: '#ffb030', a: '#3a1a0a', g: '#ffd76a', e: '#3ad68a' } },
+  pandarojo: { base: { b: '#d6582a', a: '#fff4e8', g: '#ffb03d', e: '#2a1408' }, oro: { b: '#e8b830', a: '#fff8e8', g: '#fff3c4', e: '#2a1408' } },
+  colibri: { base: { b: '#1aa86a', a: '#ff3d7a', g: '#5ff2d0', e: '#0a1a12' }, oro: { b: '#d6a01a', a: '#ff6a00', g: '#ffd76a', e: '#1a1000' } },
+  golem: { base: { b: '#7fd6ff', a: '#c8f0ff', g: '#e8fbff', e: '#ffffff' }, oro: { b: '#ffd24a', a: '#fff3c4', g: '#ffffff', e: '#ffffff' } },
+  mecha: { base: { b: '#e6e8f0', a: '#ff4a8a', g: '#5ff2ff', e: '#5ff2ff' }, oro: { b: '#2a2430', a: '#ffd76a', g: '#ffd76a', e: '#ffd76a' } },
+  espiritu: { base: { b: '#ff7a2a', a: '#ffd24a', g: '#fff3c4', e: '#2a0a00' }, oro: { b: '#5a8aff', a: '#bfe3ff', g: '#ffffff', e: '#0a1a4a' } },
+  planeta: { base: { b: '#8a5ad6', a: '#ffcf8a', g: '#e0c8ff', e: '#1a0a2a' }, oro: { b: '#3ab0d6', a: '#ffffff', g: '#bfeaff', e: '#0a1a2a' } },
+};
+const PET3 = {
+  pantera: ['Pantera', (P, u) => `<defs>${rg3('pb' + u, P.b)}${rg3('ph' + u, P.a, .3, .25)}${EYESH}</defs>
+    <path d="M47 50C60 50 62 36 55 30" stroke="url(#pb${u})" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+    <ellipse cx="32" cy="47" rx="16" ry="13" fill="url(#pb${u})"/><ellipse cx="24" cy="58" rx="5" ry="4" fill="url(#pb${u})"/><ellipse cx="40" cy="58" rx="5" ry="4" fill="url(#pb${u})"/>
+    <path d="M17 18 18 3 29 13ZM47 18 46 3 35 13Z" fill="url(#pb${u})"/><path d="M19 15 20 7 26 12ZM45 15 44 7 38 12Z" fill="${P.g}" opacity=".55"/>
+    <circle cx="32" cy="26" r="15.5" fill="url(#ph${u})"/><ellipse cx="32" cy="32" rx="7" ry="5" fill="${L3(P.a, .12)}"/>
+    ${eye3(25, 24, 4.4, P.e, 1)}${eye3(39, 24, 4.4, P.e, 1)}<path d="M30.4 30.5h3.2L32 32.4z" fill="${P.g}"/>
+    <path d="M18 31H8M18 33.5 9 36M46 31H56M46 33.5 55 36" stroke="${P.g}" stroke-width=".7" opacity=".6"/>
+    <path d="M18 18C22 12 28 10.5 32 10.5" stroke="${P.g}" stroke-width="1.6" fill="none" opacity=".7" stroke-linecap="round"/>${shine3(24, 15, 4, 1.6)}
+    <path d="M20 41Q32 46 44 41" stroke="${P.g}" stroke-width="2.2" fill="none" stroke-linecap="round"/><circle cx="32" cy="44.5" r="2.2" fill="${P.g}"/>`],
+  kitsune: ['Kitsune espiritual', (P, u) => `<defs>${rg3('kb' + u, P.b)}${lg3('kf' + u, '#ffffff', P.g)}${EYESH}</defs>
+    <g class="flick">${[-34, -8, 18].map(r => `<path d="M38 50C52 50 62 36 58 16C55 26 50 30 45 33C51 24 51 14 47 6C44 20 39 28 34 38Z" fill="url(#kf${u})" stroke="#fff" stroke-opacity=".5" stroke-width=".6" transform="rotate(${r} 38 48)"/>`).join('')}</g>
+    <ellipse cx="30" cy="47" rx="14" ry="12" fill="url(#kb${u})"/><ellipse cx="23" cy="57" rx="4.5" ry="3.6" fill="url(#kb${u})"/><ellipse cx="36" cy="57" rx="4.5" ry="3.6" fill="url(#kb${u})"/>
+    <path d="M14 20 15 1 27 14ZM44 20 43 1 31 14Z" fill="url(#kb${u})"/><path d="M16 16 17 6 24 13ZM42 16 41 6 34 13Z" fill="${P.a}" opacity=".85"/>
+    <path d="M13 26C13 14 45 14 45 26C45 35 37 41 29 41S13 35 13 26Z" fill="url(#kb${u})"/>
+    <path d="M17 20C20 24 22 24 24 22M41 20C38 24 36 24 34 22" stroke="${P.a}" stroke-width="2" fill="none" stroke-linecap="round"/>
+    ${eye3(22.5, 27, 3.6, P.e)}${eye3(35.5, 27, 3.6, P.e)}<ellipse cx="29" cy="34" rx="2.4" ry="1.7" fill="#2a1a2a"/><path d="M29 10l2 3-2 3-2-3z" fill="${P.a}"/>${shine3(21, 18, 3.6, 1.4)}`],
+  ciervo: ['Ciervo espíritu', (P, u) => `<defs>${rg3('cb' + u, P.b)}${EYESH}</defs>
+    <g class="tw" stroke="${P.g}" stroke-width="2.4" fill="none" stroke-linecap="round"><path d="M22 14C18 8 18 4 20 0M20 8 14 5M21 4 25 1"/><path d="M42 14C46 8 46 4 44 0M44 8 50 5M43 4 39 1"/></g>
+    <ellipse cx="32" cy="48" rx="13" ry="11" fill="url(#cb${u})"/><rect x="21" y="52" width="5" height="11" rx="2.5" fill="url(#cb${u})"/><rect x="38" y="52" width="5" height="11" rx="2.5" fill="url(#cb${u})"/>
+    <path d="M17 22 8 18 15 26ZM47 22 56 18 49 26Z" fill="url(#cb${u})"/>
+    <ellipse cx="32" cy="27" rx="13" ry="14" fill="url(#cb${u})"/><ellipse cx="32" cy="34" rx="7" ry="5.5" fill="${P.a}"/>
+    ${eye3(26, 25, 3.6, P.e)}${eye3(38, 25, 3.6, P.e)}<ellipse cx="32" cy="32" rx="2.4" ry="1.6" fill="#2a1a0a"/>
+    ${[[25, 44], [37, 46], [31, 51]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="1.6" fill="${P.a}" opacity=".9"/>`).join('')}${shine3(26, 17, 3.6, 1.4)}`],
+  medusa: ['Medusa celestial', (P, u) => `<defs>${rg3('mb' + u, P.b, .4, .25)}${lg3('mt' + u, P.a, 'rgba(255,255,255,0)')}${EYESH}</defs>
+    <g class="ffloat"><g class="wave" stroke="url(#mt${u})" stroke-width="2.6" fill="none" stroke-linecap="round">${[18, 25, 32, 39, 46].map((x, i) => `<path d="M${x} 34C${x - 3} 42 ${x + 3} 48 ${x} ${58 + (i % 2) * 4}" style="animation-delay:${i * .15}s"/>`).join('')}</g>
+    <path d="M10 34C10 14 54 14 54 34C48 37 16 37 10 34Z" fill="url(#mb${u})" opacity=".92"/><path d="M14 33C20 35 44 35 50 33" stroke="${P.g}" stroke-width="1.6" fill="none"/>
+    ${[[22, 22], [40, 20], [31, 16], [46, 28]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="1" fill="#fff"/>`).join('')}${eye3(26, 28, 2.8, P.e)}${eye3(38, 28, 2.8, P.e)}<path d="M30 31.5Q32 33 34 31.5" stroke="${P.e}" stroke-width="1" fill="none"/>${shine3(22, 21, 6, 2.4, -25, .5)}</g>`],
+  manta: ['Mantarraya cósmica', (P, u) => `<defs>${rg3('rb' + u, P.b, .5, .2)}${EYESH}</defs>
+    <g class="ffloat"><g class="fw"><path d="M32 30C42 16 58 20 62 32C56 32 46 36 34 42Z" fill="url(#rb${u})"/></g><g transform="matrix(-1 0 0 1 64 0)"><g class="fw"><path d="M32 30C42 16 58 20 62 32C56 32 46 36 34 42Z" fill="url(#rb${u})"/></g></g>
+    <path d="M32 40C34 50 38 56 44 60" stroke="${P.b}" stroke-width="2" fill="none" stroke-linecap="round"/><ellipse cx="32" cy="32" rx="11" ry="10" fill="url(#rb${u})"/>
+    ${[[24, 26], [42, 24], [50, 30], [14, 29], [32, 22]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="1.1" fill="${P.g}"/>`).join('')}${eye3(27, 33, 2.8, P.g)}${eye3(37, 33, 2.8, P.g)}${shine3(28, 26, 4, 1.4)}</g>`],
+  tigre: ['Tigre blanco', (P, u) => `<defs>${rg3('tb' + u, P.b)}${EYESH}</defs>
+    <path d="M47 52C60 52 60 38 54 34" stroke="url(#tb${u})" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M55 40l4-2M57 45l4 0" stroke="${P.a}" stroke-width="2"/>
+    <ellipse cx="32" cy="48" rx="16" ry="13" fill="url(#tb${u})"/><path d="M22 40l3 6M30 38l1 6M40 40l-2 6" stroke="${P.a}" stroke-width="2.4" stroke-linecap="round"/>
+    <ellipse cx="24" cy="58" rx="5" ry="4" fill="url(#tb${u})"/><ellipse cx="40" cy="58" rx="5" ry="4" fill="url(#tb${u})"/>
+    <circle cx="18" cy="12" r="6" fill="url(#tb${u})"/><circle cx="46" cy="12" r="6" fill="url(#tb${u})"/><circle cx="18" cy="12" r="3" fill="${D3(P.b, .25)}"/><circle cx="46" cy="12" r="3" fill="${D3(P.b, .25)}"/>
+    <circle cx="32" cy="26" r="16" fill="url(#tb${u})"/><path d="M32 11v6M27 12l1.5 5M37 12l-1.5 5M17 24h5M17 28l5-1M47 24h-5M47 28l-5-1" stroke="${P.a}" stroke-width="2.2" stroke-linecap="round"/>
+    <ellipse cx="32" cy="33" rx="7.5" ry="5" fill="#fff"/>${eye3(25, 25, 4, P.e)}${eye3(39, 25, 4, P.e)}<path d="M30 30h4l-2 2.4z" fill="#ff8fb8"/>${shine3(25, 16, 4, 1.6)}`],
+  pandarojo: ['Panda rojo', (P, u) => `<defs>${rg3('ab' + u, P.b)}${EYESH}</defs>
+    <path d="M46 50C60 52 62 38 56 32" stroke="url(#ab${u})" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M55 44l6-1M57 38l5 1" stroke="${P.a}" stroke-width="2.6" stroke-linecap="round"/>
+    <ellipse cx="32" cy="48" rx="15" ry="12" fill="${D3(P.b, .45)}"/><ellipse cx="24" cy="58" rx="4.6" ry="3.8" fill="${D3(P.b, .55)}"/><ellipse cx="40" cy="58" rx="4.6" ry="3.8" fill="${D3(P.b, .55)}"/>
+    <path d="M14 18 14 5 26 13ZM50 18 50 5 38 13Z" fill="url(#ab${u})"/><path d="M16 15 16 8 22 12ZM48 15 48 8 42 12Z" fill="${P.a}"/>
+    <ellipse cx="32" cy="27" rx="17" ry="15" fill="url(#ab${u})"/><path d="M20 22C24 20 26 22 26 26M44 22C40 20 38 22 38 26" fill="${P.a}"/><ellipse cx="32" cy="33" rx="8" ry="5.5" fill="${P.a}"/>
+    ${eye3(25, 27, 3.8, P.e)}${eye3(39, 27, 3.8, P.e)}<ellipse cx="32" cy="31.5" rx="2.4" ry="1.7" fill="#1a0a04"/>${shine3(24, 18, 4, 1.6)}`],
+  colibri: ['Colibrí joya', (P, u) => `<defs>${rg3('hb' + u, P.b, .4, .25)}${EYESH}</defs>
+    <g class="ffloat"><g class="fw fast"><path d="M34 30C38 12 54 2 62 6C60 18 46 28 34 33Z" fill="${L3(P.g, .35)}" opacity=".85" stroke="#fff" stroke-opacity=".6" stroke-width=".6"/><path d="M36 29C42 18 52 10 58 9" stroke="#fff" stroke-opacity=".5" stroke-width=".5" fill="none"/></g>
+    <path d="M18 40C10 46 6 54 8 58C12 52 18 48 22 44Z" fill="${P.b}"/>
+    <ellipse cx="28" cy="36" rx="13" ry="10" fill="url(#hb${u})" transform="rotate(-20 28 36)"/><ellipse cx="30" cy="40" rx="7" ry="4.5" fill="${P.a}" transform="rotate(-20 30 40)"/>
+    <circle cx="38" cy="26" r="8.5" fill="url(#hb${u})"/><path d="M45 25 62 21 46 28Z" fill="#2a2018"/>${eye3(40, 24.5, 2.6, P.e)}${shine3(35, 21, 3, 1.2)}</g>`],
+  golem: ['Golem de cristal', (P, u) => `<defs>${lg3('gl' + u, L3(P.b, .4), D3(P.b, .35))}${lg3('gd' + u, D3(P.b, .2), D3(P.b, .55))}<radialGradient id="gc${u}"><stop offset="0" stop-color="#fff"/><stop offset=".4" stop-color="${P.g}"/><stop offset="1" stop-color="${P.b}" stop-opacity="0"/></radialGradient></defs>
+    <path d="M14 62 18 44 26 40H38L46 44 50 62Z" fill="url(#gd${u})"/><path d="M18 44 26 40 32 52 22 62H14Z" fill="url(#gl${u})" opacity=".9"/>
+    <path d="M8 46 14 34 20 40 16 54Z" fill="url(#gl${u})"/><path d="M56 46 50 34 44 40 48 54Z" fill="url(#gd${u})"/>
+    <path d="M18 18 26 6H38L46 18 42 36H22Z" fill="url(#gd${u})"/><path d="M18 18 26 6 32 14 26 30 22 36Z" fill="url(#gl${u})"/><path d="M32 14 38 6 46 18 40 22Z" fill="${L3(P.b, .55)}" opacity=".8"/>
+    <circle cx="32" cy="50" r="7" fill="url(#gc${u})" class="halo"/><rect x="24" y="20" width="5" height="3" rx="1.5" fill="${P.e}" class="tw"/><rect x="35" y="20" width="5" height="3" rx="1.5" fill="${P.e}" class="tw"/>`],
+  mecha: ['Mecha robot', (P, u) => `<defs>${rg3('eb' + u, P.b, .3, .2)}${lg3('ev' + u, D3(P.a, .3), '#0a0612')}</defs>
+    <rect x="17" y="40" width="30" height="20" rx="8" fill="url(#eb${u})"/><circle cx="32" cy="50" r="4.5" fill="${P.g}" class="halo"/><rect x="10" y="42" width="7" height="14" rx="3.5" fill="url(#eb${u})"/><rect x="47" y="42" width="7" height="14" rx="3.5" fill="url(#eb${u})"/>
+    <path d="M32 9V3" stroke="${D3(P.b, .3)}" stroke-width="2.4"/><circle cx="32" cy="3" r="3" fill="${P.a}" class="tw"/>
+    <rect x="12" y="9" width="40" height="31" rx="13" fill="url(#eb${u})"/><path d="M15 25C15 16 49 16 49 25V30C49 34 15 34 15 30Z" fill="url(#ev${u})"/>
+    <path d="M20 24h8M36 24h8" stroke="${P.e}" stroke-width="3.4" stroke-linecap="round" class="tw"/><path d="M14 13C18 10 24 10 26 10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" opacity=".75"/><rect x="11" y="20" width="3" height="10" rx="1.5" fill="${P.a}"/><rect x="50" y="20" width="3" height="10" rx="1.5" fill="${P.a}"/>`],
+  espiritu: ['Espíritu de fuego', (P, u) => `<defs>${lg3('fb' + u, P.a, P.b)}<radialGradient id="fc${u}" cx=".5" cy=".6"><stop offset="0" stop-color="${P.g}"/><stop offset="1" stop-color="${P.a}" stop-opacity="0"/></radialGradient></defs>
+    <g class="flick"><path d="M32 2C36 12 50 16 50 36C50 50 42 60 32 60S14 50 14 36C14 26 20 22 22 14C24 20 26 22 28 22C28 14 30 8 32 2Z" fill="url(#fb${u})"/><path d="M32 22C34 28 42 32 42 42C42 50 37 54 32 54S22 50 22 42C22 36 26 32 28 28C29 32 30 33 31 33C31 29 31 26 32 22Z" fill="url(#fc${u})"/></g>
+    ${eye3(26, 40, 3.4, P.e)}${eye3(38, 40, 3.4, P.e)}<path d="M29 47Q32 50 35 47" stroke="${P.e}" stroke-width="1.6" fill="none" stroke-linecap="round"/>`],
+  planeta: ['Planeta vivo', (P, u) => `<defs>${rg3('lb' + u, P.b, .3, .25)}${lg3('lr' + u, P.a, D3(P.a, .3))}</defs>
+    <g class="ffloat"><ellipse cx="32" cy="34" rx="30" ry="8" fill="none" stroke="url(#lr${u})" stroke-width="3.4" opacity=".55"/>
+    <circle cx="32" cy="32" r="18" fill="url(#lb${u})"/><path d="M16 26C24 28 40 24 48 27M15 35C24 38 40 34 49 37" stroke="${D3(P.b, .25)}" stroke-width="2.4" fill="none" opacity=".6"/>
+    <path d="M2 34C10 42 54 42 62 34" fill="none" stroke="url(#lr${u})" stroke-width="3.4"/>
+    ${eye3(26, 30, 3.2, P.e)}${eye3(38, 30, 3.2, P.e)}<path d="M29 37Q32 39.5 35 37" stroke="${P.e}" stroke-width="1.4" fill="none" stroke-linecap="round"/>${shine3(24, 22, 5, 2)}
+    <g class="spin" style="transform-origin:32px 32px"><circle cx="58" cy="14" r="3" fill="${L3(P.a, .3)}"/></g></g>`],
+};
+for (const [k, [n, fn]] of Object.entries(PET3)) CRIT['p3' + k] = [n, (a, ak) => { const pal = P3[k][ak === 'oro' ? 'oro' : 'base']; const svg = fn(pal, k + (ak || 'base')); return ak === 'prisma' ? `<g class="prisma">${svg}</g>` : svg; }];
+{ const i0 = STYLE_OPTS.pet.length; STYLE_OPTS.pet.push(...Object.entries(PET3).map(([k, [n]]) => lgo('lg-p3-' + k, n + ' 3D', `p3${k}|base`))); }
+const CX3 = [];
+for (const [k, [n]] of Object.entries(PET3)) CX3.push(['pet', 'cx-p3o-' + k, n + ' dorado 3D', 'mitica', `p3${k}|oro`], ['pet', 'cx-p3x-' + k, n + ' prisma 3D', 'exotica', `p3${k}|prisma`]);
+for (const [f, k, n, r, v] of CX3) { STYLE_OPTS[f].push(Object.assign(C(k, n, v), { cx: r })); }
+Object.assign(LG_TOP, { 'pet:lg-p3-pantera': 40000, 'pet:lg-p3-kitsune': 30000, 'pet:lg-p3-golem': 30000 });
+
+// ---------- CAJAS: probabilidades más difíciles, cajas temáticas y caja gratis del día
+Object.assign(BOXES.normal, { p: 250, w: { comun: 60, rara: 30, epica: 8.25, legendaria: 1.5, mitica: .2, exotica: .04, unica: .01 } });
+Object.assign(BOXES.especial, { p: 700, w: { rara: 58, epica: 32, legendaria: 8.5, mitica: 1.2, exotica: .25, unica: .05 } });
+const THEME_W = { rara: 55, epica: 33, legendaria: 10, mitica: 1.6, exotica: .35, unica: .05 };
+Object.assign(BOXES, {
+  hadas: { n: 'Caja de Hadas', p: 600, w: THEME_W, re: /hada|fairy|lgfairy|lghada|hgc|ronda/ },
+  tormenta: { n: 'Caja Tormenta', p: 600, w: THEME_W, re: /tormenta|rayo|lluvia|nube|electr|relamp|vidrio|plasma/ },
+  galaxia: { n: 'Caja Galáctica', p: 600, w: THEME_W, re: /galax|estrell|nebul|cosm|luna|planeta|orbita|supernova|cielo|meteor|constel|warp|vortice|nova/ },
+  mascotas: { n: 'Caja de Mascotas', p: 650, w: { epica: 88, legendaria: 10, mitica: 1.6, exotica: .35, unica: .05 }, cat: ['pet', 'compa'] },
+  legendaria: { n: 'Caja Legendaria', p: 3500, w: { legendaria: 91.5, mitica: 6.8, exotica: 1.5, unica: .2 } },
+});
+function boxesFor(f, k, r) {
+  const out = r === 'comun' ? ['normal'] : ['normal', 'especial'];
+  let BX = {}; try { BX = BOXES; } catch (e) { }
+  if (r !== 'comun') for (const [b, d] of Object.entries(BX)) { if (d.re && d.re.test(k + ' ' + (optOf(f, k) || {}).v)) out.push(b); if (d.cat && d.cat.includes(f)) out.push(b); }
+  if (['legendaria', 'mitica', 'exotica', 'unica'].includes(r)) out.push('legendaria');
+  return [...new Set(out)];
+}
+function collectCatalog() {
+  const rows = [];
+  for (const [f, l] of Object.entries(STYLE_OPTS)) { if (f === 'site') continue; for (const o of l) { if (o.f || FOUNDER_ONLY(f, o.k)) continue; const r = rarityOf(f, o); rows.push([f + ':' + o.k, f, o.k, o.n, r, CX_MAX[r] || null, boxesFor(f, o.k, r)]); } }
+  return rows;
+}
+for (const r of collectCatalog()) CAT_IDX[r[0]] = { id: r[0], f: r[1], k: r[2], n: r[3], r: r[4], max: r[5], b: r[6] };
+async function vBoxes(_, draw, alive) {
+  const odds = b => RORD.filter(r => b.w[r]).map(r => `<li style="--rc:${RAR[r].c}"><span>${RAR[r].n}</span><b>${String(b.w[r]).replace('.', ',')}%</b></li>`).join('');
+  const free = isLogged() ? await sbTry(() => rest(`wallets?select=last_free&user_id=eq.${ME.id}`), []) : [];
+  if (alive && !alive()) return;
+  const today = todayAR(), usedFree = free && free[0] && free[0].last_free === today;
+  const end = new Date(today + 'T03:00:00Z').getTime() + 864e5;
+  draw(`${ecoNav('cajas')}<section class="pagehead"><div class="eyebrow">Cajas</div><h1>Abrí cajas y conseguí objetos únicos</h1><p class="dim">Hay ${Object.values(CAT_IDX).filter(c => c.r === 'mitica').length} míticos, ${Object.values(CAT_IDX).filter(c => c.r === 'exotica').length} exóticos y ${Object.values(CAT_IDX).filter(c => c.r === 'unica').length} objetos que existen una sola vez.</p></section>
+    <div class="freebox ${usedFree ? 'used' : ''}"><div class="boxcube small"><i></i><i></i><i></i></div><div><h2>Caja gratis del día</h2><p class="dim">${usedFree ? `Ya la abriste hoy. Vuelve en <span class="dtimer" data-end="${end}"></span>.` : 'Una Caja JVNN gratis, todos los días.'}</p></div>${usedFree ? '' : '<button class="btn pri big" data-act="openfree">Abrir gratis</button>'}</div>
+    <div class="boxgrid">${Object.entries(BOXES).map(([k, b]) => `<div class="boxcard bx-${k}"><div class="boxart"><div class="boxcube"><i></i><i></i><i></i></div></div><h2>${b.n}</h2>${b.re || b.cat ? `<p class="small dim" style="margin:-6px 0 10px">${k === 'hadas' ? 'Solo hadas y cosas mágicas' : k === 'tormenta' ? 'Rayos, lluvia y tormentas' : k === 'galaxia' ? 'Estrellas, planetas y galaxias' : 'Solo mascotas y compañeros'}</p>` : k === 'legendaria' ? '<p class="small dim" style="margin:-6px 0 10px">Todo lo que sale es Legendario o mejor</p>' : ''}<ul class="odds">${odds(b)}</ul><div class="boxbtns">${(k === 'legendaria' ? [1, 5] : [1, 5, 10]).map(n => `<button class="btn ${n === 1 ? 'pri' : ''} big" data-act="openboxn" data-b="${k}" data-n="${n}">${n === 1 ? 'Abrir 1' : 'Abrir ' + n} · ${coinSVG(16)} ${(b.p * n).toLocaleString('es-AR')}</button>`).join('')}</div></div>`).join('')}</div>
+    <p class="small dim sec">Las probabilidades son reales y las calcula el servidor. Las cajas se abren solo con monedas que ganás usando la página: no se compran con plata y lo que sacás no se puede cambiar por plata.</p>`);
+  document.querySelectorAll('.dtimer[data-end]').forEach(el => { const left = Math.max(0, +el.dataset.end - Date.now()); el.textContent = `${Math.floor(left / 3600e3)} h ${Math.floor(left % 3600e3 / 60e3)} min`; });
+}
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-act="openfree"]'); if (!b || opening) return;
+  if (!isLogged()) { location.hash = '#/entrar/crear'; return; }
+  opening = true; b.disabled = true;
+  let res = null;
+  try { res = await rest('rpc/open_free_box', { method: 'POST', body: {} }); }
+  catch (x) { opening = false; b.disabled = false; return toast(/function|404/i.test(x.message) ? 'Falta activar la caja gratis en Supabase (supabase_v13.sql).' : x.message); }
+  if (typeof res === 'string') try { res = JSON.parse(res); } catch (x) { }
+  WALLET.coins = res.coins ?? WALLET.coins; renderCoins(); INV.list.unshift(res.item);
+  spinReveal('normal', res.item, () => { opening = false; });
+});
+
+// ---------- apertura más espectacular: la caja se sacude, brilla y la ruleta frena con suspenso
+function spinReveal(boxId, item, done) {
+  const box = BOXES[boxId], c0 = catOf(item.cid), R0 = RAR[c0.r], pool = Object.values(CAT_IDX).filter(c => box.w[c.r] && (!c.b || c.b.includes(boxId)));
+  const pickR = () => { let x = Math.random() * 100, acc = 0; for (const r of [...RORD].reverse()) { acc += box.w[r] || 0; if (x < acc) return r; } return 'rara'; };
+  const strip = Array.from({ length: 60 }, () => { const r = pickR(), l = pool.filter(c => c.r === r); return l[Math.floor(Math.random() * l.length)] || pool[0]; });
+  const WIN = 52; strip[WIN] = c0;
+  const rare = pool.filter(c => RAR[c.r].o >= 4); if (rare.length) { strip[WIN + 1] = rare[Math.floor(Math.random() * rare.length)]; if (R0.o < 3) strip[WIN - 1] = rare[Math.floor(Math.random() * rare.length)]; }
+  const ov = document.createElement('div'); ov.className = 'boxov charging';
+  ov.style.setProperty('--hint', R0.o >= 4 ? R0.c : R0.o === 3 ? '#ffb21f' : '#f6c1d3');
+  ov.innerHTML = `<div class="boxmodal"><div class="chargebox"><div class="rays"></div><div class="boxcube big"><i></i><i></i><i></i></div><div class="chargetxt">Abriendo ${h(box.n)}…</div></div><div class="rlwrap" hidden><div class="rlpin"></div><div class="rlstrip">${strip.map(c => `<div class="rlitem r-${c.r}" style="--rc:${(RAR[c.r] || RAR.comun).c}">${itemThumb(c.id)}<small>${h(c.n)}</small></div>`).join('')}</div></div><div class="reveal" hidden></div></div>`;
+  document.body.appendChild(ov);
+  setTimeout(() => {
+    ov.classList.remove('charging'); ov.querySelector('.chargebox').remove();
+    const wrap = ov.querySelector('.rlwrap'), st = ov.querySelector('.rlstrip'); wrap.hidden = false;
+    requestAnimationFrame(() => { const iw = st.children[0].getBoundingClientRect().width + 10, off = WIN * iw - wrap.clientWidth / 2 + iw / 2 + (Math.random() * .7 - .35) * iw; st.style.transition = 'transform 7s cubic-bezier(.06,.86,.14,1)'; st.style.transform = `translateX(${-off}px)`; });
+    setTimeout(() => {
+      const rv = ov.querySelector('.reveal'), big = R0.o >= 4;
+      st.children[WIN].classList.add('win'); ov.classList.add('done', 'r-' + c0.r);
+      rv.hidden = false; rv.innerHTML = `<div class="burstrays" style="--rc:${R0.c}"></div><div class="rvtitle" style="--rc:${R0.c}">${c0.r === 'unica' ? '¡¡1 DE 1!! Existe uno solo y es tuyo' : big ? '¡INCREÍBLE! Te salió algo ' + R0.n.toLowerCase() : R0.o === 3 ? '¡Legendario!' : 'Te salió algo ' + R0.n.toLowerCase()}</div>${collCard(item)}<div class="actions" style="justify-content:center;margin-top:14px"><button class="btn pri" data-act="equipitem" data-cid="${h(item.cid)}">Ponérmelo</button><button class="btn" data-act="openagain" data-b="${boxId}">Abrir otra</button><a class="btn ghost" href="#/inventario" data-act="closebox">Ver inventario</a><button class="btn ghost" data-act="closebox">Cerrar</button></div>`;
+      if (R0.o >= 3) { const rc = rv.getBoundingClientRect(); for (let i = 0; i < (big ? 10 : 4); i++) setTimeout(() => burstAt(rc.left + rc.width * Math.random(), rc.top + 60 * Math.random(), c0.r === 'exotica' || c0.r === 'unica' ? ['#ff7aa8', '#ffd36b', '#a8f0c6', '#7fe0ff', '#c3a8ff', '#ffffff'] : [R0.c, '#ffffff', '#ffd76a'], 34, 'confeti'), i * 120); }
+      done();
+    }, 7300);
+  }, 1500);
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-act="openagain"]'); if (!b) return; document.querySelectorAll('.boxov').forEach(x => x.remove()); const btn = document.querySelector(`[data-act="openboxn"][data-b="${b.dataset.b}"][data-n="1"]`); if (btn) btn.click(); else { location.hash = '#/cajas'; } });
+
+// ---------- MISIONES (las controla el servidor, no se pueden trucar)
+const MISSIONS = [
+  ['d_caja', 'diaria', 'Abrí una caja', 30, 'Cualquier caja, también la gratis.'],
+  ['d_caja3', 'diaria', 'Abrí 3 cajas', 60, 'Contando todas las del día.'],
+  ['d_coment', 'diaria', 'Comentá un capítulo', 25, 'Un comentario de al menos 10 letras.'],
+  ['w_resena', 'semanal', 'Escribí una reseña', 120, 'De al menos 40 letras, sobre una serie o peli.'],
+  ['w_cajas10', 'semanal', 'Abrí 10 cajas', 150, 'En toda la semana.'],
+  ['w_venta', 'semanal', 'Vendé algo en el mercado', 100, 'Que alguien te compre un objeto.'],
+  ['w_trade', 'semanal', 'Hacé un intercambio', 100, 'Que se acepte un intercambio tuyo.'],
+  ['w_seguir', 'semanal', 'Seguí a alguien nuevo', 50, 'En Gente o desde un perfil.'],
+  ['w_lista', 'semanal', 'Creá una lista pública', 60, 'Con al menos 3 series o pelis.'],
+];
+async function vMissions(_, draw, alive) {
+  if (!isLogged()) return needLogin(draw);
+  draw(`${ecoNav('misiones')}<div class="sec skel" style="height:300px"></div>`);
+  const st = await sbTry(() => rest('rpc/mission_status', { method: 'POST', body: {} }), null);
+  if (!alive()) return;
+  const S2 = st && (typeof st === 'string' ? JSON.parse(st) : st) || {};
+  const card = ([id, per, t, c, d]) => { const s = S2[id] || {}, ok = s.done, cl = s.claimed; return `<div class="mission ${cl ? 'claimed' : ok ? 'ready' : ''}"><div class="mtop"><span class="chip">${per === 'diaria' ? 'Diaria' : 'Semanal'}</span><b class="mcoin">${coinSVG(16)} +${c}</b></div><h3>${h(t)}</h3><p class="small dim">${h(d)}</p>${s.goal ? `<div class="pbar"><i style="width:${Math.min(100, (s.n || 0) / s.goal * 100)}%"></i></div><small class="dim">${Math.min(s.n || 0, s.goal)} de ${s.goal}</small>` : ''}<button class="btn sm ${ok && !cl ? 'pri' : ''}" data-act="claimm" data-id="${id}" ${ok && !cl ? '' : 'disabled'}>${cl ? 'Cobrada' : ok ? 'Cobrar' : 'Falta completar'}</button></div>`; };
+  draw(`${ecoNav('misiones')}<section class="pagehead"><div class="eyebrow">Misiones</div><h1>Misiones</h1><p class="dim">Las diarias se renuevan cada día y las semanales cada lunes. Las revisa el servidor, así que cuentan solo de verdad.</p></section>
+    <h2 class="sec">Diarias</h2><div class="mgrid">${MISSIONS.filter(m => m[1] === 'diaria').map(card).join('')}</div>
+    <h2 class="sec">Semanales</h2><div class="mgrid">${MISSIONS.filter(m => m[1] === 'semanal').map(card).join('')}</div>${st ? '' : '<p class="small dim sec">Para usar las misiones hay que correr supabase_v13.sql en Supabase.</p>'}`);
+}
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-act="claimm"]'); if (!b) return; b.disabled = true;
+  try { const w = await rest('rpc/claim_mission', { method: 'POST', body: { mid: b.dataset.id } }); const before = WALLET.coins; setWallet(Array.isArray(w) ? w[0] : w); coinToast(WALLET.coins - before, 'por completar una misión'); refresh(); } catch (x) { b.disabled = false; toast(x.message); }
+});
+function ecoNav(cur) { return `<nav class="econav">${[['tienda', 'Tienda'], ['cajas', 'Cajas'], ['misiones', 'Misiones'], ['inventario', 'Inventario'], ['mercado', 'Mercado'], ['intercambios', 'Intercambios']].map(([k, n]) => `<a class="${k === cur ? 'on' : ''}" href="#/${k}">${n}</a>`).join('')}<span class="ecocoins">${coinSVG(18)} <b>${WALLET.coins.toLocaleString('es-AR')}</b></span></nav>`; }
+for (const r of collectCatalog()) CAT_IDX[r[0]] = { id: r[0], f: r[1], k: r[2], n: r[3], r: r[4], max: r[5], b: r[6] };
+PRO_COUNT = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.filter(o => !o.f).length, 0) + 4;
+
+
+// ============================================================ V16: JVNN BUCKS (se compran con plata, solo tienda), CANJES Y SORTEOS GRATIS
+const BUCK_PACKS = [[1500, 5], [3300, 10], [7000, 20], [11000, 30], [15000, 39]];
+const buckSVG = (sz = 16) => `<svg class="coin" width="${sz}" height="${sz}" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="bk8" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#bfe3ff"/><stop offset=".55" stop-color="#6aa8ff"/><stop offset="1" stop-color="#3d5aff"/></linearGradient></defs><rect x="2" y="5" width="20" height="14" rx="4" fill="url(#bk8)"/><rect x="2" y="5" width="20" height="14" rx="4" fill="none" stroke="#1a2a8a" stroke-width="1.2" opacity=".6"/><path d="M9 8.5h4.2a2 2 0 0 1 0 4H9zm0 4h4.8a2 2 0 0 1 0 4H9zm0-4v8" fill="none" stroke="#0a1450" stroke-width="1.8" stroke-linejoin="round"/></svg>`;
+async function buyWithCoins(f, k) {
+  if (!isLogged()) { location.hash = '#/entrar/crear'; toast('Creá tu cuenta para comprar.'); return false; }
+  const price = priceOf(f, k), hasB = (WALLET.bucks || 0) >= price;
+  const how = await ask('¿Cómo lo querés pagar?', `Cuesta ${price.toLocaleString('es-AR')}. Tenés ${WALLET.coins.toLocaleString('es-AR')} monedas y ${(WALLET.bucks || 0).toLocaleString('es-AR')} Bucks. Queda tuyo para siempre.`, [['coins', `Con monedas`, 'pri'], ...(hasB ? [['bucks', 'Con Bucks', '']] : [])]);
+  if (!how) return false;
+  try { const w = await rest(how === 'bucks' ? 'rpc/buy_item_bucks' : 'rpc/buy_item', { method: 'POST', body: { item: f + ':' + k } }); setWallet(Array.isArray(w) ? w[0] : w); toast('¡Listo! Ya es tuyo.'); return true; }
+  catch (x) { toast(/function|404|rpc/i.test(x.message) && !/alcanzan/.test(x.message) ? 'Falta activar esto en Supabase (supabase_v14.sql).' : x.message); return false; }
+}
+function ecoNav(cur) { return `<nav class="econav">${[['tienda', 'Tienda'], ['cajas', 'Cajas'], ['misiones', 'Misiones'], ['inventario', 'Inventario'], ['mercado', 'Mercado'], ['intercambios', 'Intercambios'], ['canjes', 'Canjes'], ['sorteos', 'Sorteos'], ['bucks', 'Bucks']].map(([k, n]) => `<a class="${k === cur ? 'on' : ''}" href="#/${k}">${n}</a>`).join('')}<span class="ecocoins">${coinSVG(18)} <b>${WALLET.coins.toLocaleString('es-AR')}</b></span><span class="ecocoins bk">${buckSVG(18)} <b>${(WALLET.bucks || 0).toLocaleString('es-AR')}</b></span></nav>`; }
+
+// ---------- comprar Bucks
+async function vBucks(_, draw) {
+  const user = isLogged() ? ME.username : '', money = n => 'US$ ' + n;
+  draw(`${ecoNav('bucks')}<section class="pagehead"><div class="eyebrow">JVNN Bucks</div><h1>${buckSVG(34)} JVNN Bucks</h1><p class="dim">Los Bucks se compran y sirven para comprar directo lo que quieras en la tienda, incluidos los legendarios. No sirven para abrir cajas ni para el mercado: eso va solo con las monedas que ganás usando la página.</p></section>
+    <div class="bkgrid">${BUCK_PACKS.map(([b, usd], i) => `<div class="bkpack ${i === 2 ? 'best' : ''}">${i === 2 ? '<div class="ptag">El más elegido</div>' : ''}<div class="bkamt">${buckSVG(30)} ${b.toLocaleString('es-AR')}</div><div class="bkprice">${money(usd)}</div><a class="btn ${i === 2 ? 'pri' : ''}" href="${PAY.paypal}/${usd}USD" target="_blank" rel="noopener">Pagar con PayPal</a></div>`).join('')}</div>
+    <section class="panel sec paybox"><h2 style="margin-bottom:6px">Cómo comprar</h2>
+    ${user ? `<ol class="steps"><li>Pagá el pack con PayPal (botones de arriba) o con Mercado Pago al alias <b>${h(PAY.mp)}</b>, el equivalente en pesos.</li><li>En el mensaje del pago escribí tu usuario: <b class="uname">@${h(user)}</b> y qué pack compraste.</li><li>En menos de 24 horas te llegan los Bucks a tu cuenta.</li></ol>` : '<div class="invite sm"><span>Primero necesitás una cuenta, así los Bucks quedan a tu nombre.</span><a class="btn sm pri" href="#/entrar/crear">Crear cuenta gratis</a></div>'}
+    <p class="small dim" style="margin:12px 0 0">Las compras de Bucks no tienen reembolso. Si sos menor de edad, pedile permiso a un adulto antes de comprar.</p></section>`);
+}
+// ---------- canjes con monedas gratis
+async function vRewards(_, draw, alive) {
+  draw(`${ecoNav('canjes')}<div class="sec skel" style="height:240px"></div>`);
+  const rows = await sbTry(() => rest('rewards?select=*&order=cost.asc', { auth: false }), null);
+  const mine = isLogged() ? await sbTry(() => rest('redemptions?select=*,reward:rewards(name)&order=created_at.desc&limit=20'), []) : [];
+  if (!alive()) return;
+  draw(`${ecoNav('canjes')}<section class="pagehead"><div class="eyebrow">Canjes</div><h1>Canjeá tus monedas por premios de verdad</h1><p class="dim">Se canjean con las monedas que ganás usando la página, nunca con Bucks. Después de canjear te contactamos para darte el premio.</p></section>
+    ${rows ? (rows.length ? `<div class="rwgrid">${rows.map(r => `<div class="rwcard"><h3>${h(r.name)}</h3><p class="dim">${h(r.descr)}</p><div class="rwfoot"><b>${coinSVG(18)} ${r.cost.toLocaleString('es-AR')}</b>${r.stock != null ? `<span class="small dim">${r.stock > 0 ? `Quedan ${r.stock}` : 'Agotado'}</span>` : ''}</div>${isLogged() ? `<div class="rwform"><input type="text" placeholder="Tu usuario de Discord" maxlength="80" data-rwc="${h(r.id)}"><button class="btn pri" data-act="redeem" data-id="${h(r.id)}" ${r.stock === 0 ? 'disabled' : ''}>Canjear</button></div>` : '<a class="btn" href="#/entrar/crear">Entrá para canjear</a>'}</div>`).join('')}</div>` : '<div class="empty"><h3>Todavía no hay premios</h3></div>') : '<p class="dim">Para usar los canjes hay que correr supabase_v14.sql en Supabase.</p>'}
+    ${mine && mine.length ? `<section class="panel sec"><h3 style="margin-top:0">Tus canjes</h3>${mine.map(m => `<div class="rwrow"><b>${h(m.reward ? m.reward.name : m.reward_id)}</b><span class="chip">${h(m.status)}</span><span class="small dim">${h(fmtDate(m.created_at))}</span></div>`).join('')}</section>` : ''}`);
+}
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-act="redeem"]'); if (!b) return;
+  const inp = document.querySelector(`[data-rwc="${CSS.escape(b.dataset.id)}"]`), c = inp ? inp.value.trim() : '';
+  if (c.length < 2) return toast('Poné tu usuario de Discord para que te contactemos.');
+  if (!await ask('¿Canjear este premio?', 'Se descuentan las monedas y te contactamos por Discord.', [['yes', 'Canjear', 'pri']])) return;
+  try { const w = await rest('rpc/redeem', { method: 'POST', body: { p_reward: b.dataset.id, p_contact: c } }); setWallet(Array.isArray(w) ? w[0] : w); toast('¡Canjeado! Te vamos a contactar.'); refresh(); } catch (x) { toast(x.message); }
+});
+// ---------- sorteos gratis
+async function vRaffles(_, draw, alive) {
+  draw(`${ecoNav('sorteos')}<div class="sec skel" style="height:240px"></div>`);
+  const rows = await sbTry(() => rest('raffles?select=*&order=ends_at.desc&limit=20', { auth: false }), null);
+  const ids = (rows || []).map(r => r.id);
+  const entries = ids.length ? await sbTry(() => rest(`raffle_entries?select=raffle_id,user_id&raffle_id=${inList(ids)}`, { auth: false }), []) || [] : [];
+  const winners = await profilesByIds((rows || []).map(r => r.winner).filter(Boolean));
+  if (!alive()) return;
+  const count = id => entries.filter(x => x.raffle_id === id).length, inIt = id => isLogged() && entries.some(x => x.raffle_id === id && x.user_id === ME.id);
+  draw(`${ecoNav('sorteos')}<section class="pagehead"><div class="eyebrow">Sorteos</div><h1>Sorteos gratis</h1><p class="dim">Entrar es gratis. Solo hay que cumplir el requisito de cada sorteo, como tener una racha de días seguidos entrando a JVNN.</p></section>
+    ${rows ? (rows.length ? `<div class="rwgrid">${rows.map(r => { const open = !r.winner && Date.parse(r.ends_at) > Date.now(), w = r.winner && winners[r.winner]; return `<div class="rwcard ${open ? '' : 'done'}"><h3>${h(r.title)}</h3><p><b>Premio:</b> ${h(r.prize)}</p><p class="small dim">${[r.min_streak ? `Requisito: racha de ${r.min_streak} días` : '', r.min_days ? `cuenta con ${r.min_days} días o más` : ''].filter(Boolean).join(' · ') || 'Sin requisitos'}</p><p class="small dim">${plural(count(r.id), 'participante', 'participantes')} · ${open ? 'Termina el ' + h(fmtDate(r.ends_at)) : w ? `Ganó <a href="#/u/${h(w.username)}" style="color:var(--accent)">@${h(w.username)}</a>` : 'Terminado'}</p>${open ? (inIt(r.id) ? '<span class="chip">Ya estás participando</span>' : isLogged() ? `<button class="btn pri" data-act="raffle" data-id="${r.id}">Participar gratis</button>` : '<a class="btn" href="#/entrar/crear">Entrá para participar</a>') : ''}</div>`; }).join('')}</div>` : '<div class="empty"><h3>No hay sorteos ahora</h3><div>Seguí entrando todos los días: los sorteos piden racha.</div></div>') : '<p class="dim">Para usar los sorteos hay que correr supabase_v14.sql en Supabase.</p>'}`);
+}
+document.addEventListener('click', async e => { const b = e.target.closest('[data-act="raffle"]'); if (!b) return; try { await rest('rpc/enter_raffle', { method: 'POST', body: { p_id: +b.dataset.id } }); toast('¡Ya estás participando!'); refresh(); } catch (x) { toast(x.message); } });
+// chip de arriba: si tenés Bucks, también se ven
+function renderCoins() {
+  let el = document.getElementById('coinchip');
+  if (!el) { const a = document.getElementById('acct'); if (!a) return; el = document.createElement('a'); el.id = 'coinchip'; el.className = 'coinchip'; el.href = '#/tienda'; a.parentNode.insertBefore(el, a); }
+  el.hidden = !isLogged();
+  el.innerHTML = `${coinSVG(18)}<b>${WALLET.coins.toLocaleString('es-AR')}</b>${WALLET.bucks ? `<span class="bksep"></span>${buckSVG(18)}<b>${WALLET.bucks.toLocaleString('es-AR')}</b>` : ''}`;
+}
 
 
 // ============================================================ ONLINE (Supabase)
