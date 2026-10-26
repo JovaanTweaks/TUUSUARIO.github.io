@@ -10,7 +10,7 @@
 <meta name="theme-color" content="#08080b">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2308080b'/%3E%3Crect x='10' y='16' width='44' height='30' rx='6' fill='none' stroke='%23f3c6cf' stroke-width='5'/%3E%3Cpath d='M26 52h12' stroke='%23f3c6cf' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M27 25l11 6-11 6z' fill='%23f3c6cf'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Space+Mono:wght@700&family=Fredoka:wght@600;700&display=swap">
 <!--ADSENSE-->
 <style>
 /* Layout: barra superior fija + columna central de 1200px; en celular, barra de navegación abajo. */
@@ -578,8 +578,7 @@ input[type=password]{border-radius:10px;border:1px solid var(--line);background:
 @media (max-width:920px){.authbox{grid-template-columns:1fr;gap:20px}}
 @media (max-width:600px){.cacts{padding-left:0}.people{grid-template-columns:minmax(0,1fr)}.acctwrap .btn{padding:0 10px}}
 /* zonas de anuncios */
-.adnative{height:300px!important}
-@media (max-width:780px){.adnative{height:560px!important}}
+.adslot{margin:0 auto}
 .adzone{padding-block:14px 0;display:flex;justify-content:center}
 .adbottom{gap:20px;align-items:flex-start;padding-block:10px 30px;flex-wrap:wrap}
 .adbottom .adn{flex:1 1 420px;min-width:0}
@@ -654,6 +653,112 @@ input[type=password]{border-radius:10px;border:1px solid var(--line);background:
 .bchoice.on{border-color:var(--accent)}
 @media (max-width:920px){.ctiles.home{grid-template-columns:repeat(2,minmax(0,1fr))}.mhero{grid-template-columns:1fr}.mstat{justify-self:start}}
 @media (max-width:600px){.ctiles{grid-template-columns:repeat(2,minmax(0,1fr))}.ctile{height:100px}.ctext b{font-size:17px}.featured{margin:16px 18px 0}.rimdb b{font-size:20px}}
+/* menú de 3 puntitos y arrastre de favoritas */
+.nx{position:relative}
+.dots{position:absolute;top:6px;right:6px;width:30px;height:30px;border-radius:8px;border:0;background:transparent;color:var(--dim);font-size:20px;line-height:1;display:grid;place-items:center;z-index:2}
+.dots:hover{background:var(--raise);color:var(--fg)}
+.nx .go{margin-right:26px}
+.popmenu{position:absolute;z-index:70;min-width:220px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px;box-shadow:0 18px 50px rgba(0,0,0,.6);display:flex;flex-direction:column}
+.popmenu button,.popmenu a{text-align:left;background:none;border:0;padding:10px 12px;border-radius:8px;font-weight:600;font-size:14px;color:var(--fg)}
+.popmenu button:hover,.popmenu a:hover{background:var(--raise)}
+.favgrid .fav{touch-action:pan-y;cursor:grab;-webkit-user-select:none;user-select:none}
+.favgrid.sorting .fav{cursor:grabbing}
+.favgrid .fav.dragging{opacity:.55;transform:scale(1.04)}
+.favgrid .fav.dragging .pimg{box-shadow:0 0 0 3px var(--accent)}
+.favgrid.sorting .fav:not(.dragging){transition:transform .15s}
+.version{opacity:.6}
+/* ---------- v3.2 ---------- */
+.ic{display:inline-block;vertical-align:-3px;flex:none}
+.reacts button{display:inline-flex;align-items:center;gap:7px}
+.reacts .r-love .ic{color:#ff7aa8}.reacts .r-lol .ic{color:#ffd36b}.reacts .r-shock .ic{color:#8fbcff}.reacts .r-sad .ic{color:#7fd0ff}.reacts .r-meh .ic{color:#c7c7d6}.reacts .r-angry .ic{color:#ff8a5c}
+.chip .ic{width:14px;height:14px;vertical-align:-2px}
+.awards{display:flex;gap:6px;align-items:center}.awards .ic{color:#ffd76a}
+.phead h3{display:flex;gap:8px;align-items:center}
+/* logros */
+.bsum{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;font-size:14px;color:var(--dim)}
+.bsum b{font-family:var(--display);font-size:28px;font-weight:900;color:var(--fg);margin-right:4px}
+.bsum .pbar{height:8px;max-width:420px}
+.badges2{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.badge2{display:flex;gap:14px;align-items:center;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:var(--raise)}
+.badge2.on{background:linear-gradient(120deg,rgba(255,255,255,.04),var(--raise))}
+.badge2.on.t-g{border-color:#8a6a1a}.badge2.on.t-p{border-color:#8f3a6b}.badge2.on.t-s{border-color:#5a6b8c}.badge2.on.t-b{border-color:#7a4a24}
+.badge2 .medal-svg{flex:none}
+.bt{min-width:0;display:flex;flex-direction:column;gap:2px;flex:1}
+.bt b{font-size:15px}
+.bt span{font-size:12.5px;color:var(--dim)}
+.bt em{font-style:normal;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-top:2px}
+.badge2.t-g .bt em{color:#ffd76a}.badge2.t-s .bt em{color:#dfe6f2}.badge2.t-b .bt em{color:#e0a070}
+.bprog{height:5px;background:var(--bg);border-radius:3px;overflow:hidden;margin-top:6px}
+.bprog i{display:block;height:100%;background:var(--dim);border-radius:3px}
+.bt small{font-size:11.5px;color:var(--dim);font-variant-numeric:tabular-nums}
+.badge2:not(.on) .bt b{color:var(--dim)}
+.showcase{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.sbadge{display:inline-flex;align-items:center;gap:6px;padding:3px 10px 3px 4px;border-radius:20px;background:var(--raise);border:1px solid var(--line);font-size:12.5px}
+.sbadge .medal-svg{margin:-4px 0}
+/* perfil: estado, redes, marcos, letras, texturas */
+.pstatus{display:inline-flex;align-items:center;gap:8px;margin:6px 0 2px;font-size:14px;font-weight:600;color:var(--fg);background:var(--raise);border:1px solid var(--line);padding:4px 12px;border-radius:20px}
+.dotlive{width:8px;height:8px;border-radius:50%;background:var(--good)}
+.socials{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 4px}
+.social{font-size:12.5px;padding:4px 10px;border-radius:8px;background:var(--raise);border:1px solid var(--line);color:var(--dim)}
+.social b{color:var(--fg);margin-right:3px}
+a.social:hover{border-color:var(--paccent)}
+.pcover.frame-none .pmain .avatar{box-shadow:none;border-color:var(--surface)}
+.pcover.frame-gold .pmain .avatar{box-shadow:0 0 0 4px #ffd76a,0 0 0 6px #8a6a1a}
+.pcover.frame-silver .pmain .avatar{box-shadow:0 0 0 4px #e6ebf5,0 0 0 6px #7c8aa3}
+.pcover.frame-rainbow .pmain .avatar{box-shadow:none;background:conic-gradient(#ff7aa8,#ffd36b,#a8f0c6,#7fe0ff,#c3a8ff,#ff7aa8) border-box;border:5px solid transparent}
+.pcover.frame-rainbow .pmain .avatar img,.pcover.frame-rainbow .pmain .avatar{background-clip:padding-box,border-box}
+.pcover.frame-double .pmain .avatar{box-shadow:0 0 0 3px var(--paccent),0 0 0 7px var(--surface),0 0 0 9px var(--paccent)}
+.pcover.frame-dashed .pmain .avatar{box-shadow:none;outline:3px dashed var(--paccent);outline-offset:3px}
+.pcover.frame-sunset .pmain .avatar{box-shadow:none;border:5px solid transparent;background:linear-gradient(var(--raise),var(--raise)) padding-box,linear-gradient(135deg,#ffb36b,#ff5c8a,#7a2bff) border-box}
+.font-serif h1,.font-serif .pname-sample{font-family:"Fraunces",Georgia,serif;font-stretch:100%;letter-spacing:-.01em}
+.font-mono h1,.font-mono .pname-sample{font-family:"Space Mono",ui-monospace,monospace;font-stretch:100%;letter-spacing:-.03em}
+.font-condensed h1,.font-condensed .pname-sample{font-family:var(--display);font-stretch:62%;font-weight:900;letter-spacing:0}
+.font-round h1,.font-round .pname-sample{font-family:"Fredoka",var(--body);font-stretch:100%}
+.pcover .pid h1{color:var(--fg)}
+.pbanner{position:relative}
+.pbanner.pat-dots::before,.pbanner.pat-lines::before,.pbanner.pat-grid::before,.pbanner.pat-stars::before,.pbanner.pat-waves::before{content:"";position:absolute;inset:0;z-index:1;opacity:.35;pointer-events:none}
+.pat-dots::before{background:radial-gradient(rgba(255,255,255,.7) 1.2px,transparent 1.5px) 0 0/14px 14px}
+.pat-lines::before{background:repeating-linear-gradient(135deg,rgba(255,255,255,.5) 0 2px,transparent 2px 12px)}
+.pat-grid::before{background:linear-gradient(rgba(255,255,255,.35) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,rgba(255,255,255,.35) 1px,transparent 1px) 0 0/22px 22px}
+.pat-stars::before{background:radial-gradient(#fff 1px,transparent 1.5px) 3px 7px/37px 31px,radial-gradient(#fff 1.4px,transparent 2px) 19px 21px/53px 47px,radial-gradient(rgba(255,255,255,.8) 1px,transparent 1.5px) 31px 3px/29px 41px}
+.pat-waves::before{background:radial-gradient(circle at 50% 120%,transparent 14px,rgba(255,255,255,.45) 15px,transparent 17px) 0 0/34px 20px}
+.cgroup{margin-top:16px}
+.cgroup .lb{display:block;margin-bottom:8px}
+.opts{display:flex;gap:6px;flex-wrap:wrap}
+.opt{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 12px;border-radius:10px;border:1px solid var(--line);background:var(--raise);font-weight:600;font-size:13.5px}
+.opt.on{border-color:var(--accent);background:var(--accent-soft)}
+.fprev{display:inline-block;width:20px;height:20px}
+.fprev i{display:block;width:100%;height:100%;border-radius:50%;background:var(--line);box-shadow:0 0 0 2px var(--accent)}
+.fprev.frame-none i{box-shadow:none}.fprev.frame-gold i{box-shadow:0 0 0 2px #ffd76a}.fprev.frame-silver i{box-shadow:0 0 0 2px #e6ebf5}.fprev.frame-rainbow i{box-shadow:none;background:conic-gradient(#ff7aa8,#ffd36b,#a8f0c6,#7fe0ff,#c3a8ff,#ff7aa8)}.fprev.frame-double i{box-shadow:0 0 0 1px var(--accent),0 0 0 3px var(--raise),0 0 0 4px var(--accent)}.fprev.frame-dashed i{box-shadow:none;outline:2px dashed var(--accent);outline-offset:1px}.fprev.frame-sunset i{box-shadow:none;background:linear-gradient(135deg,#ffb36b,#ff5c8a,#7a2bff)}
+.pname-sample{font-size:15px}
+.badgeopt .medal-svg{margin:-6px 0}
+.socgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
+.soc{display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:0 0 0 12px}
+.soc span{font-size:13px;font-weight:700;color:var(--dim);min-width:74px}
+.soc input{border:0!important;background:transparent!important;padding:9px 10px!important}
+/* películas: marcar desde la tarjeta */
+.seenbtn{display:inline-flex;align-items:center;gap:5px}
+.seenbtn.on{background:var(--accent-soft);border-color:var(--accent);color:var(--fg)}
+/* catálogo */
+.catprog{display:flex;flex-direction:column;gap:6px;margin-top:16px;max-width:520px}
+.catprog span{font-size:12.5px;color:var(--dim)}
+/* carrusel de destacadas */
+.slider{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.slides{position:relative;height:300px}
+.slide{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,1fr) 170px;gap:24px;align-items:center;padding:30px 34px;opacity:0;visibility:hidden;transition:opacity .6s,visibility .6s}
+.slide.on{opacity:1;visibility:visible}
+.sbg{position:absolute;inset:0;background-size:cover;background-position:center 30%;z-index:0}
+.sbg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,8,11,.95) 25%,rgba(8,8,11,.55) 65%,rgba(8,8,11,.75))}
+.sin,.sposter{position:relative;z-index:1}
+.sin h2{font-size:clamp(26px,3.6vw,40px);font-weight:900;font-stretch:112%;margin:6px 0 4px}
+.sin h2::before{display:none}
+.sin p{margin:0 0 16px;color:var(--dim)}
+.sposter{border-radius:12px;overflow:hidden;aspect-ratio:2/3;box-shadow:0 16px 40px rgba(0,0,0,.5);background:var(--raise)}
+.sposter img{width:100%;height:100%;object-fit:cover}
+.sdots{position:absolute;left:34px;bottom:16px;display:flex;gap:6px;z-index:2}
+.sdots button{width:22px;height:5px;border-radius:3px;border:0;background:rgba(255,255,255,.3);padding:0}
+.sdots button.on{background:var(--accent);width:34px}
+@media (max-width:600px){.slides{height:330px}.slide{grid-template-columns:1fr;padding:22px 20px 40px;align-content:end}.sposter{display:none}.sdots{left:20px}.badges2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -682,7 +787,7 @@ input[type=password]{border-radius:10px;border:1px solid var(--line);background:
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: comunidad de TVmaze. Los enlaces de IMDb llevan a su sitio.</div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 3.2</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -739,7 +844,23 @@ const GEN = { Drama: 'Drama', Comedy: 'Comedia', Action: 'Acción', Adventure: '
 const gname = g => GEN[g] || g;
 const STATUS = { Running: 'En emisión', Ended: 'Finalizada', 'To Be Determined': 'Sin confirmar', 'In Development': 'En desarrollo' };
 const LISTS = { watching: 'Viendo', plan: 'Para ver', done: 'Terminada', dropped: 'Abandonada' };
-const REACTS = [['love', '😍 Me encantó'], ['lol', '😂 Me reí'], ['shock', '😱 Impactante'], ['sad', '😢 Triste'], ['meh', '😐 Meh'], ['angry', '😡 Me enojó']];
+const REACTS = [['love', 'Me encantó'], ['lol', 'Me reí'], ['shock', 'Impactante'], ['sad', 'Triste'], ['meh', 'Meh'], ['angry', 'Me enojó']];
+// Íconos propios en SVG (sin emojis)
+const ICONS = {
+  love: '<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"/>',
+  lol: '<circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 13.5h9a4.5 4.5 0 0 1-9 0z" fill="currentColor"/><path d="M8 9.5l2 1-2 1M16 9.5l-2 1 2 1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>',
+  shock: '<path d="M13 2 4 14h6l-1 8 9-12h-6z" fill="currentColor"/>',
+  sad: '<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z" fill="currentColor"/>',
+  meh: '<circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 15h8M9 10h.01M15 10h.01" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>',
+  angry: '<path d="M12 2c1 4 6 6 6 12a6 6 0 0 1-12 0c0-3 1.5-4.5 3-6 0 2 1 3 2 3 0-3 0-6 1-9z" fill="currentColor"/>',
+  film: '<rect x="3" y="8" width="18" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 8l2.5-4.5 15 0L21 8M8 3.5 6 8M13 3.5 11 8M18 3.5 16 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
+  tomato: '<circle cx="12" cy="14" r="7.5" fill="#fa320a"/><path d="M12 7c-1-2-3-2.5-4.5-2 1.5.5 2 1.5 2.5 2.5-1.5-.5-3 0-4 1 2 .3 3.3.2 4.5-.3-.3 1.2.3 2.2 1.5 2.8.2-1.3.8-2.2 2-2.5 1 .9 2.5 1.2 4 .8-.9-1.1-2.2-1.6-3.5-1.4.8-1 1.8-1.5 3-1.6-1.6-.8-3.6-.3-5 .7z" fill="#00912d"/>',
+  trophy: '<path d="M7 4h10v4a5 5 0 0 1-10 0zM7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4M10 13h4v3h-4zM8 20h8v-2H8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
+  check: '<path d="m5 12 5 5 9-10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>',
+  dots: '<circle cx="5" cy="12" r="2" fill="currentColor"/><circle cx="12" cy="12" r="2" fill="currentColor"/><circle cx="19" cy="12" r="2" fill="currentColor"/>',
+};
+const icon = (n, sz = 18, cls = '') => `<svg class="ic ${cls}" width="${sz}" height="${sz}" viewBox="0 0 24 24" aria-hidden="true">${ICONS[n] || ''}</svg>`;
+const reactLabel = k => { const r = REACTS.find(x => x[0] === k); return r ? icon(k, 16) + ' ' + h(r[1]) : ''; };
 
 // ============================================================ DATOS DEL USUARIO
 let S = null;
@@ -880,6 +1001,7 @@ function markEps(c, list, on, quiet) {
   }
   syncMeta(r, c); r.act = Date.now();
   if (on && (r.list === 'plan' || r.list === 'dropped')) r.list = 'watching';
+  if (on) delete r.hideCont;
   const all = c.eps.filter(aired), seen = all.filter(e => r.eps[e.id]).length;
   let msg = on ? (list.length > 1 ? `Marcaste ${list.length} capítulos como vistos.` : `Visto: ${c.name} ${code(list[0])}.`) : (list.length > 1 ? `Desmarcaste ${list.length} capítulos.` : `Desmarcaste ${code(list[0])}.`);
   if (on && all.length && seen === all.length && c.status === 'Ended' && r.list !== 'done') { r.list = 'done'; msg = `¡Terminaste ${c.name}! La pasé a Terminadas.`; logAct('finished', c, ''); }
@@ -1000,43 +1122,120 @@ function timeText(min) {
 }
 const shortTime = min => { min = Math.round(min); return min >= 1440 ? `${Math.floor(min / 1440)} d ${Math.floor(min % 1440 / 60)} h` : min >= 60 ? `${Math.floor(min / 60)} h${min % 60 ? ' ' + (min % 60) + ' min' : ''}` : `${min} min`; };
 
-// ---- Anuncios de Adsterra en zonas fijas (fuera del contenido), para que no se recarguen al marcar capítulos.
-// Cada anuncio va en su propio iframe para que sus variables globales no choquen entre sí.
+// ---- Anuncios de Adsterra: el código va directo en la página, tal cual lo da Adsterra (sin iframes ni jaulas),
+// en zonas fijas fuera del contenido para que no se recarguen al marcar capítulos.
 const AD = CONFIG.adsterra || {};
-const adDoc = inner => `<!doctype html><html><head><meta charset="utf-8"><base target="_blank"><style>html,body{margin:0;padding:0;background:transparent;overflow:hidden;font-family:system-ui,sans-serif;color:#ddd}</style></head><body>${inner}</body></html>`;
-const bannerDoc = (key, w, hh) => adDoc(`<script>atOptions={'key':'${key}','format':'iframe','height':${hh},'width':${w},'params':{}};<\/script><script src="${AD.host}/22/${key}"><\/script>`);
-function adFrame(doc, w, hh, title) {
-  const f = document.createElement('iframe');
-  f.title = title; f.width = w; f.height = hh; f.setAttribute('scrolling', 'no'); f.setAttribute('loading', 'lazy');
-  // Jaula de seguridad: el anuncio puede mostrarse y abrir una pestaña nueva si el usuario hace clic,
-  // pero NO puede redirigir tu página, abrir ventanas solo, descargar archivos ni leer los datos del sitio.
-  f.setAttribute('sandbox', 'allow-scripts allow-popups allow-popups-to-escape-sandbox');
-  f.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
-  f.style.cssText = `border:0;display:block;margin:0 auto;max-width:100%;width:${typeof w === 'number' ? w + 'px' : w};height:${hh}px;background:transparent`;
-  f.srcdoc = doc; return f;
+let adQueue = Promise.resolve();
+function injectBanner(box, key, w, hh) {
+  // Los banners de Adsterra usan una variable global (atOptions), así que se cargan de a uno.
+  adQueue = adQueue.then(() => new Promise(res => {
+    const slot = document.createElement('div'); slot.className = 'adslot'; slot.style.cssText = `width:${w}px;max-width:100%;min-height:${hh}px`;
+    box.replaceChildren(slot);
+    window.atOptions = { key, format: 'iframe', height: hh, width: w, params: {} };
+    const sc = document.createElement('script'); sc.src = `${AD.host}/22/${key}`; sc.async = false;
+    sc.onload = sc.onerror = () => setTimeout(res, 250);
+    slot.appendChild(sc);
+    setTimeout(res, 4000);
+  }));
+  return adQueue;
 }
 let adTopAt = 0, adTopWide = null;
 function loadTopAd(force) {
   const box = document.getElementById('adtop'); if (!box || !AD.b728) return;
   const wide = window.innerWidth >= 780;
   if (!force && adTopWide === wide && Date.now() - adTopAt < 45000) return; // como máximo uno nuevo cada 45 s
-  adTopAt = Date.now(); adTopWide = wide;
-  box.replaceChildren(wide ? adFrame(bannerDoc(AD.b728, 728, 90), 728, 90, 'Publicidad') : adFrame(bannerDoc(AD.b320, 320, 50), 320, 50, 'Publicidad'));
-  box.hidden = false;
+  adTopAt = Date.now(); adTopWide = wide; box.hidden = false;
+  injectBanner(box, wide ? AD.b728 : AD.b320, wide ? 728 : 320, wide ? 90 : 50);
 }
 function loadBottomAds() {
   const box = document.getElementById('adbottom'); if (!box || box.dataset.done) return;
   box.dataset.done = '1'; box.hidden = false;
   if (AD.native) {
-    const f = adFrame(adDoc(`<script async data-cfasync="false" src="${AD.host}/21/${AD.native}"><\/script><div id="container-${AD.native}"></div>`), '100%', 260, 'Publicidad');
-    f.className = 'adnative'; f.style.height = '';
-    const w = document.createElement('div'); w.className = 'adn'; w.appendChild(f); box.appendChild(w);
+    const w = document.createElement('div'); w.className = 'adn';
+    const c = document.createElement('div'); c.id = 'container-' + AD.native; w.appendChild(c);
+    const sc = document.createElement('script'); sc.async = true; sc.setAttribute('data-cfasync', 'false'); sc.src = `${AD.host}/21/${AD.native}`;
+    w.appendChild(sc); box.appendChild(w);
   }
-  if (AD.b300) { const w = document.createElement('div'); w.className = 'ad3'; w.appendChild(adFrame(bannerDoc(AD.b300, 300, 250), 300, 250, 'Publicidad')); box.appendChild(w); }
+  if (AD.b300) { const w = document.createElement('div'); w.className = 'ad3'; box.appendChild(w); injectBanner(w, AD.b300, 300, 250); }
 }
 let adResizeT;
 window.addEventListener('resize', () => { clearTimeout(adResizeT); adResizeT = setTimeout(() => { if ((window.innerWidth >= 780) !== adTopWide) loadTopAd(true); }, 400); });
 window.addEventListener('hashchange', () => loadTopAd(false));
+
+// ---- Menú de los 3 puntitos en "Seguir viendo"
+function closeMenu() { const m = document.getElementById('popmenu'); if (m) m.remove(); }
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-act="nxmenu"]');
+  if (!b) { if (!e.target.closest('#popmenu')) closeMenu(); return; }
+  e.stopPropagation(); closeMenu();
+  const id = +b.dataset.id, r = S.shows[id]; if (!r) return;
+  const m = document.createElement('div'); m.id = 'popmenu'; m.className = 'popmenu'; m.setAttribute('role', 'menu');
+  m.innerHTML = `<button data-pm="hide" role="menuitem">Sacar de Seguir viendo</button><button data-pm="plan" role="menuitem">Mover a Para ver</button><button data-pm="done" role="menuitem">Marcar como terminada</button><button data-pm="dropped" role="menuitem">La dejé (abandonada)</button><a href="#/serie/${id}" role="menuitem">Ir a la serie</a>`;
+  document.body.appendChild(m);
+  const rc = b.getBoundingClientRect();
+  m.style.top = (window.scrollY + rc.bottom + 6) + 'px';
+  m.style.left = Math.max(12, Math.min(window.innerWidth - m.offsetWidth - 12, rc.right - m.offsetWidth)) + 'px';
+  m.onclick = ev => {
+    const x = ev.target.closest('[data-pm]'); if (!x) return closeMenu();
+    const prev = { list: r.list, hideCont: r.hideCont };
+    if (x.dataset.pm === 'hide') { r.hideCont = true; toast(`${r.name} ya no aparece en Seguir viendo.`, () => { Object.assign(r, prev); if (!prev.hideCont) delete r.hideCont; save(); refresh(); }); }
+    else { r.list = x.dataset.pm; toast(`${r.name} pasó a ${LISTS[r.list]}.`, () => { r.list = prev.list; save(); refresh(); }); }
+    r.act = Date.now(); save(); closeMenu(); refresh();
+  };
+});
+window.addEventListener('hashchange', closeMenu);
+window.addEventListener('scroll', closeMenu, { passive: true });
+
+// ---- Ordenar favoritas arrastrando (mantener apretado en el celu, arrastrar con el mouse)
+let fdrag = null;
+document.addEventListener('pointerdown', e => {
+  const it = e.target.closest('#favgrid .fav'); if (!it || e.target.closest('button') || e.button > 0) return;
+  const touch = e.pointerType !== 'mouse';
+  fdrag = { it, x: e.clientX, y: e.clientY, active: false, touch, moved: false };
+  if (touch) fdrag.timer = setTimeout(() => startFav(), 380);
+});
+function startFav() {
+  if (!fdrag) return;
+  fdrag.active = true; fdrag.it.classList.add('dragging'); document.getElementById('favgrid').classList.add('sorting');
+  try { navigator.vibrate && navigator.vibrate(25); } catch (e) { }
+}
+document.addEventListener('pointermove', e => {
+  if (!fdrag) return;
+  const dist = Math.hypot(e.clientX - fdrag.x, e.clientY - fdrag.y);
+  if (!fdrag.active) {
+    if (fdrag.touch) { if (dist > 10) { clearTimeout(fdrag.timer); fdrag = null; } return; }
+    if (dist > 6) startFav(); else return;
+  }
+  fdrag.moved = true;
+  const el = document.elementFromPoint(e.clientX, e.clientY);
+  const over = el && el.closest('#favgrid .fav');
+  if (over && over !== fdrag.it) {
+    const grid = over.parentNode, items = [...grid.children], a = items.indexOf(fdrag.it), b = items.indexOf(over);
+    grid.insertBefore(fdrag.it, a < b ? over.nextSibling : over);
+    [...grid.children].forEach((x, i) => { const rk = x.querySelector('.rank'); if (rk) rk.textContent = i + 1; });
+  }
+});
+document.addEventListener('touchmove', e => { if (fdrag && fdrag.active) e.preventDefault(); }, { passive: false });
+function endFav() {
+  if (!fdrag) return;
+  clearTimeout(fdrag.timer);
+  const d = fdrag; fdrag = null;
+  if (!d.active) return;
+  d.it.classList.remove('dragging');
+  const grid = document.getElementById('favgrid'); if (!grid) return;
+  grid.classList.remove('sorting');
+  if (d.moved) {
+    S.profile.top = [...grid.children].map(x => +x.dataset.id);
+    save(); toast('Orden de favoritas guardado.');
+    // que el arrastre no abra la serie
+    const stop = ev => { ev.preventDefault(); ev.stopPropagation(); };
+    document.addEventListener('click', stop, { capture: true, once: true });
+    setTimeout(() => document.removeEventListener('click', stop, { capture: true }), 400);
+    setTimeout(refresh, 50);
+  }
+}
+document.addEventListener('pointerup', endFav);
+document.addEventListener('pointercancel', endFav);
 
 // ============================================================ RUTAS
 const UI = { season: {}, listTab: 'watching', listSort: 'act', genre: '' };
@@ -1064,7 +1263,7 @@ window.addEventListener('hashchange', () => route(false));
 let jobsFeed = null;
 async function vHome(_, draw, alive) {
   const mine = myShows();
-  const watching = mine.filter(r => r.list === 'watching').sort((a, b) => (b.act || 0) - (a.act || 0));
+  const watching = mine.filter(r => r.list === 'watching' && !r.hideCont).sort((a, b) => (b.act || 0) - (a.act || 0));
   const totalMin = mine.reduce((a, r) => a + showMinutes(r), 0) + movieStats().min;
   const welcome = !mine.length;
   const head = welcome
@@ -1074,7 +1273,8 @@ async function vHome(_, draw, alive) {
        <div><div class="units sm">${unitsHTML(totalMin)}</div><div class="small dim" style="font-weight:600">de series y pelis en total · <a href="#/stats" style="color:var(--blue)">ver estadísticas</a></div></div></section>`;
   const parts = { feed: '', next: watching.length ? `<section class="sec"><div class="sechead"><h2>Seguir viendo</h2><a href="#/mis-series">Ver todas</a></div><div class="next">${watching.slice(0, 6).map(() => '<div class="skel" style="height:88px"></div>').join('')}</div></section>` : '', today: `<section class="sec"><div class="sechead"><h2>Se estrena hoy</h2><a href="#/calendario">Calendario</a></div>${skelGrid(6)}</section>`, rec: '' };
   parts.cats = `<section class="sec"><div class="sechead"><h2>Explorá por categoría</h2><a href="#/descubrir">Ver todo</a></div><div class="ctiles home">${CATS.slice(0, 8).map(c => tileHTML(c, [], false)).join('')}</div></section>`;
-  const paint = () => draw(head + parts.next + parts.feed + parts.today + parts.cats + ad('home') + parts.rec);
+  parts.hero = '';
+  const paint = () => { draw(head + parts.next + parts.feed + parts.hero + parts.today + parts.cats + ad('home') + parts.rec); if (parts.hero) startSlider(); };
   if (ONLINE) jobsFeed = (async () => { try { parts.feed = await feedHTML(); if (alive()) paint(); } catch (e) { } })();
   paint();
   const jobs = [];
@@ -1084,8 +1284,8 @@ async function vHome(_, draw, alive) {
     for (const c of shows) {
       const r = S.shows[c.id]; if (r) syncMeta(r, c);
       const e = nextUp(c), up = nextAiring(c);
-      if (e) cards.push(`<div class="nx"><a class="th" href="#/ep/${c.id}/${e.id}">${img(e.img || c.img, c.name)}</a><a class="tx" href="#/ep/${c.id}/${e.id}"><b>${h(c.name)}</b><span>${code(e)} · ${h(e.name)}</span><span>${plural(c.eps.filter(aired).length - watchedCount(r), 'capítulo pendiente', 'capítulos pendientes')}</span></a><button class="check go" data-act="nextep" data-show="${c.id}" data-ep="${e.id}" aria-label="Marcar ${h(code(e))} como visto"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5 9-10"/></svg></button></div>`);
-      else cards.push(`<div class="nx"><a class="th" href="#/serie/${c.id}">${img(c.img, c.name)}</a><a class="tx" href="#/serie/${c.id}"><b>${h(c.name)}</b><span>Estás al día</span><span>${up ? 'Próximo: ' + fmtDate(up.air, { day: 'numeric', month: 'long' }) : c.status === 'Ended' ? 'La serie terminó' : 'Sin fecha de regreso'}</span></a></div>`);
+      if (e) cards.push(`<div class="nx"><button class="dots" data-act="nxmenu" data-id="${c.id}" aria-label="Opciones de ${h(c.name)}">⋯</button><a class="th" href="#/ep/${c.id}/${e.id}">${img(e.img || c.img, c.name)}</a><a class="tx" href="#/ep/${c.id}/${e.id}"><b>${h(c.name)}</b><span>${code(e)} · ${h(e.name)}</span><span>${plural(c.eps.filter(aired).length - watchedCount(r), 'capítulo pendiente', 'capítulos pendientes')}</span></a><button class="check go" data-act="nextep" data-show="${c.id}" data-ep="${e.id}" aria-label="Marcar ${h(code(e))} como visto"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5 9-10"/></svg></button></div>`);
+      else cards.push(`<div class="nx"><button class="dots" data-act="nxmenu" data-id="${c.id}" aria-label="Opciones de ${h(c.name)}">⋯</button><a class="th" href="#/serie/${c.id}">${img(c.img, c.name)}</a><a class="tx" href="#/serie/${c.id}"><b>${h(c.name)}</b><span>Estás al día</span><span>${up ? 'Próximo: ' + fmtDate(up.air, { day: 'numeric', month: 'long' }) : c.status === 'Ended' ? 'La serie terminó' : 'Sin fecha de regreso'}</span></a></div>`);
     }
     save();
     parts.next = `<section class="sec"><div class="sechead"><h2>Seguir viendo</h2><a href="#/mis-series">Ver todas</a></div><div class="next">${cards.join('')}</div></section>`;
@@ -1094,6 +1294,7 @@ async function vHome(_, draw, alive) {
   jobs.push((async () => {
     try {
       const list = await schedule();
+      parts.hero = heroHTML(list);
       parts.today = `<section class="sec"><div class="sechead"><h2>Se estrena hoy</h2><a href="#/calendario">Calendario</a></div>${list.length ? `${row(list.slice(0, 18).map(s => poster(s, `T${s.ep.s} · E${s.ep.n}${s.ep.air ? ' · ' + fmtTime(s.ep.air) : ''}`)).join(''))}` : empty('Hoy no hay estrenos cargados', 'Volvé más tarde.')}</section>`;
     } catch (e) { parts.today = `<section class="sec"><h2>Se estrena hoy</h2>${errBox(e)}</section>`; }
     if (alive()) paint();
@@ -1196,7 +1397,7 @@ async function vEpisode(args, draw, alive) {
     ${aired(e) ? `<div><button class="btn ${w ? '' : 'pri'}" data-act="ep" data-ep="${e.id}" aria-pressed="${w ? 'true' : 'false'}">${w ? '✓ Visto el ' + fmtDate(w.t, { day: 'numeric', month: 'short' }) + ' · desmarcar' : 'Marcar como visto'}</button></div>${w ? `<div class="rwbox"><div><b>${rwCount(r, e.id)}</b><span>${rwCount(r, e.id) === 1 ? 'vez revisto' : 'veces revisto'}</span></div><button class="btn sm" data-act="rwep" data-ep="${e.id}" data-v="-1" ${rwCount(r, e.id) ? '' : 'disabled'} aria-label="Restar un revisto">−</button><button class="btn sm pri" data-act="rwep" data-ep="${e.id}" data-v="1">↻ Lo volví a ver</button></div>` : ''}` : `<div class="chip" style="align-self:flex-start">Se estrena ${fmtDate(e.air)}</div>`}
     ${e.sum ? `<p class="summary" style="margin:0">${h(e.sum)}</p>` : ''}
   </div></div>
-  <div class="two"><div class="panel"><h3>¿Cómo te pegó?</h3><div class="reacts">${REACTS.map(([k, l]) => `<button data-act="react" data-v="${k}" class="${n.react === k ? 'on' : ''}">${l}</button>`).join('')}</div>
+  <div class="two"><div class="panel"><h3>¿Cómo te pegó?</h3><div class="reacts">${REACTS.map(([k, l]) => `<button data-act="react" data-v="${k}" class="r-${k} ${n.react === k ? 'on' : ''}">${icon(k, 17)} ${h(l)}</button>`).join('')}</div>
     <h3 style="margin-top:18px">Tu puntaje del capítulo</h3><div class="score">${Array.from({ length: 10 }, (_, j) => `<button data-act="epscore" data-v="${j + 1}" class="${n.score > j ? 'on' : ''}">${j + 1}</button>`).join('')}</div></div>
   <div class="panel"><h3>Tu nota privada</h3><textarea id="epnote" data-ep="${e.id}" placeholder="Teorías, momentos, lo que quieras. Se guarda solo.">${h(n.text || '')}</textarea><div class="small dim" style="margin-top:6px">Esta nota es privada: solo la ves vos.</div></div></div>
   <div class="epnav">${prev ? `<a class="btn" href="#/ep/${sid}/${prev.id}">← ${code(prev)}</a>` : '<span></span>'}${next ? `<a class="btn" href="#/ep/${sid}/${next.id}">${code(next)} →</a>` : ''}</div><div id="cbox">${ONLINE ? '<div class="skel sec" style="height:140px"></div>' : ''}</div>`);
@@ -1359,7 +1560,7 @@ async function vStats(_, draw) {
   const done = mine.filter(r => r.list === 'done').length, favs = mine.filter(r => r.fav).length;
   draw(`<section class="stathero"><div class="eyebrow">Tiempo total viendo series y películas</div><div class="units">${unitsHTML(st.min + mv.min)}</div>
     <p>Son <b>${Math.round((st.min + mv.min) / 60).toLocaleString('es-AR')} horas</b>: ${plural(st.eps, 'capítulo', 'capítulos')} de ${plural(st.per.length, 'serie', 'series')} (${h(shortTime(st.min))}) y ${plural(mv.n, 'película', 'películas')} (${h(shortTime(mv.min))}).</p></section>
-  ${mv.n ? `<section class="panel sec"><div class="phead"><h3>🎬 Películas</h3><a class="small" style="color:var(--blue)" href="#/peliculas">Ver mis películas</a></div><div class="kpis"><div class="kpi"><span>Películas vistas</span><b>${mv.n}</b></div><div class="kpi"><span>Tiempo en películas</span><b>${h(shortTime(mv.min))}</b></div><div class="kpi"><span>Revistas</span><b>${h(shortTime(mv.rw))}</b></div><div class="kpi"><span>Director favorito</span><b>${h((Object.entries(mv.byD).sort((a, b) => b[1] - a[1])[0] || ['—'])[0])}</b></div></div>
+  ${mv.n ? `<section class="panel sec"><div class="phead"><h3>${icon('film', 18)} Películas</h3><a class="small" style="color:var(--blue)" href="#/peliculas">Ver mis películas</a></div><div class="kpis"><div class="kpi"><span>Películas vistas</span><b>${mv.n}</b></div><div class="kpi"><span>Tiempo en películas</span><b>${h(shortTime(mv.min))}</b></div><div class="kpi"><span>Revistas</span><b>${h(shortTime(mv.rw))}</b></div><div class="kpi"><span>Director favorito</span><b>${h((Object.entries(mv.byD).sort((a, b) => b[1] - a[1])[0] || ['—'])[0])}</b></div></div>
     <div class="bars" style="margin-top:16px">${Object.entries(mv.byG).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([g, v], i, arr) => `<div class="bar"><span>${h(gname(g))}</span><div class="track"><i style="width:${v / arr[0][1] * 100}%"></i></div><em>${h(shortTime(v))}</em></div>`).join('')}</div></section>` : ''}
   ${rwSection(st)}
   <h2 class="sec" style="margin-bottom:12px">Por período</h2>
@@ -1418,12 +1619,13 @@ async function vProfile(_, draw) {
   const seen = mine.filter(r => watchedCount(r) > 0 || r.list === 'done');
   const notes = Object.entries(S.notes).filter(([, n]) => n.text || n.score || n.react).sort((a, b) => (b[1].t || 0) - (a[1].t || 0));
   const tab = UI.ptab || 'fav';
+  const bsMine = myBadgeStats();
   const myMovies = Object.values(S.movies).filter(r => (r.seen || []).length).sort((a, b) => (b.seen[0] || 0) - (a.seen[0] || 0));
-  const tabs = [['fav', 'Favoritas', favs.length], ['seen', 'Series vistas', seen.length], ['movies', 'Películas', myMovies.length], ['notes', 'Comentarios', notes.length], ['badges', 'Logros', BADGES.filter(b => b[2](ps)).length + '/' + BADGES.length], ['edit', 'Editar perfil', '']];
+  const tabs = [['fav', 'Favoritas', favs.length], ['seen', 'Series vistas', seen.length], ['movies', 'Películas', myMovies.length], ['notes', 'Comentarios', notes.length], ['badges', 'Logros', badgeList(bsMine).filter(x => x.on).length + '/' + B2.length], ['edit', 'Editar perfil', '']];
   let body = '';
   if (tab === 'fav') {
     const cand = mine.filter(r => !r.fav).sort((a, b) => a.name.localeCompare(b.name));
-    body = (favs.length ? `<p class="small dim" style="margin-top:0">Ordenalas como quieras con las flechas. La número 1 es tu serie favorita de todas.</p><div class="favgrid">${favs.map((r, i) => `<article class="fav"><a href="#/serie/${r.id}" class="pimg">${img(r.img, r.name)}<span class="rank">${i + 1}</span></a><b>${h(r.name)}</b><div class="ord"><button data-act="topup" data-id="${r.id}" aria-label="Mover antes" ${i ? '' : 'disabled'}>←</button><button data-act="topdown" data-id="${r.id}" aria-label="Mover después" ${i < favs.length - 1 ? '' : 'disabled'}>→</button><button data-act="topdel" data-id="${r.id}" aria-label="Sacar de favoritas">✕</button></div></article>`).join('')}</div>` : `<div class="empty"><h3>Todavía no tenés favoritas</h3><div>Tocá “Favorita” en cualquier serie o agregala acá abajo.</div></div>`) +
+    body = (favs.length ? `<p class="small dim" style="margin-top:0">Mantené apretada una serie y arrastrala para ordenarlas (o usá las flechas). La número 1 es tu favorita de todas.</p><div class="favgrid" id="favgrid">${favs.map((r, i) => `<article class="fav" data-id="${r.id}"><a href="#/serie/${r.id}" class="pimg">${img(r.img, r.name)}<span class="rank">${i + 1}</span></a><b>${h(r.name)}</b><div class="ord"><button data-act="topup" data-id="${r.id}" aria-label="Mover antes" ${i ? '' : 'disabled'}>←</button><button data-act="topdown" data-id="${r.id}" aria-label="Mover después" ${i < favs.length - 1 ? '' : 'disabled'}>→</button><button data-act="topdel" data-id="${r.id}" aria-label="Sacar de favoritas">✕</button></div></article>`).join('')}</div>` : `<div class="empty"><h3>Todavía no tenés favoritas</h3><div>Tocá “Favorita” en cualquier serie o agregala acá abajo.</div></div>`) +
       (cand.length ? `<div class="addrow"><select class="btn" id="topadd" aria-label="Serie para agregar"><option value="">Agregar una serie a favoritas…</option>${cand.map(r => `<option value="${r.id}">${h(r.name)}</option>`).join('')}</select><button class="btn pri" data-act="topadd">Agregar</button></div>` : '');
   } else if (tab === 'seen') {
     const lastSeen = r => Math.max(0, ...Object.values(r.eps || {}).map(e => e.t));
@@ -1435,23 +1637,23 @@ async function vProfile(_, draw) {
       ${list.length > 18 ? `<div style="text-align:center;margin-top:20px"><button class="btn" data-act="seenall">${UI.seenAll ? 'Mostrar menos' : `Ver todas (${list.length})`}</button></div>` : ''}` : `<div class="empty"><h3>Todavía no viste ninguna serie</h3><div>Cuando marques capítulos, tus series aparecen acá.</div></div>`;
   } else if (tab === 'notes') {
     const R = Object.fromEntries(REACTS);
-    body = notes.length ? `<div class="notes">${notes.map(([id, n]) => `<a class="noteitem" href="${n.sid ? `#/ep/${n.sid}/${id}` : '#/perfil'}"><div class="nh"><b>${h(n.sname || 'Capítulo')}</b><span>${h(n.code || '')}${n.ename ? ' · ' + h(n.ename) : ''}</span></div>${n.react || n.score ? `<div class="nm">${n.react ? `<span class="chip">${h(R[n.react] || '')}</span>` : ''}${n.score ? `<span class="chip blue">${n.score}/10</span>` : ''}</div>` : ''}${n.text ? `<p>${h(n.text)}</p>` : ''}<time>${h(fmtDate(n.t, { day: 'numeric', month: 'short', year: 'numeric' }))}</time></a>`).join('')}</div>` : `<div class="empty"><h3>Sin comentarios todavía</h3><div>Entrá a un capítulo y dejá tu reacción, puntaje o comentario.</div></div>`;
+    body = notes.length ? `<div class="notes">${notes.map(([id, n]) => `<a class="noteitem" href="${n.sid ? `#/ep/${n.sid}/${id}` : '#/perfil'}"><div class="nh"><b>${h(n.sname || 'Capítulo')}</b><span>${h(n.code || '')}${n.ename ? ' · ' + h(n.ename) : ''}</span></div>${n.react || n.score ? `<div class="nm">${n.react ? `<span class="chip">${reactLabel(n.react)}</span>` : ''}${n.score ? `<span class="chip blue">${n.score}/10</span>` : ''}</div>` : ''}${n.text ? `<p>${h(n.text)}</p>` : ''}<time>${h(fmtDate(n.t, { day: 'numeric', month: 'short', year: 'numeric' }))}</time></a>`).join('')}</div>` : `<div class="empty"><h3>Sin comentarios todavía</h3><div>Entrá a un capítulo y dejá tu reacción, puntaje o comentario.</div></div>`;
   } else if (tab === 'movies') {
     body = myMovies.length ? `<div class="grid">${myMovies.map(r => mposter({ id: r.id, title: r.title, year: r.year, poster: r.poster }, r.seen.length > 1 ? `Vista ${r.seen.length} veces` : r.score ? `Tu nota: ${r.score}` : r.year)).join('')}</div>` : `<div class="empty"><h3>Todavía no marcaste películas</h3><div>Buscá una y tocá “Marcar como vista”.</div><a class="btn pri" href="#/peliculas">Ir a películas</a></div>`;
   } else if (tab === 'badges') {
-    body = `<div class="badges">${BADGES.map(([t, d, f]) => { const on = f(ps); return `<div class="badge ${on ? 'on' : ''}"><div class="medal">${on ? '★' : '·'}</div><div><b>${h(t)}</b><span>${h(d)}</span></div></div>`; }).join('')}</div>`;
+    body = badgesHTML(bsMine);
   } else {
     body = customizeHTML() + `<div class="two" style="margin-top:22px"><section><h3>Tus datos</h3><form class="form" id="pform"><label class="lb" for="pname">Nombre</label><input type="text" id="pname" maxlength="40" value="${h(p.name)}" placeholder="Cómo te llamás">
       <label class="lb" for="pbio">Sobre vos</label><textarea id="pbio" maxlength="240" placeholder="Fan de las series policiales…">${h(p.bio)}</textarea><div><button class="btn pri" type="submit">Guardar perfil</button></div></form></section>
       <section><h3>Copia de seguridad</h3><p class="small dim" style="margin-top:0">Todo se guarda en este navegador. Descargá una copia para no perder nada o pasar tus datos a otra compu.</p>
       <div class="actions"><button class="btn" data-act="export">Descargar copia</button><label class="btn" for="importf">Cargar copia</label><input type="file" id="importf" accept="application/json,.json" hidden><button class="btn ghost danger" data-act="wipe">Borrar todo</button></div></section></div>`;
   }
-  draw(`<section class="pcover" ${accentStyle(p.style)}>${bannerHTML(p.style, favs)}
+  draw(`<section class="pcover ${profileClasses(p.style)}" ${accentStyle(p.style)}>${bannerHTML(p.style, favs)}
     <div class="pmain"><div class="avatar">${p.photo ? `<img src="${p.photo}" alt="Tu foto">` : h(initials(p.name || 'Yo'))}</div>
-      <div class="pid"><h1>${h(p.name || 'Tu perfil')}</h1>${p.bio ? `<p>${h(p.bio)}</p>` : `<p class="dim">Contá algo sobre vos en “Editar perfil”.</p>`}<div class="small dim">En JVNN desde ${h(fmtDate(S.created, { month: 'long', year: 'numeric' }))}</div></div>
+      <div class="pid"><h1>${h(p.name || 'Tu perfil')}</h1>${p.bio ? `<p>${h(p.bio)}</p>` : `<p class="dim">Contá algo sobre vos en “Editar perfil”.</p>`}${extrasHTML(p.style)}<div class="small dim">En JVNN desde ${h(fmtDate(S.created, { month: 'long', year: 'numeric' }))}</div>${showcaseHTML(p.style, bsMine)}</div>
       <div class="actions"><label class="btn" for="photo">Cambiar foto</label>${p.photo ? '<button class="btn ghost" data-act="nophoto">Quitar foto</button>' : ''}<input type="file" id="photo" accept="image/*" hidden></div></div>
     ${featuredHTML(p.style, S.shows)}
-    <div class="pstats"><a href="#/stats"><b>${h(shortTime(ps.min + movieStats().min))}</b><span>de series y pelis</span></a><a href="#/stats"><b>${ps.eps.toLocaleString('es-AR')}</b><span>capítulos</span></a><a data-act="ptab" data-v="seen" href="#/perfil"><b>${seen.length}</b><span>series vistas</span></a><a data-act="ptab" data-v="fav" href="#/perfil"><b>${favs.length}</b><span>favoritas</span></a><a data-act="ptab" data-v="badges" href="#/perfil"><b>${BADGES.filter(b => b[2](ps)).length}</b><span>logros</span></a></div></section>
+    <div class="pstats"><a href="#/stats"><b>${h(shortTime(ps.min + movieStats().min))}</b><span>de series y pelis</span></a><a href="#/stats"><b>${ps.eps.toLocaleString('es-AR')}</b><span>capítulos</span></a><a data-act="ptab" data-v="seen" href="#/perfil"><b>${seen.length}</b><span>series vistas</span></a><a data-act="ptab" data-v="fav" href="#/perfil"><b>${favs.length}</b><span>favoritas</span></a><a data-act="ptab" data-v="badges" href="#/perfil"><b>${badgeList(bsMine).filter(x => x.on).length}</b><span>logros</span></a></div></section>
   ${ONLINE ? (ME ? `<div class="acctbar"><div>${avatar(ME, 36)}<div><b>@${h(ME.username)}</b><span id="syncst" class="sync ok">Sincronizado</span></div></div><div class="actions"><a class="btn sm" href="#/u/${h(ME.username)}">Ver mi perfil público</a><button class="btn sm" data-act="copylink" data-u="${h(ME.username)}">Copiar link</button><button class="btn sm ghost" data-act="logout">Cerrar sesión</button></div></div>`
     : `<div class="invite" style="margin-top:16px"><div><h2>Poné tu perfil online</h2><p class="dim">Creá tu cuenta gratis para tener un link de perfil, seguir gente, comentar y ver tus series en cualquier dispositivo.</p></div><a class="btn pri" href="#/entrar/crear">Crear cuenta</a></div>`) : ''}
   <div class="tabs">${tabs.map(([k, l, n]) => `<button class="tab ${k === tab ? 'on' : ''}" data-act="ptab" data-v="${k}">${l}${n !== '' ? `<span>${n}</span>` : ''}</button>`).join('')}</div>
@@ -1633,47 +1835,77 @@ function packShow(s) {
 function unpack(a) {
   return { id: a[0], name: a[1], img: a[2] ? (a[2].startsWith('http') ? a[2] : IMG_PRE + a[2]) : '', genres: G_LIST.filter((_, i) => a[3] & (1 << i)), rating: a[4] ? a[4] / 10 : null, weight: a[5], lang: a[6], type: TYPES[a[7]], premiered: a[8] ? String(a[8]) : '', status: STATUSES[a[9]], isk: !!a[10], net: a[11] || '' };
 }
-let CATALOG = null, catLoading = null;
-const CAT_LAST = 345;
+let CATALOG = null, CAT = null, catInitP = null, catFillP = null;
+const CAT_LAST = 345, CAT_MIN_WEIGHT = 10;
 function catPriority() {
   const all = Array.from({ length: CAT_LAST + 1 }, (_, i) => i);
-  const first = [...POOL_PAGES, ...all.slice().reverse().slice(0, 60)];
-  return [...new Set([...first, ...all])];
+  return [...new Set([...POOL_PAGES, ...all.slice().reverse().slice(0, 60), ...all])];
 }
-async function loadCatalog(onProgress, budget) {
-  if (CATALOG && !budget) return CATALOG;
-  if (catLoading) return catLoading;
-  catLoading = (async () => {
-    const pages = new Map();
-    // 1) lo guardado en este navegador
-    const local = await idb.get('catalog:v1');
-    if (local && local.d) for (const [p, d] of Object.entries(local.d)) pages.set(+p, d);
-    // 2) el catálogo compartido (si la base lo tiene)
-    if (!local || Date.now() - local.t > 3 * 86400e3) {
-      const rows = await sbTry(() => rest('catalog_pages?select=page,data', { auth: false }), []);
-      for (const r of rows || []) pages.set(r.page, r.data);
+function catStale(p) { const t = CAT.t[p]; if (t == null) return true; const age = Date.now() - t; return p > CAT_LAST - 12 ? age > 3 * 86400e3 : age > 30 * 86400e3; }
+function catBuild() {
+  const seen = new Set(), out = [];
+  for (const arr of CAT.d.values()) for (const a of arr) if (!seen.has(a[0])) { seen.add(a[0]); out.push(unpack(a)); }
+  CATALOG = out; return out;
+}
+function catSaveLocal() { idb.set('catalog:v2', { t: CAT.t, d: Object.fromEntries(CAT.d), sb: CAT.sb }); }
+async function catInit() {
+  if (CAT) return;
+  if (!catInitP) catInitP = (async () => {
+    const local = await idb.get('catalog:v2');
+    CAT = { d: new Map(), t: {}, sb: 0 };
+    if (local && local.d) { for (const [p, d] of Object.entries(local.d)) CAT.d.set(+p, d); CAT.t = local.t || {}; CAT.sb = local.sb || 0; }
+    // el catálogo compartido (lo completan entre todos los usuarios); se vuelve a pedir cada 2 días
+    if (Date.now() - CAT.sb > 2 * 86400e3) {
+      const rows = await sbTry(() => rest('catalog_pages?select=page,data,updated_at', { auth: false }), null);
+      if (rows && rows.length) { for (const r of rows) { const t = Date.parse(r.updated_at) || Date.now(); if (!CAT.t[r.page] || t > CAT.t[r.page]) { CAT.d.set(r.page, r.data); CAT.t[r.page] = t; } } CAT.sb = Date.now(); catSaveLocal(); }
     }
-    // 3) completar páginas que falten directamente desde TVmaze (de a poco)
-    const missing = catPriority().filter(p => !pages.has(p));
-    const want = budget != null ? budget : (pages.size < 80 ? 36 : 12);
-    let done = 0; const todo = missing.slice(0, want);
-    onProgress && onProgress(pages.size, todo.length, 0);
-    await Promise.all(todo.map(async p => {
-      try {
-        const list = await raw('/shows?page=' + p);
-        const packed = (list || []).filter(s => (s.weight || 0) >= 45 && s.image).map(packShow);
-        pages.set(p, packed);
-        if (typeof ME !== 'undefined' && ME) sbTry(() => rest('catalog_pages', { method: 'POST', headers: { Prefer: 'resolution=merge-duplicates' }, body: { page: p, data: packed, updated_at: new Date().toISOString() } }));
-      } catch (e) { }
-      done++; onProgress && onProgress(pages.size, todo.length, done);
-    }));
-    idb.set('catalog:v1', { t: local && pages.size === Object.keys(local.d || {}).length ? local.t : Date.now(), d: Object.fromEntries(pages) });
-    const seen = new Set(), out = [];
-    for (const arr of pages.values()) for (const a of arr) if (!seen.has(a[0])) { seen.add(a[0]); out.push(unpack(a)); }
-    CATALOG = out; catLoading = null;
-    return out;
+    catBuild();
   })();
-  return catLoading;
+  await catInitP;
+}
+// Devuelve lo que haya del catálogo (puede estar incompleto).
+async function loadCatalog() { await catInit(); return CATALOG || catBuild(); }
+const catMissing = () => CAT ? catPriority().filter(catStale) : [];
+// Completa el catálogo trayendo de TVmaze las páginas que falten. onChunk se llama cada tanto con el avance.
+function catFill(onChunk) {
+  if (catFillP) { catFillP.listeners.push(onChunk); return catFillP; }
+  const listeners = [onChunk];
+  const p = (async () => {
+    await catInit();
+    const todo = catMissing(), total = todo.length; let done = 0, sinceBuild = 0;
+    const notify = fin => { catBuild(); catSaveLocal(); for (const f of listeners) try { f && f(done, total, fin); } catch (e) { } };
+    let i = 0;
+    const worker = async () => {
+      while (i < todo.length) {
+        const pg = todo[i++];
+        try {
+          const list = await raw('/shows?page=' + pg);
+          const packed = (list || []).filter(s => (s.weight || 0) >= CAT_MIN_WEIGHT && s.image).map(packShow);
+          CAT.d.set(pg, packed); CAT.t[pg] = Date.now();
+          if (typeof ME !== 'undefined' && ME) sbTry(() => rest('catalog_pages', { method: 'POST', headers: { Prefer: 'resolution=merge-duplicates' }, body: { page: pg, data: packed, updated_at: new Date().toISOString() } }));
+        } catch (e) { }
+        done++; sinceBuild++;
+        if (sinceBuild >= 20) { sinceBuild = 0; notify(); }
+      }
+    };
+    await Promise.all([worker(), worker(), worker()]);
+    catFillP = null; notify(true);
+  })();
+  p.listeners = listeners; catFillP = p;
+  return p;
+}
+function catProgressHTML() {
+  const miss = catMissing().length, total = CAT_LAST + 1, have = total - miss;
+  return miss ? `<div class="catprog"><div class="pbar"><i style="width:${Math.round(have / total * 100)}%"></i></div><span>Completando el catálogo de todas las series del mundo: ${Math.round(have / total * 100)}%. Podés seguir usando la página.</span></div>` : '';
+}
+let catRefreshT = 0;
+function catAutoFill() {
+  if (!catMissing().length) return;
+  catFill((d, t, fin) => {
+    const r = parseRoute().name;
+    if ((r === 'categoria' || r === 'descubrir') && (fin || Date.now() - catRefreshT > 5000)) { catRefreshT = Date.now(); refresh(); }
+    else { const el = document.querySelector('.catprog'); if (el) el.outerHTML = catProgressHTML(); }
+  });
 }
 
 // ---------------------------------------------------------- categorías
@@ -1721,8 +1953,9 @@ async function vCategory(args, draw, alive) {
   const cat = getCat(args[0]); if (!cat) return draw(empty('Esa categoría no existe', '', '<a class="btn" href="#/descubrir">Ver categorías</a>'));
   const subK = args[1] || '';
   const title = `<a href="#/descubrir" class="small" style="font-weight:700;color:var(--accent)">← Categorías</a><div class="cathead" style="--c1:${cat.c[0]};--c2:${cat.c[1]}"><h1>${h(cat.n)}</h1></div>`;
-  draw(title + `<div class="sec"><div class="pbar" style="max-width:320px"><i id="catbar" style="width:5%"></i></div><div class="small dim" style="margin-top:6px" id="catmsg">Cargando el catálogo…</div></div><div class="sec">${skelGrid(12)}</div>`);
-  const all = await loadCatalog((have, n, d) => { const b = document.getElementById('catbar'); if (b) b.style.width = (n ? Math.round(d / n * 100) : 100) + '%'; });
+  draw(title + `<div class="sec">${skelGrid(12)}</div>`);
+  let all = await loadCatalog();
+  if (all.length < 200) all = all.concat((await getPool().catch(() => [])).filter(s => !all.some(x => x.id === s.id)));
   if (!alive()) return;
   const inCat = all.filter(catTest(cat));
   const subs = subsFor(cat, inCat), sub = subs.find(x => x.k === subK);
@@ -1731,7 +1964,8 @@ async function vCategory(args, draw, alive) {
   const so = SORTS[UI.catSort] ? UI.catSort : 'rel';
   list = list.slice().sort(SORTS[so][1]);
   const lim = UI.catLimit || 60;
-  draw(title + `<div class="chips subchips"><a class="chip ${sub ? '' : 'on'}" href="#/categoria/${cat.k}">Todas <span class="dim">${inCat.length}</span></a>${subs.map(x => `<a class="chip ${x.k === subK ? 'on' : ''}" href="#/categoria/${cat.k}/${encodeURIComponent(x.k)}">${h(x.n)} <span class="dim">${x.c}</span></a>`).join('')}</div>
+  catAutoFill();
+  draw(title + catProgressHTML() + `<div class="chips subchips"><a class="chip ${sub ? '' : 'on'}" href="#/categoria/${cat.k}">Todas <span class="dim">${inCat.length}</span></a>${subs.map(x => `<a class="chip ${x.k === subK ? 'on' : ''}" href="#/categoria/${cat.k}/${encodeURIComponent(x.k)}">${h(x.n)} <span class="dim">${x.c}</span></a>`).join('')}</div>
   <div class="toolbar" style="margin-top:16px"><div class="small dim">${plural(list.length, 'serie', 'series')}${sub ? ' de ' + h(sub.n) : ''}</div><div class="actions"><label class="toggle small"><input type="checkbox" id="catrun" ${UI.catRunning ? 'checked' : ''}> Solo en emisión</label><label class="small dim">Ordenar <select class="btn sm" id="catsort">${Object.entries(SORTS).map(([k, [l]]) => `<option value="${k}" ${k === so ? 'selected' : ''}>${l}</option>`).join('')}</select></label></div></div>
   <div class="sec">${list.length ? `<div class="grid">${list.slice(0, lim).map(s => poster(s)).join('')}</div>${list.length > lim ? `<div style="text-align:center;margin-top:22px"><button class="btn" data-act="catmore">Ver más (${list.length - lim} restantes)</button></div>` : ''}` : empty('Todavía no hay series acá', 'El catálogo se completa solo a medida que la gente usa la página. Probá en un rato.')}</div>
   <p class="small dim" style="margin-top:24px">Puntajes y popularidad de TVmaze. El catálogo se completa solo con el uso: si falta una serie, buscala arriba.</p>`);
@@ -1742,11 +1976,12 @@ async function vDiscover(args, draw, alive) {
   draw(title + `<div class="ctiles sec">${CATS.map(c => `<div class="skel" style="height:118px;border-radius:16px"></div>`).join('')}</div>`);
   const [pool, all] = await Promise.all([getPool(), loadCatalog()]);
   if (!alive()) return;
+  catAutoFill();
   const base = all.length > pool.length ? all : pool;
   const recs = myShows().length ? recommend(base, 18) : [];
   const sect = (cat, n = 18) => { const l = base.filter(catTest(cat)).sort(SORTS.rel[1]).slice(0, n); return l.length ? `<section class="sec"><div class="sechead"><h2>${h(cat.n)}</h2><a href="#/categoria/${cat.k}">Ver todas →</a></div>${row(l.map(s => poster(s)).join(''))}</section>` : ''; };
   const topRated = base.filter(s => s.rating && s.weight >= 85).sort(SORTS.rating[1]).slice(0, 18);
-  draw(title + `<div class="ctiles sec">${CATS.map(c => tileHTML(c, base.filter(catTest(c)))).join('')}</div>` +
+  draw(title + catProgressHTML() + `<div class="ctiles sec">${CATS.map(c => tileHTML(c, base.filter(catTest(c)))).join('')}</div>` +
     (recs.length ? `<section class="sec"><div class="sechead"><h2>Para vos</h2></div>${row(recs.map(s => poster(s, s.because ? `Porque viste ${s.because}` : undefined)).join(''))}</section>` : '') +
     sect(getCat('anime')) + `<section class="sec"><div class="sechead"><h2>Lo mejor puntuado</h2></div>${row(topRated.map(s => poster(s)).join(''))}</section>` + sect(getCat('doramas')) + sect(getCat('Crime')) + sect(getCat('Science-Fiction')) + sect(getCat('Comedy')));
 }
@@ -1761,8 +1996,8 @@ function similarTo(c, list, n = 14) {
   }).sort((a, b) => b.sc - a.sc).slice(0, n).map(x => x.s);
 }
 async function similarHTML(c) {
-  const all = CATALOG || await loadCatalog(null, 0).catch(() => null) || [];
-  const pool = all.length ? all : await getPool().catch(() => []);
+  const all = await loadCatalog().catch(() => []);
+  const pool = all.length > 300 ? all : (await getPool().catch(() => [])).concat(all);
   const list = similarTo(c, pool);
   return list.length ? `<section class="sec"><div class="sechead"><h2>Series similares</h2><a href="#/categoria/${(CATS.find(x => x.k !== 'anime' && x.k !== 'doramas' && c.genres.includes(x.k)) || getCat('Drama')).k}">Ver más →</a></div>${row(list.map(s => poster(s)).join(''))}</section>` : '';
 }
@@ -1815,7 +2050,7 @@ const fmtVotes = v => { const n = parseInt(String(v).replace(/[^\d]/g, '')) || 0
 function ratingsHTML({ imdb, votes, imdbId, rt, mc, jv, tvm, kind }) {
   const parts = [];
   parts.push(imdb ? `<a class="rimdb" href="https://www.imdb.com/title/${h(imdbId)}/" target="_blank" rel="noopener" title="Ver en IMDb"><span class="lg">IMDb</span><b>${imdb.toFixed(1)}</b><small>/10${votes ? ' · ' + fmtVotes(votes) + ' votos' : ''}</small></a>` : imdbId ? `<a class="rimdb off" href="https://www.imdb.com/title/${h(imdbId)}/" target="_blank" rel="noopener"><span class="lg">IMDb</span><small>ver puntaje ↗</small></a>` : '');
-  if (rt) parts.push(`<span class="rscore rtom" title="Rotten Tomatoes"><i>🍅</i><b>${h(rt)}</b><small>Rotten Tomatoes</small></span>`);
+  if (rt) parts.push(`<span class="rscore rtom" title="Rotten Tomatoes"><i>${icon('tomato', 20)}</i><b>${h(rt)}</b><small>Rotten Tomatoes</small></span>`);
   if (mc) parts.push(`<span class="rscore mc" title="Metacritic"><i class="mcb">${h(mc)}</i><small>Metacritic</small></span>`);
   parts.push(jv && jv.n ? `<span class="rscore jv" title="Promedio de los usuarios de JVNN"><i>★</i><b>${(+jv.avg).toFixed(1)}</b><small>JVNN · ${plural(jv.n, 'voto', 'votos')}</small></span>` : `<span class="rscore jv empty"><i>★</i><small>JVNN · sé el primero en puntuar</small></span>`);
   if (tvm) parts.push(`<span class="rscore tvm" title="Comunidad de TVmaze"><b>${tvm.toFixed(1)}</b><small>TVmaze</small></span>`);
@@ -1853,7 +2088,8 @@ function movieStats() {
 function mposter(m, sub) {
   const r = S.movies[m.id];
   return `<article class="card"><a href="#/peli/${m.id}" class="pimg" aria-label="${h(m.title)}">${m.poster ? `<img src="${h(m.poster)}" alt="" loading="lazy">` : `<div class="noimg">${h(initials(m.title))}</div>`}${m.imdb ? `<span class="rt imdbtag">IMDb ${m.imdb.toFixed(1)}</span>` : ''}${r ? `<span class="tag">${(r.seen || []).length ? 'Vista' : 'Para ver'}</span>` : ''}</a>
-  <div><a href="#/peli/${m.id}" class="cname">${h(m.title)}</a><div class="csub">${h(sub ?? [m.year, m.genres && m.genres[0] && gname(m.genres[0])].filter(Boolean).join(' · '))}</div></div></article>`;
+  <div><a href="#/peli/${m.id}" class="cname">${h(m.title)}</a><div class="csub">${h(sub ?? [m.year, m.genres && m.genres[0] && gname(m.genres[0])].filter(Boolean).join(' · '))}</div></div>
+  ${r && (r.seen || []).length ? `<button class="mini seenbtn on" data-act="mquick" data-id="${h(m.id)}" title="Tocá para desmarcar">${icon('check', 13)} Vista</button>` : `<button class="mini seenbtn" data-act="mquick" data-id="${h(m.id)}">${icon('check', 13)} Marcar vista</button>`}</article>`;
 }
 function trackMovie(m, list) {
   let r = S.movies[m.id];
@@ -1908,7 +2144,7 @@ async function vMovie(args, draw, alive) {
       ${k ? `<div class="rwbox"><div><b>${k - 1}</b><span>${k - 1 === 1 ? 'vez revista' : 'veces revista'}</span></div><button class="btn sm" data-act="mrw" data-v="-1" ${k > 1 ? '' : 'disabled'} aria-label="Restar">−</button><button class="btn sm pri" data-act="mrw" data-v="1">↻ La volví a ver</button></div>` : ''}
     </div></div></section>
   <div class="cols"><div>
-    ${m.plot ? `<div class="panel"><h3>De qué trata</h3><p class="summary" style="margin:0">${h(m.plot)}</p>${m.awards ? `<p class="small dim" style="margin:10px 0 0">🏆 ${h(m.awards)}</p>` : ''}</div>` : ''}
+    ${m.plot ? `<div class="panel"><h3>De qué trata</h3><p class="summary" style="margin:0">${h(m.plot)}</p>${m.awards ? `<p class="small dim awards" style="margin:10px 0 0">${icon('trophy', 16)} ${h(m.awards)}</p>` : ''}</div>` : ''}
     ${m.actors ? `<section class="sec"><h2 style="margin-bottom:14px">Reparto</h2><div class="cast">${m.actors.split(', ').map(n => `<a class="person" href="https://www.imdb.com/find/?q=${encodeURIComponent(n)}&s=nm" target="_blank" rel="noopener"><div class="av"></div><div><b>${h(n)}</b><span>Actor/actriz</span><em>IMDb ↗</em></div></a>`).join('')}${m.director ? m.director.split(', ').map(n => `<a class="person" href="https://www.imdb.com/find/?q=${encodeURIComponent(n)}&s=nm" target="_blank" rel="noopener"><div class="av"></div><div><b>${h(n)}</b><span>Dirección</span><em>IMDb ↗</em></div></a>`).join('') : ''}</div></section>` : ''}
     <div id="msim"></div><div id="cbox"></div>
   </div><aside>
@@ -1966,35 +2202,223 @@ document.addEventListener('change', e => {
     })();
   }
 });
-window.addEventListener('hashchange', () => { CUR.movie = null; UI.catLimit = 60; });
+window.addEventListener('hashchange', () => { UI.catLimit = 60; });
 
-// ---------------------------------------------------------- estilo del perfil (banner, color, serie destacada)
-const BANNERS = { rosa: ['Rosa', 'linear-gradient(120deg,#f3c6cf,#b57a8a 60%,#3a2a33)'], noche: ['Noche', 'linear-gradient(120deg,#1b2a6b,#0a0a1f 70%)'], atardecer: ['Atardecer', 'linear-gradient(120deg,#ffb36b,#ff5c8a 55%,#5a2bff)'], galaxia: ['Galaxia', 'radial-gradient(circle at 20% 30%,#7a2bff,transparent 40%),radial-gradient(circle at 80% 60%,#3d8bff,transparent 40%),#0a0a1f'], menta: ['Menta', 'linear-gradient(120deg,#a8f0d8,#1fa08c 60%,#0a2a24)'], fuego: ['Fuego', 'linear-gradient(120deg,#ffd36b,#ff5c2b 50%,#5a0a0a)'], hielo: ['Hielo', 'linear-gradient(120deg,#e8f4ff,#8fbcff 50%,#2a3a6b)'], carbon: ['Carbón', 'linear-gradient(120deg,#2a2a34,#121217)'] };
-const ACCENTS = { '': 'Rosa JVNN', '#8fbcff': 'Azul', '#c3a8ff': 'Violeta', '#a8f0c6': 'Verde', '#ffd08a': 'Dorado', '#ff9a8a': 'Coral', '#ffffff': 'Blanco' };
+
+
+// ============================================================ V4: LOGROS CON MEDALLAS, PERSONALIZACIÓN, PELIS RÁPIDAS, DESTACADAS
+S.profile.style = Object.assign({ banner: 'fav', bannerImg: '', accent: '', featured: 0, frame: 'accent', pattern: 'none', nameFont: 'display', status: '', socials: {}, showcase: [] }, S.profile.style || {});
+
+// ---------------------------------------------------------- estadísticas para logros (sirve para tu perfil y para perfiles públicos)
+function badgeStats(shows, movies, notes, extra = {}) {
+  shows = Object.values(shows || {}); movies = Object.values(movies || {});
+  let eps = 0, min = 0, rwEps = 0; const genres = new Set(), days = new Set();
+  for (const r of shows) {
+    for (const e of Object.values(r.eps || {})) { eps++; min += e.m || 30; days.add(dayKey(e.t)); }
+    for (const ts of Object.values(r.rw || {})) rwEps += ts.length;
+    for (const g of r.genres || []) genres.add(g);
+  }
+  let mov = 0;
+  for (const m of movies) { const k = (m.seen || []).length; if (!k) continue; mov++; min += m.runtime || 100; for (const t of m.seen) days.add(dayKey(t)); for (const g of m.genres || []) genres.add(g === 'Sci-Fi' ? 'Science-Fiction' : g); }
+  // racha: días seguidos (terminando hoy o ayer) con algo marcado
+  let streak = 0; const d = new Date(); if (!days.has(dayKey(d))) d.setDate(d.getDate() - 1);
+  while (days.has(dayKey(d))) { streak++; d.setDate(d.getDate() - 1); }
+  const fullRw = shows.filter(r => { const ids = Object.keys(r.eps || {}); return ids.length && ids.every(id => r.rw && r.rw[id] && r.rw[id].length); }).length;
+  return {
+    eps, min, mov, rwEps, fullRw, streak, genres: genres.size,
+    done: shows.filter(r => r.list === 'done').length, shows: shows.length, favs: shows.filter(r => r.fav).length,
+    anime: shows.filter(r => (r.genres || []).includes('Anime') && Object.keys(r.eps || {}).length).length,
+    scored: shows.filter(r => r.score).length + movies.filter(m => m.score).length,
+    notes: notes || 0, following: extra.following || 0,
+  };
+}
+const myBadgeStats = () => badgeStats(S.shows, S.movies, Object.values(S.notes).filter(n => n.text || n.score || n.react).length, { following: typeof FOLLOWING !== 'undefined' ? FOLLOWING.size : 0 });
+
+// ---------------------------------------------------------- logros: [id, nombre, descripción, ícono, nivel, meta, valor]
+const TIERS = { b: ['Bronce', '#d08a52', '#7a4a24'], s: ['Plata', '#dfe6f2', '#7c8aa3'], g: ['Oro', '#ffd76a', '#b8860b'], p: ['Legendario', '#f3c6cf', '#8f3a6b'] };
+const B2 = [
+  ['cap1', 'Primer capítulo', 'Marcá tu primer capítulo.', 'tv', 'b', 1, s => s.eps],
+  ['cap50', 'Calentando', '50 capítulos vistos.', 'tv', 'b', 50, s => s.eps],
+  ['cap100', 'Maratonista', '100 capítulos vistos.', 'tv', 's', 100, s => s.eps],
+  ['cap500', 'Adicto a las series', '500 capítulos vistos.', 'tv', 'g', 500, s => s.eps],
+  ['cap1000', 'Leyenda JVNN', '1.000 capítulos vistos.', 'tv', 'p', 1000, s => s.eps],
+  ['cap5000', 'Inmortal', '5.000 capítulos vistos.', 'tv', 'p', 5000, s => s.eps],
+  ['t1d', 'Un día entero', '24 horas frente a la pantalla.', 'clock', 'b', 1440, s => s.min],
+  ['t1w', 'Una semana entera', '7 días de series y pelis.', 'clock', 's', 10080, s => s.min],
+  ['t1m', 'Un mes entero', '30 días de series y pelis.', 'clock', 'g', 43200, s => s.min],
+  ['t6m', 'Medio año', '6 meses de series y pelis.', 'clock', 'p', 259200, s => s.min],
+  ['fin1', 'Lo terminé', 'Terminá tu primera serie.', 'flag', 'b', 1, s => s.done],
+  ['fin5', 'Cierro todo', '5 series terminadas.', 'flag', 's', 5, s => s.done],
+  ['fin10', 'Terminator', '10 series terminadas.', 'flag', 'g', 10, s => s.done],
+  ['fin25', 'Imparable', '25 series terminadas.', 'flag', 'p', 25, s => s.done],
+  ['mov1', 'Pochoclos', 'Tu primera película vista.', 'film', 'b', 1, s => s.mov],
+  ['mov10', 'Noche de cine', '10 películas vistas.', 'film', 's', 10, s => s.mov],
+  ['mov50', 'Cinéfilo', '50 películas vistas.', 'film', 'g', 50, s => s.mov],
+  ['mov100', 'Crítico de cine', '100 películas vistas.', 'film', 'p', 100, s => s.mov],
+  ['rw1', 'Una vez más', 'Volvé a ver un capítulo.', 'loop', 'b', 1, s => s.rwEps],
+  ['rwfull', 'Otra vez, por favor', 'Revé una serie completa.', 'loop', 'g', 1, s => s.fullRw],
+  ['rw100', 'Fan de verdad', '100 capítulos revistos.', 'loop', 'p', 100, s => s.rwEps],
+  ['gen5', 'Curioso', 'Mirá 5 géneros distintos.', 'compass', 'b', 5, s => s.genres],
+  ['gen10', 'Todoterreno', 'Mirá 10 géneros distintos.', 'compass', 's', 10, s => s.genres],
+  ['ani5', 'Otaku', '5 animes empezados.', 'spark', 's', 5, s => s.anime],
+  ['ani20', 'Sensei', '20 animes empezados.', 'spark', 'g', 20, s => s.anime],
+  ['sc10', 'Jurado', 'Puntuá 10 series o películas.', 'star', 'b', 10, s => s.scored],
+  ['sc50', 'Crítico', 'Puntuá 50 series o películas.', 'star', 'g', 50, s => s.scored],
+  ['nt10', 'Tengo cosas para decir', 'Comentá o reaccioná a 10 capítulos.', 'chat', 's', 10, s => s.notes],
+  ['fav5', 'Corazón de fan', '5 series favoritas.', 'heart', 'b', 5, s => s.favs],
+  ['col25', 'Coleccionista', '25 series en tu lista.', 'stack', 's', 25, s => s.shows],
+  ['col100', 'Archivo viviente', '100 series en tu lista.', 'stack', 'p', 100, s => s.shows],
+  ['st3', 'En racha', '3 días seguidos viendo algo.', 'fire', 'b', 3, s => s.streak],
+  ['st7', 'Semana perfecta', '7 días seguidos viendo algo.', 'fire', 's', 7, s => s.streak],
+  ['st30', 'Sin descanso', '30 días seguidos viendo algo.', 'fire', 'p', 30, s => s.streak],
+  ['soc1', 'Sociable', 'Seguí a alguien en JVNN.', 'people', 'b', 1, s => s.following],
+  ['soc10', 'Popular en la previa', 'Seguí a 10 personas.', 'people', 's', 10, s => s.following],
+];
+const GLYPH = {
+  tv: '<rect x="-9" y="-7" width="18" height="12" rx="2.5" fill="none" stroke="#fff" stroke-width="2.4"/><path d="M-4 8h8" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>',
+  clock: '<circle r="8.5" fill="none" stroke="#fff" stroke-width="2.4"/><path d="M0-5v5l3.5 2.5" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>',
+  flag: '<path d="M-6 9V-9M-6-8h11l-2.5 4 2.5 4H-6" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>',
+  film: '<rect x="-9" y="-4" width="18" height="12" rx="2" fill="none" stroke="#fff" stroke-width="2.4"/><path d="M-9-4l2-5h14l2 5M-3-9l-2 5M3-9 1-4" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>',
+  loop: '<path d="M-7 2a7 7 0 0 0 13 2M7-2a7 7 0 0 0-13-2" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><path d="M6 8l0-4-4 0M-6-8l0 4 4 0" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>',
+  compass: '<circle r="8.5" fill="none" stroke="#fff" stroke-width="2.4"/><path d="M3.5-3.5-1.5-1.5-3.5 3.5 1.5 1.5z" fill="#fff"/>',
+  spark: '<path d="M0-10 2.5-2.5 10 0 2.5 2.5 0 10-2.5 2.5-10 0-2.5-2.5z" fill="#fff"/>',
+  star: '<path d="M0-9 2.7-3 9-2.6 4.2 1.6 5.6 8 0 4.7-5.6 8-4.2 1.6-9-2.6-2.7-3z" fill="#fff"/>',
+  chat: '<path d="M-9-7h18v11H-1l-5 4v-4h-3z" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/>',
+  heart: '<path d="M0 8s-8-4.8-8-10.5a4.3 4.3 0 0 1 8-2.2 4.3 4.3 0 0 1 8 2.2C8 3.2 0 8 0 8z" fill="#fff"/>',
+  stack: '<rect x="-8" y="-9" width="12" height="15" rx="2" fill="none" stroke="#fff" stroke-width="2.2"/><path d="M-4 9h10V-5" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>',
+  fire: '<path d="M0-10c1.2 4.5 6.5 6.5 6.5 12.5a6.5 6.5 0 0 1-13 0c0-3 1.6-4.8 3.2-6.4 0 2.2 1 3.2 2.1 3.2 0-3.3 0-6.3 1.2-9.3z" fill="#fff"/>',
+  people: '<circle cx="-3.5" cy="-3.5" r="3.6" fill="none" stroke="#fff" stroke-width="2.2"/><path d="M-10 8c.6-3.6 3.2-5.6 6.5-5.6S2.4 4.4 3 8" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><path d="M4.5-6.5a3.5 3.5 0 0 1 0 6.6M7 2.5c1.6.8 2.6 2.5 3 5.5" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>',
+};
+let medalSeq = 0;
+function medalSVG(b, on, size = 64) {
+  const [, , , g, tier] = b, [, c1, c2] = TIERS[tier], id = 'md' + (++medalSeq);
+  const a = on ? c1 : '#3a3a46', z = on ? c2 : '#22222b';
+  return `<svg class="medal-svg" width="${size}" height="${size * 1.15}" viewBox="-32 -32 64 74" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${z}"/></linearGradient></defs>
+    <path d="M-14 18-20 40-11 35-6 42 0 22M14 18 20 40 11 35 6 42 0 22" fill="${on ? (tier === 'p' ? '#b0457b' : tier === 'g' ? '#3d6bd6' : tier === 's' ? '#5a6b8c' : '#8a4b2a') : '#2a2a34'}"/>
+    <path d="M0-28 24-14V14L0 28-24 14V-14z" fill="url(#${id})"/><path d="M0-21 18-10.5V10.5L0 21-18 10.5V-10.5z" fill="${on ? 'rgba(0,0,0,.28)' : 'rgba(0,0,0,.35)'}"/>
+    <g opacity="${on ? 1 : .35}">${GLYPH[g] || ''}</g></svg>`;
+}
+function badgeList(bs) { return B2.map(b => { const v = b[6](bs) || 0; return { b, on: v >= b[5], v, pct: Math.min(100, v / b[5] * 100) }; }); }
+function badgesHTML(bs) {
+  const list = badgeList(bs), got = list.filter(x => x.on).length;
+  const fmt = (b, v) => b[3] === 'clock' ? `${shortTime(Math.min(v, b[5]))} / ${shortTime(b[5])}` : `${Math.min(v, b[5]).toLocaleString('es-AR')} / ${b[5].toLocaleString('es-AR')}`;
+  return `<div class="bsum"><div><b>${got}</b> de ${list.length} logros desbloqueados</div><div class="pbar"><i style="width:${got / list.length * 100}%"></i></div></div>
+  <div class="badges2">${list.sort((a, c) => (c.on - a.on) || (c.pct - a.pct)).map(({ b, on, v, pct }) => `<div class="badge2 ${on ? 'on' : ''} t-${b[4]}" title="${h(b[2])}">${medalSVG(b, on)}<div class="bt"><b>${h(b[1])}</b><span>${h(b[2])}</span>${on ? `<em>${TIERS[b[4]][0]}</em>` : `<div class="bprog"><i style="width:${pct}%"></i></div><small>${fmt(b, v)}</small>`}</div></div>`).join('')}</div>`;
+}
+function showcaseHTML(style, bs) {
+  const ids = (style && style.showcase) || [], list = badgeList(bs).filter(x => x.on);
+  const pick = ids.length ? ids.map(id => list.find(x => x.b[0] === id)).filter(Boolean) : list.sort((a, c) => 'pgsb'.indexOf(a.b[4]) - 'pgsb'.indexOf(c.b[4])).slice(0, 3);
+  return pick.length ? `<div class="showcase">${pick.slice(0, 3).map(x => `<span class="sbadge" title="${h(x.b[1])}: ${h(x.b[2])}">${medalSVG(x.b, true, 34)}<b>${h(x.b[1])}</b></span>`).join('')}</div>` : '';
+}
+
+// ---------------------------------------------------------- personalización del perfil
+const BANNERS = {
+  rosa: ['Rosa', 'linear-gradient(120deg,#f3c6cf,#b57a8a 60%,#3a2a33)'], noche: ['Noche', 'linear-gradient(120deg,#1b2a6b,#0a0a1f 70%)'],
+  atardecer: ['Atardecer', 'linear-gradient(120deg,#ffb36b,#ff5c8a 55%,#5a2bff)'], galaxia: ['Galaxia', 'radial-gradient(circle at 20% 30%,#7a2bff,transparent 40%),radial-gradient(circle at 80% 60%,#3d8bff,transparent 40%),#0a0a1f'],
+  menta: ['Menta', 'linear-gradient(120deg,#a8f0d8,#1fa08c 60%,#0a2a24)'], fuego: ['Fuego', 'linear-gradient(120deg,#ffd36b,#ff5c2b 50%,#5a0a0a)'],
+  hielo: ['Hielo', 'linear-gradient(120deg,#e8f4ff,#8fbcff 50%,#2a3a6b)'], carbon: ['Carbón', 'linear-gradient(120deg,#2a2a34,#121217)'],
+  aurora: ['Aurora', 'linear-gradient(160deg,#0b1a2a,#13a89e 45%,#7a2bff 80%)'], cerezo: ['Cerezo', 'linear-gradient(120deg,#fff0f3,#f7b2c4 45%,#c45a7d)'],
+  oceano: ['Océano', 'linear-gradient(180deg,#5ad1ff,#0a5aa8 60%,#06223f)'], bosque: ['Bosque', 'linear-gradient(120deg,#c8e6a0,#3d7a3a 55%,#0f2a14)'],
+  lava: ['Lava', 'radial-gradient(circle at 70% 120%,#ff5c2b,transparent 55%),linear-gradient(120deg,#1a0505,#5a0a0a)'], lavanda: ['Lavanda', 'linear-gradient(120deg,#efe6ff,#b9a3ff 50%,#4a3a8f)'],
+  oro: ['Dorado', 'linear-gradient(120deg,#fff3c4,#e0b84a 50%,#5a420a)'], neblina: ['Neblina', 'linear-gradient(180deg,#d6dbe6,#7b8496 60%,#2a2e38)'],
+};
+const PATTERNS = { none: 'Liso', dots: 'Puntos', lines: 'Rayas', grid: 'Cuadrícula', stars: 'Estrellas', waves: 'Ondas' };
+const FRAMES = { accent: 'Color del perfil', none: 'Sin marco', gold: 'Dorado', silver: 'Plateado', rainbow: 'Arcoíris', double: 'Doble', dashed: 'Punteado', sunset: 'Atardecer' };
+const FONTS = { display: 'Moderna', serif: 'Clásica', mono: 'Máquina de escribir', condensed: 'Angosta', round: 'Redondeada' };
+const ACCENTS = { '': 'Rosa JVNN', '#8fbcff': 'Azul', '#c3a8ff': 'Violeta', '#a8f0c6': 'Verde', '#ffd08a': 'Dorado', '#ff9a8a': 'Coral', '#7fe0ff': 'Celeste', '#ffb36b': 'Naranja', '#ffffff': 'Blanco' };
+const SOCIALS = { ig: ['Instagram', u => `https://instagram.com/${u}`], tt: ['TikTok', u => `https://www.tiktok.com/@${u}`], x: ['X', u => `https://x.com/${u}`], yt: ['YouTube', u => `https://www.youtube.com/@${u}`], lb: ['Letterboxd', u => `https://letterboxd.com/${u}`], dc: ['Discord', null] };
+const cleanHandle = u => String(u || '').trim().replace(/^@/, '').replace(/[^\w.\-#]/g, '').slice(0, 32);
 function bannerHTML(style, favs) {
-  const st = style || {};
-  if (st.banner === 'img' && st.bannerImg) return `<div class="pbanner custom" style="background-image:url('${h(st.bannerImg)}')"></div>`;
-  if (BANNERS[st.banner]) return `<div class="pbanner custom" style="background:${BANNERS[st.banner][1]}"></div>`;
-  return `<div class="pbanner">${(favs || []).slice(0, 3).map(r => r.img ? `<div style="background-image:url('${h(r.img)}')"></div>` : '').join('')}</div>`;
+  const st = style || {}, pat = PATTERNS[st.pattern] && st.pattern !== 'none' ? ` pat-${st.pattern}` : '';
+  if (st.banner === 'img' && st.bannerImg && /^data:image\/(jpeg|png|webp);base64,/.test(st.bannerImg)) return `<div class="pbanner custom${pat}" style="background-image:url('${st.bannerImg}')"></div>`;
+  if (BANNERS[st.banner]) return `<div class="pbanner custom${pat}" style="background:${BANNERS[st.banner][1]}"></div>`;
+  return `<div class="pbanner${pat}">${(favs || []).slice(0, 3).map(r => r.img ? `<div style="background-image:url('${h(r.img)}')"></div>` : '').join('')}</div>`;
 }
 const accentStyle = st => st && st.accent && /^#[0-9a-f]{6}$/i.test(st.accent) ? `style="--paccent:${st.accent}"` : '';
+const profileClasses = st => `frame-${FRAMES[st && st.frame] ? st.frame : 'accent'} font-${FONTS[st && st.nameFont] ? st.nameFont : 'display'}`;
 function featuredHTML(st, shows) {
   const f = st && st.featured && shows[st.featured];
   return f ? `<a class="featured" href="#/serie/${f.id}"><div class="fimg">${img(f.img, f.name)}</div><div><div class="eyebrow">Serie destacada</div><b>${h(f.name)}</b><span>${f.score ? 'Su nota: ' + f.score + '/10 · ' : ''}${Object.keys(f.eps || {}).length} capítulos vistos</span></div></a>` : '';
 }
+function extrasHTML(st) {
+  const s = st || {}, so = s.socials || {};
+  const links = Object.entries(SOCIALS).filter(([k]) => cleanHandle(so[k])).map(([k, [n, url]]) => { const u = cleanHandle(so[k]); return url ? `<a class="social s-${k}" href="${h(url(u))}" target="_blank" rel="noopener"><b>${n}</b> @${h(u)}</a>` : `<span class="social s-${k}" title="Usuario de Discord"><b>${n}</b> ${h(u)}</span>`; }).join('');
+  return (s.status ? `<div class="pstatus"><span class="dotlive"></span>${h(String(s.status).slice(0, 70))}</div>` : '') + (links ? `<div class="socials">${links}</div>` : '');
+}
 function customizeHTML() {
-  const st = S.profile.style, mine = myShows().sort((a, b) => a.name.localeCompare(b.name));
+  const st = S.profile.style, mine = myShows().sort((a, b) => a.name.localeCompare(b.name)), so = st.socials || {};
+  const got = badgeList(myBadgeStats()).filter(x => x.on);
+  const choice = (act, map, cur, render) => Object.entries(map).map(([k, v]) => `<button class="opt ${cur === k ? 'on' : ''}" data-act="${act}" data-v="${k}">${render ? render(k, v) : h(v)}</button>`).join('');
   return `<section class="custom-sec"><h3>Personalizá tu perfil</h3>
-    <div class="lb" style="margin-bottom:8px">Banner</div>
-    <div class="banners"><button class="bchoice ${st.banner === 'fav' ? 'on' : ''}" data-act="pban" data-v="fav"><span style="background:linear-gradient(90deg,#333,#555)">Mis favoritas</span></button>${Object.entries(BANNERS).map(([k, [n, bg]]) => `<button class="bchoice ${st.banner === k ? 'on' : ''}" data-act="pban" data-v="${k}"><span style="background:${bg}">${h(n)}</span></button>`).join('')}<label class="bchoice ${st.banner === 'img' ? 'on' : ''}" for="pbanimg"><span style="${st.bannerImg ? `background-image:url('${h(st.bannerImg)}');background-size:cover` : 'background:var(--raise)'}">${st.bannerImg ? 'Mi imagen' : '+ Subir imagen'}</span></label><input type="file" id="pbanimg" accept="image/*" hidden></div>
-    <div class="two" style="margin-top:16px"><div><label class="lb" for="pacc">Color de tu perfil</label><select class="btn" id="pacc" style="width:100%">${Object.entries(ACCENTS).map(([k, n]) => `<option value="${k}" ${st.accent === k ? 'selected' : ''}>${n}</option>`).join('')}</select></div>
+    <div class="cgroup"><div class="lb">Banner</div>
+      <div class="banners"><button class="bchoice ${st.banner === 'fav' ? 'on' : ''}" data-act="pban" data-v="fav"><span style="background:linear-gradient(90deg,#333,#555)">Mis favoritas</span></button>${Object.entries(BANNERS).map(([k, [n, bg]]) => `<button class="bchoice ${st.banner === k ? 'on' : ''}" data-act="pban" data-v="${k}"><span style="background:${bg}">${h(n)}</span></button>`).join('')}<label class="bchoice ${st.banner === 'img' ? 'on' : ''}" for="pbanimg"><span style="${st.bannerImg ? `background-image:url('${st.bannerImg}');background-size:cover` : 'background:var(--raise)'}">${st.bannerImg ? 'Mi imagen' : '+ Subir imagen'}</span></label><input type="file" id="pbanimg" accept="image/*" hidden></div></div>
+    <div class="cgroup"><div class="lb">Textura del banner</div><div class="opts">${choice('ppat', PATTERNS, st.pattern || 'none')}</div></div>
+    <div class="cgroup"><div class="lb">Marco de tu foto</div><div class="opts">${choice('pframe', FRAMES, st.frame || 'accent', (k, v) => `<span class="fprev frame-${k}"><i></i></span>${h(v)}`)}</div></div>
+    <div class="cgroup"><div class="lb">Letra de tu nombre</div><div class="opts">${choice('pfont', FONTS, st.nameFont || 'display', (k, v) => `<span class="font-${k}"><span class="pname-sample">${h(v)}</span></span>`)}</div></div>
+    <div class="two" style="margin-top:4px"><div><label class="lb" for="pacc">Color de tu perfil</label><select class="btn" id="pacc" style="width:100%">${Object.entries(ACCENTS).map(([k, n]) => `<option value="${k}" ${st.accent === k ? 'selected' : ''}>${n}</option>`).join('')}</select></div>
     <div><label class="lb" for="pfeat">Serie destacada</label><select class="btn" id="pfeat" style="width:100%"><option value="">Ninguna</option>${mine.map(r => `<option value="${r.id}" ${st.featured === r.id ? 'selected' : ''}>${h(r.name)}</option>`).join('')}</select></div></div>
-    <p class="small dim" style="margin:12px 0 0">Muy pronto: marcos para tu foto, insignias especiales y temas exclusivos.</p></section>`;
+    <div class="cgroup"><label class="lb" for="pstat">Estado (aparece abajo de tu nombre)</label><input type="text" id="pstat" maxlength="70" value="${h(st.status || '')}" placeholder="Ej: viendo Bleach por tercera vez"></div>
+    <div class="cgroup"><div class="lb">Tus redes (solo el usuario, sin @)</div><div class="socgrid">${Object.entries(SOCIALS).map(([k, [n]]) => `<label class="soc"><span>${n}</span><input type="text" data-soc="${k}" maxlength="32" value="${h(so[k] || '')}" placeholder="usuario"></label>`).join('')}</div></div>
+    <div class="cgroup"><div class="lb">Logros en vitrina (elegí hasta 3)</div>${got.length ? `<div class="opts">${got.map(x => `<button class="opt badgeopt ${(st.showcase || []).includes(x.b[0]) ? 'on' : ''}" data-act="pshow" data-v="${x.b[0]}">${medalSVG(x.b, true, 22)} ${h(x.b[1])}</button>`).join('')}</div>` : '<p class="small dim" style="margin:0">Cuando desbloquees logros, los podés mostrar acá.</p>'}</div>
+    <p class="small dim" style="margin:14px 0 0">Muy pronto: banners animados, marcos y temas exclusivos.</p></section>`;
 }
 document.addEventListener('click', e => {
-  const b = e.target.closest('[data-act="pban"]'); if (!b) return;
-  S.profile.style.banner = b.dataset.v; save(); refresh();
+  const b = e.target.closest('[data-act]'); if (!b) return;
+  const st = S.profile.style, v = b.dataset.v;
+  switch (b.dataset.act) {
+    case 'pban': st.banner = v; break;
+    case 'ppat': st.pattern = v; break;
+    case 'pframe': st.frame = v; break;
+    case 'pfont': st.nameFont = v; break;
+    case 'pshow': { const l = st.showcase || []; st.showcase = l.includes(v) ? l.filter(x => x !== v) : l.concat(v).slice(-3); break; }
+    default: return;
+  }
+  save(); refresh();
 });
+let styleT;
+document.addEventListener('input', e => {
+  const t = e.target, st = S.profile.style;
+  if (t.id === 'pstat') { st.status = t.value; clearTimeout(styleT); styleT = setTimeout(save, 500); }
+  if (t.dataset && t.dataset.soc) { st.socials = st.socials || {}; st.socials[t.dataset.soc] = cleanHandle(t.value); clearTimeout(styleT); styleT = setTimeout(save, 500); }
+});
+
+// ---------------------------------------------------------- marcar películas vistas desde la tarjeta
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-act="mquick"]'); if (!b) return;
+  e.preventDefault(); const id = b.dataset.id; b.disabled = true;
+  const r0 = S.movies[id];
+  if (r0 && (r0.seen || []).length) {
+    const prev = r0.seen.slice(); r0.seen = []; r0.list = 'plan'; r0.act = Date.now(); save(); refresh();
+    toast(`Desmarcaste ${r0.title}.`, () => { r0.seen = prev; r0.list = 'seen'; save(); refresh(); });
+    return;
+  }
+  try {
+    const m = await omdbOne(id); if (!m) throw new Error('No se pudo cargar esa película.');
+    const r = trackMovie(m, 'seen'); r.seen = [Date.now()]; save(); logMovie(m, 'watched', 'la película'); refresh();
+    toast(`Vista: ${m.title} (${shortTime(movieMin(r))}).`, () => { r.seen = []; r.list = 'plan'; save(); refresh(); });
+  } catch (x) { toast(x.message); b.disabled = false; }
+});
+
+// ---------------------------------------------------------- destacadas de hoy (carrusel del inicio)
+let heroT = null;
+function heroHTML(list) {
+  const items = list.filter(s => s.imgL || s.img).slice(0, 6);
+  if (!items.length) return '';
+  return `<section class="slider sec" id="slider"><div class="slides">${items.map((s, i) => `<article class="slide ${i ? '' : 'on'}" data-i="${i}"><div class="sbg" style="background-image:url('${h(s.imgL || s.img)}')"></div><div class="sin"><div class="eyebrow">Hoy se estrena · T${s.ep.s} · E${s.ep.n}${s.ep.air ? ' · ' + fmtTime(s.ep.air) : ''}</div><h2>${h(s.name)}</h2><p>${h([s.genres.slice(0, 3).map(gname).join(' · '), s.net].filter(Boolean).join(' — '))}</p><div class="stack"><a class="btn pri" href="#/serie/${s.id}">Ver serie</a>${S.shows[s.id] ? `<span class="chip">${LISTS[S.shows[s.id].list]}</span>` : `<button class="btn" data-act="quickadd" data-id="${s.id}">+ Para ver</button>`}</div></div><a class="sposter" href="#/serie/${s.id}">${img(s.img, s.name)}</a></article>`).join('')}</div>
+  <div class="sdots">${items.map((_, i) => `<button class="${i ? '' : 'on'}" data-act="slide" data-v="${i}" aria-label="Destacada ${i + 1}"></button>`).join('')}</div></section>`;
+}
+function slideTo(i) {
+  const sl = document.getElementById('slider'); if (!sl) return;
+  const all = sl.querySelectorAll('.slide'), n = all.length; i = (i + n) % n;
+  all.forEach((x, k) => x.classList.toggle('on', k === i)); sl.querySelectorAll('.sdots button').forEach((x, k) => x.classList.toggle('on', k === i));
+  sl.dataset.i = i;
+}
+function startSlider() {
+  clearInterval(heroT);
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  heroT = setInterval(() => { const sl = document.getElementById('slider'); if (!sl) return clearInterval(heroT); if (!sl.matches(':hover')) slideTo((+sl.dataset.i || 0) + 1); }, 6500);
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-act="slide"]'); if (b) { slideTo(+b.dataset.v); startSlider(); } });
 
 
 // ============================================================ ONLINE (Supabase)
@@ -2261,6 +2685,7 @@ async function vUser(args, draw, alive) {
   if (tab === 'fav') body = favs.length ? `<div class="favgrid">${favs.map((r, i) => `<article class="fav"><a href="#/serie/${r.id}" class="pimg">${img(r.img, r.name)}<span class="rank">${i + 1}</span></a><b>${h(r.name)}</b></article>`).join('')}</div>` : '<p class="dim">Todavía no eligió favoritas.</p>';
   else if (tab === 'seen') body = seen.length ? `<div class="grid">${seen.map(r => { const n = Object.keys(r.eps || {}).length; return `<article class="card"><a href="#/serie/${r.id}" class="pimg">${img(r.img, r.name)}${r.list === 'done' ? '<span class="tag">Terminada</span>' : ''}</a><div><a href="#/serie/${r.id}" class="cname">${h(r.name)}</a><div class="csub">${n}/${r.aired ?? '?'} caps${r.score ? ' · nota ' + r.score : ''}</div></div><div class="pbar"><i style="width:${Math.min(100, r.aired ? n / r.aired * 100 : 0)}%"></i></div></article>`; }).join('')}</div>` : '<p class="dim">Todavía no marcó capítulos.</p>';
   else if (tab === 'movies') { const mv = Object.values(d.movies || {}).filter(r => (r.seen || []).length).sort((a, b) => (b.seen[0] || 0) - (a.seen[0] || 0)); body = mv.length ? `<div class="grid">${mv.map(r => mposter({ id: r.id, title: r.title, year: r.year, poster: r.poster }, r.score ? `Su nota: ${r.score}` : r.year)).join('')}</div>` : '<p class="dim">Todavía no marcó películas.</p>'; }
+  else if (tab === 'badges') body = badgesHTML(badgeStats(d.shows, d.movies, st.notes || 0, {}));
   else if (tab === 'act') {
     const acts = await rest(`activity?select=*&user_id=eq.${p.id}&order=created_at.desc&limit=40`, { auth: false }).catch(() => []);
     if (!alive()) return;
@@ -2274,10 +2699,11 @@ async function vUser(args, draw, alive) {
     body = list.length ? `<div class="people">${list.map(personCard).join('')}</div>` : `<p class="dim">${tab === 'followers' ? 'Todavía no tiene seguidores.' : 'Todavía no sigue a nadie.'}</p>`;
   }
   const nMov = Object.values(d.movies || {}).filter(r => (r.seen || []).length).length;
-  const tabs = [['fav', 'Favoritas', favs.length], ['seen', 'Series vistas', seen.length], ['movies', 'Películas', nMov], ['act', 'Actividad', ''], ['followers', 'Seguidores', followers], ['following', 'Siguiendo', following]];
-  draw(`<section class="pcover" ${accentStyle(d.style)}>${bannerHTML(d.style, favs)}
+  const tabs = [['fav', 'Favoritas', favs.length], ['seen', 'Series vistas', seen.length], ['movies', 'Películas', nMov], ['badges', 'Logros', ''], ['act', 'Actividad', ''], ['followers', 'Seguidores', followers], ['following', 'Siguiendo', following]];
+  const bsU = badgeStats(d.shows, d.movies, st.notes || 0, {});
+  draw(`<section class="pcover ${profileClasses(d.style)}" ${accentStyle(d.style)}>${bannerHTML(d.style, favs)}
     <div class="pmain"><div class="avatar">${p.photo ? `<img src="${h(p.photo)}" alt="">` : h(initials(p.name || p.username))}</div>
-      <div class="pid"><h1>${h(p.name || p.username)}</h1><div class="dim" style="font-weight:600">@${h(p.username)}</div>${p.bio ? `<p>${h(p.bio)}</p>` : ''}<div class="small dim">En JVNN desde ${h(fmtDate(p.created_at, { month: 'long', year: 'numeric' }))}</div></div>
+      <div class="pid"><h1>${h(p.name || p.username)}</h1><div class="dim" style="font-weight:600">@${h(p.username)}</div>${p.bio ? `<p>${h(p.bio)}</p>` : ''}${extrasHTML(d.style)}<div class="small dim">En JVNN desde ${h(fmtDate(p.created_at, { month: 'long', year: 'numeric' }))}</div>${showcaseHTML(d.style, bsU)}</div>
       <div class="actions">${isMe ? `<a class="btn" href="#/perfil">Editar mi perfil</a><button class="btn" data-act="copylink" data-u="${h(p.username)}">Copiar link</button>` : followBtn(p.id)}</div></div>
     ${featuredHTML(d.style, d.shows || {})}
     <div class="pstats"><div><b>${h(shortTime(st.min || 0))}</b><span>de series y pelis</span></div><div><b>${(st.eps || 0).toLocaleString('es-AR')}</b><span>capítulos</span></div><div><b>${st.seen ?? seen.length}</b><span>series vistas</span></div><a href="#/u/${h(p.username)}" data-act="utab" data-v="followers"><b>${followers}</b><span>seguidores</span></a><a href="#/u/${h(p.username)}" data-act="utab" data-v="following"><b>${following}</b><span>siguiendo</span></a></div></section>
