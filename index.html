@@ -1910,7 +1910,7 @@ footer{border-top:1px solid var(--line)!important;background:linear-gradient(180
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 13.0</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 13.1</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -4993,7 +4993,7 @@ async function vRanking(nav, draw, alive) {
   for (const r of (ids.length ? await sbTry(() => rest(`items?select=owner,cid&owner=${inList(ids)}&limit=5000`, { auth: false }), []) : []) || []) (im[r.owner] = im[r.owner] || []).push(r);
   for (const p of list) {
     const st = {}; for (const f of RK_FIELDS) if (p['s_' + f] != null) st[f] = p['s_' + f];
-    const row = withColl(isFounderId(p.id) ? { plan: 'combo', items: ['combo', 'redes', 'layout', 'founder'] } : mergeRow(pm[p.id], wm[p.id]), im[p.id] || []);
+    const row = withColl(founderRow(p.id, mergeRow(pm[p.id], wm[p.id])), im[p.id] || []);
     p.ds = sanitizeStyle(st, row);
     const bo = optOf('banner', p.ds.banner); p.bg = bo && bo.v && !['fav', 'img'].includes(bo.v) ? bo.v : '';
   }
@@ -6290,6 +6290,9 @@ async function claimCoins(reason) {
 }
 PRO_COUNT = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.filter(o => !o.f).length, 0) + 4;
 
+// el fundador tiene todo, y además lo que tenga en su billetera (exclusivos desbloqueados)
+function founderRow(id, row) { return isFounderId(id) ? { plan: 'combo', items: [...((row && row.items) || []), 'combo', 'redes', 'layout', 'founder'] } : row; }
+
 
 // ============================================================ ONLINE (Supabase)
 // Cliente propio y liviano: Auth (GoTrue) + base de datos (PostgREST) con fetch.
@@ -6548,7 +6551,7 @@ async function vUser(args, draw, alive) {
   const isMe = ME && ME.id === p.id;
   const [followers, following, premRows, walRows, itemRows] = await Promise.all([restCount('follows', `following=eq.${p.id}`), restCount('follows', `follower=eq.${p.id}`), sbTry(() => rest(`premium?select=plan,items&user_id=eq.${p.id}`, { auth: false }), []), sbTry(() => rest(`wallets?select=items&user_id=eq.${p.id}`, { auth: false }), []), sbTry(() => rest(`items?select=id,cid,serial,pattern,wear&owner=eq.${p.id}&limit=2000`, { auth: false }), [])]);
   if (!alive()) return;
-  const d = p.data || {}, uRow = withColl(isFounderId(p.id) ? { plan: 'combo', items: ['combo', 'redes', 'layout', 'founder'] } : mergeRow(premRows && premRows[0], walRows && walRows[0]), itemRows || []), ds = sanitizeStyle(d.style, uRow), shows = Object.values(d.shows || {}), st = p.stats || {};
+  const d = p.data || {}, uRow = withColl(founderRow(p.id, mergeRow(premRows && premRows[0], walRows && walRows[0])), itemRows || []), ds = sanitizeStyle(d.style, uRow), shows = Object.values(d.shows || {}), st = p.stats || {};
   const favs = (d.top || []).map(id => d.shows && d.shows[id]).filter(r => r && r.fav);
   for (const r of shows) if (r.fav && !favs.includes(r)) favs.push(r);
   const seen = shows.filter(r => Object.keys(r.eps || {}).length || r.list === 'done').sort((a, b) => (a.added || 0) - (b.added || 0));
