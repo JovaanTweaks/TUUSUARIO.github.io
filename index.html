@@ -11404,6 +11404,42 @@ async function boot() {
   if (AD.b728) setTimeout(() => { loadTopAd(true); loadBottomAds(); }, 600);
 }
 boot();
+// ============================================================ V28: OPTIMIZACIÓN Y FLUIDEZ
+// 1. Evitar que el inventario sature el procesador en segundo plano
+function fill17() {
+  clearTimeout(fillT17);
+  fillT17 = setTimeout(async () => {
+    const app = document.getElementById('app');
+    if (!app) return;
+    const els = [...app.querySelectorAll('.icard.v17:not([data-mkd])')];
+    const tot = app.querySelector('[data-invtotal]:not([data-mkd])');
+    if (!els.length && !tot) return;
+    await loadMk17();
+    for (const el of els) {
+      el.dataset.mkd = '1';
+      const it = { cid: el.dataset.mkcid, serial: +el.dataset.ser, pattern: +el.dataset.pat, wear: +el.dataset.wear };
+      const e = el.querySelector('[data-est]'); if (e) e.textContent = fmtc(estOf(it));
+      const m = el.querySelector('[data-mk]'); if (m) m.innerHTML = mkLine(it.cid);
+    }
+    if (tot) { 
+      tot.dataset.mkd = '1'; 
+      const sum = INV.list.reduce((a, it) => a + estOf(it), 0); 
+      tot.innerHTML = (sum ? ` Tu colección vale <b>${coinSVG(14)} ${fmtc(sum)}</b> (estimado).` : '') + ' <a href="#" data-act="valhelp">¿Qué hace valioso a un objeto?</a>'; 
+    }
+  }, 250);
+}
+
+// 2. Pausar animaciones pesadas de canvas si cambiás de pestaña (ahorra batería y CPU)
+document.addEventListener('visibilitychange', () => {
+  const canvases = document.querySelectorAll('canvas.pfxcv, canvas.entcv');
+  canvases.forEach(c => { c.style.display = document.hidden ? 'none' : ''; });
+});
+
+// 3. Subir la versión automáticamente en el pie
+(() => {
+  const v = document.querySelector('.version');
+  if (v) v.textContent = 'Versión 28.0';
+})();
 
 </script>
 </body>
