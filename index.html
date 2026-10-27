@@ -2185,6 +2185,11 @@ html body .earngrid>.panel{margin:0!important}
 .genit{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 6px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;text-align:center}.genit.on{border-color:var(--rc);box-shadow:inset 0 0 0 1px var(--rc)}.genit b{font-size:12.5px;line-height:1.2}.genit small{font-size:10.5px;color:var(--rc)}
 .genth{width:64px;height:56px;display:grid;place-items:center;overflow:hidden}
 .gensel{margin-top:8px;font-size:13.5px;color:var(--dim)}.gensel b{color:var(--fg)}
+
+/* ===== V26: gemas en el perfil + generador ===== */
+.genv{display:flex;flex-direction:column;align-items:center;gap:1px;font-size:11.5px;font-weight:800;margin-top:2px}.genv i{font-style:normal;font-weight:700;color:#7fb8ff;font-size:10.5px}
+.genbig{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:12px;padding:12px;border-radius:14px;background:var(--surface);border:1px solid var(--line);max-width:300px}
+.genbigart{width:150px;height:150px;display:grid;place-items:center}.genbigart svg{width:100%;height:100%}
 </style>
 </head>
 <body>
@@ -2215,7 +2220,7 @@ html body .earngrid>.panel{margin:0!important}
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 20.1</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 20.2</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -7934,11 +7939,6 @@ async function vGenerator(_, draw) {
     </div><div class="genprev" id="genprev"></div></div>`);
   FGEN.all = all; FGEN.rar = 'todos'; genList(''); genRender();
 }
-function genList(q) {
-  const box = document.getElementById('genres'); if (!box) return; q = String(q || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  const l = (FGEN.all || []).filter(c => (FGEN.rar === 'todos' || c.r === FGEN.rar) && (!q || c.n.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(q))).slice(0, 120);
-  box.innerHTML = l.map(c => { const o = optOf(c.f, c.k); return `<button class="genit ${c.id === FGEN.cid ? 'on' : ''}" data-act="genselect" data-id="${h(c.id)}" style="--rc:${RAR[c.r].c}"><span class="genth">${o ? miniThumb(c.f, c.k, o) : ''}</span><b>${h(c.n)}</b><small>${h(RAR[c.r].n)} · ${h(CAT_NAMES[c.f] || c.f)}</small></button>`; }).join('') || '<p class="dim">No hay nada con ese nombre.</p>';
-}
 function genRender() {
   const pv = document.getElementById('genprev'), gl = document.getElementById('gemlist'); if (!pv || !FGEN.cid) return;
   pv.innerHTML = collCard({ id: 0, cid: FGEN.cid, serial: 0, pattern: FGEN.pattern, wear: FGEN.wear }); const sel = document.getElementById('gensel'), cc = CAT_IDX[FGEN.cid]; if (sel && cc) sel.innerHTML = `Elegido: <b>${h(cc.n)}</b>`;
@@ -8107,6 +8107,66 @@ function hallBadges() {
   }, 150);
 }
 { const app = document.getElementById('app'); if (app) new MutationObserver(hallBadges).observe(app, { childList: true, subtree: true }); }
+
+
+// ============================================================ V26: LAS GEMAS TAMBIÉN SE VEN EN EL PERFIL + GENERADOR CON PRECIOS
+const GEM_ORDER = Object.keys(GEMT);
+const GEM_PROF = ['compa', 'pet', 'deco'];
+// si tenés varias copias del objeto que usás, el perfil muestra la mejor (la gema más rara)
+function bestGemFor(row, f, k) {
+  const L = (row && row.coll) || []; let best = null, bi = 99;
+  for (const it of L) { if (it.cid !== f + ':' + k) continue; const g = gemOf(it); if (!g || !GEMT[g].cls) continue; const i = GEM_ORDER.indexOf(g); if (i < bi) { bi = i; best = g; } }
+  return best;
+}
+function sanitizeStyle(st, row) {
+  const out = sanitizeStyle10(st, row), src = st || {}, full = isProRow(row), max = full ? 12 : 6;
+  out.stickers = (Array.isArray(src.stickers) ? src.stickers : []).filter(x => x && unlockedFor(row, 'sticker', optOf('sticker', x.k))).slice(0, max).map(x => ({ k: String(x.k), x: Math.min(97, Math.max(3, +x.x || 50)), y: Math.min(95, Math.max(5, +x.y || 50)), r: Math.min(45, Math.max(-45, +x.r || 0)), s: Math.min(2, Math.max(.5, +x.s || 1)) }));
+  const gm = {}; for (const f of GEM_PROF) { const k = out[f]; if (k && k !== 'none') { const g = bestGemFor(row, f, k); if (g) gm[f] = GEMT[g].cls; } }
+  out._gem = gm;
+  return out;
+}
+function compaHTML(st) {
+  const o = optOf('compa', st && st.compa); if (!o || !o.v) return '';
+  const so = optOf('shoe', st && st.shoe), svg = compaSVG(o.v), g = st && st._gem && st._gem.compa;
+  return `<div class="compa ${o.cx === 'exotica' ? 'exo' : o.cx === 'unica' ? 'unq' : ''} ${g ? 'gem-' + g : ''}">${so && so.v ? svg.replace(/<\/svg>$/, shoePair(so.v) + '</svg>') : svg}</div>`;
+}
+function pfxAttr(st) {
+  let a = pfxAttr11(st); const o = optOf('clickfx', st && st.clickfx); if (o && o.v) a += ` data-click="${h(o.v)}"`;
+  const so = optOf('shoe', st && st.shoe); if (so && so.v) a += ` data-shoe="${h(so.v)}"`;
+  const g = st && st._gem; if (g && (g.pet || g.deco)) a += ` data-gempet="${h(g.pet || '')}" data-gemdeco="${h(g.deco || '')}"`;
+  return a;
+}
+function gemOnProfile() {
+  document.querySelectorAll('.pcover[data-gempet],.pcover[data-gemdeco]').forEach(card => {
+    const p = card.dataset.gempet, d = card.dataset.gemdeco;
+    if (p) card.querySelectorAll('.petw .petb:not([data-gemon])').forEach(el => { el.dataset.gemon = '1'; el.classList.add('gem-' + p); });
+    if (d) card.querySelectorAll('.avwrap .adeco:not([data-gemon])').forEach(el => { el.dataset.gemon = '1'; el.classList.add('gem-' + d); });
+  });
+}
+{ const app = document.getElementById('app'); if (app) new MutationObserver(gemOnProfile).observe(app, { childList: true, subtree: true }); }
+
+// ---------- generador: cada objeto muestra cuánto vale normal y con Gema azul perfecta, y se puede ordenar por precio
+const genSer = c => c.r === 'unica' ? 1 : 200;
+const genVal = c => estOf({ cid: c.id, serial: genSer(c), pattern: 0, wear: .2 });
+const genGemVal = c => { const sd = gemSeeds(c.id), pa = +Object.keys(sd).find(k => sd[k] === 'A'); return estOf({ cid: c.id, serial: genSer(c), pattern: pa, wear: .005 }); };
+function genList(q) {
+  const box = document.getElementById('genres'); if (!box) return; q = String(q || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  let l = (FGEN.all || []).filter(c => (FGEN.rar === 'todos' || c.r === FGEN.rar) && (!q || c.n.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').includes(q)));
+  if (FGEN.sort === 'caro') l = l.slice().sort((a, b) => genVal(b) - genVal(a));
+  l = l.slice(0, 150);
+  box.innerHTML = l.map(c => { const o = optOf(c.f, c.k); return `<button class="genit ${c.id === FGEN.cid ? 'on' : ''}" data-act="genselect" data-id="${h(c.id)}" style="--rc:${RAR[c.r].c}"><span class="genth">${o ? miniThumb(c.f, c.k, o) : ''}</span><b>${h(c.n)}</b><small>${h(RAR[c.r].n)} · ${h(CAT_NAMES[c.f] || c.f)}</small><span class="genv">${coinSVG(11)} ${fmtc(genVal(c))}<i>💎 ${fmtc(genGemVal(c))}</i></span></button>`; }).join('') || '<p class="dim">No hay nada con ese nombre.</p>';
+  const head = document.querySelector('.genrar'); if (head && !head.querySelector('[data-act="gensort"]')) head.insertAdjacentHTML('beforeend', `<button class="chip" data-act="gensort">Más caros primero</button>`);
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-act="gensort"]'); if (!b) return; FGEN.sort = FGEN.sort === 'caro' ? '' : 'caro'; b.classList.toggle('on', FGEN.sort === 'caro'); genList((document.getElementById('genq') || {}).value); });
+// vista previa grande en el generador: cómo se ve en tu perfil con ese patrón
+const _genRenderPrev = () => {
+  const pv = document.getElementById('genprev'), c = CAT_IDX[FGEN.cid]; if (!pv || !c || pv.querySelector('.genbig')) return;
+  const o = optOf(c.f, c.k); if (!o) return;
+  const g = gemOf({ cid: c.id, pattern: FGEN.pattern, wear: FGEN.wear, serial: 0 }), cls = g && GEMT[g].cls ? 'gem-' + GEMT[g].cls : '';
+  const art = c.f === 'compa' ? compaSVG(o.v) : c.f === 'pet' ? (() => { const [k, a] = twoPart(o.v); return CRIT[k] ? `<svg viewBox="0 0 64 64">${CRIT[k][1](ACCMAP[a] || ACCMAP.rosa, a)}</svg>` : ''; })() : miniThumb(c.f, c.k, o);
+  pv.insertAdjacentHTML('afterbegin', `<div class="genbig"><small class="dim">Así se ve en tu perfil</small><div class="genbigart ${cls}">${art}</div>${g ? `<b style="color:${GEMT[g].c}">${GEMT[g].i} ${h(GEMT[g].n)}</b>` : '<span class="dim">Sin gema</span>'}</div>`);
+};
+{ const app = document.getElementById('app'); if (app) new MutationObserver(() => { if (parseRoute().name === 'generador') _genRenderPrev(); }).observe(app, { childList: true, subtree: true }); }
 
 
 // ============================================================ ONLINE (Supabase)
