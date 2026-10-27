@@ -1,0 +1,16 @@
+/* =====================================================================
+   MIS ESTILOS · JVNN
+   El diseño "sala de cine" ya viene adentro del index.html.
+   Este archivo es para TUS cambios extra: lo que pongas acá pisa al index,
+   y cuando te mande un index.html nuevo este archivo no se pisa.
+   Si algo no cambia, agregale !important al final (ej: color:red!important).
+   ===================================================================== */
+
+/* EJEMPLOS (copialos abajo para usarlos):
+   Menú de arriba más grande ......... .nav a{font-size:20px!important}
+   Tarjetas más redondeadas .......... :root{--r:20px}
+   Ocultar el contador de monedas .... .sinkbar{display:none!important}
+   Sin textura de película ........... body::after{display:none!important}
+*/
+
+/* TUS CAMBIOS: escribí abajo de esta línea */
