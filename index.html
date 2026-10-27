@@ -2528,6 +2528,53 @@ body[data-sec="batallas"],body[data-sec="batalla"]{--sec:#ff5a6a}
 .btwin h2{margin:4px 0}.btwin p{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;align-items:center}.btcrown{font-size:34px}
 .btready{color:var(--good,#3ddc97);font-weight:900}.btspin{width:26px;height:26px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--sec);animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
 @media(max-width:700px){.btcol{min-width:150px;padding:8px}.bttotal{font-size:18px}}
+
+/* V41: racha, cajas con show, colecciones */
+body[data-sec="colecciones"]{--sec:#ffd24a}
+.freebox{flex-wrap:wrap}
+.fstreak{flex-basis:100%;display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px dashed color-mix(in srgb,var(--line) 70%,transparent)}
+.fsdots{display:flex;gap:6px}.fsdots i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:800;border:1px solid var(--line);background:var(--raise);color:var(--dim)}
+.fsdots i.on{background:linear-gradient(135deg,#ff9a3d,#ff4a6a);color:#fff;border-color:transparent;box-shadow:0 4px 12px -4px rgba(255,90,80,.7)}.fsdots i.big{width:36px;height:36px;font-size:16px}
+.fstxt{display:flex;flex-direction:column;gap:2px;font-size:13px}.fstxt b{font-size:15px}.fstxt span{color:var(--dim)}
+.boxart .bxsvg{transition:transform .18s ease-out;will-change:transform}
+.boxcard{position:relative;overflow:hidden}
+.boxcard::before{content:"";position:absolute;inset:-40%;background:conic-gradient(from 0deg,transparent,color-mix(in srgb,var(--sec) 14%,transparent),transparent 30%);animation:bxsweep 9s linear infinite;pointer-events:none;opacity:.6}@keyframes bxsweep{to{transform:rotate(360deg)}}
+.boxcard>*{position:relative}
+.bxbest{display:flex;flex-direction:column;align-items:center;gap:2px;margin:-4px 0 8px}.bxbest small{color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:800}
+.bxbestw{position:relative;height:84px;width:100%}
+.bxb{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;opacity:0;transform:translateY(8px) scale(.95);transition:opacity .45s,transform .45s}.bxb.on{opacity:1;transform:none}
+.bxb .ithumb{width:52px;height:52px;display:grid;place-items:center;overflow:hidden}.bxb .ithumb>*{max-width:52px;max-height:52px}
+.bxb em{font-style:normal;font-size:12px;font-weight:700;max-width:90%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.bxb i{font-style:normal;font-size:10.5px;font-weight:900;color:var(--rc);text-transform:uppercase;letter-spacing:.08em}
+.reveal .icard{animation:rvrise .9s cubic-bezier(.2,1.4,.4,1) both}@keyframes rvrise{from{transform:translateY(60px) scale(.6);opacity:0}to{transform:none;opacity:1}}
+.coll{margin-bottom:12px}.coll.ready{border-color:var(--rc);box-shadow:0 0 0 1px var(--rc)}.coll.got{opacity:.8}
+.collhead{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.collhead h3{margin:0;color:var(--rc)}.collrw{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:16px}.collbonus{font-size:12px;font-weight:800;color:#ffe08a;padding:3px 8px;border-radius:999px;border:1px solid rgba(255,224,138,.4)}
+.collgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(58px,1fr));gap:6px;margin-top:10px}
+.collit{position:relative;aspect-ratio:1;display:grid;place-items:center;border-radius:10px;background:var(--raise);border:1px solid var(--line);overflow:hidden}
+.collit .ithumb{width:52px;height:52px;display:grid;place-items:center}.collit .ithumb>*{max-width:52px;max-height:52px}
+.collit:not(.own) .ithumb{filter:grayscale(1) brightness(.35)}.collit i{position:absolute;font-style:normal;font-weight:900;color:var(--dim);font-size:18px}
+.collit.own{border-color:color-mix(in srgb,var(--rc) 50%,var(--line))}.collit.bonus{border:1px dashed #ffe08a}.collit.bonus b{position:absolute;bottom:2px;font-size:9px;color:#ffe08a}
+
+/* v40: regalos con buscador, evento de Halloween y figuras oscuras */
+#modal{z-index:10200!important}
+.gfu .av{flex:none;border-radius:50%;display:grid;place-items:center;overflow:hidden;background:#222;font-size:12px}.gfu .av img{width:100%;height:100%;object-fit:cover}
+.gfsug{position:absolute;left:0;right:0;z-index:5;margin-top:4px;max-height:260px;overflow:auto;background:#111014;border:1px solid var(--line);border-radius:12px;box-shadow:0 14px 30px rgba(0,0,0,.6);padding:4px}
+.gfu{display:flex;align-items:center;gap:10px;width:100%;padding:7px 8px;border:0;background:none;color:inherit;text-align:left;border-radius:9px;cursor:pointer;font:inherit}
+.gfu:hover,.gfu:focus{background:rgba(255,255,255,.07)}.gfu span{display:flex;flex-direction:column;min-width:0;flex:1}.gfu small{color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gfu em{font-style:normal;font-size:11px;padding:2px 7px;border-radius:99px;background:rgba(255,255,255,.08);color:var(--muted)}.gfnone{padding:10px;color:var(--muted);font-size:13px}
+.hwev{position:relative;overflow:hidden;padding:20px;border-color:rgba(255,138,42,.6);background:radial-gradient(ellipse at 15% 0,rgba(255,120,30,.28),transparent 60%),radial-gradient(ellipse at 100% 100%,rgba(122,58,214,.28),transparent 60%),linear-gradient(180deg,#140a06,#0a0608)}
+.hwev .hwhead{position:relative;display:flex;justify-content:space-between;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-bottom:14px}
+.hwev h2{font-size:clamp(24px,4vw,34px);margin:4px 0 6px;letter-spacing:-.01em}.hwev .hwhead p{margin:0;max-width:560px;color:#e8d8cc}
+.hwtag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.12em;padding:4px 10px;border-radius:99px;background:#ff8a2a;color:#1a0a02}
+.hwcount{display:flex;flex-direction:column;align-items:flex-end;padding:10px 14px;border-radius:14px;background:rgba(0,0,0,.45);border:1px solid rgba(255,138,42,.4)}
+.hwcount small{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#ffb070}.hwcount b{font-size:22px;color:#fff}.hwcount span{font-size:12px;color:var(--muted)}
+.hwev .wkprice s{font-size:11px;margin-left:4px}.hwdeco{position:absolute;inset:0;pointer-events:none}
+.hwbat{position:absolute;opacity:.7;animation:hwbat 6s ease-in-out infinite}.hwbat path{fill:#000;stroke:rgba(255,138,42,.35);stroke-width:.6}
+@keyframes hwbat{0%,100%{transform:translate(0,0) scaleY(1)}25%{transform:translate(6px,-4px) scaleY(.6)}50%{transform:translate(12px,2px) scaleY(1)}75%{transform:translate(4px,5px) scaleY(.7)}}
+@media(max-width:560px){.hwcount{align-items:flex-start;width:100%}.hwev{padding:14px}}
+.dkem{animation:dkem 5s linear infinite;transform-box:fill-box}
+@keyframes dkem{0%{transform:translateY(0);opacity:0}15%{opacity:1}100%{transform:translateY(-38px);opacity:0}}
+.dkrot{animation:dkrot 40s linear infinite;transform-origin:60px 60px}@keyframes dkrot{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.dkem,.dkrot,.hwbat{animation:none}}
 </style>
 <!-- TUS CAMBIOS DE DISEÑO: van en el archivo mis-estilos.css (al lado de este index.html). Ese archivo yo no lo piso nunca. -->
 <link rel="stylesheet" href="mis-estilos.css" onerror="this.remove()">
@@ -2560,7 +2607,7 @@ body[data-sec="batallas"],body[data-sec="batalla"]{--sec:#ff5a6a}
 
 <footer><div class="wrap"><img class="ftlogo" src="" alt="JVNN" loading="lazy">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 23.0</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 25.0</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -3021,7 +3068,7 @@ async function route(keepScroll) {
   const id = ++renderId, R = parseRoute(), app = $('#app');
   const y = window.scrollY;
   document.querySelectorAll('[data-r]').forEach(a => a.classList.toggle('on', a.dataset.r === R.name || (R.name === 'stats' && a.dataset.r === 'perfil' && a.closest('.bnav'))));
-  const views = { '': vHome, 'buscar': vSearch, 'serie': vShow, 'ep': vEpisode, 'mis-series': vMine, 'calendario': vCalendar, 'descubrir': vDiscover, 'peliculas': vMovies, 'stats': vStats, 'perfil': vProfile, 'entrar': vLogin, 'nueva-clave': vNewPass, 'gente': vPeople, 'u': vUser, 'categoria': vCategory, 'peli': vMovie, 'pro': vPro, 'monedas': vCoins, 'tienda': vShopDaily, 'cajas': vBoxes, 'inventario': vInventory, 'mercado': vMarket, 'intercambios': vTrades, 'misiones': vMissions, 'bucks': vBucksPlus, 'temporada': vSeason, 'supporter': vSupporter, 'generador': vGenerator, 'ganar': vEarn, 'salon': vHall, 'invitar': vInvite, 'canjes': vRewards, 'taller': vTaller, 'batallas': vBattles, 'batalla': vBattle, 'sorteos': vRaffles, 'actor': vActor, 'top-episodios': vTopEps, 'listas': vLists, 'lista': vList };
+  const views = { '': vHome, 'buscar': vSearch, 'serie': vShow, 'ep': vEpisode, 'mis-series': vMine, 'calendario': vCalendar, 'descubrir': vDiscover, 'peliculas': vMovies, 'stats': vStats, 'perfil': vProfile, 'entrar': vLogin, 'nueva-clave': vNewPass, 'gente': vPeople, 'u': vUser, 'categoria': vCategory, 'peli': vMovie, 'pro': vPro, 'monedas': vCoins, 'tienda': vShopDaily, 'cajas': vBoxes, 'inventario': vInventory, 'mercado': vMarket, 'intercambios': vTrades, 'misiones': vMissions, 'bucks': vBucksPlus, 'temporada': vSeason, 'supporter': vSupporter, 'generador': vGenerator, 'ganar': vEarn, 'salon': vHall, 'invitar': vInvite, 'canjes': vRewards, 'taller': vTaller, 'batallas': vBattles, 'colecciones': vCollections, 'batalla': vBattle, 'sorteos': vRaffles, 'actor': vActor, 'top-episodios': vTopEps, 'listas': vLists, 'lista': vList };
   const v = views[R.name] || vHome;
   const draw = html => { if (id === renderId) { app.innerHTML = html; fillAds(); } return id === renderId; };
   try { await v(R.args, draw, () => id === renderId); }
@@ -6207,7 +6254,9 @@ async function vShopDaily(args, draw, alive) {
   await loadDaily();
   return vShop(args, html => draw(html.replace('<div class="tabs shoptabs">', dailyHTML() + '<div class="tabs shoptabs">')), alive);
 }
-setInterval(() => document.querySelectorAll('.dtimer[data-end]').forEach(el => { const left = Math.max(0, +el.dataset.end - Date.now()); el.textContent = `Cambia en ${Math.floor(left / 3600e3)} h ${Math.floor(left % 3600e3 / 60e3)} min`; }), 30e3);
+function dtLeft(ms) { ms = Math.max(0, ms); const d = Math.floor(ms / 864e5), hh = Math.floor(ms % 864e5 / 3600e3), mm = Math.floor(ms % 3600e3 / 60e3); return d >= 2 ? `${d} días ${hh} h` : d === 1 ? `1 día ${hh} h` : hh ? `${hh} h ${mm} min` : `${mm} min`; }
+const dtTick = () => document.querySelectorAll('.dtimer[data-end]').forEach(el => { const pre = el.dataset.pre != null ? el.dataset.pre : 'Cambia en'; el.textContent = (pre ? pre + ' ' : '') + dtLeft(+el.dataset.end - Date.now()); });
+setInterval(dtTick, 30e3);
 
 // ---------- INICIO: aprovechar los costados en pantallas grandes
 function homeSideHTML() {
@@ -6708,7 +6757,7 @@ document.addEventListener('click', e => {
   if (b) { const m = dd.querySelector('.ddm'), open = m.hidden; m.hidden = !open; b.setAttribute('aria-expanded', open); return; }
   if (dd && !e.target.closest('.navdd')) { dd.querySelector('.ddm').hidden = true; dd.querySelector('.ddbtn').setAttribute('aria-expanded', 'false'); }
 });
-window.addEventListener('hashchange', () => { const m = document.querySelector('.navdd .ddm'); if (m) m.hidden = true; const n = parseRoute().name; document.querySelector('.ddbtn')?.classList.toggle('on', ['gente', 'listas', 'mercado', 'cajas', 'misiones', 'canjes', 'sorteos', 'bucks', 'temporada', 'supporter', 'ganar', 'salon', 'inventario', 'intercambios', 'taller', 'batallas', 'batalla'].includes(n) || location.hash.includes('ranking')); });
+window.addEventListener('hashchange', () => { const m = document.querySelector('.navdd .ddm'); if (m) m.hidden = true; const n = parseRoute().name; document.querySelector('.ddbtn')?.classList.toggle('on', ['gente', 'listas', 'mercado', 'cajas', 'misiones', 'canjes', 'sorteos', 'bucks', 'temporada', 'supporter', 'ganar', 'salon', 'inventario', 'intercambios', 'taller', 'batallas', 'batalla', 'colecciones'].includes(n) || location.hash.includes('ranking')); });
 
 // ---------- buscador: series, películas, actores y gente a la vez
 let SR = { q: '', t: null, i: -1 };
@@ -7076,7 +7125,7 @@ async function vBoxes(_, draw, alive) {
   const today = todayAR(), usedFree = free && free[0] && free[0].last_free === today;
   const end = new Date(today + 'T03:00:00Z').getTime() + 864e5;
   draw(`${ecoNav('cajas')}<section class="pagehead"><div class="eyebrow">Cajas</div><h1>Abrí cajas y conseguí objetos únicos</h1><p class="dim">Hay ${Object.values(CAT_IDX).filter(c => c.r === 'mitica').length} míticos, ${Object.values(CAT_IDX).filter(c => c.r === 'exotica').length} exóticos y ${Object.values(CAT_IDX).filter(c => c.r === 'unica').length} objetos que existen una sola vez.</p></section>
-    <div class="freebox ${usedFree ? 'used' : ''}"><div class="boxcube small"><i></i><i></i><i></i></div><div><h2>Caja gratis del día</h2><p class="dim">${usedFree ? `Ya la abriste hoy. Vuelve en <span class="dtimer" data-end="${end}"></span>.` : 'Una Caja JVNN gratis, todos los días.'}</p></div>${usedFree ? '' : '<button class="btn pri big" data-act="openfree">Abrir gratis</button>'}</div>
+    <div class="freebox ${usedFree ? 'used' : ''}"><div class="boxcube small"><i></i><i></i><i></i></div><div><h2>Caja gratis del día</h2><p class="dim">${usedFree ? `Ya la abriste hoy. Vuelve en <span class="dtimer" data-pre="" data-end="${end}"></span>.` : 'Una Caja JVNN gratis, todos los días.'}</p></div>${usedFree ? '' : '<button class="btn pri big" data-act="openfree">Abrir gratis</button>'}</div>
     <div class="boxgrid">${Object.entries(BOXES).filter(([, b]) => !b.hidden).map(([k, b]) => `<div class="boxcard bx-${k}"><div class="boxart"><div class="boxcube"><i></i><i></i><i></i></div></div><h2>${b.n}</h2>${b.re || b.cat ? `<p class="small dim" style="margin:-6px 0 10px">${k === 'hadas' ? 'Solo hadas y cosas mágicas' : k === 'tormenta' ? 'Rayos, lluvia y tormentas' : k === 'galaxia' ? 'Estrellas, planetas y galaxias' : 'Solo mascotas y compañeros'}</p>` : k === 'legendaria' ? '<p class="small dim" style="margin:-6px 0 10px">Todo lo que sale es Legendario o mejor</p>' : ''}<ul class="odds">${odds(b)}</ul><div class="boxbtns">${(k === 'legendaria' ? [1, 5] : [1, 5, 10]).map(n => `<button class="btn ${n === 1 ? 'pri' : ''} big" data-act="openboxn" data-b="${k}" data-n="${n}">${n === 1 ? 'Abrir 1' : 'Abrir ' + n} · ${coinSVG(16)} ${(b.p * n).toLocaleString('es-AR')}</button>`).join('')}</div></div>`).join('')}</div>
     <p class="small dim sec">Las probabilidades son reales y las calcula el servidor. Las cajas se abren solo con monedas que ganás usando la página: no se compran con plata y lo que sacás no se puede cambiar por plata.</p>`);
   document.querySelectorAll('.dtimer[data-end]').forEach(el => { const left = Math.max(0, +el.dataset.end - Date.now()); el.textContent = `${Math.floor(left / 3600e3)} h ${Math.floor(left % 3600e3 / 60e3)} min`; });
@@ -7090,7 +7139,7 @@ document.addEventListener('click', async e => {
   catch (x) { opening = false; b.disabled = false; return toast(/function|404/i.test(x.message) ? 'Falta activar la caja gratis en Supabase (supabase_v13.sql).' : x.message); }
   if (typeof res === 'string') try { res = JSON.parse(res); } catch (x) { }
   WALLET.coins = res.coins ?? WALLET.coins; renderCoins(); INV.list.unshift(res.item);
-  spinReveal('normal', res.item, () => { opening = false; });
+  spinReveal(res.box || 'normal', res.item, () => { opening = false; if (typeof freeStreakDeco === 'function') { FREEST.v = null; freeStreakDeco(); } });
 });
 
 // ---------- apertura más espectacular: la caja se sacude, brilla y la ruleta frena con suspenso
@@ -8397,7 +8446,7 @@ setInterval(async () => {
   try { await rest('rpc/claim_referral', { method: 'POST', body: { p_ref: ref } }); try { localStorage.removeItem('jvnn_ref'); } catch (e) { } toast(`¡Bienvenido! Te sumamos 1.000 monedas por venir con la invitación de @${ref}.`); if (typeof loadWallet === 'function') loadWallet(); }
   catch (x) { if (/cuentas nuevas|Ya usaste|no sirve/.test(x.message)) { try { localStorage.removeItem('jvnn_ref'); } catch (e) { } } }
 }, 3000);
-function ecoNav(cur) { return `<nav class="econav">${[['ganar', 'Ganá monedas'], ['tienda', 'Tienda'], ['cajas', 'Cajas'], ['batallas', 'Batallas'], ['misiones', 'Misiones'], ['temporada', 'Pase'], ['inventario', 'Inventario'], ['mercado', 'Mercado'], ['intercambios', 'Intercambios'], ['taller', 'Taller'], ['canjes', 'Canjes'], ['sorteos', 'Sorteos'], ['bucks', 'Bucks']].map(([k, n]) => `<a class="${k === cur ? 'on' : ''}" href="#/${k}">${n}</a>`).join('')}<span class="ecocoins">${coinSVG(18)} <b>${WALLET.coins.toLocaleString('es-AR')}</b></span><span class="ecocoins bk">${buckSVG(18)} <b>${(WALLET.bucks || 0).toLocaleString('es-AR')}</b></span></nav>`; }
+function ecoNav(cur) { return `<nav class="econav">${[['ganar', 'Ganá monedas'], ['tienda', 'Tienda'], ['cajas', 'Cajas'], ['batallas', 'Batallas'], ['misiones', 'Misiones'], ['temporada', 'Pase'], ['inventario', 'Inventario'], ['colecciones', 'Colecciones'], ['mercado', 'Mercado'], ['intercambios', 'Intercambios'], ['taller', 'Taller'], ['canjes', 'Canjes'], ['sorteos', 'Sorteos'], ['bucks', 'Bucks']].map(([k, n]) => `<a class="${k === cur ? 'on' : ''}" href="#/${k}">${n}</a>`).join('')}<span class="ecocoins">${coinSVG(18)} <b>${WALLET.coins.toLocaleString('es-AR')}</b></span><span class="ecocoins bk">${buckSVG(18)} <b>${(WALLET.bucks || 0).toLocaleString('es-AR')}</b></span></nav>`; }
 
 
 // ============================================================ V25: SALÓN DE LA FAMA + CAMBIAR O VENDER GEMAS A LA PÁGINA
@@ -9364,7 +9413,7 @@ const BOXICON = {
   gift: c => `<text x="0" y="5.4" text-anchor="middle" font-family="Archivo,Arial Black,sans-serif" font-weight="900" font-size="12" fill="${c}">GRATIS</text>`,
 };
 function boxSVG(k, cls = '') {
-  const [a, b, rib, ic] = BOXART[k] || BOXART.normal, u = 'bxa' + k, dark = k === 'abismo' || k === 'tormenta' || k === 'galaxia' || k === 'halloween';
+  const [a, b, rib, ic] = BOXART[k] || BOXART.normal, u = 'bxa' + k, dark = k === 'abismo' || k === 'tormenta' || k === 'galaxia' || k === 'halloween' || k === 'infernal';
   const emb = k === 'gratis' ? '#1e7a5a' : dark ? rib : b;
   return `<svg class="bxsvg ${cls}" viewBox="0 0 120 124" aria-hidden="true"><defs>
     <linearGradient id="${u}f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient>
@@ -9879,6 +9928,595 @@ async function vBattle(args, draw, alive) {
   if (animate) { SND.reveal(iWon ? 'exotica' : 'rara'); if (iWon) for (let i = 0; i < 6; i++) setTimeout(() => burstAt(innerWidth * (.2 + Math.random() * .6), innerHeight * .4, ['#ffd24a', '#ffffff', '#ff8ab8', '#7fe0ff'], 34, 'confeti'), i * 140); }
   if (iWon && typeof loadInv === 'function') loadInv();
 }
+
+
+// ============================================================ V38: 600+ FIGURAS NUEVAS (8 temas), CAJAS NUEVAS, SOLO FIGURAS EN LAS CAJAS
+// ---------- partes nuevas
+Object.assign(FHEAD, {
+  plague: u => `<path d="M19.6 22C19.6 11 25.6 7 32 7C38.4 7 44.4 11 44.4 22Z" fill="${F(u, 'cl')}"/><path d="M15 15.4C22 13 42 13 49 15.4L47.6 17.4C40 15.6 24 15.6 16.4 17.4Z" fill="${F(u, 'cl')}"/><path d="M24 22C24 18.6 40 18.6 40 22L44 34C38 31 34 30.6 32 36C30 30.6 26 31 20 34Z" fill="#e8dcc0" stroke="#8a7a60" stroke-width=".5"/><circle cx="27.4" cy="23.6" r="2.4" fill="#1a1024" stroke="${F(u, 'mt')}" stroke-width=".8"/><circle cx="36.6" cy="23.6" r="2.4" fill="#1a1024" stroke="${F(u, 'mt')}" stroke-width=".8"/><circle cx="27" cy="23.2" r=".7" fill="#ff4a4a"/><circle cx="36.2" cy="23.2" r=".7" fill="#ff4a4a"/>`,
+  veil: u => `<path d="M18.4 30C17 14 24 7 32 7C40 7 47 14 45.6 30L48 46C44 44 42 40 41 34L23 34C22 40 20 44 16 46Z" fill="${F(u, 'cl')}"/><path d="M21 21C21.6 14.4 26 11 32 11C38 11 42.4 14.4 43 21" stroke="#f2eee8" stroke-width="2.6" fill="none"/>`,
+  gasmask: u => `<path d="M22.6 24C22.6 30.6 26 34 32 34C38 34 41.4 30.6 41.4 24C38 21.6 26 21.6 22.6 24Z" fill="#2a2a30"/><circle cx="27.4" cy="24.6" r="2.8" fill="#9fd6ff" stroke="#5a5a64" stroke-width="1"/><circle cx="36.6" cy="24.6" r="2.8" fill="#9fd6ff" stroke="#5a5a64" stroke-width="1"/><circle cx="32" cy="32.6" r="3.2" fill="#3a3a44" stroke="#5a5a64" stroke-width=".8"/><path d="M30 32.6H34M32 30.6V34.6" stroke="#22222a" stroke-width=".6"/>`,
+  fedora: u => `<ellipse cx="32" cy="15.6" rx="16" ry="3" fill="${F(u, 'cl')}"/><path d="M23 15.4C23 9 26 6.4 29 7.4C30.4 8 31 9 32 9C33 9 33.6 8 35 7.4C38 6.4 41 9 41 15.4Z" fill="${F(u, 'cl')}"/><path d="M23.2 13.4C29 14.4 35 14.4 40.8 13.4" stroke="${F(u, 'ac')}" stroke-width="1.6" fill="none"/>`,
+  bunny: u => `<ellipse cx="26" cy="5.6" rx="2.8" ry="8.6" fill="${F(u, 'hr')}" transform="rotate(-12 26 5.6)"/><ellipse cx="38" cy="5.6" rx="2.8" ry="8.6" fill="${F(u, 'hr')}" transform="rotate(12 38 5.6)"/><ellipse cx="26" cy="6" rx="1.2" ry="6" fill="${F(u, 'ac')}" transform="rotate(-12 26 6)"/><ellipse cx="38" cy="6" rx="1.2" ry="6" fill="${F(u, 'ac')}" transform="rotate(12 38 6)"/>`,
+  antlers: u => `<path d="M24 12C22 8 18 7 16 3M21.6 9.6 18.6 10.6M19.6 6.4 21 3.4M40 12C42 8 46 7 48 3M42.4 9.6 45.4 10.6M44.4 6.4 43 3.4" stroke="${F(u, 'mt')}" stroke-width="1.6" fill="none" stroke-linecap="round"/>`,
+  tophat: u => `<ellipse cx="32" cy="12.6" rx="13" ry="2.6" fill="#141418"/><rect x="24.6" y="0" width="14.8" height="12.4" rx="1.6" fill="#141418"/><rect x="24.6" y="8.4" width="14.8" height="2.4" fill="${F(u, 'ac')}"/>`,
+  horns: FHEAD.horns,
+});
+Object.assign(FHELD, {
+  puppet: () => `<path d="M28.4 28.4V33.4M35.6 28.4V33.4" stroke="#5a3a2a" stroke-width=".7"/><path d="M28.6 30.4Q32 31.6 35.4 30.4" stroke="#8a2a2a" stroke-width=".9" fill="none"/>`,
+  clapper: u => `<rect x="38.6" y="40" width="10" height="7.4" rx=".8" fill="#141418"/><path d="M38.2 39.6 48.6 36.6 49.2 38.8 38.8 41.8Z" fill="#f2f2f2"/><path d="M40.6 39 41.8 41M43.6 38.2 44.8 40.2M46.4 37.4 47.6 39.4" stroke="#141418" stroke-width="1"/><path d="M40 43.4H47.2M40 45.2H45" stroke="#f2f2f2" stroke-width=".6"/>`,
+  phone: () => `<rect x="41.6" y="37.6" width="5" height="8.6" rx="1.2" fill="#1a1a24"/><rect x="42.2" y="38.6" width="3.8" height="6" rx=".6" fill="#7fd0ff"/>`,
+  clock: u => `<circle cx="45" cy="41" r="4.6" fill="${F(u, 'mt')}"/><circle cx="45" cy="41" r="3.4" fill="#fff"/><path d="M45 41V38.6M45 41 46.8 42" stroke="#1a1024" stroke-width=".7"/><rect x="44" y="35" width="2" height="1.6" fill="${F(u, 'mt')}"/>`,
+  teddy: () => `<circle cx="20.6" cy="40" r="4.4" fill="#b8865a"/><circle cx="17.6" cy="36.6" r="1.8" fill="#b8865a"/><circle cx="23.6" cy="36.6" r="1.8" fill="#b8865a"/><ellipse cx="20.6" cy="47" rx="4" ry="4.4" fill="#b8865a"/><circle cx="19.2" cy="39.6" r=".6" fill="#1a1024"/><circle cx="22" cy="39.6" r=".6" fill="#1a1024"/><ellipse cx="20.6" cy="41.4" rx="1.4" ry="1" fill="#e8c8a0"/>`,
+  potion: () => `<path d="M42.4 37H45.6V39.6C47.6 40.6 48.6 42.4 48.6 44.4C48.6 47.4 46.4 49.4 44 49.4C41.6 49.4 39.4 47.4 39.4 44.4C39.4 42.4 40.4 40.6 42.4 39.6Z" fill="#e8f8ff" fill-opacity=".5" stroke="#bfd6e6" stroke-width=".5"/><path d="M39.6 44.6C39.6 47.4 41.6 49.4 44 49.4C46.4 49.4 48.4 47.4 48.4 44.6Z" fill="#c86ad6"/><g class="tw"><circle cx="43" cy="42" r=".7" fill="#fff"/></g>`,
+  bat: () => `<path d="M42.6 46 49.4 32" stroke="#8a5a2a" stroke-width="2.4" stroke-linecap="round"/><path d="M48 34.6 50.4 29.6" stroke="#8a5a2a" stroke-width="3.6" stroke-linecap="round"/>`,
+  umbrella: u => `<path d="M45 48V30" stroke="#2a2a30" stroke-width="1"/><path d="M36 31C36 24 54 24 54 31C52 30 50 30 49.5 31.4C48.5 30 46.5 30 45 31.4C43.5 30 41.5 30 40.5 31.4C40 30 38 30 36 31Z" fill="${F(u, 'ac')}"/><path d="M45 48C45 50 43 50 43 48.6" stroke="#2a2a30" stroke-width="1" fill="none"/>`,
+  trident: u => `<path d="M44.4 50 46.6 26" stroke="${F(u, 'mt')}" stroke-width="1.4" stroke-linecap="round"/><path d="M42.6 27.4H50.6M42.6 27.4C42.2 23 43.2 21 43.6 19M46.6 26V17M50.6 27.4C50.8 23 49.8 21 49.4 19" stroke="${F(u, 'mt')}" stroke-width="1.3" fill="none" stroke-linecap="round"/>`,
+  cards: () => `<rect x="40" y="38" width="6" height="8.4" rx=".8" fill="#fff" transform="rotate(-14 43 42)"/><rect x="42.6" y="37.4" width="6" height="8.4" rx=".8" fill="#fff" stroke="#c8c8d0" stroke-width=".3" transform="rotate(10 45.6 41.6)"/><path d="M45.2 40.2 46.6 42 45.2 43.8 43.8 42Z" fill="#e8283a" transform="rotate(10 45.6 41.6)"/>`,
+});
+Object.assign(FBACK, {
+  jetpack: u => `<rect x="17" y="34" width="7" height="13" rx="3" fill="${F(u, 'mt')}"/><rect x="40" y="34" width="7" height="13" rx="3" fill="${F(u, 'mt')}"/><g class="flick"><path d="M18.4 47.4C18.4 51 20.5 53 20.5 55C20.5 53 22.6 51 22.6 47.4Z M41.4 47.4C41.4 51 43.5 53 43.5 55C43.5 53 45.6 51 45.6 47.4Z" fill="#ffb03d"/></g>`,
+  backpack: u => `<rect x="21" y="33" width="22" height="14" rx="4" fill="${F(u, 'ac')}"/>`,
+  tail: u => `<path d="M38 46C46 48 52 44 54 36C56 42 52 50 40 50Z" fill="${F(u, 'hr')}"/>`,
+});
+
+// ---------- 8 temas, cada uno con 9 personajes (todos inventados, ninguno de una peli, serie o juego real)
+const GF_THEMES = {
+  anime: { n: 'Anime', arch: [
+    ['Espadachín', { hair: 'spiky', back: 'katana', eyes: 'fierce', belt: 1 }], ['Chica mágica', { hair: 'pony', held: 'staff', dress: 1, eyes: 'wink' }], ['Ninja', { hair: 'short', head: 'hood', face: 'mask', held: 'kunai', eyes: 'fierce' }],
+    ['Idol', { hair: 'buns', held: 'mic', dress: 1, eyes: 'happy' }], ['Piloto de mecha', { hair: 'short', head: 'visor', back: 'jetpack' }], ['Chico zorro', { hair: 'spiky', head: 'catears', held: 'orb', back: 'tail' }],
+    ['Sacerdotisa', { hair: 'long', head: 'flowers', held: 'ribbon', dress: 1, eyes: 'calm' }], ['Rōnin', { hair: 'long', held: 'mouthblade', back: 'katana', eyes: 'fierce' }], ['Otaku gamer', { hair: 'bob', head: 'phones', held: 'controller' }]] },
+  terror: { n: 'Terror', arch: [
+    ['Doctor de la peste', { hair: 'none', head: 'plague', back: 'cape', nomouth: 1, eyes: 'none' }], ['Monja oscura', { hair: 'none', head: 'veil', dress: 1, eyes: 'glow' }], ['Muñeco ventrílocuo', { hair: 'short', face: 'puppet', eyes: 'button', nomouth: 1, collar: 1 }],
+    ['Exorcista', { hair: 'short', held: 'book', collar: 1, eyes: 'fierce' }], ['Espíritu del lago', { hair: 'long', dress: 1, eyes: 'glow', nomouth: 1 }], ['El de la máscara de gas', { hair: 'short', head: 'gasmask', nomouth: 1, eyes: 'none', held: 'lantern' }],
+    ['Sonámbula', { hair: 'long', held: 'teddy', dress: 1, eyes: 'calm' }], ['Cazador de demonios', { hair: 'spiky', held: 'axe', eyes: 'fierce', belt: 1 }], ['Mago siniestro', { hair: 'short', head: 'tophat', held: 'cards', eyes: 'mismatch' }]] },
+  halloween: { n: 'Halloween', arch: [
+    ['Bruja', { hair: 'long', head: 'witchwide', held: 'potion', dress: 1 }], ['Cabeza de calabaza', { hair: 'none', head: 'pumpkin', held: 'lantern', nomouth: 1 }], ['Vampiro', { hair: 'spiky', back: 'batwings', face: 'fangs', eyes: 'glow', collar: 1 }],
+    ['Calavera', { hair: 'long', face: 'catrina', eyes: 'none', nomouth: 1, head: 'flowers' }], ['Momia', { hair: 'none', head: 'bandage', eyes: 'glow', nomouth: 1 }], ['Hombre lobo', { hair: 'spiky', head: 'wolfears', face: 'fangs', eyes: 'glow' }],
+    ['Chica gato negro', { hair: 'bob', head: 'catears', held: 'bell', back: 'tail' }], ['Zombi', { hair: 'spiky', face: 'zgrin', held: 'brain', eyes: 'mismatch', nomouth: 1 }], ['Diablito', { hair: 'spiky', head: 'horns', held: 'trident', back: 'tail' }]] },
+  cine: { n: 'Cine', arch: [
+    ['Director', { hair: 'short', head: 'beret', held: 'clapper' }], ['Camarógrafa', { hair: 'pony', head: 'cap', held: 'camera' }], ['Espía', { hair: 'short', face: 'shades', held: 'phone', collar: 1 }],
+    ['Detective noir', { hair: 'short', head: 'fedora', held: 'magnifier', collar: 1 }], ['Astronauta', { hair: 'short', head: 'bubble', back: 'jetpack', eyes: 'happy' }], ['Cowboy', { hair: 'short', head: 'cowboy', held: 'lasso', belt: 1 }],
+    ['Pirata', { hair: 'long', head: 'tricorn', face: 'eyepatch', held: 'cutlass' }], ['Estrella de cine', { hair: 'long', face: 'shades', dress: 1, held: 'mic' }], ['Crítico', { hair: 'bob', face: 'glasses', held: 'popcorn' }]] },
+  gamer: { n: 'Gamer', arch: [
+    ['Streamer', { hair: 'spiky', head: 'phones', held: 'controller' }], ['Speedrunner', { hair: 'short', head: 'cap', held: 'clock', eyes: 'fierce' }], ['Caballero', { hair: 'short', head: 'visor', held: 'sword' }],
+    ['Mago de rol', { hair: 'long', head: 'wizard', held: 'orb', dress: 1 }], ['Arquera', { hair: 'pony', held: 'bow', eyes: 'fierce' }], ['Soldado espacial', { hair: 'short', head: 'visor', back: 'jetpack', eyes: 'fierce' }],
+    ['Bardo', { hair: 'bob', head: 'beret', held: 'guitar' }], ['Ladrona', { hair: 'short', head: 'hood', held: 'kunai', eyes: 'wink' }], ['Bárbaro', { hair: 'long', head: 'viking', held: 'axe', eyes: 'fierce' }]] },
+  series: { n: 'Series', arch: [
+    ['Científico loco', { hair: 'spiky', face: 'glasses', held: 'flask' }], ['Chef', { hair: 'short', head: 'toque', held: 'pan', collar: 1 }], ['Doctora', { hair: 'pony', held: 'book', collar: 1, eyes: 'calm' }],
+    ['Bombero', { hair: 'short', head: 'fireman', held: 'extinguisher', belt: 1 }], ['Hacker', { hair: 'short', head: 'hood', held: 'laptop', eyes: 'glow' }], ['Reina', { hair: 'long', head: 'crown', held: 'scepter', back: 'cape' }],
+    ['Profesor', { hair: 'short', face: 'glasses', held: 'book', collar: 1 }], ['Surfista', { hair: 'spiky', face: 'shades', held: 'surfboard', legs: 'skin' }], ['Mago de fiesta', { hair: 'short', head: 'tophat', held: 'cards' }]] },
+  fantasia: { n: 'Fantasía', arch: [
+    ['Elfa', { hair: 'long', head: 'flowers', held: 'bow', eyes: 'calm' }], ['Herrero enano', { hair: 'short', head: 'viking', held: 'axe', belt: 1 }], ['Hada', { hair: 'buns', back: 'wings', held: 'staff', dress: 1 }],
+    ['Dragona', { hair: 'spiky', head: 'horns', back: 'batwings', eyes: 'fierce' }], ['Paladín', { hair: 'short', head: 'halo', held: 'sword', belt: 1 }], ['Druida', { hair: 'long', head: 'antlers', held: 'staff', dress: 1 }],
+    ['Hechicera', { hair: 'long', head: 'wizard', held: 'orb', dress: 1 }], ['Sirena de tierra', { hair: 'long', head: 'flowers', held: 'trident', dress: 1 }], ['Conejita mágica', { hair: 'bob', head: 'bunny', held: 'potion' }]] },
+  noche: { n: 'Noche', arch: [
+    ['Sombra', { hair: 'short', head: 'hood', eyes: 'glow', nomouth: 1 }], ['Reina vampira', { hair: 'long', head: 'crown', face: 'fangs', back: 'cape' }], ['Ángel caído', { hair: 'long', head: 'halo', back: 'batwings', eyes: 'calm' }],
+    ['Demonio', { hair: 'spiky', head: 'horns', back: 'batwings', eyes: 'glow' }], ['Parca', { hair: 'short', head: 'hood', held: 'scythe', eyes: 'glow' }], ['Bruja lunar', { hair: 'long', head: 'witchwide', held: 'orb', dress: 1 }],
+    ['Caballero negro', { hair: 'short', head: 'visor', held: 'sword', eyes: 'fierce' }], ['Asesina de la noche', { hair: 'pony', face: 'mask', held: 'kunai', eyes: 'fierce' }], ['Paraguas negro', { hair: 'bob', held: 'umbrella', dress: 1, eyes: 'calm' }]] },
+};
+// paletas: blanco, azul, rosa, violeta, blanco y negro, negro, rojo y negro, negro y violeta (+ plata, oro, cristal)
+const GF_SKIN = ['#ffe6d6', '#f6d2b4', '#d8a47a', '#a8724a', '#f2eef6'];
+const GF_PAL = {
+  nieve: ['de Nieve', 'comun', { hair: '#eef3ff', cloth: '#e6ecf8', acc: '#7fb8ff', eye: '#3a8aff' }],
+  zafiro: ['Zafiro', 'comun', { hair: '#2a4ab8', cloth: '#1e3a8a', acc: '#7fd0ff', eye: '#3a8aff' }],
+  cerezo: ['Cerezo', 'comun', { hair: '#ff8ab8', cloth: '#ffc8e0', acc: '#ff4a9a', eye: '#d6286a' }],
+  amatista: ['Amatista', 'rara', { hair: '#7a3ad6', cloth: '#4a1e8a', acc: '#c8a0ff', eye: '#9a5aff' }],
+  monocromo: ['Monocromo', 'rara', { hair: '#f2f2f2', cloth: '#141414', acc: '#ffffff', eye: '#1a1a1a' }],
+  medianoche: ['Medianoche', 'epica', { hair: '#141018', cloth: '#1a1820', acc: '#d6d6e6', eye: '#8db8ff' }],
+  carmesi: ['Carmesí', 'epica', { hair: '#1a0a0e', cloth: '#3a0a0e', acc: '#ff2a3a', eye: '#ff2a3a' }],
+  eclipse: ['Eclipse', 'legendaria', { ...FMAT.abismo }],
+};
+const GF_RARE = [['plata', 'de Plata', 'mitica', FMAT.cromo, 1.5], ['oro', 'de Oro', 'exotica', FMAT.oro, 3], ['cristal', 'Primordial', 'unica', { hair: '#dff6ff', skin: '#f4fbff', cloth: '#9fe0ff', acc: '#ffffff', eye: '#3ab8ff', glow: '#9fe0ff' }, 2]];
+const GF_HAIRS = ['spiky', 'bob', 'long', 'pony', 'short', 'buns'], GF_EYES = [undefined, 'fierce', 'wink', 'calm', 'happy'];
+const GF = {};   // clave -> [nombre, o, P, tema, rareza]
+{
+  let n = 0;
+  for (const [tk, T] of Object.entries(GF_THEMES)) {
+    T.arch.forEach(([an, o0], ai) => {
+      Object.entries(GF_PAL).forEach(([pk, [adj, r, P0]], pi) => {
+        const o = { ...o0 };
+        // variedad: algunos cambian el peinado o los ojos según la paleta (así no quedan todos iguales)
+        if (o.hair && o.hair !== 'none' && !o.head && (ai + pi) % 3 === 1) o.hair = GF_HAIRS[(ai * 3 + pi) % GF_HAIRS.length];
+        if (!o.eyes && (ai + pi) % 4 === 2) o.eyes = GF_EYES[(ai + pi) % GF_EYES.length];
+        const P = { skin: pk === 'eclipse' ? FMAT.abismo.skin : GF_SKIN[(ai * 5 + pi * 3 + n) % GF_SKIN.length], ...P0 };
+        GF[`${tk}-${ai}-${pk}`] = [`${an} ${adj}`, o, P, tk, r]; n++;
+      });
+      // las raras (plata, oro y una única por tema)
+      GF_RARE.forEach(([pk, adj, r, P, gx], ri) => {
+        if (pk === 'plata' && ai % 3 !== 0) return; if (pk === 'oro' && ai % 4 !== 1) return; if (pk === 'cristal' && ai !== 4) return;
+        GF[`${tk}-${ai}-${pk}`] = [`${an} ${adj}`, { ...o0 }, P, tk, r, gx];
+      });
+    });
+  }
+}
+CRIT.gfx = ['Figura', (a, ak) => {
+  const d = GF[ak]; if (!d) return '';
+  const [, o, P, , r] = d, u = 'gf' + ak.replace(/[^a-z0-9]/gi, '');
+  const svg = typeof hwFig === 'function' ? hwFig(o, P, u, false) : figSVG(o, P, u, false);
+  const extra = r === 'unica' ? `<g class="tw">${sparkles8([[6, 8, 2.6], [58, 10, 2.2], [56, 54, 2]], '#ffffff')}</g>` : '';
+  const out = `<g transform="translate(-3.2 1.4) scale(1.1)">${svg}</g>${extra}`;
+  return r === 'unica' ? `<g class="prisma slow">${out}</g>` : out;
+}];
+{
+  for (const [k, [n, , , tk, r, gx]] of Object.entries(GF)) { STYLE_OPTS.compa.push(Object.assign(C('cx-gf-' + k, n, 'gfx|' + k), { cx: r })); FIG_GX['compa:cx-gf-' + k] = gx || 1; }
+}
+
+// ---------- cajas: SOLO figuras (compañeros, mascotas y lo que va alrededor de la foto)
+var BOX_CATS = ['compa', 'pet', 'deco'];
+function boxesFor(f, k, r) {
+  if (!['compa', 'pet', 'deco'].includes(f) || /^cx-gc-/.test(k)) return [];
+  const out = r === 'comun' ? ['normal'] : ['normal', 'especial'];
+  let BX = {}; try { BX = BOXES; } catch (e) { }
+  if (r !== 'comun') for (const [b, d] of Object.entries(BX)) { if (d.any) continue; if (d.re && d.re.test(k + ' ' + (optOf(f, k) || {}).v)) out.push(b); if (d.cat && d.cat.includes(f)) out.push(b); }
+  if (['legendaria', 'mitica', 'exotica', 'unica'].includes(r)) out.push('legendaria');
+  return [...new Set(out)];
+}
+const GF_W = { rara: 75, epica: 22.8, legendaria: 2, mitica: .17, exotica: .025, unica: .005 };
+Object.assign(BOXES, Object.fromEntries(Object.entries(GF_THEMES).filter(([k]) => k !== 'halloween').map(([k, T]) => [k === 'noche' ? 'noche' : k, { n: 'Caja ' + T.n, p: 2100, w: { ...GF_W }, re: new RegExp('cx-gf-' + k + '-') }])));
+BOXES.halloween.re = new RegExp(BOXES.halloween.re.source + '|cx-gf-halloween-', 'i');
+Object.assign(BOXART, {
+  anime: ['#ff6ab8', '#6a3ad6', '#ffffff', 'star'], terror: ['#4a0a14', '#0a0508', '#ff3a4a', 'eye'], cine: ['#ffd24a', '#d6281a', '#1a1a24', 'clap'], gamer: ['#5ff28a', '#2a6ad6', '#ffffff', 'pad'],
+  series: ['#7fd0ff', '#3a5aa8', '#ffffff', 'tv'], fantasia: ['#5ff2d0', '#7a3ad6', '#ffe08a', 'wing'], noche: ['#2a1640', '#050308', '#b46bff', 'moon'],
+});
+Object.assign(BOXICON, {
+  clap: c => `<rect x="-9" y="-3" width="18" height="11" rx="1.4" fill="${c}"/><path d="M-9.6-4 8.6-9 9.6-5.4-8.6-.6Z" fill="#fff"/><path d="M-5-5.4-3-1.8M0-6.8 2-3.2M5-8.2 7-4.6" stroke="${c}" stroke-width="1.6"/>`,
+  pad: c => `<rect x="-10" y="-5" width="20" height="10" rx="5" fill="${c}"/><path d="M-6-1.6V1.6M-7.6 0H-4.4" stroke="#fff" stroke-width="1.2"/><circle cx="4.6" cy="-1" r="1.1" fill="#ff4a6a"/><circle cx="6.8" cy="1.2" r="1.1" fill="#3ab8ff"/>`,
+  tv: c => `<rect x="-9" y="-6" width="18" height="12" rx="2" fill="${c}"/><rect x="-7" y="-4" width="14" height="8" rx="1" fill="#fff" opacity=".85"/><path d="M-3-9 0-6 3-9" stroke="${c}" stroke-width="1.2" fill="none"/>`,
+  moon: c => `<path d="M3-9C-4-9-8-3-6 3C-4 8 2 10 7 7C1 7-3 2-1-4C0-6 1-8 3-9Z" fill="${c}"/>`,
+});
+for (const r of collectCatalog()) CAT_IDX[r[0]] = { id: r[0], f: r[1], k: r[2], n: r[3], r: r[4], max: r[5], b: r[6] };
+PRO_COUNT = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.filter(o => !o.f).length, 0) + 4;
+Object.assign(BOX_SUB, { anime: 'Espadachines, idols, ninjas y chicas mágicas', terror: 'Lo más oscuro: médicos de la peste, monjas y muñecos', cine: 'Directores, espías, detectives y estrellas', gamer: 'Streamers, caballeros, magos y arqueras', series: 'Científicos, chefs, hackers y reinas', fantasia: 'Elfas, hadas, dragonas y paladines', noche: 'Todo negro: sombras, demonios y caballeros oscuros' });
+
+// ---------- el editor del perfil muestra solo los compañeros que tenés (si no, eran cientos)
+function compaEditHTML(view) {
+  const L = STYLE_OPTS.compa.filter(o => !o.cx || unlocked('compa', o) || o.k === view.compa);
+  return `<div class="cgroup"><div class="lb">Tu compañero <span class="dim">· vive arriba a la derecha de tu banner · ${L.length} disponibles</span></div><div class="swgrid decos">${L.map(o => opt('compa', o, view.compa, o.v ? `<span class="cprev">${compaSVG(o.v)}</span><small>${h(o.n)}</small>` : '<small>Ninguno</small>')).join('')}</div></div>` + shoeGroup(view);
+}
+// la Caja de Hadas suma a las hadas nuevas; Tormenta y Galaxia se jubilan (casi no tenían figuras)
+BOXES.hadas.re = new RegExp(BOXES.hadas.re.source + '|cx-gf-fantasia-2-|cx-gf-fantasia-8-');
+BOXES.tormenta.hidden = 1; BOXES.galaxia.hidden = 1;
+for (const r of collectCatalog()) CAT_IDX[r[0]] = { id: r[0], f: r[1], k: r[2], n: r[3], r: r[4], max: r[5], b: r[6] };
+
+
+// ============================================================ V39: RACHA DE CAJA GRATIS, COLECCIONES Y CAJAS CON MÁS SHOW
+// ---------- RACHA: día 7 = Caja Especial gratis, día 30 = Caja Legendaria gratis
+const FREEST = { v: null };
+let fsT = 0;
+function freeStreakDeco() {
+  clearTimeout(fsT);
+  fsT = setTimeout(async () => {
+    if (parseRoute().name !== 'cajas' || !isLogged()) return;
+    const fb = document.querySelector('#app .freebox'); if (!fb || fb.querySelector('[data-fstreak]')) return;
+    if (!FREEST.v) { const r = await sbTry(() => rest(`wallets?select=last_free,free_streak&user_id=eq.${ME.id}`), null); FREEST.v = r && r[0] ? r[0] : { free_streak: 0 }; }
+    if (!document.contains(fb) || fb.querySelector('[data-fstreak]')) return;
+    const today = todayAR(), lf = FREEST.v.last_free, st0 = +FREEST.v.free_streak || 0;
+    const y = new Date(Date.parse(today + 'T12:00:00Z') - 864e5).toISOString().slice(0, 10);
+    const alive = lf === today || lf === y, st = alive ? st0 : 0, next = lf === today ? st + 1 : st + 1;
+    const toWeek = 7 - (st % 7), toMonth = 30 - (st % 30);
+    const nextBox = next % 30 === 0 ? 'Caja Legendaria' : next % 7 === 0 ? 'Caja Especial' : 'Caja JVNN';
+    fb.insertAdjacentHTML('beforeend', `<div class="fstreak" data-fstreak><div class="fsdots">${Array.from({ length: 7 }, (_, i) => `<i class="${i < st % 7 || (st && st % 7 === 0) ? 'on' : ''} ${i === 6 ? 'big' : ''}">${i === 6 ? '🎁' : i + 1}</i>`).join('')}</div>
+      <div class="fstxt"><b>🔥 Racha de ${plural(st, 'día', 'días')}</b><span>${lf === today ? `Mañana te toca: <b>${nextBox}</b>` : `Hoy te toca: <b>${nextBox}</b>`} · Día 7: Caja Especial gratis · Día 30: Caja Legendaria gratis${toMonth < 30 && toMonth <= 7 ? ` · ¡faltan ${toMonth} para la Legendaria!` : ''}</span></div></div>`);
+  }, 150);
+}
+{ const app = document.getElementById('app'); if (app) new MutationObserver(freeStreakDeco).observe(app, { childList: true, subtree: true }); }
+
+// ---------- CAJAS CON MÁS SHOW: se inclinan con el mouse y muestran lo mejor que puede salir
+document.addEventListener('mousemove', e => {
+  const c = e.target.closest && e.target.closest('.boxcard'); if (!c) return;
+  const art = c.querySelector('.bxsvg'); if (!art) return;
+  const r = c.querySelector('.boxart').getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+  art.style.transform = `perspective(500px) rotateY(${(x * 22).toFixed(1)}deg) rotateX(${(-y * 18).toFixed(1)}deg) scale(1.06)`;
+});
+document.addEventListener('mouseout', e => { const c = e.target.closest && e.target.closest('.boxcard'); if (c && !c.contains(e.relatedTarget)) { const art = c.querySelector('.bxsvg'); if (art) art.style.transform = ''; } });
+let bestT = 0;
+function boxBest() {
+  clearTimeout(bestT);
+  bestT = setTimeout(() => {
+    if (parseRoute().name !== 'cajas') return;
+    document.querySelectorAll('#app .boxcard:not([data-best])').forEach(c => {
+      c.dataset.best = '1'; const k = (c.className.match(/bx-([a-z]+)/) || [])[1]; const b = BOXES[k]; if (!b) return;
+      const pool = Object.values(CAT_IDX).filter(x => x.b && x.b.includes(k) && b.w[x.r]).sort((x, y) => RAR[y.r].o - RAR[x.r].o);
+      const top = pool.filter(x => RAR[x.r].o >= 4).sort(() => Math.random() - .5).slice(0, 12); if (!top.length) return;
+      const art = c.querySelector('.boxart'); if (!art) return;
+      art.insertAdjacentHTML('afterend', `<div class="bxbest"><small>Puede salir</small><div class="bxbestw">${top.map((x, i) => `<span class="bxb ${i === 0 ? 'on' : ''}" style="--rc:${RAR[x.r].c}">${itemThumb(x.id)}<em>${h(x.n)}</em><i>${RAR[x.r].n}</i></span>`).join('')}</div></div>`);
+    });
+  }, 120);
+}
+{ const app = document.getElementById('app'); if (app) new MutationObserver(boxBest).observe(app, { childList: true, subtree: true }); }
+setInterval(() => document.querySelectorAll('.bxbestw').forEach(w => { const s = [...w.children]; if (s.length < 2) return; const i = s.findIndex(x => x.classList.contains('on')); s[i].classList.remove('on'); s[(i + 1) % s.length].classList.add('on'); }), 2200);
+
+// ---------- COLECCIONES: completá un álbum y cobrá
+const COLL_REWARD = { comun: 3000, rara: 8000, epica: 25000, legendaria: 80000 };
+const COLLS = [];
+for (const [tk, T] of Object.entries(GF_THEMES)) {
+  // premio exclusivo del álbum legendario: el Coleccionista de cada tema (solo sale así)
+  GF[`${tk}-gc`] = ['Coleccionista ' + T.n, { ...T.arch[0][1], head: 'crown' }, { ...FMAT.oro, glow: '#ffe08a' }, tk, 'legendaria'];
+  STYLE_OPTS.compa.push(Object.assign(C('cx-gc-' + tk, 'Coleccionista ' + T.n, 'gfx|' + tk + '-gc'), { cx: 'legendaria' }));
+  for (const r of ['comun', 'rara', 'epica', 'legendaria']) {
+    const cids = Object.entries(GF).filter(([k, d]) => d[3] === tk && d[4] === r && !k.endsWith('-gc')).map(([k]) => 'compa:cx-gf-' + k);
+    COLLS.push({ id: `${tk}-${r}`, theme: tk, r, n: `${T.n} · ${RAR[r].n}`, cids, reward: COLL_REWARD[r], bonus: r === 'legendaria' ? 'compa:cx-gc-' + tk : null });
+  }
+}
+for (const r of collectCatalog()) CAT_IDX[r[0]] = { id: r[0], f: r[1], k: r[2], n: r[3], r: r[4], max: r[5], b: r[6] };
+const COLLST = { theme: 'anime' };
+async function vCollections(_, draw, alive) {
+  if (!isLogged()) return needLogin(draw);
+  draw(`${ecoNav('colecciones')}<div class="sec skel" style="height:300px"></div>`);
+  await loadInv();
+  const claims = await sbTry(() => rest(`collection_claims?select=coll_id&user_id=eq.${ME.id}`), null);
+  if (!alive()) return;
+  const have = new Set(INV.list.map(it => it.cid)), done = new Set((claims || []).map(x => x.coll_id));
+  const prog = c => c.cids.filter(x => have.has(x)).length;
+  const L = COLLS.filter(c => c.theme === COLLST.theme);
+  const total = COLLS.length, claimed = done.size;
+  draw(`${ecoNav('colecciones')}<section class="pagehead"><div class="eyebrow">Colecciones</div><h1>Álbum de figuras</h1><p class="dim">Juntá todas las figuras de un álbum y cobrá el premio. Los álbumes legendarios además te dan una figura de <b>Coleccionista</b> de oro que no sale en ninguna caja. Llevás ${claimed} de ${total} álbumes completos.</p></section>
+    ${claims === null ? '<p class="dim sec">Para cobrar los álbumes hay que correr supabase_v36.sql en Supabase.</p>' : ''}
+    <div class="tltabs">${Object.entries(GF_THEMES).map(([k, T]) => { const cs = COLLS.filter(c => c.theme === k), ok = cs.filter(c => done.has(c.id)).length; return `<button class="tab ${COLLST.theme === k ? 'on' : ''}" data-act="colth" data-v="${k}">${T.n} <small>${ok}/${cs.length}</small></button>`; }).join('')}</div>
+    ${L.map(c => { const p = prog(c), n = c.cids.length, full = p === n, got = done.has(c.id);
+      return `<section class="panel coll ${got ? 'got' : full ? 'ready' : ''}" style="--rc:${RAR[c.r].c}"><div class="collhead"><div><h3>${h(c.n)}</h3><span class="dim small">${p} de ${n} figuras</span></div>
+        <div class="collrw">${coinSVG(16)} <b>${c.reward.toLocaleString('es-AR')}</b>${c.bonus ? `<span class="collbonus">+ ${h(catOf(c.bonus).n)}</span>` : ''}</div>
+        ${got ? '<span class="chip">✔ Cobrado</span>' : `<button class="btn ${full ? 'pri' : ''}" data-act="colclaim" data-id="${c.id}" ${full ? '' : 'disabled'}>${full ? '¡Cobrar!' : 'Incompleto'}</button>`}</div>
+        <div class="goalbar"><i style="width:${Math.round(100 * p / n)}%;background:var(--rc)"></i></div>
+        <div class="collgrid">${c.cids.map(id => { const it = catOf(id), own = have.has(id); return `<span class="collit ${own ? 'own' : ''}" title="${h(it.n)}${own ? '' : ' (te falta)'}">${itemThumb(id)}${own ? '' : '<i>?</i>'}</span>`; }).join('')}${c.bonus ? `<span class="collit bonus ${got ? 'own' : ''}" title="Premio: ${h(catOf(c.bonus).n)}">${itemThumb(c.bonus)}<b>Premio</b></span>` : ''}</div></section>`; }).join('')}`);
+}
+document.addEventListener('click', async e => {
+  const t = e.target.closest('[data-act="colth"],[data-act="colclaim"]'); if (!t) return;
+  if (t.dataset.act === 'colth') { COLLST.theme = t.dataset.v; return refresh(); }
+  t.disabled = true;
+  try { let r = await rest('rpc/claim_collection', { method: 'POST', body: { p_id: t.dataset.id } }); if (typeof r === 'string') r = JSON.parse(r);
+    if (r && r.coins != null) { WALLET.coins = +r.coins; renderCoins(); }
+    const b = t.getBoundingClientRect(); burstAt(b.left + b.width / 2, b.top, ['#ffd24a', '#ffffff', '#ff8ab8'], 40, 'confeti'); SND.reveal(r && r.bonus ? 'legendaria' : 'epica');
+    toast(`¡Álbum completo! +${(+r.reward).toLocaleString('es-AR')} monedas${r.bonus ? ' y tu figura de Coleccionista' : ''}.`); await loadInv(); refresh(); }
+  catch (x) { t.disabled = false; toast(/function|404/i.test(x.message) ? 'Falta correr supabase_v36.sql en Supabase.' : x.message); }
+});
+
+
+// ============================================================ V40: REGALOS QUE ANDAN (con buscador de usuarios), TIEMPOS EN DÍAS Y EVENTO DE HALLOWEEN
+// los contadores se ven bien apenas se dibuja la página
+{ const app = document.getElementById('app'); let t = 0; if (app) new MutationObserver(() => { clearTimeout(t); t = setTimeout(dtTick, 50); }).observe(app, { childList: true, subtree: true }); }
+
+// ---------- REGALOS: el botón no andaba porque la ventana frenaba el clic. Ahora se escucha antes.
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-act="giftsend"]'); if (!b) return;
+  e.stopImmediatePropagation(); e.preventDefault();
+  const to = (document.getElementById('gfto').value || '').trim().replace(/^@/, '').toLowerCase(), id = giftItemId(), msg = (document.getElementById('gfmsg').value || '').trim();
+  if (!to) return toast('Poné el usuario de tu amigo.'); if (!id) return toast('Elegí qué le regalás de la lista.');
+  if (isLogged() && to === String(ME.username || '').toLowerCase()) return toast('No te podés regalar a vos 😅');
+  const i = id.indexOf(':'), f = id.slice(0, i), k = id.slice(i + 1), bk = b.dataset.c === 'bucks', price = priceOf(f, k);
+  if (!await ask('¿Mandar el regalo?', `Le regalás ${optOf(f, k).n} a @${to} por ${price.toLocaleString('es-AR')} ${bk ? 'Bucks' : 'monedas'}.`, [['yes', 'Regalar', 'pri']])) return;
+  b.disabled = true;
+  try { const w = await rest('rpc/gift_item', { method: 'POST', body: { p_item: id, p_to: to, p_msg: msg, p_currency: bk ? 'bucks' : 'coins' } }); setWallet(Array.isArray(w) ? w[0] : w); document.querySelectorAll('.vhov').forEach(x => x.remove()); SND.pop(); toast(`¡Regalo enviado a @${to}! 🎁`); }
+  catch (x) { b.disabled = false; toast(x.message); }
+}, true);
+// cerrar la ventana tocando afuera o la X (también estaban frenados)
+document.addEventListener('click', e => { const x = e.target.closest('.vhov [data-act="vhclose"]'); if (x) { e.stopImmediatePropagation(); x.closest('.vhov').remove(); } }, true);
+
+// ---------- buscador de usuarios: primero los que seguís, después el resto
+const GFU = { follows: null, t: 0 };
+async function giftFollows() {
+  if (GFU.follows || !isLogged()) return GFU.follows || [];
+  const f = await sbTry(() => rest(`follows?select=following&follower=eq.${ME.id}&limit=200`), []) || [];
+  const ids = f.map(x => x.following); GFU.follows = ids.length ? Object.values(await profilesByIds(ids)) : [];
+  return GFU.follows;
+}
+async function giftSuggest(q) {
+  const box = document.getElementById('gfsug'); if (!box) return;
+  q = q.trim().replace(/^@/, '').toLowerCase();
+  const fol = await giftFollows();
+  let L = fol.filter(p => !q || String(p.username || '').toLowerCase().includes(q)).map(p => ({ ...p, amigo: 1 }));
+  if (q.length >= 1) {
+    const more = await sbTry(() => rest(`profiles?select=id,username,name,photo&username=ilike.*${encodeURIComponent(q)}*&limit=10`, { auth: false }), []) || [];
+    for (const p of more) if (!L.some(x => x.id === p.id) && (!isLogged() || p.id !== ME.id)) L.push(p);
+  }
+  L = L.slice(0, 8);
+  if (!document.getElementById('gfsug')) return;
+  box.innerHTML = L.length ? L.map(p => `<button type="button" class="gfu" data-gfu="${h(p.username)}">${avatar(p, 28)}<span><b>@${h(p.username)}</b>${p.name ? `<small>${h(p.name)}</small>` : ''}</span>${p.amigo ? '<em>Lo seguís</em>' : ''}</button>`).join('') : `<div class="gfnone">${q ? 'No encontramos a nadie con ese nombre' : 'Todavía no seguís a nadie: escribí un usuario'}</div>`;
+  box.hidden = false;
+}
+document.addEventListener('focusin', e => { if (e.target.id === 'gfto') giftSuggest(e.target.value); });
+document.addEventListener('input', e => { if (e.target.id !== 'gfto') return; clearTimeout(GFU.t); const v = e.target.value; GFU.t = setTimeout(() => giftSuggest(v), 200); });
+document.addEventListener('click', e => {
+  const u = e.target.closest('[data-gfu]'); if (u) { e.stopImmediatePropagation(); const i = document.getElementById('gfto'); i.value = '@' + u.dataset.gfu; document.getElementById('gfsug').hidden = true; const n = document.getElementById('gfitem'); if (n) n.focus(); return; }
+  const box = document.getElementById('gfsug'); if (box && !e.target.closest('#gfto') && !e.target.closest('#gfsug')) box.hidden = true;
+}, true);
+// la ventana de regalo con el buscador
+let gfObs = 0;
+new MutationObserver(() => { clearTimeout(gfObs); gfObs = setTimeout(() => { const i = document.getElementById('gfto'); if (i && !document.getElementById('gfsug')) { i.setAttribute('autocomplete', 'off'); i.insertAdjacentHTML('afterend', '<div class="gfsug" id="gfsug" hidden></div>'); i.parentElement.style.position = 'relative'; } }, 30); }).observe(document.body, { childList: true });
+
+// ---------- EVENTO DE HALLOWEEN: más show, cuenta regresiva en días y aviso de que después cuestan el doble
+const HW_AFTER = todayAR() >= HW_UNTIL;
+if (HW_AFTER) for (const k of Object.keys(HW30)) LG_TOP['compa:lg-hw30-' + k] = HW30[k][3] * 2;
+function hwShopHTML() {
+  if (HW_AFTER) return '';
+  const end = new Date(HW_UNTIL + 'T03:00:00Z').getTime(), mine = Object.keys(HW30).filter(k => unlocked('compa', optOf('compa', 'lg-hw30-' + k))).length;
+  const card = k => { const f = 'compa', id = 'lg-hw30-' + k, o = optOf(f, id); if (!o) return ''; const has = unlocked(f, o), p = priceOf(f, id);
+    return `<div class="sitem hwit ${has ? 'mine' : ''}"><button class="sthumb" data-act="shoptry" data-f="${f}" data-v="${h(id)}">${lgCard(f, o)}</button><div class="wkinfo"><b>${h(HW30[k][0])}</b><small class="dim">Edición limitada</small><span class="wkprice">${coinSVG(14)} <b>${p.toLocaleString('es-AR')}</b> <s class="dim">${(p * 2).toLocaleString('es-AR')}</s></span>${has ? `<button class="btn sm" data-act="shopuse" data-f="${f}" data-v="${h(id)}">Poner</button>` : `<button class="btn sm pri" data-act="buyc" data-f="${f}" data-v="${h(id)}">Comprar</button>`}</div></div>`; };
+  const bat = (x, y, s, d) => `<svg class="hwbat" style="left:${x}%;top:${y}%;width:${s}px;animation-delay:${d}s" viewBox="0 0 40 20"><path d="M20 8C18 4 14 3 12 5C10 2 5 1 0 4C4 5 6 8 6 11C8 9 11 9 12 11C14 9 17 10 20 14C23 10 26 9 28 11C29 9 32 9 34 11C34 8 36 5 40 4C35 1 30 2 28 5C26 3 22 4 20 8Z" fill="#000"/></svg>`;
+  return `<section class="hwshop hwev"><div class="hwdeco">${bat(8, 12, 34, 0)}${bat(70, 8, 26, 1.4)}${bat(86, 30, 20, .7)}${bat(40, 4, 22, 2.1)}</div>
+    <div class="hwhead"><div><div class="hwtag">EVENTO · EDICIÓN LIMITADA</div><h2>🎃 Noche de Halloween</h2><p>12 monstruos de colección. <b>Cuando termine el evento cuestan el DOBLE</b> y la Caja de Halloween desaparece.</p></div>
+      <div class="hwcount"><small>Termina en</small><b class="dtimer" data-pre="" data-end="${end}">${dtLeft(end - Date.now())}</b><span>${mine} de 12 en tu colección</span></div></div>
+    <div class="hwgrid">${Object.keys(HW30).map(card).join('')}</div>
+    <p class="dim small" style="margin:10px 0 0">¿No te alcanza? En la <a href="#/cajas">Caja de Halloween</a> salen en versión Noche sangrienta, de Oro y dos únicos.</p></section>`;
+}
+
+// ============================================================ FIGURAS OSCURAS: otro estilo de arte (más realista, detallado y demoníaco)
+// Se dibujan en un lienzo de 120x120 con luz de borde, capas de tela, metal con brillo, humo y brasas.
+const DK_PAL = {
+  hueso:    ['de Hueso',     'rara',       { c1: '#100e0b', c2: '#3b352b', c3: '#efe3c6', m1: '#3e382d', m2: '#d9cfb4', sk: '#e9dfc6', ds: '#5e564a', gl: '#c9ecff', em: '#e6f2ff', bg: '#6e6658' }],
+  glacial:  ['Glacial',      'epica',      { c1: '#040a14', c2: '#173252', c3: '#a8e6ff', m1: '#203a55', m2: '#dcf4ff', sk: '#d3e8f3', ds: '#27476a', gl: '#4fd4ff', em: '#c4f2ff', bg: '#1d6aa0' }],
+  sangre:   ['de Sangre',    'epica',      { c1: '#0b0204', c2: '#4a0911', c3: '#ff6a62', m1: '#2a1317', m2: '#c0a3a3', sk: '#eadad3', ds: '#6a121a', gl: '#ff2436', em: '#ff7a52', bg: '#8a0a18' }],
+  abisal:   ['Abisal',       'legendaria', { c1: '#050208', c2: '#2b1049', c3: '#c995ff', m1: '#1b1029', m2: '#9a88ba', sk: '#ddd0ee', ds: '#3c1a5c', gl: '#b46bff', em: '#dcaaff', bg: '#5a1ea0' }],
+  infernal: ['Infernal',     'mitica',     { c1: '#0a0302', c2: '#4d1306', c3: '#ffbb55', m1: '#26130c', m2: '#d29360', sk: '#f0dccb', ds: '#5e1a08', gl: '#ff7a1a', em: '#ffc957', bg: '#c03a08' }],
+  oronegro: ['de Oro Negro', 'exotica',    { c1: '#030303', c2: '#1b1711', c3: '#ffdc84', m1: '#2c2112', m2: '#ffe6a6', sk: '#f3e8cc', ds: '#2a2418', gl: '#ffd24a', em: '#fff0b0', bg: '#a07a10', gold: 1 }],
+  primero:  ['',             'unica',      { c1: '#020203', c2: '#14141c', c3: '#ffffff', m1: '#16161e', m2: '#e8ecff', sk: '#f4f4ff', ds: '#1a1a24', gl: '#eaf2ff', em: '#ffffff', bg: '#6a7aff', prisma: 1 }],
+  ceniza:   ['',             'unica',      { c1: '#0a0a0a', c2: '#3a3836', c3: '#ff8a5a', m1: '#262422', m2: '#b8b0a8', sk: '#d8d2cc', ds: '#3a3836', gl: '#ff3a1a', em: '#ff9a4a', bg: '#7a1a08', prisma: 1 }],
+};
+// head: hood | skull | helm | face | demon | exec   body: robe | armor | demon | coat | gown | lean
+const DK_ARCH = {
+  senor:   ['Señor del Abismo',   { head: 'helm', horns: 'ram', body: 'armor', wings: 'bat', weapon: 'greatsword', cloak: 1 }],
+  parca:   ['Parca Antigua',      { head: 'hood', peak: 1, body: 'robe', weapon: 'scythe', cloak: 1 }],
+  lich:    ['Lich Eterno',        { head: 'skull', hoodback: 1, crown: 'spikes', body: 'robe', weapon: 'skullstaff', cloak: 1, sigil: 1 }],
+  caido:   ['Caballero Caído',    { head: 'helm', horns: 'long', body: 'armor', weapon: 'greatsword', cloak: 1, chains: 1 }],
+  alado:   ['Demonio Alado',      { head: 'demon', horns: 'long', body: 'demon', wings: 'bat', weapon: 'flame', tail: 1 }],
+  osaria:  ['Bruja Osaria',     { head: 'face', hair: 'long', horns: 'antlers', body: 'robe', weapon: 'bonestaff', cloak: 1 }],
+  verdugo: ['Verdugo',            { head: 'exec', body: 'lean', weapon: 'axe', chains: 1 }],
+  arcang:  ['Arcángel Corrupto',  { head: 'face', hair: 'short', halo: 1, body: 'armor', wings: 'feather', weapon: 'flamesword' }],
+  ancest:  ['Vampiro Ancestral',  { head: 'face', hair: 'back', fangs: 1, body: 'coat', collar: 1, cloak: 1, weapon: 'orb' }],
+  reyesq:  ['Rey Esqueleto',      { head: 'skull', crown: 'crown', body: 'armor', weapon: 'greatsword', cloak: 1 }],
+  encad:   ['Sombra Encadenada',  { head: 'hood', body: 'robe', chains: 2, weapon: 'none', smoke: 2 }],
+  dama:    ['Dama Espectral',     { head: 'face', hair: 'long', veil: 1, body: 'gown', weapon: 'lantern', ghost: 1 }],
+};
+const DK_UNQ = {
+  primero: ['El Primer Caído', 'arcang', { head: 'helm', horns: 'long', halo: 1, wings: 'feather', weapon: 'flamesword', cloak: 1, sigil: 1 }],
+  ceniza:  ['La Reina de Ceniza', 'dama', { crown: 'spikes', weapon: 'scythe', cloak: 1, sigil: 1, ghost: 0 }],
+};
+const DK = {};
+for (const [ak, [an, A]] of Object.entries(DK_ARCH)) for (const pk of ['hueso', 'glacial', 'sangre', 'abisal']) DK[`${ak}-${pk}`] = [an + ' ' + DK_PAL[pk][0], A, pk];
+for (const ak of ['senor', 'caido', 'alado', 'verdugo', 'lich', 'arcang']) DK[`${ak}-infernal`] = [DK_ARCH[ak][0] + ' Infernal', DK_ARCH[ak][1], 'infernal'];
+for (const ak of ['reyesq', 'parca', 'alado']) DK[`${ak}-oronegro`] = [DK_ARCH[ak][0] + ' de Oro Negro', DK_ARCH[ak][1], 'oronegro'];
+for (const [k, [n, base, A]] of Object.entries(DK_UNQ)) DK[`${k}-${k}`] = [n, { ...DK_ARCH[base][1], ...A }, k];
+
+// ---------- piezas
+const dkF = n => n.toFixed(1);
+function dkRnd(seed) { let s = 0; for (const c of seed) s = (s * 31 + c.charCodeAt(0)) >>> 0; return () => { s = (s + 0x6D2B79F5) >>> 0; let t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+function dkSeg(x1, y1, x2, y2, w1, w2) { const dx = x2 - x1, dy = y2 - y1, L = Math.hypot(dx, dy) || 1, nx = -dy / L, ny = dx / L; return `M${dkF(x1 + nx * w1)} ${dkF(y1 + ny * w1)}L${dkF(x2 + nx * w2)} ${dkF(y2 + ny * w2)}L${dkF(x2 - nx * w2)} ${dkF(y2 - ny * w2)}L${dkF(x1 - nx * w1)} ${dkF(y1 - ny * w1)}Z`; }
+function dkTatter(x0, x1, y, amp, n, R) { let s = ''; for (let i = 1; i <= n; i++) { const x = x0 + (x1 - x0) * i / n, yy = y + (i % 2 ? amp * (.55 + R() * .6) : -amp * .25 * R()); s += `L${dkF(x)} ${dkF(yy)}`; } return s; }
+const dkMirror = s => `<g transform="translate(120 0) scale(-1 1)">${s}</g>`;
+function dkDefs(u, P, R) {
+  return `<defs>
+  <linearGradient id="${u}c" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${P.c2}"/><stop offset=".55" stop-color="${P.c1}"/><stop offset="1" stop-color="${P.c1}"/></linearGradient>
+  <linearGradient id="${u}f" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${P.c1}"/><stop offset=".45" stop-color="${P.c2}"/><stop offset=".8" stop-color="${P.c1}"/><stop offset="1" stop-color="${P.c3}" stop-opacity=".55"/></linearGradient>
+  <linearGradient id="${u}r" x1="0" y1="0" x2="1" y2="0"><stop offset=".62" stop-color="${P.c3}" stop-opacity="0"/><stop offset="1" stop-color="${P.c3}" stop-opacity=".5"/></linearGradient>
+  <linearGradient id="${u}m" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${P.m2}"/><stop offset=".35" stop-color="${P.m1}"/><stop offset=".7" stop-color="${P.m1}"/><stop offset=".92" stop-color="${P.m2}"/><stop offset="1" stop-color="${P.c3}"/></linearGradient>
+  <linearGradient id="${u}b" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${P.m1}"/><stop offset=".5" stop-color="${P.m2}"/><stop offset="1" stop-color="${P.m1}"/></linearGradient>
+  <linearGradient id="${u}k" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".25" stop-color="${P.sk}"/><stop offset="1" stop-color="${P.ds}"/></linearGradient>
+  <linearGradient id="${u}d" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${P.c3}" stop-opacity=".5"/><stop offset=".3" stop-color="${P.ds}"/><stop offset="1" stop-color="${P.c1}"/></linearGradient>
+  <linearGradient id="${u}h" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="${P.m1}"/><stop offset=".7" stop-color="${P.m2}"/><stop offset="1" stop-color="${P.c3}"/></linearGradient>
+  <linearGradient id="${u}w" x1="1" y1="1" x2="0" y2="0"><stop offset="0" stop-color="${P.c1}"/><stop offset=".6" stop-color="${P.c2}"/><stop offset="1" stop-color="${P.bg}" stop-opacity=".9"/></linearGradient>
+  <linearGradient id="${u}x" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${P.gl}" stop-opacity=".9"/><stop offset="1" stop-color="${P.gl}" stop-opacity="0"/></linearGradient>
+  <radialGradient id="${u}g" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="${P.bg}" stop-opacity=".75"/><stop offset=".55" stop-color="${P.bg}" stop-opacity=".22"/><stop offset="1" stop-color="${P.bg}" stop-opacity="0"/></radialGradient>
+  <radialGradient id="${u}e" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff"/><stop offset=".25" stop-color="${P.gl}"/><stop offset="1" stop-color="${P.gl}" stop-opacity="0"/></radialGradient>
+  <radialGradient id="${u}v" cx=".5" cy=".62" r=".6"><stop offset="0" stop-color="#000"/><stop offset=".7" stop-color="#000"/><stop offset="1" stop-color="${P.c1}"/></radialGradient>
+  <radialGradient id="${u}s" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="${P.c2}" stop-opacity=".85"/><stop offset="1" stop-color="${P.c2}" stop-opacity="0"/></radialGradient>
+  <radialGradient id="${u}l" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="${P.c3}" stop-opacity=".22"/><stop offset="1" stop-color="${P.c3}" stop-opacity="0"/></radialGradient>
+  </defs>`;
+}
+const dkEye = (u, x, y, rot, P, s = 1) => `<circle cx="${x}" cy="${y}" r="${4.2 * s}" fill="url(#${u}e)" opacity=".75"/><ellipse cx="${x}" cy="${y}" rx="${1.7 * s}" ry="${.75 * s}" transform="rotate(${rot} ${x} ${y})" fill="#fff"/><ellipse cx="${x}" cy="${y}" rx="${1.7 * s}" ry="${.75 * s}" transform="rotate(${rot} ${x} ${y})" fill="${P.gl}" opacity=".55"/>`;
+const dkRune = (x, y, s, c, i) => { const G = ['M0-2V2M-1.4-.6 1.4.8', 'M-1.2-2 1.2 0-1.2 2', 'M0-2 1.6 1.6H-1.6Z', 'M-1.4-2V2M-1.4 0 1.4-2M-1.4 0 1.4 2', 'M-1.4-1.6H1.4L-1.4 1.6H1.4', 'M0-2V2M-1.6-1 0 0 1.6-1']; return `<path d="${G[i % G.length]}" transform="translate(${dkF(x)} ${dkF(y)}) scale(${s})" stroke="${c}" stroke-width="${.5 / s}" fill="none" stroke-linecap="round"/>`; };
+
+function dkBackdrop(u, A, P, r, R) {
+  const big = RAR[r] ? RAR[r].o : 2;
+  let s = `<ellipse cx="60" cy="58" rx="54" ry="56" fill="url(#${u}g)"/>`;
+  if (A.sigil || big >= 4) {
+    const n = 18; let rn = ''; for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2; rn += dkRune(60 + Math.cos(a) * 43, 60 + Math.sin(a) * 43, .9, P.gl, i); }
+    s += `<g class="dkrot" opacity="${big >= 5 ? .55 : .35}"><circle cx="60" cy="60" r="47" fill="none" stroke="${P.gl}" stroke-width=".5"/><circle cx="60" cy="60" r="39.5" fill="none" stroke="${P.gl}" stroke-width=".35" stroke-dasharray="1 2"/>${rn}<path d="M60 14 87 97 16 46H104L33 97Z" fill="none" stroke="${P.gl}" stroke-width=".3" opacity=".6"/></g>`;
+  }
+  // humo del piso
+  let sm = ''; for (let i = 0; i < 6 + (A.smoke || 0) * 4; i++) { const x = 20 + R() * 80, y = 104 + R() * 8, rx = 10 + R() * 14; sm += `<ellipse cx="${dkF(x)}" cy="${dkF(y)}" rx="${dkF(rx)}" ry="${dkF(rx * .32)}" fill="url(#${u}s)"/>`; }
+  s += `<ellipse cx="60" cy="110" rx="34" ry="5" fill="#000" opacity=".55"/>${sm}`;
+  return s;
+}
+function dkEmbers(P, r, R) {
+  const n = { rara: 5, epica: 7, legendaria: 10, mitica: 15, exotica: 15, unica: 20 }[r] || 5; let s = '';
+  for (let i = 0; i < n; i++) { const x = 12 + R() * 96, y = 30 + R() * 80, rr = .35 + R() * .9; s += `<circle class="dkem" cx="${dkF(x)}" cy="${dkF(y)}" r="${dkF(rr)}" fill="${P.em}" style="animation-delay:-${dkF(R() * 6)}s;animation-duration:${dkF(4 + R() * 4)}s"/>`; }
+  return `<g>${s}</g>`;
+}
+function dkWings(u, A, P) {
+  if (A.wings === 'bat') {
+    const w = `<path d="M50 41 33 22 6 10C10 22 9 30 3 40 11 42 14 50 11 61 19 60 24 64 26 72 33 64 40 63 47 64Z" fill="url(#${u}w)" stroke="${P.c3}" stroke-opacity=".35" stroke-width=".5"/>
+      <path d="M33 22 3 40M33 22 11 61M33 22 26 72M50 41 33 22 6 10" stroke="${P.m2}" stroke-opacity=".55" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+      <path d="M33 22 3 40M33 22 11 61M33 22 26 72" stroke="${P.c1}" stroke-width=".4" fill="none"/>
+      <path d="M33 22 30 17 35 20Z" fill="${P.m2}"/><path d="M6 10 2 6 8 8Z" fill="${P.m2}"/>
+      <path d="M8 22C14 26 18 32 20 40M14 48C18 52 21 56 22 62" stroke="${P.c3}" stroke-opacity=".12" stroke-width=".6" fill="none"/>`;
+    return w + dkMirror(w);
+  }
+  if (A.wings === 'feather') {
+    let f = '';
+    for (let row = 0; row < 3; row++) for (let i = 0; i < 9; i++) {
+      const a = (-160 + i * 13 + row * 6) * Math.PI / 180, L = (40 - row * 11) * (1 - Math.abs(i - 3) * .05), x0 = 50, y0 = 40, x1 = x0 + Math.cos(a) * L, y1 = y0 + Math.sin(a) * L * .9 + i * 2.2, mx = (x0 + x1) / 2, my = (y0 + y1) / 2, nx = -(y1 - y0) / L * 3.2, ny = (x1 - x0) / L * 3.2;
+      f += `<path d="M${x0} ${y0}Q${dkF(mx + nx)} ${dkF(my + ny)} ${dkF(x1)} ${dkF(y1)}Q${dkF(mx - nx)} ${dkF(my - ny)} ${x0} ${y0}Z" fill="${row === 2 ? P.c2 : 'url(#' + u + 'w)'}" stroke="${P.c3}" stroke-opacity="${.3 - row * .07}" stroke-width=".45"/><path d="M${x0} ${y0}Q${dkF(mx)} ${dkF(my)} ${dkF(x1)} ${dkF(y1)}" stroke="${P.c3}" stroke-opacity=".18" stroke-width=".3" fill="none"/>`;
+    }
+    return f + dkMirror(f);
+  }
+  return '';
+}
+function dkCloak(u, A, P, R) {
+  if (!A.cloak) return '';
+  const p = `M45 36C35 48 25 76 15 104${dkTatter(15, 105, 104, 6, 16, R)}C95 76 85 48 75 36Z`;
+  let folds = ''; for (const x of [27, 38, 49, 71, 82, 94]) folds += `<path d="M${dkF(60 + (x - 60) * .3)} 42Q${x + 3} 72 ${x} 106" stroke="${P.c1}" stroke-width="2.4" opacity=".6" fill="none"/><path d="M${dkF(61.5 + (x - 60) * .3)} 44Q${x + 4.6} 72 ${x + 1.6} 104" stroke="${P.c3}" stroke-width=".5" opacity=".14" fill="none"/>`;
+  return `<path d="${p}" fill="url(#${u}c)" stroke="${P.c3}" stroke-opacity=".3" stroke-width=".5"/>${folds}<path d="${p}" fill="url(#${u}r)"/>`;
+}
+function dkTail(u, P) { return `<path d="M64 80C80 90 96 84 100 70C102 62 98 58 96 60C99 64 96 76 84 80C76 82 70 80 66 76Z" fill="url(#${u}d)" stroke="${P.c3}" stroke-opacity=".3" stroke-width=".4"/><path d="M96 60 92 52 101 55 104 50 103 60 99 63Z" fill="${P.m1}" stroke="${P.c3}" stroke-opacity=".5" stroke-width=".4"/>`; }
+
+function dkBody(u, A, P, R) {
+  const B = A.body;
+  if (B === 'robe' || B === 'gown') {
+    const wide = B === 'gown' ? 10 : 6, p = `M48 37Q44 62 ${40 - wide} 106${dkTatter(40 - wide, 80 + wide, 106, B === 'gown' ? 5 : 3.4, 12, R)}Q76 62 72 37Z`;
+    let fl = ''; for (const x of [46, 53, 60, 67, 74]) fl += `<path d="M${dkF(56 + (x - 60) * .3)} 46Q${x} 80 ${dkF(60 + (x - 60) * 1.35)} 106" stroke="${P.c1}" stroke-width="1.5" opacity=".55" fill="none"/>`;
+    const sash = B === 'robe' ? `<path d="M49 64Q60 68 71 64L71.4 67.4Q60 71.4 48.6 67.4Z" fill="${P.m1}" stroke="${P.m2}" stroke-opacity=".5" stroke-width=".4"/><path d="M58 67 56 88 60 85 63 89 62 67Z" fill="${P.c2}" stroke="${P.c3}" stroke-opacity=".25" stroke-width=".4"/><circle cx="60" cy="66.4" r="1.8" fill="${P.gl}"/><circle cx="60" cy="66.4" r="4" fill="url(#${u}e)" opacity=".6"/>` : `<path d="M50 44Q60 50 70 44M51 52Q60 57 69 52" stroke="${P.c3}" stroke-opacity=".25" stroke-width=".5" fill="none"/>`;
+    const fade = A.ghost ? `<path d="${p}" fill="url(#${u}x)" opacity=".22"/>` : '';
+    return `<path d="${p}" fill="url(#${u}f)" stroke="${P.c3}" stroke-opacity=".35" stroke-width=".5"/>${fl}${sash}${fade}<path d="${p}" fill="url(#${u}r)"/>`;
+  }
+  if (B === 'armor') {
+    let s = '';
+    // piernas
+    for (const x of [50, 63]) s += `<path d="M${x} 82H${x + 7}L${x + 6.4} 104H${x + .6}Z" fill="url(#${u}m)" stroke="${P.c1}" stroke-width=".5"/><ellipse cx="${x + 3.5}" cy="87" rx="4" ry="3" fill="url(#${u}m)" stroke="${P.c3}" stroke-opacity=".4" stroke-width=".4"/><path d="M${x + 3.5} 85 ${x + 3.5} 82.6" stroke="${P.m2}" stroke-width=".8"/><path d="M${x - .6} 104H${x + 7.6}L${x + 9.6} 108.6H${x - 1.6}Z" fill="${P.m1}" stroke="${P.m2}" stroke-opacity=".6" stroke-width=".4"/><path d="M${x + 1.4} 92V102" stroke="${P.c3}" stroke-opacity=".3" stroke-width=".5"/>`;
+    // tabardo y faldones
+    s += `<path d="M54 68L52.6 102${dkTatter(52.6, 67.4, 102, 3, 5, R)}L66 68Z" fill="url(#${u}c)" stroke="${P.c3}" stroke-opacity=".3" stroke-width=".4"/>${dkRune(60, 82, 1.3, P.gl, 2)}`;
+    for (const [x, d] of [[44, -1], [67, 1]]) s += `<path d="M${x} 70H${x + 9}L${x + 9 + d * 1} 79Q${x + 4.5} 81 ${x - d * 1} 79Z" fill="url(#${u}m)" stroke="${P.c1}" stroke-width=".5"/><path d="M${x} 74.4H${x + 9}" stroke="${P.c1}" stroke-width=".5"/>`;
+    // pecho, abdomen y cinturón
+    s += `<path d="M46 38H74L75.4 54Q60 63 44.6 54Z" fill="url(#${u}m)" stroke="${P.c1}" stroke-width=".6"/><path d="M60 39V60M46.6 46Q60 53 73.4 46" stroke="${P.c1}" stroke-width=".6" fill="none"/><path d="M48 40Q54 44 59 41" stroke="${P.m2}" stroke-opacity=".6" stroke-width=".5" fill="none"/>`;
+    for (let i = 0; i < 3; i++) s += `<path d="M${47.6 + i} ${57 + i * 3.6}H${72.4 - i}L${72 - i} ${60.6 + i * 3.6}H${48 + i}Z" fill="${P.m1}" stroke="${P.m2}" stroke-opacity=".45" stroke-width=".4"/>`;
+    s += `<path d="M48.6 67.6H71.4V71H48.6Z" fill="${P.c1}" stroke="${P.m2}" stroke-opacity=".5" stroke-width=".4"/><path d="M57.6 66.6H62.4V72H57.6Z" fill="url(#${u}b)"/><circle cx="60" cy="69.3" r="1.1" fill="${P.gl}"/>`;
+    s += `<path d="M56 46 60 52 64 46 60 49Z" fill="${P.gl}" opacity=".85"/><circle cx="60" cy="49" r="6" fill="url(#${u}e)" opacity=".35"/>`;
+    // hombreras con pinchos
+    const pa = `<path d="M38 45Q37 33 48 32Q55 33 56 40Q47 40 38 45Z" fill="url(#${u}m)" stroke="${P.c1}" stroke-width=".6"/><path d="M39.6 41Q45 36 54 37M41 44Q46 40 53 40" stroke="${P.c1}" stroke-width=".5" fill="none"/><path d="M41 35 37 25 44 33ZM46 32.6 45 22 49.4 32Z" fill="url(#${u}h)" stroke="${P.c1}" stroke-width=".3"/>`;
+    s += `<path d="M53 36H67V40H53Z" fill="${P.m1}"/>` + pa + dkMirror(pa);
+    return s + `<path d="M44 38H76V72H44Z" fill="url(#${u}r)" opacity=".7"/>`;
+  }
+  if (B === 'demon') {
+    let s = '';
+    for (const x of [50, 63]) s += `<path d="M${x} 76H${x + 7.4}L${x + 6} 92 ${x + 7} 104H${x + .4}L${x + 1} 92Z" fill="url(#${u}d)" stroke="${P.c3}" stroke-opacity=".3" stroke-width=".4"/><path d="M${x} 104 ${x - 1.6} 108.4H${x + 8.6}L${x + 7} 104Z" fill="${P.c1}"/><path d="M${x - 1.6} 108.4 ${x - 2.6} 110M${x + 2} 108.4 ${x + 1.4} 110.4M${x + 5.6} 108.4 ${x + 5.6} 110.4" stroke="${P.m2}" stroke-width=".6"/>`;
+    s += `<path d="M48 70L45 90${dkTatter(45, 75, 90, 4, 7, R)}L72 70Z" fill="url(#${u}c)" stroke="${P.c3}" stroke-opacity=".3" stroke-width=".4"/><path d="M48 68.6H72V72H48Z" fill="${P.m1}"/><circle cx="60" cy="70.3" r="1.4" fill="${P.gl}"/>`;
+    s += `<path d="M45 38Q60 34 75 38L73 56Q70 66 66 69H54Q50 66 47 56Z" fill="url(#${u}d)" stroke="${P.c3}" stroke-opacity=".35" stroke-width=".5"/>
+      <path d="M47.6 46Q53 51 59.6 47.6M72.4 46Q67 51 60.4 47.6M60 48V67M55 55.4H65M55.6 60.4H64.4M56.4 65H63.6" stroke="${P.c1}" stroke-width=".7" fill="none" opacity=".8"/>
+      <path d="M49 44Q53 41 58 43" stroke="${P.c3}" stroke-opacity=".4" stroke-width=".5" fill="none"/>
+      <path d="M52 50 54 56M66 50 64.4 56" stroke="${P.gl}" stroke-width=".5" opacity=".7"/>`;
+    return s + `<path d="M44 36H76V72H44Z" fill="url(#${u}r)" opacity=".6"/>`;
+  }
+  if (B === 'coat') {
+    let s = '';
+    for (const x of [51, 62.4]) s += `<path d="M${x} 80H${x + 6.6}L${x + 6} 106H${x + .6}Z" fill="${P.c1}" stroke="${P.c3}" stroke-opacity=".2" stroke-width=".4"/><path d="M${x - .4} 105H${x + 7.4}L${x + 8.6} 108.6H${x - 1}Z" fill="${P.c1}" stroke="${P.m2}" stroke-opacity=".5" stroke-width=".4"/>`;
+    s += `<path d="M46 38Q42 70 34 104${dkTatter(34, 54, 104, 3, 4, R)}L56 60 60 44 64 60 66 104${dkTatter(66, 86, 104, 3, 4, R)}Q78 70 74 38Z" fill="url(#${u}f)" stroke="${P.c3}" stroke-opacity=".35" stroke-width=".5"/>`;
+    s += `<path d="M55.4 40H64.6L64 64H56Z" fill="${P.c2}"/><path d="M57 42 60 50 63 42Z" fill="${P.sk}"/><path d="M58.6 49 60 54 61.4 49Z" fill="${P.gl}"/>${[52, 56, 60].map(y => `<circle cx="60" cy="${y + 4}" r=".7" fill="${P.m2}"/>`).join('')}
+      <path d="M56 40 52 60M64 40 68 60" stroke="${P.m2}" stroke-opacity=".6" stroke-width=".6" fill="none"/>`;
+    return s + `<path d="M40 38H80V104H40Z" fill="url(#${u}r)" opacity=".6"/>`;
+  }
+  // lean: verdugo (delantal de cuero, torso desnudo)
+  let s = '';
+  for (const x of [50, 63]) s += `<path d="M${x} 76H${x + 7.4}L${x + 6.6} 104H${x + .8}Z" fill="${P.c1}" stroke="${P.c3}" stroke-opacity=".2" stroke-width=".4"/><path d="M${x} 98H${x + 7.6}L${x + 8.6} 108.6H${x - 1}Z" fill="${P.m1}" stroke="${P.m2}" stroke-opacity=".5" stroke-width=".4"/>`;
+  s += `<path d="M44 38Q60 33 76 38L74 58Q70 68 66 70H54Q50 68 46 58Z" fill="url(#${u}k)" stroke="${P.c3}" stroke-opacity=".3" stroke-width=".5"/><path d="M47 46Q53 51 59.6 47.6M73 46Q67 51 60.4 47.6M60 48V66M55.6 56H64.4M56 61H64" stroke="${P.ds}" stroke-width=".8" fill="none" opacity=".8"/>`;
+  s += `<path d="M49 56H71L73 98${dkTatter(73, 47, 98, -3, 6, R)}Z" fill="${P.c2}" stroke="${P.c3}" stroke-opacity=".3" stroke-width=".5"/><path d="M53 56 49 40M67 56 71 40" stroke="${P.c1}" stroke-width="1.6"/><path d="M48.4 66H71.6V69.6H48.4Z" fill="${P.c1}"/><path d="M57 65H63V70.6H57Z" fill="url(#${u}b)"/>
+    <path d="M55 74Q58 80 54 88M66 78Q64 84 67 90" stroke="${P.gl}" stroke-width=".8" opacity=".55" fill="none"/>`;
+  return s + `<path d="M44 36H76V98H44Z" fill="url(#${u}r)" opacity=".55"/>`;
+}
+function dkArms(u, A, P) {
+  const B = A.body, sk = B === 'demon' ? `url(#${u}d)` : B === 'lean' ? `url(#${u}k)` : `url(#${u}k)`;
+  const one = (side) => {
+    const s = side < 0, sx = s ? 46 : 74, ex = s ? 39 : 81, hx = s ? 37 : 84, sh = 41, ey = 56, hy = 68;
+    let o = '';
+    if (B === 'robe' || B === 'gown') {
+      o += `<path d="${dkSeg(sx, sh, ex, ey, 4.6, 4.4)}" fill="url(#${u}f)"/><path d="M${ex - 4.6} ${ey - 1}L${hx - (s ? 6 : -6) * .4} ${hy + 4}${s ? 'L' + (hx + 6) + ' ' + (hy + 1) : 'L' + (hx - 6) + ' ' + (hy + 1)}L${ex + 4.6} ${ey}Z" fill="url(#${u}c)" stroke="${P.c3}" stroke-opacity=".3" stroke-width=".4"/>`;
+      o += `<path d="M${hx - 1.6} ${hy - .4}h3.2l.6 3.4-.9 2.6-.6-2.4-.6 2.8-.7-2.8-.7 2.4-.6-2.6Z" fill="${P.sk}" stroke="${P.c1}" stroke-width=".3"/>`;
+    } else if (B === 'armor') {
+      o += `<path d="${dkSeg(sx, sh, ex, ey, 3.6, 3)}" fill="url(#${u}m)" stroke="${P.c1}" stroke-width=".5"/><circle cx="${ex}" cy="${ey}" r="3.4" fill="url(#${u}m)" stroke="${P.c1}" stroke-width=".5"/><path d="M${ex} ${ey} ${ex + (s ? -3 : 3)} ${ey + 1.6}" stroke="${P.m2}" stroke-width="1"/><path d="${dkSeg(ex, ey, hx, hy, 3, 3.4)}" fill="url(#${u}m)" stroke="${P.c1}" stroke-width=".5"/><rect x="${hx - 2.6}" y="${hy - 1}" width="5.2" height="4.4" rx="1.4" fill="${P.m1}" stroke="${P.m2}" stroke-opacity=".7" stroke-width=".4"/>`;
+    } else if (B === 'coat') {
+      o += `<path d="${dkSeg(sx, sh, ex, ey, 4, 3.4)}" fill="url(#${u}f)"/><path d="${dkSeg(ex, ey, hx, hy - 2, 3.4, 3)}" fill="url(#${u}f)" stroke="${P.c3}" stroke-opacity=".3" stroke-width=".4"/><path d="M${hx - 3} ${hy - 3.6}h6l-1 2h-4Z" fill="${P.sk}" opacity=".9"/><path d="M${hx - 1.6} ${hy - 1.6}h3.2l.5 3-.8 2.6-.6-2.2-.5 2.6-.6-2.6-.6 2.2-.6-2.6Z" fill="${P.sk}"/>`;
+    } else {
+      o += `<path d="${dkSeg(sx, sh, ex, ey, 4.6, 3.6)}" fill="${sk}" stroke="${P.c3}" stroke-opacity=".3" stroke-width=".4"/><circle cx="${ex}" cy="${ey}" r="3.4" fill="${sk}"/><path d="${dkSeg(ex, ey, hx, hy, 3.6, 2.6)}" fill="${sk}" stroke="${P.c3}" stroke-opacity=".3" stroke-width=".4"/><path d="M${hx - 2} ${hy}h4l.6 3-1 2.4-.7-2-.6 2.6-.7-2.6-.6 2-.8-2.4Z" fill="${sk}"/>`;
+      if (B === 'demon') o += `<path d="M${hx - 1.8} ${hy + 5}l-.5 1.6M${hx} ${hy + 5.6}v1.6M${hx + 1.8} ${hy + 5}l.5 1.6" stroke="${P.m2}" stroke-width=".5"/>`;
+      if (B === 'lean') o += `<path d="${dkSeg(ex, ey + 3, hx, hy - 1, 3.8, 3)}" fill="${P.m1}" opacity=".85"/>`;
+    }
+    return o;
+  };
+  return { L: one(-1), R: one(1) };
+}
+function dkWeapon(u, A, P) {
+  const W = A.weapon;
+  if (W === 'scythe') return { back: `<path d="${dkSeg(89, 8, 80, 112, 1.2, 1.3)}" fill="url(#${u}b)" stroke="${P.c1}" stroke-width=".3"/>${[30, 50, 92].map(y => `<path d="${dkSeg(89 - (y - 8) * 9 / 104, y - 1.4, 89 - (y + 1.4 - 8) * 9 / 104, y + 1.4, 1.8, 1.8)}" fill="${P.m2}"/>`).join('')}`,
+    front: `<path d="M89 10C72 2 44 6 26 26C34 22 40 20 46 20C40 24 36 28 34 32C50 20 70 16 88.6 21Z" fill="url(#${u}m)" stroke="${P.c3}" stroke-opacity=".7" stroke-width=".5"/><path d="M86 13C68 8 48 12 33 25" stroke="${P.gl}" stroke-width=".6" fill="none" opacity=".8"/>${[0, 1, 2, 3].map(i => dkRune(74 - i * 9, 14.4 + i * 1.4, .8, P.gl, i)).join('')}<circle cx="89" cy="15" r="2.6" fill="${P.m1}" stroke="${P.m2}" stroke-width=".5"/><circle cx="89" cy="15" r="1" fill="${P.gl}"/>` };
+  if (W === 'greatsword') return { back: '', front: `<path d="M83.4 74H89.6L88.6 104 86.5 112 84.4 104Z" fill="url(#${u}b)" stroke="${P.c3}" stroke-opacity=".7" stroke-width=".4"/><path d="M86.5 75V104" stroke="${P.gl}" stroke-width=".9" opacity=".9"/>${[0, 1, 2, 3, 4].map(i => dkRune(86.5, 79 + i * 5, .55, P.c1, i)).join('')}<circle cx="86.5" cy="90" r="9" fill="url(#${u}e)" opacity=".25"/>
+      <path d="M77 71.4Q86.5 74 96 71.4L95 74.4Q86.5 76.6 78 74.4Z" fill="url(#${u}m)" stroke="${P.c1}" stroke-width=".4"/><path d="M77 71.4 74.4 69M96 71.4 98.6 69" stroke="${P.m2}" stroke-width="1"/><path d="M85.2 60H87.8V71.6H85.2Z" fill="${P.c1}"/><path d="M85.2 62 87.8 63.4M85.2 65 87.8 66.4M85.2 68 87.8 69.4" stroke="${P.m2}" stroke-width=".4"/><circle cx="86.5" cy="59" r="1.9" fill="url(#${u}m)"/><circle cx="86.5" cy="59" r=".8" fill="${P.gl}"/>` };
+  if (W === 'axe') return { back: `<path d="${dkSeg(93, 22, 78, 110, 1.3, 1.4)}" fill="${P.c2}" stroke="${P.c1}" stroke-width=".3"/>`, front: `<path d="M91 20C104 16 114 28 112 46C106 40 100 38 92 40C93 34 92 26 91 20Z" fill="url(#${u}m)" stroke="${P.c3}" stroke-opacity=".7" stroke-width=".5"/><path d="M106 22 103 26 107 29M111 34 107 36 110 40" stroke="${P.c1}" stroke-width=".7" fill="none"/><path d="M93 22C104 20 111 30 110.4 43" stroke="${P.gl}" stroke-width=".6" fill="none" opacity=".75"/><path d="M90 20 86 14 92 18Z" fill="${P.m2}"/>` };
+  if (W === 'skullstaff' || W === 'bonestaff') {
+    const bone = W === 'bonestaff';
+    return { back: `<path d="${dkSeg(87, 16, 84, 110, 1.1, 1.3)}" fill="${bone ? P.sk : 'url(#' + u + 'b)'}" stroke="${P.c1}" stroke-width=".3"/>${bone ? [36, 52, 92].map(y => `<ellipse cx="${86.3 - (y - 16) * 3 / 94}" cy="${y}" rx="1.9" ry="1.1" fill="${P.sk}" stroke="${P.c1}" stroke-width=".3"/>`).join('') : ''}`,
+      front: `<circle cx="87" cy="10" r="9" fill="url(#${u}e)" opacity=".55"/><path d="M82 13C80 6 84 2 87 2C91 2 94 6 92 13L90.6 15.4H83.4Z" fill="url(#${u}k)" stroke="${P.c1}" stroke-width=".4"/><path d="M84.4 8.6 86.4 9.2 85.6 10.8ZM89.6 8.6 87.6 9.2 88.4 10.8Z" fill="${P.gl}"/><path d="M84.4 13.4V15.4M86 13.6V15.6M87.6 13.6V15.6M89.2 13.4V15.4" stroke="${P.c1}" stroke-width=".35"/>${bone ? `<path d="M82.6 6C78 4 76 0 77-3M91.4 6C96 4 98 0 97-3M78 1 75 0M96 1 99 0" stroke="${P.sk}" stroke-width=".9" fill="none" stroke-linecap="round"/>` : `<path d="M82.4 7C79 3 80-1 83-3M91.6 7C95 3 94-1 91-3" stroke="url(#${u}h)" stroke-width="1.2" fill="none" stroke-linecap="round"/><circle cx="87" cy="-1" r="2.4" fill="${P.gl}"/><circle cx="87" cy="-1" r="1" fill="#fff"/>`}` };
+  }
+  if (W === 'flame') return { back: '', front: `<circle cx="85" cy="62" r="12" fill="url(#${u}e)" opacity=".7"/><path d="M85 52C89 56 91 58 90 62C89.6 66 87 68 85 68C82 68 80 66 80 63C80 60 82 59 82 56C83.6 58 84 59 84.6 60C85.6 58 86 55 85 52Z" fill="${P.gl}"/><path d="M85 58C87 60 87.6 62 86.6 64.4C85.6 66 83.6 65.6 83 64C82.6 62.4 84 61.6 85 58Z" fill="#fff" opacity=".85"/>` };
+  if (W === 'flamesword') return { back: '', front: `<path d="${dkSeg(84, 67, 98, 12, 1.4, 1.2)}" fill="${P.c1}"/><path d="M83 60 97 8 99.4 11.6 89 59Z" fill="url(#${u}b)" stroke="${P.c3}" stroke-opacity=".8" stroke-width=".4"/><path d="M85.6 59 98 10" stroke="${P.gl}" stroke-width=".9"/><path d="M89 58C93 50 90 44 94 38C96 32 93 28 97 20M83 58C82 50 86 44 85 36C85 30 88 26 88 20" stroke="${P.gl}" stroke-width=".7" fill="none" opacity=".75"/><circle cx="91" cy="34" r="14" fill="url(#${u}e)" opacity=".28"/><path d="M78 62.4 92 58.4 92.6 60.6 78.6 64.6Z" fill="url(#${u}m)" stroke="${P.c1}" stroke-width=".3"/>` };
+  if (W === 'lantern') return { back: '', front: `<path d="M84 70V76" stroke="${P.m2}" stroke-width=".5" stroke-dasharray=".8 .5"/><circle cx="84" cy="82" r="10" fill="url(#${u}e)" opacity=".6"/><path d="M80 77H88L89 86 84 89 79 86Z" fill="${P.gl}" opacity=".3" stroke="${P.m2}" stroke-width=".6"/><path d="M80 77H88M84 76V89M79.6 81.4H88.4" stroke="${P.m2}" stroke-width=".5"/><path d="M84 79C86 81 86.4 83.4 84 86C81.6 83.4 82 81 84 79Z" fill="#fff" opacity=".9"/><path d="M82 75.6H86L85.4 77H82.6Z" fill="${P.m1}"/>` };
+  if (W === 'orb') return { back: '', front: `<circle cx="38" cy="64" r="10" fill="url(#${u}e)" opacity=".55"/><circle cx="38" cy="64" r="3.4" fill="${P.gl}" opacity=".85"/><circle cx="37" cy="63" r="1.2" fill="#fff"/><path d="M33 60C35 57 41 57 43 60M33.4 68C36 70.6 40 70.6 42.6 68" stroke="${P.gl}" stroke-width=".4" fill="none" opacity=".7"/>` };
+  return { back: '', front: '' };
+}
+function dkChains(u, A, P) {
+  if (!A.chains) return '';
+  const ch = d => `<path d="${d}" stroke="${P.m1}" stroke-width="2.6" fill="none" stroke-dasharray="2.6 1.1" stroke-linecap="round"/><path d="${d}" stroke="${P.m2}" stroke-width="1" fill="none" stroke-dasharray="1.6 2.1" stroke-linecap="round"/>`;
+  let s = ch('M45 44Q60 60 76 50') + ch('M38 70Q32 90 26 108');
+  if (A.chains > 1) s += ch('M84 70Q92 90 98 108') + ch('M44 62Q60 70 76 62') + `<path d="M23 106H31L30 110H24Z" fill="${P.m1}" stroke="${P.m2}" stroke-width=".4"/><path d="M95 106H103L102 110H96Z" fill="${P.m1}" stroke="${P.m2}" stroke-width=".4"/>`;
+  return s + `<rect x="34.6" y="66" width="5" height="3.4" rx="1" fill="${P.m1}" stroke="${P.m2}" stroke-width=".4"/>`;
+}
+function dkHead(u, A, P) {
+  const H = A.head; let back = '', s = '';
+  const hood = (peak) => `<path d="M46 41C43 26 49 ${peak ? 6 : 11} 60 ${peak ? 3 : 8}C71 ${peak ? 6 : 11} 77 26 74 41C68 36 52 36 46 41Z" fill="url(#${u}c)" stroke="${P.c3}" stroke-opacity=".45" stroke-width=".5"/><path d="M60 ${peak ? 4 : 9}C66 12 71 22 72 34M52 14C49 20 48 28 49 36" stroke="${P.c3}" stroke-opacity=".16" stroke-width=".5" fill="none"/><path d="M46 41C43 26 49 ${peak ? 6 : 11} 60 ${peak ? 3 : 8}C71 ${peak ? 6 : 11} 77 26 74 41C68 36 52 36 46 41Z" fill="url(#${u}r)"/>`;
+  if (H === 'hood') {
+    s += hood(A.peak) + `<path d="M51 37C50 26 54 17 60 15C66 17 70 26 69 37C64 34 56 34 51 37Z" fill="url(#${u}v)"/>` + dkEye(u, 56.6, 26.6, 14, P) + dkEye(u, 63.4, 26.6, -14, P);
+  } else if (H === 'skull') {
+    if (A.hoodback) back += hood(1);
+    s += `<path d="M52.4 25C51.4 16 55 11 60 11C65 11 68.6 16 67.6 25C67.6 29 66 30.6 65.2 32.6L64.4 36.6H55.6L54.8 32.6C54 30.6 52.4 29 52.4 25Z" fill="url(#${u}k)" stroke="${P.c1}" stroke-width=".5"/>
+      <path d="M53.6 22.4C55 20.6 57.4 20.8 58.6 22.6 58.8 25.4 57 26.6 55.4 26.2 54 25.6 53.4 24 53.6 22.4ZM66.4 22.4C65 20.6 62.6 20.8 61.4 22.6 61.2 25.4 63 26.6 64.6 26.2 66 25.6 66.6 24 66.4 22.4Z" fill="#050305"/>
+      ${dkEye(u, 56.2, 23.6, 0, P, .6)}${dkEye(u, 63.8, 23.6, 0, P, .6)}<path d="M60 26.4 58.8 29.6H61.2Z" fill="#050305"/>
+      <path d="M56 33.4H64M56.6 32.6V35.6M58.2 32.8V36M59.8 32.8V36.2M61.4 32.8V36M63 32.6V35.6" stroke="${P.c1}" stroke-width=".4"/><path d="M54.4 29.4Q56 31 57.4 30.4M65.6 29.4Q64 31 62.6 30.4" stroke="${P.ds}" stroke-width=".5" fill="none"/>
+      <path d="M62 11.6 63 15 61.6 17.4 62.6 19" stroke="${P.c1}" stroke-width=".35" fill="none"/>`;
+  } else if (H === 'helm') {
+    s += `<path d="M50.6 37V20C50.6 12.6 55 8.6 60 8.6S69.4 12.6 69.4 20V37C66 39 54 39 50.6 37Z" fill="url(#${u}m)" stroke="${P.c1}" stroke-width=".6"/><path d="M60 8.6V37" stroke="${P.m2}" stroke-opacity=".7" stroke-width=".7"/>
+      <path d="M52.6 22.6H67.4V24.4H52.6ZM59.3 24.4H60.7V33H59.3Z" fill="${P.gl}"/><path d="M52 23.5H68" stroke="#fff" stroke-width=".3" opacity=".8"/><rect x="50" y="18" width="20" height="10" fill="url(#${u}e)" opacity=".25"/>
+      ${[0, 1, 2].map(i => `<circle cx="${55.4 - i * .4}" cy="${29 + i * 2.2}" r=".45" fill="#000"/><circle cx="${64.6 + i * .4}" cy="${29 + i * 2.2}" r=".45" fill="#000"/>`).join('')}<path d="M51 31Q60 33.6 69 31" stroke="${P.c1}" stroke-width=".5" fill="none"/><path d="M50.6 37V20C50.6 12.6 55 8.6 60 8.6S69.4 12.6 69.4 20V37C66 39 54 39 50.6 37Z" fill="url(#${u}r)"/>`;
+  } else if (H === 'exec') {
+    s += `<path d="M50.6 38C49.6 26 53.6 13 60 4.6C66.4 13 70.4 26 69.4 38C64 40 56 40 50.6 38Z" fill="url(#${u}f)" stroke="${P.c3}" stroke-opacity=".4" stroke-width=".5"/><path d="M60 5 60.6 38M54 16C52.6 24 52.4 30 53 37" stroke="${P.c1}" stroke-width=".5" fill="none"/>
+      <path d="M54.2 23.8Q56.4 22 58.4 24 56.4 26 54.2 23.8ZM65.8 23.8Q63.6 22 61.6 24 63.6 26 65.8 23.8Z" fill="#000"/>${dkEye(u, 56.3, 24, 10, P, .7)}${dkEye(u, 63.7, 24, -10, P, .7)}<path d="M53.4 33.6 51 46M66.6 33.6 69 46" stroke="${P.c1}" stroke-width=".6"/>`;
+  } else {
+    const demon = H === 'demon', skin = demon ? `url(#${u}d)` : `url(#${u}k)`;
+    if (A.hair === 'long') back += `<path d="M52 18C51 8 56 5.4 60 5.4S69 8 68 18C70 28 72 40 70 54L66 50 64 56 61 40H59L56 56 54 50 50 54C48 40 50 28 52 18Z" fill="${P.c1}" stroke="${P.c3}" stroke-opacity=".3" stroke-width=".4"/><path d="M53 22C52 34 52 44 51 52M67 22C68 34 68 44 69 52M55.4 26C55 36 55.4 44 55 50" stroke="${P.c3}" stroke-opacity=".2" stroke-width=".4" fill="none"/>`;
+    if (A.hair === 'back') back += `<path d="M52.4 18C51.4 9 56 6 60 6S68.6 9 67.6 18C68.4 24 67.6 30 66 34H54C52.4 30 51.6 24 52.4 18Z" fill="${P.c1}"/>`;
+    if (A.collar) back += `<path d="M51 39C44 31 41 19 44 7C48 17 52 25 57 33Z" fill="${P.c2}" stroke="${P.c3}" stroke-opacity=".5" stroke-width=".5"/><path d="M51.6 37C46 30 44.6 21 46 12C49 20 52 27 56 33Z" fill="${P.gl}" opacity=".35"/>` + dkMirror(`<path d="M51 39C44 31 41 19 44 7C48 17 52 25 57 33Z" fill="${P.c2}" stroke="${P.c3}" stroke-opacity=".5" stroke-width=".5"/><path d="M51.6 37C46 30 44.6 21 46 12C49 20 52 27 56 33Z" fill="${P.gl}" opacity=".35"/>`);
+    s += `<path d="M57.6 31H62.4L62.8 38H57.2Z" fill="${skin}"/><path d="M54 18.6C54 12.4 56.8 10 60 10S66 12.4 66 18.6C66 25.6 63.4 30.4 60 31.6 56.6 30.4 54 25.6 54 18.6Z" fill="${skin}" stroke="${P.c1}" stroke-width=".4"/>
+      <path d="M54.6 22Q56.4 27.6 59 29.4M65.4 22Q63.6 27.6 61 29.4" stroke="${P.c1}" stroke-width=".7" opacity=".28" fill="none"/>
+      <path d="M55.2 18.4 58.6 19.4M64.8 18.4 61.4 19.4" stroke="${demon ? P.c1 : '#120a10'}" stroke-width=".8" stroke-linecap="round"/>
+      <path d="M55.8 20.6Q57.2 19.8 58.6 20.8 57.2 21.6 55.8 20.6ZM64.2 20.6Q62.8 19.8 61.4 20.8 62.8 21.6 64.2 20.6Z" fill="${demon ? P.gl : '#0a0608'}"/>${dkEye(u, 57.3, 20.7, 6, P, .55)}${dkEye(u, 62.7, 20.7, -6, P, .55)}
+      <path d="M60 21.4 59.4 25.2 60.6 25.4" stroke="${P.c1}" stroke-width=".35" opacity=".5" fill="none"/><path d="M58.3 27.6Q60 28.4 61.7 27.6" stroke="${demon ? P.c1 : P.c2}" stroke-width=".7" fill="none"/>
+      ${A.fangs || demon ? `<path d="M58.8 27.9 59.1 29.3 59.4 28M60.6 28 60.9 29.3 61.2 27.9" fill="#fff" stroke="#fff" stroke-width=".2"/>` : ''}`;
+    if (demon) s += `<path d="M54.2 17.6 50.4 15.4 54.4 20.6ZM65.8 17.6 69.6 15.4 65.6 20.6Z" fill="${skin}"/>`;
+    if (A.hair === 'long' || A.hair === 'back') s += `<path d="M53.6 18C53.6 11 56.4 7.6 60 7.6S66.4 11 66.4 18C65 14 63 12.4 60 12.6 57 12.4 55 14 53.6 18Z" fill="${P.c1}"/><path d="M60 7.6 59.6 12.4" stroke="${P.c3}" stroke-opacity=".3" stroke-width=".3"/>`;
+    if (A.hair === 'short') s += `<path d="M53.6 18C53 10 56.4 7 60 7S67 10 66.4 18L64.6 13 62.6 15 60.6 11.6 58 15 56 13Z" fill="${P.c3}" opacity=".85"/><path d="M53.6 18C53 10 56.4 7 60 7S67 10 66.4 18L64.6 13 62.6 15 60.6 11.6 58 15 56 13Z" fill="${P.c1}" opacity=".45"/>`;
+    if (A.veil) s += `<path d="M52 13C52 6 56 3.6 60 3.6S68 6 68 13C72 26 76 40 78 58L60 50 42 58C44 40 48 26 52 13Z" fill="url(#${u}x)" opacity=".38"/><path d="M52 13C49 28 46 42 43 56M68 13C71 28 74 42 77 56" stroke="${P.gl}" stroke-width=".35" opacity=".5" fill="none"/>`;
+  }
+  // cuernos
+  let hr = '';
+  if (A.horns === 'ram') hr = `<path d="M52 17C45 11 37 15 37.4 23 38 30 46 31 46.4 25.6 46.6 22.6 43.6 22 42.6 24.4 44 22.4 42 26.6 40.6 24.6 40 20 44.6 16.6 49 19.6Z" fill="url(#${u}h)" stroke="${P.c1}" stroke-width=".5"/><path d="M40 18.6 41.4 19.8M38.4 22 40 22.6M39 26 40.6 25.6M42 28.6 43 27.2" stroke="${P.c1}" stroke-width=".5"/>`;
+  if (A.horns === 'long') hr = `<path d="M53 16C47 11 43 4 42-4 46 2 51 7 57 12.6Z" fill="url(#${u}h)" stroke="${P.c1}" stroke-width=".5"/><path d="M47.6 8.6 49.4 7.6M45.4 4.6 47 3.6M50 11.6 51.6 10.4" stroke="${P.c1}" stroke-width=".5"/>`;
+  if (A.horns === 'antlers') hr = `<path d="M55 12C52 6 48 2 44-4M48 3 42 2M46-.6 46-6M51 7 52 1M44-4 40-6" stroke="${P.sk}" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M55 12C52 6 48 2 44-4" stroke="${P.c1}" stroke-width=".3" fill="none"/>`;
+  if (hr) s += hr + dkMirror(hr);
+  if (A.crown === 'spikes' || A.crown === 'crown') {
+    const king = A.crown === 'crown', y = H === 'skull' ? 14.4 : 11;
+    s += `<path d="M51.6 ${y + 3}${king ? `L52 ${y - 4} 54.6 ${y - 1} 57 ${y - 7} 60 ${y - 2} 63 ${y - 7} 65.4 ${y - 1} 68 ${y - 4}` : `L52.4 ${y - 5} 55 ${y} 57.6 ${y - 8} 60 ${y - 1} 62.4 ${y - 8} 65 ${y} 67.6 ${y - 5}`} 68.4 ${y + 3}Q60 ${y + 1} 51.6 ${y + 3}Z" fill="url(#${u}m)" stroke="${P.c1}" stroke-width=".5"/><circle cx="60" cy="${y + .6}" r="1.1" fill="${P.gl}"/><circle cx="55" cy="${y + 1}" r=".6" fill="${P.gl}"/><circle cx="65" cy="${y + 1}" r=".6" fill="${P.gl}"/><circle cx="60" cy="${y}" r="3" fill="url(#${u}e)" opacity=".5"/>`;
+  }
+  if (A.halo) back = `<ellipse cx="60" cy="6" rx="11" ry="3.2" transform="rotate(-10 60 6)" fill="none" stroke="${P.gl}" stroke-width="1.3" stroke-dasharray="14 3 9 4 20 2"/><ellipse cx="60" cy="6" rx="14" ry="5" transform="rotate(-10 60 6)" fill="url(#${u}e)" opacity=".25"/>` + back;
+  return { back, front: s };
+}
+function darkSVG(key) {
+  const d = DK[key]; if (!d) return '';
+  const [, A, pk] = d, [, r, P] = DK_PAL[pk], u = 'dk' + key.replace(/[^a-z0-9]/gi, ''), R = dkRnd(key);
+  const W = dkWeapon(u, A, P), arms = dkArms(u, A, P), hd = dkHead(u, A, P);
+  const goldRim = P.gold ? `<g opacity=".9"><path d="M45 36C35 48 25 76 15 104M75 36C85 48 95 76 105 104" stroke="${P.c3}" stroke-width=".5" fill="none" opacity=".5"/></g>` : '';
+  return `${dkDefs(u, P, R)}${dkBackdrop(u, A, P, r, R)}${dkWings(u, A, P)}${dkCloak(u, A, P, R)}${A.tail ? dkTail(u, P) : ''}${W.back}${hd.back}${arms.L}${dkBody(u, A, P, R)}${dkChains(u, A, P)}${arms.R}${hd.front}${W.front}${goldRim}<ellipse cx="78" cy="34" rx="56" ry="56" fill="url(#${u}l)"/>${dkEmbers(P, r, R)}`;
+}
+CRIT.dkx = ['Figura oscura', (a, ak) => {
+  const d = DK[ak]; if (!d) return '';
+  const r = DK_PAL[d[2]][1], out = `<g transform="translate(1.5 3.4) scale(.5)">${darkSVG(ak)}</g>`;
+  return r === 'unica' ? `<g class="prisma slow">${out}</g>` : out;
+}];
+for (const [k, [n, , pk]] of Object.entries(DK)) { STYLE_OPTS.compa.push(Object.assign(C('cx-dk-' + k, n, 'dkx|' + k), { cx: DK_PAL[pk][1] })); FIG_GX['compa:cx-dk-' + k] = 1; }
+
+// ---------- CAJA INFERNAL: solo salen las figuras oscuras
+BOXES.infernal = { n: 'Caja Infernal', p: 3000, w: { rara: 75, epica: 22.8, legendaria: 2, mitica: .17, exotica: .025, unica: .005 }, re: /cx-dk-/ };
+BOXART.infernal = ['#ff4a1a', '#120203', '#ffb04a', 'horns'];
+BOXICON.horns = c => `<path d="M-3-1C-7-3-9-7-9-12-6-8-3-6 0-6S6-8 9-12C9-7 7-3 3-1Z" fill="${c}"/><path d="M-4 0Q0 9 4 0Q0 3-4 0Z" fill="${c}"/><circle cx="-2" cy="1.4" r=".9" fill="#fff"/><circle cx="2" cy="1.4" r=".9" fill="#fff"/>`;
+BOX_SUB.infernal = 'Figuras oscuras de otro nivel: parcas, liches, demonios y caballeros caídos';
+for (const r of collectCatalog()) CAT_IDX[r[0]] = { id: r[0], f: r[1], k: r[2], n: r[3], r: r[4], max: r[5], b: r[6] };
+PRO_COUNT = Object.entries(STYLE_OPTS).reduce((a, [, l]) => a + l.filter(o => !o.f).length, 0) + 4;
 
 
 // ============================================================ ONLINE (Supabase)
