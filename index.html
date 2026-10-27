@@ -2464,6 +2464,33 @@ footer .ftlogo{display:block;width:230px;max-width:60%;height:auto;margin:0 0 12
 .hshop .dhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.hshop h2{margin:0}.hshop>p{margin:6px 0 12px}
 .hsprice{display:inline-flex;align-items:center;gap:4px;font-size:15px;margin-right:auto}.hsprice b{font-weight:900}
 .hsgrid .iact{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.hallstats{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))!important}
+
+/* V39: cartel de estrenos que ocupa toda la pantalla */
+.hero36,.hero36 .slide{min-height:min(80vh,780px)!important}
+.hero36 .slide{grid-template-columns:minmax(0,1fr) auto!important;gap:clamp(24px,4vw,64px)!important;align-items:center!important;
+  padding:clamp(40px,6vh,80px) max(84px,calc((100vw - 1440px)/2 + 40px)) clamp(70px,9vh,100px)!important}
+.hero36 .sin{position:relative;z-index:2;max-width:820px}
+.hero36 h2{font-size:clamp(44px,6.4vw,112px)!important;line-height:.95!important;letter-spacing:-.03em!important;margin:12px 0 10px!important;text-wrap:balance;text-shadow:0 4px 30px rgba(0,0,0,.5)}
+.h36when{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;padding:7px 14px;border-radius:999px;font-size:clamp(13px,1vw,15px);background:rgba(0,0,0,.45);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14)}
+.h36when b{font-weight:800}.h36when span{color:var(--accent);font-weight:800}
+.h36when.soon{border-color:color-mix(in srgb,var(--accent) 55%,transparent)}
+.h36when.live{border-color:rgba(255,90,110,.6);background:rgba(120,10,30,.45)}
+.h36when.web{border-color:rgba(127,208,255,.5)}
+.h36dot{width:8px;height:8px;border-radius:50%;background:#ff4a5a;box-shadow:0 0 0 0 rgba(255,74,90,.7);animation:h36p 1.6s infinite}@keyframes h36p{70%{box-shadow:0 0 0 9px rgba(255,74,90,0)}100%{box-shadow:0 0 0 0 rgba(255,74,90,0)}}
+.h36ep{font-size:clamp(15px,1.25vw,20px);font-weight:700;color:var(--fg)}.h36ep em{font-style:normal;color:var(--dim);font-weight:600}
+.h36meta{display:flex;flex-wrap:wrap;gap:6px 10px;margin:8px 0 0!important;font-size:clamp(13px,1vw,16px)!important;color:var(--dim)!important}.h36meta span{opacity:.5}
+.h36sum{margin:14px 0 0!important;max-width:680px;font-size:clamp(14px,1.1vw,17px)!important;line-height:1.55;color:color-mix(in srgb,var(--fg) 82%,transparent)!important;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.hero36 .stack{margin-top:22px!important;display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.hero36 .btn.big{padding:13px 24px!important;font-size:16px!important}
+.h36count{color:var(--dim);font-size:13px;margin-left:6px}
+.hero36 .slide .sposter,.hero36 .slide.postermode .sposter{display:block!important;position:relative!important;right:auto!important;top:auto!important;translate:none!important;z-index:2;
+  width:clamp(200px,17vw,310px)!important;border-radius:16px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.12);transform:rotate(1.5deg);transition:transform .3s}
+.hero36 .slide .sposter img{width:100%;display:block;aspect-ratio:2/3;object-fit:cover}
+@media(hover:hover){.hero36 .slide .sposter:hover{transform:rotate(0) scale(1.03)}}
+.hero36 .slide::after{background:linear-gradient(90deg,var(--bg) 6%,color-mix(in srgb,var(--bg) 55%,transparent) 50%,color-mix(in srgb,var(--bg) 10%,transparent) 80%),linear-gradient(0deg,var(--bg),transparent 40%)!important}
+.hero36 .sdots{left:max(84px,calc((100vw - 1440px)/2 + 40px))!important}
+@media(max-width:760px){.hero36,.hero36 .slide{min-height:520px!important}.hero36 .slide{grid-template-columns:1fr!important;align-content:end!important;padding:24px 20px 56px!important}.hero36 .slide .sposter,.hero36 .slide.postermode .sposter{display:none!important}.h36sum{-webkit-line-clamp:2}.h36count{display:none}.hero36 .sdots{left:20px!important}}
 </style>
 <!-- TUS CAMBIOS DE DISEÑO: van en el archivo mis-estilos.css (al lado de este index.html). Ese archivo yo no lo piso nunca. -->
 <link rel="stylesheet" href="mis-estilos.css" onerror="this.remove()">
@@ -2496,7 +2523,7 @@ footer .ftlogo{display:block;width:230px;max-width:60%;height:auto;margin:0 0 12
 
 <footer><div class="wrap"><img class="ftlogo" src="" alt="JVNN" loading="lazy">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 22.3</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 22.5</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -9547,7 +9574,8 @@ async function loadHouse() {
   HOUSE.ok = !!rows;
 }
 function houseHTML() {
-  if (!HOUSE.list.length) return '';
+  if (!HOUSE.ok) return '';
+  if (!HOUSE.list.length) return `<section class="hshop"><div class="dhead"><h2>♻️ Segunda mano de JVNN</h2><span class="chip">vacía por ahora</span></div><p class="dim small" style="margin-bottom:0">Acá aparecen los objetos raros o mejores que la gente le vende a la página con la venta rápida o usa para pagar canjes, con su mismo número de serie y patrón. Todavía no entró ninguno: volvé más tarde.</p></section>`;
   const L = HOUSE.all ? HOUSE.list : HOUSE.list.slice(0, 8);
   return `<section class="hshop"><div class="dhead"><h2>♻️ Segunda mano de JVNN</h2><span class="chip">${plural(HOUSE.list.length, 'objeto', 'objetos')}</span></div>
     <p class="dim small">Objetos que la gente le vendió a la página o usó para pagar canjes. Vienen con su mismo número de serie, patrón y desgaste. Cuando alguien lo compra, desaparece de acá.</p>
@@ -9579,6 +9607,111 @@ async function loadInv() {
   }
   INV.list = L; INV.ok = true;
 }
+
+
+// ============================================================ V35: SONIDOS NUEVOS, SUAVES Y "ASMR" (madera, burbujas, campanitas con eco)
+{
+  const S = SND;
+  // salida: volumen general + compresor suave + eco (reverb) para que todo suene "en una sala"
+  S.out = function () {
+    const a = this.ac(); if (!a) return null;
+    if (this._a === a && this._bus) return this._bus;
+    const bus = a.createGain(), comp = a.createDynamicsCompressor(), master = a.createGain(), rev = a.createConvolver(), wet = a.createGain(), lp = a.createBiquadFilter();
+    master.gain.value = 1; wet.gain.value = .22; lp.type = 'lowpass'; lp.frequency.value = 7000;
+    const len = Math.floor(a.sampleRate * 1.8), imp = a.createBuffer(2, len, a.sampleRate);
+    for (let c = 0; c < 2; c++) { const d = imp.getChannelData(c); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3.2); }
+    rev.buffer = imp;
+    comp.threshold.value = -18; comp.ratio.value = 3; comp.attack.value = .004; comp.release.value = .2;
+    bus.connect(lp); lp.connect(comp); lp.connect(rev); rev.connect(wet); wet.connect(comp); comp.connect(master); master.connect(a.destination);
+    this._a = a; this._bus = bus; return bus;
+  };
+  // una nota con ataque suave y caída larga (tipo marimba / campanita)
+  S.note = function (f, t = 0, d = .6, vol = .12, parts = [[1, 1], [4, .18]], type = 'sine') {
+    const a = this.ac(), o = this.out(); if (!a || !o) return; const s = a.currentTime + t;
+    for (const [m, g] of parts) {
+      const os = a.createOscillator(), ga = a.createGain(); os.type = type; os.frequency.value = f * m;
+      ga.gain.setValueAtTime(0, s); ga.gain.linearRampToValueAtTime(vol * g, s + .008); ga.gain.exponentialRampToValueAtTime(.0001, s + d / Math.sqrt(m));
+      os.connect(ga).connect(o); os.start(s); os.stop(s + d + .1);
+    }
+  };
+  // ruido filtrado (para madera, papel, aire)
+  S.air = function (t, d, vol, type, f1, f2, q = 1) {
+    const a = this.ac(), o = this.out(); if (!a || !o) return; const s = a.currentTime + t, n = Math.floor(a.sampleRate * d);
+    const buf = a.createBuffer(1, n, a.sampleRate), ch = buf.getChannelData(0); for (let i = 0; i < n; i++) ch[i] = Math.random() * 2 - 1;
+    const src = a.createBufferSource(), fl = a.createBiquadFilter(), g = a.createGain();
+    src.buffer = buf; fl.type = type; fl.Q.value = q; fl.frequency.setValueAtTime(f1, s); if (f2) fl.frequency.exponentialRampToValueAtTime(f2, s + d);
+    g.gain.setValueAtTime(0, s); g.gain.linearRampToValueAtTime(vol, s + Math.min(.02, d / 4)); g.gain.exponentialRampToValueAtTime(.0001, s + d);
+    src.connect(fl).connect(g).connect(o); src.start(s); src.stop(s + d + .05);
+  };
+  // golpecito de madera (en vez del golpe fuerte de antes)
+  S.thump = function (t = 0, v = .2) { this.note(210 + Math.random() * 30, t, .18, v * 1.2, [[1, 1], [2.3, .25]]); this.air(t, .05, v * .5, 'bandpass', 900, null, 2); };
+  // "tk" chiquito de la ruleta, como una ruedita
+  S.tick = function (p = .5) { this.air(0, .025, .35, 'bandpass', 2600 + p * 900, null, 6); this.note(1800 + p * 400, 0, .05, .07, [[1, 1]]); };
+  // aire que sube (cuando arranca la ruleta)
+  S.whoosh = function () { this.air(0, .7, .1, 'bandpass', 500, 2400, .8); };
+  // burbuja + papelito (cuando se abre la tapa)
+  S.pop = function () { const a = this.ac(), o = this.out(); if (!a || !o) return; const s = a.currentTime, os = a.createOscillator(), g = a.createGain(); os.type = 'sine'; os.frequency.setValueAtTime(320, s); os.frequency.exponentialRampToValueAtTime(980, s + .07); g.gain.setValueAtTime(0, s); g.gain.linearRampToValueAtTime(.3, s + .006); g.gain.exponentialRampToValueAtTime(.0001, s + .12); os.connect(g).connect(o); os.start(s); os.stop(s + .15); this.air(.01, .18, .07, 'highpass', 3500, null, .7); };
+  // brillitos (para lo bueno)
+  S.shimmer = function (t, n = 8) { for (let i = 0; i < n; i++) this.note(1568 * Math.pow(2, Math.floor(Math.random() * 3) * 5 / 12 + Math.random() * .02), t + i * .055 + Math.random() * .02, .5, .025, [[1, 1], [2, .2]]); };
+  // lo que suena al ver lo que te tocó: escala pentatónica, más notas cuanto más raro
+  S.reveal = function (r) {
+    const P = [523.25, 587.33, 659.25, 783.99, 880, 1046.5, 1174.66, 1318.5];
+    const n = { comun: 1, rara: 2, epica: 3, legendaria: 4, mitica: 5, exotica: 6, unica: 8 }[r] || 1, big = ['mitica', 'exotica', 'unica'].includes(r);
+    if (r === 'comun') { this.note(659.25, 0, .7, .2, [[1, 1], [4, .12]]); return; }
+    for (let i = 0; i < n; i++) this.note(P[i], i * .085, 1.1, .14, [[1, 1], [2.76, .08], [4, .1]]);
+    if (r === 'legendaria' || big) this.shimmer(n * .085, big ? 14 : 7);
+    if (big) { // colchón cálido que crece
+      const a = this.ac(), o = this.out(); if (!a || !o) return; const s = a.currentTime + .1;
+      [261.63, 329.63, 392, 523.25].forEach(f => { const os = a.createOscillator(), g = a.createGain(); os.type = 'triangle'; os.frequency.value = f; os.detune.value = (Math.random() - .5) * 8; g.gain.setValueAtTime(0, s); g.gain.linearRampToValueAtTime(.035, s + .6); g.gain.exponentialRampToValueAtTime(.0001, s + 2.6); os.connect(g).connect(o); os.start(s); os.stop(s + 2.7); });
+      this.note(65.4, .05, 1.2, .14, [[1, 1], [2, .3]]);
+    }
+  };
+  // carga: toquecitos de madera cada vez más rápidos + aire que sube, y la burbuja al abrir
+  BOXFX.charge = function (ov, boxId) {
+    const cu = ov.querySelector('.chargebox .boxcube'); if (cu) cu.outerHTML = `<span class="bxopen">${boxSVG(boxId in BOXART ? boxId : 'normal', 'big')}</span>`;
+    if (!ov.querySelector('[data-act="sndtoggle"]')) ov.insertAdjacentHTML('beforeend', `<button class="sndbtn ov" data-act="sndtoggle" title="Sonido">${sndIcon()}</button>`);
+    [0, .32, .58, .8, .98, 1.12, 1.23, 1.31].forEach((t, i) => S.thump(t, .14 + i * .015));
+    S.air(.3, 1.1, .06, 'bandpass', 300, 2600, .7);
+    setTimeout(() => S.pop(), 1400);
+  };
+}
+// sacamos el sonidito al pasar el mouse por las cajas (molestaba)
+document.addEventListener('mouseover', e => { if (e.target.closest && e.target.closest('.boxcard')) { const c = e.target.closest('.boxcard'); c.dataset.hv = '1'; } }, true);
+
+
+// ============================================================ V36: CARTEL DE ESTRENOS DE VERDAD (lo que sale HOY en tu horario) Y QUE OCUPE TODA LA PANTALLA
+const stripTags = s => String(s || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+function heroWhen(s) {
+  const air = s.ep && s.ep.air ? Date.parse(s.ep.air) : 0, now = Date.now();
+  if (!air) return { cls: 'web', txt: `Nuevo hoy${s.net ? ' en ' + s.net : ''}` };
+  if (air > now) return { cls: 'soon', txt: `Se estrena hoy a las ${fmtTime(air)}`, cd: air };
+  if (now - air < 3 * 3600e3) return { cls: 'live', txt: `Recién salió · ${fmtTime(air)}` };
+  return { cls: 'done', txt: `Salió hoy a las ${fmtTime(air)}` };
+}
+const heroLeft = ms => { const m = Math.max(0, Math.round(ms / 60000)), hh = Math.floor(m / 60), mm = m % 60; return hh ? `en ${hh} h ${mm} min` : mm ? `en ${mm} min` : 'ya empieza'; };
+function heroHTML(list) {
+  const today = todayKey();
+  // solo lo que de verdad sale hoy en tu horario (las series de EE. UU. de la noche a veces caen mañana acá)
+  let items = list.filter(s => (s.imgL || s.img) && (!s.ep || !s.ep.air || dayKey(Date.parse(s.ep.air)) === today));
+  // primero lo que todavía no salió (lo más cercano arriba), después lo que ya salió
+  const now = Date.now(), t = s => s.ep && s.ep.air ? Date.parse(s.ep.air) : 0;
+  items = items.slice(0, 40).sort((a, b) => { const fa = t(a) > now, fb = t(b) > now; return fa !== fb ? (fa ? -1 : 1) : (b.weight || 0) - (a.weight || 0); }).slice(0, 15);
+  if (!items.length) return '';
+  const cur = Math.min(window.HERO_I || 0, items.length - 1);
+  return `<section class="slider sec hero36" id="slider"><div class="slides">${items.map((s, i) => { const w = heroWhen(s), sum = stripTags(s.summary);
+    return `<article class="slide ${i === cur ? 'on' : ''}" data-i="${i}"><div class="sbg" style="background-image:url('${h(s.imgL || s.img)}')"></div>
+      <div class="sin"><div class="h36when ${w.cls}">${w.cls === 'live' ? '<i class="h36dot"></i>' : ''}<b>${h(w.txt)}</b>${w.cd ? ` <span data-hcd="${w.cd}">${heroLeft(w.cd - now)}</span>` : ''}</div>
+        <h2>${h(s.name)}</h2>
+        <div class="h36ep">Temporada ${s.ep.s} · Capítulo ${s.ep.n}${s.ep.name ? ` · <em>“${h(s.ep.name)}”</em>` : ''}</div>
+        <p class="h36meta">${[s.rating ? `★ ${s.rating}` : '', s.genres.slice(0, 3).map(gname).join(' · '), s.net, s.runtime ? s.runtime + ' min' : ''].filter(Boolean).map(h).join('<span>•</span>')}</p>
+        ${sum ? `<p class="h36sum">${h(sum.length > 260 ? sum.slice(0, 257) + '…' : sum)}</p>` : ''}
+        <div class="stack"><a class="btn pri big" href="#/serie/${s.id}">Ver serie</a>${S.shows[s.id] ? `<span class="chip">${LISTS[S.shows[s.id].list]}</span>` : `<button class="btn big" data-act="quickadd" data-id="${s.id}">+ Para ver</button>`}<span class="h36count">${i + 1} de ${items.length} estrenos de hoy</span></div></div>
+      <a class="sposter" href="#/serie/${s.id}">${img(s.img, s.name)}</a></article>`; }).join('')}</div>
+  <button class="sarrow prev" data-act="slidestep" data-v="-1" aria-label="Anterior">‹</button><button class="sarrow next" data-act="slidestep" data-v="1" aria-label="Siguiente">›</button><div class="sprog"><i></i></div>
+  <div class="sdots">${items.map((_, i) => `<button class="${i === cur ? 'on' : ''}" data-act="slide" data-v="${i}" aria-label="Estreno ${i + 1}"></button>`).join('')}</div></section>`;
+}
+// la cuenta regresiva se actualiza sola
+setInterval(() => document.querySelectorAll('[data-hcd]').forEach(el => { const ms = +el.dataset.hcd - Date.now(); el.textContent = heroLeft(ms); if (ms <= 0) { const p = el.closest('.h36when'); if (p) { p.className = 'h36when live'; p.innerHTML = '<i class="h36dot"></i><b>¡Está saliendo ahora!</b>'; } } }), 30000);
 
 
 // ============================================================ ONLINE (Supabase)
