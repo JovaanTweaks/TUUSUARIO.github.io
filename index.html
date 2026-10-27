@@ -2619,9 +2619,43 @@ body[data-sec="colecciones"]{--sec:#ffd24a}
 .pgidle *,.pgidle *::before,.pgidle *::after{animation-play-state:paused!important}
 .igrid>.icard{content-visibility:auto;contain-intrinsic-size:auto 380px}.galgrid>.galit{content-visibility:auto;contain-intrinsic-size:auto 200px}.bvgrid>.bvit{content-visibility:auto;contain-intrinsic-size:auto 180px}
 .m100r{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0 10px}.m100r span{padding:4px 10px;border-radius:99px;border:1px solid var(--rc);font-size:13px}.m100r b{color:var(--rc)}
+.m100i{border:0;color:inherit;font:inherit;cursor:zoom-in}
 .m100g{display:grid;grid-template-columns:repeat(auto-fill,minmax(82px,1fr));gap:6px;max-height:46vh;overflow:auto;padding:2px}.m100i{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 4px;border-radius:10px;background:rgba(255,255,255,.04);box-shadow:inset 0 -2px 0 var(--rc)}
 .m100i .ithumb{width:62px;height:62px;display:block}.m100i .ithumb>*{width:100%;height:100%}.m100i small{font-size:10px;line-height:1.15;text-align:center;opacity:.85;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .m100 .btn{margin-top:10px}
+/* v44: apertura de cajas nueva */
+.boxov.px{position:fixed;inset:0;z-index:10100;display:block;background:radial-gradient(ellipse at 50% 45%,rgba(20,16,28,.92),rgba(3,3,6,.97) 70%);backdrop-filter:blur(8px);overflow:auto}
+.boxov.px .pxstage{position:relative;width:100%;max-width:1100px;margin:0 auto;min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:24px 0}
+.pxcharge{display:grid;place-items:center;gap:18px;position:relative}
+.pxrays{position:absolute;width:520px;height:520px;max-width:120vw;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.07) 0 6deg,transparent 6deg 18deg);mask-image:radial-gradient(closest-side,#000 25%,transparent);-webkit-mask-image:radial-gradient(closest-side,#000 25%,transparent);animation:pxspin 9s linear infinite}
+.pxbox{position:relative;width:210px;height:210px;animation:pxshake 1.35s cubic-bezier(.5,0,.6,1) both}.pxbox svg{width:100%;height:100%;filter:drop-shadow(0 18px 30px rgba(0,0,0,.6))}
+.pxlabel{position:relative;font-size:15px;color:#cfc9d9;letter-spacing:.02em}.pxlabel b{color:#fff}
+@keyframes pxshake{0%{transform:scale(.7);opacity:0}15%{transform:scale(1);opacity:1}40%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}60%{transform:rotate(-5deg) scale(1.03)}70%{transform:rotate(5deg) scale(1.05)}80%{transform:rotate(-7deg) scale(1.08)}90%{transform:rotate(7deg) scale(1.12)}100%{transform:scale(1.3);opacity:0;filter:brightness(2.5)}}
+@keyframes pxspin{to{transform:rotate(360deg)}}
+.pxreel{position:relative;width:min(1100px,100vw);padding:22px 0;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);transition:opacity .5s,transform .5s}
+.pxreel.gone{position:absolute;opacity:0;transform:translateY(-40px) scale(.96);pointer-events:none}
+.pxpin{position:absolute;left:50%;top:6px;bottom:6px;width:3px;margin-left:-1.5px;background:linear-gradient(#ffd24a,#fff,#ffd24a);border-radius:2px;z-index:2;box-shadow:0 0 14px #ffd24a}
+.pxpin::before,.pxpin::after{content:"";position:absolute;left:50%;margin-left:-8px;border:8px solid transparent}.pxpin::before{top:-4px;border-top-color:#ffd24a}.pxpin::after{bottom:-4px;border-bottom-color:#ffd24a}
+.pxstrip{display:flex;gap:12px;padding:0 12px;will-change:transform}
+.pxit{flex:none;width:156px;height:196px;border-radius:16px;display:flex;flex-direction:column;align-items:center;padding:10px 8px 8px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.015)),radial-gradient(ellipse at 50% 35%,color-mix(in srgb,var(--rc) 28%,transparent),transparent 70%),#121018;border:1px solid rgba(255,255,255,.08);box-shadow:inset 0 -4px 0 var(--rc)}
+.pxart{width:132px;height:132px;display:block}.pxart svg,.pxart>*{width:100%;height:100%}.pxit svg *{animation-play-state:paused!important}
+.pxit b{font-size:12px;line-height:1.2;text-align:center;margin-top:4px;color:#e9e4f2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.pxit i{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--rc);margin-top:auto}
+.pxit.win{border-color:var(--rc);box-shadow:inset 0 -4px 0 var(--rc),0 0 0 2px var(--rc),0 0 40px color-mix(in srgb,var(--rc) 60%,transparent);transform:scale(1.06);transition:transform .3s}
+.pxrev{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;width:min(640px,calc(100vw - 32px));animation:pxin .55s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes pxin{from{opacity:0;transform:translateY(24px) scale(.94)}}
+.pxglow{position:absolute;top:10px;left:50%;width:460px;height:460px;margin-left:-230px;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--rc) 45%,transparent),transparent);pointer-events:none;z-index:-1}
+.pxglow::after{content:"";position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(from 0deg,color-mix(in srgb,var(--rc) 22%,transparent) 0 5deg,transparent 5deg 15deg);mask-image:radial-gradient(closest-side,#000 30%,transparent);-webkit-mask-image:radial-gradient(closest-side,#000 30%,transparent);animation:pxspin 20s linear infinite}
+.pxtag{font-size:clamp(22px,4vw,34px);font-weight:900;letter-spacing:.02em;color:var(--rc);text-shadow:0 0 24px color-mix(in srgb,var(--rc) 60%,transparent);margin-bottom:6px}
+.pxfig{width:min(300px,70vw);aspect-ratio:1;border:0;background:none;padding:0;cursor:zoom-in;animation:pxfloat 3.4s ease-in-out infinite;filter:drop-shadow(0 16px 26px rgba(0,0,0,.6))}.pxfig .ithumb,.pxfig .ithumb>*,.pxfig svg{width:100%;height:100%;display:block}
+@keyframes pxfloat{50%{transform:translateY(-8px)}}
+.pxname{margin:6px 0 10px;font-size:clamp(20px,3.2vw,28px);color:#fff}
+.pxchips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}.pxchips span{display:inline-flex;align-items:center;gap:4px;padding:5px 11px;border-radius:99px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:13px;color:#e6e0ef}.pxchips .pxr{background:var(--rc);color:#000;font-weight:800;border-color:transparent}
+.pxrev .rvfair{margin:10px 0 0}.pxacts{justify-content:center;margin-top:14px;flex-wrap:wrap}
+.pxrev .multi{width:100%;margin-top:16px}
+.boxov.px.done.r-mitica .pxit.win,.boxov.px.done.r-exotica .pxit.win,.boxov.px.done.r-unica .pxit.win{animation:pxpulse 1s ease-in-out infinite}@keyframes pxpulse{50%{box-shadow:inset 0 -4px 0 var(--rc),0 0 0 2px var(--rc),0 0 70px var(--rc)}}
+.o100pro{border-color:#ffd24a!important}.protag{font-size:10px;font-weight:900;padding:2px 6px;border-radius:6px;background:#ffd24a;color:#000;margin-left:4px}
+@media(max-width:600px){.pxit{width:118px;height:156px}.pxart{width:100px;height:100px}.pxbox{width:160px;height:160px}.pxfig{width:min(240px,66vw)}}
+@media(prefers-reduced-motion:reduce){.pxrays,.pxglow::after,.pxfig{animation:none}}
 </style>
 <!-- TUS CAMBIOS DE DISEÑO: van en el archivo mis-estilos.css (al lado de este index.html). Ese archivo yo no lo piso nunca. -->
 <link rel="stylesheet" href="mis-estilos.css" onerror="this.remove()">
@@ -2654,7 +2688,7 @@ body[data-sec="colecciones"]{--sec:#ffd24a}
 
 <footer><div class="wrap"><img class="ftlogo" src="" alt="JVNN" loading="lazy">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 28.0</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 29.0</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -11063,6 +11097,80 @@ document.addEventListener('click', async e => {
 document.addEventListener('click', e => { if (e.target.closest('.boxov [data-act="closebox"], .boxov .boxx, .boxov [data-act="openagain"]')) setTimeout(() => { if (!document.querySelector('.boxov') && !OPEN100.busy) { opening = false; setOpenBtns(true); } }, 50); });
 // ---------- animaciones en pausa cuando la pestaña no se ve (ahorra compu y batería)
 document.addEventListener('visibilitychange', () => document.documentElement.classList.toggle('pgidle', document.hidden));
+
+
+// ============================================================ V44: APERTURA DE CAJAS NUEVA (más prolija y con las figuras grandes)
+const PX_TITLE = { unica: '¡1 DE 1! Existe uno solo y es tuyo', exotica: '¡EXÓTICO!', mitica: '¡MÍTICO!', legendaria: '¡LEGENDARIO!', epica: '¡Épico!', rara: 'Te salió algo raro', comun: 'Te salió algo común' };
+function pxCard(c) { const R = RAR[c.r] || RAR.comun; return `<div class="pxit r-${c.r}" style="--rc:${R.c}"><span class="pxart">${inspArt(c.id)}</span><b>${h(c.n)}</b><i>${R.n}</i></div>`; }
+function spinReveal(boxId, item, done) {
+  const box = BOXES[boxId], c0 = catOf(item.cid), R0 = RAR[c0.r] || RAR.comun;
+  const pool = Object.values(CAT_IDX).filter(c => box.w[c.r] && (box.any || !c.b || c.b.includes(boxId)));
+  const pickR = () => { let x = Math.random() * 100, acc = 0; for (const r of [...RORD].reverse()) { acc += box.w[r] || 0; if (x < acc) return r; } return 'rara'; };
+  const strip = Array.from({ length: 48 }, () => { const r = pickR(), l = pool.filter(c => c.r === r); return l[Math.floor(Math.random() * l.length)] || pool[0] || c0; });
+  const WIN = 40; strip[WIN] = c0;
+  const rare = pool.filter(c => RAR[c.r].o >= 4); if (rare.length) { strip[WIN + 1] = rare[Math.floor(Math.random() * rare.length)]; if (R0.o < 3) strip[WIN - 1] = rare[Math.floor(Math.random() * rare.length)]; }
+  const ov = document.createElement('div'); ov.className = 'boxov px charging'; ov.style.setProperty('--rc', R0.c);
+  ov.innerHTML = `<div class="pxstage">
+      <div class="pxcharge"><div class="pxrays"></div><div class="pxbox">${boxSVG(boxId in BOXART ? boxId : 'normal', 'big')}</div><div class="pxlabel">Abriendo <b>${h(box.n)}</b></div></div>
+      <div class="pxreel" hidden><div class="pxpin"></div><div class="pxstrip">${strip.map(pxCard).join('')}</div></div>
+      <div class="reveal pxrev" hidden></div></div>
+    <button class="sndbtn ov" data-act="sndtoggle" title="Sonido">${sndIcon()}</button>`;
+  document.body.appendChild(ov);
+  [0, .3, .55, .78, .96, 1.1].forEach((t, i) => SND.thump(t, .1 + i * .03)); setTimeout(() => SND.pop(), 1250);
+  setTimeout(() => {
+    ov.classList.remove('charging'); ov.classList.add('spinning'); ov.querySelector('.pxcharge').remove();
+    const reel = ov.querySelector('.pxreel'), st = ov.querySelector('.pxstrip'); reel.hidden = false;
+    requestAnimationFrame(() => {
+      const it = st.children[0], iw = it.getBoundingClientRect().width + parseFloat(getComputedStyle(st).columnGap || 12);
+      const off = WIN * iw - reel.clientWidth / 2 + it.getBoundingClientRect().width / 2 + (Math.random() * .6 - .3) * it.getBoundingClientRect().width;
+      st.style.transition = 'transform 6.2s cubic-bezier(.08,.82,.17,1)'; st.style.transform = `translateX(${-off}px)`;
+      BOXFX.spin(reel, st);
+    });
+    setTimeout(() => {
+      st.children[WIN].classList.add('win'); ov.classList.remove('spinning'); ov.classList.add('done', 'r-' + c0.r);
+      BOXFX.reveal(ov, c0.r);
+      setTimeout(() => {
+        reel.classList.add('gone');
+        const rv = ov.querySelector('.pxrev'), gm = gemOf(item), w = +item.wear, s = +item.serial;
+        rv.innerHTML = `<div class="pxglow"></div><div class="pxtag">${PX_TITLE[c0.r] || R0.n}</div>
+          ${gm ? `<div class="rvgem" style="--gc:${GEMT[gm].c}">${GEMT[gm].i} ¡${GEMT[gm].n.toUpperCase()}! <small>Sale 1 en ${fmtc(GEMT[gm].odds)}</small></div>` : ''}
+          <button class="pxfig" data-act="pxinsp" title="Inspeccionar">${itemThumb(item.cid, item.pattern, item.wear, item.serial)}</button>
+          <h2 class="pxname">${h(c0.n)}</h2>
+          <div class="pxchips"><span class="pxr">${R0.n}</span><span>${s <= 0 ? 'Fundador' : '#' + s}${c0.max ? ' de ' + c0.max : ''}</span><span>Patrón #${+item.pattern}</span><span>${WEAR(w)} · ${w.toFixed(3)}</span><span>${coinSVG(13)} ${fmtc(estOf(item))}</span></div>
+          <p class="small dim rvfair">🎲 Lo sorteó el servidor al azar (serie, patrón y desgaste). <a href="#" data-act="valhelp">¿Cuánto vale?</a></p>
+          <div class="actions pxacts"><button class="btn pri" data-act="equipitem" data-cid="${h(item.cid)}">Ponérmelo</button><button class="btn" data-act="openagain" data-b="${boxId}">Abrir otra</button><button class="btn" data-act="pxinsp">Inspeccionar</button><a class="btn ghost" href="#/inventario" data-act="closebox">Inventario</a><button class="btn ghost" data-act="closebox">Cerrar</button></div>`;
+        rv.hidden = false; ov.querySelector('.pxrev').dataset.cid = item.cid; ov._item = item;
+        if (R0.o >= 3) { const rc = rv.querySelector('.pxfig').getBoundingClientRect(); for (let i = 0; i < (R0.o >= 4 ? 10 : 4); i++) setTimeout(() => burstAt(rc.left + rc.width * Math.random(), rc.top + rc.height * .4 * Math.random(), c0.r === 'exotica' || c0.r === 'unica' ? ['#ff7aa8', '#ffd36b', '#a8f0c6', '#7fe0ff', '#c3a8ff', '#ffffff'] : [R0.c, '#ffffff', '#ffd76a'], 34, 'confeti'), i * 120); }
+        done();
+      }, 700);
+    }, 6400);
+  }, 1350);
+}
+document.addEventListener('click', e => { const b = e.target.closest('.boxov [data-act="pxinsp"]'); if (!b) return; e.stopImmediatePropagation(); const ov = b.closest('.boxov'); if (ov && ov._item) inspect([{ cid: ov._item.cid, item: ov._item }], 0); }, true);
+
+// ---------- abrir 100 también en la Legendaria y el Abismo, solo para Pro
+const proOK = () => (isLogged() && isFounderId(ME.id)) || PRO.plan === 'combo' || (PRO.items || []).includes('combo') || PRO.me === true;
+function addOpen100() {
+  clearTimeout(ob100T);
+  ob100T = setTimeout(() => {
+    if (parseRoute().name !== 'cajas') return;
+    document.querySelectorAll('#app .boxcard:not([data-o100])').forEach(card => {
+      const k = (card.className.match(/bx-([a-z]+)/) || [])[1], b = BOXES[k], btns = card.querySelector('.boxbtns'); if (!b || !btns) return;
+      const pro = b.p > 5000; if (pro && !proOK()) return;
+      card.dataset.o100 = '1';
+      btns.insertAdjacentHTML('beforeend', `<button class="btn ${pro ? 'o100pro' : ''}" data-act="openbox100" data-b="${k}">Abrir 100 · ${coinSVG(14)} ${(b.p * 100).toLocaleString('es-AR')}${pro ? ' <span class="protag">PRO</span>' : ''}</button>`);
+    });
+  }, 120);
+}
+// ---------- "todo lo que salió" (abrir 5 o 10) en versión compacta: figura grande + nombre, tocás y la inspeccionás
+new MutationObserver(() => {
+  const m = document.querySelector('.boxov.px .pxrev .multi:not([data-px]):not(.m100)'); if (!m) return; m.dataset.px = '1';
+  const its = [...m.querySelectorAll('.icard')].map(c => ({ cid: c.dataset.mkcid, serial: +c.dataset.ser, pattern: +c.dataset.pat, wear: +c.dataset.wear })).filter(x => x.cid);
+  if (!its.length) return;
+  m._items = its;
+  m.innerHTML = `<div class="lb">Todo lo que salió (${its.length}) · valen ${coinSVG(13)} ${fmtc(its.reduce((a, it) => a + estOf(it), 0))}</div><div class="m100g">${its.map((it, i) => { const c = catOf(it.cid); return `<button class="m100i" data-pxm="${i}" style="--rc:${RAR[c.r].c}" title="${h(c.n)}">${itemThumb(it.cid, it.pattern, it.wear, it.serial)}<small>${h(c.n)}</small></button>`; }).join('')}</div>`;
+}).observe(document.body, { childList: true, subtree: true });
+document.addEventListener('click', e => { const b = e.target.closest('.boxov [data-pxm]'); if (!b) return; e.stopImmediatePropagation(); const m = b.closest('.multi'); inspect(m._items.map(it => ({ cid: it.cid, item: it })), +b.dataset.pxm); }, true);
 
 
 // ============================================================ ONLINE (Supabase)
