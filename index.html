@@ -11481,26 +11481,34 @@ if (typeof route === 'function') {
     _routeT = setTimeout(() => _origRoute(keepScroll), 10);
   };
 }
-
-// ============================================================ V43: BOTÓN ABRIR 100 CAJAS
+// ============================================================ V44: BOTÓN ABRIR 100 CAJAS FIJO
 (() => {
   const patchBoxes = () => {
-    if (parseRoute().name !== 'cajas') return;
-    document.querySelectorAll('.boxcard:not([data-b100])').forEach(card => {
-      card.dataset.b100 = '1';
+    if (location.hash !== '#/cajas') return;
+    document.querySelectorAll('.boxcard').forEach(card => {
       const btns = card.querySelector('.boxbtns');
       if (!btns || btns.querySelector('[data-n="100"]')) return;
-      const bName = (card.className.match(/bx-([a-z]+)/) || [])[1] || 'normal';
-      const boxObj = BOXES[bName];
+      
+      // Buscamos qué caja es mirando su clase (bx-normal, bx-especial, etc.)
+      const match = card.className.match(/bx-([a-z]+)/);
+      const bName = match ? match[1] : 'normal';
+      const boxObj = typeof BOXES !== 'undefined' ? BOXES[bName] : null;
       if (!boxObj) return;
       
-      // Agregamos el botón de 100 al HTML de los botones de la caja
       const p100 = boxObj.p * 100;
       btns.insertAdjacentHTML('beforeend', `<button class="btn big" data-act="openboxn" data-b="${bName}" data-n="100">Abrir 100 · ${coinSVG(16)} ${p100.toLocaleString('es-AR')}</button>`);
     });
   };
+
+  // Se fija permanentemente si estás en la sección de cajas y pone el botón
   const app = document.getElementById('app');
-  if (app) new MutationObserver(patchBoxes).observe(app, { childList: true, subtree: true });
+  if (app) {
+    new MutationObserver(() => {
+      setTimeout(patchBoxes, 50);
+    }).observe(app, { childList: true, subtree: true });
+  }
+  window.addEventListener('hashchange', () => setTimeout(patchBoxes, 100));
+})();
 })();
 </script>
 </body>
