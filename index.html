@@ -2138,6 +2138,12 @@ html body .ddm a{font-family:var(--display)!important;font-stretch:85%!important
 html body .search{max-width:300px!important}
 @media (max-width:1380px){html body .nav>a,html body .ddbtn{font-size:16.5px!important;padding:10px 9px!important}html body .nav>a::after,html body .ddbtn::after{left:9px;right:9px}html body .search{max-width:220px!important}}
 @media (max-width:1180px){html body .nav>a,html body .ddbtn{font-size:15px!important;padding:10px 7px!important}}
+
+/* ===== V22b: pestañas que bajan de renglón (se ven todas) ===== */
+html body .tabs{flex-wrap:wrap!important;width:auto!important;max-width:100%!important;overflow:visible!important}
+html body .ctabs .tab[data-v="supporter"]{color:#ffc83a}
+.msum{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:18px 0 -6px;padding:12px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line)}.msum b{font:800 20px/1 var(--display);font-stretch:80%;margin-right:8px}.msum .dim{display:inline-flex;gap:4px;align-items:center}
+.rwcard.auto{border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
 </style>
 </head>
 <body>
@@ -2168,7 +2174,7 @@ html body .search{max-width:300px!important}
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 18.1</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 19.0</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -7754,13 +7760,13 @@ async function vSeason(_, draw, alive) {
   const rw = await sbTry(() => rest(`season_rewards?select=*&season=eq.${encodeURIComponent(st.season)}&order=level.asc`, { auth: false }), []) || [];
   if (!alive()) return;
   const R = {}; for (const r of rw) (R[r.level] = R[r.level] || {})[r.track] = r;
-  const cl = new Set(st.claimed || []), lv = st.level || 0, xpIn = (st.xp || 0) % 600;
+  const cl = new Set(st.claimed || []), lv = st.level || 0, per = st.per || 600, xpIn = (st.xp || 0) % per;
   const show = r => { if (!r) return ''; if (r.kind === 'coins') return `<span class="srw">${coinSVG(26)}<b>${(+r.value).toLocaleString('es-AR')}</b></span>`; if (r.kind === 'bucks') return `<span class="srw">${buckSVG(26)}<b>${(+r.value).toLocaleString('es-AR')}</b></span>`; const i = r.value.indexOf(':'), f = r.value.slice(0, i), k = r.value.slice(i + 1), o = optOf(f, k); return o ? `<span class="srw item" title="${h(o.n)}"><span class="srwt">${miniThumb(f, k, o)}</span><small>${h(o.n)}</small></span>` : ''; };
   const cell = (l, t) => { const r = (R[l] || {})[t]; if (!r) return '<div class="scell empty"></div>'; const key = l + ':' + t, got = cl.has(key), can = isLogged() && l <= lv && !got && (t === 'free' || st.premium), locked = t === 'premium' && !st.premium;
     return `<div class="scell ${got ? 'got' : ''} ${locked ? 'locked' : ''} ${l <= lv ? 'reach' : ''}">${show(r)}${got ? '<span class="chip">Cobrado</span>' : can ? `<button class="btn sm pri" data-act="sclaim" data-l="${l}" data-t="${t}">Cobrar</button>` : ''}</div>`; };
   const levels = Array.from({ length: 30 }, (_, i) => i + 1);
-  draw(`${ecoNav('temporada')}<section class="pagehead"><h1>${h(st.name)}</h1><p class="dim">Subís de nivel completando misiones: cada misión cobrada suma 100 de experiencia y cada nivel pide 600. Termina el ${h(new Date(st.ends + 'T12:00:00').toLocaleDateString('es-AR', { day: 'numeric', month: 'long' }))}.</p></section>
-    <div class="spanel panel"><div class="slv"><b>Nivel ${lv}</b><span class="dim">${lv >= 30 ? 'Completaste el pase' : `${xpIn} de 600 para el nivel ${lv + 1}`}</span><div class="pbar"><i style="width:${lv >= 30 ? 100 : xpIn / 6}%"></i></div></div>
+  draw(`${ecoNav('temporada')}<section class="pagehead"><h1>${h(st.name)}</h1><p class="dim">Subís de nivel completando misiones: cada misión cobrada suma 100 de experiencia y cada nivel pide ${per.toLocaleString('es-AR')}. Termina el ${h(new Date(st.ends + 'T12:00:00').toLocaleDateString('es-AR', { day: 'numeric', month: 'long' }))}.</p></section>
+    <div class="spanel panel"><div class="slv"><b>Nivel ${lv}</b><span class="dim">${lv >= 30 ? 'Completaste el pase' : `${xpIn.toLocaleString('es-AR')} de ${per.toLocaleString('es-AR')} para el nivel ${lv + 1}`}</span><div class="pbar"><i style="width:${lv >= 30 ? 100 : xpIn / per * 100}%"></i></div></div>
     ${st.premium ? '<span class="chip">Tenés el pase premium</span>' : `<button class="btn pri" data-act="sbuy">${buckSVG(16)} Desbloquear premium · ${(+st.price).toLocaleString('es-AR')} Bucks</button>`}<a class="btn" href="#/misiones">Ir a las misiones</a></div>
     <div class="strack"><div class="srowlab"><span>Gratis</span><span>Premium</span></div><div class="scroll">${levels.map(l => `<div class="scol ${l === lv + 1 ? 'snext' : ''}"><div class="snum">${l}</div>${cell(l, 'free')}${cell(l, 'premium')}</div>`).join('')}</div></div>`);
   const nx = document.querySelector('.scol.snext'); if (nx) nx.scrollIntoView({ inline: 'center', block: 'nearest' });
@@ -7771,6 +7777,104 @@ document.addEventListener('click', async e => {
   if (e.target.closest('[data-act="sbuy"]')) { if (!isLogged()) { location.hash = '#/entrar/crear'; return; } if (!await ask('¿Desbloquear el pase premium?', 'Se cobra en Bucks y desbloquea todo el camino premium de esta temporada, incluso los niveles que ya pasaste.', [['yes', 'Desbloquear', 'pri']])) return; try { const w = await rest('rpc/buy_season_premium', { method: 'POST', body: {} }); setWallet(Array.isArray(w) ? w[0] : w); toast('¡Pase premium desbloqueado!'); refresh(); } catch (x) { toast(x.message); } }
 });
 function ecoNav(cur) { return `<nav class="econav">${[['tienda', 'Tienda'], ['cajas', 'Cajas'], ['misiones', 'Misiones'], ['temporada', 'Pase'], ['inventario', 'Inventario'], ['mercado', 'Mercado'], ['intercambios', 'Intercambios'], ['canjes', 'Canjes'], ['sorteos', 'Sorteos'], ['bucks', 'Bucks']].map(([k, n]) => `<a class="${k === cur ? 'on' : ''}" href="#/${k}">${n}</a>`).join('')}<span class="ecocoins">${coinSVG(18)} <b>${WALLET.coins.toLocaleString('es-AR')}</b></span><span class="ecocoins bk">${buckSVG(18)} <b>${(WALLET.bucks || 0).toLocaleString('es-AR')}</b></span></nav>`; }
+
+
+// ============================================================ V22: 12 MISIONES DIARIAS QUE ROTAN, SEMANALES NUEVAS Y CANJES DE PRO / SKINS
+const MTXT = {
+  d_caja: ['Abrí una caja', 'Cualquier caja, también la gratis.'],
+  d_caja3: ['Abrí 3 cajas', 'Contando todas las del día.'],
+  d_gratis: ['Abrí la caja gratis del día', 'Está arriba de todo en Cajas.'],
+  d_monedas: ['Entrá y cobrá tus monedas del día', 'Se cobran solas cuando entrás con tu cuenta.'],
+  d_coment: ['Comentá un capítulo', 'Un comentario de al menos 10 letras.'],
+  d_coment3: ['Comentá 3 capítulos distintos', 'De al menos 10 letras cada uno.'],
+  d_likec: ['Dale me gusta a 3 comentarios', 'De otras personas.'],
+  d_likel: ['Dale me gusta a una lista', 'De otra persona, en Listas.'],
+  d_liker: ['Dale me gusta a una reseña', 'De otra persona.'],
+  d_seguir: ['Seguí a alguien nuevo', 'En Gente o desde un perfil.'],
+  d_resena: ['Escribí una reseña', 'De al menos 40 letras, sobre una serie o peli.'],
+  d_publicar: ['Publicá algo en el mercado', 'Desde tu inventario, con el botón Vender.'],
+  d_comprar: ['Comprá algo en el mercado', 'Cualquier objeto que venda otra persona.'],
+  d_trade: ['Proponé un intercambio', 'A cualquier persona, desde Intercambios.'],
+  d_lista: ['Creá una lista', 'Con al menos una serie o peli.'],
+  w_resena: ['Escribí 2 reseñas', 'De al menos 40 letras cada una.'],
+  w_cajas10: ['Abrí 10 cajas', 'En toda la semana.'],
+  w_venta: ['Vendé algo en el mercado', 'Que alguien te compre un objeto.'],
+  w_trade: ['Hacé un intercambio', 'Que se acepte un intercambio tuyo.'],
+  w_seguir: ['Seguí a 5 personas', 'En toda la semana.'],
+  w_lista: ['Creá una lista pública', 'Con al menos 3 series o pelis.'],
+  w_coment10: ['Comentá 10 capítulos distintos', 'En toda la semana.'],
+  w_dias: ['Entrá 5 días de la semana', 'Cobrando la misión de las monedas del día.'],
+};
+async function vMissions(_, draw, alive) {
+  if (!isLogged()) return needLogin(draw);
+  draw(`${ecoNav('misiones')}<div class="sec skel" style="height:300px"></div>`);
+  const st = await sbTry(() => rest('rpc/mission_status', { method: 'POST', body: {} }), null);
+  if (!alive()) return;
+  const S2 = st && (typeof st === 'string' ? JSON.parse(st) : st) || {};
+  const today = S2._today || ['d_caja', 'd_caja3', 'd_coment'], week = S2._week || ['w_resena', 'w_cajas10', 'w_venta', 'w_trade', 'w_seguir', 'w_lista'];
+  const card = id => { const s = S2[id] || {}, [t, d] = MTXT[id] || [id, ''], ok = s.done, cl = s.claimed, per = id[0] === 'd' ? 'Diaria' : 'Semanal';
+    return `<div class="mission ${cl ? 'claimed' : ok ? 'ready' : ''}"><div class="mtop"><span class="chip">${per}</span><b class="mcoin">${coinSVG(16)} +${(s.reward || 0).toLocaleString('es-AR')}</b></div><h3>${h(t)}</h3><p class="small dim">${h(d)}</p>${s.goal ? `<div class="pbar"><i style="width:${Math.min(100, (s.n || 0) / s.goal * 100)}%"></i></div><small class="dim">${Math.min(s.n || 0, s.goal)} de ${s.goal}</small>` : ''}<button class="btn sm ${ok && !cl ? 'pri' : ''}" data-act="claimm" data-id="${id}" ${ok && !cl ? '' : 'disabled'}>${cl ? 'Cobrada' : ok ? 'Cobrar' : 'Falta completar'}</button></div>`; };
+  const sum = l => l.reduce((a, id) => a + ((S2[id] || {}).reward || 0), 0), got = l => l.filter(id => (S2[id] || {}).claimed).length;
+  const now = new Date(todayAR() + 'T03:00:00Z'), endD = now.getTime() + 864e5, endW = now.getTime() + (7 - (now.getUTCDay() + 6) % 7) * 864e5;
+  draw(`${ecoNav('misiones')}<section class="pagehead"><h1>Misiones</h1><p class="dim">Hay 12 diarias que cambian todos los días y 5 semanales que cambian cada lunes. Las revisa el servidor, así que cuentan solo de verdad. Cada misión cobrada también te sube de nivel en el pase de temporada.</p></section>
+    <div class="msum"><div><b>${got(today)} de ${today.length}</b><span class="dim">diarias cobradas · hasta ${coinSVG(13)} ${sum(today).toLocaleString('es-AR')} por día</span></div><span class="dtimer" data-end="${endD}">Cambian en ${Math.floor((endD - Date.now()) / 3600e3)} h</span></div>
+    <h2 class="sec">Diarias</h2><div class="mgrid">${today.map(card).join('')}</div>
+    <div class="msum"><div><b>${got(week)} de ${week.length}</b><span class="dim">semanales cobradas · hasta ${coinSVG(13)} ${sum(week).toLocaleString('es-AR')} por semana</span></div><span class="dtimer" data-end="${endW}">Cambian en ${Math.ceil((endW - Date.now()) / 864e5)} días</span></div>
+    <h2 class="sec">Semanales</h2><div class="mgrid">${week.map(card).join('')}</div>${st ? '' : '<p class="small dim sec">Para usar las misiones nuevas hay que correr supabase_v20.sql en Supabase.</p>'}`);
+}
+
+// ---------- CANJES: Pro y Combo se activan solos; skins y juegos los entregás vos
+async function vRewards(_, draw, alive) {
+  draw(`${ecoNav('canjes')}<div class="sec skel" style="height:240px"></div>`);
+  const rows = await sbTry(() => rest('rewards?select=*&order=sort.asc,cost.asc', { auth: false }), null) || await sbTry(() => rest('rewards?select=*&order=cost.asc', { auth: false }), null);
+  const mine = isLogged() ? await sbTry(() => rest('redemptions?select=*,reward:rewards(name)&order=created_at.desc&limit=20'), []) : [];
+  if (!alive()) return;
+  const card = r => { const bk = r.currency === 'bucks', auto = r.kind && r.kind !== 'manual', fn = /^fn-/.test(r.id), soldout = r.stock === 0;
+    const ph = fn ? 'Tu usuario de Epic Games' : bk ? 'Tu usuario de Steam o Discord' : 'Tu usuario de Discord';
+    return `<div class="rwcard ${bk ? 'bk' : ''} ${auto ? 'auto' : ''}"><h3>${h(r.name)}</h3><p class="dim">${h(r.descr)}</p><div class="rwfoot"><b>${bk ? buckSVG(18) : coinSVG(18)} ${r.cost.toLocaleString('es-AR')}${bk ? ' Bucks' : ''}</b>${r.stock != null ? `<span class="small dim">${r.stock > 0 ? `Quedan ${r.stock}` : 'Agotado'}</span>` : auto ? '<span class="small dim">Se activa al toque</span>' : ''}</div>${isLogged() ? (auto ? `<button class="btn pri" data-act="redeem" data-id="${h(r.id)}" data-auto="1">Canjear</button>` : `<div class="rwform"><input type="text" placeholder="${ph}" maxlength="80" data-rwc="${h(r.id)}"><button class="btn pri" data-act="redeem" data-id="${h(r.id)}" ${soldout ? 'disabled' : ''}>Canjear</button></div>`) : `<a class="btn" href="#/entrar">Entrá para canjear</a>`}</div>`; };
+  const L = rows || [], pro = L.filter(r => r.kind && r.kind !== 'manual'), skinsC = L.filter(r => /^fn-/.test(r.id) && r.currency !== 'bucks'), skinsB = L.filter(r => /^fn-/.test(r.id) && r.currency === 'bucks');
+  const other = L.filter(r => !pro.includes(r) && !/^fn-/.test(r.id)), otherC = other.filter(r => r.currency !== 'bucks'), otherB = other.filter(r => r.currency === 'bucks');
+  const sec = (t, l, note) => l.length ? `<h2 class="sec">${t}</h2>${note ? `<p class="small dim" style="margin-top:-6px">${note}</p>` : ''}<div class="rwgrid">${l.map(card).join('')}</div>` : '';
+  draw(`${ecoNav('canjes')}<section class="pagehead"><h1>Canjes</h1><p class="dim">Premios de verdad con las monedas que ganás usando la página, o con Bucks. Pro y Combo se activan al toque; el resto te lo entregamos nosotros después de canjear.</p></section>
+    ${rows ? sec('Pro y Combo con monedas', pro) + sec('Skins de Fortnite con monedas', skinsC, 'Para que te la podamos regalar tenés que ser amigo de nuestra cuenta de Epic hace más de 48 horas. Te pasamos el usuario por Discord después de canjear.') + sec('Skins de Fortnite con Bucks', skinsB) + sec('Juegos y premios con Bucks', otherB) + sec('Otros premios con monedas', otherC) : '<p class="dim sec">No se pudieron cargar los canjes.</p>'}
+    ${mine && mine.length ? `<section class="panel sec"><h3 style="margin-top:0">Tus canjes</h3>${mine.map(m => `<div class="rwrow"><b>${h(m.reward ? m.reward.name : m.reward_id)}</b><span class="chip">${h(m.status)}</span><span class="small dim">${h(fmtDate(m.created_at))}</span></div>`).join('')}</section>` : ''}`);
+}
+// los canjes automáticos (Pro y Combo) no piden usuario: se manejan acá antes que el manejador general
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-act="redeem"][data-auto]'); if (!b) return;
+  e.stopImmediatePropagation();
+  if (!await ask('¿Canjear?', 'Se descuentan las monedas y se activa al toque en tu cuenta.', [['yes', 'Canjear', 'pri']])) return;
+  try { const w = await rest('rpc/redeem', { method: 'POST', body: { p_reward: b.dataset.id, p_contact: '' } }); setWallet(Array.isArray(w) ? w[0] : w); if (typeof loadPro === 'function') await loadPro(); toast('¡Listo! Ya está activado en tu cuenta.'); refresh(); } catch (x) { toast(x.message); }
+}, true);
+
+// ---------- EDITOR: pestaña "GIF y música" (Supporter) y el editor bien arriba
+CTABS7.push(['supporter', 'GIF y música']);
+let supTabT = 0;
+function fillSupTab() {
+  clearTimeout(supTabT);
+  supTabT = setTimeout(async () => {
+    const on = document.querySelector('.ctabs .tab.on[data-v="supporter"]'), box = document.querySelector('.c7opts:not([data-suptab])');
+    if (!on || !box) return; box.dataset.suptab = '1';
+    const r = isLogged() ? await loadMySup() : null;
+    box.innerHTML = supActive(r) ? supEditor(r) : `<div class="cgroup"><div class="lb">GIF de fondo y música en tu perfil</div><p class="dim">Son de los Supporters: poné un GIF animado en tu banner (subí el tuyo o pegá uno de GIPHY) y una canción de YouTube que suena cuando alguien entra a tu perfil. También tenés insignia, nombre con animación en los comentarios, reacciones animadas y saludo al seguir.</p><a class="btn pri" href="#/supporter">Hacete Supporter · US$ ${SUP_PRICE} por mes</a></div>`;
+  }, 50);
+}
+{ const app = document.getElementById('app'); if (app) new MutationObserver(fillSupTab).observe(app, { childList: true, subtree: true }); }
+// botón "Editar perfil" arriba de todo, al lado de "Cambiar foto", y al abrir el editor se sube solo hasta él
+let editBtnT = 0;
+function addEditBtn() {
+  clearTimeout(editBtnT);
+  editBtnT = setTimeout(() => {
+    if (parseRoute().name !== 'perfil') return;
+    const acts = (document.querySelector('#app .pcover label[for="photo"]') || {}).parentElement; if (!acts || acts.querySelector('[data-edtop]')) return;
+    acts.insertAdjacentHTML('afterbegin', `<button class="btn pri" data-act="ptab" data-v="edit" data-edtop="1">Editar perfil</button>`);
+  }, 40);
+}
+{ const app = document.getElementById('app'); if (app) new MutationObserver(addEditBtn).observe(app, { childList: true, subtree: true }); }
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-act="ptab"][data-v="edit"],[data-act="ctab"]'); if (!b) return;
+  setTimeout(() => { const t = document.querySelector('#app .custom-sec') || document.querySelector('#app > .tabs'); if (t) { const y = t.getBoundingClientRect().top + scrollY - 90; scrollTo({ top: Math.max(0, y), behavior: b.dataset.act === 'ctab' ? 'auto' : 'smooth' }); } }, 120);
+});
 
 
 // ============================================================ ONLINE (Supabase)
