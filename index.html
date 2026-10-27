@@ -2173,6 +2173,18 @@ html body .ctabs .tab[data-v="supporter"]{color:#ffc83a}
 .achbot{display:flex;justify-content:space-between;align-items:center;min-height:30px}
 .invhero{text-align:center;max-width:640px;margin:30px auto}.invhero h1{margin:0 0 10px}.invhero .actions{justify-content:center;margin-top:16px}.invhero b{display:inline-flex;gap:4px;align-items:center}
 html body .earngrid>.panel{margin:0!important}
+
+/* ===== V25: salón de la fama + generador con buscador ===== */
+.hallstats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-bottom:18px}@media (max-width:760px){.hallstats{grid-template-columns:repeat(2,1fr)}}
+.hallstats>div{display:flex;flex-direction:column;gap:2px;padding:12px;border-radius:12px;background:var(--surface);border:1px solid color-mix(in srgb,var(--gc) 50%,var(--line))}.hallstats b{font:900 30px/1 var(--display);font-stretch:78%;color:var(--gc)}.hallstats span{font-weight:700;font-size:13px}.hallstats small{color:var(--dim);font-size:11.5px}
+.hallgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.hallit{display:flex;flex-direction:column;align-items:center;gap:8px}.hallwho{display:flex;justify-content:space-between;width:100%;max-width:260px;font-weight:700}.hallst{text-transform:none}
+.hallbadge{display:inline-flex;align-items:center;gap:5px;margin:6px 0 0;padding:3px 10px;border-radius:7px;font:800 12.5px/1.5 var(--body);background:color-mix(in srgb,var(--gc) 20%,var(--raise));border:1px solid color-mix(in srgb,var(--gc) 60%,var(--line));color:var(--fg)}
+.genrar{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.genrar .chip{cursor:pointer;border:1px solid var(--line)}.genrar .chip.on{border-color:var(--accent);color:var(--fg)}
+.genres{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px;max-height:320px;overflow-y:auto;padding:4px;border-radius:10px;background:var(--bg);border:1px solid var(--line)}
+.genit{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 6px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;text-align:center}.genit.on{border-color:var(--rc);box-shadow:inset 0 0 0 1px var(--rc)}.genit b{font-size:12.5px;line-height:1.2}.genit small{font-size:10.5px;color:var(--rc)}
+.genth{width:64px;height:56px;display:grid;place-items:center;overflow:hidden}
+.gensel{margin-top:8px;font-size:13.5px;color:var(--dim)}.gensel b{color:var(--fg)}
 </style>
 </head>
 <body>
@@ -2190,7 +2202,7 @@ html body .earngrid>.panel{margin:0!important}
     <a href="#/peliculas" data-r="peliculas">Películas</a>
     <a href="#/stats" data-r="stats">Estadísticas</a>
     <div class="navdd"><button type="button" class="ddbtn" data-act="navdd" aria-haspopup="true" aria-expanded="false">Comunidad<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-      <div class="ddm" hidden><a href="#/gente" data-r="gente" hidden>Gente</a><a href="#/listas" data-r="listas">Listas</a><a href="#/stats/ranking">Ranking</a><a href="#/mercado" data-r="mercado">Mercado</a><a href="#/cajas" data-r="cajas">Cajas</a><a href="#/misiones" data-r="misiones">Misiones</a><a href="#/canjes" data-r="canjes">Canjes</a><a href="#/sorteos" data-r="sorteos">Sorteos</a><a href="#/ganar" data-r="ganar">Ganá monedas</a><a href="#/temporada" data-r="temporada">Pase de temporada</a><a href="#/supporter" data-r="supporter">Supporter</a><a href="#/bucks" data-r="bucks">Comprar Bucks</a></div></div>
+      <div class="ddm" hidden><a href="#/gente" data-r="gente" hidden>Gente</a><a href="#/listas" data-r="listas">Listas</a><a href="#/stats/ranking">Ranking</a><a href="#/salon" data-r="salon">Salón de la fama</a><a href="#/mercado" data-r="mercado">Mercado</a><a href="#/cajas" data-r="cajas">Cajas</a><a href="#/misiones" data-r="misiones">Misiones</a><a href="#/canjes" data-r="canjes">Canjes</a><a href="#/sorteos" data-r="sorteos">Sorteos</a><a href="#/ganar" data-r="ganar">Ganá monedas</a><a href="#/temporada" data-r="temporada">Pase de temporada</a><a href="#/supporter" data-r="supporter">Supporter</a><a href="#/bucks" data-r="bucks">Comprar Bucks</a></div></div>
     <a href="#/perfil" data-r="perfil">Perfil</a>
     <a href="#/pro" data-r="pro" class="propill">Pro</a>
   </nav>
@@ -2203,7 +2215,7 @@ html body .earngrid>.panel{margin:0!important}
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 20.0</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 20.1</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -2664,7 +2676,7 @@ async function route(keepScroll) {
   const id = ++renderId, R = parseRoute(), app = $('#app');
   const y = window.scrollY;
   document.querySelectorAll('[data-r]').forEach(a => a.classList.toggle('on', a.dataset.r === R.name || (R.name === 'stats' && a.dataset.r === 'perfil' && a.closest('.bnav'))));
-  const views = { '': vHome, 'buscar': vSearch, 'serie': vShow, 'ep': vEpisode, 'mis-series': vMine, 'calendario': vCalendar, 'descubrir': vDiscover, 'peliculas': vMovies, 'stats': vStats, 'perfil': vProfile, 'entrar': vLogin, 'nueva-clave': vNewPass, 'gente': vPeople, 'u': vUser, 'categoria': vCategory, 'peli': vMovie, 'pro': vPro, 'monedas': vCoins, 'tienda': vShopDaily, 'cajas': vBoxes, 'inventario': vInventory, 'mercado': vMarket, 'intercambios': vTrades, 'misiones': vMissions, 'bucks': vBucksPlus, 'temporada': vSeason, 'supporter': vSupporter, 'generador': vGenerator, 'ganar': vEarn, 'invitar': vInvite, 'canjes': vRewards, 'sorteos': vRaffles, 'actor': vActor, 'top-episodios': vTopEps, 'listas': vLists, 'lista': vList };
+  const views = { '': vHome, 'buscar': vSearch, 'serie': vShow, 'ep': vEpisode, 'mis-series': vMine, 'calendario': vCalendar, 'descubrir': vDiscover, 'peliculas': vMovies, 'stats': vStats, 'perfil': vProfile, 'entrar': vLogin, 'nueva-clave': vNewPass, 'gente': vPeople, 'u': vUser, 'categoria': vCategory, 'peli': vMovie, 'pro': vPro, 'monedas': vCoins, 'tienda': vShopDaily, 'cajas': vBoxes, 'inventario': vInventory, 'mercado': vMarket, 'intercambios': vTrades, 'misiones': vMissions, 'bucks': vBucksPlus, 'temporada': vSeason, 'supporter': vSupporter, 'generador': vGenerator, 'ganar': vEarn, 'salon': vHall, 'invitar': vInvite, 'canjes': vRewards, 'sorteos': vRaffles, 'actor': vActor, 'top-episodios': vTopEps, 'listas': vLists, 'lista': vList };
   const v = views[R.name] || vHome;
   const draw = html => { if (id === renderId) { app.innerHTML = html; fillAds(); } return id === renderId; };
   try { await v(R.args, draw, () => id === renderId); }
@@ -6351,7 +6363,7 @@ document.addEventListener('click', e => {
   if (b) { const m = dd.querySelector('.ddm'), open = m.hidden; m.hidden = !open; b.setAttribute('aria-expanded', open); return; }
   if (dd && !e.target.closest('.navdd')) { dd.querySelector('.ddm').hidden = true; dd.querySelector('.ddbtn').setAttribute('aria-expanded', 'false'); }
 });
-window.addEventListener('hashchange', () => { const m = document.querySelector('.navdd .ddm'); if (m) m.hidden = true; const n = parseRoute().name; document.querySelector('.ddbtn')?.classList.toggle('on', ['gente', 'listas', 'mercado', 'cajas', 'misiones', 'canjes', 'sorteos', 'bucks', 'temporada', 'supporter', 'ganar', 'inventario', 'intercambios'].includes(n) || location.hash.includes('ranking')); });
+window.addEventListener('hashchange', () => { const m = document.querySelector('.navdd .ddm'); if (m) m.hidden = true; const n = parseRoute().name; document.querySelector('.ddbtn')?.classList.toggle('on', ['gente', 'listas', 'mercado', 'cajas', 'misiones', 'canjes', 'sorteos', 'bucks', 'temporada', 'supporter', 'ganar', 'salon', 'inventario', 'intercambios'].includes(n) || location.hash.includes('ranking')); });
 
 // ---------- buscador: series, películas, actores y gente a la vez
 let SR = { q: '', t: null, i: -1 };
@@ -7281,7 +7293,7 @@ const GEM_CACHE = {};
 function gemSeeds(cid) {
   if (GEM_CACHE[cid]) return GEM_CACHE[cid];
   let x = hs17('gema|' + cid) + 7; const used = new Set(), out = {};
-  for (const L of ['A', 'N', 'R', 'G', 'O', 'E', 'F', 'D', 'I', 'C', 'C', 'C']) { let p; do { x = (x * 1103515245 + 12345) % 2147483648; p = 1 + (x >> 8) % 1000; } while (used.has(p)); used.add(p); out[p] = L; }
+  for (const L of ['A', 'N', 'R', 'G', 'O', 'E', 'F', 'D', 'I', 'C', 'C', 'C']) { let p; do { x = (x * 48271) % 2147483647; p = 1 + Math.floor(x / 256) % 1000; } while (used.has(p)); used.add(p); out[p] = L; }
   return GEM_CACHE[cid] = out;
 }
 // recibe el objeto entero (patrón + estado + número de serie), como en el CS donde importa el patrón y el float
@@ -7339,7 +7351,7 @@ function patLabel(it) { const pat = it.pattern, g = gemOf(it); return g ? `<em c
 function collCard(it, actions = '', extra = '') {
   const c = catOf(it.cid), R = RAR[c.r] || RAR.comun, w = +it.wear, s = +it.serial, g = gemOf(it), code = itemCode(it);
   const ser = s <= 0 ? '<em class="sbad fnd">Edición fundador · no se vende</em>' : s === 1 ? '<em class="sbad gold">Número 1</em>' : s <= 10 ? '<em class="sbad">Serie baja</em>' : '';
-  return `<div class="icard v17 v19 r-${c.r} ${g ? 'isgem' : ''}" style="--rc:${R.c};${g ? `--gc:${GEMT[g].c}` : ''}" data-mkcid="${h(it.cid)}" data-ser="${s}" data-pat="${+it.pattern}" data-wear="${w}">
+  return `<div class="icard v17 v19 r-${c.r} ${g ? 'isgem' : ''}" style="--rc:${R.c};${g ? `--gc:${GEMT[g].c}` : ''}" data-mkcid="${h(it.cid)}" data-iid="${+it.id || 0}" data-ser="${s}" data-pat="${+it.pattern}" data-wear="${w}">
     <div class="ihead"><span class="irar">${R.n}</span><span class="iser" title="Número de serie: cuántos salieron antes que este">${s <= 0 ? 'F' + (1 - s) : '#' + s}${s > 0 && c.max ? `<small>/${c.max}</small>` : ''}</span></div>
     <div class="ithumbw">${itemThumb(it.cid, it.pattern, it.wear, it.serial)}</div>
     <b class="iname">${h(c.n)}</b><small class="dim">${h(CAT_NAMES[c.f] || c.f)}</small>${ser}
@@ -7914,17 +7926,22 @@ async function vGenerator(_, draw) {
   if (!FGEN.cid && all.length) FGEN.cid = all[0].id;
   draw(`<section class="pagehead"><h1>Generador del fundador</h1><p class="dim">Elegí un objeto, su patrón y su desgaste, y creálo en tu inventario. Sale como "Edición fundador": se ve en tu perfil, no usa los números de serie de los jugadores y no se puede vender ni intercambiar.</p></section>
     <div class="gengrid"><div class="panel sec genform">
-      <label class="lb" for="genq">Objeto</label><input type="text" id="genq" list="genlist" placeholder="Buscá: Dragón, Hada, Kitsune, Zapatillas…" value="${h((CAT_IDX[FGEN.cid] || {}).n || '')}"><datalist id="genlist">${all.map(c => `<option value="${h(c.n)}" data-id="${h(c.id)}">${h(RAR[c.r].n)} · ${h(CAT_NAMES[c.f] || c.f)}</option>`).join('')}</datalist>
+      <label class="lb" for="genq">Objeto <span class="dim">· buscá por nombre o tocá uno de la lista</span></label><input type="search" id="genq" placeholder="Buscá: Dragón, Hada, Kitsune, Zapatillas…" autocomplete="off"><div class="genrar">${['todos'].concat(RORD.slice().reverse().filter(r => RAR[r].o >= 3)).map(r => `<button class="chip ${r === 'todos' ? 'on' : ''}" data-act="genrar" data-r="${r}">${r === 'todos' ? 'Todos' : RAR[r].n}</button>`).join('')}</div><div class="genres" id="genres"></div><div class="gensel" id="gensel"></div>
       <label class="lb" for="genpat">Patrón <span class="dim">(1 a 1000)</span></label><div class="genrow"><input type="range" id="genpatr" min="1" max="1000" value="${FGEN.pattern}"><input type="number" id="genpat" min="1" max="1000" value="${FGEN.pattern}"></div>
       <label class="lb" for="genwear">Desgaste <span class="dim">(0 = recién salida, 0,9999 = muy gastada)</span></label><div class="genrow"><input type="range" id="genwearr" min="0" max="9999" value="${Math.round(FGEN.wear * 10000)}"><input type="number" id="genwear" min="0" max="0.9999" step="0.0001" value="${FGEN.wear}"></div>
       <div class="lb" style="margin-top:14px">Gemas de este objeto <span class="dim">· tocá una para cargarla con el mejor desgaste</span></div><div class="gemlist" id="gemlist"></div>
       <button class="btn pri" data-act="genmint" style="margin-top:14px">Crear en mi inventario</button>
     </div><div class="genprev" id="genprev"></div></div>`);
-  genRender();
+  FGEN.all = all; FGEN.rar = 'todos'; genList(''); genRender();
+}
+function genList(q) {
+  const box = document.getElementById('genres'); if (!box) return; q = String(q || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const l = (FGEN.all || []).filter(c => (FGEN.rar === 'todos' || c.r === FGEN.rar) && (!q || c.n.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(q))).slice(0, 120);
+  box.innerHTML = l.map(c => { const o = optOf(c.f, c.k); return `<button class="genit ${c.id === FGEN.cid ? 'on' : ''}" data-act="genselect" data-id="${h(c.id)}" style="--rc:${RAR[c.r].c}"><span class="genth">${o ? miniThumb(c.f, c.k, o) : ''}</span><b>${h(c.n)}</b><small>${h(RAR[c.r].n)} · ${h(CAT_NAMES[c.f] || c.f)}</small></button>`; }).join('') || '<p class="dim">No hay nada con ese nombre.</p>';
 }
 function genRender() {
   const pv = document.getElementById('genprev'), gl = document.getElementById('gemlist'); if (!pv || !FGEN.cid) return;
-  pv.innerHTML = collCard({ id: 0, cid: FGEN.cid, serial: 0, pattern: FGEN.pattern, wear: FGEN.wear });
+  pv.innerHTML = collCard({ id: 0, cid: FGEN.cid, serial: 0, pattern: FGEN.pattern, wear: FGEN.wear }); const sel = document.getElementById('gensel'), cc = CAT_IDX[FGEN.cid]; if (sel && cc) sel.innerHTML = `Elegido: <b>${h(cc.n)}</b>`;
   const seeds = gemSeeds(FGEN.cid), byL = {}; for (const [p, L] of Object.entries(seeds)) (byL[L] = byL[L] || []).push(+p);
   gl.innerHTML = Object.entries(GEMT).map(([k, d]) => { const pats = d.s ? byL[d.s] || [] : [((1 - 1) % 1000) + 1]; if (d.w && d.w[0] >= 2) return ''; const w0 = d.w ? (d.w[0] === 0 ? .0001 : d.w[0] + .0001) : FGEN.wear;
     return pats.slice(0, d.s === 'C' ? 3 : 1).map(p => `<button class="gempick" style="--gc:${d.c}" data-act="genpick" data-p="${d.s ? p : 0}" data-w="${w0.toFixed(4)}" data-k="${k}"><b>${d.i} ${h(d.n)}</b><span>${d.s ? `#${p}` : 'patrón = número de serie'}${d.w ? ` · desgaste ${String(d.w[0]).replace('.', ',')}–${String(Math.min(1, d.w[1])).replace('.', ',')}` : ''}</span></button>`).join(''); }).join('');
@@ -7932,12 +7949,14 @@ function genRender() {
 const genSet = (p, w) => { if (p != null) FGEN.pattern = Math.min(1000, Math.max(1, Math.round(+p) || 1)); if (w != null) FGEN.wear = Math.min(.9999, Math.max(0, +(+w).toFixed(4) || 0)); const q = id => document.getElementById(id); if (q('genpat')) { q('genpat').value = FGEN.pattern; q('genpatr').value = FGEN.pattern; q('genwear').value = FGEN.wear; q('genwearr').value = Math.round(FGEN.wear * 10000); } genRender(); };
 document.addEventListener('input', e => {
   const id = e.target.id;
-  if (id === 'genq') { const o = [...document.querySelectorAll('#genlist option')].find(x => x.value === e.target.value); if (o) { FGEN.cid = o.dataset.id; genRender(); } }
+  if (id === 'genq') genList(e.target.value);
   if (id === 'genpat' || id === 'genpatr') genSet(e.target.value, null);
   if (id === 'genwear') genSet(null, e.target.value);
   if (id === 'genwearr') genSet(null, e.target.value / 10000);
 });
 document.addEventListener('click', async e => {
+  const sl = e.target.closest('[data-act="genselect"]'); if (sl) { FGEN.cid = sl.dataset.id; document.querySelectorAll('.genit.on').forEach(x => x.classList.remove('on')); sl.classList.add('on'); genRender(); return; }
+  const rr = e.target.closest('[data-act="genrar"]'); if (rr) { FGEN.rar = rr.dataset.r; document.querySelectorAll('.genrar .chip').forEach(x => x.classList.toggle('on', x === rr)); genList((document.getElementById('genq') || {}).value); return; }
   const g = e.target.closest('[data-act="genpick"]'); if (g) { if (g.dataset.k === 'espejo') { toast('El Espejo depende del número de serie, que en Edición fundador no existe.'); return; } genSet(g.dataset.p, g.dataset.w); return; }
   if (!e.target.closest('[data-act="genmint"]')) return;
   try { const it = await rest('rpc/founder_mint', { method: 'POST', body: { p_cid: FGEN.cid, p_pattern: FGEN.pattern, p_wear: FGEN.wear } }); const row = Array.isArray(it) ? it[0] : it; if (row) INV.list.unshift(row); toast('¡Creado! Ya está en tu inventario.'); const r = document.querySelector('.genprev .icard'); if (r) { const b = r.getBoundingClientRect(); burstAt(b.left + b.width / 2, b.top + 60, ['#ffd24a', '#f2ede5', '#ec9cba'], 26, 'confeti'); } }
@@ -8022,6 +8041,72 @@ setInterval(async () => {
   catch (x) { if (/cuentas nuevas|Ya usaste|no sirve/.test(x.message)) { try { localStorage.removeItem('jvnn_ref'); } catch (e) { } } }
 }, 3000);
 function ecoNav(cur) { return `<nav class="econav">${[['ganar', 'Ganá monedas'], ['tienda', 'Tienda'], ['cajas', 'Cajas'], ['misiones', 'Misiones'], ['temporada', 'Pase'], ['inventario', 'Inventario'], ['mercado', 'Mercado'], ['intercambios', 'Intercambios'], ['canjes', 'Canjes'], ['sorteos', 'Sorteos'], ['bucks', 'Bucks']].map(([k, n]) => `<a class="${k === cur ? 'on' : ''}" href="#/${k}">${n}</a>`).join('')}<span class="ecocoins">${coinSVG(18)} <b>${WALLET.coins.toLocaleString('es-AR')}</b></span><span class="ecocoins bk">${buckSVG(18)} <b>${(WALLET.bucks || 0).toLocaleString('es-AR')}</b></span></nav>`; }
+
+
+// ============================================================ V25: SALÓN DE LA FAMA + CAMBIAR O VENDER GEMAS A LA PÁGINA
+const BIG_GEMS = ['azulp', 'negra', 'rubi', 'azul', 'galaxia'];
+const GEM_BUY = { azulp: 150000, negra: 100000, rubi: 60000, azul: 40000, galaxia: 30000 };
+async function vHall(_, draw, alive) {
+  draw(`<div class="sec skel" style="height:300px"></div>`);
+  const rows = await sbTry(() => rest('gem_hall?select=*&order=found_at.desc&limit=200', { auth: false }), null);
+  if (!alive()) return;
+  const L = (rows || []).filter(r => catOf(r.cid));
+  const cnt = g => L.filter(r => r.gem === g).length;
+  draw(`<section class="pagehead"><h1>Salón de la fama</h1><p class="dim">Los que sacaron una de las gemas más difíciles de toda la página. Cada una se registra sola cuando sale de una caja.</p></section>
+    <div class="hallstats">${BIG_GEMS.map(g => `<div style="--gc:${GEMT[g].c}"><b>${cnt(g)}</b><span>${GEMT[g].i} ${h(GEMT[g].n)}</span><small>1 en ${fmtc(GEMT[g].odds)}</small></div>`).join('')}</div>
+    ${L.length ? `<div class="hallgrid">${L.map(r => `<div class="hallit"><div class="hallwho"><a href="#/u/${h(r.finder_name)}">@${h(r.finder_name || 'alguien')}</a><span class="dim">${h(new Date(r.found_at).toLocaleDateString('es-AR', { day: 'numeric', month: 'short', year: 'numeric' }))}</span></div>${collCard({ id: r.item_id, cid: r.cid, serial: r.serial, pattern: r.pattern, wear: +r.wear })}<span class="chip hallst">${h(r.status)}</span></div>`).join('')}</div>`
+      : `<div class="empty sec"><h3>Todavía nadie sacó una gema grande</h3><div>¿Vas a ser el primero? La Gema azul perfecta sale 1 en ${fmtc(GEMT.azulp.odds)}.</div><a class="btn pri" href="#/cajas">Ir a las cajas</a></div>`}
+    ${rows === null ? '<p class="small dim">Para ver el salón hay que correr supabase_v23.sql en Supabase.</p>' : ''}`);
+}
+// registrar las gemas grandes del usuario (al entrar y después de abrir cajas)
+let regT = 0;
+const registerGems = () => { clearTimeout(regT); regT = setTimeout(() => { if (isLogged() && sbOK()) sbTry(() => rest('rpc/register_my_gems', { method: 'POST', body: {} }), null); }, 1500); };
+setTimeout(registerGems, 4000);
+document.addEventListener('click', e => { if (e.target.closest('[data-act="closebox"],[data-act="openagain"],[data-act="bonusbox"]')) registerGems(); });
+// en el inventario: botones para cambiar o vender las gemas grandes
+let invGemT = 0;
+function invGemButtons() {
+  clearTimeout(invGemT);
+  invGemT = setTimeout(() => {
+    if (parseRoute().name !== 'inventario') return;
+    document.querySelectorAll('#app .icard.v19[data-iid]:not([data-gemb])').forEach(c => {
+      c.dataset.gemb = '1'; const it = { cid: c.dataset.mkcid, pattern: +c.dataset.pat, wear: +c.dataset.wear, serial: +c.dataset.ser }; if (it.serial <= 0) return;
+      const g = gemOf(it); if (!BIG_GEMS.includes(g)) return;
+      const act = c.querySelector('.iact') || c.appendChild(Object.assign(document.createElement('div'), { className: 'iact' }));
+      act.insertAdjacentHTML('beforeend', `<button class="btn sm" data-act="gemtrade" data-id="${c.dataset.iid}">Cambiar por Supporter + Pro</button><button class="btn sm" data-act="gemsell" data-id="${c.dataset.iid}" data-p="${GEM_BUY[g]}">Vender a la página · ${fmtc(GEM_BUY[g])}</button>`);
+    });
+  }, 80);
+}
+{ const app = document.getElementById('app'); if (app) new MutationObserver(invGemButtons).observe(app, { childList: true, subtree: true }); }
+document.addEventListener('click', async e => {
+  const t = e.target.closest('[data-act="gemtrade"],[data-act="gemsell"]'); if (!t) return;
+  const sell = t.dataset.act === 'gemsell';
+  const ok = await ask(sell ? '¿Vender la gema a la página?' : '¿Cambiar la gema a la página?', sell ? `Te pagamos ${fmtc(+t.dataset.p)} monedas al toque. La gema pasa a ser de la página y queda en el Salón de la fama con tu nombre.` : 'Te damos Supporter de por vida y JVNN Pro completo con todos los legendarios. La gema pasa a ser de la página y queda en el Salón de la fama con tu nombre.', [['yes', sell ? 'Vender' : 'Cambiar', 'pri']]);
+  if (!ok) return; t.disabled = true;
+  try {
+    const r = await rest(sell ? 'rpc/gem_sell' : 'rpc/gem_tradein', { method: 'POST', body: { p_item: +t.dataset.id } });
+    if (sell && r) setWallet(Array.isArray(r) ? r[0] : r);
+    if (!sell) { if (typeof loadPro === 'function') await loadPro(); if (typeof loadMySup === 'function') await loadMySup(); }
+    const b = t.getBoundingClientRect(); burstAt(b.left + b.width / 2, b.top, ['#3a8aff', '#ffd24a', '#ffffff'], 40, 'confeti');
+    toast(sell ? '¡Vendida! Ya tenés las monedas.' : '¡Listo! Ya sos Supporter de por vida y tenés el Pro completo.');
+    await loadInv(); refresh();
+  } catch (x) { t.disabled = false; toast(x.message); }
+});
+// insignia en el perfil de los que encontraron una gema grande
+let hallBadgeT = 0;
+function hallBadges() {
+  clearTimeout(hallBadgeT);
+  hallBadgeT = setTimeout(async () => {
+    const R = parseRoute(); if (!['u', 'perfil'].includes(R.name) || !sbOK()) return;
+    const card = document.querySelector('#app .pcover:not(.pmini):not([data-hallb])'); if (!card) return; card.dataset.hallb = '1';
+    const u = R.name === 'u' ? R.args[0] : isLogged() ? ME.username : ''; if (!u) return;
+    const rows = await sbTry(() => rest(`gem_hall?select=gem&finder_name=eq.${encodeURIComponent(u)}`, { auth: false }), []) || [];
+    if (!rows.length) return;
+    const best = BIG_GEMS.find(g => rows.some(r => r.gem === g)), d = GEMT[best];
+    const h1 = card.querySelector('.pid h1'); if (h1) h1.insertAdjacentHTML('afterend', `<a class="hallbadge" href="#/salon" style="--gc:${d.c}" title="Está en el Salón de la fama">${d.i} Encontró ${rows.length > 1 ? rows.length + ' gemas' : 'una ' + h(d.n)}</a>`);
+  }, 150);
+}
+{ const app = document.getElementById('app'); if (app) new MutationObserver(hallBadges).observe(app, { childList: true, subtree: true }); }
 
 
 // ============================================================ ONLINE (Supabase)
