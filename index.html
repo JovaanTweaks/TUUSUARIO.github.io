@@ -2688,7 +2688,7 @@ body[data-sec="colecciones"]{--sec:#ffd24a}
 
 <footer><div class="wrap"><img class="ftlogo" src="" alt="JVNN" loading="lazy">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 29.0</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 30.0</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -7056,8 +7056,9 @@ document.addEventListener('click', async e => {
   try { res = await rest('rpc/open_boxes', { method: 'POST', body: { box_id: b.dataset.b, n } }); }
   catch (x) { opening = false; document.querySelectorAll('[data-act="openboxn"]').forEach(x => x.disabled = false); return toast(/function|404/i.test(x.message) && !/monedas/.test(x.message) ? 'Falta activar las cajas nuevas en Supabase (supabase_v12.sql).' : x.message); }
   if (typeof res === 'string') try { res = JSON.parse(res); } catch (x) { }
-  const items = (res.items || []).map(r => r.item); WALLET.coins = res.coins ?? WALLET.coins; renderCoins(); INV.list.unshift(...items);
+  const items = (res.items || []).map(r => r && r.item ? r.item : r).filter(Boolean); WALLET.coins = res.coins ?? WALLET.coins; renderCoins(); INV.list.unshift(...items);
   const best = items.slice().sort((a, c) => RAR[catOf(c.cid).r].o - RAR[catOf(a.cid).r].o)[0];
+  if (!best) { opening = false; document.querySelectorAll('[data-act="openboxn"]').forEach(x => x.disabled = false); return toast('El servidor no devolvió nada. Probá de nuevo.'); }
   spinReveal(b.dataset.b, best, () => {
     opening = false; document.querySelectorAll('[data-act="openboxn"]').forEach(x => x.disabled = false);
     if (items.length > 1) { const rv = document.querySelector('.boxov .reveal'); if (rv) rv.insertAdjacentHTML('beforeend', `<div class="multi"><div class="lb">Todo lo que salió (${items.length})</div><div class="igrid small">${items.map(it => collCard(it)).join('')}</div></div>`); }
@@ -11073,9 +11074,10 @@ document.addEventListener('click', async e => {
   if (!await ask('¿Abrir 100 cajas?', `Son ${(box.p * 100).toLocaleString('es-AR')} monedas de una. Te mostramos lo mejor que salió y todo queda en tu inventario.`, [['yes', 'Abrir 100', 'pri']])) return;
   opening = true; OPEN100.busy = true; setOpenBtns(false);
   const old = b.innerHTML, items = []; let err = '';
-  for (let i = 0; i < 10; i++) {
-    b.textContent = `Abriendo… ${i * 10}/100`;
-    try { let res = await rest('rpc/open_boxes', { method: 'POST', body: { box_id: k, n: 10 } }); if (typeof res === 'string') res = JSON.parse(res); items.push(...(res.items || []).map(r => r.item)); if (res.coins != null) WALLET.coins = +res.coins; }
+  const step = k === 'legendaria' ? 5 : 10;
+  for (let i = 0; i < 100 / step; i++) {
+    b.textContent = `Abriendo… ${i * step}/100`;
+    try { let res = await rest('rpc/open_boxes', { method: 'POST', body: { box_id: k, n: step } }); if (typeof res === 'string') res = JSON.parse(res); items.push(...(res.items || []).map(r => r && r.item ? r.item : r).filter(Boolean)); if (res.coins != null) WALLET.coins = +res.coins; }
     catch (x) { err = x.message; break; }
   }
   b.innerHTML = old; renderCoins(); INV.list.unshift(...items); OPEN100.busy = false;
