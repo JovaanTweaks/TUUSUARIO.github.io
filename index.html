@@ -2144,6 +2144,15 @@ html body .tabs{flex-wrap:wrap!important;width:auto!important;max-width:100%!imp
 html body .ctabs .tab[data-v="supporter"]{color:#ffc83a}
 .msum{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:18px 0 -6px;padding:12px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line)}.msum b{font:800 20px/1 var(--display);font-stretch:80%;margin-right:8px}.msum .dim{display:inline-flex;gap:4px;align-items:center}
 .rwcard.auto{border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
+
+/* ===== V23: generador del fundador ===== */
+.gengrid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px;align-items:start}@media (max-width:860px){.gengrid{grid-template-columns:1fr}}
+.genform input[type=text]{width:100%}.genform .lb{display:block;margin-top:12px}
+.genrow{display:flex;gap:10px;align-items:center}.genrow input[type=range]{flex:1;accent-color:var(--accent)}.genrow input[type=number]{width:110px}
+.gemlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px;margin-top:6px}
+.gempick{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:8px 10px;border-radius:10px;border:1px solid color-mix(in srgb,var(--gc) 55%,var(--line));background:var(--raise);color:var(--fg);cursor:pointer;text-align:left}.gempick b{font-size:13px}.gempick span{font-size:11.5px;color:var(--dim)}.gempick:hover{background:color-mix(in srgb,var(--gc) 18%,var(--raise))}
+.genprev{position:sticky;top:96px}.genprev .icard{max-width:300px}
+.icard .sbad.fnd{background:#2a2430;color:#ffd24a}
 </style>
 </head>
 <body>
@@ -2174,7 +2183,7 @@ html body .ctabs .tab[data-v="supporter"]{color:#ffc83a}
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 19.0</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 19.1</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -2635,7 +2644,7 @@ async function route(keepScroll) {
   const id = ++renderId, R = parseRoute(), app = $('#app');
   const y = window.scrollY;
   document.querySelectorAll('[data-r]').forEach(a => a.classList.toggle('on', a.dataset.r === R.name || (R.name === 'stats' && a.dataset.r === 'perfil' && a.closest('.bnav'))));
-  const views = { '': vHome, 'buscar': vSearch, 'serie': vShow, 'ep': vEpisode, 'mis-series': vMine, 'calendario': vCalendar, 'descubrir': vDiscover, 'peliculas': vMovies, 'stats': vStats, 'perfil': vProfile, 'entrar': vLogin, 'nueva-clave': vNewPass, 'gente': vPeople, 'u': vUser, 'categoria': vCategory, 'peli': vMovie, 'pro': vPro, 'monedas': vCoins, 'tienda': vShopDaily, 'cajas': vBoxes, 'inventario': vInventory, 'mercado': vMarket, 'intercambios': vTrades, 'misiones': vMissions, 'bucks': vBucksPlus, 'temporada': vSeason, 'supporter': vSupporter, 'canjes': vRewards, 'sorteos': vRaffles, 'actor': vActor, 'top-episodios': vTopEps, 'listas': vLists, 'lista': vList };
+  const views = { '': vHome, 'buscar': vSearch, 'serie': vShow, 'ep': vEpisode, 'mis-series': vMine, 'calendario': vCalendar, 'descubrir': vDiscover, 'peliculas': vMovies, 'stats': vStats, 'perfil': vProfile, 'entrar': vLogin, 'nueva-clave': vNewPass, 'gente': vPeople, 'u': vUser, 'categoria': vCategory, 'peli': vMovie, 'pro': vPro, 'monedas': vCoins, 'tienda': vShopDaily, 'cajas': vBoxes, 'inventario': vInventory, 'mercado': vMarket, 'intercambios': vTrades, 'misiones': vMissions, 'bucks': vBucksPlus, 'temporada': vSeason, 'supporter': vSupporter, 'generador': vGenerator, 'canjes': vRewards, 'sorteos': vRaffles, 'actor': vActor, 'top-episodios': vTopEps, 'listas': vLists, 'lista': vList };
   const v = views[R.name] || vHome;
   const draw = html => { if (id === renderId) { app.innerHTML = html; fillAds(); } return id === renderId; };
   try { await v(R.args, draw, () => id === renderId); }
@@ -7263,7 +7272,7 @@ function gemOf(it) {
   if (it.serial && pat === ((+it.serial - 1) % 1000) + 1) return 'espejo';
   return null;
 }
-const serMult = s => s === 1 ? 2.5 : s <= 10 ? 1.6 : s <= 50 ? 1.2 : s <= 100 ? 1.08 : 1;
+const serMult = s => s <= 0 ? 1 : s === 1 ? 2.5 : s <= 10 ? 1.6 : s <= 50 ? 1.2 : s <= 100 ? 1.08 : 1;
 function estMult(it) {
   const g = gemOf(it), w = +it.wear;
   let m = serMult(+it.serial);
@@ -7309,9 +7318,9 @@ function itemThumb(cid, pattern, wear, serial) {
 function patLabel(it) { const pat = it.pattern, g = gemOf(it); return g ? `<em class="pg" style="--gc:${GEMT[g].c}">${GEMT[g].i} ${GEMT[g].n}</em>` : RAREPAT.has(+pat) ? '<em class="pg sp">★ Número especial</em>' : '<em class="pg nm">Normal</em>'; }
 function collCard(it, actions = '', extra = '') {
   const c = catOf(it.cid), R = RAR[c.r] || RAR.comun, w = +it.wear, s = +it.serial, g = gemOf(it), code = itemCode(it);
-  const ser = s === 1 ? '<em class="sbad gold">Número 1</em>' : s <= 10 ? '<em class="sbad">Serie baja</em>' : '';
+  const ser = s <= 0 ? '<em class="sbad fnd">Edición fundador · no se vende</em>' : s === 1 ? '<em class="sbad gold">Número 1</em>' : s <= 10 ? '<em class="sbad">Serie baja</em>' : '';
   return `<div class="icard v17 v19 r-${c.r} ${g ? 'isgem' : ''}" style="--rc:${R.c};${g ? `--gc:${GEMT[g].c}` : ''}" data-mkcid="${h(it.cid)}" data-ser="${s}" data-pat="${+it.pattern}" data-wear="${w}">
-    <div class="ihead"><span class="irar">${R.n}</span><span class="iser" title="Número de serie: cuántos salieron antes que este">#${s}${c.max ? `<small>/${c.max}</small>` : ''}</span></div>
+    <div class="ihead"><span class="irar">${R.n}</span><span class="iser" title="Número de serie: cuántos salieron antes que este">${s <= 0 ? 'F' + (1 - s) : '#' + s}${s > 0 && c.max ? `<small>/${c.max}</small>` : ''}</span></div>
     <div class="ithumbw">${itemThumb(it.cid, it.pattern, it.wear, it.serial)}</div>
     <b class="iname">${h(c.n)}</b><small class="dim">${h(CAT_NAMES[c.f] || c.f)}</small>${ser}
     ${g ? `<div class="igem">${GEMT[g].i} ${GEMT[g].n.toUpperCase()} <small>1 en ${fmtc(GEMT[g].odds)}</small></div>` : ''}
@@ -7875,6 +7884,47 @@ document.addEventListener('click', e => {
   const b = e.target.closest('[data-act="ptab"][data-v="edit"],[data-act="ctab"]'); if (!b) return;
   setTimeout(() => { const t = document.querySelector('#app .custom-sec') || document.querySelector('#app > .tabs'); if (t) { const y = t.getBoundingClientRect().top + scrollY - 90; scrollTo({ top: Math.max(0, y), behavior: b.dataset.act === 'ctab' ? 'auto' : 'smooth' }); } }, 120);
 });
+
+
+// ============================================================ V23: GENERADOR DEL FUNDADOR (eligís objeto, patrón y desgaste)
+const FGEN = { cid: '', pattern: 500, wear: .2 };
+async function vGenerator(_, draw) {
+  if (!isLogged() || !isFounderId(ME.id)) return draw(`<div class="empty sec"><h3>Esto es solo para el fundador</h3><a class="btn" href="#/">Volver al inicio</a></div>`);
+  const all = Object.values(CAT_IDX).filter(c => RAR[c.r] && RAR[c.r].o >= 3).sort((a, b) => RAR[b.r].o - RAR[a.r].o || a.n.localeCompare(b.n));
+  if (!FGEN.cid && all.length) FGEN.cid = all[0].id;
+  draw(`<section class="pagehead"><h1>Generador del fundador</h1><p class="dim">Elegí un objeto, su patrón y su desgaste, y creálo en tu inventario. Sale como "Edición fundador": se ve en tu perfil, no usa los números de serie de los jugadores y no se puede vender ni intercambiar.</p></section>
+    <div class="gengrid"><div class="panel sec genform">
+      <label class="lb" for="genq">Objeto</label><input type="text" id="genq" list="genlist" placeholder="Buscá: Dragón, Hada, Kitsune, Zapatillas…" value="${h((CAT_IDX[FGEN.cid] || {}).n || '')}"><datalist id="genlist">${all.map(c => `<option value="${h(c.n)}" data-id="${h(c.id)}">${h(RAR[c.r].n)} · ${h(CAT_NAMES[c.f] || c.f)}</option>`).join('')}</datalist>
+      <label class="lb" for="genpat">Patrón <span class="dim">(1 a 1000)</span></label><div class="genrow"><input type="range" id="genpatr" min="1" max="1000" value="${FGEN.pattern}"><input type="number" id="genpat" min="1" max="1000" value="${FGEN.pattern}"></div>
+      <label class="lb" for="genwear">Desgaste <span class="dim">(0 = recién salida, 0,9999 = muy gastada)</span></label><div class="genrow"><input type="range" id="genwearr" min="0" max="9999" value="${Math.round(FGEN.wear * 10000)}"><input type="number" id="genwear" min="0" max="0.9999" step="0.0001" value="${FGEN.wear}"></div>
+      <div class="lb" style="margin-top:14px">Gemas de este objeto <span class="dim">· tocá una para cargarla con el mejor desgaste</span></div><div class="gemlist" id="gemlist"></div>
+      <button class="btn pri" data-act="genmint" style="margin-top:14px">Crear en mi inventario</button>
+    </div><div class="genprev" id="genprev"></div></div>`);
+  genRender();
+}
+function genRender() {
+  const pv = document.getElementById('genprev'), gl = document.getElementById('gemlist'); if (!pv || !FGEN.cid) return;
+  pv.innerHTML = collCard({ id: 0, cid: FGEN.cid, serial: 0, pattern: FGEN.pattern, wear: FGEN.wear });
+  const seeds = gemSeeds(FGEN.cid), byL = {}; for (const [p, L] of Object.entries(seeds)) (byL[L] = byL[L] || []).push(+p);
+  gl.innerHTML = Object.entries(GEMT).map(([k, d]) => { const pats = d.s ? byL[d.s] || [] : [((1 - 1) % 1000) + 1]; if (d.w && d.w[0] >= 2) return ''; const w0 = d.w ? (d.w[0] === 0 ? .0001 : d.w[0] + .0001) : FGEN.wear;
+    return pats.slice(0, d.s === 'C' ? 3 : 1).map(p => `<button class="gempick" style="--gc:${d.c}" data-act="genpick" data-p="${d.s ? p : 0}" data-w="${w0.toFixed(4)}" data-k="${k}"><b>${d.i} ${h(d.n)}</b><span>${d.s ? `#${p}` : 'patrón = número de serie'}${d.w ? ` · desgaste ${String(d.w[0]).replace('.', ',')}–${String(Math.min(1, d.w[1])).replace('.', ',')}` : ''}</span></button>`).join(''); }).join('');
+}
+const genSet = (p, w) => { if (p != null) FGEN.pattern = Math.min(1000, Math.max(1, Math.round(+p) || 1)); if (w != null) FGEN.wear = Math.min(.9999, Math.max(0, +(+w).toFixed(4) || 0)); const q = id => document.getElementById(id); if (q('genpat')) { q('genpat').value = FGEN.pattern; q('genpatr').value = FGEN.pattern; q('genwear').value = FGEN.wear; q('genwearr').value = Math.round(FGEN.wear * 10000); } genRender(); };
+document.addEventListener('input', e => {
+  const id = e.target.id;
+  if (id === 'genq') { const o = [...document.querySelectorAll('#genlist option')].find(x => x.value === e.target.value); if (o) { FGEN.cid = o.dataset.id; genRender(); } }
+  if (id === 'genpat' || id === 'genpatr') genSet(e.target.value, null);
+  if (id === 'genwear') genSet(null, e.target.value);
+  if (id === 'genwearr') genSet(null, e.target.value / 10000);
+});
+document.addEventListener('click', async e => {
+  const g = e.target.closest('[data-act="genpick"]'); if (g) { if (g.dataset.k === 'espejo') { toast('El Espejo depende del número de serie, que en Edición fundador no existe.'); return; } genSet(g.dataset.p, g.dataset.w); return; }
+  if (!e.target.closest('[data-act="genmint"]')) return;
+  try { const it = await rest('rpc/founder_mint', { method: 'POST', body: { p_cid: FGEN.cid, p_pattern: FGEN.pattern, p_wear: FGEN.wear } }); const row = Array.isArray(it) ? it[0] : it; if (row) INV.list.unshift(row); toast('¡Creado! Ya está en tu inventario.'); const r = document.querySelector('.genprev .icard'); if (r) { const b = r.getBoundingClientRect(); burstAt(b.left + b.width / 2, b.top + 60, ['#ffd24a', '#f2ede5', '#ec9cba'], 26, 'confeti'); } }
+  catch (x) { toast(/founder_mint|function|404/i.test(x.message) ? 'Falta correr supabase_v21.sql en Supabase.' : x.message); }
+});
+// link en el menú solo para el fundador
+setInterval(() => { const m = document.querySelector('.ddm'); if (!m) return; const has = m.querySelector('[data-gen]'); if (isLogged() && isFounderId(ME.id)) { if (!has) m.insertAdjacentHTML('beforeend', '<a href="#/generador" data-gen="1">Generador</a>'); } else if (has) has.remove(); }, 1500);
 
 
 // ============================================================ ONLINE (Supabase)
