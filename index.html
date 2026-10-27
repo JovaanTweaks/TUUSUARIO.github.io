@@ -11440,7 +11440,47 @@ document.addEventListener('visibilitychange', () => {
   const v = document.querySelector('.version');
   if (v) v.textContent = 'Versión 28.0';
 })();
+// 4. Reducir cálculos pesados al scrollear rápido
+if (typeof updRow === 'function') {
+  let _rowT = 0;
+  const _origUpdRow = updRow;
+  updRow = function(r) {
+    const now = performance.now();
+    if (now - _rowT < 40) return; // evita ejecutar 60 veces por segundo
+    _rowT = now;
+    _origUpdRow(r);
+  };
+}
 
+// 5. Frenar repintados dobles al cambiar de vista
+if (typeof route === 'function') {
+  let _routeT = null;
+  const _origRoute = route;
+  route = function(keepScroll) {
+    clearTimeout(_routeT);
+    _routeT = setTimeout(() => _origRoute(keepScroll), 10);
+  };
+}// 4. Reducir cálculos pesados al scrollear rápido
+if (typeof updRow === 'function') {
+  let _rowT = 0;
+  const _origUpdRow = updRow;
+  updRow = function(r) {
+    const now = performance.now();
+    if (now - _rowT < 40) return; // evita ejecutar 60 veces por segundo
+    _rowT = now;
+    _origUpdRow(r);
+  };
+}
+
+// 5. Frenar repintados dobles al cambiar de vista
+if (typeof route === 'function') {
+  let _routeT = null;
+  const _origRoute = route;
+  route = function(keepScroll) {
+    clearTimeout(_routeT);
+    _routeT = setTimeout(() => _origRoute(keepScroll), 10);
+  };
+}
 </script>
 </body>
 </html>
