@@ -2607,7 +2607,7 @@ body[data-sec="colecciones"]{--sec:#ffd24a}
 
 <footer><div class="wrap"><img class="ftlogo" src="" alt="JVNN" loading="lazy">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 25.0</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 25.1</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -3070,7 +3070,8 @@ async function route(keepScroll) {
   document.querySelectorAll('[data-r]').forEach(a => a.classList.toggle('on', a.dataset.r === R.name || (R.name === 'stats' && a.dataset.r === 'perfil' && a.closest('.bnav'))));
   const views = { '': vHome, 'buscar': vSearch, 'serie': vShow, 'ep': vEpisode, 'mis-series': vMine, 'calendario': vCalendar, 'descubrir': vDiscover, 'peliculas': vMovies, 'stats': vStats, 'perfil': vProfile, 'entrar': vLogin, 'nueva-clave': vNewPass, 'gente': vPeople, 'u': vUser, 'categoria': vCategory, 'peli': vMovie, 'pro': vPro, 'monedas': vCoins, 'tienda': vShopDaily, 'cajas': vBoxes, 'inventario': vInventory, 'mercado': vMarket, 'intercambios': vTrades, 'misiones': vMissions, 'bucks': vBucksPlus, 'temporada': vSeason, 'supporter': vSupporter, 'generador': vGenerator, 'ganar': vEarn, 'salon': vHall, 'invitar': vInvite, 'canjes': vRewards, 'taller': vTaller, 'batallas': vBattles, 'colecciones': vCollections, 'batalla': vBattle, 'sorteos': vRaffles, 'actor': vActor, 'top-episodios': vTopEps, 'listas': vLists, 'lista': vList };
   const v = views[R.name] || vHome;
-  const draw = html => { if (id === renderId) { app.innerHTML = html; fillAds(); } return id === renderId; };
+  let nDraw = 0; const soft = keepScroll && /^(taller|misiones|colecciones|cajas|inventario|tienda|batallas|canjes|mercado|casa|salon|ganar|intercambios|sorteos|temporada|bucks)$/.test(R.name) && app.children.length;
+  const draw = html => { if (id !== renderId) return false; if (soft && !nDraw++ && /class="[^"]*\bskel\b/.test(html)) return true; app.innerHTML = html; fillAds(); return true; };
   try { await v(R.args, draw, () => id === renderId); }
   catch (e) { console.error(e); draw(errBox(e)); }
   if (id === renderId) { if (keepScroll) window.scrollTo(0, y); else window.scrollTo(0, 0); if (!keepScroll && typeof afterRoute === 'function') afterRoute(); }
@@ -6255,7 +6256,7 @@ async function vShopDaily(args, draw, alive) {
   return vShop(args, html => draw(html.replace('<div class="tabs shoptabs">', dailyHTML() + '<div class="tabs shoptabs">')), alive);
 }
 function dtLeft(ms) { ms = Math.max(0, ms); const d = Math.floor(ms / 864e5), hh = Math.floor(ms % 864e5 / 3600e3), mm = Math.floor(ms % 3600e3 / 60e3); return d >= 2 ? `${d} días ${hh} h` : d === 1 ? `1 día ${hh} h` : hh ? `${hh} h ${mm} min` : `${mm} min`; }
-const dtTick = () => document.querySelectorAll('.dtimer[data-end]').forEach(el => { const pre = el.dataset.pre != null ? el.dataset.pre : 'Cambia en'; el.textContent = (pre ? pre + ' ' : '') + dtLeft(+el.dataset.end - Date.now()); });
+const dtTick = () => document.querySelectorAll('.dtimer[data-end]').forEach(el => { const pre = el.dataset.pre != null ? el.dataset.pre : 'Cambia en'; const t = (pre ? pre + ' ' : '') + dtLeft(+el.dataset.end - Date.now()); if (el.textContent !== t) el.textContent = t; });
 setInterval(dtTick, 30e3);
 
 // ---------- INICIO: aprovechar los costados en pantallas grandes
@@ -9517,7 +9518,8 @@ function tlCell(it, on, extra = '') {
 async function vTaller(_, draw, alive) {
   if (!isLogged()) return needLogin(draw);
   draw(`${ecoNav('taller')}<div class="sec skel" style="height:320px"></div>`);
-  const [items, fr] = await Promise.all([freeItems(), myFragments(), loadTallerCfg()]);
+  const soft = TALLER.soft && TALLER.items; TALLER.soft = false;
+  const [items, fr] = soft ? [TALLER.items, TALLER.frags] : await Promise.all([freeItems(), myFragments(), loadTallerCfg()]);
   if (!alive()) return;
   TALLER.items = items; TALLER.frags = fr;
   const T = TALLER, cnt = r => items.filter(it => catOf(it.cid).r === r).length;
@@ -9548,12 +9550,12 @@ async function vTaller(_, draw, alive) {
 }
 document.addEventListener('change', e => { const cb = e.target.closest('[data-tl]'); if (!cb) return; const id = +cb.dataset.tl;
   if (cb.checked) { if (TALLER.tab === 'mejora' && TALLER.sel.size >= 10) { cb.checked = false; return toast('El contrato lleva 10 objetos justos.'); } TALLER.sel.add(id); } else TALLER.sel.delete(id);
-  const y = scrollY; refresh(); requestAnimationFrame(() => scrollTo(0, y)); });
+  TALLER.soft = true; const y = scrollY; refresh(); requestAnimationFrame(() => scrollTo(0, y)); });
 let tlqT = 0;
-document.addEventListener('input', e => { if (!e.target.matches('[data-act="tlq"]')) return; TALLER.q = e.target.value; clearTimeout(tlqT); tlqT = setTimeout(() => { const y = scrollY; refresh(); requestAnimationFrame(() => { scrollTo(0, y); const i = document.querySelector('[data-act="tlq"]'); if (i) { i.focus(); i.setSelectionRange(i.value.length, i.value.length); } }); }, 300); });
+document.addEventListener('input', e => { if (!e.target.matches('[data-act="tlq"]')) return; TALLER.q = e.target.value; clearTimeout(tlqT); tlqT = setTimeout(() => { TALLER.soft = true; const y = scrollY; refresh(); requestAnimationFrame(() => { scrollTo(0, y); const i = document.querySelector('[data-act="tlq"]'); if (i) { i.focus(); i.setSelectionRange(i.value.length, i.value.length); } }); }, 300); });
 document.addEventListener('click', async e => {
   const t = e.target.closest('[data-act^="tl"]'); if (!t || t.matches('[data-act="tlq"]')) return;
-  const a = t.dataset.act, T = TALLER, again = () => { const y = scrollY; refresh(); requestAnimationFrame(() => scrollTo(0, y)); };
+  const a = t.dataset.act, T = TALLER, again = () => { TALLER.soft = true; const y = scrollY; refresh(); requestAnimationFrame(() => scrollTo(0, y)); };
   if (a === 'tltab') { T.tab = t.dataset.v; T.sel.clear(); return refresh(); }
   if (a === 'tlfrom') { T.from = t.dataset.v; T.sel.clear(); return again(); }
   if (a === 'tlcraftr') { T.craftR = t.dataset.v; return again(); }
