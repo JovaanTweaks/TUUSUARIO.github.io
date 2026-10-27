@@ -2217,6 +2217,26 @@ html body .boxview{width:min(980px,100%)}
 .bvit em{font-style:normal;font-size:10.5px;font-weight:800;padding:1px 6px;border-radius:5px;background:var(--bg);color:var(--rc)}.bvit.gone{opacity:.45}.bvit.gone em{color:var(--dim)}
 .bvrar{font:800 10px/1.4 var(--body);color:var(--rc);text-transform:none}.bvodds{font-size:10.5px!important}
 .bvfoot{justify-content:center;margin-top:14px;position:sticky;bottom:-22px;padding:12px 0;background:linear-gradient(transparent,var(--surface) 35%)}
+
+/* V30: venta rápida + ahorrar para un premio */
+.qsbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin:0 0 14px;padding:12px 16px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.qsbar>div:first-child{flex:1 1 260px;display:flex;flex-direction:column;gap:2px}.qsbar>div:first-child span{font-size:13px}
+.qsnums{display:flex;gap:14px;font-size:13px;white-space:nowrap}.qsnums b{font-size:15px}
+.qsbtn{font-size:12px}
+.goalbtn{margin-top:8px;width:100%}
+.goalpanel .goalhead{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}.goalpanel h3{margin:2px 0 0}
+.goalbar{position:relative;height:12px;border-radius:99px;background:var(--line);overflow:hidden;margin:10px 0 8px}
+.goalbar>i{position:absolute;top:0;bottom:0;left:0;background:var(--accent);border-radius:99px;transition:width .25s}
+.goalbar>i.goaladd{background:var(--accent);opacity:.45;border-radius:0}
+.goalbox{width:min(640px,100%)}
+.glrow{display:flex;gap:8px}.glrow input{flex:1}
+.glitems{display:grid;gap:6px;max-height:min(46vh,420px);overflow:auto;padding-right:4px}
+.glit{display:grid;grid-template-columns:auto 44px 1fr auto;align-items:center;gap:10px;padding:6px 10px;border:1px solid var(--line);border-left:3px solid var(--rc);border-radius:10px;cursor:pointer}
+.glit:has(input:checked){background:color-mix(in srgb,var(--accent) 12%,transparent);border-color:var(--accent)}
+.glthumb{width:44px;height:44px;display:grid;place-items:center;overflow:hidden;border-radius:8px}.glthumb>*{max-width:44px;max-height:44px}
+.glname{display:flex;flex-direction:column;min-width:0}.glname b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.glname small{color:var(--dim)}
+.glcr{font-weight:700;white-space:nowrap}
+.glfoot{position:sticky;bottom:-18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px;padding:12px 0;background:var(--surface);border-top:1px solid var(--line)}
 </style>
 </head>
 <body>
@@ -2247,7 +2267,7 @@ html body .boxview{width:min(980px,100%)}
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 20.6</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 20.7</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -8260,6 +8280,169 @@ function addBoxViewBtns() {
   }, 60);
 }
 { const app = document.getElementById('app'); if (app) new MutationObserver(addBoxViewBtns).observe(app, { childList: true, subtree: true }); }
+
+
+// ============================================================ V28: VENTA RÁPIDA (con tope por día) + AHORRAR PARA UN PREMIO CON MONEDAS Y OBJETOS
+const QS = { st: null, prices: {}, t: 0 };
+async function loadQS() { QS.st = await sbTry(() => rest('rpc/quick_status', { method: 'POST', body: {} }), null); return QS.st; }
+async function loadQPrices(ids) {
+  const need = ids.filter(id => !(id in QS.prices)); if (!need.length) return;
+  for (let i = 0; i < need.length; i += 250) {
+    const rows = await sbTry(() => rest('rpc/quick_prices', { method: 'POST', body: { p_ids: need.slice(i, i + 250) } }), null);
+    if (!rows) return; for (const id of need.slice(i, i + 250)) QS.prices[id] = { sell: 0, credit: 0 };
+    for (const r of rows) QS.prices[r.id] = { sell: +r.sell, credit: +r.credit };
+  }
+}
+// el fundador no ve en su inventario los objetos que la gente tiene guardados en una meta
+async function loadInv() {
+  if (!isLogged()) { INV.list = []; INV.ok = false; return; }
+  const rows = await sbTry(() => rest(`items?select=id,cid,serial,pattern,wear,created_at&owner=eq.${ME.id}&order=created_at.desc&limit=2000`), null);
+  if (!rows) return;
+  let L = rows;
+  if (isFounderId(ME.id)) { const held = await sbTry(() => rest('goal_items?select=item_id&limit=5000', { auth: false }), []) || []; if (held.length) { const s = new Set(held.map(x => +x.item_id)); L = rows.filter(r => !s.has(+r.id)); } }
+  INV.list = L; INV.ok = true;
+}
+
+// ---------- inventario: botón de venta rápida en cada objeto + barra con el tope del día
+function qsBarHTML() {
+  const s = QS.st; if (!s) return '';
+  const left = Math.max(0, s.max_coins - s.coins);
+  return `<div class="qsbar" data-qsbar><div><b>Venta rápida</b><span class="dim">La página te compra al toque los comunes, raros, épicos y legendarios al ${s.venta}% de su valor. Para más, usá el mercado.</span></div><div class="qsnums"><span><b>${s.items}</b>/${s.max_items} objetos hoy</span><span>${coinSVG(13)} <b>${fmtc(s.coins)}</b>/${fmtc(s.max_coins)}</span></div><button class="btn sm" data-act="qsall" ${left <= 0 || s.items >= s.max_items ? 'disabled' : ''}>Vender todos los comunes</button></div>`;
+}
+let qsInvT = 0;
+function qsInventory() {
+  clearTimeout(qsInvT);
+  qsInvT = setTimeout(async () => {
+    if (parseRoute().name !== 'inventario' || !isLogged() || !sbOK()) return;
+    const cards = [...document.querySelectorAll('#app .igrid .icard[data-iid]:not([data-qs])')]; if (!cards.length && document.querySelector('[data-qsbar]')) return;
+    cards.forEach(c => c.dataset.qs = '1');
+    if (!QS.st || Date.now() - QS.t > 20000) { await loadQS(); QS.t = Date.now(); }
+    const ph = document.querySelector('#app .pagehead'); if (ph && QS.st && !document.querySelector('[data-qsbar]')) ph.insertAdjacentHTML('afterend', qsBarHTML());
+    const ids = cards.filter(c => !c.querySelector('[data-act="mkcancel"]') && +c.dataset.ser > 0).map(c => +c.dataset.iid);
+    await loadQPrices(ids);
+    for (const c of cards) {
+      const p = QS.prices[+c.dataset.iid]; if (!p || !p.sell || c.querySelector('[data-act="mkcancel"]')) continue;
+      const act = c.querySelector('.iact') || c.appendChild(Object.assign(document.createElement('div'), { className: 'iact' }));
+      act.insertAdjacentHTML('beforeend', `<button class="btn sm ghost qsbtn" data-act="qsell" data-id="${c.dataset.iid}" data-p="${p.sell}">Venta rápida · ${coinSVG(11)} ${fmtc(p.sell)}</button>`);
+    }
+  }, 120);
+}
+{ const app = document.getElementById('app'); if (app) new MutationObserver(qsInventory).observe(app, { childList: true, subtree: true }); }
+async function doQuickSell(ids, total) {
+  try {
+    const w = await rest('rpc/quick_sell', { method: 'POST', body: { p_ids: ids } }); setWallet(Array.isArray(w) ? w[0] : w);
+    ids.forEach(id => delete QS.prices[id]); QS.t = 0; toast(`¡Vendido! +${fmtc(total)} monedas.`); await loadInv(); refresh();
+  } catch (x) { toast(x.message); }
+}
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-act="qsell"]');
+  if (b) {
+    if (!await ask('¿Venta rápida?', `La página te paga ${fmtc(+b.dataset.p)} monedas al toque y el objeto desaparece. En el mercado capaz lo vendés más caro.`, [['yes', 'Vender', 'pri']])) return;
+    b.disabled = true; return doQuickSell([+b.dataset.id], +b.dataset.p);
+  }
+  if (e.target.closest('[data-act="qsall"]')) {
+    const s = QS.st; if (!s) return;
+    let room = s.max_items - s.items, money = s.max_coins - s.coins, tot = 0; const ids = [];
+    const commons = INV.list.filter(it => catOf(it.cid).r === 'comun' && QS.prices[it.id] && QS.prices[it.id].sell > 0 && document.querySelector(`.qsbtn[data-id="${it.id}"]`)).sort((a, b) => QS.prices[a.id].sell - QS.prices[b.id].sell);
+    for (const it of commons) { const p = QS.prices[it.id].sell; if (room <= 0 || p > money) break; ids.push(+it.id); tot += p; room--; money -= p; }
+    if (!ids.length) return toast('No tenés comunes para vender (o llegaste al tope de hoy).');
+    if (!await ask(`¿Vender ${ids.length} comunes?`, `Te pagamos ${fmtc(tot)} monedas por todos. Los que no entren en el tope de hoy quedan en tu inventario.`, [['yes', 'Vender', 'pri']])) return;
+    return doQuickSell(ids, tot);
+  }
+});
+
+// ---------- CANJES: ahorrar de a poco para un premio (monedas + objetos)
+const GOAL = { st: undefined };
+async function loadGoal() { GOAL.st = isLogged() ? await sbTry(() => rest('rpc/goal_status', { method: 'POST', body: {} }), null) : null; return GOAL.st; }
+const goalPct = s => Math.min(100, Math.floor(100 * s.saved / Math.max(1, s.cost)));
+function goalPanelHTML(s) {
+  return `<section class="panel sec goalpanel" data-goalp><div class="goalhead"><div><div class="eyebrow">Estás ahorrando para</div><h3>${h(s.name)}</h3></div><b>${coinSVG(16)} ${fmtc(s.saved)} <span class="dim">/ ${fmtc(s.cost)}</span></b></div>
+    <div class="goalbar"><i style="width:${goalPct(s)}%"></i></div>
+    <p class="small dim">${fmtc(s.coins_in)} en monedas + ${fmtc(s.items_credit)} en ${plural(s.items, 'objeto', 'objetos')}. Te faltan ${fmtc(Math.max(0, s.cost - s.saved))}.${s.stock === 0 ? ' Se agotó: cuando haya stock de nuevo se canjea solo al poner algo.' : ''}</p>
+    <div class="actions"><button class="btn pri" data-act="goaladd">Poner monedas u objetos</button><button class="btn ghost" data-act="goalcancel">Cancelar (te devolvemos todo)</button></div></section>`;
+}
+let goalDecoT = 0;
+function goalDeco() {
+  clearTimeout(goalDecoT);
+  goalDecoT = setTimeout(async () => {
+    if (parseRoute().name !== 'canjes' || !sbOK()) return;
+    const btns = [...document.querySelectorAll('#app .rwcard:not(.bk):not([data-goalb]) [data-act="redeem"][data-id]')]; if (!btns.length && document.querySelector('[data-goalp]')) return;
+    btns.forEach(b => { const c = b.closest('.rwcard'); c.dataset.goalb = '1'; if (!isLogged()) return; const auto = !!b.dataset.auto; c.insertAdjacentHTML('beforeend', `<button class="btn sm goalbtn" data-act="goalstart" data-id="${h(b.dataset.id)}" ${auto ? 'data-auto="1"' : ''}>Ahorrar de a poco o pagar con objetos</button>`); });
+    if (!isLogged() || document.querySelector('[data-goalp]')) return;
+    if (GOAL.st === undefined) await loadGoal();
+    const ph = document.querySelector('#app .pagehead'); if (ph && GOAL.st && !document.querySelector('[data-goalp]')) ph.insertAdjacentHTML('afterend', goalPanelHTML(GOAL.st));
+  }, 120);
+}
+{ const app = document.getElementById('app'); if (app) new MutationObserver(goalDeco).observe(app, { childList: true, subtree: true }); }
+window.addEventListener('hashchange', () => { if (parseRoute().name === 'canjes') GOAL.st = undefined; });
+
+async function goalModal() {
+  const s = GOAL.st; if (!s) return;
+  await loadInv(); const listed = await sbTry(() => rest(`market?select=item_id&seller=eq.${ME.id}&status=eq.active`), []) || [];
+  const busy = new Set(listed.map(l => +l.item_id)), L = INV.list.filter(it => +it.serial > 0 && !busy.has(+it.id));
+  await loadQPrices(L.map(it => +it.id));
+  const items = L.filter(it => QS.prices[it.id] && QS.prices[it.id].credit > 0).sort((a, b) => QS.prices[b.id].credit - QS.prices[a.id].credit);
+  const pct = QS.st ? QS.st.canje : 60;
+  const ov = document.createElement('div'); ov.className = 'vhov goalov';
+  ov.innerHTML = `<div class="vhbox goalbox"><button class="vhx" data-act="goalclose">✕</button><h2>${h(s.name)}</h2>
+    <p class="dim">Llevás ${fmtc(s.saved)} de ${fmtc(s.cost)}. Lo que pongas queda guardado; si cancelás, te devolvemos todo.</p>
+    <div class="goalbar"><i style="width:${goalPct(s)}%"></i><i class="goaladd" style="left:${goalPct(s)}%;width:0"></i></div>
+    <label class="lb" for="glcoins">Monedas para poner (tenés ${fmtc(WALLET.coins)})</label>
+    <div class="glrow"><input type="number" id="glcoins" min="0" step="100" value="0"><button class="btn sm" data-act="glmax">Lo que falte</button></div>
+    <h3>Objetos <span class="small dim">· cada uno suma el ${pct}% de su valor${items.length ? '' : ''}</span></h3>
+    ${items.length ? `<div class="glitems">${items.map(it => { const c = catOf(it.cid), R = RAR[c.r] || RAR.comun, g = gemOf(it); return `<label class="glit" style="--rc:${R.c}"><input type="checkbox" data-gl="${it.id}" data-cr="${QS.prices[it.id].credit}"><span class="glthumb">${itemThumb(it.cid, it.pattern, it.wear, it.serial)}</span><span class="glname"><b>${h(c.n)}</b><small>${R.n} · #${it.serial}${g ? ' · ' + GEMT[g].i + ' ' + h(GEMT[g].n) : ''}</small></span><span class="glcr">+${fmtc(QS.prices[it.id].credit)}</span></label>`; }).join('')}</div>` : '<p class="small dim">No tenés objetos para poner (los que están en venta o son de edición fundador no cuentan).</p>'}
+    <div class="glfoot"><span>Ponés <b id="glsum">0</b> · ${coinSVG(13)} quedás en <b id="glnew">${fmtc(s.saved)}</b> / ${fmtc(s.cost)}</span><button class="btn pri" data-act="glsend">Poner</button></div>
+    <p class="small dim" id="glwarn"></p></div>`;
+  document.body.appendChild(ov); glUpdate();
+}
+function glUpdate() {
+  const s = GOAL.st, inp = document.getElementById('glcoins'); if (!s || !inp) return;
+  const it = [...document.querySelectorAll('[data-gl]:checked')].reduce((a, x) => a + +x.dataset.cr, 0), co = Math.max(0, Math.floor(+inp.value || 0));
+  const need = Math.max(0, s.cost - s.saved), coUse = Math.min(co, Math.max(0, need - it)), tot = it + coUse, nw = s.saved + tot;
+  document.getElementById('glsum').textContent = fmtc(tot); document.getElementById('glnew').textContent = fmtc(nw);
+  const add = document.querySelector('.goalbox .goaladd'); if (add) add.style.width = Math.max(0, Math.min(100, 100 * nw / s.cost) - goalPct(s)) + '%';
+  const w = document.getElementById('glwarn');
+  w.textContent = it > need ? `Ojo: los objetos que elegiste suman ${fmtc(it - need)} más de lo que falta y eso no se devuelve. Sacá alguno.` : co > WALLET.coins ? 'No te alcanzan las monedas.' : nw >= s.cost ? '¡Con esto llegás! Se canjea al toque.' : co > coUse ? `Solo te sacamos ${fmtc(coUse)} monedas, que es lo que falta.` : '';
+}
+document.addEventListener('input', e => { if (e.target.id === 'glcoins') glUpdate(); });
+document.addEventListener('change', e => { if (e.target.matches('[data-gl]')) glUpdate(); });
+document.addEventListener('click', async e => {
+  const ov = e.target.closest('.goalov');
+  if (ov && (e.target === ov || e.target.closest('[data-act="goalclose"]'))) { ov.remove(); return; }
+  if (e.target.closest('[data-act="glmax"]')) { const s = GOAL.st, it = [...document.querySelectorAll('[data-gl]:checked')].reduce((a, x) => a + +x.dataset.cr, 0); document.getElementById('glcoins').value = Math.min(WALLET.coins, Math.max(0, s.cost - s.saved - it)); glUpdate(); return; }
+  if (e.target.closest('[data-act="glsend"]')) {
+    const b = e.target.closest('[data-act="glsend"]'), ids = [...document.querySelectorAll('[data-gl]:checked')].map(x => +x.dataset.gl), co = Math.max(0, Math.floor(+document.getElementById('glcoins').value || 0));
+    if (!ids.length && !co) return toast('Poné monedas o elegí algún objeto.');
+    if (ids.length && !await ask('¿Poner estos objetos?', `${plural(ids.length, 'objeto queda', 'objetos quedan')} guardados para el premio. Si cancelás la meta te los devolvemos; si llegás al premio, se usan para pagarlo.`, [['yes', 'Poner', 'pri']])) return;
+    b.disabled = true;
+    try {
+      const r = await rest('rpc/goal_add', { method: 'POST', body: { p_coins: co, p_items: ids } });
+      if (r && r.coins != null) { WALLET.coins = +r.coins; renderCoins(); }
+      ids.forEach(id => delete QS.prices[id]);
+      document.querySelectorAll('.goalov').forEach(x => x.remove());
+      if (r && r.done) { burstAt(innerWidth / 2, innerHeight / 3, ['#ffd24a', '#ffffff', '#7fd6ff'], 50, 'confeti'); toast(r.kind !== 'manual' ? `¡Llegaste! ${r.reward} ya está activado.` : `¡Llegaste! Canjeaste ${r.reward}. Te contactamos para dártelo.`); if (r.kind !== 'manual' && typeof loadPro === 'function') await loadPro(); }
+      else toast(r && r.waiting ? 'Llegaste, pero se agotó. Apenas haya stock se canjea.' : '¡Guardado! Seguí sumando cuando quieras.');
+      GOAL.st = undefined; await loadInv(); refresh();
+    } catch (x) { b.disabled = false; toast(x.message); }
+    return;
+  }
+  const st = e.target.closest('[data-act="goalstart"]');
+  if (st) {
+    if (!isLogged()) { location.hash = '#/entrar/crear'; return; }
+    if (GOAL.st === undefined) await loadGoal();
+    if (GOAL.st && GOAL.st.reward === st.dataset.id) return goalModal();
+    if (GOAL.st && GOAL.st.saved > 0) return toast('Ya estás ahorrando para otro premio. Cancelalo arriba y te devolvemos todo.');
+    const card = st.closest('.rwcard'), inp = card && card.querySelector('[data-rwc]'), contact = inp ? inp.value.trim() : '';
+    if (!st.dataset.auto && contact.length < 2) { if (inp) inp.focus(); return toast('Primero poné tu usuario en el casillero, así te contactamos cuando llegues.'); }
+    try { GOAL.st = await rest('rpc/goal_start', { method: 'POST', body: { p_reward: st.dataset.id, p_contact: contact } }); if (!QS.st) loadQS(); goalModal(); document.querySelectorAll('[data-goalp]').forEach(x => x.remove()); goalDeco(); } catch (x) { toast(x.message); }
+    return;
+  }
+  if (e.target.closest('[data-act="goaladd"]')) { if (!QS.st) loadQS(); return goalModal(); }
+  if (e.target.closest('[data-act="goalcancel"]')) {
+    if (!await ask('¿Cancelar la meta?', 'Te devolvemos todas las monedas y los objetos que pusiste.', [['yes', 'Cancelar meta', 'pri']])) return;
+    try { const r = await rest('rpc/goal_cancel', { method: 'POST', body: {} }); if (r && r.coins != null) { WALLET.coins = +r.coins; renderCoins(); } toast('Listo, te devolvimos todo.'); GOAL.st = undefined; QS.prices = {}; await loadInv(); refresh(); } catch (x) { toast(x.message); }
+  }
+}, true);
 
 
 // ============================================================ ONLINE (Supabase)
