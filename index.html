@@ -2645,7 +2645,7 @@ body[data-sec="colecciones"]{--sec:#ffd24a}
 
 <footer><div class="wrap"><img class="ftlogo" src="" alt="JVNN" loading="lazy">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 27.0</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 28.0</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -5147,6 +5147,7 @@ function startPfx() {
     };
     const tick = () => {
       if (!cv.isConnected) return;
+      if (document.hidden) { setTimeout(() => requestAnimationFrame(tick), 500); return; }
       if (card.clientWidth !== W || card.clientHeight !== H) size();
       ctx.clearRect(0, 0, W, H);
       for (let i = 0; i < parts.length; i++) {
@@ -8215,7 +8216,7 @@ async function checkGifts() {
   document.body.appendChild(ov); burstAt(innerWidth / 2, innerHeight / 3, ['#ffd24a', '#ff8fb8', '#7fd6ff'], 30, 'confeti');
   sbTry(() => rest('rpc/gifts_seen', { method: 'POST', body: {} }), null); if (typeof loadWallet === 'function') loadWallet();
 }
-setInterval(() => { if (isLogged()) checkGifts(); }, 4000);
+setInterval(() => { if (isLogged()) checkGifts(); }, 30000);
 // destacar perfil 7 días
 async function highlightProfile() {
   if (!isLogged()) { location.hash = '#/entrar/crear'; return; }
@@ -10215,7 +10216,7 @@ document.addEventListener('click', async e => {
 
 // ============================================================ V40: REGALOS QUE ANDAN (con buscador de usuarios), TIEMPOS EN DÍAS Y EVENTO DE HALLOWEEN
 // los contadores se ven bien apenas se dibuja la página
-{ const app = document.getElementById('app'); let t = 0; if (app) new MutationObserver(() => { clearTimeout(t); t = setTimeout(dtTick, 50); }).observe(app, { childList: true, subtree: true }); }
+{ const app = document.getElementById('app'); let t = 0; if (app) new MutationObserver(() => { clearTimeout(t); t = setTimeout(dtTick, 350); }).observe(app, { childList: true }); }
 
 // ---------- REGALOS: el botón no andaba porque la ventana frenaba el clic. Ahora se escucha antes.
 document.addEventListener('click', async e => {
@@ -10897,7 +10898,6 @@ function inspInfo(e) {
     <div class="inrow"><small>Desgaste</small><b>${WEAR(w)} · ${w.toFixed(4)}</b></div><i class="iwbar inwb"><i style="left:${Math.min(100, w * 100).toFixed(1)}%"></i></i>
     <div class="inrow"><small>Valor estimado</small><b>${coinSVG(15)} ${fmtc(estOf(it))}</b></div>`;
 }
-function inspDraw() {
   const ov = document.getElementById('insp'); if (!ov) return; const e = INSP.list[INSP.i]; if (!e) return;
   const c = catOf(e.cid), it = e.item, g = it ? gemOf(it) : null, shift = it && it.pattern && !g && c.r !== 'comun' ? (it.pattern % 31) - 15 : 0;
   const art = inspArt(e.cid), wrap = s => `<span class="ithumb ${g ? 'gem-' + GEMT[g].cls : ''}" style="${shift ? `filter:hue-rotate(${shift}deg)` : ''}">${s}</span>`;
