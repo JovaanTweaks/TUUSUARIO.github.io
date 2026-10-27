@@ -2523,7 +2523,7 @@ footer .ftlogo{display:block;width:230px;max-width:60%;height:auto;margin:0 0 12
 
 <footer><div class="wrap"><img class="ftlogo" src="" alt="JVNN" loading="lazy">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 22.5</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 22.6</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -7707,7 +7707,7 @@ async function syncOdds() {
   const g = cf && cf[0] && cf[0].value;
   if (g && typeof g === 'object') for (const [k, d] of Object.entries(g)) {
     const t = GEMT[k]; if (!t || !d) continue;
-    if (Array.isArray(d.desgaste) && d.desgaste.length === 2 && t.w) t.w = [+d.desgaste[0], +d.desgaste[1] >= 1 ? 1.01 : +d.desgaste[1]];
+    if (Array.isArray(d.desgaste) && d.desgaste.length === 2 && t.w) { t.w = [+d.desgaste[0], +d.desgaste[1] >= 1 ? 1.01 : +d.desgaste[1]]; if (t.s) t.odds = Math.round(1000 / ((t.s === 'C' ? 3 : 1) * Math.min(1, t.w[1] - t.w[0]))); }
     if (d.valor && t.v) t.v = +d.valor;
     if (d.multiplica && t.m) t.m = +d.multiplica;
     if (d.apagada) { t.w = [2, 2]; }
@@ -8950,7 +8950,7 @@ function boxSubs() { clearTimeout(boxSubT); boxSubT = setTimeout(() => { if (par
 
 // ---------- GEMA ABISMAL: la nueva más difícil (1 patrón por objeto, con desgaste menor a 0,03)
 { // la abismal va primera (se revisa antes que las demás)
-  const ab = { n: 'Gema abismal', i: '🟣', c: '#9a3aff', s: 'V', w: [0, .03], v: 4000000, cls: 'abismo' }; ab.odds = Math.round(1000 / (ab.w[1] - ab.w[0]));
+  const ab = { n: 'Gema abismal', i: '🟣', c: '#9a3aff', s: 'V', w: [0, .001], v: 4000000, cls: 'abismo' }; ab.odds = Math.round(1000 / (ab.w[1] - ab.w[0]));
   const old = Object.entries(GEMT).filter(([k]) => k !== 'abismo'); for (const [k] of old) delete GEMT[k];
   GEMT.abismo = ab; for (const [k, d] of old) GEMT[k] = d;
 }
