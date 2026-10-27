@@ -2258,6 +2258,7 @@ html body .boxview{width:min(980px,100%)}
 .hwgrid .sthumb>span,.hwgrid .sthumb>span>span{width:100%!important;height:100%!important;max-width:none!important;display:grid!important;place-items:center;background:none!important;border:0!important;transform:none!important}.hwgrid .sthumb svg{width:92%!important;height:92%!important;max-width:none!important}
 .hwgrid .wkinfo{display:flex;flex-direction:column;gap:3px;text-align:left}.hwgrid .wkinfo b{font-size:14px}.hwgrid .wkprice{display:flex;align-items:center;gap:4px;font-weight:800}
 .hwgrid .btn{width:100%}
+.rwform input.rwbad{border-color:#ff4a6a!important;box-shadow:0 0 0 3px rgba(255,74,106,.25)!important}
 </style>
 </head>
 <body>
@@ -2288,7 +2289,7 @@ html body .boxview{width:min(980px,100%)}
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 21.2</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 21.3</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -7961,7 +7962,7 @@ async function vRewards(_, draw, alive) {
   const mine = isLogged() ? await sbTry(() => rest('redemptions?select=*,reward:rewards(name)&order=created_at.desc&limit=20'), []) : [];
   if (!alive()) return;
   const card = r => { const bk = r.currency === 'bucks', auto = r.kind && r.kind !== 'manual', fn = /^fn-/.test(r.id), soldout = r.stock === 0;
-    const ph = fn ? 'Tu usuario de Epic Games' : bk ? 'Tu usuario de Steam o Discord' : 'Tu usuario de Discord';
+    const ph = 'Tu usuario de Discord (ej: jovaan)';
     return `<div class="rwcard ${bk ? 'bk' : ''} ${auto ? 'auto' : ''}"><h3>${h(r.name)}</h3><p class="dim">${h(r.descr)}</p><div class="rwfoot"><b>${bk ? buckSVG(18) : coinSVG(18)} ${r.cost.toLocaleString('es-AR')}${bk ? ' Bucks' : ''}</b>${r.stock != null ? `<span class="small dim">${r.stock > 0 ? `Quedan ${r.stock}` : 'Agotado'}</span>` : auto ? '<span class="small dim">Se activa al toque</span>' : ''}</div>${isLogged() ? (auto ? `<button class="btn pri" data-act="redeem" data-id="${h(r.id)}" data-auto="1">Canjear</button>` : `<div class="rwform"><input type="text" placeholder="${ph}" maxlength="80" data-rwc="${h(r.id)}"><button class="btn pri" data-act="redeem" data-id="${h(r.id)}" ${soldout ? 'disabled' : ''}>Canjear</button></div>`) : `<a class="btn" href="#/entrar">Entrá para canjear</a>`}</div>`; };
   const L = rows || [], pro = L.filter(r => r.kind && r.kind !== 'manual'), skinsC = L.filter(r => /^fn-/.test(r.id) && r.currency !== 'bucks'), skinsB = L.filter(r => /^fn-/.test(r.id) && r.currency === 'bucks');
   const other = L.filter(r => !pro.includes(r) && !/^fn-/.test(r.id)), otherC = other.filter(r => r.currency !== 'bucks'), otherB = other.filter(r => r.currency === 'bucks');
@@ -9036,6 +9037,16 @@ async function vShopDaily(args, draw, alive) {
   return vShop(args, html => draw(html.replace('<div class="tabs shoptabs">', hwShopHTML() + weeklyHTML() + packsHTML() + dailyHTML() + '<div class="tabs shoptabs">')), alive);
 }
 BOX_SUB.halloween = 'Monstruos, calabazas y fantasmas. Acá salen los de Noche sangrienta y de Oro';
+
+// ---------- CANJES: el contacto siempre es el usuario de Discord (lo revisamos antes de canjear)
+const DISCORD_RE = /^[a-z0-9_.]{2,32}$|^.{2,32}#\d{4}$/i;
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-act="redeem"]:not([data-auto]),[data-act="goalstart"]:not([data-auto])'); if (!b) return;
+  const card = b.closest('.rwcard'), inp = (card && card.querySelector('[data-rwc]')) || document.querySelector(`[data-rwc="${CSS.escape(b.dataset.id || '')}"]`); if (!inp) return;
+  const v = inp.value.trim().replace(/^@+/, '').replace(/\s+/g, '');
+  if (!DISCORD_RE.test(v)) { e.preventDefault(); e.stopImmediatePropagation(); inp.focus(); inp.classList.add('rwbad'); setTimeout(() => inp.classList.remove('rwbad'), 1200); toast('Poné tu usuario de Discord (el que usás para entrar, sin espacios). Te escribimos por ahí para darte el premio.'); return; }
+  inp.value = v;
+}, true);
 
 
 // ============================================================ ONLINE (Supabase)
