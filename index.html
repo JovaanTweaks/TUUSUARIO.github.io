@@ -2458,6 +2458,12 @@ footer .ftlogo{display:block;width:230px;max-width:60%;height:auto;margin:0 0 12
 .tlq{width:100%;margin:0 0 12px}
 @media(max-width:700px){.tlbar{bottom:78px}.tlgrid{grid-template-columns:repeat(auto-fill,minmax(104px,1fr))}.tlth{width:70px;height:70px}}
 
+
+/* V38: segunda mano */
+.hshop{margin:0 0 22px;padding:16px;border:1px solid rgba(95,214,200,.4);border-radius:18px;background:radial-gradient(circle at 0 0,rgba(95,214,200,.12),transparent 55%),var(--surface)}
+.hshop .dhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.hshop h2{margin:0}.hshop>p{margin:6px 0 12px}
+.hsprice{display:inline-flex;align-items:center;gap:4px;font-size:15px;margin-right:auto}.hsprice b{font-weight:900}
+.hsgrid .iact{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 </style>
 <!-- TUS CAMBIOS DE DISEÑO: van en el archivo mis-estilos.css (al lado de este index.html). Ese archivo yo no lo piso nunca. -->
 <link rel="stylesheet" href="mis-estilos.css" onerror="this.remove()">
@@ -2490,7 +2496,7 @@ footer .ftlogo{display:block;width:230px;max-width:60%;height:auto;margin:0 0 12
 
 <footer><div class="wrap"><img class="ftlogo" src="" alt="JVNN" loading="lazy">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 22.2</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 22.3</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -9531,6 +9537,48 @@ document.addEventListener('toggle', async e => {
     <div class="actions"><a class="btn sm" href="#/taller">Ir al Taller</a><a class="btn sm" href="#/mercado">Ir al Mercado</a></div>`;
 }, true);
 
+
+
+// ============================================================ V34: SEGUNDA MANO DE JVNN (lo que la gente le vendió a la página, a la venta en la Tienda)
+const HOUSE = { list: [], all: false };
+async function loadHouse() {
+  const rows = await sbTry(() => rest('house_shop?select=item_id,price,source,added_at,item:items(id,cid,serial,pattern,wear)&order=added_at.desc&limit=200', { auth: false }), null);
+  HOUSE.list = (rows || []).filter(r => r.item && catOf(r.item.cid)).sort((a, b) => RAR[catOf(b.item.cid).r].o - RAR[catOf(a.item.cid).r].o || a.price - b.price);
+  HOUSE.ok = !!rows;
+}
+function houseHTML() {
+  if (!HOUSE.list.length) return '';
+  const L = HOUSE.all ? HOUSE.list : HOUSE.list.slice(0, 8);
+  return `<section class="hshop"><div class="dhead"><h2>♻️ Segunda mano de JVNN</h2><span class="chip">${plural(HOUSE.list.length, 'objeto', 'objetos')}</span></div>
+    <p class="dim small">Objetos que la gente le vendió a la página o usó para pagar canjes. Vienen con su mismo número de serie, patrón y desgaste. Cuando alguien lo compra, desaparece de acá.</p>
+    <div class="igrid hsgrid">${L.map(r => collCard(r.item, `<span class="hsprice">${coinSVG(14)} <b>${(+r.price).toLocaleString('es-AR')}</b></span><button class="btn sm pri" data-act="hbuy" data-id="${r.item_id}" data-p="${r.price}">Comprar</button>`)).join('')}</div>
+    ${HOUSE.list.length > 8 ? `<div class="actions" style="justify-content:center;margin-top:10px"><button class="btn" data-act="hall">${HOUSE.all ? 'Ver menos' : `Ver los ${HOUSE.list.length}`}</button></div>` : ''}</section>`;
+}
+async function vShopDaily(args, draw, alive) {
+  await Promise.all([loadDaily(), loadWeekly(), loadBundles(), loadHouse()]);
+  return vShop(args, html => draw(html.replace('<div class="tabs shoptabs">', hwShopHTML() + weeklyHTML() + houseHTML() + packsHTML() + dailyHTML() + '<div class="tabs shoptabs">')), alive);
+}
+document.addEventListener('click', async e => {
+  if (e.target.closest('[data-act="hall"]')) { HOUSE.all = !HOUSE.all; const y = scrollY; refresh(); requestAnimationFrame(() => scrollTo(0, y)); return; }
+  const b = e.target.closest('[data-act="hbuy"]'); if (!b) return;
+  if (!isLogged()) { location.hash = '#/entrar/crear'; return; }
+  const p = +b.dataset.p; if (!await ask('¿Comprar este objeto?', `Cuesta ${p.toLocaleString('es-AR')} monedas y tenés ${WALLET.coins.toLocaleString('es-AR')}. Es este mismo, con su número de serie y su patrón.`, [['yes', 'Comprar', 'pri']])) return;
+  b.disabled = true;
+  try { const w = await rest('rpc/house_buy', { method: 'POST', body: { p_item: +b.dataset.id } }); setWallet(Array.isArray(w) ? w[0] : w); SND.pop(); toast('¡Es tuyo! Ya está en tu inventario.'); await loadInv(); refresh(); }
+  catch (x) { b.disabled = false; toast(/function|404/i.test(x.message) ? 'Falta correr supabase_v34.sql en Supabase.' : x.message); }
+});
+// el fundador no ve en su inventario lo que está en la Segunda mano ni lo guardado en ahorros
+async function loadInv() {
+  if (!isLogged()) { INV.list = []; INV.ok = false; return; }
+  const rows = await sbTry(() => rest(`items?select=id,cid,serial,pattern,wear,created_at&owner=eq.${ME.id}&order=created_at.desc&limit=2000`), null);
+  if (!rows) return;
+  let L = rows;
+  if (isFounderId(ME.id)) {
+    const [held, shop] = await Promise.all([sbTry(() => rest('goal_items?select=item_id&limit=5000', { auth: false }), []), sbTry(() => rest('house_shop?select=item_id&limit=5000', { auth: false }), [])]);
+    const s = new Set([...(held || []), ...(shop || [])].map(x => +x.item_id)); if (s.size) L = rows.filter(r => !s.has(+r.id));
+  }
+  INV.list = L; INV.ok = true;
+}
 
 
 // ============================================================ ONLINE (Supabase)
