@@ -2153,6 +2153,26 @@ html body .ctabs .tab[data-v="supporter"]{color:#ffc83a}
 .gempick{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:8px 10px;border-radius:10px;border:1px solid color-mix(in srgb,var(--gc) 55%,var(--line));background:var(--raise);color:var(--fg);cursor:pointer;text-align:left}.gempick b{font-size:13px}.gempick span{font-size:11.5px;color:var(--dim)}.gempick:hover{background:color-mix(in srgb,var(--gc) 18%,var(--raise))}
 .genprev{position:sticky;top:96px}.genprev .icard{max-width:300px}
 .icard .sbad.fnd{background:#2a2430;color:#ffd24a}
+
+/* ===== V24: ganá monedas ===== */
+.earngrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}@media (max-width:860px){.earngrid{grid-template-columns:1fr}}
+.earn h2{margin:0 0 6px}.earn p{margin:0 0 12px}
+.invlink{display:flex;gap:8px;margin-bottom:10px}.invlink input{flex:1;min-width:0;font-family:ui-monospace,Consolas,monospace;font-size:13px}
+.streakbig{display:flex;align-items:baseline;gap:8px;margin-bottom:10px}.streakbig b{font:900 46px/1 var(--display);font-stretch:78%}
+.stm{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}@media (max-width:520px){.stm{grid-template-columns:repeat(3,1fr)}}
+.stmi{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 4px;border-radius:10px;background:var(--raise);border:1px solid var(--line);text-align:center}.stmi b{font-size:13px}.stmi span{display:inline-flex;gap:3px;align-items:center;font-size:12px;font-weight:700}.stmi small{font-size:11px;color:var(--dim)}.stmi.ready{border-color:var(--accent)}.stmi.got{opacity:.55}
+.rankw .rkhead{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline}.rankw h2{margin:0}
+.rkprizes{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}.rkprizes span{display:inline-flex;gap:4px;align-items:center;padding:5px 10px;border-radius:8px;background:var(--raise);font-size:12.5px}
+.rkclaim{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 12px;margin-bottom:10px;border-radius:10px;border:1px solid var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--surface))}
+.rkw{list-style:none;padding:0;margin:0;display:grid;gap:4px}.rkw li{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:6px 10px;border-radius:10px;background:var(--raise)}.rkw li.me{outline:1px solid var(--accent)}.rkw .pos{font:900 18px/1 var(--display);font-stretch:80%;text-align:center}.rkw a{display:flex;gap:8px;align-items:center;min-width:0}.rkw a span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rkw em{font-style:normal;color:var(--dim);font-size:13px}
+.rkw li:nth-child(1) .pos{color:#ffc83a}.rkw li:nth-child(2) .pos{color:#d6dce8}.rkw li:nth-child(3) .pos{color:#d8925a}
+.achhead{display:flex;align-items:center;gap:10px;justify-content:space-between}.achhead h2{margin:0}
+.achgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
+.achc{display:flex;flex-direction:column;gap:6px;padding:10px 12px;border-radius:10px;background:var(--surface);border:1px solid var(--line)}.achc.ready{border-color:var(--accent)}.achc.got{opacity:.5}
+.achtop{display:flex;justify-content:space-between;gap:8px;align-items:baseline}.achtop b{font-size:13.5px}.achtop span{display:inline-flex;gap:3px;align-items:center;font-size:12.5px;font-weight:700;white-space:nowrap}
+.achbot{display:flex;justify-content:space-between;align-items:center;min-height:30px}
+.invhero{text-align:center;max-width:640px;margin:30px auto}.invhero h1{margin:0 0 10px}.invhero .actions{justify-content:center;margin-top:16px}.invhero b{display:inline-flex;gap:4px;align-items:center}
+html body .earngrid>.panel{margin:0!important}
 </style>
 </head>
 <body>
@@ -2170,7 +2190,7 @@ html body .ctabs .tab[data-v="supporter"]{color:#ffc83a}
     <a href="#/peliculas" data-r="peliculas">Películas</a>
     <a href="#/stats" data-r="stats">Estadísticas</a>
     <div class="navdd"><button type="button" class="ddbtn" data-act="navdd" aria-haspopup="true" aria-expanded="false">Comunidad<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-      <div class="ddm" hidden><a href="#/gente" data-r="gente" hidden>Gente</a><a href="#/listas" data-r="listas">Listas</a><a href="#/stats/ranking">Ranking</a><a href="#/mercado" data-r="mercado">Mercado</a><a href="#/cajas" data-r="cajas">Cajas</a><a href="#/misiones" data-r="misiones">Misiones</a><a href="#/canjes" data-r="canjes">Canjes</a><a href="#/sorteos" data-r="sorteos">Sorteos</a><a href="#/temporada" data-r="temporada">Pase de temporada</a><a href="#/supporter" data-r="supporter">Supporter</a><a href="#/bucks" data-r="bucks">Comprar Bucks</a></div></div>
+      <div class="ddm" hidden><a href="#/gente" data-r="gente" hidden>Gente</a><a href="#/listas" data-r="listas">Listas</a><a href="#/stats/ranking">Ranking</a><a href="#/mercado" data-r="mercado">Mercado</a><a href="#/cajas" data-r="cajas">Cajas</a><a href="#/misiones" data-r="misiones">Misiones</a><a href="#/canjes" data-r="canjes">Canjes</a><a href="#/sorteos" data-r="sorteos">Sorteos</a><a href="#/ganar" data-r="ganar">Ganá monedas</a><a href="#/temporada" data-r="temporada">Pase de temporada</a><a href="#/supporter" data-r="supporter">Supporter</a><a href="#/bucks" data-r="bucks">Comprar Bucks</a></div></div>
     <a href="#/perfil" data-r="perfil">Perfil</a>
     <a href="#/pro" data-r="pro" class="propill">Pro</a>
   </nav>
@@ -2183,7 +2203,7 @@ html body .ctabs .tab[data-v="supporter"]{color:#ffc83a}
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 19.1</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 20.0</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -2644,7 +2664,7 @@ async function route(keepScroll) {
   const id = ++renderId, R = parseRoute(), app = $('#app');
   const y = window.scrollY;
   document.querySelectorAll('[data-r]').forEach(a => a.classList.toggle('on', a.dataset.r === R.name || (R.name === 'stats' && a.dataset.r === 'perfil' && a.closest('.bnav'))));
-  const views = { '': vHome, 'buscar': vSearch, 'serie': vShow, 'ep': vEpisode, 'mis-series': vMine, 'calendario': vCalendar, 'descubrir': vDiscover, 'peliculas': vMovies, 'stats': vStats, 'perfil': vProfile, 'entrar': vLogin, 'nueva-clave': vNewPass, 'gente': vPeople, 'u': vUser, 'categoria': vCategory, 'peli': vMovie, 'pro': vPro, 'monedas': vCoins, 'tienda': vShopDaily, 'cajas': vBoxes, 'inventario': vInventory, 'mercado': vMarket, 'intercambios': vTrades, 'misiones': vMissions, 'bucks': vBucksPlus, 'temporada': vSeason, 'supporter': vSupporter, 'generador': vGenerator, 'canjes': vRewards, 'sorteos': vRaffles, 'actor': vActor, 'top-episodios': vTopEps, 'listas': vLists, 'lista': vList };
+  const views = { '': vHome, 'buscar': vSearch, 'serie': vShow, 'ep': vEpisode, 'mis-series': vMine, 'calendario': vCalendar, 'descubrir': vDiscover, 'peliculas': vMovies, 'stats': vStats, 'perfil': vProfile, 'entrar': vLogin, 'nueva-clave': vNewPass, 'gente': vPeople, 'u': vUser, 'categoria': vCategory, 'peli': vMovie, 'pro': vPro, 'monedas': vCoins, 'tienda': vShopDaily, 'cajas': vBoxes, 'inventario': vInventory, 'mercado': vMarket, 'intercambios': vTrades, 'misiones': vMissions, 'bucks': vBucksPlus, 'temporada': vSeason, 'supporter': vSupporter, 'generador': vGenerator, 'ganar': vEarn, 'invitar': vInvite, 'canjes': vRewards, 'sorteos': vRaffles, 'actor': vActor, 'top-episodios': vTopEps, 'listas': vLists, 'lista': vList };
   const v = views[R.name] || vHome;
   const draw = html => { if (id === renderId) { app.innerHTML = html; fillAds(); } return id === renderId; };
   try { await v(R.args, draw, () => id === renderId); }
@@ -6331,7 +6351,7 @@ document.addEventListener('click', e => {
   if (b) { const m = dd.querySelector('.ddm'), open = m.hidden; m.hidden = !open; b.setAttribute('aria-expanded', open); return; }
   if (dd && !e.target.closest('.navdd')) { dd.querySelector('.ddm').hidden = true; dd.querySelector('.ddbtn').setAttribute('aria-expanded', 'false'); }
 });
-window.addEventListener('hashchange', () => { const m = document.querySelector('.navdd .ddm'); if (m) m.hidden = true; const n = parseRoute().name; document.querySelector('.ddbtn')?.classList.toggle('on', ['gente', 'listas', 'mercado', 'cajas', 'misiones', 'canjes', 'sorteos', 'bucks', 'temporada', 'supporter', 'inventario', 'intercambios'].includes(n) || location.hash.includes('ranking')); });
+window.addEventListener('hashchange', () => { const m = document.querySelector('.navdd .ddm'); if (m) m.hidden = true; const n = parseRoute().name; document.querySelector('.ddbtn')?.classList.toggle('on', ['gente', 'listas', 'mercado', 'cajas', 'misiones', 'canjes', 'sorteos', 'bucks', 'temporada', 'supporter', 'ganar', 'inventario', 'intercambios'].includes(n) || location.hash.includes('ranking')); });
 
 // ---------- buscador: series, películas, actores y gente a la vez
 let SR = { q: '', t: null, i: -1 };
@@ -7925,6 +7945,83 @@ document.addEventListener('click', async e => {
 });
 // link en el menú solo para el fundador
 setInterval(() => { const m = document.querySelector('.ddm'); if (!m) return; const has = m.querySelector('[data-gen]'); if (isLogged() && isFounderId(ME.id)) { if (!has) m.insertAdjacentHTML('beforeend', '<a href="#/generador" data-gen="1">Generador</a>'); } else if (has) has.remove(); }, 1500);
+
+
+// ============================================================ V24: GANÁ MONEDAS (invitar, racha, logros, ranking semanal, perfil, creadores)
+const SITE_URL = 'https://jovaantweaks.github.io/';
+const inviteLink = () => isLogged() ? `${SITE_URL}#/invitar/${ME.username}` : '';
+const STREAK_M = [[3, 300], [7, 1000], [14, 2500], [30, 6000], [60, 12000]];
+const STATN = { comentarios: 'Comentarios', resenas: 'Reseñas', listas: 'Listas', seguidos: 'Siguiendo', seguidores: 'Seguidores', likes: 'Popular', cajas: 'Cajas', coleccion: 'Colección', ventas: 'Mercado', intercambios: 'Intercambios', misiones: 'Misiones', racha: 'Racha', invitados: 'Embajador' };
+let ACHS = null;
+async function vEarn(_, draw, alive) {
+  draw(`${ecoNav('ganar')}<div class="sec skel" style="height:300px"></div>`);
+  if (!ACHS) ACHS = await sbTry(() => rest('achievements?select=*&order=sort.asc', { auth: false }), []) || [];
+  const st0 = isLogged() ? await sbTry(() => rest('rpc/ach_status', { method: 'POST', body: {} }), null) : null;
+  const rank = await sbTry(() => rest('rpc/weekly_rank', { method: 'POST', body: { p_prev: false }, auth: isLogged() }), []) || [];
+  const prev = isLogged() ? await sbTry(() => rest('rpc/weekly_rank', { method: 'POST', body: { p_prev: true } }), []) || [] : [];
+  if (!alive()) return;
+  const st = st0 && (typeof st0 === 'string' ? JSON.parse(st0) : st0) || { counts: {}, claimed: [], once: [], streak_claims: [], referrals: 0, bonus_boxes: 0 };
+  const C = st.counts || {}, got = new Set(st.claimed || []), once = new Set(st.once || []), sc = new Set(st.streak_claims || []), streak = C.racha || 0;
+  const login = isLogged() ? '' : `<div class="invite sm"><span>Entrá con tu cuenta para ganar monedas.</span><a class="btn pri" href="#/entrar/crear">Crear cuenta gratis</a></div>`;
+  const myPrev = isLogged() ? prev.find(r => r.user_id === ME.id) : null;
+  const ach = ACHS.map(a => { const n = C[a.stat] || 0, ok = n >= a.goal, cl = got.has(a.id); return { a, n, ok, cl }; });
+  const ready = ach.filter(x => x.ok && !x.cl).length, done = ach.filter(x => x.cl).length;
+  const fil = UI.achF || 'todos', shown = ach.filter(x => fil === 'todos' ? true : fil === 'listos' ? x.ok && !x.cl : x.a.stat === fil);
+  const prof = isLogged() && !once.has('perfil');
+  draw(`${ecoNav('ganar')}<section class="pagehead"><h1>Ganá monedas</h1><p class="dim">Todo esto es gratis y sin suerte. Se suma a las misiones diarias y semanales.</p></section>${login}
+    <div class="earngrid">
+      <section class="panel earn inv"><h2>Invitá amigos</h2><p class="dim">Cuando tu amigo se crea la cuenta desde tu link, ganás <b>1.500</b> y él arranca con <b>1.000</b> extra. Al llegar a 3 amigos, te llevás <b>4.300</b> más.</p>
+        ${isLogged() ? `<div class="invlink"><input type="text" readonly value="${h(inviteLink())}" id="invlink"><button class="btn pri" data-act="invcopy">Copiar link</button></div><div class="pbar"><i style="width:${Math.min(100, (st.referrals || 0) / 3 * 100)}%"></i></div><small class="dim">${st.referrals || 0} ${st.referrals === 1 ? 'amigo invitado' : 'amigos invitados'}${(st.referrals || 0) < 3 ? ` · te faltan ${3 - (st.referrals || 0)} para el premio de 4.300` : ' · ¡premio de 4.300 cobrado!'}</small><p class="small dim">Se cuentan hasta 10 amigos por mes. Tienen que ser cuentas nuevas.</p>` : ''}</section>
+      <section class="panel earn"><h2>Racha de días seguidos</h2><p class="dim">Entrá todos los días. Si cortás la racha, vuelve a empezar y podés cobrar los premios de nuevo.</p><div class="streakbig"><b>${streak}</b><span>${streak === 1 ? 'día seguido' : 'días seguidos'}</span></div>
+        <div class="stm">${STREAK_M.map(([m, r]) => { const cl = sc.has(m), ok = streak >= m; return `<div class="stmi ${cl ? 'got' : ok ? 'ready' : ''}"><b>${m} días</b><span>${coinSVG(12)} ${r.toLocaleString('es-AR')}</span>${cl ? '<small>Cobrado</small>' : ok && isLogged() ? `<button class="btn sm pri" data-act="streakc" data-m="${m}">Cobrar</button>` : `<small>${m - streak} más</small>`}</div>`; }).join('')}</div></section>
+      ${prof || !isLogged() ? `<section class="panel earn"><h2>Completá tu perfil</h2><p class="dim">Poné una foto, escribí algo sobre vos y elegí 5 series favoritas. Te damos <b>1.000</b> una sola vez.</p>${isLogged() ? `<div class="actions"><button class="btn pri" data-act="profbonus">Cobrar</button><a class="btn" href="#/perfil">Ir a mi perfil</a></div>` : ''}</section>` : ''}
+      <section class="panel earn"><h2>Premios por ser popular</h2><p class="dim">Cada me gusta que te dan en tus <b>listas</b> o <b>reseñas</b> te paga <b>50</b> monedas, hasta 1.000 por día. Cuanto mejores tus listas, más ganás, como un youtuber. Los me gusta de cuentas creadas hace menos de un día no cuentan.</p><div class="actions"><a class="btn" href="#/listas">Ver listas</a><a class="btn" href="#/perfil">Crear una lista</a></div></section>
+    </div>
+    <section class="panel sec rankw"><div class="rkhead"><h2>Ranking de la semana</h2><span class="dim">Por misiones cobradas. Cada lunes, el top 10 gana premio.</span></div>
+      <div class="rkprizes"><span><b>1º</b> ${coinSVG(12)} 10.000 + 3 Cajas Especiales</span><span><b>2º</b> ${coinSVG(12)} 6.000 + 2 cajas</span><span><b>3º</b> ${coinSVG(12)} 4.000 + 1 caja</span><span><b>4º a 10º</b> ${coinSVG(12)} 1.500 + 1 caja</span></div>
+      ${myPrev && myPrev.pos <= 10 && !once.has('rank' + lastMonday()) ? `<div class="rkclaim"><b>¡La semana pasada quedaste ${myPrev.pos}º!</b><button class="btn pri" data-act="rankclaim">Cobrar premio</button></div>` : ''}
+      ${(st.bonus_boxes || 0) > 0 ? `<div class="rkclaim"><b>Tenés ${st.bonus_boxes} ${st.bonus_boxes === 1 ? 'Caja Especial de premio' : 'Cajas Especiales de premio'}</b><button class="btn pri" data-act="bonusbox">Abrir una</button></div>` : ''}
+      <ol class="rkw">${rank.length ? rank.map(r => `<li class="${isLogged() && r.user_id === ME.id ? 'me' : ''}"><b class="pos">${r.pos}</b><a href="#/u/${h(r.username)}">${avatar(r, 32)}<span>${h(r.name || r.username)}</span></a><em>${r.n} ${r.n == 1 ? 'misión' : 'misiones'}</em></li>`).join('') : '<p class="dim">Todavía nadie cobró misiones esta semana. ¡Arrancá vos!</p>'}</ol></section>
+    <section class="sec"><div class="achhead"><h2>Logros con premio <span class="dim">${done} de ${ACHS.length}</span></h2>${ready ? `<span class="chip">${ready} para cobrar</span>` : ''}</div>
+      <div class="tabs">${[['todos', 'Todos'], ['listos', 'Para cobrar']].concat(Object.entries(STATN)).map(([k, n]) => `<button class="tab ${fil === k ? 'on' : ''}" data-act="achf" data-v="${k}">${n}</button>`).join('')}</div>
+      <div class="achgrid">${shown.map(({ a, n, ok, cl }) => `<div class="achc ${cl ? 'got' : ok ? 'ready' : ''}"><div class="achtop"><b>${h(a.name)}</b><span>${coinSVG(12)} ${a.reward.toLocaleString('es-AR')}</span></div><small class="dim">${h(a.descr)}</small><div class="pbar"><i style="width:${Math.min(100, n / a.goal * 100)}%"></i></div><div class="achbot"><small class="dim">${Math.min(n, a.goal).toLocaleString('es-AR')} de ${a.goal.toLocaleString('es-AR')}</small>${cl ? '<small>Cobrado</small>' : ok && isLogged() ? `<button class="btn sm pri" data-act="achc" data-id="${h(a.id)}">Cobrar</button>` : ''}</div></div>`).join('') || '<p class="dim">Nada por acá.</p>'}</div></section>
+    ${st0 === null && isLogged() ? '<p class="small dim">Para usar esto hay que correr supabase_v22.sql en Supabase.</p>' : ''}`);
+}
+const lastMonday = () => { const d = new Date(todayAR() + 'T12:00:00Z'), dow = (d.getUTCDay() + 6) % 7; d.setUTCDate(d.getUTCDate() - dow - 7); return d.toISOString().slice(0, 10); };
+const afterWallet = async w => { if (w && w.coins != null) setWallet(Array.isArray(w) ? w[0] : w); if (typeof loadWallet === 'function') await loadWallet(); refresh(); };
+document.addEventListener('click', async e => {
+  const t = e.target.closest('[data-act]'); if (!t) return; const a = t.dataset.act;
+  if (a === 'achf') { UI.achF = t.dataset.v; refresh(); return; }
+  if (a === 'invcopy') { try { await navigator.clipboard.writeText(inviteLink()); toast('Link copiado. ¡Mandalo a tus amigos!'); } catch (x) { const i = document.getElementById('invlink'); i.select(); document.execCommand('copy'); toast('Link copiado.'); } return; }
+  const run = async (fn, okMsg, fx) => { t.disabled = true; try { const w = await fn(); const r = t.getBoundingClientRect(); if (fx !== false) burstAt(r.left + r.width / 2, r.top, ['#ffd24a', '#f2ede5', '#ec9cba'], 18, 'confeti'); toast(typeof okMsg === 'function' ? okMsg(w) : okMsg); await afterWallet(w); } catch (x) { t.disabled = false; toast(x.message); } };
+  if (a === 'achc') return run(() => rest('rpc/claim_achievement', { method: 'POST', body: { p_id: t.dataset.id } }), '¡Logro cobrado!');
+  if (a === 'streakc') return run(() => rest('rpc/claim_streak', { method: 'POST', body: { p_m: +t.dataset.m } }), '¡Premio de racha cobrado!');
+  if (a === 'profbonus') return run(() => rest('rpc/claim_profile_bonus', { method: 'POST', body: {} }), '¡+1.000 por completar tu perfil!');
+  if (a === 'rankclaim') return run(() => rest('rpc/claim_rank_reward', { method: 'POST', body: {} }), r => { const x = typeof r === 'string' ? JSON.parse(r) : r || {}; return `¡Premio del ${x.pos}º puesto cobrado: ${(+x.coins || 0).toLocaleString('es-AR')} monedas y ${x.boxes} ${x.boxes == 1 ? 'caja' : 'cajas'}!`; });
+  if (a === 'bonusbox') {
+    t.disabled = true;
+    try { let res = await rest('rpc/open_bonus_box', { method: 'POST', body: {} }); if (typeof res === 'string') res = JSON.parse(res); const item = res.item || res; if (res.coins != null) WALLET.coins = res.coins; INV.list.unshift(item); spinReveal('especial', item, () => { opening = false; refresh(); }); }
+    catch (x) { t.disabled = false; toast(x.message); }
+  }
+});
+
+// ---------- link de invitación: se guarda y se cobra solo cuando la persona se crea la cuenta
+async function vInvite(args, draw) {
+  const u = String(args[0] || '').toLowerCase().replace(/[^a-z0-9_]/g, '');
+  if (u) { try { localStorage.setItem('jvnn_ref', u); } catch (e) { } }
+  if (isLogged()) { location.hash = '#/ganar'; return; }
+  draw(`<section class="invhero panel sec"><h1>@${h(u)} te invitó a JVNN</h1><p>Anotá tus series y pelis, personalizá tu perfil y ganá premios de verdad. Si te creás la cuenta desde acá, arrancás con <b>${coinSVG(16)} 1.000 monedas extra</b>.</p><div class="actions"><a class="btn pri" href="#/entrar/crear">Crear mi cuenta gratis</a><a class="btn" href="#/">Mirar la página primero</a></div></section>`);
+}
+let refTried = false;
+setInterval(async () => {
+  if (refTried || !isLogged() || !sbOK()) return;
+  let ref = ''; try { ref = localStorage.getItem('jvnn_ref') || ''; } catch (e) { }
+  if (!ref) { refTried = true; return; }
+  refTried = true;
+  try { await rest('rpc/claim_referral', { method: 'POST', body: { p_ref: ref } }); try { localStorage.removeItem('jvnn_ref'); } catch (e) { } toast(`¡Bienvenido! Te sumamos 1.000 monedas por venir con la invitación de @${ref}.`); if (typeof loadWallet === 'function') loadWallet(); }
+  catch (x) { if (/cuentas nuevas|Ya usaste|no sirve/.test(x.message)) { try { localStorage.removeItem('jvnn_ref'); } catch (e) { } } }
+}, 3000);
+function ecoNav(cur) { return `<nav class="econav">${[['ganar', 'Ganá monedas'], ['tienda', 'Tienda'], ['cajas', 'Cajas'], ['misiones', 'Misiones'], ['temporada', 'Pase'], ['inventario', 'Inventario'], ['mercado', 'Mercado'], ['intercambios', 'Intercambios'], ['canjes', 'Canjes'], ['sorteos', 'Sorteos'], ['bucks', 'Bucks']].map(([k, n]) => `<a class="${k === cur ? 'on' : ''}" href="#/${k}">${n}</a>`).join('')}<span class="ecocoins">${coinSVG(18)} <b>${WALLET.coins.toLocaleString('es-AR')}</b></span><span class="ecocoins bk">${buckSVG(18)} <b>${(WALLET.bucks || 0).toLocaleString('es-AR')}</b></span></nav>`; }
 
 
 // ============================================================ ONLINE (Supabase)
