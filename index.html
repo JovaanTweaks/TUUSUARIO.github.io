@@ -2613,6 +2613,15 @@ body[data-sec="colecciones"]{--sec:#ffd24a}
 .galit:hover{border-color:var(--rc)}.galth{width:100%;aspect-ratio:1;display:block}.galth svg,.galth>*{width:100%;height:100%}.galit b{font-size:13px;line-height:1.2}.galit small{color:var(--rc);font-weight:700;font-size:11px}
 @media(max-width:420px){.galgrid{grid-template-columns:1fr 1fr}}
 .dkflk{animation:dkflk 1.4s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 100%}@keyframes dkflk{to{transform:scaleY(1.12);opacity:.85}}
+/* v43: más liviano. Las figuras en listas largas quedan quietas (se mueven al pasar el mouse) y lo que no está en pantalla no se dibuja */
+.igrid svg *,.galgrid svg *,.bvgrid svg *,.collgrid svg *,.m100g svg *,.multi svg *,.hsgrid svg *{animation-play-state:paused!important}
+.icard:hover svg *,.galit:hover svg *,.bvit:hover svg *,.m100i:hover svg *{animation-play-state:running!important}
+.pgidle *,.pgidle *::before,.pgidle *::after{animation-play-state:paused!important}
+.igrid>.icard{content-visibility:auto;contain-intrinsic-size:auto 380px}.galgrid>.galit{content-visibility:auto;contain-intrinsic-size:auto 200px}.bvgrid>.bvit{content-visibility:auto;contain-intrinsic-size:auto 180px}
+.m100r{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0 10px}.m100r span{padding:4px 10px;border-radius:99px;border:1px solid var(--rc);font-size:13px}.m100r b{color:var(--rc)}
+.m100g{display:grid;grid-template-columns:repeat(auto-fill,minmax(82px,1fr));gap:6px;max-height:46vh;overflow:auto;padding:2px}.m100i{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 4px;border-radius:10px;background:rgba(255,255,255,.04);box-shadow:inset 0 -2px 0 var(--rc)}
+.m100i .ithumb{width:62px;height:62px;display:block}.m100i .ithumb>*{width:100%;height:100%}.m100i small{font-size:10px;line-height:1.15;text-align:center;opacity:.85;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.m100 .btn{margin-top:10px}
 </style>
 <!-- TUS CAMBIOS DE DISEÑO: van en el archivo mis-estilos.css (al lado de este index.html). Ese archivo yo no lo piso nunca. -->
 <link rel="stylesheet" href="mis-estilos.css" onerror="this.remove()">
@@ -2645,7 +2654,7 @@ body[data-sec="colecciones"]{--sec:#ffd24a}
 
 <footer><div class="wrap"><img class="ftlogo" src="" alt="JVNN" loading="lazy">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 27.0</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 28.0</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -6678,21 +6687,26 @@ document.addEventListener('click', e => {
 });
 
 // ---------- INVENTARIO
+// el inventario se muestra de a 48 (con miles de figuras la página se trababa)
+var INVV = { n: 48, list: [], lm: {} };
+function invCardHTML(it, lm) { const l = lm[it.id], c = catOf(it.cid), on = c.f === 'sticker' ? false : S.profile.style[c.f] === c.k; return collCard(it, l ? `<span class="chip">En venta · ${coinSVG(12)} ${l.price}</span><button class="btn sm ghost" data-act="mkcancel" data-id="${l.id}">Sacar de venta</button>` : `<button class="btn sm ${on ? '' : 'pri'}" data-act="equipitem" data-cid="${h(it.cid)}">${on ? 'Puesto' : 'Poner'}</button><button class="btn sm" data-act="mklist" data-id="${it.id}">Vender</button>`); }
+function invMoreHTML(total) { return total > INVV.n ? `<div class="actions invmore" style="justify-content:center;margin:18px 0"><button class="btn" data-act="invmore">Ver más (${(total - INVV.n).toLocaleString('es-AR')} restantes)</button></div>` : ''; }
 async function vInventory(_, draw, alive) {
   if (!isLogged()) return needLogin(draw);
   draw(`${ecoNav('inventario')}<div class="sec">${Array.from({ length: 8 }, () => '<div class="skel" style="height:220px;display:inline-block;width:180px;margin:6px"></div>').join('')}</div>`);
   await loadInv(); if (!alive()) return;
   const listed = await sbTry(() => rest(`market?select=id,item_id,price&seller=eq.${ME.id}&status=eq.active`), []) || [];
-  const lm = Object.fromEntries(listed.map(l => [l.item_id, l]));
-  const fr = UI.invR || 'todas', list = INV.list.filter(it => fr === 'todas' || catOf(it.cid).r === fr).sort((a, b) => RAR[catOf(b.cid).r].o - RAR[catOf(a.cid).r].o || a.serial - b.serial);
+  const lm = INVV.lm = Object.fromEntries(listed.map(l => [l.item_id, l]));
+  const fr = UI.invR || 'todas', list = INVV.list = INV.list.filter(it => fr === 'todas' || catOf(it.cid).r === fr).sort((a, b) => RAR[catOf(b.cid).r].o - RAR[catOf(a.cid).r].o || a.serial - b.serial);
   const counts = {}; for (const it of INV.list) counts[catOf(it.cid).r] = (counts[catOf(it.cid).r] || 0) + 1;
   draw(`${ecoNav('inventario')}<section class="pagehead"><div class="eyebrow">Inventario</div><h1>Tus objetos</h1><p class="dim">${plural(INV.list.length, 'objeto', 'objetos')}. Lo que tenés acá ya está desbloqueado para tu perfil.<span data-invtotal></span></p></section>
     <div class="tabs">${[['todas', 'Todas']].concat(RORD.map(r => [r, RAR[r].n])).map(([k, n]) => `<button class="tab ${k === fr ? 'on' : ''}" data-act="invr" data-v="${k}">${n}${k === 'todas' ? '' : `<span>${counts[k] || 0}</span>`}</button>`).join('')}</div>
-    ${list.length ? `<div class="igrid">${list.map(it => { const l = lm[it.id], c = catOf(it.cid), on = c.f === 'sticker' ? false : S.profile.style[c.f] === c.k; return collCard(it, l ? `<span class="chip">En venta · ${coinSVG(12)} ${l.price}</span><button class="btn sm ghost" data-act="mkcancel" data-id="${l.id}">Sacar de venta</button>` : `<button class="btn sm ${on ? '' : 'pri'}" data-act="equipitem" data-cid="${h(it.cid)}">${on ? 'Puesto' : 'Poner'}</button><button class="btn sm" data-act="mklist" data-id="${it.id}">Vender</button>`); }).join('')}</div>`
+    ${list.length ? `<div class="igrid" id="invgrid">${list.slice(0, INVV.n).map(it => invCardHTML(it, lm)).join('')}</div>${invMoreHTML(list.length)}`
       : `<div class="empty sec"><h3>Todavía no tenés objetos</h3><div>Abrí una caja para empezar tu colección.</div><a class="btn pri" href="#/cajas">Ir a las cajas</a></div>`}`);
 }
 document.addEventListener('click', async e => {
-  const t = e.target.closest('[data-act="invr"]'); if (t) { UI.invR = t.dataset.v; refresh(); return; }
+  const t = e.target.closest('[data-act="invr"]'); if (t) { UI.invR = t.dataset.v; INVV.n = 48; refresh(); return; }
+  const im = e.target.closest('[data-act="invmore"]'); if (im) { const g = document.getElementById('invgrid'), from = INVV.n; INVV.n += 48; if (g) g.insertAdjacentHTML('beforeend', INVV.list.slice(from, INVV.n).map(it => invCardHTML(it, INVV.lm)).join('')); im.closest('.invmore').outerHTML = invMoreHTML(INVV.list.length); return; }
   const l = e.target.closest('[data-act="mklist"]');
   if (l) { const v = prompt('¿A cuántas monedas lo querés vender? (la página se queda con el 5%)'); const p = parseInt(String(v || '').replace(/\D/g, '')); if (!p) return; try { await rest('rpc/market_list', { method: 'POST', body: { p_item: +l.dataset.id, p_price: p } }); toast('Publicado en el mercado.'); refresh(); } catch (x) { toast(x.message); } return; }
   const c = e.target.closest('[data-act="mkcancel"]');
@@ -10999,6 +11013,58 @@ let galT = 0; document.addEventListener('input', e => { if (!e.target.matches('[
 function ecoNav(cur) { return `<nav class="econav">${[['ganar', 'Ganá monedas'], ['tienda', 'Tienda'], ['cajas', 'Cajas'], ['batallas', 'Batallas'], ['misiones', 'Misiones'], ['temporada', 'Pase'], ['inventario', 'Inventario'], ['colecciones', 'Colecciones'], ['galeria', 'Galería'], ['mercado', 'Mercado'], ['intercambios', 'Intercambios'], ['taller', 'Taller'], ['canjes', 'Canjes'], ['sorteos', 'Sorteos'], ['bucks', 'Bucks']].map(([k, n]) => `<a class="${k === cur ? 'on' : ''}" href="#/${k}">${n}</a>`).join('')}<span class="ecocoins">${coinSVG(18)} <b>${WALLET.coins.toLocaleString('es-AR')}</b></span><span class="ecocoins bk">${buckSVG(18)} <b>${(WALLET.bucks || 0).toLocaleString('es-AR')}</b></span></nav>`; }
 
 
+// ============================================================ V43: ABRIR 100 CAJAS (bien hecho) + LA PÁGINA MÁS LIVIANA
+// ---------- Abrir 100: el servidor abre de a 10, así que se piden 10 tandas seguidas y se muestra un resumen liviano
+const OPEN100 = { busy: false };
+let ob100T = 0;
+function addOpen100() {
+  clearTimeout(ob100T);
+  ob100T = setTimeout(() => {
+    if (parseRoute().name !== 'cajas') return;
+    document.querySelectorAll('#app .boxcard:not([data-o100])').forEach(card => {
+      card.dataset.o100 = '1'; const k = (card.className.match(/bx-([a-z]+)/) || [])[1], b = BOXES[k], btns = card.querySelector('.boxbtns');
+      if (!b || !btns || b.p > 5000) return;
+      btns.insertAdjacentHTML('beforeend', `<button class="btn" data-act="openbox100" data-b="${k}">Abrir 100 · ${coinSVG(14)} ${(b.p * 100).toLocaleString('es-AR')}</button>`);
+    });
+  }, 120);
+}
+{ const app = document.getElementById('app'); if (app) new MutationObserver(addOpen100).observe(app, { childList: true, subtree: true }); }
+const setOpenBtns = on => document.querySelectorAll('[data-act="openboxn"],[data-act="openbox100"]').forEach(x => x.disabled = !on);
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-act="openbox100"]'); if (!b) return; e.stopImmediatePropagation();
+  if (opening || OPEN100.busy) return;
+  if (!isLogged()) { location.hash = '#/entrar/crear'; return; }
+  const k = b.dataset.b, box = BOXES[k]; if (!box) return;
+  if (WALLET.coins < box.p * 100) return toast(`Te faltan ${(box.p * 100 - WALLET.coins).toLocaleString('es-AR')} monedas para abrir 100.`);
+  if (!await ask('¿Abrir 100 cajas?', `Son ${(box.p * 100).toLocaleString('es-AR')} monedas de una. Te mostramos lo mejor que salió y todo queda en tu inventario.`, [['yes', 'Abrir 100', 'pri']])) return;
+  opening = true; OPEN100.busy = true; setOpenBtns(false);
+  const old = b.innerHTML, items = []; let err = '';
+  for (let i = 0; i < 10; i++) {
+    b.textContent = `Abriendo… ${i * 10}/100`;
+    try { let res = await rest('rpc/open_boxes', { method: 'POST', body: { box_id: k, n: 10 } }); if (typeof res === 'string') res = JSON.parse(res); items.push(...(res.items || []).map(r => r.item)); if (res.coins != null) WALLET.coins = +res.coins; }
+    catch (x) { err = x.message; break; }
+  }
+  b.innerHTML = old; renderCoins(); INV.list.unshift(...items); OPEN100.busy = false;
+  if (!items.length) { opening = false; setOpenBtns(true); return toast(err || 'No se pudo abrir.'); }
+  if (err) toast(`Se abrieron ${items.length} (después: ${err})`);
+  const sorted = items.slice().sort((a, c) => RAR[catOf(c.cid).r].o - RAR[catOf(a.cid).r].o || estOf(c) - estOf(a));
+  spinReveal(k, sorted[0], () => {
+    opening = false; setOpenBtns(true);
+    const rv = document.querySelector('.boxov .reveal'); if (!rv) return;
+    const cnt = {}, val = items.reduce((a, it) => a + estOf(it), 0); for (const it of items) { const r = catOf(it.cid).r; cnt[r] = (cnt[r] || 0) + 1; }
+    rv.insertAdjacentHTML('beforeend', `<div class="multi m100"><div class="lb">Salieron ${items.length} · valen ${coinSVG(13)} ${fmtc(val)} en total</div>
+      <div class="m100r">${RORD.slice().reverse().filter(r => cnt[r]).map(r => `<span style="--rc:${RAR[r].c}"><b>${cnt[r]}</b> ${RAR[r].n}</span>`).join('')}</div>
+      <div class="m100g">${sorted.slice(0, 24).map(it => { const c = catOf(it.cid); return `<span class="m100i" style="--rc:${RAR[c.r].c}" title="${h(c.n)}">${itemThumb(it.cid, it.pattern, it.wear, it.serial)}<small>${h(c.n)}</small></span>`; }).join('')}</div>
+      ${items.length > 24 ? `<a class="btn sm" href="#/inventario" data-act="closebox">Ver las ${items.length} en el inventario</a>` : ''}</div>`);
+  });
+}, true);
+// ---------- si algo falla a mitad de una apertura, los botones se destraban solos (antes había que recargar la página)
+{ let stuck = 0; setInterval(() => { if (opening && !OPEN100.busy && !document.querySelector('.boxov')) { if (++stuck >= 3) { opening = false; setOpenBtns(true); stuck = 0; } } else stuck = 0; }, 4000); }
+document.addEventListener('click', e => { if (e.target.closest('.boxov [data-act="closebox"], .boxov .boxx, .boxov [data-act="openagain"]')) setTimeout(() => { if (!document.querySelector('.boxov') && !OPEN100.busy) { opening = false; setOpenBtns(true); } }, 50); });
+// ---------- animaciones en pausa cuando la pestaña no se ve (ahorra compu y batería)
+document.addEventListener('visibilitychange', () => document.documentElement.classList.toggle('pgidle', document.hidden));
+
+
 // ============================================================ ONLINE (Supabase)
 // Cliente propio y liviano: Auth (GoTrue) + base de datos (PostgREST) con fetch.
 const ONLINE = !!(CONFIG.supabaseUrl && CONFIG.supabaseKey);
@@ -11404,112 +11470,7 @@ async function boot() {
   if (AD.b728) setTimeout(() => { loadTopAd(true); loadBottomAds(); }, 600);
 }
 boot();
-// ============================================================ V28: OPTIMIZACIÓN Y FLUIDEZ
-// 1. Evitar que el inventario sature el procesador en segundo plano
-function fill17() {
-  clearTimeout(fillT17);
-  fillT17 = setTimeout(async () => {
-    const app = document.getElementById('app');
-    if (!app) return;
-    const els = [...app.querySelectorAll('.icard.v17:not([data-mkd])')];
-    const tot = app.querySelector('[data-invtotal]:not([data-mkd])');
-    if (!els.length && !tot) return;
-    await loadMk17();
-    for (const el of els) {
-      el.dataset.mkd = '1';
-      const it = { cid: el.dataset.mkcid, serial: +el.dataset.ser, pattern: +el.dataset.pat, wear: +el.dataset.wear };
-      const e = el.querySelector('[data-est]'); if (e) e.textContent = fmtc(estOf(it));
-      const m = el.querySelector('[data-mk]'); if (m) m.innerHTML = mkLine(it.cid);
-    }
-    if (tot) { 
-      tot.dataset.mkd = '1'; 
-      const sum = INV.list.reduce((a, it) => a + estOf(it), 0); 
-      tot.innerHTML = (sum ? ` Tu colección vale <b>${coinSVG(14)} ${fmtc(sum)}</b> (estimado).` : '') + ' <a href="#" data-act="valhelp">¿Qué hace valioso a un objeto?</a>'; 
-    }
-  }, 250);
-}
 
-// 2. Pausar animaciones pesadas de canvas si cambiás de pestaña (ahorra batería y CPU)
-document.addEventListener('visibilitychange', () => {
-  const canvases = document.querySelectorAll('canvas.pfxcv, canvas.entcv');
-  canvases.forEach(c => { c.style.display = document.hidden ? 'none' : ''; });
-});
-
-// 3. Subir la versión automáticamente en el pie
-(() => {
-  const v = document.querySelector('.version');
-  if (v) v.textContent = 'Versión 28.0';
-})();
-// 4. Reducir cálculos pesados al scrollear rápido
-if (typeof updRow === 'function') {
-  let _rowT = 0;
-  const _origUpdRow = updRow;
-  updRow = function(r) {
-    const now = performance.now();
-    if (now - _rowT < 40) return; // evita ejecutar 60 veces por segundo
-    _rowT = now;
-    _origUpdRow(r);
-  };
-}
-
-// 5. Frenar repintados dobles al cambiar de vista
-if (typeof route === 'function') {
-  let _routeT = null;
-  const _origRoute = route;
-  route = function(keepScroll) {
-    clearTimeout(_routeT);
-    _routeT = setTimeout(() => _origRoute(keepScroll), 10);
-  };
-}// 4. Reducir cálculos pesados al scrollear rápido
-if (typeof updRow === 'function') {
-  let _rowT = 0;
-  const _origUpdRow = updRow;
-  updRow = function(r) {
-    const now = performance.now();
-    if (now - _rowT < 40) return; // evita ejecutar 60 veces por segundo
-    _rowT = now;
-    _origUpdRow(r);
-  };
-}
-
-// 5. Frenar repintados dobles al cambiar de vista
-if (typeof route === 'function') {
-  let _routeT = null;
-  const _origRoute = route;
-  route = function(keepScroll) {
-    clearTimeout(_routeT);
-    _routeT = setTimeout(() => _origRoute(keepScroll), 10);
-  };
-}
-// ============================================================ V44: BOTÓN ABRIR 100 CAJAS FIJO
-(() => {
-  const patchBoxes = () => {
-    if (location.hash !== '#/cajas') return;
-    document.querySelectorAll('.boxcard').forEach(card => {
-      const btns = card.querySelector('.boxbtns');
-      if (!btns || btns.querySelector('[data-n="100"]')) return;
-      
-      // Buscamos qué caja es mirando su clase (bx-normal, bx-especial, etc.)
-      const match = card.className.match(/bx-([a-z]+)/);
-      const bName = match ? match[1] : 'normal';
-      const boxObj = typeof BOXES !== 'undefined' ? BOXES[bName] : null;
-      if (!boxObj) return;
-      
-      const p100 = boxObj.p * 100;
-      btns.insertAdjacentHTML('beforeend', `<button class="btn big" data-act="openboxn" data-b="${bName}" data-n="100">Abrir 100 · ${coinSVG(16)} ${p100.toLocaleString('es-AR')}</button>`);
-    });
-  };
-
-  // Se fija permanentemente si estás en la sección de cajas y pone el botón
-  const app = document.getElementById('app');
-  if (app) {
-    new MutationObserver(() => {
-      setTimeout(patchBoxes, 50);
-    }).observe(app, { childList: true, subtree: true });
-  }
-  window.addEventListener('hashchange', () => setTimeout(patchBoxes, 100));
-})();
-})();
 </script>
 </body>
 </html>
