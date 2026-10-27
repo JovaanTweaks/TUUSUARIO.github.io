@@ -2190,6 +2190,19 @@ html body .earngrid>.panel{margin:0!important}
 .genv{display:flex;flex-direction:column;align-items:center;gap:1px;font-size:11.5px;font-weight:800;margin-top:2px}.genv i{font-style:normal;font-weight:700;color:#7fb8ff;font-size:10.5px}
 .genbig{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:12px;padding:12px;border-radius:14px;background:var(--surface);border:1px solid var(--line);max-width:300px}
 .genbigart{width:150px;height:150px;display:grid;place-items:center}.genbigart svg{width:100%;height:100%}
+
+/* ===== V27: acomodar el GIF del banner ===== */
+html body .gifprev{height:auto;aspect-ratio:4.6/1;cursor:grab;touch-action:none;user-select:none}html body .gifprev:active{cursor:grabbing}
+html body .gifprev img{width:100%;height:100%;object-fit:cover;pointer-events:none}
+.gifadj{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:8px}.gifadj label{display:flex;flex-direction:column;gap:4px;font-size:12.5px;color:var(--dim);font-weight:600}.gifadj input{accent-color:var(--accent)}
+@media (max-width:600px){.gifadj{grid-template-columns:1fr}}
+.pbanner{overflow:hidden}
+
+/* ===== V28: volumen de la música ===== */
+html body .musicpill{padding:4px 12px 4px 4px;gap:10px;cursor:default}
+.mptog{display:inline-flex;align-items:center;gap:8px;border:0;background:var(--raise);color:var(--fg);font:600 13px/1.2 var(--body);padding:6px 12px;border-radius:999px;cursor:pointer}
+.mpvol{display:inline-flex;align-items:center;gap:6px;color:var(--dim)}.mpvol svg{width:16px;height:16px}.mpvol input{width:90px;accent-color:var(--accent)}
+html body .musicpill.on .mbars i{animation:mbar .8s ease-in-out infinite}
 </style>
 </head>
 <body>
@@ -2220,7 +2233,7 @@ html body .earngrid>.panel{margin:0!important}
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 20.2</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 20.4</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -7598,10 +7611,14 @@ document.addEventListener('click', async e => {
 });
 
 // ---------- perfil: insignia, GIF de fondo y música
+const gifPos = r => ({ x: r && r.gif_x != null ? +r.gif_x : 50, y: r && r.gif_y != null ? +r.gif_y : 50, z: r && r.gif_z != null ? +r.gif_z : 100 });
+const gifStyle = p => `object-position:${p.x}% ${p.y}%;transform:scale(${p.z / 100});transform-origin:${p.x}% ${p.y}%`;
 let MUSIC = null;
 function stopMusic() { if (MUSIC) { MUSIC.remove(); MUSIC = null; } document.querySelectorAll('.musicpill').forEach(x => x.remove()); }
 const ytId = u => { const m = String(u || '').match(/(?:v=|youtu\.be\/)([A-Za-z0-9_-]{11})/); return m ? m[1] : ''; };
-function playMusic(id) { if (MUSIC) return; MUSIC = document.createElement('iframe'); MUSIC.className = 'musicframe'; MUSIC.allow = 'autoplay; encrypted-media'; MUSIC.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&loop=1&playlist=${id}&controls=0`; document.body.appendChild(MUSIC); const p = document.querySelector('.musicpill'); if (p) p.classList.add('on'); }
+let MUSVOL = 60;
+const ytVol = v => { if (!MUSIC || !MUSIC.contentWindow) return; try { MUSIC.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'setVolume', args: [v] }), '*'); if (v > 0) MUSIC.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'unMute', args: [] }), '*'); } catch (e) { } };
+function playMusic(id) { if (MUSIC) return; MUSIC = document.createElement('iframe'); MUSIC.className = 'musicframe'; MUSIC.allow = 'autoplay; encrypted-media'; MUSIC.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&loop=1&playlist=${id}&controls=0&enablejsapi=1`; MUSIC.addEventListener('load', () => [400, 1200, 2500, 5000].forEach(t => setTimeout(() => ytVol(MUSVOL), t))); document.body.appendChild(MUSIC); const p = document.querySelector('.musicpill'); if (p) p.classList.add('on'); }
 let profT = 0;
 function decoProfile() {
   clearTimeout(profT);
@@ -7614,17 +7631,20 @@ function decoProfile() {
     else { await loadSupBy('byUser', [R.args[0]]); r = SUP.byUser[R.args[0]]; }
     if (!supActive(r)) { stopMusic(); return; }
     const nameEl = card.querySelector('.pid h1'); if (nameEl && !card.querySelector('.supbadge')) nameEl.insertAdjacentHTML('afterend', supBadge(r));
-    const ban = card.querySelector('.pbanner'); if (ban && r.gif && !ban.querySelector('.gifban')) ban.insertAdjacentHTML('afterbegin', `<img class="gifban" src="${h(r.gif)}" alt="">`);
+    const ban = card.querySelector('.pbanner'); if (ban && r.gif && !ban.querySelector('.gifban')) ban.insertAdjacentHTML('afterbegin', `<img class="gifban" src="${h(r.gif)}" alt="" style="${gifStyle(gifPos(r))}">`);
     stopMusic();
     const id = ytId(r.music);
     if (id) {
-      document.body.insertAdjacentHTML('beforeend', `<button class="musicpill" data-act="musictoggle" data-id="${id}"><span class="mbars"><i></i><i></i><i></i></span><span>Música de este perfil</span></button>`);
+      let mine = null; try { mine = localStorage.getItem('jvnn_vol'); } catch (e) { }
+      MUSVOL = mine != null && mine !== '' ? +mine : (r.music_vol != null ? +r.music_vol : 60);
+      document.body.insertAdjacentHTML('beforeend', `<div class="musicpill"><button class="mptog" data-act="musictoggle" data-id="${id}" aria-label="Prender o apagar la música"><span class="mbars"><i></i><i></i><i></i></span><span>Música de este perfil</span></button><label class="mpvol" title="Volumen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/></svg><input type="range" id="musvol" min="0" max="100" value="${MUSVOL}" aria-label="Volumen"></label></div>`);
       const start = () => { document.removeEventListener('pointerdown', start, true); if (document.querySelector('.musicpill')) playMusic(id); };
       document.addEventListener('pointerdown', start, true);
     }
   }, 120);
 }
-document.addEventListener('click', e => { const b = e.target.closest('[data-act="musictoggle"]'); if (!b) return; if (MUSIC) { MUSIC.remove(); MUSIC = null; b.classList.remove('on'); } else playMusic(b.dataset.id); });
+document.addEventListener('click', e => { const b = e.target.closest('[data-act="musictoggle"]'); if (!b) return; if (MUSIC) { MUSIC.remove(); MUSIC = null; (b.closest('.musicpill') || b).classList.remove('on'); } else playMusic(b.dataset.id); });
+document.addEventListener('input', e => { if (e.target.id === 'musvol') { MUSVOL = +e.target.value; try { localStorage.setItem('jvnn_vol', MUSVOL); } catch (x) { } ytVol(MUSVOL); } });
 window.addEventListener('hashchange', () => { const n = parseRoute().name; if (!['u', 'perfil'].includes(n)) stopMusic(); });
 { const app = document.getElementById('app'); if (app) new MutationObserver(() => { decoComments(); decoProfile(); }).observe(app, { childList: true, subtree: true }); }
 
@@ -7667,12 +7687,22 @@ function supEditor(r) {
     <label class="lb" for="spgif">GIF de fondo de tu perfil</label>
     <div class="gifrow"><input type="url" id="spgif" value="${h(r.gif || '')}" placeholder="Pegá un link de GIPHY o Tenor"><label class="btn" for="spgifup">Subir el mío</label><input type="file" id="spgifup" accept="image/gif,image/webp,image/png,image/jpeg" hidden></div>
     ${CONFIG.giphyKey ? `<div class="gifsearch"><input type="search" id="spgifq" placeholder="Buscar GIFs…"><div class="gifres" id="spgifres"></div></div>` : ''}
-    <div class="gifprev" id="spgifprev">${r.gif ? `<img src="${h(r.gif)}" alt="">` : '<span class="dim">Sin GIF</span>'}</div>
+    <div class="gifprev" id="spgifprev" title="Arrastrá para moverlo">${r.gif ? `<img src="${h(r.gif)}" alt="" style="${gifStyle(gifPos(r))}" draggable="false">` : '<span class="dim">Sin GIF</span>'}</div>
+    <div class="gifadj"><label>Izquierda / derecha<input type="range" id="spgx" min="0" max="100" value="${gifPos(r).x}"></label><label>Arriba / abajo<input type="range" id="spgy" min="0" max="100" value="${gifPos(r).y}"></label><label>Zoom<input type="range" id="spgz" min="100" max="300" value="${gifPos(r).z}"></label></div>
+    <p class="small dim" style="margin:4px 0 0">Arrastrá el GIF con el mouse o el dedo para acomodarlo. Así se ve en el banner de tu perfil.</p>
     <label class="lb" for="spmusic">Música de tu perfil (link de YouTube)</label><input type="url" id="spmusic" value="${h(r.music || '')}" placeholder="https://www.youtube.com/watch?v=…">
+    <label class="lb" for="spvol">Volumen de tu canción <span class="dim" id="spvoln">${r.music_vol != null ? r.music_vol : 60}%</span></label><input type="range" id="spvol" min="0" max="100" value="${r.music_vol != null ? r.music_vol : 60}" style="width:100%;accent-color:var(--accent)"><p class="small dim" style="margin:4px 0 0">Es el volumen con el que arranca cuando alguien entra a tu perfil. Cada visitante lo puede cambiar con la barrita de abajo a la izquierda.</p>
     <div class="actions" style="margin-top:14px"><button class="btn pri" data-act="supsave">Guardar</button><button class="btn" data-act="supgreettest">Probar el saludo</button></div></section>`;
 }
 const giphyLink = u => { u = String(u || '').trim(); const m = u.match(/^https:\/\/giphy\.com\/gifs\/(?:[^/?#]*-)?([A-Za-z0-9]+)(?:[/?#]|$)/); return m ? `https://media.giphy.com/media/${m[1]}/giphy.gif` : u; };
-document.addEventListener('input', e => { if (e.target.id === 'spgif') { const u = giphyLink(e.target.value); const pv = document.getElementById('spgifprev'); if (pv) pv.innerHTML = u ? `<img src="${h(u)}" alt="">` : '<span class="dim">Sin GIF</span>'; } });
+document.addEventListener('input', e => { if (e.target.id === 'spgif') { const u = giphyLink(e.target.value); const pv = document.getElementById('spgifprev'); if (pv) pv.innerHTML = u ? `<img src="${h(u)}" alt="" style="${gifStyle(curGifPos())}" draggable="false">` : '<span class="dim">Sin GIF</span>'; } });
+const curGifPos = () => { const v = id => +((document.getElementById(id) || {}).value); return { x: isNaN(v('spgx')) ? 50 : v('spgx'), y: isNaN(v('spgy')) ? 50 : v('spgy'), z: isNaN(v('spgz')) ? 100 : v('spgz') }; };
+const applyGifPos = () => { const i = document.querySelector('#spgifprev img'); if (i) i.style.cssText = gifStyle(curGifPos()); };
+document.addEventListener('input', e => { if (['spgx', 'spgy', 'spgz'].includes(e.target.id)) applyGifPos(); if (e.target.id === 'spvol') { const n = document.getElementById('spvoln'); if (n) n.textContent = e.target.value + '%'; } });
+let gifDrag = null;
+document.addEventListener('pointerdown', e => { const pv = e.target.closest('#spgifprev'); if (!pv || !pv.querySelector('img')) return; e.preventDefault(); const p = curGifPos(); gifDrag = { sx: e.clientX, sy: e.clientY, x: p.x, y: p.y, w: pv.clientWidth, h: pv.clientHeight }; pv.setPointerCapture && pv.setPointerCapture(e.pointerId); });
+document.addEventListener('pointermove', e => { if (!gifDrag) return; const nx = Math.min(100, Math.max(0, gifDrag.x - (e.clientX - gifDrag.sx) / gifDrag.w * 100)), ny = Math.min(100, Math.max(0, gifDrag.y - (e.clientY - gifDrag.sy) / gifDrag.h * 100)); document.getElementById('spgx').value = Math.round(nx); document.getElementById('spgy').value = Math.round(ny); applyGifPos(); });
+document.addEventListener('pointerup', () => { gifDrag = null; });
 let gifQT = 0;
 document.addEventListener('input', e => {
   if (e.target.id !== 'spgifq' || !CONFIG.giphyKey) return; clearTimeout(gifQT); const q = e.target.value.trim();
@@ -7697,7 +7727,7 @@ document.addEventListener('click', async e => {
   const v = id => document.getElementById(id).value.trim();
   try {
     const r = await rest('rpc/set_supporter_style', { method: 'POST', body: { p_color: v('spcol'), p_anim: v('span'), p_greet: v('spgreet'), p_greet_anim: v('spganim'), p_gif: giphyLink(v('spgif')), p_music: v('spmusic') } });
-    SUP.me = Array.isArray(r) ? r[0] : r; SUP.byId[ME.id] = SUP.me; SUP.byUser[ME.username] = SUP.me; toast('Guardado.'); refresh();
+    SUP.me = Array.isArray(r) ? r[0] : r; const gp = curGifPos(); const r2 = await sbTry(() => rest('rpc/set_supporter_gifpos', { method: 'POST', body: { p_x: gp.x, p_y: gp.y, p_z: gp.z } }), null); if (r2) SUP.me = Array.isArray(r2) ? r2[0] : r2; const vv = document.getElementById('spvol'); if (vv) { const r3 = await sbTry(() => rest('rpc/set_supporter_vol', { method: 'POST', body: { p_vol: +vv.value } }), null); if (r3) SUP.me = Array.isArray(r3) ? r3[0] : r3; } SUP.byId[ME.id] = SUP.me; SUP.byUser[ME.username] = SUP.me; toast('Guardado.'); refresh();
   } catch (x) { toast(x.message); }
 });
 
