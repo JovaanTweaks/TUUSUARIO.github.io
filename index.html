@@ -2215,6 +2215,8 @@ html body .boxview{width:min(980px,100%)}
 .bvit b{font-size:12.5px;line-height:1.2}.bvit small{font-size:10.5px;color:var(--dim)}.bvv{display:inline-flex;gap:3px;align-items:center;font-size:12px;font-weight:800}
 .bvth{width:72px;height:60px;display:grid;place-items:center;overflow:hidden}
 .bvit em{font-style:normal;font-size:10.5px;font-weight:800;padding:1px 6px;border-radius:5px;background:var(--bg);color:var(--rc)}.bvit.gone{opacity:.45}.bvit.gone em{color:var(--dim)}
+.bvrar{font:800 10px/1.4 var(--body);color:var(--rc);text-transform:none}.bvodds{font-size:10.5px!important}
+.bvfoot{justify-content:center;margin-top:14px;position:sticky;bottom:-22px;padding:12px 0;background:linear-gradient(transparent,var(--surface) 35%)}
 </style>
 </head>
 <body>
@@ -2245,7 +2247,7 @@ html body .boxview{width:min(980px,100%)}
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 20.5</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 20.6</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -8216,32 +8218,35 @@ const BOXV = { id: '', r: '', n: 60, sold: {} };
 function boxItems(id) { const b = BOXES[id]; if (!b) return []; return Object.values(CAT_IDX).filter(c => b.w[c.r] && (!c.b || c.b.includes(id))); }
 function boxViewHTML() {
   const id = BOXV.id, b = BOXES[id], all = boxItems(id), rs = RORD.slice().reverse().filter(r => b.w[r] && all.some(c => c.r === r));
-  if (!BOXV.r || !rs.includes(BOXV.r)) BOXV.r = rs[0];
-  const list = all.filter(c => c.r === BOXV.r).map(c => ({ c, v: estOf({ cid: c.id, serial: c.r === 'unica' ? 1 : 200, pattern: 0, wear: .2 }) })).sort((a, z) => z.v - a.v);
-  const per = (b.w[BOXV.r] || 0) / Math.max(1, list.length), odds = per > 0 ? Math.round(100 / per) : 0;
+  const cnt = {}; for (const c of all) cnt[c.r] = (cnt[c.r] || 0) + 1;
+  const oddsOf = c => { const per = (b.w[c.r] || 0) / Math.max(1, cnt[c.r] || 1); return per > 0 ? Math.round(100 / per) : 0; };
+  if (!BOXV.r) BOXV.r = 'todos';
+  const list = all.filter(c => BOXV.r === 'todos' || c.r === BOXV.r).map(c => ({ c, v: estOf({ cid: c.id, serial: c.r === 'unica' ? 1 : 200, pattern: 0, wear: .2 }) })).sort((a, z) => z.v - a.v);
   const show = list.slice(0, BOXV.n);
-  return `<div class="vhbox boxview" onclick="event.stopPropagation()"><button class="vhx" data-act="vhclose">✕</button>
-    <h2>${h(b.n)}: qué te puede tocar</h2><p class="dim">Cuesta ${coinSVG(13)} ${b.p.toLocaleString('es-AR')}. Cada objeto puede salir además con una gema según su patrón y su desgaste.</p>
-    <div class="bvtabs">${rs.map(r => { const n = all.filter(c => c.r === r).length; return `<button class="bvtab ${r === BOXV.r ? 'on' : ''}" style="--rc:${RAR[r].c}" data-act="bvr" data-r="${r}"><b>${RAR[r].n}</b><span>${String(b.w[r]).replace('.', ',')}% · ${n}</span></button>`; }).join('')}</div>
-    <p class="small dim bvnote">Te toca algo <b style="color:${RAR[BOXV.r].c}">${RAR[BOXV.r].n.toLowerCase()}</b> el ${String(b.w[BOXV.r]).replace('.', ',')}% de las veces. Cada uno de estos ${list.length} objetos sale más o menos <b>1 en ${fmtc(odds)}</b> cajas.</p>
-    <div class="bvgrid">${show.map(({ c, v }) => { const o = optOf(c.f, c.k), gone = BOXV.sold[c.id]; return `<div class="bvit ${gone ? 'gone' : ''}" style="--rc:${RAR[c.r].c}"><span class="bvth">${o ? miniThumb(c.f, c.k, o) : ''}</span><b>${h(c.n)}</b><small>${h(CAT_NAMES[c.f] || c.f)}</small><span class="bvv">${coinSVG(11)} ${fmtc(v)}</span>${gone ? '<em>Ya salió</em>' : c.max ? `<em class="sup">${c.max === 1 ? 'Existe 1 solo' : 'Quedan pocos'}</em>` : ''}</div>`; }).join('')}</div>
+  return `<div class="vhbox boxview"><button class="vhx" data-act="bvclose">✕</button>
+    <h2>${h(b.n)}: qué te puede tocar</h2><p class="dim">Cuesta ${coinSVG(13)} ${b.p.toLocaleString('es-AR')}. Hay ${all.length.toLocaleString('es-AR')} objetos, ordenados del más caro al más barato. Cada uno puede salir además con una gema según su patrón y su desgaste.</p>
+    <div class="bvtabs"><button class="bvtab ${BOXV.r === 'todos' ? 'on' : ''}" style="--rc:var(--fg)" data-act="bvr" data-r="todos"><b>Todos</b><span>100% · ${all.length}</span></button>${rs.map(r => `<button class="bvtab ${r === BOXV.r ? 'on' : ''}" style="--rc:${RAR[r].c}" data-act="bvr" data-r="${r}"><b>${RAR[r].n}</b><span>${String(b.w[r]).replace('.', ',')}% · ${cnt[r]}</span></button>`).join('')}</div>
+    <div class="bvgrid">${show.map(({ c, v }) => { const o = optOf(c.f, c.k), gone = BOXV.sold[c.id]; return `<div class="bvit ${gone ? 'gone' : ''}" style="--rc:${RAR[c.r].c}"><span class="bvrar">${RAR[c.r].n}</span><span class="bvth">${o ? miniThumb(c.f, c.k, o) : ''}</span><b>${h(c.n)}</b><small>${h(CAT_NAMES[c.f] || c.f)}</small><span class="bvv">${coinSVG(11)} ${fmtc(v)}</span><small class="bvodds">1 en ${fmtc(oddsOf(c))} cajas</small>${gone ? '<em>Ya salió</em>' : c.max === 1 ? '<em class="sup">Existe 1 solo</em>' : ''}</div>`; }).join('')}</div>
     ${list.length > show.length ? `<div class="actions" style="justify-content:center;margin-top:12px"><button class="btn" data-act="bvmore">Ver ${Math.min(60, list.length - show.length)} más (${list.length - show.length} restantes)</button></div>` : ''}
-    <div class="actions" style="justify-content:center;margin-top:14px"><button class="btn pri" data-act="bvopen" data-b="${id}">Abrir esta caja · ${coinSVG(13)} ${b.p.toLocaleString('es-AR')}</button></div></div>`;
+    <div class="actions bvfoot"><button class="btn pri" data-act="bvopen" data-b="${id}">Abrir esta caja · ${coinSVG(13)} ${b.p.toLocaleString('es-AR')}</button></div></div>`;
 }
 function boxViewDraw() { const ov = document.querySelector('.vhov.bvov'); if (ov) ov.innerHTML = boxViewHTML(); }
 async function openBoxView(id) {
   BOXV.id = id; BOXV.r = ''; BOXV.n = 60;
-  const ov = document.createElement('div'); ov.className = 'vhov bvov'; ov.dataset.act = 'vhclose'; ov.innerHTML = boxViewHTML(); document.body.appendChild(ov);
+  const ov = document.createElement('div'); ov.className = 'vhov bvov'; ov.innerHTML = boxViewHTML(); document.body.appendChild(ov);
   // marcar los 1 de 1 (y míticos o exóticos agotados) que ya salieron
   if (sbOK()) { const rows = await sbTry(() => rest(`collect_catalog?select=id,minted,max_supply&max_supply=not.is.null&boxes=cs.{${encodeURIComponent(id)}}`, { auth: false }), []) || []; BOXV.sold = {}; for (const r of rows) if (r.max_supply && r.minted >= r.max_supply) BOXV.sold[r.id] = 1; boxViewDraw(); }
 }
+// se escucha en la fase de captura para que ningún otro manejador lo frene
 document.addEventListener('click', e => {
+  if (e.target.classList && e.target.classList.contains('bvov')) { e.target.remove(); return; }
   const t = e.target.closest('[data-act]'); if (!t) return; const a = t.dataset.act;
+  if (a === 'bvclose') { document.querySelectorAll('.bvov').forEach(x => x.remove()); return; }
   if (a === 'boxview') { e.preventDefault(); openBoxView(t.dataset.b); return; }
   if (a === 'bvr') { BOXV.r = t.dataset.r; BOXV.n = 60; boxViewDraw(); return; }
   if (a === 'bvmore') { BOXV.n += 60; boxViewDraw(); return; }
-  if (a === 'bvopen') { document.querySelectorAll('.vhov').forEach(x => x.remove()); const btn = document.querySelector(`[data-act="openboxn"][data-b="${t.dataset.b}"][data-n="1"]`); if (btn) btn.click(); return; }
-});
+  if (a === 'bvopen') { document.querySelectorAll('.bvov').forEach(x => x.remove()); const btn = document.querySelector(`[data-act="openboxn"][data-b="${t.dataset.b}"][data-n="1"]`); if (btn) btn.click(); return; }
+}, true);
 // botón en cada caja
 let bvBtnT = 0;
 function addBoxViewBtns() {
