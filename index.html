@@ -11481,6 +11481,27 @@ if (typeof route === 'function') {
     _routeT = setTimeout(() => _origRoute(keepScroll), 10);
   };
 }
+
+// ============================================================ V43: BOTÓN ABRIR 100 CAJAS
+(() => {
+  const patchBoxes = () => {
+    if (parseRoute().name !== 'cajas') return;
+    document.querySelectorAll('.boxcard:not([data-b100])').forEach(card => {
+      card.dataset.b100 = '1';
+      const btns = card.querySelector('.boxbtns');
+      if (!btns || btns.querySelector('[data-n="100"]')) return;
+      const bName = (card.className.match(/bx-([a-z]+)/) || [])[1] || 'normal';
+      const boxObj = BOXES[bName];
+      if (!boxObj) return;
+      
+      // Agregamos el botón de 100 al HTML de los botones de la caja
+      const p100 = boxObj.p * 100;
+      btns.insertAdjacentHTML('beforeend', `<button class="btn big" data-act="openboxn" data-b="${bName}" data-n="100">Abrir 100 · ${coinSVG(16)} ${p100.toLocaleString('es-AR')}</button>`);
+    });
+  };
+  const app = document.getElementById('app');
+  if (app) new MutationObserver(patchBoxes).observe(app, { childList: true, subtree: true });
+})();
 </script>
 </body>
 </html>
