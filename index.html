@@ -2237,6 +2237,12 @@ html body .boxview{width:min(980px,100%)}
 .glname{display:flex;flex-direction:column;min-width:0}.glname b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.glname small{color:var(--dim)}
 .glcr{font-weight:700;white-space:nowrap}
 .glfoot{position:sticky;bottom:-18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px;padding:12px 0;background:var(--surface);border-top:1px solid var(--line)}
+
+/* V31: contador de monedas recolectadas */
+.sinkbar{display:flex;align-items:center;gap:12px 16px;flex-wrap:wrap;margin:12px 0 4px;padding:12px 16px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.sinkbar>div{display:flex;flex-direction:column;line-height:1.1}.sinkbar small{font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:.04em;font-weight:700}
+.sinkbar b{font-size:26px;font-variant-numeric:tabular-nums;font-stretch:85%;letter-spacing:-.01em}
+.sinkx{flex:1 1 240px;font-size:13px}
 </style>
 </head>
 <body>
@@ -2267,7 +2273,7 @@ html body .boxview{width:min(980px,100%)}
 
 <footer><div class="wrap">
   <div><b>JVNN Series &amp; Movies</b> · Gratis para siempre.<br>Sin cuenta, tus datos quedan en este navegador. Con cuenta, en todos tus dispositivos.</div>
-  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 20.7</span></div>
+  <div>Datos de series: <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze.com</a>, licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>Puntajes: IMDb, Rotten Tomatoes y Metacritic vía OMDb; comunidad de TVmaze y de JVNN.<br><span class="version">Versión 20.8</span></div>
 </div></footer>
 
 <nav class="bnav" id="bnav">
@@ -8443,6 +8449,31 @@ document.addEventListener('click', async e => {
     try { const r = await rest('rpc/goal_cancel', { method: 'POST', body: {} }); if (r && r.coins != null) { WALLET.coins = +r.coins; renderCoins(); } toast('Listo, te devolvimos todo.'); GOAL.st = undefined; QS.prices = {}; await loadInv(); refresh(); } catch (x) { toast(x.message); }
   }
 }, true);
+
+// ---------- CONTADOR: monedas recolectadas por la página (lo que la gente gasta en cajas, tienda, canjes, comisiones…)
+const SINK = { v: null, shown: 0, t: 0, raf: 0 };
+async function loadSink() { const r = await sbTry(() => rest('coin_sink?select=total', { auth: false }), null); if (r && r[0]) SINK.v = Math.floor(+r[0].total); SINK.t = Date.now(); }
+function sinkAnim() {
+  cancelAnimationFrame(SINK.raf);
+  const from = SINK.shown || Math.floor(SINK.v * .985), to = SINK.v, t0 = performance.now(), dur = from === to ? 0 : 1600;
+  const step = now => { const k = dur ? Math.min(1, (now - t0) / dur) : 1, e = 1 - Math.pow(1 - k, 3), v = Math.round(from + (to - from) * e); SINK.shown = v; document.querySelectorAll('[data-sinkn]').forEach(x => x.textContent = v.toLocaleString('es-AR')); if (k < 1) SINK.raf = requestAnimationFrame(step); };
+  SINK.raf = requestAnimationFrame(step);
+}
+let sinkT = 0;
+function sinkDeco() {
+  clearTimeout(sinkT);
+  sinkT = setTimeout(async () => {
+    if (!['cajas', 'inventario', 'canjes', 'mercado', 'tienda', 'ganar'].includes(parseRoute().name) || !sbOK()) return;
+    const nav = document.querySelector('#app .econav'); if (!nav || document.querySelector('#app [data-sink]')) return;
+    if (SINK.v == null) await loadSink(); if (SINK.v == null || document.querySelector('#app [data-sink]')) return;
+    nav.insertAdjacentHTML('afterend', `<div class="sinkbar" data-sink><span class="sinkic">${coinSVG(22)}</span><div><small>Monedas recolectadas por la página</small><b data-sinkn>${(SINK.shown || SINK.v).toLocaleString('es-AR')}</b></div><span class="sinkx dim">Todo lo que gastan los usuarios en cajas, tienda, canjes y comisiones del mercado. Se va sumando en vivo.</span></div>`);
+    sinkAnim();
+  }, 150);
+}
+{ const app = document.getElementById('app'); if (app) new MutationObserver(sinkDeco).observe(app, { childList: true, subtree: true }); }
+setInterval(async () => { if (!document.querySelector('[data-sink]') || document.hidden) return; const old = SINK.v; await loadSink(); if (SINK.v !== old) sinkAnim(); }, 15000);
+// cuando vos gastás, se actualiza al toque
+document.addEventListener('click', e => { if (e.target.closest('[data-act="openboxn"],[data-act="openagain"],[data-act="redeem"],[data-act="glsend"],[data-act="buy"]')) setTimeout(async () => { const old = SINK.v; await loadSink(); if (SINK.v !== old && document.querySelector('[data-sink]')) sinkAnim(); }, 2500); });
 
 
 // ============================================================ ONLINE (Supabase)
